@@ -134,7 +134,7 @@ test('binding attaches to actual production rig across every weapon/carry/combat
   const pin=bound.find(p=>p.weaponPart==='earth-binding-pin');assert.ok(bound.filter(p=>p.weaponPart==='earth-binding-wrap').some(p=>overlap(bounds(pin),bounds(p))),'pin attaches to real wrap');
   for(const p of bound)for(const old of all.filter(p=>['socket','socket-mount','fitting','temper','realm-fitting','realm-fitting-trim'].includes(p.weaponPart)))assert.equal(meshIntersects(p,old),false,id+' '+p.weaponPart+' covers old '+old.weaponPart);
   maxParts=Math.max(maxParts,all.length);specimens++;
- }}assert.equal(specimens,672);assert.ok(maxParts<=48,maxParts+' equipment budget');
+ }}assert.equal(specimens,768);assert.ok(maxParts<=48,maxParts+' equipment budget');
 });
 test('binding presentation belongs only to an actual selected owned item, never another character or equipped item',()=>{
  const sim=equipped('trail_blade'),frame=Rig.draw(empty(),{base:F},Rig.pose({style:'blade',combatScene:true}));sim.state.adventure.earthBinding={version:1,weapon:'copper_bow',kind:'edge'};let out=empty();Equipment.draw(out,sim,frame);assert.equal(flatten(out).some(p=>p.weaponPart.startsWith('earth-binding')),false);

@@ -26,7 +26,7 @@ function route(a,b,radius=.31){
 
 test('Hell campaign data: exact frozen catalogue, source boundary and import without gameplay mutation',()=>{
  keys(globalThis.RealmHellCampaignData,['definition','patterns']);frozen(globalThis.RealmHellCampaignData);
- keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy','regent','lines']);
+ keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy','regent']);
  assert.equal(d.id,'hell-last-unclaimed-road-v1');assert.equal(d.room,'world-hell');assert.equal(d.realm,'hell');
  assert.equal(d.prerequisite,'hell-open-cage-v1');
  assert.equal(north.definitions.find(v=>v.id===d.prerequisite)?.realm,d.realm);
@@ -87,7 +87,7 @@ test('Hell campaign geography: all authored anchors use supported existing groun
 
 test('Hell campaign patterns: distinct fixed locked-shape terms and narrow optional recovery supports',()=>{
  keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','spawnAfter','defeatStep']);
- assert.deepEqual(d.enemy,{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:520,damage:34,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'});
+ assert.deepEqual(d.enemy,{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:2080,damage:26,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'});
  assert.deepEqual(patterns,{sweep:{reach:5.5,length:3.8,halfWidth:2,windup:1.35,recovery:2.2,support:'west-shunt'},line:{reach:7,length:6,halfWidth:.65,windup:1.35,recovery:2.2,support:'east-brace'}});
  assert.ok(patterns.sweep.halfWidth>patterns.line.halfWidth);assert.ok(patterns.line.length>patterns.sweep.length);
  for(const p of Object.values(patterns)){
@@ -116,7 +116,7 @@ test('Hell campaign body clearance: production paths respect Veyr radius around 
 });
 
 test('Hell campaign outcomes: three lasting local choices retain safety, truth and one common fixed fee',()=>{
- assert.deepEqual(d.reward,{xp:45,coins:20,ore:4,materials:{wood:3,fiber:2}});
+ assert.deepEqual(d.reward,{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}});
  assert.deepEqual(d.choices.map(c=>c.id),['unbind','divert','license']);
  for(const c of d.choices){
   keys(c,['id','name','text','consequence']);assert.ok(c.name&&c.text&&c.consequence);

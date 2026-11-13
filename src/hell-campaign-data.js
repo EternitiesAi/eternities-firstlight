@@ -20,7 +20,7 @@ const definition=freeze({
  title:'The Stolen Pattern',
  room:'world-hell',realm:'hell',prerequisite:'hell-open-cage-v1',
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
- reward:{xp:45,coins:20,ore:4,materials:{wood:3,fiber:2}},
+ reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
  summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
@@ -58,20 +58,7 @@ const definition=freeze({
    text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
    consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- // spoken lines live apart from the step narration so a script can replace them scene by scene.
- lines:{
-  scenes:{
-   'witness-record':[{speaker:'Neris',text:'Keep the measurements as they are, including the ones I once helped conceal.'}],
-   'tovan-account':[{speaker:'Tovan',text:'Knowing the rivets is useful. Leaving my own name out would make it a worse record.'}],
-   'challenge-veyr':[{speaker:'Veyr',text:'Everyone who came for the pattern left it in my yard. Come and try.'}]
-  },
-  recognition:{
-   unbind:[{speaker:'Istra',text:'The gate is open. Nobody on this road owes the writ anything now.'},{speaker:'Tovan',text:'The writ is cut. My old rivets belong in the record, and they should stay there.'},{speaker:'Neris',text:'You opened it for everyone. Keep the measurements whole, and keep my name beside what I did.'}],
-   divert:[{speaker:'Istra',text:'The hooded marker shelters the few you took out. The writ still stands over the rest.'},{speaker:'Tovan',text:'A few walked free. Do not call the rest a repair.'},{speaker:'Neris',text:'I am safe. My record stays whole beside the choice you made.'}],
-   license:[{speaker:'Istra',text:'The paired seals name the crew this concession covers. I will record what it leaves in place.'},{speaker:'Tovan',text:'Another office holds their road now. The machinery and our part in it are still here.'},{speaker:'Neris',text:'The named crew has its concession. Keep the true measurements, and do not let them become absolution.'}]
-  }
- },
- enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:520,damage:34,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
+ enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??26),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
 G.RealmHellCampaignData=api;

@@ -150,7 +150,7 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
  }
  const[beam,relay]=d.enemies;
  assert.deepEqual({hp:beam.hp,damage:beam.damage,radius:beam.radius},{hp:110,damage:12,radius:.55});
- assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:620,damage:38,radius:.6});
+ assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:2470,damage:27,radius:.6});
  assert.deepEqual(beam.attack,{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}});
  assert.deepEqual(relay.attack,{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2});
  assert.ok(steps.get(beam.attack.support.step).optional);assert.equal('support' in relay.attack,false);
@@ -162,22 +162,19 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
 });
 
 test('Heaven reward and choices: one common finite material fee, explicit public usability and earned recognition',()=>{
- assert.deepEqual(d.reward,{xp:40,coins:16,ore:3,materials:{wood:4,fiber:3}});keys(d.reward,['xp','coins','ore','materials']);
+ assert.deepEqual(d.reward,{xp:140,coins:16,ore:3,materials:{wood:4,fiber:3}});keys(d.reward,['xp','coins','ore','materials']);
  assert.deepEqual(d.choices.map(c=>c.id),['accessible-assist','broadened-activation']);
  for(const c of d.choices){
-  keys(c,['id','name','text','consequence','recognition']);assert.ok(stable.test(c.id));
+  keys(c,['id','name','text','consequence']);assert.ok(stable.test(c.id));
   assert.match(c.text,/garden stays open to everyone/);
   assert.match(c.text,/the courier’s arrival and the true account all stay/);assert.match(c.consequence,/kept for good/);assert.doesNotMatch(c.text+c.consequence,/\bfee\b|\bclaim/i);
   assert.match(c.consequence,/A deliberate press moves/);assert.match(c.consequence,/at rest it stays quiet/);
-  assert.deepEqual(c.recognition.map(r=>r.name),['Rielle','Calen','Yselle','Wayfarer']);
-  for(const line of c.recognition){keys(line,['name','text']);assert.ok(line.text.length>20&&line.text.length<220);}
-  const courier=c.recognition.find(r=>r.name==='Wayfarer');
-  assert.match(courier.text,/I reached the garden on the marked road/,'the promised courier recognition acknowledges actual arrival');
-  assert.match(courier.text,c.id==='accessible-assist'?/lever/:/broad plate/,'recognition names the actual selected arrangement');
+  // the welcome's speakers come from the story script (heaven.after), checked in the art test.
+  // the verified welcome's lines come from the story script (heaven.after), not from the data.
+  assert.ok(require('../src/story-script.js').ids().includes('heaven.after'),'the verified welcome has its script scene');
+  assert.match(c.text+c.consequence,c.id==='accessible-assist'?/lever/:/broad plate/,'the choice names the arrangement it keeps');
  }
  assert.match(d.choices[0].text,/low lever with a request plate/);assert.match(d.choices[1].text,/broad plate that anyone can press/);
- assert.notEqual(d.choices[0].recognition[0].text,d.choices[1].recognition[0].text);
- assert.notEqual(d.choices[0].recognition.at(-1).text,d.choices[1].recognition.at(-1).text,'the courier has an actual distinct line in both choices');
  assert.match(d.completionText,/gives you 16 sunmarks, 3 ore, 4 timber and 3 fibre, and XP up to 40 within the stored cap/);
  assert.doesNotMatch(d.completionText,/has paid (?:the declared )?40 XP/);
  assert.match(d.completionText,/go toward a project you choose/);assert.match(d.completionText,/No gear was fitted or granted/);

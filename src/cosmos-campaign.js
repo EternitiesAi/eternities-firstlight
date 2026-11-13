@@ -4,6 +4,10 @@
 (function(G){'use strict';
 const DATA=G.RealmCosmosCampaignData||(typeof require==='function'?require('./cosmos-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,SUPPORTS=DATA.supports;
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+const sceneOf=(id,state)=>SCRIPT()?.forStep?.('cosmos',id,state)||null;
+// The six-second hold at the central link (BRANCHES 5). Transient, never saved: leaving the anchor or bringing the other into view resets it.
+const HOLD_SECONDS=6,HOLD_REACH=2.5,OFF_SCREEN=7;
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 // The saga writes into the candidate save, so a sighting lands in the same save as the acceptance.
 const candidateSim=c=>({state:c,event:(kind,text)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:text.slice(0,350)});if(c.journal.length>200)c.journal.shift();}});
@@ -55,6 +59,24 @@ function commit(sim,candidate,io,text,ctx){
  sim.state.cosmosCampaign=checked.cosmosCampaign;sim.state.saga=checked.saga;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;return{ok:true,text};
 }
+// Where the prepared anchors stand: the fit or assist step of each support you have set.
+function anchorsOf(r){return DATA.supports.filter(l=>r.steps.includes(l.complete)||r.steps.includes(l.assistance)).map(l=>{const s=step(r.steps.includes(l.complete)?l.complete:l.assistance);return{id:l.id,x:s.x,z:s.z};});}
+function heldComplete(sim){return sim.cosmosCampaignRuntime?.hold?.complete===true;}
+function holdStart(sim){
+ const r=record(sim.state),rt=runtime(sim);
+ if(!r?.accepted||r.claimed||r.steps.includes('disable-central-link')||!['release-west-feed','release-east-feed','guardian-settled'].every(id=>r.steps.includes(id)))return fail('Settle both machines and release both feeds before the central link.');
+ const anchors=anchorsOf(r),p=sim.state.player,near=anchors.filter(a=>Math.hypot(p.x-a.x,p.z-a.z)<=HOLD_REACH);
+ if(!near.length)return fail('Stand at one of the anchors you set.');
+ if(anchors.some(a=>a.id!==near[0].id&&Math.hypot(p.x-a.x,p.z-a.z)<=OFF_SCREEN))return fail('Move the other anchor out of view first.');
+ rt.hold={anchor:near[0].id,startedAt:sim.elapsed||0,complete:false};
+ return{ok:true,text:'Hold here. The central link answers after six seconds.'};
+}
+function holdTick(sim){
+ const h=sim.cosmosCampaignRuntime?.hold;if(!h||h.complete)return;
+ const anchors=record(sim.state)?anchorsOf(record(sim.state)):[],p=sim.state.player,a=anchors.find(x=>x.id===h.anchor);
+ if(!a||Math.hypot(p.x-a.x,p.z-a.z)>HOLD_REACH||anchors.some(x=>x.id!==a.id&&Math.hypot(p.x-x.x,p.z-x.z)<=OFF_SCREEN)){delete sim.cosmosCampaignRuntime.hold;return;}
+ if((sim.elapsed||0)-h.startedAt>=HOLD_SECONDS)h.complete=true;
+}
 function runtime(sim){
  let r=sim.cosmosCampaignRuntime;if(!r||r.room!==sim.room||runtimeOwners.get(r)!==sim.state){r=sim.cosmosCampaignRuntime={room:sim.room,witnesses:Object.freeze([])};runtimeOwners.set(r,sim.state);}
  const q=sim.state.cosmosCampaign,present=sim.room===D.room&&!sim.worldDive&&eligible(sim.state)&&q?.accepted;
@@ -69,7 +91,7 @@ function command(ctx,type,payload,io){
  if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This Confluence is already complete. Its apparatus and account remain.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This operation is already accepted; its saved work remains.'};
  let candidate;try{candidate=sim.snapshot();if(!candidate.cosmosCampaign)return fail('The Cosmos snapshot owner is not installed. No history or fee was changed.');candidate.cosmosCampaign=validate(candidate.cosmosCampaign);}catch(e){return fail('Campaign state refused: '+e.message);}
- const q=candidate.cosmosCampaign;let text,reward=null;
+ const q=candidate.cosmosCampaign;let text,reward=null,scene=null;
  if(type==='accept'){
   if(!eligible(candidate)||!at(sim,D.giver))return fail('The Confluence is not open to you yet. Finish the story before it, then speak to Anik.');
   q.accepted=true;const seen=SAGA().regentSeen(candidateSim(candidate),'confluence');if(!seen.ok)return fail(seen.error);
@@ -77,25 +99,31 @@ function command(ctx,type,payload,io){
  }else if(type==='step'||type==='configure'){
   const s=step(payload.step);if(!q.accepted||q.claimed||!s||s.kind!==(type==='configure'?'configure':'interact'))return fail('Only accepted physical work of this kind can be recorded. Actual combat owns machine exhaustion.');
   if(type==='configure'&&payload.setting!==s.setting)return fail('Read and choose the exact named setting. Wrong settings have no material cost or penalty.');
-  if(!at(sim,s))return fail('Reach '+s.name+' on its actual supported dry approach.');
+  if(!(s.id==='disable-central-link'&&heldComplete(sim))&&!at(sim,s))return fail(s.id==='disable-central-link'?'Hold at one of the anchors you set until the central link answers.':'Reach '+s.name+' on its actual supported dry approach.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This physical action is already recorded.'};
   if(!allowed(q,s))return fail('Complete the stated predecessors and distinct prepared supports before '+s.name+'.');
-  q.steps.push(s.id);if(s.id==='open-confluence')q.opened=true;text=s.text;
+  q.steps.push(s.id);if(s.id==='open-confluence')q.opened=true;text=s.text;scene=sceneOf(s.id,candidate);
  }else if(type==='choose'){
   const s=step('accountability'),choice=D.choices.find(c=>c.id===payload.choice);
   if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Reach the local accountability marker after disabling the actual central link.');
   if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That bounded local account is already retained.'}:fail('The recorded local accountability choice cannot be overwritten.');
   if(!allowed(q,s))return fail('Settle both actual machines, release both feeds and physically disable the central link before choosing.');
-  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
+  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;scene=sceneOf('recognition',candidate);
  }else if(type==='claim'){
   if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the open apparatus, then return to Anik for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
   if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
   q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+ }else if(type==='sighting'){
+  // The Regent across the gap (BRANCHES 3.7): the saga records whether you heard him out, once.
+  if(!q.accepted||q.claimed||q.opened!==true||typeof payload.heard!=='boolean')return fail('Hear the Regent out once the apparatus is open.');
+  const res=SAGA().command(candidateSim(candidate),'sighting-confluence','regent-heard',{id:'confluence',heard:payload.heard});
+  if(!res.ok)return fail(res.error);
+  scene=sceneOf('sighting',candidate);text=payload.heard?'You let him finish.':'You cut him off.';
  }else return fail('Unknown Cosmos campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
- if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.cards=scene.lines.map(l=>({speaker:l.speaker,text:l.text}));result.choice=scene.choice;}if(type==='configure'&&payload.step==='disable-central-link')delete sim.cosmosCampaignRuntime.hold;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
 }
 function enemies(sim){const r=sim?.state?.cosmosCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted?D.enemies.filter(e=>e.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(e.defeatStep)).map(e=>({...e,originX:e.x,originZ:e.z,cosmosCampaign:D.id,xp:0,coins:0,ore:0,windup:(e.pattern==='reclaimer'?P.reclaimer.line:P.guardian.ring).windup,recovery:(e.pattern==='reclaimer'?P.reclaimer.line:P.guardian.ring).recovery,telegraphRadius:0})):[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');
@@ -159,6 +187,6 @@ function defeat(sim,e){
  const result=commit(sim,candidate,{save:sim.cosmosCampaignSave},t.name+' settled through actual combat exhaustion. No independent loot, XP or central project completion was granted.');
  if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
 }
-const api={definition:D,patterns:P,supports:SUPPORTS,fresh,validate,eligible,required,available,ready,at,command,runtime,enemies,signature,encounter,owned,canDamage,pattern,lock,strikeContains,defeat};
+const api={definition:D,patterns:P,supports:SUPPORTS,fresh,validate,eligible,required,available,ready,at,command,runtime,enemies,signature,encounter,owned,canDamage,pattern,lock,strikeContains,defeat,holdStart,holdTick,heldComplete,HOLD_SECONDS};
 G.RealmCosmosCampaign=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

@@ -54,14 +54,16 @@ function createHarness(raw){
   walk(home.x,home.z+12);walk(home.x,home.z+radius);command('target-select',{id:enemy.id});
   assert.strictEqual(T.selected(sim),enemy,'production target selection owns actual runtime entity');
   const start=sim.state.adventure.elapsed,phases=[],impacts=[],closedShots=[];
-  let frames=0,lastHP=enemy.hp,guarded=0,arrowSeen=false;
-  command('auto-toggle');
+  let frames=0,lastHP=enemy.hp,guarded=0,arrowSeen=false,auto=false;
+  // open on the Brace: an act IV traveller would end a trail machine before its first windup, so the attack starts
+  // after the first Brace (or after 20 s in reach). Every input is still a real command.
   while(!sim.state.realmTrails.records[d.id].steps.includes(d.enemy.defeatStep)&&frames++<2400){
    enemy=A.runtime(sim).enemies.find(e=>e.id===d.enemy.id)||enemy;
    const a=sim.state.adventure,run=A.runtime(sim),t=T.runtime(sim),cue=T.threat(sim);
    assert.ok(a.hp>0,'survive actual '+d.enemy.id);
    if(cue&&!phases.some(p=>p.phase===cue.phase))phases.push({at:a.elapsed-start,...cue,hp:enemy.hp});
    if(cue?.phase==='windup'&&a.stamina>=20&&a.elapsed>=t.cooldowns.guard){command('guard');guarded++;}
+   if(!auto&&(guarded>0||frames>400)){command('auto-toggle');auto=true;}
    if(a.hp<45&&a.tonics&&a.elapsed>=run.cooldowns.heal)command('heal');
    if(distance(sim.state.player,enemy)>=AR.weapon(a).reach-.2&&!sim.playerPath.length){
     const point={x:enemy.x,z:enemy.z+radius};assert.ok(sim.moveTo(point.x,point.z).ok,'real combat approach');
@@ -125,11 +127,15 @@ function earnedKit(h,bow){if(h.sim.state.adventure.started)return;
  assert.equal(AR.weapon(h.sim.state.adventure).style,bow?'bow':'blade');h.walk(W.GATE.x,W.GATE.z);
 }
 function journey({bow=false,output=null}={}){
- const variant=bow?'fresh-bow':'fresh-blade',h=createHarness();earnedKit(h,bow);
- const before=h.sim.snapshot(),claims=[];
+ // the north trails are act IV: the night opens the way down, and the garden gate opens once the foundry is done.
+ // the saga is prepared through its own commands (saga_ready.cjs); the hell campaign is played after the hell trail,
+ // which is its prerequisite, so the trails run hell first.
+ const variant=bow?'fresh-bow':'fresh-blade',SR=require('./saga_ready.cjs');let h=createHarness(SR.storyWorld({bow,through:'night'}));h.walk(W.GATE.x,W.GATE.z);
+ let before=h.sim.snapshot();const claims=[];let since=[];
  const snap=name=>{if(output){fs.mkdirSync(path.join(output,variant),{recursive:true});fs.writeFileSync(path.join(output,variant,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
  snap('00_COMMAND_EARNED_KIT');
- for(const realm of['heaven','hell']){
+ for(const realm of['hell','heaven']){
+  if(realm==='heaven'&&!require('../src/saga.js').allowed(h.sim.state,'heaven')){h=createHarness(SR.advance(h.sim.snapshot(),{bow,through:'hell'}));before=h.sim.snapshot();since=[];h.walk(W.GATE.x,W.GATE.z);}
   const d=R.definitions().find(d=>d.realm===realm);h.enter(realm);h.walk(d.giver.x,d.giver.z);h.trail('accept',d);snap(realm+'_01_ACCEPTED');h.reload(realm);
   for(const id of d.enemy.spawnAfter){
    const step=d.steps.find(s=>s.id===id);h.walk(step.x,step.z);h.trail('step',d,{step:id});
@@ -146,7 +152,7 @@ function journey({bow=false,output=null}={}){
   snap(realm+'_04_READY_UNPAID');h.reload(realm);h.walk(d.giver.x,d.giver.z);
   const balance=copy({xp:h.sim.state.adventure.xp,coins:h.sim.state.adventure.coins,ore:h.sim.state.adventure.ore});
   h.trail('claim',d);for(const key of['xp','coins','ore'])assert.equal(h.sim.state.adventure[key]-balance[key],d.reward[key],'exact once-only '+key);
-  const paid=h.sim.snapshot();assert.equal(h.trail('claim',d).duplicate,true);assert.deepEqual(h.sim.snapshot(),paid,'duplicate claim makes no change');claims.push({quest:d.id,reward:d.reward,before:balance});
+  const paid=h.sim.snapshot();assert.equal(h.trail('claim',d).duplicate,true);assert.deepEqual(h.sim.snapshot(),paid,'duplicate claim makes no change');claims.push({quest:d.id,reward:d.reward,before:balance});since.push(d.reward);
   snap(realm+'_05_PAID');h.reload(realm);h.walk(d.giver.x,d.giver.z);assert.equal(h.trail('claim',d).duplicate,true);h.home();h.walk(W.GATE.x,W.GATE.z);
  }
  h.walk(11,9);const old=h.sim.snapshot(),weapon=old.adventure.equipment.weapon,stats=A.stats(old.adventure);
@@ -159,11 +165,15 @@ function journey({bow=false,output=null}={}){
  const after=h.sim.snapshot();
  for(const key of['owned','equipment','arsenal','pursuit','starter','classPath','road','beacon','crossing','earthStory','earthNotes','earthGathering','companion','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(after.adventure[key],before.adventure[key],key+' retained');
  for(const key of['notes','score','scoreRevision','retreat','visitor','flowers','journeys'])assert.deepEqual(after[key],before[key],key+' retained');
- assert.equal(after.adventure.xp-before.adventure.xp,65);assert.equal(after.adventure.coins-before.adventure.coins,18);assert.equal(after.adventure.ore-before.adventure.ore,2);
+ // since the last story step: the trails claimed after it, less the fitting's 8 coins and 3 ore
+ const sum=k=>since.reduce((n,r)=>n+(r[k]||0),0);
+ assert.equal(after.adventure.xp-before.adventure.xp,sum('xp'));assert.equal(after.adventure.coins-before.adventure.coins,sum('coins')-8);assert.equal(after.adventure.ore-before.adventure.ore,sum('ore')-3);
  const finalHashes=hashes();
  const report={status:'passed',variant,method:'production commands/moveTo/ticks/targeting/Brace/autoattack/projectiles; explicit in-memory durable candidate holder',acceleratedTicks:true,browserPersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,source:'fresh production character; initial kit and optional bow/range/socket all command-earned',harnessSha256:crypto.createHash('sha256').update(fs.readFileSync(__filename)).digest('hex'),sourceHashes:loadedHashes,sourceDrift:JSON.stringify(finalHashes)!==JSON.stringify(loadedHashes),finalHashes,worldVersion:C.VERSION,adventureVersion:A.VERSION,claims,combats:h.combats,events:h.events,routes:h.routes,saveCount:h.checkpoints.length,fitting:{weapon,attackBefore:stats.attack,attackAfter:A.stats(after.adventure).attack,cost:RC.COST},canonicalPreservation:true};
  if(output)fs.writeFileSync(path.join(output,variant,'REALM_TRAILS_JOURNEY_REPORT.json'),JSON.stringify(report,null,2)+'\n');return report;
 }
+// exported before the main block: a connected helper this journey calls (saga_ready) requires createHarness back
+module.exports={journey,createHarness,earnedKit,witnessHarness};
 if(require.main===module){
  const index=process.argv.indexOf('--output'),output=index>=0?path.resolve(process.argv[index+1]):null;
  if(output&&process.platform==='win32')assert.match(output,/^D:[\\/]/i,'heavy evidence must stay on D');
@@ -172,4 +182,3 @@ if(require.main===module){
 }
 // Heaven is finished before the Atlantis and Cosmos doors open: the witness journeys start from that save.
 function witnessHarness(bow){const pre=createHarness();earnedKit(pre,bow);return createHarness(require('./witness_prereq.cjs').heavenFinished(pre.sim.snapshot()));}
-module.exports={journey,createHarness,earnedKit,witnessHarness};

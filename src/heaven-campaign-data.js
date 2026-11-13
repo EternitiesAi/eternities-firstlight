@@ -8,7 +8,7 @@ const definition=freeze({
  id:'heaven-gate-remained-open-v1',title:'The Gate That Remained Open',
  room:'world-heaven',realm:'heaven',prerequisite:'heaven-broken-choir-v1',
  giver:{id:'heaven-rielle',name:'Rielle · bellwright',x:-14,z:5},
- reward:{xp:40,coins:16,ore:3,materials:{wood:4,fiber:3}},
+ reward:{xp:140,coins:16,ore:3,materials:{wood:4,fiber:3}},
  envoy:{name:'The envoy',x:-8,z:22,reading:'heaven'},
  summary:'The Broken Choir is mended, and its garden answer is true. Come up in peace: the bells are ringing and the beds are planted. The envoy keeps a house in this garden, and the envoy has a reading for you. Hear it first. Then a false rescue signal, borrowed from a relay, sends travellers up a road that is closed. Break the apparatus that guards it and the relay seraph behind it, then walk the bell courier home. Rielle closes the work when it is done.',
  danger:'The Glasswing approach construct has 110 health and a locked directed beam: 9 units of reach, a 0.65 half-width, a 1.2-second warning and a 1.7-second recovery. The supplied warning mirror adds 0.4 seconds to that warning only. The relay seraph has a radial pulse with a 5.5-unit reach, a 3.4-unit radius, a 1.4-second warning and a 2-second recovery, and it hits harder than anything else in the garden. Real opaque cover blocks the beam. Both can be hurt during every live phase. Use your blade or bow, move, Brace or retreat. Shape and text carry every warning with sound off. The road home stays open. The courier is a traveller to welcome, not an enemy. No class, technique or companion is required. The upper terrace stays closed.',
@@ -45,27 +45,17 @@ const definition=freeze({
   {id:'accessible-assist',name:'Accessible assist · keep the ceremony, add an easy lever',
    text:'Keep the three-notch ceremony and add a low lever with a request plate. Anyone who likes the ceremony keeps it. Anyone with tired hands uses the lever. The repaired stroke, the courier’s arrival and the true account all stay, and the garden stays open to everyone.',
    consequence:'The garden fitting keeps its notches and gains a low lever and a request plate. A deliberate press moves the assist stroke, and at rest it stays quiet. A small inscription invites visitors to ask. Rielle, Calen and the courier recognize it. It is kept for good. It grants no exclusive service, gear or class, and it passes no verdict on anyone.',
-   recognition:[
-    {name:'Rielle',text:'The familiar ceremony can stay. The low lever gives tired hands an easy way to ask.'},
-    {name:'Calen',text:'The courier came up the marked road. I will keep the wrong signal in our account.'},
-    {name:'Yselle',text:'The request plate leaves room for another pair of hands. The beds can stay planted.'},
-    {name:'Wayfarer',text:'I reached the garden on the marked road. The lever lets me answer with tired hands, and I can keep the ceremony if I want it.'}
-   ]},
+   },
   {id:'broadened-activation',name:'Broadened activation · make the broad plate ordinary',
    text:'Fit a broad plate that anyone can press. The ceremonial notches stay beside it as an optional sequence. Ordinary pressing no longer needs the sequence, though visitors may still do it by choice. The repaired stroke, the courier’s arrival and the true account all stay, and the garden stays open to everyone.',
    consequence:'The garden fitting shows a broad plate beside its retained notches. A deliberate press moves the plate, and at rest it stays quiet. A small inscription records that the plate is open to all. Rielle, Calen and the courier recognize it. It is kept for good. It grants no exclusive service, gear or class, and it passes no verdict on anyone.',
-   recognition:[
-    {name:'Rielle',text:'The broad plate answers an ordinary press. The old notches are still there for anyone who likes the sequence.'},
-    {name:'Calen',text:'The courier came up the marked road. Our corrected route now ends at an open plate.'},
-    {name:'Yselle',text:'A broad press leaves room for visitors who move differently. The beds can stay planted.'},
-    {name:'Wayfarer',text:'I reached the garden on the marked road. I can use the broad plate now, and the old sequence is there when I want to learn it.'}
-   ]}
+   }
  ],
  enemies:[
   {id:'heaven-glasswing-sentinel-v1',name:'Glasswing approach construct',kind:'sentinel',x:0,z:-61,hp:110,damage:12,radius:.55,damageWindow:'all-live-phases',spawnAfter:['begin-watch'],defeatStep:'beam-disabled',
    objective:'Break the apparatus that guards the false signal. Its defeat lets the relay wake; it pays no reward.',
    attack:{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}}},
-  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:620,damage:38,radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
+  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:(G.RealmDifficulty?.boss?.('relaySeraph')?.hp??2470),damage:(G.RealmDifficulty?.boss?.('relaySeraph')?.damage??27),radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
    objective:'Break the relay that repeats the false route, so the marked walk and the courier’s passage can be trusted.',
    attack:{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2}}
  ],

@@ -28,6 +28,8 @@ function at(sim,p){return sim.room===D.room&&!sim.worldDive&&G.RealmTrails.at(si
 function journal(candidate,kind,text){candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind,text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();}
 // the saga writes its sighting into the candidate, so the regent's line saves with the campaign's own record.
 function saw(candidate){return G.RealmSaga.regentSeen({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry');}
+// the hear or cut answer is the saga's regent-heard (BRANCHES.md 2.2), written after the sighting in the same save.
+function heard(candidate,value){return G.RealmSaga.regentHeard({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry',value);}
 function commit(sim,candidate,io,text){
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
  candidate.adventure.revision++;
@@ -35,7 +37,7 @@ function commit(sim,candidate,io,text){
  let checked,saved;try{checked=G.RealmCore.validate(candidate);saved=io?.save?.(checked);}catch(e){return fail('Campaign save refused: '+e.message);}
  if(!saved?.ok)return fail(saved?.error||'Campaign save refused. No history, costs or reward were changed.');
  sim.state.hellCampaign=checked.hellCampaign;sim.state.saga=checked.saga;
- for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
+ for(const k of['xp','coins','ore','revision','owned'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
  return{ok:true,text};
 }
@@ -54,9 +56,12 @@ function command(ctx,type,payload,io){
   if(!q.accepted||q.claimed||!s||s.kind!=='interact')return fail('Only unfinished work on this road can be recorded.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This is already done.'};
   if(!available(candidate).some(p=>p.id===s.id)||!at(sim,s))return fail('Reach '+s.name+' and finish what it asks first.');
+  if(s.id==='stabilize-service-engine'&&typeof payload.heard!=='boolean')return fail('He is waiting for your answer. Hear him out, or cut him off.');
   q.steps.push(s.id);text=s.text;
   // the regent is seen at the gate once the pattern is taken back; a save that passed the gate before the sighting existed sees him at the plate.
-  if(s.id==='stabilize-service-engine'||s.id==='verify-route'){const seen=saw(candidate);if(!seen.ok)return fail(seen.error);}
+  // the answer is written after the sighting, in the same save, as the spec orders it.
+  if(s.id==='stabilize-service-engine'||s.id==='verify-route'){const seen=saw(candidate);if(!seen.ok)return fail(seen.error);
+   if(s.id==='stabilize-service-engine'){const h=heard(candidate,payload.heard);if(!h.ok)return fail(h.error);}}
  }else if(type==='choose'){
   const s=D.steps.find(s=>s.id==='disposition'),choice=D.choices.find(c=>c.id===payload.choice);
   if(q.choice!==null)return q.choice===payload.choice?{ok:true,duplicate:true,text:'That choice is already kept.'}:fail('The choice is kept for good. It cannot be changed by opening this page again.');
@@ -70,7 +75,8 @@ function command(ctx,type,payload,io){
   const got={xp:Math.min(fee.xp,9999-a.xp),coins:room(a.coins,fee.coins,9999),ore:room(a.ore,fee.ore,9999),materials:{}};
   for(const[k,n]of Object.entries(fee.materials))got.materials[k]=Object.hasOwn(inv,k)?room(inv[k],n,max):0;
   a.xp+=got.xp;a.coins+=got.coins;a.ore+=got.ore;for(const[k,n]of Object.entries(got.materials))inv[k]+=n;
-  reward=got;q.claimed=true;
+  // the boss gear joins the owned list here, beside the reward, so the reward object keeps its shape.
+  reward=got;q.claimed=true;if(!a.owned.includes('foundry_edge'))a.owned.push('foundry_edge');
   const cut=got.coins<fee.coins||got.ore<fee.ore||Object.entries(fee.materials).some(([k,n])=>got.materials[k]<n);
   text=D.title+' is finished · '+D.choices.find(c=>c.id===q.choice).name+' · '+got.xp+' XP, '+got.coins+' sunmarks, '+got.ore+' ore, '+got.materials.wood+' timber and '+got.materials.fiber+' fibre.'+(cut?' Some of it did not fit in your pouch and stayed in the works.':'')+(got.xp<fee.xp?' Stored XP stays at its cap.':'');
  }else return fail('Unknown action on this road.');

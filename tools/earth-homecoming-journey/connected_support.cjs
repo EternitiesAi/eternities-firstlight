@@ -23,7 +23,9 @@ function createInherited(file,bow){return require(path.join(ROOT,'tests/realm_tr
 function preserve(final,before,changed=[]){
  const permit=new Set(changed);
  for(const k of ['briarMoments','journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','atlantisCampaign','cosmosCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])if(!permit.has(k))assert.deepEqual(final[k],before[k],'old world owner '+k+' retained');
- for(const k of ['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])if(!permit.has('adventure.'+k))assert.deepEqual(final.adventure[k],before.adventure[k],'old adventure owner '+k+' retained');
+ for(const k of ['arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])if(!permit.has('adventure.'+k))assert.deepEqual(final.adventure[k],before.adventure[k],'old adventure owner '+k+' retained');
+ // the boss gear joins owned on a campaign claim; any other change to owned is refused unless the caller permits it.
+ if(!permit.has('adventure.owned')){const base=before.adventure.owned;assert.deepEqual(final.adventure.owned.filter(id=>base.includes(id)),base,'old adventure owner owned keeps its items');assert.ok(final.adventure.owned.every(id=>base.includes(id)||['foundry_edge','relay_charm','harbour_mail'].includes(id)),'owned gains only a campaign boss gear');}if(!permit.has('adventure.equipment')){const eq=final.adventure.equipment;assert.ok(Object.values(eq).every(id=>id===null||final.adventure.owned.includes(id)),'equipped gear is owned');}
  for(const k of ['bridge','nextId','stats','milestones','recentCommands','cooldownUntil'])assert.deepEqual(final.sandbox[k],before.sandbox[k],'sandbox '+k+' retained');
  assert.deepEqual(final.sandbox.placed.map(p=>({...p,crop:null})),before.sandbox.placed.map(p=>({...p,crop:null})),'construction and positions retained');
  for(const p of before.sandbox.placed)if(p.crop){const q=final.sandbox.placed.find(q=>q.id===p.id).crop;assert.ok(q);assert.equal(q.plantedAt,p.crop.plantedAt);assert.equal(q.readyAt,p.crop.readyAt);assert.ok(q.stage===p.crop.stage||p.crop.stage==='watered'&&q.stage==='ripe');}
@@ -40,7 +42,7 @@ function fight(h,terms,resolved,{closed=false,stand}={}){
  const A=load('adventure'),AR=load('arsenal'),T=load('combat'),sim=h.sim,e=A.runtime(sim).enemies.find(e=>e.id===terms.id);assert.ok(e,'actual installed roster owns '+terms.id);
  const style=AR.weapon(sim.state.adventure).style,radius=stand??(style==='bow'?4:1.1),start=sim.state.adventure.elapsed;
  const economic=()=>({xp:sim.state.adventure.xp,coins:sim.state.adventure.coins,ore:sim.state.adventure.ore,inventory:copy(sim.state.sandbox.inventory),defeated:copy(sim.state.adventure.defeated),drops:copy(sim.state.adventure.drops)}),initial=economic();
- const impacts=[],weaponImpacts=[],phases=[],command=sim.adventureCommand,damage=A.damageEnemy;let frames=0,guards=0,arrows=false,lastHP=e.hp;
+ const impacts=[],weaponImpacts=[],phases=[],command=sim.adventureCommand,damage=A.damageEnemy;let frames=0,guards=0,arrows=false,lastHP=e.hp;const released=new WeakMap();
  sim.adventureCommand=function(id,type,p){const before=e.hp,mode=e.mode,r=command.call(this,id,type,p);if(this===sim&&style==='blade'&&['attack','pulse'].includes(type)&&r.ok&&e.hp<before)weaponImpacts.push({caller:'production blade command',mode,before,after:e.hp});return r;};
  A.damageEnemy=function(current,enemy,n,source){const before=enemy?.hp,mode=enemy?.mode,r=damage.apply(this,arguments);if(current===sim&&enemy===e&&source==='weapon'&&enemy.hp<before)weaponImpacts.push({caller:'production projectile impact',mode,n,before,after:enemy.hp});return r;};
  try{
@@ -50,7 +52,13 @@ function fight(h,terms,resolved,{closed=false,stand}={}){
    if(cue?.phase==='windup'&&a.stamina>=20&&a.elapsed>=t.cooldowns.guard){h.command('guard');guards++;}
    if(a.hp<45&&a.tonics&&a.elapsed>=A.runtime(sim).cooldowns.heal)h.command('heal');
    if(dist(sim.state.player,e)>=AR.weapon(a).reach-.2&&!sim.playerPath.length)assert.ok(sim.moveTo(e.x,e.z+radius).ok);
-   sim.tick(.05);arrows ||=AR.runtime(sim).arrows.length>0;if(e.hp<lastHP){impacts.push({mode:e.mode,before:lastHP,after:e.hp});if(closed)assert.equal(e.mode,'recover','legacy opening rule retained');lastHP=e.hp;}
+   // a closed boss is judged by when the blow was released, not when it lands (lead's ruling): an arrow loosed during
+   // recovery counts on arrival, even if the boss has turned by then. A blade blow is released and lands in the same
+   // tick, and anything released outside recovery still may not hurt him.
+   const modeBefore=e.mode,flying=AR.runtime(sim).arrows.slice();
+   sim.tick(.05);const now=AR.runtime(sim).arrows;arrows ||=now.length>0;for(const r of now)if(!released.has(r))released.set(r,modeBefore);
+   if(e.hp<lastHP){const landed=flying.filter(r=>!now.includes(r)),inWindow=e.mode==='recover'||landed.some(r=>released.get(r)==='recover')||(style==='bow'&&modeBefore==='recover');
+    impacts.push({mode:e.mode,before:lastHP,after:e.hp,releasedInRecover:inWindow});if(closed)assert.ok(inWindow,'legacy opening rule retained: a closed boss is hurt only by a blow released in its recovery (it was '+e.mode+')');lastHP=e.hp;}
   }
  }finally{sim.adventureCommand=command;A.damageEnemy=damage;}
  assert.ok(frames<4000&&e.hp===0&&resolved(),'actual zero-HP combat earns accepted fact');assert.ok(weaponImpacts.length>0,'actual weapon contributes independently of Briar');

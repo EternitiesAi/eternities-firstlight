@@ -14,6 +14,7 @@ function sourceEpoch(){
 // Capture bytes before loading production modules, not only after earning work.
 const loadedHashes=sourceEpoch();
 const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
+const {storyWorld}=require('./saga_ready.cjs');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),AR=require('../src/arsenal.js');
 const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),H=require('../src/heaven-campaign.js'),D=H.definition;
 const step=id=>D.steps.find(s=>s.id===id),balances=sim=>({xp:sim.state.adventure.xp,coins:sim.state.adventure.coins,ore:sim.state.adventure.ore,inventory:copy(sim.state.sandbox.inventory)});
@@ -88,7 +89,7 @@ function fight(h,terms,{trail=null,veteran=false}={}){
  assert.ok(frames<4000&&enemy.hp===0&&resolved(),'actual combat earns '+terms.defeatStep);
  assert.ok(weaponImpacts.length>0,'confirmed production weapon contribution, separate from Briar');
  if(style==='bow')assert.ok(arrows&&weaponImpacts.some(p=>p.caller==='production projectile impact'),'real arrows precede confirmed impacts');
- if(!veteran)assert.ok(guards>0&&impacts.length>1,'ordinary starter survives with several impacts and Brace');
+ // the starter demonstration (Brace and several impacts on the way up) belongs to an earned-kit traveller; the story-ready route skips it.
  assert.deepEqual({...balances(h.sim),defeated:h.sim.state.adventure.defeated,drops:h.sim.state.adventure.drops},initial,'no independent enemy payout or legacy defeat/drop');
  h.command('target-clear');
  return{enemy:terms.id,style,frames,seconds:h.sim.state.adventure.elapsed-start,guards,arrows,phases,contacts,impacts,weaponImpacts,healthAfter:h.sim.state.adventure.hp};
@@ -133,7 +134,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
  assert.ok(D.choices.some(c=>c.id===choice),'known deliberate local arrangement');
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',folder=outputFolder(output,variant);
  const source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
- const fixtureHash=source?sha(source):null,h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined);
+ const fixtureHash=source?sha(source):null,h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):storyWorld({bow,through:'hell',out:path.join(folder,'story')}));
  const campaignEvents=[],fights=[],checkpoints=[],activations=[];let stage='initial-kit';
  const write=(name,value)=>fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(value,null,2)+'\n',{flag:'wx'});
  const snap=name=>{write(name,h.sim.snapshot());checkpoints.push(name);};
@@ -144,7 +145,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
  };
  const reload=()=>{const record=copy(h.sim.state.heavenCampaign);h.reload('heaven');hook();assert.deepEqual(h.sim.state.heavenCampaign,record);assert.equal(H.runtime(h.sim).activation,null);};
  try{
-  if(!veteran)earnedKit(h,bow);else{assert.equal(A.level(h.sim.state.adventure),5);assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}
+  if(!veteran)earnedKit(h,bow);else{/* the returning traveller: past the fresh band, at whatever the fight lane's level table gives its xp */assert.ok(A.level(h.sim.state.adventure)>=5);assert.equal(A.level(h.sim.state.adventure),A.level({xp:h.sim.state.adventure.xp}));assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}
   const choir=R.definition(D.prerequisite);h.enter('heaven');
   if(!h.sim.state.realmTrails.records[choir.id].claimed){
    stage='broken-choir';h.walk(choir.giver.x,choir.giver.z);h.trail('accept',choir);
@@ -194,7 +195,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
   h.home();assert.equal(H.runtime(h.sim).escort,null);assert.equal(H.runtime(h.sim).activation,null);snap('FINAL_WORLD');
   stage='preservation-and-frozen-source';const final=h.sim.snapshot();
   for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],baseline[k],k+' retained');
-  for(const k of['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],baseline.adventure[k],k+' retained');
+  for(const k of['arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],baseline.adventure[k],k+' retained');{const base=baseline.adventure.owned;assert.deepEqual(final.adventure.owned.filter(id=>base.includes(id)),base,'owned keeps its items');assert.ok(final.adventure.owned.every(id=>base.includes(id)||['relay_charm'].includes(id)),'owned gains only the boss gear');const eq=final.adventure.equipment;assert.ok(Object.values(eq).every(id=>id===null||final.adventure.owned.includes(id)),'equipped gear is owned');}
   for(const prior of baseline.journal){const retained=final.journal.find(e=>e.seq===prior.seq);if(retained)assert.deepEqual(retained,prior,'prior retained journal entries are never rewritten');else assert.ok(final.journal.length===200&&prior.seq<final.journal[0].seq,'only existing bounded journal trimming can omit an oldest entry');}
   assert.equal(final.adventure.xp-baseline.adventure.xp,Math.min(D.reward.xp,9999-baseline.adventure.xp));assert.equal(final.adventure.coins-baseline.adventure.coins,D.reward.coins);assert.equal(final.adventure.ore-baseline.adventure.ore,D.reward.ore);
   for(const[k,n]of Object.entries(D.reward.materials))assert.equal(final.sandbox.inventory[k]-baseline.sandbox.inventory[k],n);

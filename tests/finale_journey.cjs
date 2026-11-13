@@ -14,6 +14,9 @@ function journey(options = {}) {
  assert.ok(start, 'a live save is required (source)');
  const sim = new C.Simulation(C.validate(start));
  let seq = 0, commands = 0, saved = null;
+ // the ending the bot takes: open (refuse, then "End it"), answered (refuse, hear all three, then the first page), kept (sign)
+ const ending = options.ending || 'open';
+ assert.ok(['open', 'answered', 'kept'].includes(ending), 'a known ending');
  sim.earthHomecomingSave = io => { saved = JSON.parse(JSON.stringify(io)); return { ok: true }; };
  const a = () => sim.state.adventure, rt = () => AD.runtime(sim), ph = () => sim.state.saga.finale.phase;
  const cmd = (type, p = {}) => { const r = sim.adventureCommand('finale-j-' + (++seq), type, p); commands++; return r; };
@@ -61,17 +64,32 @@ function journey(options = {}) {
  fights.push(fight('second body', () => ph() >= 3));
  assert.ok(ph() >= 3, 'the second body fell; the offer waits at the spring');
  assert.ok(walk(0, 7), 'walked back to the spring for the offer');
- const offer = EH.command({ sim, active: 'finale-journey' }, 'offer', { quest: EH.definition.id, expectedActive: 'finale-journey', expectedRevision: a().revision, choice: 'refuse' }, { save: io => { saved = JSON.parse(JSON.stringify(io)); return { ok: true }; } });
- commands++;
- assert.ok(offer.ok, 'refused the gift: ' + offer.error);
- fights.push(fight('last body', () => sim.state.saga.finale.won === true));
- assert.ok(sim.state.saga.finale.won === true, 'the last body fell');
+ const ectx = { sim, active: 'finale-journey' }, eio = { save: io => { saved = JSON.parse(JSON.stringify(io)); return { ok: true }; } };
+ const eq = choice => ({ quest: EH.definition.id, expectedActive: 'finale-journey', expectedRevision: a().revision, choice });
+ // answered needs all three sightings heard, through the saga's own sighting commands, before the last answer
+ if (ending === 'answered') for (const id of ['beacon', 'foundry', 'confluence']) {
+  const said = sim.sagaCommand('heard-' + id, 'regent', { id }); const heard = sim.sagaCommand('heard-' + id + '-answer', 'regent-heard', { id, heard: true });
+  assert.ok(heard.ok, 'heard the sighting ' + id + ': ' + (heard.error || said.error));
+ }
+ if (ending === 'kept') {
+  // the offer is signed: the valley ends now, with no third fight
+  const signed = EH.command(ectx, 'offer', eq('take'), eio); commands++;
+  assert.ok(signed.ok, 'signed the offer: ' + signed.error);
+ } else {
+  const offer = EH.command(ectx, 'offer', eq('refuse'), eio); commands++;
+  assert.ok(offer.ok, 'refused the gift: ' + offer.error);
+  fights.push(fight('last body', () => EH.runtime(sim).lastOpen === true));
+  assert.ok(EH.runtime(sim).lastOpen === true, 'the last body fell and the last answer is open');
+  const answer = EH.command(ectx, 'last', eq(ending), eio); commands++;
+  assert.ok(answer.ok, 'the last answer ' + ending + ': ' + answer.error);
+ }
+ assert.ok(sim.state.saga.finale.won === true, 'the story is won');
  step(8.5);
  const credits = sim.state.saga.credits === true;
  const final = JSON.parse(JSON.stringify(sim.snapshot()));
  C.validate(final);
  fs.writeFileSync(path.join(out, 'FINALE_COMPLETE.json'), JSON.stringify(final, null, 2));
- return { status: credits ? 'passed' : 'failed', creditsRolled: credits, postgame: sim.state.saga.postgame === true, commands, fights, final: path.join(out, 'FINALE_COMPLETE.json') };
+ return { ending, status: credits ? 'passed' : 'failed', creditsRolled: credits, postgame: sim.state.saga.postgame === true, commands, fights, final: path.join(out, 'FINALE_COMPLETE.json') };
 }
 
 module.exports = { journey };

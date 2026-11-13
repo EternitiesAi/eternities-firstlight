@@ -33,7 +33,7 @@ function journey(options={}){
     for(const q of opts)if(C.pathfind(p,q,sim.navRoom)){sim.moveTo(q.x,q.z);break;}
    }
    if(d<3.4&&a.stamina>=50&&a.elapsed>=r.cooldowns.pulse)cmd('pulse',{target:e.id});
-   if(e.mode==='windup'&&!e.aimWard&&e.timer<.35&&Math.hypot(p.x-e.aim.x,p.z-e.aim.z)<2.6&&a.stamina>=22&&a.elapsed>=r.cooldowns.dodge)cmd('dodge',{dx:Math.cos(e.yaw),dz:-Math.sin(e.yaw)});
+   if(e.mode==='windup'&&!e.aimWard&&e.timer<.35&&e.aim&&Math.hypot(p.x-e.aim.x,p.z-e.aim.z)<2.6&&a.stamina>=22&&a.elapsed>=r.cooldowns.dodge)cmd('dodge',{dx:Math.cos(e.yaw),dz:-Math.sin(e.yaw)});
    if(e.kind==='siegeboss'&&a.elapsed>=t.cooldowns.guard&&a.stamina>=40)cmd('guard');
    if(a.beacon.soul.equipped==='aegis'&&a.elapsed>=t.cooldowns.spirit&&a.stamina>=45&&a.hp<A.stats(a).maxHP-10)cmd('spirit');
   }
@@ -45,7 +45,7 @@ function journey(options={}){
  fight();assert.equal(sim.state.adventure.xp,startXP);assert.equal(JSON.stringify(sim.state.adventure.drops),startDrops);
  walk(0,-24);cmd('beacon-reward');beforeSoul=sim.snapshot();fs.writeFileSync(path.join(out,'BEACON_VICTORY_EARNED.json'),JSON.stringify(beforeSoul,null,2));
  cmd('beacon-relic',{choice:'accept'});assert.equal(sim.state.adventure.beacon.soul.corruption,0);cmd('beacon-replay');
- step(1);cmd('target-cycle');assert.ok(T.selected(sim));cmd('spirit');assert.equal(sim.state.adventure.beacon.soul.corruption,1);
+ step(1);cmd('target-cycle');assert.ok(T.selected(sim));require('./helpers/skill-wait.cjs').untilReady(sim,'spirit',step,30);cmd('spirit');assert.equal(sim.state.adventure.beacon.soul.corruption,1);
  fight();walk(0,-24);cmd('soul-purify');assert.equal(sim.state.adventure.beacon.soul.corruption,0);assert.deepEqual(sim.state.adventure.beacon.soul.scars,['cinder-invoked','cinder-renounced']);cmd('beacon-route',{route:'forest'});
  const saved=sim.snapshot();assert.deepEqual(new C.Simulation(saved).snapshot(),saved);
  for(const k of['score','notes','flowers','retreat','visitor'])assert.deepEqual(saved[k],initial[k],k+' preserved');
