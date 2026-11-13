@@ -20,7 +20,8 @@ RATE = 48000
 LOOP_FADE = 3.0
 LUFS_TARGET = -20.0
 TRUE_PEAK_CEILING = -1.5
-BITRATE = "48k"
+# 48k measured at 53 kbps on this material (6.32 MB for 950 s), which put the page past 12 MB once base64 is added.
+BITRATE = "40k"
 
 
 def loop(x):
