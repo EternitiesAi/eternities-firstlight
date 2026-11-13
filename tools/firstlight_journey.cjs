@@ -106,6 +106,42 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'heaven', e.message, log); stoppedAt = stoppedAt || 'heaven'; world = null; }
  }
 
+ // atlantis and cosmos: the connected helpers take the heaven save, as the campaigns before them did
+ for (const [beat, file, dir, detail] of [['atlantis', 'connected_atlantis.cjs', '09', 'the drowned witness: the pattern proven stolen'], ['cosmos', 'connected_cosmos.cjs', '10', 'the cosmos: the cure without a master key']]) {
+  if (!world) break;
+  const before = readJson(world);
+  try {
+   const h = require(path.join(ROOT, 'tools/earth-homecoming-journey/' + file)).journey({ root: ROOT, inheritedWorld: world, connectedVariant: 'connected-blade', bow: false, output: sub(dir) });
+   if (h.status !== 'passed') throw new Error(beat + ' helper status ' + h.status);
+   world = f(dir, 'connected-blade/FINAL_WORLD.json');
+   ran(rows, beat, before, readJson(world), detail, log);
+  } catch (e) { blocked(rows, beat, e.message, log); stoppedAt = stoppedAt || beat; world = null; }
+ }
+
+ // the nearshore: the live witness save walks out to the pier, and the real Briar at her habit place is chosen
+ if (world) {
+  const before = readJson(world);
+  try {
+   const n = require(path.join(ROOT, 'tests/nearshore_journey.cjs')).journey({ out: sub('11'), source: world });
+   world = n.final;
+   ran(rows, 'nearshore', before, readJson(world), 'the lantern pier: the real Briar at her habit place is chosen', log);
+  } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
+ }
+
+ // the finale, fresh: the live nearshore save walks to the spring, fights to the offer, refuses it, and rolls the credits
+ if (world) {
+  const before = readJson(world);
+  try {
+   const fz = require(path.join(ROOT, 'tests/finale_journey.cjs')).journey({ out: sub('12'), source: world });
+   world = fz.final;
+   const numbers = fz.fights.map(f => f.label + ' ' + f.seconds + 's, ' + f.hits + ' hits, ' + f.strikesLocked + ' strikes locked, ' + f.dodgeSteps + ' dodges, lost ' + f.hpLost + ' hp, ends ' + f.hpEnd).join('; ');
+   ran(rows, 'finale', before, readJson(world), numbers, log);
+   creditsRolled = fz.creditsRolled;
+   if (creditsRolled) { const r = { beat: 'credits', status: 'ran', secs: null, level: null, hp: null, gear: null, detail: 'the rise, then the credits; postgame ' + (fz.postgame ? 'open' : 'closed') }; rows.push(r); if (log) log(r); }
+   else { blocked(rows, 'credits', 'the finale ended without the credits flag (status ' + fz.status + ')', log); stoppedAt = stoppedAt || 'credits'; }
+  } catch (e) { blocked(rows, 'finale', e.message, log); stoppedAt = stoppedAt || 'finale'; world = null; }
+ }
+
  for (const beat of BEATS) if (!rows.some(r => r.beat === beat)) notReached(rows, beat, log);
 
  const ranRows = rows.filter(r => r.status === 'ran');
