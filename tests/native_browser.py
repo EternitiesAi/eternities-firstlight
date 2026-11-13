@@ -17,7 +17,7 @@ report={'build_sha256':hashlib.sha256((R/'FIRSTLIGHT_VALLEY.html').read_bytes())
 args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=gl-egl','--enable-webgl','--ignore-gpu-blocklist','--disable-gpu-sandbox']
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=args)
- for name,url in [('file',(R/'FIRSTLIGHT_VALLEY.html').as_uri()),('loopback',f'http://127.0.0.1:{server.server_port}/FIRSTLIGHT_VALLEY.html')]:
+ for name,url in [('file',(R/'FIRSTLIGHT_VALLEY.html').as_uri()+'#play'),('loopback',f'http://127.0.0.1:{server.server_port}/FIRSTLIGHT_VALLEY.html#play')]:
   c=b.new_context(viewport={'width':1000,'height':800});q=c.new_page();errors=[];q.on('pageerror',lambda e:errors.append(str(e)));item={'origin_type':name,'storage_fixture':False}
   try:
    q.goto(url,wait_until='load',timeout=12000);q.wait_for_function('window.Realm',timeout=10000)
