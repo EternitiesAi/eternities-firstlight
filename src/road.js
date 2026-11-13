@@ -23,6 +23,6 @@ function objectives(a){const s=a.road;return[
 {title:'Help a stranded trader',detail:'Clear the prowler. Repair Tessa’s cart with its recovered latch and 2 copper.',done:s.cartRepaired},
 {title:'The charge before the dawn',detail:'Cross the stone bridge. Evade the Sunscar Ram’s marked charge lane.',done:a.defeated.includes('road-ram')},
 {title:'Light the Sunward Beacon',detail:'Clear the three route encounters, then kindle the lantern on the north ridge.',done:s.beaconLit},
-{title:'Bring the light home',detail:'Return to the spring and tell the envoy. Unlock the wayfarer’s band and a commemorative light.',done:s.reported}];}
+{title:'Bring the light home',detail:'Return to the spring and tell the envoy. The wayfarer’s band is yours for it.',done:s.reported}];}
 G.RealmRoad={TREES,GATE,ENTRY,MERCHANT,BEACON,ENEMIES,CACHES,OBSTACLES,land,riverZ,walkable,line,fresh,validate,objectives};if(typeof module!=='undefined')module.exports=G.RealmRoad;
 })(globalThis);

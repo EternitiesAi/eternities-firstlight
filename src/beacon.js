@@ -4,6 +4,14 @@
 'use strict';
 const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const POINT={x:0,z:-24},dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+// Tessa and a stranger wait at the mouth of his spur until he has been heard: the regent's first sighting.
+const SCENE=Object.freeze({tessa:Object.freeze({x:-3.4,z:-15.6,yaw:Math.PI/2}),stranger:Object.freeze({x:4.2,z:-15.4,yaw:-Math.PI/2})});
+const SIGHTING=Object.freeze([
+ {speaker:'Tessa',title:'You made it up the ridge',body:'Stand with us a moment. This gentleman came up the spur from the east and offered to help me with the road.'},
+ {speaker:'A stranger',title:'A road that never breaks',body:'Good evening. Tessa has been carrying too much on her own. I only offered her a road that never breaks.'},
+ {speaker:'Tessa',title:'Roads break',body:'I have mended a great many roads. That is how you find out where they go.'},
+ {speaker:'A stranger',title:'Think it over',body:'Light your beacon, and think of me when it burns. I will be on the road when you want me.'}
+]);
 const ROUTES=Object.freeze({monastery:'The mountain monastery',kingdom:'The fallen kingdom',forest:'The living forest'});
 const WAVES=Object.freeze([
  [{id:'west-ash',name:'Ashbound raider',kind:'invader',x:-6,z:-18,hp:78,damage:15,wardDamage:6,windup:1,poise:true},
@@ -38,6 +46,9 @@ function validate(raw,a){
 }
 function runtime(sim){if(!sim.beaconRuntime)sim.beaconRuntime={phase:'idle',time:0,wave:0,ward:100,actors:[],serial:0,notice:'',repairAt:0,maraAt:0,ilanAt:0,playerRepairAt:0,defeats:0};return sim.beaconRuntime;}
 function near(sim,r=4){return sim.room==='road'&&dist(sim.state.player,POINT)<r;}
+function seenStranger(sim){return sim.state.saga?.regent?.includes('beacon')===true;}
+function sightingPending(sim){return sim.room==='road'&&sim.state.adventure.beacon.introduced===true&&!seenStranger(sim);}
+function sightingReady(sim){return sightingPending(sim)&&runtime(sim).phase==='ready';}
 function actors(sim){const C=G.RealmCore;return [
  {id:'oren',x:2,z:-3,yaw:0,goal:{x:-3,z:-22},role:'Repairing the ward'},
  {id:'mara',x:2,z:-2.8,yaw:0,goal:{x:3,z:-21},role:'Reading breach patterns'},
@@ -54,7 +65,7 @@ function nextWave(sim){const A=G.RealmAdventure,r=runtime(sim),ar=A.runtime(sim)
 }
 function fail(sim,why){const b=sim.state.adventure.beacon,r=runtime(sim);if(!['assault','intermission'].includes(r.phase))return;
  if(!r.replay){b.status='corrupted';b.failures=Math.min(9999,b.failures+1);}r.phase=r.replay?'won':'failed';G.RealmCombat.stop(sim,true);G.RealmAdventure.runtime(sim).enemies=G.RealmAdventure.runtime(sim).enemies.filter(e=>!e.eventEnemy);sim.event('beacon',r.replay?'The repeat assault ended. '+why+' The completed chapter and its rewards are unchanged.':'The ward faltered. '+why+' Reclaiming the beacon is possible; your home and earlier progress are untouched.');G.RealmAdventure.notify(sim,r.replay?'Repeat assault ended · the completed chapter remains.':'Beacon contested. Return to its light to reclaim it.');}
-function win(sim){const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim);if(r.replay){r.phase='won';G.RealmCombat.stop(sim,true);sim.event('beacon','Another breach repelled. No repeat reward was created.');A.notify(sim,'Repeat defense complete · no repeat loot.');return;}b.complete=true;b.status='stable';r.phase='won';r.ward=Math.max(1,r.ward);G.RealmCombat.stop(sim,true);a.revision++;sim.event('quest','The Sunward Beacon held. A map of lost roads answers the envoy. A cinder remains where the herald fell.');A.notify(sim,'Chapter III complete · Speak at the beacon for your reward and the roads beyond.');}
+function win(sim){const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim);if(r.replay){r.phase='won';G.RealmCombat.stop(sim,true);sim.event('beacon','Another breach repelled. No repeat reward was created.');A.notify(sim,'Repeat defense complete · no repeat loot.');return;}b.complete=true;b.status='stable';r.phase='won';r.ward=Math.max(1,r.ward);G.RealmCombat.stop(sim,true);a.revision++;G.RealmSaga?.mark(sim,'beacon');sim.event('quest','The Sunward Beacon held. A map of lost roads answers the envoy. A cinder remains where the herald fell.');A.notify(sim,'Chapter III complete · Speak at the beacon for your reward and the roads beyond.');}
 function damage(sim,e,n){if(!e?.eventEnemy)return false;const a=sim.state.adventure,r=runtime(sim);if(e.hp<=0||e.hidden)return true;
  e.hp=Math.max(0,e.hp-n);e.flash=a.elapsed+.18;G.RealmAdventure.fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0){e.mode='dead';r.defeats++;G.RealmAdventure.notify(sim,e.name+' banished.');}return true;}
 function handle(sim,type,p={}){
@@ -79,7 +90,7 @@ function handle(sim,type,p={}){
   if(!r.actors.length)r.actors=actors(sim).map(q=>({...q,...q.goal,path:[]}));
   a.hp=A.stats(a).maxHP;a.stamina=100;a.tonics=3;ar.invincible=a.elapsed+1;return begin(sim,true);
  case 'beacon-defend':
-  if(!b.introduced||b.complete||b.attempts>=9999||!['ready','failed','idle'].includes(r.phase))return no('Wait for the arrival or finish the current defense.');
+  if(!seenStranger(sim))return no('Hear the stranger out at the beacon first.');if(!b.introduced||b.complete||b.attempts>=9999||!['ready','failed','idle'].includes(r.phase))return no('Wait for the arrival or finish the current defense.');
   if(!r.actors.length)r.actors=actors(sim).map(q=>({...q,...q.goal,path:[]}));
   a.hp=A.stats(a).maxHP;a.stamina=100;a.tonics=3;ar.invincible=a.elapsed+1;return begin(sim);
  case 'beacon-repair':
@@ -91,8 +102,10 @@ function handle(sim,type,p={}){
   b.relic=p.choice==='accept'?'accepted':'sealed';if(p.choice==='accept')b.soul.equipped='cinder';sim.event('choice',p.choice==='accept'?'You kept the herald’s cinder, knowing its health cost and the consequence of invoking it.':'You sealed the herald’s cinder rather than accepting its power.');return yes(p.choice==='accept'?'Cinder surge learned. Using it records corruption; accepting alone does not.':'The cinder is sealed. No power or corruption was imposed.');
  case 'soul-purify':
   if(!b.complete||b.relic!=='accepted')return no('There is no accepted cinder to renounce.');b.relic='renounced';b.soul.corruption=0;b.soul.radiance++;b.soul.scars.push('cinder-renounced');if(b.soul.equipped==='cinder')b.soul.equipped=b.soul.grace?'aegis':null;sim.event('choice','You relinquished the cinder. Its power and current corruption are gone. The history of your choice remains.');return yes('Cinder relinquished. History preserved; current corruption cleared.');
+ case 'beacon-sighting':
+  if(!sightingReady(sim)&&!seenStranger(sim))return no('Nothing is waiting at the beacon for you yet.');{const res=G.RealmSaga.regentSeen(sim,'beacon');return res.ok?yes(res.text):no(res.error);}
  case 'beacon-route':
-  if(!b.complete||!Object.hasOwn(ROUTES,p.route))return no('The lost-road projection is not ready.');b.route=p.route;return yes('Charted: '+ROUTES[p.route]+'. This destination is not playable in this prototype yet.');
+  if(!b.complete||!Object.hasOwn(ROUTES,p.route))return no('The lost-road projection is not ready.');b.route=p.route;return yes('Charted: '+ROUTES[p.route]+'. You can see the road on the map now; walking it comes later.');
  default:return no('Unknown beacon action.');
  }
 }
@@ -138,11 +151,11 @@ function tick(sim,dt){
 }
 function objective(a){const b=a.beacon;
  if(!b.introduced)return{title:'The Beacon Answers',detail:'Return to the lit Sunward Beacon. The envoy can cross there.'};
- if(!b.complete)return{title:b.status==='corrupted'?'Reclaim the Sunward Beacon':'Hold the road open',detail:'Meet the envoy at the beacon. Prepare, then defend three breaches.'};
+ if(!b.complete)return{title:b.status==='corrupted'?'Reclaim the Sunward Beacon':'Hold the road open',detail:'Hear the stranger at the beacon, then defend three breaches.'};
  if(!b.reward)return{title:'A community kept the light',detail:'Claim your defense reward at the beacon.'};
  if(b.relic==='undecided')return{title:'A cinder left behind',detail:'Decide whether to keep or seal the herald’s temptation.'};
- return{title:'The lost roads',detail:b.route?'A route is charted. More of Earth lies ahead.':'Inspect the beacon network and chart a future route.'};
+ return{title:'The lost roads',detail:b.route?'A route is charted. More of Earth lies ahead.':'Look over the lost roads and chart one.'};
 }
-G.RealmBeacon={POINT,ROUTES,WAVES,fresh,validate,runtime,near,restoreWard,handle,tick,damage,fail,objective};
+G.RealmBeacon={POINT,ROUTES,WAVES,SCENE,SIGHTING,fresh,validate,runtime,near,seenStranger,sightingPending,sightingReady,restoreWard,handle,tick,damage,fail,objective};
 if(typeof module!=='undefined')module.exports=G.RealmBeacon;
 })(globalThis);

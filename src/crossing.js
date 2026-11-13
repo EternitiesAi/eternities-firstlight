@@ -9,11 +9,11 @@ const PLACES=Object.freeze([
  {id:'exit',name:'The Sunward arch',x:0,z:24,kind:'gate',detail:'Walk back to the Sunward Beacon.'},
  {id:'waystone',name:'Bellweather waystone',x:0,z:17,kind:'waystone',detail:'Attune here to reopen the journey home.'},
  {id:'keeper',name:'Rowan, the bell keeper',x:-2,z:9,kind:'person',detail:'The watch bell has not answered for a generation.'},
- {id:'inn',name:'The Wayfarer’s Rest',x:9,z:14,kind:'rest',detail:'Nella serves the porch. Rest here without charge.'},
- {id:'shop',name:'Edda’s provisions',x:-9,z:15,kind:'shop',detail:'A travelling coat, trail tonics, and fair exchange.'},
- {id:'board',name:'The common works board',x:7,z:7,kind:'project',detail:'Two voluntary commissions improve the village.'},
+ {id:'inn',name:'The Wayfarer’s Rest',x:9,z:14,kind:'rest',detail:'Nella keeps the porch. Rest here, and take as long as you like.'},
+ {id:'shop',name:'Edda’s provisions',x:-9,z:15,kind:'shop',detail:'Coats, trail tonics and a fair bargain.'},
+ {id:'board',name:'The common works board',x:7,z:7,kind:'project',detail:'Two village commissions. Bring the supplies and the village changes a little.'},
  {id:'workbench',name:'The public forge',x:-10,z:5,kind:'craft',detail:'Use familiar recipes at a new outdoor workbench.'},
- {id:'inscription',name:'The listening stone',x:1,z:3,kind:'clue',detail:'Read the order of the three watch bells.'},
+ {id:'inscription',name:'The listening stone',x:1,z:3,kind:'clue',detail:'The three tones of the watch bell, in the order they must ring.'},
  {id:'thicket',name:'The old charcoal track',x:-8,z:-3,kind:'scent',detail:'Briar may find the missing clapper here.'},
  {id:'court',name:'The watch-bell court',x:0,z:-18,kind:'bell',detail:'Repair the bell and give its three tones their order.'}
 ]);
@@ -50,7 +50,7 @@ const GEAR=Object.freeze({
 });
 const PROJECTS=Object.freeze({
  lamps:{name:'Light the evening market',materials:{plank:4,stone:6},coins:12,detail:'Four planks and six stone fit new lanterns along the square. Reward: 12 sunmarks.'},
- pantry:{name:'A harvest for the road',materials:{berry:4},gem:'ruby',detail:'Four sunberries stock the inn’s pantry. Reward: one Ember ruby. Each commission is completed once.'}
+ pantry:{name:'A harvest for the road',materials:{berry:4},gem:'ruby',detail:'Four sunberries stock the inn’s pantry. Reward: one Ember ruby. Each commission pays once.'}
 });
 const WAYSTONES=Object.freeze({commons:{name:'Firstlight spring',room:null,x:0,z:3},sunward:{name:'Sunward Beacon',room:'road',x:0,z:-24},bellweather:{name:'Bellweather waystone',room:'crossing',x:0,z:17}});
 function land(x,z,r=0){return Number.isFinite(x)&&Number.isFinite(z)&&Math.abs(x)<21-r&&z> -30+r&&z<28-r;}
@@ -71,12 +71,12 @@ function near(sim,q,r=2.8){return sim.room==='crossing'&&dist(sim.state.player,q
 function hostile(sim){const A=G.RealmAdventure;return A.runtime(sim).enemies.some(e=>e.hp>0&&e.kind!=='practice'&&dist(e,sim.state.player)<12&&['pursue','windup','charge'].includes(e.mode));}
 function stoneKnown(a,id){return id==='commons'||id==='sunward'&&a.beacon.complete||id==='bellweather'&&a.crossing.attuned;}
 function currentStone(sim){return Object.entries(WAYSTONES).find(([,q])=>q.room===sim.room&&dist(sim.state.player,q)<3)?.[0]||null;}
-function travelCheck(sim,id){const a=sim.state.adventure,src=currentStone(sim),b=G.RealmBeacon.runtime(sim);if(!has(WAYSTONES,id))return'Unknown waystone.';if(!a.beacon.complete)return'Restore the Sunward Beacon first.';if(!stoneKnown(a,id))return'Discover and attune that waystone first.';if(!src)return'Travel begins at a waystone, not from anywhere on the map.';if(src===id)return'You are already beside that waystone.';if(hostile(sim)||['arrival','assault','intermission'].includes(b.phase))return'Finish the encounter before using the Roads of Light.';return null;}
+function travelCheck(sim,id){const a=sim.state.adventure,src=currentStone(sim),b=G.RealmBeacon.runtime(sim);if(!has(WAYSTONES,id))return'Unknown waystone.';if(!a.beacon.complete)return'Restore the Sunward Beacon first.';if(!stoneKnown(a,id))return'Discover and attune that waystone first.';if(!src)return'Travel starts at a waystone you know.';if(src===id)return'You are already beside that waystone.';if(hostile(sim)||['arrival','assault','intermission'].includes(b.phase))return'Finish this fight before you take the Roads of Light.';return null;}
 function transition(sim,room,point){const A=G.RealmAdventure;sim.room=room;sim.returnPos=room?{x:44,z:6,yaw:0}:null;sim.state.player={x:point.x,z:point.z,yaw:point.yaw??0};sim.playerPath=[];A.syncScene(sim);G.RealmCombat.stop(sim,true);runtime(sim);}
 function handle(sim,type,p={}){
  if(!type.startsWith('cross-')&&type!=='waystone-travel')return null;
  const A=G.RealmAdventure,a=sim.state.adventure,s=a.crossing,r=runtime(sim),pos=sim.state.player,fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
- if(type==='waystone-travel'){const error=travelCheck(sim,p.id);if(error)return fail(error);const q=WAYSTONES[p.id];transition(sim,q.room,q);sim.event('travel','You followed the Roads of Light to '+q.name+'. No health, items or story rewards were granted.');return yes('Arrived at '+q.name+'.');}
+ if(type==='waystone-travel'){const error=travelCheck(sim,p.id);if(error)return fail(error);const q=WAYSTONES[p.id];transition(sim,q.room,q);sim.event('travel','You walked the Roads of Light to '+q.name+'. Nothing was given or taken on the way.');return yes('Arrived at '+q.name+'.');}
  if(type==='cross-enter'){
   if(sim.room!=='road'||dist(pos,GATE)>2||!a.beacon.complete)return fail('Defend the Sunward Beacon, then approach the northern arch.');
   if(hostile(sim)||['arrival','assault','intermission'].includes(G.RealmBeacon.runtime(sim).phase))return fail('End the beacon encounter before taking the northern road.');
@@ -86,26 +86,26 @@ function handle(sim,type,p={}){
  const place=id=>PLACES.find(q=>q.id===id);
  switch(type){
  case'cross-leave':if(!near(sim,ENTRY))return fail('Return to the southern Sunward arch.');transition(sim,'road',{...GATE,yaw:0});return yes('Back beside the Sunward Beacon.');
- case'cross-attune':if(!near(sim,WAYSTONES.bellweather))return fail('Approach the village waystone.');if(s.attuned)return fail('This waystone is already attuned.');s.attuned=true;sim.event('travel','Bellweather joined your discovered waystones. Travel is available at anchors, not during battle.');return yes('Waystone attuned. M opens the map; travel from an anchor.');
+ case'cross-attune':if(!near(sim,WAYSTONES.bellweather))return fail('Approach the village waystone.');if(s.attuned)return fail('This waystone is already attuned.');s.attuned=true;sim.event('travel','Bellweather is now one of your waystones. Travel from any waystone when the road is quiet.');return yes('Waystone attuned. M opens the map; travel from an anchor.');
  case'cross-meet':if(!near(sim,place('keeper')))return fail('Approach Rowan in the square.');if(s.met)return fail('Rowan has already entrusted you with the watch bell.');s.met=true;sim.event('quest','Rowan asked you to find the lost clapper and restore the watch bell. Read the listening stone, then follow the northern trail.');return yes('“The road is open. Now we need a voice to call the lost home.”');
  case'cross-inspect':if(!near(sim,place('inscription')))return fail('Approach the listening stone.');if(s.inscription)return fail('The inscription is already kept in your journal.');s.inscription=true;return yes('Leaf takes the first breath. Wave carries it onward. Sun answers at last.');
  case'cross-seek':{
   const c=A.runtime(sim).companion;if(!s.met)return fail('Speak with Rowan before searching for the missing bell clapper.');if(s.clapperRevealed)return fail('Briar already marked the clapper on your map.');if(!a.companion.bonded||a.companion.mode!=='follow'||c.room!==sim.room)return fail('Briar needs to be following you.');if(dist(pos,CLAPPER)>12)return fail('Try the old charcoal track north-west of the square.');if(r.seek)return fail('Briar is already following the scent.');if(!G.RealmCore.pathfind(c,CLAPPER,sim.navRoom))return fail('Move to a clear path beside Briar.');r.seek=true;c.path=[];c.nextPath=0;c.status='Following the old charcoal scent';return yes('Briar caught a scent. Follow the fox into the thicket.');}
  case'cross-survey':if(!s.met||!near(sim,CLAPPER,2.5))return fail('Inspect disturbed earth in the north-west thicket.');if(s.clapperRevealed)return fail('This spot is already marked.');s.clapperRevealed=true;return yes('Careful inspection reveals the clapper. Briar could have led you here.');
  case'cross-clapper':if(!s.clapperRevealed||s.clapper||!near(sim,CLAPPER))return fail('Approach the clapper that was uncovered in the thicket.');if(!a.defeated.includes('cross-thorn'))return fail('Drive away the Briarback prowler before reaching into the roots.');s.clapper=true;sim.event('quest','The missing bronze clapper was recovered.');return yes('Clapper recovered. Clear the northern court and repair the watch bell.');
- case'cross-repair':if(!s.met||!s.clapper||s.repaired||!near(sim,place('court'),3.5))return fail('Bring the clapper to the watch-bell court.');if(!ENEMIES.every(e=>a.defeated.includes(e.id)))return fail('Clear the prowler, fractured tuner and Hushbound Keeper first.');s.repaired=true;r.tones=[];return yes('The clapper fits. Ring Leaf, then Wave, then Sun. The journal retains the inscription.');
+ case'cross-repair':if(!s.met||!s.clapper||s.repaired||!near(sim,place('court'),3.5))return fail('Bring the clapper to the watch-bell court.');if(!ENEMIES.every(e=>a.defeated.includes(e.id)))return fail('Clear the prowler, fractured tuner and Hushbound Keeper first.');s.repaired=true;r.tones=[];return yes('The clapper fits. Ring Leaf, then Wave, then Sun. The inscription stays in your journal.');
  case'cross-ring':{
   const bell=BELLS.find(b=>b.id===p.id);if(!bell||!near(sim,bell,2.3)||!s.repaired)return fail('Repair the watch bell, then stand beside a marked resonator.');if(a.elapsed-r.rangAt<.65)return fail('Let the tone settle.');r.rangAt=a.elapsed;r.tone=bell.id;r.toneSerial++;
   if(s.complete)return yes(bell.name+' rings. The melody is already restored.');
   if(p.id===ORDER[r.tones.length])r.tones.push(p.id);else r.tones=p.id===ORDER[0]?[p.id]:[];
   if(r.tones.length===3){s.complete=true;sim.event('quest','Leaf, Wave, Sun. The watch bell rang across the valley again. Return to Rowan.');return yes('The bell answers. The village has a voice again. Return to Rowan.');}
-  return yes(r.tones.length?'The melody holds · '+r.tones.length+' / 3.':'The tones disagree. Begin again with Leaf. No items were lost.');}
+  return yes(r.tones.length?'The melody holds · '+r.tones.length+' / 3.':'The tones disagree. Start again with Leaf. Nothing was lost.');}
  case'cross-reward':if(!near(sim,place('keeper'))||!s.complete||s.reward)return fail('Restore the bell, then return to Rowan for a single reward.');if(a.coins>9999-18)return fail('Make room for 18 sunmarks before accepting.');s.reward=true;a.coins+=18;a.owned.push('chime_clasp');sim.event('quest','Rowan gave you the Clasp of the answering bell and 18 sunmarks. Windbells now hang at Oren’s workshop.');return yes('Chapter IV complete · 18 sunmarks, a new charm, and windbells for home.');
  case'cross-rest':if(!near(sim,place('inn'))||hostile(sim))return fail('Visit Nella on the inn porch after danger has passed.');a.hp=A.stats(a).maxHP;a.stamina=100;a.tonics=3;return yes('A meal and a moment of shelter. Health, stamina and three tonics restored.');
  case'cross-project':{
   const q=has(PROJECTS,p.id)?PROJECTS[p.id]:null,inv=sim.state.sandbox.inventory;
   if(!q||!near(sim,place('board'))||s.projects.includes(p.id))return fail('Choose an unfinished commission at the common works board.');
-  if(Object.entries(q.materials).some(([k,n])=>inv[k]<n))return fail('Gather the listed materials first. Nothing was charged.');
+  if(Object.entries(q.materials).some(([k,n])=>inv[k]<n))return fail('Gather the listed materials first.');
   if(q.coins&&a.coins>9999-q.coins||q.gem&&a.arsenal.gems[q.gem]>=9999)return fail('Make space for the commission reward.');
   for(const[k,n]of Object.entries(q.materials))inv[k]-=n;if(q.coins)a.coins+=q.coins;if(q.gem)a.arsenal.gems[q.gem]++;s.projects.push(p.id);sim.event('community','Completed: '+q.name+'.');return yes(q.name+' completed. The change stays in the village.');}
  case'cross-trade':{

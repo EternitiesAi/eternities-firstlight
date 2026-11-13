@@ -357,7 +357,7 @@ class WorldArt{
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
  if(G.RealmSandboxArt)G.RealmSandboxArt.draw(out,sim,t);
  if(G.RealmBeaconArt)G.RealmBeaconArt.draw(out,sim,t,this);
- if(G.RealmCrossingArt)G.RealmCrossingArt.draw(out,sim,t,this);
+ if(G.RealmCrossingArt)G.RealmCrossingArt.draw(out,sim,t,this);if(G.RealmFeatherSight)G.RealmFeatherSight.draw(out,sim,t,this);
  if(this.dynamicTimber)this.dynamicTimber.items=out['timber-panel'];this.dynamicRound.items=out.round;
  sim.grazerSubmission=null;
  if(G.RealmEarthGrazerArt&&sim.grazerPresentation&&sim.grazerPresentationContext){

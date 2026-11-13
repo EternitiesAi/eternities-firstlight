@@ -13,7 +13,7 @@ function journey(options={}){const out=options.out||path.join(__dirname,'../evid
  function harvest(id){const q=S.NODES.find(q=>q.id===id);assert.ok(q,id);walk(q.x+1.1,q.z);for(let i=0;i<30;i++){const v=sim.state.sandbox.nodes.find(n=>n.id===id);if(v.hp===0)break;if(v.readyAt>sim.state.sandbox.elapsed)step(v.readyAt-sim.state.sandbox.elapsed+.1);sb('gather',{node:id});step(1);}}
  walk(0,3);cmd('rest');
  if(options.bow){harvest('timber-1');harvest('fibre-1');harvest('fibre-2');harvest('stone-1');walk(11,9);cmd('arsenal-craft',{id:'trail_bow'});cmd('equip',{id:'trail_bow'});walk(0,3);}
- save('CROSSING_READY_EARNED');cmd('waystone-travel',{id:'sunward'});walk(0,-27);cmd('cross-enter');place('waystone');cmd('cross-attune');place('keeper');cmd('cross-meet');place('inscription');cmd('cross-inspect');save('TOWN_MET_EARNED');
+ save('CROSSING_READY_EARNED');cmd('waystone-travel',{id:'sunward'});walk(0,-27);cmd('cross-enter');{const sight=sim.sagaCommand('journey-sight-crossing','feather-use',{});assert.ok(sight.ok,sight.error);assert.ok(require('../src/feather-sight.js').roadsFor(sim).some(q=>q.id==='bellweather-severing'),'the severing line shows in the sight');}place('waystone');cmd('cross-attune');place('keeper');cmd('cross-meet');place('inscription');cmd('cross-inspect');save('TOWN_MET_EARNED');
  function fight(id){let started=sim.state.adventure.elapsed;let lastTell='';cmd('target-select',{id});cmd('auto-toggle');
  for(let i=0;i<1800;i++){const a=sim.state.adventure,r=A.runtime(sim),t=T.runtime(sim),e=r.enemies.find(e=>e.id===id);if(e.hp<=0)break;const p=sim.state.player,d=Math.hypot(p.x-e.x,p.z-e.z),w=AR.weapon(a);assert.ok(a.hp>0,'alive in '+id);
  if(a.hp<A.stats(a).maxHP-40&&a.tonics&&a.elapsed>=r.cooldowns.heal)cmd('heal');

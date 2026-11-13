@@ -234,10 +234,10 @@ function command(sim,id,type,payload={}){
  switch(type){
  case'start':
   if(s.started)return fail('Your expedition supplies were already collected.');if(!surfaceNear(sim,{x:11,z:9}))return fail('Meet Oren at the workshop first.');
-  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';sim.event('quest','Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine.');result=yes('Expedition ready · Blade, lantern, tonics and a trail salve.');break;
+  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';sim.event('quest','Oren packed a trail blade, a lantern, three tonics and a salve for an injured fox. Find the northern mine.');result=yes('Ready to go: a blade, a lantern, three tonics and a salve.');break;
  case'enter':
   if(!s.started||!sim.state.sandbox.bridge||!surfaceNear(sim,MINE))return fail('Take Oren’s supplies, repair the crossing, and approach the mine entrance.');if(!sim.state.sandbox.inventory.pick)return fail('Craft a stone pickaxe before entering.');
-  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);sim.event('quest','You entered the Rootbound Underways. Excavation and completed encounters are remembered.');result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
+  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);sim.event('quest','You went down into the Rootbound Underways. What you dig and defeat here stays dug and defeated.');result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
  case'leave':if(sim.room!=='mine'||dist(p,ENTRANCE)>3)return fail('Return to the southern lantern exit.');sim.leave();syncScene(sim);result=yes('Back under the open sky.');break;
  case'dig':{
   if(sim.room!=='mine'||!sim.state.sandbox.inventory.pick)return fail('Use the pickaxe inside the mine.');const {gx,gz}=payload;
@@ -268,12 +268,16 @@ function command(sim,id,type,payload={}){
  case'loot':{let e=roster(sim).find(e=>e.id===payload.id);if(!combatScene(sim)||!e||!s.drops.includes(e.id)||dist(p,e)>3||!visible(sim,p,e))return fail('Approach a visible, unclaimed cache.');if(s.ore+e.ore>9999||s.coins+e.coins>9999)return fail('Your material pouch is full.');s.drops=s.drops.filter(id=>id!==e.id);s.ore+=e.ore;s.coins+=e.coins;if(e.gear&&!s.owned.includes(e.gear))s.owned.push(e.gear);result=yes('Cache · '+e.ore+' copper, '+e.coins+' sunmarks'+(e.gear?' · '+GEAR[e.gear].name:''));break;}
  case'equip':{let g=Object.hasOwn(GEAR,payload.id)?GEAR[payload.id]:null;if(!g||!s.owned.includes(payload.id))return fail('You do not own that item.');s.equipment[g.slot]=payload.id;s.hp=Math.min(s.hp,stats(s).maxHP);result=yes(g.name+' equipped.');break;}
  case'forge':if(!s.started||!AR.atBench(sim)||s.owned.includes('copper_blade')||s.ore<FORGE.ore||s.coins<FORGE.coins)return fail('Use a workbench with 4 copper and 4 sunmarks. This blade is crafted once.');s.ore-=FORGE.ore;s.coins-=FORGE.coins;s.owned.push('copper_blade');result=yes('Copper-edged blade forged. Equip it in Adventure.');break;
- case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');s.relic=true;awardXP(sim,20);sim.event('quest','You recovered a white feather from the celestial anchor. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
- case'reveal':if(!s.relic||!surfaceNear(sim,{x:0,z:3},4))return fail('Bring the feather to the Firstlight spring.');if(!s.angelSeen){s.angelSeen=true;sim.event('story','A white-winged envoy appeared: Heaven is under attack, and broken passages endanger the mortal world.');}result=yes('A visitor from the light.');break;
- case'reward':if(!s.angelSeen||s.reward||!surfaceNear(sim,{x:0,z:3},4)||!['dawn_edge','warden_stone'].includes(payload.id))return fail('Meet the envoy at the spring and choose one gift.');s.reward=payload.id;s.owned.push(payload.id);awardXP(sim,25);sim.event('story','You accepted '+GEAR[payload.id].name+'. The first chapter is complete; the wider campaign is still to be built.');result=yes('Chapter complete · '+GEAR[payload.id].name);break;
+ case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');s.relic=true;awardXP(sim,20);sim.event('quest','You lifted a white feather from the hart’s dais. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
+ case'reveal':if(!s.relic||!surfaceNear(sim,{x:0,z:3},4))return fail('Bring the feather to the Firstlight spring.');if(!s.angelSeen){s.angelSeen=true;sim.event('story','A white-winged envoy stepped out of the light. Heaven is under attack, and broken passages threaten the mortal world.');}result=yes('A visitor from the light.');break;
+ case'reward':if(!s.angelSeen||s.reward||!surfaceNear(sim,{x:0,z:3},4)||!['dawn_edge','warden_stone'].includes(payload.id))return fail('Meet the envoy at the spring and choose one gift.');s.reward=payload.id;s.owned.push(payload.id);awardXP(sim,25);sim.event('story','You took '+GEAR[payload.id].name+' from the envoy. The first chapter is done, and the road ahead is open.');result=yes('Chapter complete · '+GEAR[payload.id].name);break;
+ case'envoy-prophecy':
+  if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-prophecy-'+id,'prophecy',{id:'spring'});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'envoy');result=yes(r.text);}break;
+ case'envoy-feather':
+  if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-feather-'+id,'feather-unlock',{});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'feather');result=yes(r.text);}break;
  case'road-enter':
   if(!s.reward||!surfaceNear(sim,ROAD.GATE))return fail('Accept the envoy’s gift and approach the far-water lookout.');
-  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Seek the cart’s missing latch with Briar.');break;
+  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Ask Briar to find the cart’s missing latch.');break;
  case'road-leave':
   if(sim.room!=='road'||dist(p,ROAD.ENTRY)>3)return fail('Return to the southern waygate.');sim.leave();syncScene(sim);result=yes('Your valley waits beyond the road.');break;
   case'companion-guide':{
@@ -300,7 +304,7 @@ function command(sim,id,type,payload={}){
   else if(offer==='mantle'){if(s.coins<18||s.owned.includes('courier_mantle'))return fail('The mantle costs 18 sunmarks and can be bought once.');s.coins-=18;s.owned.push('courier_mantle');result=yes('Courier’s storm mantle purchased. Equip it in Adventure.');}
   else if(offer==='sell-copper'){if(s.ore<2||s.coins>9996)return fail('Sell 2 copper for 3 sunmarks. Check your pouch.');s.ore-=2;s.coins+=3;result=yes('Sold 2 copper for 3 sunmarks.');}
   else if(offer==='sell-berries'){const inv=sim.state.sandbox.inventory;if((inv.berry||0)<2||s.coins>=9999)return fail('Tessa buys 2 sunberries for 1 sunmark.');inv.berry-=2;s.coins++;result=yes('Sold 2 sunberries for 1 sunmark.');}
-  else return fail('Unknown shop offer.');break;}
+  else return fail('Tessa does not have that.');break;}
  case'beacon-light':
   if(sim.room!=='road'||dist(p,ROAD.BEACON)>3||s.road.beaconLit||!ROAD.ENEMIES.every(e=>s.defeated.includes(e.id)))return fail('Clear the three road encounters and approach the northern beacon.');s.road.beaconLit=true;awardXP(sim,20);sim.event('quest','The Sunward Beacon is alight. Return home after helping Tessa.');result=yes('The beacon answers. A light is visible through the trees.');break;
  case'road-report':
@@ -393,6 +397,8 @@ function tick(sim,dt){
 const STORY=[
  {speaker:'The envoy',title:'A feather, carried home.',body:'I was told I would find a fortress. An army. Someone prepared. Instead, I found someone who knows how to begin.'},
  {speaker:'The envoy',title:'The light beyond the valley.',body:'Heaven is under attack. Hell is breaking the passages between our worlds, and this land lies along their path. The anchor beneath your forest has answered you.'},
+ {speaker:'The envoy',title:'What the feather heard.',body:'The first light will not descend from heaven. It will rise from below.',command:'envoy-prophecy'},
+ {speaker:'The envoy',title:'Hold the feather up.',body:'Hold Z, or the feather button on a phone, and the roads show what they are. True roads burn gold; counterfeit roads burn ash red. The valley is all true, so try it now.',command:'envoy-feather'},
  {speaker:'The envoy',title:'A life worth returning to.',body:'Do not abandon what you have made here. It is why the journey matters. Others will bear this light as well. Choose a gift, and when the road is ready, we will walk it together.'}
 ];
 function objectives(s){return[
