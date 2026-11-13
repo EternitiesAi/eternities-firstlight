@@ -9569,6 +9569,19 @@ function geometry(kind){let v=[],timber=timberKind(kind);function tri(a,b,c){let
   if(!body||body.kind!==kind||body.stride!==6||typeof body.geometry!=='function')throw Error('Load the original grazer body mesh before drawing it.');
   return body.geometry();
  }
+ else if(kind==='capsule'){
+  // Smooth-normal limb: a unit capsule whose elliptical caps reach the box faces
+  // at y=+-.5, so a limb's two joints sit exactly on its tips. Normals come from
+  // the profile, not the triangles, so joints shade without facet seams.
+  const sides=12,rings=[];
+  for(let k=4;k>=0;k--){const a=k/4*Math.PI/2;rings.push([.5*Math.cos(a),-.25-.25*Math.sin(a),.25*Math.cos(a),-.5*Math.sin(a)]);}
+  for(let k=0;k<=4;k++){const a=k/4*Math.PI/2;rings.push([.5*Math.cos(a),.25+.25*Math.sin(a),.25*Math.cos(a),.5*Math.sin(a)]);}
+  // the seam reuses column 0 exactly, and the pole snaps to a true zero radius.
+  const at=(r,j)=>{const t=(j%sides)/sides*Math.PI*2,c=Math.cos(t),s=Math.sin(t),l=Math.hypot(r[2],r[3]),rho=Math.abs(r[0])<1e-12?0:r[0];return{p:[rho*c,r[1],rho*s],n:[r[2]/l*c,r[3]/l,r[2]/l*s]};};
+  // Pole rings collapse to one point; skip the zero-area triangles they make.
+  const emit=(a,b,c)=>{const n=cross(sub(b.p,a.p),sub(c.p,a.p));if(Math.hypot(...n)<1e-10)return;const avg=[0,1,2].map(i=>a.n[i]+b.n[i]+c.n[i]);for(const q of dot(n,avg)<0?[a,c,b]:[a,b,c])v.push(...q.p,...q.n);};
+  for(let i=0;i<rings.length-1;i++)for(let j=0;j<sides;j++){const a=at(rings[i],j),b=at(rings[i],j+1),c=at(rings[i+1],j+1),d=at(rings[i+1],j);emit(a,b,c);emit(a,c,d);}
+ }
  else if(kind==='round'){let n=16,m=10,p=(i,j)=>{let a=i/n*Math.PI*2,b=-Math.PI/2+j/m*Math.PI;return[Math.cos(a)*Math.cos(b)*.5,Math.sin(b)*.5,Math.sin(a)*Math.cos(b)*.5];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i,j+1),p(i+1,j+1),p(i+1,j));}
  else if(kind==='ring'){let n=24,m=6,p=(i,j)=>{let a=i/n*Math.PI*2,b=j/m*Math.PI*2,r=.44+.055*Math.cos(b);return[Math.cos(a)*r,Math.sin(a)*r,Math.sin(b)*.055];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i+1,j),p(i+1,j+1),p(i,j+1));}
  else if(kind==='roof'){let a=[-.5,0,-.5],b=[.5,0,-.5],c=[.5,0,.5],d=[-.5,0,.5],e=[0,1,-.5],f=[0,1,.5];tri(a,e,b);tri(d,c,f);q(a,d,f,e);q(b,e,f,c);q(a,b,c,d);}
@@ -10957,7 +10970,7 @@ function pose(options={}){
 
 function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
- out['traveler-cloth']||=([]);
+ out['traveler-cloth']||=([]);out.capsule||=([]);
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
  const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
@@ -10970,6 +10983,7 @@ function draw(out,input={},posed=pose()){
  const armored=input.armorColor!=null,coat=armored?hex(input.armorColor):blend(cloth,hex(0xe2d6b7),.12);
  const darkCoat=blend(coat,hex(0x263932),.20),seam=blend(coat,hex(0xe2d6b7),.32);
  const trousers=hex(0x414b45),leather=hex(0x4f4336),sole=hex(0x302f2b),metal=hex(0xc4af7b);
+ const eyeWhite=hex(0xe8e0cb),pupil=hex(0x26302d),catchlight=hex(0xf7f2e6),mouthColor=hex(0x7b4a42);
  const add=(kind,name,position,size,color,rotation=[0,0,0],extra={},upper=false)=>{
   const local=M.compose(...position,...size,...rotation);
   const parent=upper?bodyRoot:root;
@@ -10985,7 +10999,7 @@ function draw(out,input={},posed=pose()){
   const across=norm([up[1]*reference[2]-up[2]*reference[1],up[2]*reference[0]-up[0]*reference[2],up[0]*reference[1]-up[1]*reference[0]]);
   const forward=[across[1]*up[2]-across[2]*up[1],across[2]*up[0]-across[0]*up[2],across[0]*up[1]-across[1]*up[0]];
   const center=mix(a,b,.5),local=new Float32Array([...scale(across,width),0,...scale(up,length),0,...scale(forward,depth),0,...center,1]);
-  out.round.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
+  out.capsule.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
    cameraSolid:false,cutaway:false,travelerPart:name,travelerJoints:[a.slice(),b.slice()]});
  };
  const y=posed.bob;
@@ -10993,8 +11007,8 @@ function draw(out,input={},posed=pose()){
  // with existing primitives, rather than a stack of rounded doll volumes.
  upperAdd('traveler-cloth','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
  upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
- upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
- upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
+ upperAdd('capsule','jacket-left-side',[-.155,1.13+y,0],[.155,.44,.245],coat);
+ upperAdd('capsule','jacket-right-side',[.155,1.13+y,0],[.155,.44,.245],coat);
  upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
  add('traveler-cloth','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
  add('traveler-cloth','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
@@ -11008,7 +11022,7 @@ function draw(out,input={},posed=pose()){
  upperAdd('round','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
   upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
-  upperAdd('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
+  upperAdd('round',name+'-eye',[side*.052,1.630+y,.114],[.050,.034,.030],eyeWhite);
   upperAdd('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
   limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers);
   limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers);
@@ -11023,6 +11037,14 @@ function draw(out,input={},posed=pose()){
   add('round',name+'-hand',j[name+'Hand'],[.104,.116,.102],skin);
  }
  upperAdd('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
+ // Expression parts ride the body's batches but sit outside its 49-part pin;
+ // the flag lets callers and tests count body and face apart.
+ const face=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{travelerFace:true},true);
+ for(const [name,side] of [['left',-1],['right',1]]){
+  face('round',name+'-pupil',[side*.052,1.628+y,.1295],[.026,.026,.012],pupil);
+  face('round',name+'-catchlight',[side*.060,1.638+y,.1345],[.008,.008,.006],catchlight);
+ }
+ face('capsule','mouth',[0,1.567+y,.121],[.012,.056,.016],mouthColor,[0,0,Math.PI/2]);
  const sweep=posed.cloakSwing;
  for(const [name,side]of [['left',-1],['center',0],['right',1]]){
   upperAdd('box','cloak-'+name,[side*.133,1.10+y,-.189-Math.abs(side)*.020+sweep],[.150,.61,.045],
@@ -11279,7 +11301,7 @@ class WorldArt{
  // Detail beams share the box instance buffer. Their endpoints keep joinery on
  // the authored walls instead of enlarging navigation or camera obstacles.
  beam(from,to,width,c,opt={}){const d=to.map((v,i)=>v-from[i]),len=Math.hypot(...d);if(len<.001)return;const yy=d.map(v=>v/len),ref=Math.abs(yy[1])>.95?[1,0,0]:[0,1,0],xx=[ref[1]*yy[2]-ref[2]*yy[1],ref[2]*yy[0]-ref[0]*yy[2],ref[0]*yy[1]-ref[1]*yy[0]],n=Math.hypot(...xx);for(let i=0;i<3;i++)xx[i]/=n;const zz=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]],p=from.map((v,i)=>(v+to[i])/2);this.box(...p,width,len,width,c,{cameraSolid:false,cutaway:true,...opt,m:new Float32Array([...xx.map(v=>v*width),0,...yy.map(v=>v*len),0,...zz.map(v=>v*width),0,...p,1])});}
- commit(){this.e.viewShelters=Object.values(this.map).flat().filter(i=>i.worldRoof).map(i=>({minX:i.p[0]-i.s[0]/2,maxX:i.p[0]+i.s[0]/2,minZ:i.p[2]-i.s[2]/2,maxZ:i.p[2]+i.s[2]/2,base:i.p[1]-i.s[1]/2}));if(!this.room&&G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.gate(this);if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map)){const rails=k==='box'?a.filter(i=>i.bridgeRail===true):[];this.e.batch(k,rails.length?a.filter(i=>i.bridgeRail!==true):a);if(rails.length)this.e.batch(k,rails,false,{railCutaway:true});}this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicGrazerBody=this.room===G.RealmEarthGrazerMotion?.ROOM?this.e.batch('earth-grazer-body-v1',[],true):null;this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTravelerCloth=this.e.batch('traveler-cloth',[],true);this.dynamicTimber=(this.room===G.RealmEarth?.ROOM||this.room===G.RealmElderwealdWorld?.extension.room)?this.e.batch('timber-panel',[],true):null;}
+ commit(){this.e.viewShelters=Object.values(this.map).flat().filter(i=>i.worldRoof).map(i=>({minX:i.p[0]-i.s[0]/2,maxX:i.p[0]+i.s[0]/2,minZ:i.p[2]-i.s[2]/2,maxZ:i.p[2]+i.s[2]/2,base:i.p[1]-i.s[1]/2}));if(!this.room&&G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.gate(this);if(!this.room&&G.RealmEarthArt)G.RealmEarthArt.gate(this);if(!this.room&&G.RealmCosmosArt)G.RealmCosmosArt.gate(this);if(!this.room&&G.RealmRoadArt)G.RealmRoadArt.gate(this);if(!this.room&&G.RealmAdventureArt)G.RealmAdventureArt.entrance(this);if(!this.room&&G.RealmSandboxArt)G.RealmSandboxArt.scenery(this);for(let[k,a]of Object.entries(this.map)){const rails=k==='box'?a.filter(i=>i.bridgeRail===true):[];this.e.batch(k,rails.length?a.filter(i=>i.bridgeRail!==true):a);if(rails.length)this.e.batch(k,rails,false,{railCutaway:true});}this.dynamicBox=this.e.batch('box',[],true);this.dynamicOcta=this.e.batch('octa',[],true);this.dynamicRound=this.e.batch('round',[],true);this.dynamicGrazerBody=this.room===G.RealmEarthGrazerMotion?.ROOM?this.e.batch('earth-grazer-body-v1',[],true):null;this.dynamicDisc=this.e.batch('disc',[],true);this.dynamicTravelerCloth=this.e.batch('traveler-cloth',[],true);this.dynamicCapsule=this.e.batch('capsule',[],true);this.dynamicTimber=(this.room===G.RealmEarth?.ROOM||this.room===G.RealmElderwealdWorld?.extension.room)?this.e.batch('timber-panel',[],true):null;}
  begin(room){this.familyOwner=null;this.familyMotion=new Map();this.familyFrames=new Map();this.familyParts=[];this.earthShoulderFrame=null;this.quarryFrame=null;this.droverFrame=null;this.millwrightFrame=null;this.millGateFrame=null;this.travelerPoseOwner=null;this.travelerFishingOwner=null;this.travelerFishingFacing=null;this.travelerMotion=null;this.travelerFrame=null;this.travelerParts=null;this.e.theme=null;this.e.worldAtmosphere=null;this.e.worldFog=null;this.e.worldFogCenter=null;this.e.cameraMedium=null;this.e.galleryFocus=null;this.e.worldRoofOpen=false;this.e.viewShelters=[];this.e.earthWater=null;this.e.railCutawayActive=false;this.e.noWater=false;this.e.surfacePick=null;this.e.ambientOverride=null;this.e.reflectionStrength=1;this.e.clear();this.e.isInterior=!!room;this.room=room;this.map={};}
  tree(x,z,s=1,style=0,base=1.2){let bark=0x68503c;this.add('cylinder',x,base,z,.42*s,2.6*s,.42*s,bark);for(let a of[-.6,.8,2.3])this.box(x+Math.sin(a)*.45*s,base+2*s,z+Math.cos(a)*.45*s,.18*s,1.2*s,.18*s,bark,{r:[.3,a,.55]});let colors=style===3?[0xd9a4ba,0xc489a5,0xe9bdbe]:style===1?[0xaab961,0x8fa856,0xbdc16f]:style===2?[0x87a897,0x669586,0xa0b59b]:[0x557d65,0x638f69,0x779c73];if(style===0){for(let i=0;i<3;i++)this.add('cone',x,base+(1.6+i*.85)*s,z,(3.2-i*.6)*s,2.2*s,(3.2-i*.6)*s,colors[i],{wind:2});}else if(style===4){for(const [dx,y,dz,w,h,c] of[[0,2.85,0,3.5,2.7,0],[.85,3.85,-.35,2.5,2.1,1],[-.8,2.35,.45,2.6,2.0,2]])this.add('lobed-crown',x+dx*s,base+y*s,z+dz*s,w*s,h*s,w*s,colors[c],{r:[0,c*2.1,0],wind:2});}else{for(let i=0;i<7;i++){let a=i*2.4,r=i===0?0:1.05;this.add(style===3?'round':style===1?'round':'octa',x+Math.cos(a)*r*s,base+(3.25+(i%3)*.42)*s,z+Math.sin(a)*r*s,(2.25+(i%2)*.3)*s,(2.1+(i%3)*.23)*s,(2.15+(i%2)*.35)*s,colors[i%3],{r:[0,a,0],wind:2});}}}
  lamp(x,z,height=3.4,base=1.2){this.box(x,base+height/2,z,.13,height,.13,0x5a4735);this.box(x,base+height,z,.55,.12,.55,0x443c32);this.box(x,base+height-.35,z,.32,.54,.32,0xffd185,{em:1.4,rough:.35});this.add('cone',x,base+height+.07,z,.77,.37,.77,0x594739);this.box(x,base+.09,z,.48,.18,.48,0x777565);}
@@ -11636,7 +11658,7 @@ class WorldArt{
   const submission=G.RealmEarthGrazerArt.draw(out,sim.grazerPresentation,sim.grazerPresentationContext,{quality:sim.state.settings.quality,reducedMotion:sim.state.settings.reducedMotion});
   if(submission){sim.grazerSubmission=submission;G.RealmEarthGrazerArt.foliage(out);}
  }
- if(this.dynamicGrazerBody)this.dynamicGrazerBody.items=out['earth-grazer-body-v1'];this.dynamicBox.items=out.box;this.dynamicOcta.items=out.octa;this.dynamicDisc.items=out.disc;this.dynamicTravelerCloth.items=out['traveler-cloth'];}
+ if(this.dynamicGrazerBody)this.dynamicGrazerBody.items=out['earth-grazer-body-v1'];this.dynamicBox.items=out.box;this.dynamicOcta.items=out.octa;this.dynamicDisc.items=out.disc;this.dynamicTravelerCloth.items=out['traveler-cloth'];this.dynamicCapsule.items=out.capsule||[];}
 }
 G.RealmArt={WorldArt};})(globalThis);
 </script><script>/* Original procedural Wildwood artwork; consumes local state, never changes it. */
@@ -12085,6 +12107,167 @@ G.RealmRoadArt={gate,make,draw,TREES:R.TREES};})(globalThis);
  }
  const api=Object.freeze({motion,pose,parts,draw});
  G.RealmCompanionArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Story cast presentation: the regent of ash, the envoy, the false Briar, the
+ * severing device and the finale chain. Each builder returns plain instances
+ * ({kind,p,s,m,c,rough,em,...}) in the traveler and companion rig format. No
+ * builder owns state; a frame is a pure function of its inputs and t. */
+(function(G){'use strict';
+const T=G.RealmTravelerArt||(typeof require==='function'?require('./traveler-art.js'):null);
+const C=G.RealmCompanionArt||(typeof require==='function'?require('./companion-art.js'):null);
+if(typeof module!=='undefined'&&module.exports&&!G.RealmEngine)require('./engine.js');
+const TAU=Math.PI*2;
+const finite=(n,f=0)=>Number.isFinite(n)?n:f;
+const vsub=(a,b)=>a.map((v,i)=>v-b[i]),vmix=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
+const vcross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const vnorm=a=>{const l=Math.hypot(...a)||1;return a.map(v=>v/l);};
+// Colours stay 0xRRGGBB numbers; warm and cool shifts mix in that space.
+const mixHex=(a,b,t)=>{const ch=c=>[c>>16&255,c>>8&255,c&255],A=ch(a),B=ch(b);return A.reduce((o,v,i)=>(o<<8)|Math.round(v+(B[i]-v)*t),0);};
+const IDENT=[[1,0,0],[0,1,0],[0,0,1]];
+// Rotations about Y, and a ring lying flat (its local XY plane turned to the ground).
+const axesY=a=>[[Math.cos(a),0,-Math.sin(a)],[0,1,0],[Math.sin(a),0,Math.cos(a)]];
+const flat=a=>[[Math.cos(a),0,-Math.sin(a)],[Math.sin(a),0,Math.cos(a)],[0,-1,0]];
+const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d,brow:0x7a6f66};
+const BONE={robe:0xefe6d2,robeShade:0xd9ceb6,gold:0xd6b25e,skin:0xf3e2cc,hair:0xe9d69a,light:0xfff3cf,feather:0xfff1c4,halo:0xffd77a,glow:0xffe7a6,pupil:0x8c6a2a,glint:0xfff4d6};
+// Figure space is the traveler rig's: +Z forward, feet on y=0. The root scales
+// the rig to a figure's height and yaws it, the way resident art does.
+const root=(x,y,z,sx,sy,sz,yaw)=>G.RealmEngine.M.compose(x,y,z,sx,sy,sz,0,yaw,0);
+// axes are the local X, Y, Z directions, so a part runs along any direction
+// without Euler-angle conventions.
+const frameOf=(c,s,ax)=>new Float32Array([...ax[0].map(v=>v*s[0]),0,...ax[1].map(v=>v*s[1]),0,...ax[2].map(v=>v*s[2]),0,c[0],c[1],c[2],1]);
+function put(list,R,kind,name,c,s,ax,color,o={}){
+ const {M}=G.RealmEngine;
+ list.push({kind,p:M.transform(R,c),s:s.slice(),m:M.mul(R,frameOf(c,s,ax)),c:color,rough:o.rough??.84,em:o.em??0,cameraSolid:false,cutaway:false,storyPart:name});
+}
+// a capsule, box or round laid from a to b, cross-section width by depth.
+function beam(list,R,kind,name,a,b,width,depth,color,o){
+ const d=vsub(b,a),len=Math.hypot(...d),up=d.map(v=>v/len),ref=Math.abs(up[1])<.9?[0,1,0]:[1,0,0];
+ const across=vnorm(vcross(up,ref)),fwd=vcross(across,up);
+ put(list,R,kind,name,vmix(a,b,.5),[width,len,depth],[across,up,fwd],color,o);
+}
+// a torus link: outer radius and tube radius in figure metres (the unit ring is .495 outer, .055 tube).
+function ring(list,R,name,c,outer,tube,ax,color,o){put(list,R,'ring',name,c,[outer/.495,outer/.495,tube/.055],ax,color,o);}
+// the traveler rig in figure space; the caller paints, trims and adds to it.
+function rig(list,R,input,posed){
+ const {M}=G.RealmEngine,out={box:[],round:[],octa:[],disc:[]};
+ T.draw(out,input,posed);
+ for(const [kind,items] of Object.entries(out))for(const it of items){
+  if(it.travelerPart==='ground-marker')continue;
+  list.push({kind,p:M.transform(R,it.p),s:it.s.slice(),m:M.mul(R,it.m),c:it.c,rough:it.rough??.86,em:0,cameraSolid:false,cutaway:false,storyPart:it.travelerPart});
+ }
+}
+const paint=(list,colours)=>{for(const it of list)if(colours[it.storyPart]!==undefined)it.c=colours[it.storyPart];};
+// a smile is a level centre and two corners; lift is one fraction of half-width, or [left, right].
+function smile(list,R,y,z,half,lift,color){
+ const [l,r]=Array.isArray(lift)?lift:[lift,lift];
+ beam(list,R,'capsule','smile-centre',[-half*.12,y,z],[half*.12,y,z],.006,.008,color);
+ beam(list,R,'capsule','smile-left',[-half*.1,y,z],[-half,y+half*l,z-.002],.006,.008,color);
+ beam(list,R,'capsule','smile-right',[half*.1,y,z],[half,y+half*r,z-.002],.006,.008,color);
+}
+function regent(x,y,z,yaw,t){
+ // taller and broader than the traveler: presence comes from the shoulders and the coat, not from height alone.
+ const k=finite(t),R=root(finite(x),finite(y),finite(z),1.06,1.28,1.06,finite(yaw)),sway=Math.sin(k*.6)*.006,L=[];
+ // his left hand rests at the lapel; breath, coat and cinders move slowly and out of step.
+ rig(L,R,{armorColor:ASH.coat,color:ASH.coatInner},T.pose({time:k,phase:0,blend:0,carry:{left:[-.12,1.24+.004*Math.sin(k*.5),.15]}}));
+ const parts=L.filter(it=>!/^(cloak-|hair-crown|hair-back)/.test(it.storyPart)&&it.storyPart!=='mouth');
+ paint(parts,{head:ASH.skin,neck:ASH.skin,nose:ASH.skin,'left-ear':ASH.skin,'right-ear':ASH.skin,'left-hand':ASH.skin,'right-hand':ASH.skin,'hair-crown':ASH.hair,'hair-back':ASH.hair,'left-brow':ASH.brow,'right-brow':ASH.brow,'left-eye':ASH.white,'right-eye':ASH.white,'left-pupil':ASH.pupil,'right-pupil':ASH.pupil,'left-catchlight':ASH.glint,'right-catchlight':ASH.glint,'collar-left':ASH.coatInner,'collar-right':ASH.coatInner});
+ for(const it of parts)if(/pupil$/.test(it.storyPart))it.em=.12;
+ for(const it of parts)if(/catchlight$/.test(it.storyPart))it.em=.6;
+ // swept-back silver hair as one soft mass, in place of the rig's flat cap.
+ beam(parts,R,'capsule','hair-swept',[0,1.70,.02],[0,1.60,-.13],.25,.22,ASH.hair);
+ // a long tailored coat: a wide back panel, two flared fronts and a dark inner front, to mid-calf.
+ beam(parts,R,'capsule','coat-back',[0,1.12,-.09],[sway,.22,-.15],.42,.18,ASH.coat);
+ beam(parts,R,'capsule','coat-front-left',[-.10,1.10,.04],[-.17+sway,.24,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front-right',[.10,1.10,.04],[.17+sway,.24,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front',[0,1.08,.07],[0,.26,.10],.22,.12,ASH.coatInner);
+ // thin ember piping down the placket: lit from within, not a rod.
+ for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.13],[s*.055+sway*.3,.30,.15],.006,.008,ASH.seam,{em:.34+.08*Math.sin(k*.9+s),rough:.5});
+ // a low circlet of cooling embers on the brow, not a spiked crown: one side still warm, the back gone grey.
+ ring(parts,R,'circlet',[0,1.68,.008],.118,.010,flat(0),0x4b4f55,{rough:.4});
+ for(let i=0;i<7;i++){
+  const a=i/7*TAU+k*.08,heat=Math.max(0,1-i/5);
+  put(parts,R,'round','cinder-'+i,[Math.cos(a)*.118,1.68+.006*Math.sin(k*1.1+i),Math.sin(a)*.118+.008],[.03,.03,.03],IDENT,mixHex(ASH.cinder,EMBER,heat),{em:.12+.38*heat*(.6+.4*Math.sin(k*1.3+i*.9)),rough:.5});
+ }
+ // a warm, closed smile; the corners lift unevenly, as if the joke is one he is deciding to share.
+ smile(parts,R,1.558,.124,.024,[.42,.2],0x8a5a4e);
+ return parts;
+}
+
+function envoy(x,y,z,yaw,t){
+ const k=finite(t),R=root(finite(x),finite(y),finite(z),1.03,1.02,1.03,finite(yaw)),L=[];
+ rig(L,R,{armorColor:BONE.robe,color:BONE.robeShade},T.pose({time:k,phase:0,blend:0}));
+ const parts=L.filter(it=>it.storyPart!=='mouth');
+ // the legs are dressed in the robe, so the figure reads as one long garment down to the ankle.
+ paint(parts,{head:BONE.skin,neck:BONE.skin,nose:BONE.skin,'left-ear':BONE.skin,'right-ear':BONE.skin,'left-hand':BONE.skin,'right-hand':BONE.skin,'hair-crown':BONE.hair,'hair-back':BONE.hair,'left-brow':BONE.hair,'right-brow':BONE.hair,belt:BONE.gold,'belt-buckle':BONE.gold,'left-pupil':BONE.pupil,'right-pupil':BONE.pupil,'left-catchlight':BONE.glint,'right-catchlight':BONE.glint,
+  'left-thigh':BONE.robeShade,'right-thigh':BONE.robeShade,'left-shin':BONE.robeShade,'right-shin':BONE.robeShade,'left-knee':BONE.robeShade,'right-knee':BONE.robeShade,'left-boot-cuff':BONE.robeShade,'right-boot-cuff':BONE.robeShade,'left-boot':0x6b5a3e,'right-boot':0x6b5a3e});
+ for(const it of parts)it.em=Math.max(it.em,/pupil|catchlight/.test(it.storyPart)?.2:.12);
+ beam(parts,R,'capsule','robe-front',[0,1.00,.04],[0,.12,.08],.34,.22,BONE.robe);
+ beam(parts,R,'capsule','robe-back',[0,1.00,-.07],[0,.10,-.12],.36,.18,BONE.robeShade);
+ for(const s of[-1,1])beam(parts,R,'capsule','robe-'+(s<0?'left':'right'),[s*.12,.98,.02],[s*.14,.16,.04],.22,.16,BONE.robe);
+ ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
+ // folded wings of light: five layered feathers a side rise and fan from the shoulder blades, breathing with the body.
+ const breath=Math.sin(k*.8)*.03;
+ for(const s of[-1,1])for(let i=0;i<5;i++){
+  const u=i/4,base=[s*.07,1.42-.09*u,-.17],tip=[s*(.36+.10*(1-u)+breath),1.66-.62*u+breath*.5,-.30-.05*u];
+  beam(parts,R,'capsule','wing-'+(s<0?'left':'right')+'-'+i,base,tip,.16-.08*u,.035,BONE.feather,{em:.8,rough:.4});
+ }
+ // a halo above the head, a soft glow on the ground, and motes turning around her.
+ ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});
+ ring(parts,R,'glow-ground',[0,.012,0],.6,.016,flat(0),0xf1cf7a,{em:.45,rough:.6});
+ for(let i=0;i<6;i++){
+  const a=i/6*TAU+k*.3;
+  put(parts,R,'round','mote-'+i,[Math.cos(a)*.75,1.05+.35*Math.sin(k*.6+i*1.1),Math.sin(a)*.75],[.045,.045,.045],axesY(a),BONE.light,{em:.95,rough:.3});
+ }
+ smile(parts,R,1.565,.122,.026,.30,0x9b5f52);
+ return parts;
+}
+
+// the Briar fox from the real companion rig, with a cooler, cleaner coat and a faint glow.
+function briarFalse(x,y,z,yaw,t){
+ const k=finite(t),placement={x:finite(x),z:finite(z),base:finite(y),yaw:finite(yaw),bonded:true};
+ const real=C.parts(placement,C.pose({bonded:true,time:k,phase:0,blend:0})),glow=.10+.05*Math.sin(k*2.1);
+ const list=real.map(it=>({kind:it.kind,p:it.p.slice(),s:it.s.slice(),m:new Float32Array(it.m),
+  c:/eye/.test(it.companionPart)?0xaef2ff:typeof it.c==='number'?mixHex(it.c,0xd9eef7,.16):it.c,rough:.82,
+  em:/eye/.test(it.companionPart)?.55:glow,cameraSolid:false,cutaway:false,storyPart:it.companionPart}));
+ put(list,root(placement.x,placement.base,placement.z,1,1,1,placement.yaw),'disc','cold-glow',[0,.01,0],[1.3,1,1.3],IDENT,0x8cc6d6,{em:.3+.08*Math.sin(k*1.7),rough:.6});
+ return list;
+}
+
+// a severing device: an iron tripod, a serrated ring turning around a hot core.
+function severingDevice(x,y,z,yaw,t){
+ const k=finite(t),R=root(finite(x),finite(y),finite(z),1,1,1,finite(yaw)),L=[],hub=[0,.66,0],spin=k*.55,pulse=.5+.5*Math.sin(k*3.1);
+ put(L,R,'box','plinth',[0,.05,0],[.92,.10,.92],IDENT,0x3a3d41,{rough:.7});
+ for(let i=0;i<3;i++){const a=i/3*TAU+.4;beam(L,R,'capsule','frame-'+i,[Math.cos(a)*.34,.10,Math.sin(a)*.34],[Math.cos(a)*.11,.92,Math.sin(a)*.11],.075,.075,IRON);}
+ ring(L,R,'blade-ring',hub,.47,.05,flat(spin),0x6c7177,{rough:.35});
+ for(let i=0;i<6;i++){const a=spin+i/6*TAU;put(L,R,'octa','tooth-'+i,[Math.cos(a)*.44,hub[1],Math.sin(a)*.44],[.07,.12,.06],axesY(a),0x8a9097,{rough:.3,em:.1});}
+ const core=.26+.03*pulse;
+ put(L,R,'round','ember-core',hub,[core,core,core],IDENT,EMBER,{em:.9+.1*pulse,rough:.5});
+ for(let i=0;i<4;i++){const a=i/4*TAU+k*.9;put(L,R,'octa','spark-'+i,[Math.cos(a)*.20,hub[1]+.14+.06*Math.sin(k*5+i),Math.sin(a)*.20],[.035,.05,.035],axesY(a),0xffb36b,{em:1,rough:.4});}
+ return L;
+}
+
+// links hang between two points on a shallow sag; alternate links turn a quarter so they lock.
+function chain(x,y,z,yaw,t,end){
+ const k=finite(t),A=[finite(x),finite(y),finite(z)],yw=finite(yaw);
+ const B=Array.isArray(end)&&end.length===3&&end.every(Number.isFinite)?end:[A[0]+2.4*Math.sin(yw),A[1]-.8,A[2]+2.4*Math.cos(yw)];
+ const len=Math.hypot(...vsub(B,A)),n=Math.max(4,Math.min(56,Math.round(len/.15))),sag=.08*len*(1+.04*Math.sin(k*.9)),L=[];
+ const at=u=>{const q=vmix(A,B,u);return[q[0],q[1]-4*sag*u*(1-u),q[2]+.01*Math.sin(k*1.3+u*6)];};
+ const world=root(0,0,0,1,1,1,0);
+ for(let i=0;i<=n;i++){
+  const u=i/n,d=vsub(B,A),tan=vnorm([d[0],d[1]-4*sag*(1-2*u),d[2]]),across=vcross(tan,[0,1,0]);
+  // a chain straight down has no side to turn toward; fall back to +X.
+  const P=Math.hypot(...across)>1e-6?vnorm(across):[1,0,0];
+  const ax=i%2?vcross(tan,P):P,az=vcross(ax,tan),anchor=i===0||i===n;
+  put(L,world,'ring','link-'+i,at(u),[.142,.222,.364],[ax,tan,az],anchor?mixHex(IRON,EMBER,.5):IRON,{rough:.5,em:anchor?.35:0});
+ }
+ return L;
+}
+
+// the list-of-instances form the world and the tests read: kind-keyed arrays.
+function draw(out,parts){for(const {kind,...item} of parts)(out[kind]||=[]).push(item);return parts.length;}
+
+const api={regent,envoy,briarFalse,severingDevice,chain,draw};
+G.RealmStoryArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Original grounded Root-bank brute interpretation, local +Z forward.
  * Actual placement/timers/flash belong to the caller. No movement or combat

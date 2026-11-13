@@ -12,7 +12,7 @@ test('brute hooves follow the actual animated leg endpoints without changing its
  for(const phase of[0,.7,1.4,3.1]){const p=B.pose({mode:'chase',phase,blend:1}),parts=B.parts({x:0,z:0,base:1.57,yaw:0,mode:'chase',phase,blend:1});for(const[id,l]of Object.entries(p.legs)){const hoof=parts.find(p=>p.expeditionBeastPart===id+'-hoof');assert.ok(Math.abs(hoof.p[1]-(1.57+l.foot[1]-.02))<1e-7);}}
 });
 test('traveler cloth, skin and leather retain distinct physical material responses',()=>{
- const out=empty();T.draw(out,{x:0,z:0,base:1.57,yaw:0},T.pose());const all=Object.values(out).flat(),head=all.find(p=>p.travelerPart==='head'),boot=all.find(p=>p.travelerPart==='left-boot'),coat=all.find(p=>p.travelerPart==='jacket-chest');assert.ok(head.rough<boot.rough&&boot.rough<coat.rough);assert.equal(all.length,49);assert.ok(out.round.some(p=>p.travelerPart==='left-forearm'));
+ const out=empty();T.draw(out,{x:0,z:0,base:1.57,yaw:0},T.pose());const all=Object.values(out).flat(),head=all.find(p=>p.travelerPart==='head'),boot=all.find(p=>p.travelerPart==='left-boot'),coat=all.find(p=>p.travelerPart==='jacket-chest');assert.ok(head.rough<boot.rough&&boot.rough<coat.rough);assert.equal(all.filter(p=>!p.travelerFace).length,49);assert.ok(out.capsule.some(p=>p.travelerPart==='left-forearm'),'limbs are capsules');
 });
 test('only real bow anticipation carries a visible nocked shaft, removed on release',()=>{
  const sim=new C.Simulation();sim.state.adventure.started=true;sim.state.adventure.owned.push('trail_bow');sim.state.adventure.equipment.weapon='trail_bow';const before=sim.snapshot();
