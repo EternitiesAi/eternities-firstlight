@@ -4026,7 +4026,7 @@ function draw(out,sim){const d=D(),r=q(sim);if(sim.room!==d.room||!r?.accepted)r
 }
 const api={draw,drawEnemy};G.RealmCosmosCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern that took Briar was cut in the
+</script><script>/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern behind the night at Bellweather was cut in the
  * regent's foundry, and its outer gate is kept by Veyr. Step and choice ids are saved, so they stay put even
  * where the words change. Rules and the warden fight live in hell-campaign.js. */
 (function (G) {
@@ -4050,12 +4050,12 @@ const definition=freeze({
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
  reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
- summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
+ summary:'Neris’s record names the foundry. The pattern behind the night at Bellweather was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
  completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
   step('witness-record','Hear Neris’s full record','interact',-12,27,[],false,
-   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern that took Briar was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
+   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern behind the night at Bellweather was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
   step('tovan-account','Check Tovan’s rivets','interact',-15,16,['witness-record'],false,
    'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
   step('read-service-writ','Read the foundry’s outer gate','interact',-12,-95,['tovan-account'],false,
@@ -11254,7 +11254,8 @@ const SCENES=freeze({
  'night.device.after':{beat:'night',where:'The bridge, in the morning',lines:[
   l('rowan','Then it hangs under her. Every time she rings, it’ll hear what it failed to stop.',{device:'open'}),
   l('mara','Two locks. I keep one key and Oren the other. That’s not distrust. That’s method.',{device:'sealed'}),
-  n('It goes into your pack. It weighs about what a fox weighs.',{device:'carried'}),
+  n('It goes into your pack. It weighs about what a fox weighs.',{device:'carried',bonded:true}),
+  n('It goes into your pack. It is heavier than iron ought to be.',{device:'carried',bonded:false}),
   l('mara','I won’t argue. I’ll check on you.',{device:'carried'}),
   l('rowan','I rang her and they came to the sound, the way they’re meant to. Straight to the bridge. I keep turning that over.')]},
  // ---- Act IV · the stolen pattern: Hell ----
@@ -11478,9 +11479,12 @@ const SCENES=freeze({
   l('anik','It runs under the sea first. There’s a harbour down there that keeps its records dry. Read what it kept. Then follow this home.',{sea:null})]},
  // ---- Act IV · the nearshore ----
  'nearshore.pier':{beat:'nearshore',where:'The lantern pier',lines:[
-  l('vessa','Every lantern on the pier’s lit. If she’s out there, she’ll see which way is home. That’s all a lantern is for.'),
-  l('vessa','And when he tells you she’s his: a bridge belongs to its crossings, not to whoever can hold a chain across it.'),
-  l('envoy','I can tell a living soul from an echo. I cannot tell you which one is yours. Heaven does not know that. Only you do.'),
+  l('vessa','Every lantern on the pier’s lit. If she’s out there, she’ll see which way is home. That’s all a lantern is for.',{bonded:true}),
+  l('vessa','And when he tells you she’s his: a bridge belongs to its crossings, not to whoever can hold a chain across it.',{bonded:true}),
+  l('envoy','I can tell a living soul from an echo. I cannot tell you which one is yours. Heaven does not know that. Only you do.',{bonded:true}),
+  l('vessa','Every lantern on the pier’s lit. Whoever’s still out tonight will see which way is home. That’s all a lantern is for.',{bonded:false}),
+  l('vessa','And whatever he tells you down there: a bridge belongs to its crossings, not to whoever can hold a chain across it.',{bonded:false}),
+  l('envoy','He will make you an offer here. He likes to do it near water. Hear it or do not. You owe him no answer.',{bonded:false}),
   n('His road opened for you all the way down the shore. Nobody stopped you. Nobody had to. The permit is warm in your pocket.',{sea:'license'})]},
  'nearshore.offer':{beat:'nearshore',where:'The nearshore',lines:[
   l('regent','I kept her for you. She never strays now.'),
@@ -11529,7 +11533,8 @@ const SCENES=freeze({
   l('regent','We have not really spoken. You saw to that. So I will let your own decisions do the talking. I wrote them down as you made them.',{heard:{max:0}}),
   l('regent','You listened to me, a little. More than most. So I will be fair, and use only your own decisions.',{heard:{min:1,max:2}}),
   l('regent','You heard all of it. Three times you let me finish. I want you to know I am sorry it is you.',{heard:{min:3}}),
-  l('regent','This valley loses things. A cart. A song. A fox. I am going to keep it. You may stand in it with me, or you may stand in the way.'),
+  l('regent','This valley loses things. A cart. A song. A fox. I am going to keep it. You may stand in it with me, or you may stand in the way.',{bonded:true}),
+  l('regent','This valley loses things. A cart. A song. Five travellers, very nearly. I am going to keep it. You may stand in it with me, or you may stand in the way.',{bonded:false}),
   l('regent','Look how many. You have been keeping roads my way all along.',{chains:{min:3}}),
   l('regent','One or two. Everyone has one or two. It is how I know we could have understood each other.',{chains:{min:1,max:2}}),
   l('regent','Nothing. Not one. Do you know how rare that is? Then I will hang my own on the spring.',{chains:{max:0}})]},
@@ -11569,8 +11574,9 @@ const SCENES=freeze({
   l('envoy','Go. I will hold the spring.'),
   n('She steps down off the water onto the road. Onto the dirt. Her wings come open for the first time since you have known her. They are not for flying. They are for standing in the way.'),
   l('envoy','I have been late to a great many things. Not this.'),
-  n('{briar} is already ahead of you, nose down, on a trail no feather can show.'),
-  n('She looks back once, to be sure that you are following her and not something quieter.',{falseFirst:true})]},
+  n('{briar} is already ahead of you, nose down, on a trail no feather can show.',{bonded:true}),
+  n('She looks back once, to be sure that you are following her and not something quieter.',{falseFirst:true,bonded:true}),
+  n('You go after him. No feather can show this trail. You have mended every yard of this valley, and that will have to do.',{bonded:false})]},
  'finale.merged.stair':{beat:'finale',where:'the heaven stair',lines:[
   l('calen','Name? No. Thought not. This stair’s for people who can be asked.',{heaven:'accessible-assist'}),
   n('He takes the heaven stair three steps at a time. So do the people coming down it to help you.',{heaven:['broadened-activation',null]})]},
@@ -11579,11 +11585,13 @@ const SCENES=freeze({
   n('His own low road opens for you without being asked. The permit. You cut the corner he meant to lose you on, and you do not feel clever about it.',{sea:'license'}),
   l('regent','You could have kept all of this still.')]},
  'finale.merged.briar':{beat:'finale',where:'The merged valley',lines:[
-  n('He doubles back along a road that is not there. {briar} is sitting on it when he arrives, put upon, as if he were late.')]},
+  n('He doubles back along a road that is not there. {briar} is sitting on it when he arrives, put upon, as if he were late.',{bonded:true}),
+  n('He doubles back along a road that is not there. Fenna’s cart is standing across it, and Fenna is on the cart, eating an apple.',{bonded:false})]},
  'finale.offer':{beat:'finale',where:'The spring junction',lines:[
   n('He is back at the spring, on one knee, the book open. The valley is every world at once, and all of it is shaking the way the sky shook when the wheel stopped. You get your breath. He lets you.'),
   l('regent','Enough. Look at it. Everything you love is in reach of everything that can hurt it. You did that. You opened every door.'),
-  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, the fox’s, everyone in this valley. One signature. I keep the road, and you keep your people.'),
+  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, the fox’s, everyone in this valley. One signature. I keep the road, and you keep your people.',{bonded:true}),
+  l('regent','So here is the last page I have. A life that cannot be hurt. Yours, and everyone’s in this valley. One signature. I keep the road, and you keep your people.',{bonded:false}),
   l('regent','It is what I offered Tessa. You told her what you would do. I am only asking you to take your own advice.',{tessa:'signed'}),
   l('regent','You told Tessa you would tear it up. It is easy to be brave with someone else’s paper. This one is yours.',{tessa:'refused'}),
   l('regent','You have reached for the kept one once already. On the pier. I am not asking you for anything new.',{falseFirst:true}),
@@ -11594,8 +11602,10 @@ const SCENES=freeze({
  'finale.answer':{beat:'finale',where:'The spring junction',lines:[
   n('You shake your head. It costs more than you expected.',{offer:REFUSED}),
   l('regent','Then you will bleed for every yard. I want you to remember that I offered.',{offer:REFUSED}),
-  n('{briar} leans against your leg. She is shaking too. She stays.',{offer:REFUSED}),
-  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer feel the fox against your leg.',{offer:'taken'}),
+  n('{briar} leans against your leg. She is shaking too. She stays.',{offer:REFUSED,bonded:true}),
+  n('Behind you nobody in the valley steps back. You can hear them not stepping back.',{offer:REFUSED,bonded:false}),
+  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer feel the fox against your leg.',{offer:'taken',bonded:true}),
+  n('You sign. The ink dries grey. The shaking stops. The wind stops. You can no longer hear the valley behind you.',{offer:'taken',bonded:false}),
   l('regent','There. Nothing can be taken from you now. Thank you. I mean that.',{offer:'taken'}),
   l('regent','You have been practising for this since the beacon.',{offer:'taken',chains:{min:2}}),
   l('regent','You, of all people. Well. Everyone has a night.',{offer:'taken',chains:{max:1}})]},
@@ -11610,7 +11620,8 @@ const SCENES=freeze({
   n('Then the pages are roads, gold, letting go at both ends, and the Regent of Ash comes apart in the morning light like something finally allowed to.',{ending:['open',null]}),
   n('The view lifts. The spring, the workshop, the beans, the bridge, the pier. Every lamp you lit. It is all still here, and none of it is safe, and all of it is yours to walk.',{ending:['open',null]}),
   n('He closes the book, gently, on your name. He stands. He looks better. He looks like a man whose count came out right.',{ending:'kept'}),
-  n('Received in good order: one traveller, one fox, one valley. Kept safe. Nothing owed.',{ending:'kept'}),
+  n('Received in good order: one traveller, one fox, one valley. Kept safe. Nothing owed.',{ending:'kept',bonded:true}),
+  n('Received in good order: one traveller, one valley. Kept safe. Nothing owed.',{ending:'kept',bonded:false}),
   n('The view lifts. The valley is whole and bright and perfectly still. Nothing will ever be lost here again. He will see to it.',{ending:'kept'}),
   l('envoy','I will not bargain with him for you. I will come to the edge of his road every evening and say your name. I have learned to arrive.',{ending:'kept'}),
   n('You do not bring it down. You pick the book up, and you read him his first page. Forty-one names. You are not good at it. You go slowly.',{ending:'answered'}),
@@ -11672,7 +11683,8 @@ const SCENES=freeze({
   l('neris','Forty came out. I write to the line every week. Some weeks the letters come back opened, and that is something.',{hell:'divert'}),
   n('A grey letter comes at each new moon from the Ninth Office, reporting that conditions are much improved. You have a drawer of them.',{hell:'license'})]},
  'epilogue.concert':{beat:'epilogue',where:'The little amphitheatre',lines:[
-  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, about a fox long, and you’ll all please be quiet for the whole of it.'),
+  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, about a fox long, and you’ll all please be quiet for the whole of it.',{bonded:true}),
+  l('ilan','This is the last song. I changed it one more time. It’s got a rest in it, a long one, and you’ll all please be quiet for the whole of it.',{bonded:false}),
   n('From down the valley, faint, a man’s voice is reading names. Ilan waits for him to finish the page. Then he plays.',{ending:'answered'}),
   n('He plays. At the rest, nobody breathes. Then, from the back row, in a silence exactly a fox long, {briar} sneezes.',{ending:FREE,bonded:true}),
   n('Ilan laughs so hard he has to start the bar again.',{ending:FREE,bonded:true}),
