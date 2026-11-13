@@ -27,7 +27,7 @@ function lifecycle(){
  const h=harness(),nodes=new Map(),writes=[];
  for(const [k,v]of Object.entries(globalThis))if(k.startsWith('Realm'))h.context[k]=v;
  // Retain the exact candidate Engine realm rather than the CommonJS baseline.
- vm.runInContext(source,h.context);h.context.RealmCore=C;h.context.RealmCreative=X;
+ vm.runInContext(source,h.context);h.context.RealmCore=C;h.context.RealmCreative=X;h.context.titleDrift=false;h.context.titleTourOn=false;
  vm.runInContext(fs.readFileSync(path.join(ROOT,'src/world.js'),'utf8'),h.context);
  const ActualArt=h.context.RealmArt.WorldArt;
  const disk=new Map(),storage={getItem:k=>disk.get(k)??null,setItem:(k,v)=>{writes.push([k,v]);disk.set(k,v);}};
@@ -140,7 +140,7 @@ function runFrame(kind){
  const f=lifecycle(),rule=new Error('Synthetic rule failure'),render=new Error('Synthetic render failure'),calls=[];
  const sim=f.env.sim,originalTick=sim.tick.bind(sim);sim.tick=dt=>{calls.push('sim');if(kind==='rule')throw rule;originalTick(dt);};
  f.env.art.update=()=>{calls.push('art');if(kind==='lost'||kind==='render'){f.h.gl.lost=kind==='lost';throw render;}};
- Object.assign(f.env,{lastFrame:0,frames:0,fps:0,fpsStart:0,elapsed:0,lastUi:0,lastSave:0,G_CAPTURE:false,performance:{now:()=>1},document:{...f.env.document,hidden:false},
+ Object.assign(f.env,{titleDrift:false,titleTourOn:false,lastFrame:0,frames:0,fps:0,fpsStart:0,elapsed:0,lastUi:0,lastSave:0,G_CAPTURE:false,performance:{now:()=>1},document:{...f.env.document,hidden:false},
   bindWildSignsClearance:()=>calls.push('rules'),tickRoadkeeper:()=>{},tickConsignment:()=>{},gates:()=>({tick(){}}),tickGrazer:()=>{},switchScene:()=>{},updateCamera:()=>{},experience:null,sandbox:null,adventure:null,arsenal:null,fishing:null,
   rpg:{tick:()=>{}},syncFieldcraftOwner:()=>{},consignmentPresentation:()=>{},grazerPresentation:()=>{},prepareWildSignsDiagnostics:()=>{},roadkeeperPresentation:()=>{},prepareRoadkeeperDiagnostics:()=>{},
   acknowledgeOrdinaryGrazer:()=>{},updateLabels:()=>{},mapDraw:()=>calls.push('map'),audio:{tick:()=>calls.push('audio')},refreshUI:()=>calls.push('ui'),save:()=>calls.push('save'),requestAnimationFrame:()=>calls.push('raf')});
