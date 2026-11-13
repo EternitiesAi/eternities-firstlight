@@ -183,6 +183,19 @@ function geometry(kind){let v=[],timber=timberKind(kind);function tri(a,b,c){let
   if(!body||body.kind!==kind||body.stride!==6||typeof body.geometry!=='function')throw Error('Load the original grazer body mesh before drawing it.');
   return body.geometry();
  }
+ else if(kind==='capsule'){
+  // Smooth-normal limb: a unit capsule whose elliptical caps reach the box faces
+  // at y=+-.5, so a limb's two joints sit exactly on its tips. Normals come from
+  // the profile, not the triangles, so joints shade without facet seams.
+  const sides=12,rings=[];
+  for(let k=4;k>=0;k--){const a=k/4*Math.PI/2;rings.push([.5*Math.cos(a),-.25-.25*Math.sin(a),.25*Math.cos(a),-.5*Math.sin(a)]);}
+  for(let k=0;k<=4;k++){const a=k/4*Math.PI/2;rings.push([.5*Math.cos(a),.25+.25*Math.sin(a),.25*Math.cos(a),.5*Math.sin(a)]);}
+  // the seam reuses column 0 exactly, and the pole snaps to a true zero radius.
+  const at=(r,j)=>{const t=(j%sides)/sides*Math.PI*2,c=Math.cos(t),s=Math.sin(t),l=Math.hypot(r[2],r[3]),rho=Math.abs(r[0])<1e-12?0:r[0];return{p:[rho*c,r[1],rho*s],n:[r[2]/l*c,r[3]/l,r[2]/l*s]};};
+  // Pole rings collapse to one point; skip the zero-area triangles they make.
+  const emit=(a,b,c)=>{const n=cross(sub(b.p,a.p),sub(c.p,a.p));if(Math.hypot(...n)<1e-10)return;const avg=[0,1,2].map(i=>a.n[i]+b.n[i]+c.n[i]);for(const q of dot(n,avg)<0?[a,c,b]:[a,b,c])v.push(...q.p,...q.n);};
+  for(let i=0;i<rings.length-1;i++)for(let j=0;j<sides;j++){const a=at(rings[i],j),b=at(rings[i],j+1),c=at(rings[i+1],j+1),d=at(rings[i+1],j);emit(a,b,c);emit(a,c,d);}
+ }
  else if(kind==='round'){let n=16,m=10,p=(i,j)=>{let a=i/n*Math.PI*2,b=-Math.PI/2+j/m*Math.PI;return[Math.cos(a)*Math.cos(b)*.5,Math.sin(b)*.5,Math.sin(a)*Math.cos(b)*.5];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i,j+1),p(i+1,j+1),p(i+1,j));}
  else if(kind==='ring'){let n=24,m=6,p=(i,j)=>{let a=i/n*Math.PI*2,b=j/m*Math.PI*2,r=.44+.055*Math.cos(b);return[Math.cos(a)*r,Math.sin(a)*r,Math.sin(b)*.055];};for(let i=0;i<n;i++)for(let j=0;j<m;j++)q(p(i,j),p(i+1,j),p(i+1,j+1),p(i,j+1));}
  else if(kind==='roof'){let a=[-.5,0,-.5],b=[.5,0,-.5],c=[.5,0,.5],d=[-.5,0,.5],e=[0,1,-.5],f=[0,1,.5];tri(a,e,b);tri(d,c,f);q(a,d,f,e);q(b,e,f,c);q(a,b,c,d);}
