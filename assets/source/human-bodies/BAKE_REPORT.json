@@ -1,0 +1,56 @@
+{
+ "body_unique_triangles": 1476,
+ "kind_triangles": {
+  "body-coat": 984,
+  "body-forearm": 177,
+  "body-hand": 90,
+  "body-head": 600,
+  "body-neck": 127,
+  "body-robe": 984,
+  "body-shin": 95,
+  "body-thigh": 110,
+  "body-torso": 181,
+  "body-upper-arm": 96,
+  "body-wing-left": 56,
+  "body-wing-right": 56
+ },
+ "kinds": {
+  "forearm": {
+   "faces": 177
+  },
+  "neck": {
+   "faces": 127
+  },
+  "shin": {
+   "faces": 95
+  },
+  "thigh": {
+   "faces": 110
+  },
+  "torso": {
+   "faces": 240
+  },
+  "upper_arm": {
+   "faces": 96
+  }
+ },
+ "objects": {
+  "body": {
+   "name": "GEO-body_male_stylized",
+   "scale": 0.969854,
+   "tris_after": 1898,
+   "tris_before": 25000
+  },
+  "hand": {
+   "name": "Hand - Stylized ",
+   "tris_after": 90,
+   "tris_before": 1738
+  },
+  "head": {
+   "name": "GEO-head_stylized",
+   "tris_after": 600,
+   "tris_before": 8232
+  }
+ },
+ "sha256": "44c3eb6d17554981e27d1e6b1e7243a77d359258ad5245a3d0f194b32d723667"
+}
