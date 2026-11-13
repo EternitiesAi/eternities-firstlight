@@ -125,10 +125,10 @@ function routeDistance(def,x,z){let best=Infinity;for(const line of routes[def.i
 // hell's dressing: the ember ground, iron towers and chain gantries, braziers, the foundry's glow, the refuge's warm
 // windows and the falling ash. instances only: no solids, no collision, no step points, and the roads stay clear.
 function hellSet(art,def,ctx){
- const{at,h,rnd}=ctx,ember=0xff6a1f,glow=0xffa24a,iron=0x2c2a30,rust=0x4d2b24,dark=0x1d1a1e,ash=0x6c6661,far={skyImage:true,distantArt:true};
+ const{at,h,rnd}=ctx,ember=0xff4a14,glow=0xff5a1c,iron=0x2c2a30,rust=0x4d2b24,dark=0x1d1a1e,ash=0x6c6661,far={skyImage:true,distantArt:true};
  const open=(x,z,r=1)=>clear(def,x,z,r)&&routeDistance(def,x,z)>2.4&&!def.points.some(p=>Math.hypot(x-p.x,z-p.z)<3.4);
  const bx=()=>def.bounds.minX+4+rnd()*(def.bounds.maxX-def.bounds.minX-8),bz=()=>def.bounds.minZ+4+rnd()*(def.bounds.maxZ-def.bounds.minZ-8);
- for(let i=0;i<80;i++){const x=bx(),z=bz();if(open(x,z,.6))at('box',x,h(x,z)+.02,z,.1,.02,2+rnd()*4,ember,{em:.9,r:[0,rnd()*Math.PI,0],rough:.6});}
+ for(let i=0;i<140;i++){const x=bx(),z=bz();if(open(x,z,.6))at('box',x,h(x,z)+.02,z,.1,.02,2+rnd()*4,ember,{em:.9,r:[0,rnd()*Math.PI,0],rough:.6});}
  for(const line of routes.hell)for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]),yaw=Math.atan2(b[0]-a[0],b[1]-a[1]);
   for(let d=0;d<len;d+=3.4)for(const side of[-1,1]){const t=d/len,x=a[0]+(b[0]-a[0])*t-Math.cos(yaw)*2.7*side,z=a[1]+(b[1]-a[1])*t+Math.sin(yaw)*2.7*side;if(open(x,z,.4))at('box',x,h(x,z)+.02,z,.35,.02,2.2,glow,{em:.8,r:[0,yaw,0],rough:.7});}}
  const tower=(x,z)=>{const b=h(x,z);at('box',x,b+.2,z,1.8,.4,1.8,dark,{rough:.9});at('box',x,b+3.3,z,.55,6.2,.55,iron,{rough:.9});at('box',x,b+6.5,z,1.5,.35,1.5,rust,{rough:.9});at('cylinder',x,b+6.8,z,.6,.3,.6,iron,{rough:.9});at('octa',x,b+7.5,z,.38,.5,.38,ember,{em:1,rough:.7});at('disc',x,b+.04,z,4,.03,4,glow,{em:.25});};
@@ -139,10 +139,10 @@ function hellSet(art,def,ctx){
  for(let x=18;x<=30;x+=3)for(let k=0;k<3;k++)at('ring',x,h(x,-50)+6.1-k*.42,-50,.3,.42,.12,iron,{ornament:true,r:[0,0,0]});
  for(const[x,z]of[[-4,-30],[12,-62],[-30,-62],[6,-20],[-20,24],[10,24],[-6,44],[16,-88]])if(open(x,z,.8)){const b=h(x,z);at('cylinder',x,b+.9,z,.14,1.8,.14,iron,{rough:.9});at('cylinder',x,b+1.9,z,.5,.25,.5,rust,{rough:.9});at('octa',x,b+2.25,z,.35,.5,.35,ember,{em:1,rough:.5});at('disc',x,b+.04,z,2.2,.03,2.2,glow,{em:.35});}
  // the foundry beyond the closed works: a dark mass with molten seams and a chimney, and the light it throws on the yard.
- at('box',0,14,-152,64,28,20,0x221c20,{...far,rough:1});at('box',-6,36,-152,10,6,8,0x2b2327,{...far,rough:1});
- at('cylinder',16,30,-150,3.4,42,3.4,0x2a2326,{...far,rough:1});at('octa',16,52,-150,2.6,1.6,2.6,ember,{...far,em:1});
+ at('box',0,26,-152,70,52,22,0x221c20,{...far,rough:1});at('box',-6,58,-152,10,8,8,0x2b2327,{...far,rough:1});
+ at('cylinder',16,52,-150,4,84,4,0x2a2326,{...far,rough:1});at('octa',16,95,-150,3.2,2,3.2,ember,{...far,em:1});at('box',0,8,-141.6,58,14,.4,ember,{...far,em:1});
  for(let x=-24;x<=24;x+=6)at('box',x,12,-142.3,.5,16,.3,ember,{...far,em:1});
- at('disc',0,h(0,-104)+.04,-104,8,.03,4,glow,{em:.55});
+ at('disc',0,h(0,-104)+.04,-104,14,.03,6,ember,{em:.8});
  // the refuge is a lit shelter: warm windows in its front and a warm pool on the approach.
  for(const x of[-17,-11,-5])at('box',x,h(x,9)+1.9,10.75,.9,1.1,.06,0xffb050,{em:1,rough:.5});
  at('disc',-10,h(-10,22)+.035,22,6,.03,4,0xffa24a,{em:.45});
@@ -197,7 +197,7 @@ function decorate(art,def,options={}){
    const t=distance/length,x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;
    if(!clear(def,x,z,1.6))continue;
    const r=[0,Math.atan2(b[0]-a[0],b[1]-a[1]),0];
-   box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xd8ceb4:0x8b8a7c,{r,paving:true,rough:1});
+   box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xd8ceb4:0x3a2c28,{r,paving:true,rough:1});
    // A narrow craft inlay rests on the paving top. Its color indicates the
    // existing lower route, without creating a waypoint or interaction.
    if(isHeaven&&lineIndex<2)box(x,h(x,z)+.0325,z,.28,.012,1.56,lineIndex===0?silver:ruby,{r,routeInlay:lineIndex===0?'mirror-causeway':'ruby-arcade',rough:.9});
