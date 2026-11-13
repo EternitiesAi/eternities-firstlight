@@ -14,6 +14,8 @@ assert.equal(E.geometry('overlook-stone').length,864,'explicit original 48-trian
 KINDS.add('overlook-stone');
 assert.equal(E.geometry('woodland-canopy').length,2304,'exact original 128-triangle crown mesh, not unknown cylinder fallback');
 KINDS.add('woodland-canopy');
+assert.equal(E.geometry('lobed-crown').length,2160,'lobed crown: 120 triangles, a new kind beside the pinned canopy');
+KINDS.add('lobed-crown');
 KINDS.add('heaven-workbench');
 assert.equal(E.geometry('elderweald-root-arch').length,32*3*8,'explicit original 32-triangle timber root mesh');
 KINDS.add('elderweald-root-arch');

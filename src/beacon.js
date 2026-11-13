@@ -2,6 +2,7 @@
  * Long-lived outcomes are separate from the resumable encounter checkpoint. */
 (function(G){
 'use strict';
+const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const POINT={x:0,z:-24},dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 // Tessa and a stranger wait at the mouth of his spur until he has been heard: the regent's first sighting.
 const SCENE=Object.freeze({tessa:Object.freeze({x:-3.4,z:-15.6,yaw:Math.PI/2}),stranger:Object.freeze({x:4.2,z:-15.4,yaw:-Math.PI/2})});
@@ -13,13 +14,13 @@ const SIGHTING=Object.freeze([
 ]);
 const ROUTES=Object.freeze({monastery:'The mountain monastery',kingdom:'The fallen kingdom',forest:'The living forest'});
 const WAVES=Object.freeze([
- [{id:'west-ash',name:'Ashbound raider',kind:'invader',x:-6,z:-18,hp:78,damage:15,wardDamage:6},
-  {id:'east-ash',name:'Cinder claw',kind:'invader',x:6,z:-17,hp:78,damage:15,wardDamage:6}],
- [{id:'cantor',name:'The ember cantor',kind:'chanter',x:5,z:-16,hp:105,damage:17,wardDamage:9},
-  {id:'veiled',name:'Veiled desecrator',kind:'saboteur',x:-7,z:-16,hp:80,damage:13,wardDamage:7,hidden:true},
-  {id:'second-claw',name:'Ashbound raider',kind:'invader',x:1,z:-14,hp:85,damage:15,wardDamage:6}],
- [{id:'herald',name:'The Chainbound Herald',kind:'siegeboss',x:0,z:-17,hp:350,damage:27,wardDamage:14},
-  {id:'last-claw',name:'The herald’s attendant',kind:'invader',x:5,z:-15,hp:90,damage:17,wardDamage:6}]
+ [{id:'west-ash',name:'Ashbound raider',kind:'invader',x:-6,z:-18,hp:78,damage:15,wardDamage:6,windup:1,poise:true},
+  {id:'east-ash',name:'Cinder claw',kind:'invader',x:6,z:-17,hp:78,damage:15,wardDamage:6,windup:1,poise:true}],
+ [{id:'cantor',name:'The ember cantor',kind:'chanter',x:5,z:-16,hp:105,damage:17,wardDamage:9,windup:1,poise:true},
+  {id:'veiled',name:'Veiled desecrator',kind:'saboteur',x:-7,z:-16,hp:80,damage:13,wardDamage:7,hidden:true,windup:1,poise:true},
+  {id:'second-claw',name:'Ashbound raider',kind:'invader',x:1,z:-14,hp:85,damage:15,wardDamage:6,windup:1,poise:true}],
+ [{id:'herald',name:'The Chainbound Herald',kind:'siegeboss',boss:true,x:0,z:-17,hp:D.boss('herald').hp,damage:D.boss('herald').damage,wardDamage:14,windup:D.boss('herald').windup,attackOrder:['strike','double','line'],attackSpec:{double:{windup:1.2,r1:2.5,r2:4,gap:.8},line:{windup:1.2,length:7,half:1}}},
+  {id:'last-claw',name:'The herald’s attendant',kind:'invader',x:5,z:-15,hp:90,damage:17,wardDamage:6,windup:1,poise:true}]
 ]);
 function fresh(){return{version:1,introduced:false,complete:false,status:'dormant',attempts:0,failures:0,reward:false,relic:'undecided',route:null,soul:{grace:false,equipped:null,radiance:0,corruption:0,scars:[]}};}
 function validate(raw,a){
@@ -66,7 +67,7 @@ function fail(sim,why){const b=sim.state.adventure.beacon,r=runtime(sim);if(!['a
  if(!r.replay){b.status='corrupted';b.failures=Math.min(9999,b.failures+1);}r.phase=r.replay?'won':'failed';G.RealmCombat.stop(sim,true);G.RealmAdventure.runtime(sim).enemies=G.RealmAdventure.runtime(sim).enemies.filter(e=>!e.eventEnemy);sim.event('beacon',r.replay?'The repeat assault ended. '+why+' The completed chapter and its rewards are unchanged.':'The ward faltered. '+why+' Reclaiming the beacon is possible; your home and earlier progress are untouched.');G.RealmAdventure.notify(sim,r.replay?'Repeat assault ended · the completed chapter remains.':'Beacon contested. Return to its light to reclaim it.');}
 function win(sim){const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim);if(r.replay){r.phase='won';G.RealmCombat.stop(sim,true);sim.event('beacon','Another breach repelled. No repeat reward was created.');A.notify(sim,'Repeat defense complete · no repeat loot.');return;}b.complete=true;b.status='stable';r.phase='won';r.ward=Math.max(1,r.ward);G.RealmCombat.stop(sim,true);a.revision++;G.RealmSaga?.mark(sim,'beacon');sim.event('quest','The Sunward Beacon held. A map of lost roads answers the envoy. A cinder remains where the herald fell.');A.notify(sim,'Chapter III complete · Speak at the beacon for your reward and the roads beyond.');}
 function damage(sim,e,n){if(!e?.eventEnemy)return false;const a=sim.state.adventure,r=runtime(sim);if(e.hp<=0||e.hidden)return true;
- e.hp=Math.max(0,e.hp-n);e.flash=a.elapsed+.18;G.RealmAdventure.fx(sim,'hit',e.x,e.z);if(e.hp===0){e.mode='dead';r.defeats++;G.RealmAdventure.notify(sim,e.name+' banished.');}return true;}
+ e.hp=Math.max(0,e.hp-n);e.flash=a.elapsed+.18;G.RealmAdventure.fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0){e.mode='dead';r.defeats++;G.RealmAdventure.notify(sim,e.name+' banished.');}return true;}
 function handle(sim,type,p={}){
  if(!type.startsWith('beacon-')&&!['soul-equip','soul-purify'].includes(type))return null;
  const A=G.RealmAdventure,a=sim.state.adventure,b=a.beacon,r=runtime(sim),ar=A.runtime(sim),yes=text=>({ok:true,text}),no=error=>({ok:false,error});
@@ -133,7 +134,8 @@ function tick(sim,dt){
   if(e.hidden&&a.elapsed-e.born>12)e.hidden=false;
   if(e.mode==='windup'){
    if(e.timer<=0){
-    if(e.aimWard){r.ward=Math.max(0,r.ward-e.wardDamage);A.fx(sim,'cinder',0,-24,0xd87786);}
+    if(e.omen){if(G.RealmCombat.strike(sim,e))continue;}
+    else if(e.aimWard){r.ward=Math.max(0,r.ward-e.wardDamage);A.fx(sim,'cinder',0,-24,0xd87786);}
     else if(dist(p,e.aim)<(e.kind==='siegeboss'?2.5:1.3)&&A.visible(sim,e,p))A.takeDamage(sim,e.damage);
     e.mode='recover';e.timer=e.kind==='siegeboss'?(e.hp<e.maxHP/2?1.1:1.7):1.4;
    }continue;
@@ -141,7 +143,7 @@ function tick(sim,dt){
   if(e.mode==='recover'){if(e.timer<=0)e.mode='pursue';continue;}
   const playerNear=dist(p,e)<(e.kind==='siegeboss'?4:2.8)&&A.visible(sim,e,p);
   const wardReach=e.kind==='chanter'?8:e.kind==='siegeboss'?4:2.2;
-  if(playerNear||dist(e,POINT)<wardReach){e.aimWard=!playerNear;e.aim=playerNear?{x:p.x,z:p.z}:{...POINT};e.mode='windup';e.timer=e.kind==='siegeboss'?1.35:1;e.yaw=Math.atan2(e.aim.x-e.x,e.aim.z-e.z);e.path=[];continue;}
+  if(playerNear||dist(e,POINT)<wardReach){e.aimWard=!playerNear;const omen=playerNear?G.RealmCombat.cycle(e,p):null;e.omen=omen;e.aim=omen?null:playerNear?{x:p.x,z:p.z}:{...POINT};e.mode='windup';e.timer=omen?omen.windup:e.windup;const aimAt=playerNear?p:POINT;e.yaw=Math.atan2(aimAt.x-e.x,aimAt.z-e.z);e.path=[];continue;}
   e.mode='pursue';A.followPath(sim,e,{x:e.x<0?-1.2:1.2,z:-22.6},dt,e.kind==='siegeboss'?1.3:1.65);
  }
  if(r.ward<=0){fail(sim,'The infernal signal overwhelmed the ward.');return;}

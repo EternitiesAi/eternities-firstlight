@@ -330,6 +330,7 @@ class RPGUI{
    'garden-pulse':['Relay pulse',defense+' · step outside its circle'],
    'writ-sweep':['Writ sweep',defense+' · short wide lane'],
    'writ-line':['Writ line',defense+' · long narrow lane'],
+   'telegraph-line':['Line slam',defense+' · step beside the marked lane'],'telegraph-double':['Double ring',defense+' · leave the close ring before the wide one lands'],'telegraph-bait':['Charge lane',defense+' · sidestep and lead it into a wall'],
    'bank-sweep':['Bank sweep',braced?'Braced · incoming damage reduced':ready?'Brace (3) or step beside the marked lane':'Step beside the lane · Brace unavailable'],
    'bell-outer':['Wide ring','Step into its quiet center'],
    'bell-inner':['Inner strike','Step out of the circle'],
@@ -370,7 +371,7 @@ class RPGUI{
    const bar=document.createElement('div');bar.className='enemy-health'+(e.id===selected?' selected':'');bar.style.left=pos.x+'px';bar.style.top=pos.y+'px';const fill=document.createElement('i');fill.style.width=(100*e.hp/e.maxHP)+'%';bar.append(fill);root.append(bar);
   }
  }
- numbers(){const t=T.runtime(this.sim),now=this.state.elapsed,root=$('#combat-numbers');root.replaceChildren();for(const h of t.hits){const pos=this.api.project(h.x,3.3+(this.sim.state.settings.reducedMotion?0:now-h.at),h.z);if(!pos?.visible)continue;const el=document.createElement('span');el.textContent=h.n;el.style.left=pos.x+'px';el.style.top=pos.y+'px';el.style.opacity=String(Math.max(0,1-(now-h.at)/.9));root.append(el);}}
+ numbers(){const t=T.runtime(this.sim),now=this.state.elapsed,root=$('#combat-numbers');root.replaceChildren();for(const h of [...t.hits.map(h=>({...h,out:true})),...t.hurts.map(h=>({...h,out:false}))]){const pos=this.api.project(h.x,3.3+(this.sim.state.settings.reducedMotion?0:now-h.at),h.z);if(!pos?.visible)continue;const el=document.createElement('span');el.textContent=(h.out?'':'-')+h.n;el.style.left=pos.x+'px';el.style.top=pos.y+'px';el.style.opacity=String(Math.max(0,1-(now-h.at)/.9));if(!h.out)el.style.color='#f2a1a9';if(h.heavy)el.style.fontSize='30px';root.append(el);}}
 }
 G.RealmRPGUI={RPGUI,icon};
 })(globalThis);

@@ -175,7 +175,7 @@ function pose(options={}){
 
 function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
- out['traveler-cloth']||=([]);
+ out['traveler-cloth']||=([]);out.capsule||=([]);
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
  const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
@@ -188,6 +188,7 @@ function draw(out,input={},posed=pose()){
  const armored=input.armorColor!=null,coat=armored?hex(input.armorColor):blend(cloth,hex(0xe2d6b7),.12);
  const darkCoat=blend(coat,hex(0x263932),.20),seam=blend(coat,hex(0xe2d6b7),.32);
  const trousers=hex(0x414b45),leather=hex(0x4f4336),sole=hex(0x302f2b),metal=hex(0xc4af7b);
+ const eyeWhite=hex(0xe8e0cb),pupil=hex(0x26302d),catchlight=hex(0xf7f2e6),mouthColor=hex(0x7b4a42);
  const add=(kind,name,position,size,color,rotation=[0,0,0],extra={},upper=false)=>{
   const local=M.compose(...position,...size,...rotation);
   const parent=upper?bodyRoot:root;
@@ -203,7 +204,7 @@ function draw(out,input={},posed=pose()){
   const across=norm([up[1]*reference[2]-up[2]*reference[1],up[2]*reference[0]-up[0]*reference[2],up[0]*reference[1]-up[1]*reference[0]]);
   const forward=[across[1]*up[2]-across[2]*up[1],across[2]*up[0]-across[0]*up[2],across[0]*up[1]-across[1]*up[0]];
   const center=mix(a,b,.5),local=new Float32Array([...scale(across,width),0,...scale(up,length),0,...scale(forward,depth),0,...center,1]);
-  out.round.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
+  out.capsule.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
    cameraSolid:false,cutaway:false,travelerPart:name,travelerJoints:[a.slice(),b.slice()]});
  };
  const y=posed.bob;
@@ -211,8 +212,8 @@ function draw(out,input={},posed=pose()){
  // with existing primitives, rather than a stack of rounded doll volumes.
  upperAdd('traveler-cloth','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
  upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
- upperAdd('octa','jacket-left-side',[-.155,1.13+y,0],[.155,.35,.245],coat);
- upperAdd('octa','jacket-right-side',[.155,1.13+y,0],[.155,.35,.245],coat);
+ upperAdd('capsule','jacket-left-side',[-.155,1.13+y,0],[.155,.44,.245],coat);
+ upperAdd('capsule','jacket-right-side',[.155,1.13+y,0],[.155,.44,.245],coat);
  upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
  add('traveler-cloth','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
  add('traveler-cloth','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
@@ -226,7 +227,7 @@ function draw(out,input={},posed=pose()){
  upperAdd('round','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
   upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
-  upperAdd('box',name+'-eye',[side*.050,1.633+y,.119],[.025,.016,.012],0x303b37);
+  upperAdd('round',name+'-eye',[side*.052,1.630+y,.114],[.050,.034,.030],eyeWhite);
   upperAdd('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
   limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers);
   limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers);
@@ -241,6 +242,14 @@ function draw(out,input={},posed=pose()){
   add('round',name+'-hand',j[name+'Hand'],[.104,.116,.102],skin);
  }
  upperAdd('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
+ // Expression parts ride the body's batches but sit outside its 49-part pin;
+ // the flag lets callers and tests count body and face apart.
+ const face=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{travelerFace:true},true);
+ for(const [name,side] of [['left',-1],['right',1]]){
+  face('round',name+'-pupil',[side*.052,1.628+y,.1295],[.026,.026,.012],pupil);
+  face('round',name+'-catchlight',[side*.060,1.638+y,.1345],[.008,.008,.006],catchlight);
+ }
+ face('capsule','mouth',[0,1.567+y,.121],[.012,.056,.016],mouthColor,[0,0,Math.PI/2]);
  const sweep=posed.cloakSwing;
  for(const [name,side]of [['left',-1],['center',0],['right',1]]){
   upperAdd('box','cloak-'+name,[side*.133,1.10+y,-.189-Math.abs(side)*.020+sweep],[.150,.61,.045],

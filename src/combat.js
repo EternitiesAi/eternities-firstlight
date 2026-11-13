@@ -11,8 +11,8 @@ const skills=Object.freeze({
 });
 function runtime(sim){
  const r=G.RealmAdventure.runtime(sim);
- if(!r.tactics)r.tactics={scene:sim.room,target:null,auto:false,nextAttack:0,guardUntil:0,shield:0,shieldUntil:0,cooldowns:{guard:0,insight:0,spirit:0},hits:[],serial:0};
- if(r.tactics.scene!==sim.room){r.tactics.scene=sim.room;r.tactics.target=null;r.tactics.auto=false;r.tactics.windup=null;r.tactics.motion=null;r.tactics.hits=[];}
+ if(!r.tactics)r.tactics={scene:sim.room,target:null,auto:false,nextAttack:0,guardUntil:0,shield:0,shieldUntil:0,cooldowns:{guard:0,insight:0,spirit:0},hits:[],hurts:[],hold:0,jolt:null,serial:0};
+ if(r.tactics.scene!==sim.room){r.tactics.scene=sim.room;r.tactics.target=null;r.tactics.auto=false;r.tactics.windup=null;r.tactics.motion=null;r.tactics.hits=[];r.tactics.hurts=[];}
  return r.tactics;
 }
 function canTarget(sim,e){return !!e&&e.hp>0&&!e.hidden&&(!e.rainTournament||G.RealmEarthTournament?.owned(sim,e))&&(!e.earthHomecoming||G.RealmEarthHomecoming?.owned(sim,e))&&dist(sim.state.player,e)<=22;}
@@ -39,6 +39,7 @@ function threat(sim){
  if(e.rainTournament){const v=G.RealmEarthTournament?.view(sim);return v&&G.RealmEarthTournament.owned(sim,e)&&['tell','opening'].includes(v.phase)?{phase:v.phase==='tell'?'windup':'recover',kind:v.phase==='tell'?'rain-ribbon':'opening',remaining:v.remaining}:null;}
  const known=e.custom==='bell'?e.kind==='bellwarden':e.eventEnemy?['invader','chanter','saboteur','siegeboss'].includes(e.kind):['skitter','sentinel','boss','charger'].includes(e.kind);
  if(!known)return null;
+ if(e.omen&&e.mode==='windup'&&Number.isFinite(e.timer)&&e.timer>0)return{phase:'windup',kind:'telegraph-'+e.omen.kind,remaining:e.timer};
  if(G.RealmAtlantisCampaign?.encounter(e)&&e.mode==='intake'&&e.strike?.kind==='intake'&&Number.isFinite(e.timer)&&e.timer>0)return{phase:'intake',kind:'harbour-intake',remaining:e.timer};
  if(e.mode==='charge')return e.kind==='charger'&&Number.isFinite(e.chargeLeft)&&e.chargeLeft>0?{phase:'charge',kind:'charge',remaining:null}:null;
  if(!['windup','recover'].includes(e.mode)||!Number.isFinite(e.timer)||e.timer<=0)return null;
@@ -87,7 +88,7 @@ function handle(sim,type,p={}){
   if(!nearby.length)return fail('No foe nearby. Use Seek on the road to find buried scents.');
   for(const e of nearby)if(e.hidden){e.hidden=false;A.notify(sim,'Briar revealed '+e.name+'.');}
   const e=selected(sim)||nearby.sort((x,y)=>dist(sim.state.player,x)-dist(sim.state.player,y))[0];
-  e.exposedUntil=now+6;if(e.mode==='windup'){e.mode='recover';e.timer=1.5;}t.cooldowns.insight=now+10;
+  e.exposedUntil=now+6;if(e.mode==='windup'){e.mode='recover';e.timer=1.5;e.omen=null;}t.cooldowns.insight=now+10;
   A.fx(sim,'insight',e.x,e.z,0xa9d6a2);return yes('Briar exposed '+e.name+' · +20% damage for 6 seconds.');
  }
  const b=a.beacon,power=b?.soul.equipped;
@@ -100,7 +101,7 @@ function handle(sim,type,p={}){
   if(a.hp<=12)return fail('Cinder surge needs more than 12 health.');
   a.hp-=12;t.cooldowns.spirit=now+12;
   if(!b.soul.scars.includes('cinder-invoked')){b.soul.scars.push('cinder-invoked');b.soul.corruption=1;sim.event('choice','You invoked the cinder willingly. The deed remains in your history even if you renounce its power.');}
-  A.damageEnemy(sim,e,Math.round(A.stats(a).attack*2.3));A.fx(sim,'cinder',e.x,e.z,0xe27d86);return yes('Cinder surge · health paid, power released.');
+  A.damageEnemy(sim,e,Math.round(A.stats(a).attack*2.3),'other',null,'skill');A.fx(sim,'cinder',e.x,e.z,0xe27d86);return yes('Cinder surge · health paid, power released.');
  }
  return fail('No soul technique equipped. You may remain entirely mortal.');
 }
@@ -110,11 +111,48 @@ function mitigate(sim,damage){
  if(a.elapsed<t.shieldUntil&&t.shield>0){const absorb=Math.min(t.shield,n);t.shield-=absorb;n-=absorb;}
  return n;
 }
-function hit(sim,e,n){const t=runtime(sim),a=sim.state.adventure;e.hitAt=a.elapsed;e.hitFrom={x:sim.state.player.x,z:sim.state.player.z};t.hits.push({x:e.x,z:e.z,n,at:a.elapsed,id:++t.serial});if(t.hits.length>20)t.hits.shift();}
+// Hit-stop and jolt are presentation time: a landed hit holds adventure time for a few frames, a heavy one jolts the camera.
+const HOLD={light:.04,skill:.055,boss:.07};
+function hit(sim,e,n,weight='light'){const t=runtime(sim),a=sim.state.adventure,heavy=weight!=='light';e.hitAt=a.elapsed;e.hitFrom={x:sim.state.player.x,z:sim.state.player.z};t.hits.push({x:e.x,z:e.z,n,at:a.elapsed,id:++t.serial,heavy});if(t.hits.length>20)t.hits.shift();t.hold=Math.max(t.hold,HOLD[weight]??HOLD.light);if(heavy)t.jolt={at:a.elapsed,amp:weight==='boss'?.12:.08};}
+// Incoming blows get the same weight, so the player feels being hit as much as hitting.
+function hurt(sim,n,heavy=false){const t=runtime(sim),a=sim.state.adventure,p=sim.state.player;t.hurts.push({x:p.x,z:p.z,n,at:a.elapsed,id:++t.serial,heavy});if(t.hurts.length>12)t.hurts.shift();t.hold=Math.max(t.hold,heavy?HOLD.boss:HOLD.light);if(heavy)t.jolt={at:a.elapsed,amp:.1};}
+// Returns the time left to advance after any hold is spent. Cooldowns, timers and windups freeze with it.
+function holdTime(sim,dt){const t=runtime(sim),m=Math.min(dt,t.hold);t.hold-=m;return dt-m;}
+// Reduced motion turns the jolt off. It decays over a fifth of a second.
+function shakeOffset(sim){const t=runtime(sim),j=t.jolt,a=sim.state.adventure,age=j?a.elapsed-j.at:-1;if(!j||sim.state.settings.reducedMotion||!(age>=0&&age<.2))return[0,0,0];const k=(1-age/.2)*j.amp;return[Math.sin(a.elapsed*97)*k,0,Math.cos(a.elapsed*61)*k];}
+// Guard is a diminishing share, not a flat cut: 9 guard takes about a fifth off a blow, and a quarter always lands.
+const ARMOUR={k:2.5,floor:.25};
+// Flooring keeps one point of guard worth one point on small blows, so starter armour still matters.
+function armour(n,defense){return Math.max(1,Math.ceil(n*ARMOUR.floor),Math.floor(n*100/(100+Math.max(0,defense)*ARMOUR.k)));}
+// Telegraph shapes are pure geometry. Hits use the same body radius as the ring owners.
+const BODY=.24;
+function inLine(t,p){const u=Math.min(t.length,Math.max(0,(p.x-t.ox)*t.dx+(p.z-t.oz)*t.dz)),x=t.ox+t.dx*u,z=t.oz+t.dz*u;return Math.hypot(p.x-x,p.z-z)<t.half+BODY;}
+function inRing(t,r,p){return Math.hypot(p.x-t.x,p.z-t.z)<r+BODY;}
+// A shaped move from the boss's own table, locked on the player at windup start. Null keeps the owner's plain ring or charge.
+function telegraph(e,name,p){
+ const a=e.attackSpec?.[name];if(!a||!['line','double','bait'].includes(name))return null;
+ if(name==='double')return{kind:name,x:e.x,z:e.z,r1:a.r1,r2:a.r2,gap:a.gap,windup:a.windup,stage:1};
+ const d=Math.hypot(p.x-e.x,p.z-e.z),ux=d?(p.x-e.x)/d:Math.sin(e.yaw||0),uz=d?(p.z-e.z)/d:Math.cos(e.yaw||0);
+ return{kind:name,ox:e.x,oz:e.z,dx:ux,dz:uz,length:a.length,half:a.half??0,stun:a.stun??0,windup:a.windup,stage:1};
+}
+// The boss's fixed move order, one step per windup. Shaped moves return a telegraph; plain rings and charges return null.
+function cycle(e,p){const order=e.attackOrder;if(!Array.isArray(order)||!order.length)return null;const name=order[(e.strikes=(e.strikes??-1)+1)%order.length];return telegraph(e,name,p);}
+// Resolve a telegraph when its windup ends. A double ring arms its outer stage and returns true.
+function strike(sim,e){
+ const A=G.RealmAdventure,p=sim.state.player,t=e.omen;if(!t)return false;
+ const on=t.kind==='line'?inLine(t,p):inRing(t,t.kind==='double'&&t.stage===2?t.r2:t.r1,p);
+ const at=t.kind==='line'?{x:t.ox+t.dx*t.length*.5,z:t.oz+t.dz*t.length*.5}:{x:t.x??t.ox,z:t.z??t.oz};
+ A.fx(sim,'impact',at.x,at.z,t.kind==='line'?0xf0a06a:0xc68fbd);
+ if(on&&A.visible(sim,e,p))A.takeDamage(sim,e.damage);
+ if(t.kind==='double'&&t.stage===1){t.stage=2;e.timer=t.gap;return true;}
+ e.omen=null;return false;
+}
+// Telegraph progress: empty at the start of its span, full at its end.
+function fill(e){const t=e.omen,span=t?.kind==='double'&&t.stage===2?t.gap:(t?.windup??e.windup??1);return Math.min(1,Math.max(0,1-e.timer/Math.max(.05,span)));}
 function tick(sim){
  const A=G.RealmAdventure,a=sim.state.adventure,r=A.runtime(sim),t=runtime(sim);
  if(t.scene!==sim.room){t.scene=sim.room;t.target=null;t.auto=false;}
- t.hits=t.hits.filter(h=>a.elapsed-h.at<.9);
+ t.hits=t.hits.filter(h=>a.elapsed-h.at<.9);t.hurts=t.hurts.filter(h=>a.elapsed-h.at<.9);
  if(a.elapsed>=t.shieldUntil)t.shield=0;
  if(a.hp<=0){stop(sim,true);return;}
  if(t.target&&!selected(sim)){stop(sim,true);return;}
@@ -130,6 +168,6 @@ function tick(sim){
  const result=sim.adventureCommand('auto-'+(++t.serial)+'-'+a.revision,'attack',{target:e.id});
  if(result.ok)t.motion={style:w.style,at:a.elapsed};t.windup=null;
 }
-G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,threat,handle,mitigate,hit,tick};
+G.RealmCombat={skills,runtime,candidates,selected,stop,pose,readiness,threat,handle,mitigate,armour,hit,hurt,holdTime,shakeOffset,inLine,inRing,telegraph,cycle,strike,fill,tick};
 if(typeof module!=='undefined')module.exports=G.RealmCombat;
 })(globalThis);
