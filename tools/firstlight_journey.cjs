@@ -1,121 +1,120 @@
 #!/usr/bin/env node
 'use strict';
-/* The firstlight journey bot. One fresh character runs the producers' real-command journeys in story order, each stage
- * starting from the previous stage's saved world (the same chain the whole-draft tool uses). Times, levels, hp and gear
- * are read from the saved worlds. A beat with no producer wired here is printed as not wired, with the reason; the bot
- * never plants a defeat, edits a position or a stat. Usage:
- *   node tools/firstlight_journey.cjs [--out <dir>]
- * Importable: require('./firstlight_journey.cjs').run({ out }) returns { rows, creditsRolled, stoppedAt }. */
+/* The firstlight journey bot. One fresh character runs the producers' real-command journeys in story order. Each stage
+ * starts from the previous stage's saved world, so the character continues: chapter one, the road, the beacon, the
+ * bellweather crossing, the night, the local realms, then the hell and heaven campaigns (the connected helpers take the
+ * live world). Times, levels, hp and gear come from the saved worlds. Beats with no producer print as not wired, with the
+ * reason, and the bot stops at the first blocked beat. The bot never plants a defeat, edits a position or a stat.
+ * Usage: node tools/firstlight_journey.cjs [--out <dir>]
+ * Importable: require('./firstlight_journey.cjs').run({ out, quiet }) returns { rows, creditsRolled, stoppedAt, totals }. */
 const fs = require('node:fs'), os = require('node:os'), path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
 process.env.FIRSTLIGHT_ROOT = process.env.FIRSTLIGHT_ROOT || ROOT;
 const AD = require(path.join(ROOT, 'src/adventure.js'));
-
-// the story in order. a beat with no producer says why it is not wired.
-const NOT_WIRED = {
- hell: 'the realm trail and the hell campaign need their own inputs; not chained here yet',
- heaven: 'the realm trail and the heaven campaign need their own inputs; not chained here yet',
- atlantis: 'the atlantis producer reads a historical fixture, not a fresh save',
- cosmos: 'the cosmos producer reads a historical fixture, not a fresh save',
- nearshore: 'no producer for the nearshore choice in this build',
- finale: 'the finale is checked separately from an earned late world (tests/finale.test.cjs); not reached fresh',
+const BEATS = ['kit', 'hart', 'envoy', 'road', 'beacon', 'bellweather', 'night', 'hell', 'heaven', 'atlantis', 'cosmos', 'nearshore', 'finale', 'credits'];
+const NOT_YET = {
+ atlantis: 'the atlantis helper runs after heaven; heaven is blocked',
+ cosmos: 'the cosmos helper runs after atlantis; not reached',
+ nearshore: 'no nearshore producer yet (src/nearshore.js commands are not driven)',
+ finale: 'the finale check (tests/finale.test.cjs) uses an earned world; the fresh finale is not reached',
  credits: 'not reached: the chain stops before the finale'
 };
 
-function readJson(file) { return JSON.parse(fs.readFileSync(file, 'utf8')); }
-// the state a beat leaves: simulated time, level, hp, and the gear the saved world wears.
+// a folder the connected helpers accept: evidence belongs on D: when D: exists, otherwise the system temp folder.
+function outFolder(explicit) {
+ if (explicit) return explicit;
+ const base = fs.existsSync('D:/') ? 'D:/firstlight/runs' : os.tmpdir();
+ return fs.mkdtempSync(path.join(base, 'firstlight-journey-'));
+}
+const readJson = f => JSON.parse(fs.readFileSync(f, 'utf8'));
+// what a saved world shows: simulated time, level, hp, and the gear it wears.
 function state(world) {
  const a = world.adventure, s = AD.stats(a);
  return { t: a.elapsed, level: AD.level(a), hp: a.hp, maxHP: s.maxHP, gear: Object.values(a.equipment || {}).filter(Boolean).join(' + ') || 'none' };
 }
-function row(rows, beat, from, to, log, detail) {
- const a = to ? state(to) : null, b = from ? state(from) : { t: 0 };
- const r = { beat, status: 'ran', secs: a ? +(a.t - b.t).toFixed(1) : 0, level: a ? a.level : null, hp: a ? a.hp + '/' + a.maxHP : null, gear: a ? a.gear : null, detail: detail || '' };
- rows.push(r); if (log) log(r);
- return r;
+function ran(rows, beat, from, to, detail, log) {
+ const a = state(to), b = from ? state(from) : { t: 0 };
+ const r = { beat, status: 'ran', secs: +(a.t - b.t).toFixed(1), level: a.level, hp: a.hp + '/' + a.maxHP, gear: a.gear, detail };
+ rows.push(r); if (log) log(r); return r;
 }
-function blocked(rows, beat, why, log) { const r = { beat, status: 'blocked', why: String(why).slice(0, 220) }; rows.push(r); if (log) log(r); return r; }
-function notWired(rows, beat, log) { const r = { beat, status: 'not wired', why: NOT_WIRED[beat] }; rows.push(r); if (log) log(r); return r; }
+function ranNoWorld(rows, beat, detail, log) { const r = { beat, status: 'ran', secs: null, level: null, hp: null, gear: null, detail }; rows.push(r); if (log) log(r); return r; }
+function blocked(rows, beat, why, log) { const r = { beat, status: 'blocked', why: String(why).split('\n')[0].slice(0, 200) }; rows.push(r); if (log) log(r); return r; }
+function notReached(rows, beat, log) { const r = { beat, status: 'not reached', why: NOT_YET[beat] }; rows.push(r); if (log) log(r); return r; }
+function fmt(r) {
+ if (r.status !== 'ran') return (r.status === 'blocked' ? 'BLOCKED   ' : 'not reached ') + r.beat.padEnd(11) + ' ' + r.why;
+ const time = r.secs === null ? 'n/a' : r.secs + 's';
+ return 'ran       ' + r.beat.padEnd(11) + ' ' + time.padStart(8) + '  lv ' + (r.level ?? '-') + '  hp ' + (r.hp ?? '-') + '  ' + (r.gear ?? '-') + '  ' + r.detail;
+}
 
 function run(options = {}) {
- const out = options.out || fs.mkdtempSync(path.join(os.tmpdir(), 'firstlight-journey-'));
+ const out = outFolder(options.out);
  fs.mkdirSync(out, { recursive: true });
  const log = options.quiet ? null : r => console.log(fmt(r));
- const rows = []; let creditsRolled = false, stoppedAt = null;
+ const rows = []; let stoppedAt = null, creditsRolled = false;
+ const sub = n => path.join(out, n);
+ const f = (dir, file) => path.join(sub(dir), file);
  const fresh = { adventure: { elapsed: 0, xp: 0, hp: 100, equipment: {} } };
- let world = null;
+ let world = null; // the path of the saved world the next stage starts from
 
- // chapter one: kit, the hollow hart and the envoy, from the first fresh save
- const c1 = path.join(out, '01-chapter-one');
+ // chapter one: kit, the hollow hart and the envoy, from a fresh save
  try {
-  require(path.join(ROOT, 'tests/chapter_journey.cjs')).journey({ out: c1, reward: 'warden_stone' });
-  const start = readJson(path.join(c1, 'OPTIONAL_CHAPTER_START.json')), before = readJson(path.join(c1, 'ENVOY_BEFORE_CHOICE.json'));
-  world = readJson(path.join(c1, 'CHAPTER_COMPLETED.json'));
-  row(rows, 'kit', fresh, start, log, 'workshop supplies, the pickaxe and the repaired crossing');
-  row(rows, 'hart', start, before, log, 'the underways, Briar rescued, the hart freed, the relic');
-  row(rows, 'envoy', before, world, log, 'prophecy and the feather sight; the warden stone chosen');
+  require(path.join(ROOT, 'tests/chapter_journey.cjs')).journey({ out: sub('01'), reward: 'warden_stone' });
+  const start = readJson(f('01', 'OPTIONAL_CHAPTER_START.json')), before = readJson(f('01', 'ENVOY_BEFORE_CHOICE.json'));
+  const done = readJson(f('01', 'CHAPTER_COMPLETED.json'));
+  ran(rows, 'kit', fresh, start, 'workshop supplies, the pickaxe, the repaired crossing', log);
+  ran(rows, 'hart', start, before, 'the underways, Briar rescued, the hart freed, the relic', log);
+  ran(rows, 'envoy', before, done, 'prophecy and the feather sight; the warden stone chosen', log);
+  world = f('01', 'CHAPTER_COMPLETED.json');
  } catch (e) { blocked(rows, 'kit', e.message, log); stoppedAt = 'kit'; }
 
- // act II: the road, with Tessa's caravan and the sunscar ram
+ // act II: the road
+ const stage = (beat, dir, file, fn, detail) => {
+  if (!world) return;
+  const prev = world, before = readJson(prev);
+  try { fs.mkdirSync(sub(dir), { recursive: true }); fn(); const next = f(dir, file); ran(rows, beat, before, readJson(next), detail, log); world = next; }
+  catch (e) { blocked(rows, beat, e.message, log); stoppedAt = stoppedAt || beat; world = null; }
+ };
+ stage('road', '02', 'CHAPTER_II_COMPLETE_EARNED.json', () => require(path.join(ROOT, 'tests/road_journey.cjs')).journey({ out: sub('02'), start: readJson(world) }), 'the sunward road, Tessa, the ram');
+ stage('beacon', '03', 'CHAPTER_III_COMPLETE_EARNED.json', () => require(path.join(ROOT, 'tests/beacon_journey.cjs')).journey({ out: sub('03'), source: world }), 'the sighting, then the defence of the beacon');
+ stage('bellweather', '04', 'CHAPTER_IV_COMPLETE_EARNED.json', () => require(path.join(ROOT, 'tests/crossing_journey.cjs')).journey({ out: sub('04'), source: world }), 'the crossing, the keeper, Rowan\'s bell');
+
+ // the night the warning failed: it starts from the crossing save and leaves its own save
+ stage('night', '05', 'NIGHT_COMPLETE.json', () => require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: sub('05'), source: world }), 'Briar bites the device; the travellers are called out; the envoy speaks');
+
+ // the local realms (Earth side) and the hell campaign: the connected helper takes the live world
+ let hellRaw = null;
  if (world) {
-  const c2 = path.join(out, '02-road');
+  const before = readJson(world);
   try {
-   const prev = world;
-   require(path.join(ROOT, 'tests/road_journey.cjs')).journey({ out: c2, start: prev });
-   world = readJson(path.join(c2, 'CHAPTER_II_COMPLETE_EARNED.json'));
-   row(rows, 'road', prev, world, log, 'the sunward road, Tessa, the ram');
-  } catch (e) { blocked(rows, 'road', e.message, log); stoppedAt = 'road'; world = null; }
+   const er = require(path.join(ROOT, 'tools/earth-homecoming-journey/early_realms.cjs')).run({ input: world, bow: false, folder: sub('06') });
+   const hell = require(path.join(ROOT, 'tools/earth-homecoming-journey/connected_hell.cjs')).journey({ root: ROOT, inheritedWorld: er.final, connectedVariant: 'connected-blade', bow: false, output: sub('07') });
+   if (hell.status !== 'passed') throw new Error('hell helper status ' + hell.status);
+   hellRaw = f('07', 'connected-blade/FINAL_WORLD.json');
+   ran(rows, 'hell', before, readJson(hellRaw), 'the local realms, then the foundry: the stolen pattern, the regent\'s hall', log);
+   world = hellRaw;
+  } catch (e) { blocked(rows, 'hell', e.message, log); stoppedAt = stoppedAt || 'hell'; world = null; }
  }
 
- // act III: the beacon, the stranger, the herald's defence
+ // heaven: the campaign helper takes the hell save
  if (world) {
-  const c3 = path.join(out, '03-beacon');
+  const before = readJson(world);
   try {
-   const prev = world;
-   require(path.join(ROOT, 'tests/beacon_journey.cjs')).journey({ out: c3, source: path.join(out, '02-road', 'CHAPTER_II_COMPLETE_EARNED.json') });
-   world = readJson(path.join(c3, 'CHAPTER_III_COMPLETE_EARNED.json'));
-   row(rows, 'beacon', prev, world, log, 'the sighting, then the defence of the beacon');
-  } catch (e) { blocked(rows, 'beacon', e.message, log); stoppedAt = 'beacon'; world = null; }
+   const h = require(path.join(ROOT, 'tools/earth-homecoming-journey/connected_heaven.cjs')).journey({ root: ROOT, inheritedWorld: world, connectedVariant: 'connected-blade', bow: false, output: sub('08') });
+   if (h.status !== 'passed') throw new Error('heaven helper status ' + h.status);
+   world = f('08', 'connected-blade/FINAL_WORLD.json');
+   ran(rows, 'heaven', before, readJson(world), 'the gardens, the envoy\'s home, the prophecy reread', log);
+  } catch (e) { blocked(rows, 'heaven', e.message, log); stoppedAt = stoppedAt || 'heaven'; world = null; }
  }
 
- // the bellweather crossing: Rowan's bell and the hushbound keeper
- if (world) {
-  const c4 = path.join(out, '04-bellweather');
-  try {
-   const prev = world;
-   require(path.join(ROOT, 'tests/crossing_journey.cjs')).journey({ out: c4, source: path.join(out, '03-beacon', 'CHAPTER_III_COMPLETE_EARNED.json') });
-   world = readJson(path.join(c4, 'HOME_AFTER_BELL_EARNED.json'));
-   row(rows, 'bellweather', prev, world, log, 'the crossing, the keeper, Rowan\'s bell');
-  } catch (e) { blocked(rows, 'bellweather', e.message, log); stoppedAt = 'bellweather'; world = null; }
- }
+ for (const beat of BEATS) if (!rows.some(r => r.beat === beat)) notReached(rows, beat, log);
 
- // the rest of the story has no wired producer here; each beat says why.
- // the night the warning failed: its producer replays the crossing from a fresh start, then runs the night's commands.
- if (!stoppedAt) {
-  try {
-   const dir = path.join(out, '05-night');
-   fs.mkdirSync(dir, { recursive: true });
-   const n = require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: dir });
-   const r = { beat: 'night', status: 'ran', secs: null, level: null, hp: null, gear: null, detail: 'own fresh run: the producer replays the crossing, then the night commands (' + n.commands + ' commands, ' + n.status + ')' };
-   rows.push(r); if (log) log(r);
-   stoppedAt = 'hell';
-  } catch (e) { blocked(rows, 'night', e.message, log); stoppedAt = 'night'; }
- }
- for (const beat of ['hell', 'heaven', 'atlantis', 'cosmos', 'nearshore', 'finale', 'credits']) notWired(rows, beat, log);
-
- const ran = rows.filter(r => r.status === 'ran');
- const totals = { beatsRan: ran.length, beatsTotal: rows.length, simulatedSeconds: ran.length ? +ran.reduce((n, r) => n + r.secs, 0).toFixed(1) : 0, creditsRolled };
- if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped before ' + stoppedAt + ')'));
+ const ranRows = rows.filter(r => r.status === 'ran');
+ const totals = { beatsRan: ranRows.length, beatsTotal: BEATS.length, simulatedSeconds: +ranRows.reduce((n, r) => n + (r.secs || 0), 0).toFixed(1), creditsRolled };
+ if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped at ' + (stoppedAt || 'the end') + ')'));
  return { rows, creditsRolled, stoppedAt, totals, out };
 }
 
-function fmt(r) {
- if (r.status !== 'ran') return (r.status === 'blocked' ? 'BLOCKED ' : 'not wired ') + r.beat.padEnd(11) + ' ' + r.why;
- const time = r.secs === null ? 'n/a' : r.secs + 's';
- return 'ran     ' + r.beat.padEnd(11) + ' ' + time.padStart(8) + '  lv ' + (r.level ?? '-') + '  hp ' + (r.hp ?? '-') + '  ' + (r.gear ?? '-') + '  ' + r.detail;
-}
-
-module.exports = { run };
+module.exports = { run, BEATS };
 if (require.main === module) {
  const i = process.argv.indexOf('--out');
  const result = run({ out: i > 0 ? process.argv[i + 1] : null });
