@@ -444,6 +444,7 @@ def main():
     run('starter-blade', ['node', 'tests/starter_journey.cjs'])
     run('starter-bow', ['node', 'tests/starter_journey.cjs', '--bow'])
     run('starter-veteran', ['node', 'tests/starter_veteran.cjs'])
+    run('night-journey', ['node', 'tests/night_journey.cjs'])
     for family in ('blade', 'bow', 'veteran'):
         run('masterwork-' + family, ['node', 'tests/masterwork_journey.cjs'] + ([] if family == 'blade' else ['--' + family]),
             extra_env={'FIRSTLIGHT_MASTERWORK_OUTPUT': str(output / 'masterwork-earned')})
