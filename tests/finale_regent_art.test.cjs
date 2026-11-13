@@ -20,6 +20,9 @@ const run = (s, seconds) => { for (let t = 0; t < seconds - 1e-9; t += .1) s.tic
 const phase = s => s.state.saga.finale.phase;
 const runUntil = (s, want, max = 60) => { for (let t = 0; t < max; t += .1) { s.tick(.1); if (phase(s) === want) { s.tick(.1); return true; } } return false; };
 const bodyOf = s => AD().runtime(s).enemies.find(e => e.finaleRole === 'regent' && e.finalePhase === phase(s));
+// the chains hold real hp: cut each to a few points and let the freed ally finish it (as in finale.test).
+const chainsOf = s => AD().runtime(s).enemies.filter(e => e.finaleRole === 'chain');
+function chainsDown(s) { for (let t = 0; t < 8 && !chainsOf(s).length; t += .1) s.tick(.1); for (const c of chainsOf(s)) AD().damageEnemy(s, c, c.hp - 3); return runUntil(s, 2); }
 // draws the body and records the story art's calls, so the test can see the figure is the story's and sits where the body stands.
 function drawn(s, body) {
  const G = globalThis, orig = G.RealmStoryArt.regent, calls = [];
@@ -40,7 +43,7 @@ test('the Regent is drawn in phase one at his own spot, with the story art figur
 });
 
 test('the Regent is drawn in phase two and in phase three, each at the body that stands', () => {
- const s = sim(world()); run(s, .2); assert.ok(runUntil(s, 2));
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  const second = bodyOf(s), r2 = drawn(s, second);
  assert.equal(r2.ok, true); assert.equal(r2.calls[0][0], second.x); assert.equal(r2.calls[0][2], second.z);
  AD().damageEnemy(s, second, 100000); run(s, .1);
@@ -54,7 +57,7 @@ test('the finale is on from the first chain to the last hit; the envoy steps off
  assert.equal(FIN.fighting(before), false, 'before the finale, the envoy stays where he stands');
  const s = sim(before); run(s, .2);
  assert.equal(FIN.fighting(s.state), true, 'the finale is on in phase one');
- assert.ok(runUntil(s, 2));
+ assert.ok(chainsDown(s));
  assert.equal(FIN.fighting(s.state), true, 'and through phase two');
  assert.equal(EH.definition.room, null, 'the finale is in the valley');
 });
