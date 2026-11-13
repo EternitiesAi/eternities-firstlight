@@ -460,7 +460,7 @@ function worldTravel(ticket){return RealmWorldFoundations.enter(ticket,worldCont
 function earthRoadTravel(ticket){return RealmEarthRoad.enter(ticket,worldContext(),{available:!!engine&&!!RealmEarthArt&&!!RealmWorldFoundationsArt,save:worldSave,build:()=>switchScene(),restore:()=>{scene=Symbol('earth-road-rollback');switchScene();}});}
 function worldReturn(){if(sim.room===RealmCosmos.ROOM&&!sim.worldTrip)return cosmosReturn();const r=RealmWorldFoundations.leave(sim);if(r.ok){switchScene();save();toast('Back at your Firstlight checkpoint.');}return r;}
 function worldSave(candidate){const blocked=briarSaveGuard();if(blocked)return blocked;if(preserveExisting)return{ok:false,error:'Existing storage is preserved. Export before continuing.'};const r=characterStore.save(candidate);saveState=r.ok?'saved':'unavailable';renderStatus();return r;}
-function worldCommand(type,payload){const r=RealmWorldFoundations.command(worldContext(),type,payload,{save:worldSave});if(r.ok&&!r.duplicate&&type==='claim'&&RealmWorldFoundations.handles(sim.room)&&engine)RealmWorldFoundationsArt.make(art,sim);if(r.ok&&!r.duplicate&&type==='observe'&&payload.realm==='heaven'&&audio.enabled)audio.note([261.63,329.63,392][RealmWorldFoundations.OBJECTIVES.indexOf(payload.objective)],audio.ctx.currentTime,.7,.035);return r;}
+function worldCommand(type,payload){const r=RealmWorldFoundations.command(worldContext(),type,payload,{save:worldSave});if(r.ok&&!r.duplicate&&type==='claim'&&RealmWorldFoundations.handles(sim.room)&&engine)RealmWorldFoundationsArt.make(art,sim);if(r.ok&&!r.duplicate&&type==='observe'&&payload.realm==='heaven')RealmAudio.event('observe',{pitch:[261.63,329.63,392][RealmWorldFoundations.OBJECTIVES.indexOf(payload.objective)]});return r;}
 function homeCommand(type,payload){return RealmHomeHistory.command(worldContext(),type,payload,{save:worldSave});}
 let gateHost=null;
 function gates(){return gateHost||(gateHost=new RealmEarthGateHost.GateHost({context:tournamentContext,save:worldSave,notify:toast}));}
@@ -661,22 +661,20 @@ $('#import-file').addEventListener('cancel',()=>{importRead++;characterImportPen
 window.addEventListener('storage',e=>{if(e.key===RealmCharacters.KEY||e.key===null){const r=characterStore.checkSource();if(!r.ok){saveState='unavailable';toast(r.error);renderStatus();if(rpg?.dialog.open&&rpg.tab==='characters')rpg.paint();}}});
 function capture(){if(!engine){toast('Photo capture requires the 3D renderer; JSON export still works.');return;}try{syncBriarOwner();syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');ui.canvas.toBlob(blob=>{if(blob){download(blob,'Firstlight-Valley.png','image/png');toast('Your view captured as a PNG.');}else toast('The browser could not capture that frame.');},'image/png');}catch(e){toast('Photo unavailable: '+e.message);}}
 function togglePhoto(){document.body.classList.toggle('photo-mode');if(document.body.classList.contains('photo-mode'))toast('Press H to return.');}
-// Web Audio: one quiet soundscape and one original pentatonic motif; opt-in only.
+// Web Audio lives in audio.js (RealmAudio); this object keeps the enable/tick lifecycle and the code-made bed in soundscape.js.
 const audio={ctx:null,master:null,enabled:false,soundscape:null,footfalls:null,
  enable(){try{
-  if(!this.ctx){this.ctx=new(window.AudioContext||window.webkitAudioContext)();this.master=this.ctx.createGain();this.master.gain.value=0;this.master.connect(this.ctx.destination);}
-  if(!this.soundscape||this.soundscape.disposed)this.soundscape=new RealmSoundscape.Soundscape(this.ctx,this.master,C.rng(73));
-   if(!this.footfalls||this.footfalls.disposed)this.footfalls=new RealmGroundedFootfalls.Footfalls(this.ctx,this.master);
-  this.ctx.resume().catch(()=>{});this.master.gain.setTargetAtTime(.55,this.ctx.currentTime,.3);this.enabled=true;this.tick(elapsed);this.paint();return true;
+  if(!RealmAudio.enable())throw Error('no audio context');this.ctx=RealmAudio.context();this.master=RealmAudio.bus('music');
+  if(!this.soundscape||this.soundscape.disposed)this.soundscape=new RealmSoundscape.Soundscape(this.ctx,RealmAudio.bus('ambience'),C.rng(73));
+   if(!this.footfalls||this.footfalls.disposed)this.footfalls=new RealmGroundedFootfalls.Footfalls(this.ctx,RealmAudio.bus('effects'));
+  this.enabled=true;this.tick(elapsed);this.paint();return true;
  }catch(e){this.enabled=false;toast('Audio unavailable in this browser.');return false;}},
- disable(){rpg?.gathering?.stop();experience?.stop();if(this.ctx&&this.master)this.master.gain.setTargetAtTime(0,this.ctx.currentTime,.1);this.enabled=false;this.tick(elapsed);this.paint();},
+ disable(){rpg?.gathering?.stop();experience?.stop();RealmAudio.disable();this.enabled=false;this.tick(elapsed);this.paint();},
  paint(){$('#sound').setAttribute('aria-pressed',String(this.enabled));$('#sound').setAttribute('aria-label',this.enabled?'Disable ambient sound':'Enable ambient sound');$('#sound').textContent=this.enabled?'♪':'♫';},
  toggle(){this.enabled?this.disable():this.enable();},
- note(freq,start,duration,level=.06){let c=this.ctx;if(!c)return;let o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,start);g.gain.linearRampToValueAtTime(level,start+.025);g.gain.exponentialRampToValueAtTime(.0001,start+duration);o.connect(g).connect(this.master);o.start(start);o.stop(start+duration+.05);o.onended=()=>{o.disconnect();g.disconnect();};},
- melody(){if(!this.enabled)return;let t=this.ctx.currentTime+.1;[0,7,12,9,7,4,2,4,7,12,9,0].forEach((n,i)=>this.note(261.63*Math.pow(2,n/12),t+i*.37,1.3,.055));},
- tick(t){this.footfalls?.update({sim,active:characterStore.active,revision:characterStore.revision,enabled:this.enabled,hidden:document.hidden,blocked:!!panel||!!document.querySelector('dialog[open]')},sim.elapsed);if(!this.soundscape||this.soundscape.disposed)return;const medium=sim.worldDive?RealmWorldFoundations.divingStatus(sim)?.body:null;
+ tick(t){this.footfalls?.update({sim,active:characterStore.active,revision:characterStore.revision,enabled:this.enabled,hidden:document.hidden,blocked:!!panel||!!document.querySelector('dialog[open]')},sim.elapsed);RealmAudio.listen(sim.state.player);RealmAudio.scene({room:sim.room,battle:!!RealmCombat.selected(sim)});if(!this.soundscape||this.soundscape.disposed)return;const medium=sim.worldDive?RealmWorldFoundations.divingStatus(sim)?.body:null;
   const result=this.soundscape.update({room:sim.room,hour:sim.state.hour,hp:sim.state.adventure.started?sim.state.adventure.hp:1,paused:sim.paused||!this.enabled,hidden:document.hidden,medium},t);
-  if(result.bird&&this.enabled){const now=this.ctx.currentTime;this.note(1700+Math.sin(t)*200,now,.12,.012);this.note(2200,now+.17,.18,.011);}
+  if(result.bird&&this.enabled)RealmAudio.event('bird');
  }
 };
 document.addEventListener('visibilitychange',()=>audio.tick(elapsed));

@@ -1,6 +1,6 @@
 /* Ground-supported transient foley. No commands, context unlock, or save fields. */
 (function(G){'use strict';
-const LIMITS=Object.freeze({duration:.14,stride:.78,minInterval:.18,stillAfter:.2,voices:2,maxRate:192000,busGain:.22});
+const LIMITS=Object.freeze({stride:.78,minInterval:.18,stillAfter:.2,voices:2,maxRate:192000,busGain:1});
 const soil=new Set(['woodland-country','woodland-west','woodland-east','field-approach','working-fields','coppice-spur','coppice-pocket','elderweald-north-junction','elderweald-tended-edge','elderweald-clearing-country','elderweald-wetland-rim','elderweald-south-bank','elderweald-root-country','elderweald-return-moor','elderweald-meadow-return','elderweald-field-return']);
 const offsets=[[0,0],[.31,0],[-.31,0],[0,.31],[0,-.31],[.31*.707,.31*.707],[-.31*.707,.31*.707],[.31*.707,-.31*.707],[-.31*.707,-.31*.707]];
 const data=(name,file)=>G[name]||(typeof require==='function'?require('./'+file):null),inside=(x,z,p)=>Math.abs(x-p.x)<=p.w/2&&Math.abs(z-p.z)<=p.d/2;
@@ -18,33 +18,19 @@ function surface(sim){
   return soil.has(patch.id)?'soil':null;
  };const m=material(p.x,p.z);return m&&offsets.every(([dx,dz])=>material(p.x+dx,p.z+dz)===m)?m:null;
 }
-function synthesize(material,rate){
- if(!['soil','timber','stone'].includes(material)||!Number.isInteger(rate)||rate<8000||rate>LIMITS.maxRate)throw new RangeError('Unsupported footfall material or sample rate.');
- const n=Math.ceil(rate*LIMITS.duration),out=new Float32Array(n);let seed=material==='soil'?173:material==='timber'?479:811,low=0,prev=0;
- const frequency=material==='soil'?87:material==='timber'?154:246;
- for(let i=0;i<n;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const noise=(seed/4294967296)*2-1,t=i/rate;low+=.12*(noise-low);const high=noise-prev;prev=noise;
-  const contact=material==='soil'?.23*low+.055*high:material==='timber'?.075*noise+.19*Math.sin(2*Math.PI*frequency*t)*Math.exp(-t*34):.11*high+.12*Math.sin(2*Math.PI*frequency*t)*Math.exp(-t*48);
-  const thud=.22*Math.sin(2*Math.PI*68*t)*Math.exp(-t*42),window=Math.sin(Math.PI*i/(n-1))**2*Math.exp(-t*12);out[i]=(contact+thud)*window;
- }out[0]=0;out[n-1]=0;return out;
-}
 class Footfalls{
- #baseline=null;#distance=0;#lastStep=-Infinity;#stillSince=null;#voices=new Set();#buffers=new Map();#watermarks=new WeakMap();#audioTime=-Infinity;
+ #baseline=null;#distance=0;#lastStep=-Infinity;#stillSince=null;#voices=new Set();#watermarks=new WeakMap();#audioTime=-Infinity;
  constructor(ctx,master){
   if(!ctx||!master||!Number.isInteger(ctx.sampleRate)||ctx.sampleRate<8000||ctx.sampleRate>LIMITS.maxRate)throw new TypeError('An existing supported audio context and master are required.');
   this.ctx=ctx;this.disposed=false;this.bus=null;
   try{
    this.bus=ctx.createGain();this.bus.gain.value=LIMITS.busGain;this.bus.connect(master);
-   for(const m of ['soil','timber','stone']){const samples=synthesize(m,ctx.sampleRate),b=ctx.createBuffer(1,samples.length,ctx.sampleRate);b.getChannelData(0).set(samples);this.#buffers.set(m,b);}
   }catch{
    // An optional graph cannot prevent the existing ambient/master path.
-   try{this.bus?.disconnect();}catch{}this.#buffers.clear();this.disposed=true;
+   try{this.bus?.disconnect();}catch{}this.disposed=true;
   }
  }
- #retire(v){
-  if(!this.#voices.delete(v))return;
-  if(v.source){try{v.source.onended=null;}catch{}try{v.source.stop();}catch{}try{v.source.disconnect();}catch{}}
-  if(v.gain)try{v.gain.disconnect();}catch{}
- }
+ #retire(v){if(!this.#voices.delete(v))return;try{v.stop();}catch{}}
  #reset(){for(const v of [...this.#voices])this.#retire(v);this.#baseline=null;this.#distance=0;this.#lastStep=-Infinity;this.#stillSince=null;}
  update(input,t){
   if(this.disposed)return{step:false,disposed:true};const {C,W,E}=owners(),sim=input?.sim;
@@ -69,19 +55,14 @@ class Footfalls{
   this.#stillSince=null;this.#distance+=distance;
   if(this.#distance<LIMITS.stride||t-this.#lastStep<LIMITS.minInterval)return{step:false};this.#distance%=LIMITS.stride;this.#lastStep=t;
   while(this.#voices.size>=LIMITS.voices)this.#retire(this.#voices.values().next().value);
-  const now=this.ctx.currentTime,end=now+LIMITS.duration,voice={source:null,gain:null,end};
-  // Register before the first allocation so every partial node has an owner.
-  this.#voices.add(voice);
-  try{
-   voice.source=this.ctx.createBufferSource();voice.gain=this.ctx.createGain();
-   voice.source.buffer=this.#buffers.get(material);voice.gain.gain.value=1;
-   voice.source.connect(voice.gain);voice.gain.connect(this.bus);
-   voice.source.onended=()=>this.#retire(voice);voice.source.start(now);voice.source.stop(end);
-  }catch{this.#retire(voice);this.#reset();return{step:false};}
+  // the real footstep sample for this surface; a sample still decoding makes no sound for this step.
+  let sound=null;try{sound=G.RealmAudio?.cue('step-'+material,{out:this.bus})||null;}catch{sound=null;}
+  if(!sound)return{step:false};
+  this.#voices.add(sound);
   return{step:true,material};
  }
- snapshot(){return{disposed:this.disposed,voices:this.#voices.size,buffers:this.#buffers.size,bufferBytes:[...this.#buffers.values()].reduce((n,b)=>n+b.length*4,0)};}
- dispose(){if(this.disposed)return;this.#reset();this.#buffers.clear();try{this.bus?.disconnect();}catch{}this.disposed=true;}
+ snapshot(){return{disposed:this.disposed,voices:this.#voices.size};}
+ dispose(){if(this.disposed)return;this.#reset();try{this.bus?.disconnect();}catch{}this.disposed=true;}
 }
-const api=Object.freeze({Footfalls,LIMITS,surface,synthesize});G.RealmGroundedFootfalls=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+const api=Object.freeze({Footfalls,LIMITS,surface});G.RealmGroundedFootfalls=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
