@@ -17,8 +17,8 @@ const IDENT=[[1,0,0],[0,1,0],[0,0,1]];
 // Rotations about Y, and a ring lying flat (its local XY plane turned to the ground).
 const axesY=a=>[[Math.cos(a),0,-Math.sin(a)],[0,1,0],[Math.sin(a),0,Math.cos(a)]];
 const flat=a=>[[Math.cos(a),0,-Math.sin(a)],[Math.sin(a),0,Math.cos(a)],[0,-1,0]];
-const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x6e6966,coatInner:0x59544f,skin:0xa39a92,hair:0xcac5bd,lid:0x857c74,seam:0xff8a3d,cinder:0x3a302c,pupil:0x3c1e16};
-const BONE={robe:0xefe6d2,robeShade:0xd9ceb6,gold:0xd6b25e,skin:0xf3e2cc,hair:0xe9d69a,light:0xfff3cf,feather:0xfff1c4,halo:0xffd77a,glow:0xffe7a6,pupil:0x8c6a2a};
+const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d};
+const BONE={robe:0xefe6d2,robeShade:0xd9ceb6,gold:0xd6b25e,skin:0xf3e2cc,hair:0xe9d69a,light:0xfff3cf,feather:0xfff1c4,halo:0xffd77a,glow:0xffe7a6,pupil:0x8c6a2a,glint:0xfff4d6};
 // Figure space is the traveler rig's: +Z forward, feet on y=0. The root scales
 // the rig to a figure's height and yaws it, the way resident art does.
 const root=(x,y,z,sx,sy,sz,yaw)=>G.RealmEngine.M.compose(x,y,z,sx,sy,sz,0,yaw,0);
@@ -47,35 +47,37 @@ function rig(list,R,input,posed){
  }
 }
 const paint=(list,colours)=>{for(const it of list)if(colours[it.storyPart]!==undefined)it.c=colours[it.storyPart];};
-// a smile is a level centre and two corners lifted by lift (a fraction of half-width).
+// a smile is a level centre and two corners; lift is one fraction of half-width, or [left, right].
 function smile(list,R,y,z,half,lift,color){
- beam(list,R,'capsule','smile-centre',[-half*.4,y,z],[half*.4,y,z],.011,.014,color);
- for(const s of[-1,1])beam(list,R,'capsule','smile-'+(s<0?'left':'right'),[s*half*.4,y,z],[s*half,y+half*lift,z-.002],.011,.014,color);
+ const [l,r]=Array.isArray(lift)?lift:[lift,lift];
+ beam(list,R,'capsule','smile-centre',[-half*.4,y,z],[half*.4,y,z],.008,.012,color);
+ beam(list,R,'capsule','smile-left',[-half*.4,y,z],[-half,y+half*l,z-.002],.008,.012,color);
+ beam(list,R,'capsule','smile-right',[half*.4,y,z],[half,y+half*r,z-.002],.008,.012,color);
 }
-const regentPose=k=>T.pose({time:k,phase:0,blend:0});
-
 function regent(x,y,z,yaw,t){
- const k=finite(t),R=root(finite(x),finite(y),finite(z),.98,1.28,.98,finite(yaw)),sway=Math.sin(k*.7)*.012,L=[];
- rig(L,R,{armorColor:ASH.coat,color:ASH.coatInner},regentPose(k));
- // the rig's cloak and mouth give way to the long coat and the smile.
+ // taller and broader than the traveler: presence comes from the shoulders and the coat, not from height alone.
+ const k=finite(t),R=root(finite(x),finite(y),finite(z),1.06,1.28,1.06,finite(yaw)),sway=Math.sin(k*.6)*.006,L=[];
+ // his left hand rests at the lapel; breath, coat and cinders move slowly and out of step.
+ rig(L,R,{armorColor:ASH.coat,color:ASH.coatInner},T.pose({time:k,phase:0,blend:0,carry:{left:[-.12,1.24+.004*Math.sin(k*.5),.15]}}));
  const parts=L.filter(it=>!/^cloak-/.test(it.storyPart)&&it.storyPart!=='mouth');
- paint(parts,{head:ASH.skin,neck:ASH.skin,nose:ASH.skin,'left-ear':ASH.skin,'right-ear':ASH.skin,'left-hand':ASH.skin,'right-hand':ASH.skin,'hair-crown':ASH.hair,'hair-back':ASH.hair,'left-brow':ASH.hair,'right-brow':ASH.hair});
- for(const it of parts)if(/-pupil$/.test(it.storyPart))it.em=.3;
- for(const it of parts)if(/-pupil$/.test(it.storyPart)||it.storyPart==='left-eye'||it.storyPart==='right-eye')it.c=it.storyPart.endsWith('pupil')?ASH.pupil:0xd8d2c6;
- // long coat: a back panel and two front panels flaring to the ankle; the hem sways.
- beam(parts,R,'capsule','coat-back',[0,1.22,-.10],[sway,.16,-.16],.36,.16,ASH.coat);
- beam(parts,R,'capsule','coat-front-left',[-.12,1.20,.05],[-.22+sway,.12,.10],.22,.13,ASH.coat);
- beam(parts,R,'capsule','coat-front-right',[.12,1.20,.05],[.22+sway,.12,.10],.22,.13,ASH.coat);
- // ember-lit seams: the coat's front edges, glowing just under the cooling.
- for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.035,1.30,.135],[s*.07+sway*.5,.16,.19],.014,.012,ASH.seam,{em:.85+.1*Math.sin(k*1.9),rough:.5});
- // a crown of cooling cinders: hot near the front, dark at the back, turning slowly.
+ paint(parts,{head:ASH.skin,neck:ASH.skin,nose:ASH.skin,'left-ear':ASH.skin,'right-ear':ASH.skin,'left-hand':ASH.skin,'right-hand':ASH.skin,'hair-crown':ASH.hair,'hair-back':ASH.hair,'left-brow':ASH.hair,'right-brow':ASH.hair,'left-eye':ASH.white,'right-eye':ASH.white,'left-pupil':ASH.pupil,'right-pupil':ASH.pupil,'left-catchlight':ASH.glint,'right-catchlight':ASH.glint});
+ for(const it of parts)if(/pupil$/.test(it.storyPart))it.em=.12;
+ for(const it of parts)if(/catchlight$/.test(it.storyPart))it.em=.6;
+ // a long tailored coat: a wide back panel, two flared fronts and a dark inner front, to mid-calf.
+ beam(parts,R,'capsule','coat-back',[0,1.12,-.09],[sway,.34,-.15],.42,.18,ASH.coat);
+ beam(parts,R,'capsule','coat-front-left',[-.10,1.10,.04],[-.17+sway,.34,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front-right',[.10,1.10,.04],[.17+sway,.34,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front',[0,1.08,.07],[0,.36,.10],.22,.12,ASH.coatInner);
+ // thin ember piping down the placket: lit from within, not a rod.
+ for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.13],[s*.055+sway*.3,.40,.15],.008,.010,ASH.seam,{em:.42+.08*Math.sin(k*.9+s),rough:.5});
+ // a low circlet of cooling embers on the brow, not a spiked crown: one side still warm, the back gone grey.
+ ring(parts,R,'circlet',[0,1.68,.008],.118,.010,flat(0),0x4b4f55,{rough:.4});
  for(let i=0;i<7;i++){
-  const a=i/7*TAU+k*.22,heat=1-i/6;
-  put(parts,R,'octa','cinder-'+i,[Math.cos(a)*.17,1.90+.02*Math.sin(k*1.1+i*1.7),Math.sin(a)*.17],[.05,.085,.05],axesY(a),mixHex(ASH.cinder,EMBER,heat*.9),{em:.22+.22*heat+.03*Math.sin(k*1.3+i),rough:.7});
+  const a=i/7*TAU+k*.08,heat=Math.max(0,1-i/5);
+  put(parts,R,'round','cinder-'+i,[Math.cos(a)*.118,1.68+.006*Math.sin(k*1.1+i),Math.sin(a)*.118+.008],[.03,.03,.03],IDENT,mixHex(ASH.cinder,EMBER,heat),{em:.12+.38*heat*(.6+.4*Math.sin(k*1.3+i*.9)),rough:.5});
  }
- // half-lidded, calm; the smile sits low and lifts at the corners.
- for(const s of[-1,1])beam(parts,R,'capsule','lid-'+(s<0?'left':'right'),[s*.024,1.643,.124],[s*.080,1.643,.124],.012,.024,ASH.lid,{rough:.8});
- smile(parts,R,1.565,.122,.030,.55,0x7b4a42);
+ // a warm, closed smile; the corners lift unevenly, as if the joke is one he is deciding to share.
+ smile(parts,R,1.558,.124,.024,[.42,.2],0x8a5a4e);
  return parts;
 }
 
@@ -83,24 +85,26 @@ function envoy(x,y,z,yaw,t){
  const k=finite(t),R=root(finite(x),finite(y),finite(z),1.03,1.02,1.03,finite(yaw)),L=[];
  rig(L,R,{armorColor:BONE.robe,color:BONE.robeShade},T.pose({time:k,phase:0,blend:0}));
  const parts=L.filter(it=>it.storyPart!=='mouth');
- paint(parts,{head:BONE.skin,neck:BONE.skin,nose:BONE.skin,'left-ear':BONE.skin,'right-ear':BONE.skin,'left-hand':BONE.skin,'right-hand':BONE.skin,'hair-crown':BONE.hair,'hair-back':BONE.hair,'left-brow':BONE.hair,'right-brow':BONE.hair,belt:BONE.gold,'belt-buckle':BONE.gold,'left-pupil':BONE.pupil,'right-pupil':BONE.pupil});
+ // the legs are dressed in the robe, so the figure reads as one long garment down to the ankle.
+ paint(parts,{head:BONE.skin,neck:BONE.skin,nose:BONE.skin,'left-ear':BONE.skin,'right-ear':BONE.skin,'left-hand':BONE.skin,'right-hand':BONE.skin,'hair-crown':BONE.hair,'hair-back':BONE.hair,'left-brow':BONE.hair,'right-brow':BONE.hair,belt:BONE.gold,'belt-buckle':BONE.gold,'left-pupil':BONE.pupil,'right-pupil':BONE.pupil,'left-catchlight':BONE.glint,'right-catchlight':BONE.glint,
+  'left-thigh':BONE.robeShade,'right-thigh':BONE.robeShade,'left-shin':BONE.robeShade,'right-shin':BONE.robeShade,'left-knee':BONE.robeShade,'right-knee':BONE.robeShade,'left-boot-cuff':BONE.robeShade,'right-boot-cuff':BONE.robeShade,'left-boot':0x6b5a3e,'right-boot':0x6b5a3e});
  for(const it of parts)it.em=Math.max(it.em,/pupil|catchlight/.test(it.storyPart)?.2:.12);
- // robe to the ankle, a gold hem, the legs hidden in bone.
- beam(parts,R,'capsule','robe-front',[0,1.02,.04],[0,.14,.07],.30,.20,BONE.robe);
- beam(parts,R,'capsule','robe-back',[0,1.02,-.07],[0,.12,-.10],.34,.18,BONE.robeShade);
- ring(parts,R,'hem-gold',[0,.13,0],.24,.022,flat(0),BONE.gold,{em:.35,rough:.4});
- // folded wings of light: six feathers a side, lying along the back, breathing outward.
- const spread=Math.sin(k*.8)*.02;
+ beam(parts,R,'capsule','robe-front',[0,1.00,.04],[0,.12,.08],.34,.22,BONE.robe);
+ beam(parts,R,'capsule','robe-back',[0,1.00,-.07],[0,.10,-.12],.36,.18,BONE.robeShade);
+ for(const s of[-1,1])beam(parts,R,'capsule','robe-'+(s<0?'left':'right'),[s*.12,.98,.02],[s*.14,.16,.04],.22,.16,BONE.robe);
+ ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
+ // folded wings of light: six feathers a side fan out past the shoulders and breathe with the body.
+ const breath=Math.sin(k*.8)*.03;
  for(const s of[-1,1])for(let i=0;i<6;i++){
-  const u=i/5,base=[s*.045,1.40-.07*i,-.18],tip=[s*(.22-.02*i+spread),1.06-.13*i,-.36-.01*i];
-  beam(parts,R,'capsule','wing-'+(s<0?'left':'right')+'-'+i,base,tip,.07-.035*u,.024,BONE.feather,{em:.8,rough:.4});
+  const u=i/5,base=[s*.06,1.40-.05*i,-.16],tip=[s*(.44-.08*u+breath),1.52-.56*u+breath*.5,-.36-.04*u];
+  beam(parts,R,'capsule','wing-'+(s<0?'left':'right')+'-'+i,base,tip,.10-.05*u,.02,BONE.feather,{em:.8,rough:.4});
  }
- // a halo above the head, a glow on the ground, and motes turning around her.
+ // a halo above the head, a soft glow on the ground, and motes turning around her.
  ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});
- ring(parts,R,'glow-ground',[0,.012,0],.55,.02,flat(0),BONE.glow,{em:.8,rough:.6});
+ ring(parts,R,'glow-ground',[0,.012,0],.6,.016,flat(0),0xf1cf7a,{em:.45,rough:.6});
  for(let i=0;i<6;i++){
   const a=i/6*TAU+k*.3;
-  put(parts,R,'octa','mote-'+i,[Math.cos(a)*.75,1.05+.35*Math.sin(k*.6+i*1.1),Math.sin(a)*.75],[.05,.05,.05],axesY(a),BONE.light,{em:.95,rough:.3});
+  put(parts,R,'round','mote-'+i,[Math.cos(a)*.75,1.05+.35*Math.sin(k*.6+i*1.1),Math.sin(a)*.75],[.045,.045,.045],axesY(a),BONE.light,{em:.95,rough:.3});
  }
  smile(parts,R,1.565,.122,.026,.30,0x9b5f52);
  return parts;

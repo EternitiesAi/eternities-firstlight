@@ -72,7 +72,7 @@ test('a frame is a pure function of its inputs, and t moves each figure only sub
 });
 
 test('figures stand on their base, reach their height and face the way they yaw',()=>{
- for(const [name,height] of [['regent',2.2],['envoy',1.9]]){
+ for(const [name,height] of [['regent',2.1],['envoy',1.9]]){
   const parts=builders[name](0),feet=Math.min(...parts.map(it=>it.p[1])),top=Math.max(...parts.map(it=>it.p[1]));
   assert.ok(feet>-.05&&feet<.25,name+' feet '+feet.toFixed(3));
   assert.ok(top>=height,name+' top '+top.toFixed(3));
@@ -85,8 +85,9 @@ test('figures stand on their base, reach their height and face the way they yaw'
 test('the regent carries the coat, the cinder crown, the seams and the smile',()=>{
  const parts=builders.regent(0);
  assert.equal(parts.filter(it=>/^cinder-/.test(it.storyPart)).length,7);
- assert.equal(parts.filter(it=>/^seam-/.test(it.storyPart)&&it.em>.5).length,2,'two ember-lit seams');
- assert.equal(parts.filter(it=>/^coat-/.test(it.storyPart)).length,3);
+ assert.equal(parts.filter(it=>/^seam-/.test(it.storyPart)&&it.em>.3).length,2,'two ember-lit placket seams');
+ assert.equal(parts.filter(it=>/^coat-/.test(it.storyPart)).length,4,'back, two fronts and the inner front');
+ assert.ok(parts.some(it=>it.storyPart==='circlet'),'a circlet on the brow, not a spiked crown');
  assert.ok(parts.some(it=>/^smile-/.test(it.storyPart)),'a smile');
  assert.ok(!parts.some(it=>it.storyPart==='mouth'),'the rig mouth gives way to the smile');
 });
