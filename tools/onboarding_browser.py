@@ -160,15 +160,17 @@ def living_signature(world):
 # The 1.0 story owners. A save made before them gains each one, inferred from facts it already holds; the
 # literals below restate saga.js infer() and night.js infer() independently instead of calling Core's builders.
 # A capture recorded by an older Core lacks them, so a recorded snapshot is compared without the owners it predates.
-STORY_OWNERS = ('saga', 'night')
+STORY_OWNERS = ('saga', 'night', 'firstRun')
+SHELL_SETTINGS = {'textScale': 'standard', 'volume': {'music': .8, 'effects': .8, 'ambience': .8, 'ui': .8}}
 
 
 def story_defaults(before):
     a = before.get('adventure') or {}
     claimed = lambda k: (before.get(k) or {}).get('claimed') is True
     saga = {'version': 1, 'beats': {}, 'regent': [], 'prophecy': [], 'feather': {'unlocked': False, 'uses': 0},
-            'briar': {'state': 'with', 'habit': {}, 'takenDay': None, 'returnedDay': None, 'homeDay': None},
-            'echo': {'coercive': [], 'freeing': []}, 'finale': {'phase': 0, 'won': False}, 'credits': False, 'postgame': False}
+            'briar': {'state': 'with', 'habit': {}, 'takenDay': None, 'returnedDay': None, 'homeDay': None, 'falseTrusted': False},
+            'choices': {'tessa': None, 'device': None}, 'heard': {'beacon': None, 'foundry': None, 'confluence': None},
+            'echo': {'coercive': [], 'freeing': []}, 'finale': {'phase': 0, 'won': False, 'ending': None}, 'credits': False, 'postgame': False}
     if a.get('angelSeen') is True:
         saga['prophecy'].append('spring'); saga['feather']['unlocked'] = True
     if claimed('heavenCampaign'):
@@ -180,7 +182,9 @@ def story_defaults(before):
     if claimed('atlantisCampaign') and claimed('cosmosCampaign'):
         saga['regent'].append('confluence')
     night = {'version': 1, 'started': False, 'safe': [], 'device': 'hidden', 'envoy': False}
-    return {'saga': saga, 'night': night}
+    # the shell lane: a save made before the first steps skips them (all done, dismissed)
+    first_run = {'move': True, 'camera': True, 'attack': True, 'interact': True, 'dismissed': True}
+    return {'saga': saga, 'night': night, 'firstRun': first_run}
 
 
 def predating(world, recorded):
@@ -189,6 +193,11 @@ def predating(world, recorded):
         for key in STORY_OWNERS:
             if key not in recorded:
                 out.pop(key, None)
+        old, new = recorded.get('settings'), out.get('settings')
+        if isinstance(old, dict) and isinstance(new, dict):
+            for key in SHELL_SETTINGS:
+                if key not in old:
+                    new.pop(key, None)
     return out
 
 
@@ -272,6 +281,10 @@ def require_initial_resume(root, before, after, capture, owner):
     for key, value in story_defaults(before).items():
         if key not in before:
             expected[key] = value
+    if isinstance(expected.get('settings'), dict):
+        for key, value in SHELL_SETTINGS.items():
+            if key not in expected['settings']:
+                expected['settings'][key] = copy.deepcopy(value)
     # Core now conditionally expands this exact legacy catalogue on load. Keep
     # the four raw histories and every other owner protected; do not derive the
     # allowance from Core's output or use its fresh-record builder as an oracle.
