@@ -87,7 +87,7 @@ const realms=[{
  quest:{id:'heaven-opening-v1',title:'Three ordinary answers',giverId:'heaven-rielle',
   objectives:[{id:'first',pointId:'heaven-garden-response',text:'Compare the Garden response plate',kind:'interact'},{id:'second',pointId:'heaven-arcade-response',text:'Compare the Ruby Arcade response plate',kind:'interact'},{id:'third',pointId:'heaven-causeway-response',text:'Compare the Mirror Causeway response plate',kind:'interact'}],
   reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She gives the survey reward once. The Broken Choir and the upper road are separate work.'},
- palette:{ground:0x8eaa92,stone:0xe8dfc9,trim:0xbe914c,sky:0xe79aad},theme:'cosmos',water:false
+ palette:{ground:0xd3cfae,stone:0xf1e9d6,trim:0xc9a055,sky:0xf3d9a4},theme:'cosmos',water:false
 },{
  id:'hell',room:'world-hell',name:'Hell · Kiln Refuge',
  description:'A decommissioned kiln shelter holds an honest return light. Scout Tithe Mile and Moth Cut to Bell Yard; the salvage sentinel in the eastern side pocket is optional.',
@@ -126,6 +126,7 @@ function decorate(art,def,options={}){
  if(!def||!realms.some(r=>r.id===def.id))return{realmId:null,instances:0,distantInstances:0};
  const h=typeof options.height==='function'?options.height:()=>FLOOR,rnd=typeof options.rng==='function'?options.rng:fallbackRng(def.id==='heaven'?100220261:100220262),isHeaven=def.id==='heaven';
  let instances=0,distantInstances=0;
+ if(isHeaven&&G.RealmHeavenArtScenery)G.RealmHeavenArtScenery.decorate(art,def,{height:h,rng:rnd});
  const at=(kind,x,y,z,sx,sy,sz,c,opt={})=>{art.add(kind,x,y,z,sx,sy,sz,c,{cameraSolid:false,cutaway:false,...opt});instances++;if(opt.skyImage)distantInstances++;};
  const box=(x,y,z,w,hh,d,c,opt)=>at('box',x,y,z,w,hh,d,c,opt);
  const detail=(s,x,y,z,w,hh,d,c,opt={})=>box(x,y,z,w,hh,d,c,{worldSolidId:s.id,cutaway:true,...opt});

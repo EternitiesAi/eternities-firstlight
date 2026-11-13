@@ -53,6 +53,8 @@ function envoy(out,sim,anchor){
 }
 function draw(out,sim,time){const d=definition(),r=sim.state.heavenCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;envoy(out,sim,d.envoy);
  const steps=new Set(r.steps),byId=id=>d.steps.find(s=>s.id===id);
+ // the counterfeit relay turns the Mirror Causeway into a cold grey corridor until its beam is silenced.
+ if(steps.has('inspect-false-relay')&&!steps.has('relay-disabled')){const p=painter(out,sim,{x:0,z:0},0);for(let z=-36;z>=-100;z-=4){p.box(0,.06,z,5.2,.12,3.4,0x7b8590,'relay-corridor',{});p.box(-2.9,1.5,z,.14,3,.14,0x4f5862,'relay-corridor',{});p.box(2.9,1.5,z,.14,3,.14,0x4f5862,'relay-corridor',{});}}
  if(steps.has('witness-account')){const s=byId('witness-account');recordStand(out,sim,{x:s.x-.95,z:s.z},'witness-record','preserved-witness-account');}
  if(steps.has('compare-arrival-marks')){const s=byId('compare-arrival-marks');recordStand(out,sim,{x:s.x+1.1,z:s.z},'arrival-marks','compared-arrival-marks');}
  if(steps.has('inspect-false-relay')){
