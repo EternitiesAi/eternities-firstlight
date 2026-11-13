@@ -1,4 +1,4 @@
-/* Rolling credits. Esc, a click or a key skips; reduced motion gets still text instead of a roll. */
+/* rolling credits. Esc, a click or a key skips; reduced motion gets still text instead of a roll. */
 (function(G){'use strict';
 const PACE=36;// pixels per second
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -1,4 +1,4 @@
-/* Pause menu: Esc opens it, Resume closes it. The world stays frozen while it is open and returns to its earlier pause state after. */
+/* pause menu: Esc opens it, Resume closes it. The world stays frozen while it is open and returns to its earlier pause state after. */
 (function(G){'use strict';
 let dialog=null,hooks=null,was=false;
 function mount(h){
@@ -16,7 +16,7 @@ function open(){
  if(!dialog||dialog.open||!hooks.canOpen())return false;
  const s=hooks.sim();was=s.paused;s.paused=true;hooks.enter();dialog.showModal();focusResume();return true;
 }
-// Used after the settings drawer closes; the world is still paused from open().
+// used after the settings drawer closes; the world is still paused from open().
 function reopen(){if(!dialog||dialog.open)return;dialog.showModal();focusResume();}
 function resume(){if(!dialog.open)return;dialog.close();hooks.sim().paused=was;hooks.resumed();}
 function quit(){if(!dialog.open)return;hooks.save();dialog.close();hooks.sim().paused=was;hooks.quit();}

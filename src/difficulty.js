@@ -1,4 +1,4 @@
-/* Boss contract for the main path. Act lanes read this table; the fight lane owns the formulas.
+/* boss contract for the main path. Act lanes read this table; the fight lane owns the formulas.
  * hp and damage rise along the path: hart, ram, herald, keeper, foundry warden, relay seraph, witness guardian, regent.
  * hart and ram keep their current adventure.js and road.js numbers; herald moves 27 to 29 so the path only rises. */
 (function(G){'use strict';

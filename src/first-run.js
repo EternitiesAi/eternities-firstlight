@@ -1,4 +1,4 @@
-/* First steps for a new world. The flags live in core.js (sim.act 'first-run'); this module only shows them. */
+/* first steps for a new world. The flags live in core.js (sim.act 'first-run'); this module only shows them. */
 (function(G){'use strict';
 const STEPS=[['move','Walk with W A S D, or click the ground.'],['camera','Turn the view: drag it, scroll, or press V.'],['attack','Strike a foe with F, or press 1 to keep striking.'],['interact','Use what is in front of you with E.']];
 const visible=f=>!!f&&!f.dismissed;
@@ -10,7 +10,7 @@ function mount(onSkip){
  document.querySelector('#hud').append(el);
  return el;
 }
-// Repaint only when a flag changed; refreshUI calls this several times a second.
+// repaint only when a flag changed; refreshUI calls this several times a second.
 function paint(el,f){
  if(!el||!f)return;
  const show=visible(f),sig=show?rows(f).map(r=>r.done?1:0).join(''):'hidden';

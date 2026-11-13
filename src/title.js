@@ -1,4 +1,4 @@
-/* Title screen over a slow drift of the valley. Buttons call hooks that app.js supplies; this file never touches the world. */
+/* title screen over a slow drift of the valley. Buttons call hooks that app.js supplies; this file never touches the world. */
 (function(G){'use strict';
 const KEY_ROWS=[
  ['Move','<kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> or the arrow keys'],
