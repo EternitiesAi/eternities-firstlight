@@ -1,13 +1,16 @@
 /* The finale's owner: the Regent of Ash at the spring junction. The saga owns the phases and the ending. This owner holds
  * what the saga does not: which chains are broken (saved at each break), the offer, the Regent's bodies, the freed
- * allies' clock, the last answer and the camera rise. Old homecoming records still load, and their aftermath choice still
- * feeds the echo ledger. Combat progress is not saved: a reload restarts the body in its phase; broken chains stay broken. */
+ * allies' clock, the last answer, the camera rise, and the story beats the finale plays through the story dialog (each
+ * beat once, and never while the Regent is winding up a strike). Old homecoming records still load. Combat progress is not
+ * saved: a reload restarts the body in its phase; broken chains stay broken. */
 (function(G){'use strict';
 const DATA=G.RealmEarthHomecomingData||(typeof require==='function'?require('./earth-homecoming-data.js'):null),D=DATA.definition,P=DATA.patterns,B=DATA.bands;
 const FIN=()=>G.RealmFinale||(typeof require==='function'?require('./finale.js'):null);
 const SG=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const EPI=()=>G.RealmEpilogue||(typeof require==='function'?require('./epilogue.js'):null);
+const EPID=()=>G.RealmEpilogueData||(typeof require==='function'?require('./epilogue-data.js'):null);
 const finite=Number.isFinite,fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
-const CHAIN_R=.6,REGENT_R=.65,CHAIN_ID=/^chain-[a-z-]{1,40}$/,MAX_BROKEN=16,HOME={x:-11,z:-1.6};
+const CHAIN_R=.6,REGENT_R=.65,CHAIN_ID=/^chain-[a-z-]{1,40}$/,SEEN_ID=/^epilogue\.[a-z]+$/,MAX_BROKEN=16,HOME={x:-11,z:-1.6};
 const locks=new WeakMap();
 const isSim=sim=>!!G.RealmCore&&sim instanceof G.RealmCore.Simulation;
 const phaseOf=st=>st?.saga?.finale?.phase??0;
@@ -17,20 +20,24 @@ const live=sim=>!!sim&&sim.room===null&&!sim.worldDive&&!!sim.state&&phaseOf(sim
 const contactReach=p=>Math.min(p.reach,(p.kind==='annulus'?p.outerRadius:p.length)+.24);
 const near=(sim,r)=>Math.hypot(sim.state.player.x-D.spring.x,sim.state.player.z-D.spring.z)<=r;
 const planFor=sim=>FIN().plan(SG().echoLedger(sim.state));
-// a story line as the player reads it: the speaker's name, then the text. empty when the script has no such scene.
-function say(id,state){const s=FIN().scene(id,state);return s&&s.lines.length?s.lines.map(l=>l.speaker+': '+l.text).join(' '):'';}
+// a story line as the player reads it: the speaker's name, then the text; narration carries no speaker and no colon.
+function say(id,state){const s=FIN().scene(id,state);return s&&s.lines.length?s.lines.map(l=>l.speaker?l.speaker+': '+l.text:l.text).join(' '):'';}
 // the route's three marks: the waypoint nearest the heaven site, then two waypoints later.
 function marks(){const R=FIN().route(),S=D.spring&&G.RealmFinaleData?.SITES?.heaven||{x:-7,z:3};let best=0;R.forEach((p,i)=>{if(Math.hypot(p.x-S.x,p.z-S.z)<Math.hypot(R[best].x-S.x,R[best].z-S.z))best=i;});return{stair:best,road:(best+2)%R.length,briar:(best+4)%R.length};}
 
 function fresh(){return{version:1,accepted:false,steps:[],choice:null,claimed:false};}
+// the finale record: the broken chains and the offer; "seen" lists the epilogue scenes already played (written once each).
 function finaleRecord(raw){
  const no=()=>{throw Error('Invalid Earth homecoming: finale');};
- if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).sort().join('|')!=='broken|offer')no();
+ const keys=raw&&typeof raw==='object'&&!Array.isArray(raw)?Object.keys(raw).sort().join('|'):'';
+ if(keys!=='broken|offer'&&keys!=='broken|offer|seen')no();
  if(!Array.isArray(raw.broken)||raw.broken.length>MAX_BROKEN||new Set(raw.broken).size!==raw.broken.length||raw.broken.some(id=>typeof id!=='string'||!CHAIN_ID.test(id)))no();
  if(raw.offer!==null&&!['refused','taken'].includes(raw.offer))no();
- return{broken:raw.broken.slice(),offer:raw.offer};
+ const out={broken:raw.broken.slice(),offer:raw.offer};
+ if(keys==='broken|offer|seen'){if(!Array.isArray(raw.seen)||raw.seen.length>8||new Set(raw.seen).size!==raw.seen.length||raw.seen.some(id=>typeof id!=='string'||!SEEN_ID.test(id)))no();out.seen=raw.seen.slice();}
+ return out;
 }
-// the record keeps the retired homecoming's keys for old saves; the finale adds one optional key, present only once it runs.
+// the record keeps the retired homecoming's keys for old saves; the finale adds optional keys, present only once it runs.
 function validate(raw){
  if(raw===undefined)return fresh();const no=why=>{throw Error('Invalid Earth homecoming: '+why);};
  const keys=raw&&typeof raw==='object'&&!Array.isArray(raw)?Object.keys(raw).sort().join('|'):'';
@@ -47,7 +54,7 @@ function validateWorld(raw){return G.RealmCore.validate(raw);}
 function snapshot(sim){if(!isSim(sim))throw Error('Earth homecoming needs an actual simulation');return sim.snapshot();}
 
 // one transaction. the saga moves on the live state, the record moves on a checked candidate, and a refused save puts
-// the saga back, so the story and the record never disagree. text may be a function, read after the saga has moved.
+// both back, so the story and the record never disagree. text may be a function, read after the saga has moved.
 function persist(sim,io,ctx,text,saga,change){
  const st=sim.state,prior=JSON.stringify({saga:st.saga,record:st.earthHomecoming}),restore=()=>{const p=JSON.parse(prior);st.saga=p.saga;st.earthHomecoming=p.record;};
  if(saga){const moved=saga();if(!moved?.ok){restore();return fail(moved?.error||'The story did not move.');}}
@@ -64,7 +71,19 @@ function commit(sim,candidate,io,text,ctx){
  state.earthHomecoming=checked.earthHomecoming;for(const k of['xp','coins','ore','revision'])state.adventure[k]=checked.adventure[k];
  state.adventure.hp=checked.adventure.hp;Object.assign(state.sandbox.inventory,checked.sandbox.inventory);state.journal=checked.journal;state.nextEvent=checked.nextEvent;return yes(text);
 }
-function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.state!==sim.state){r=sim.earthHomecomingRuntime={state:sim.state,t0:null,walk:{phase:0,i:0,pause:0},announced:[],arrived:[],ranNoted:false,eveShown:false,lastOpen:false,rise:null,credits:false,creditsDone:false,chainHP:{},still:{x:null,z:null,t:0}};}return r;}
+// the presentation state of the finale: the beats waiting for the dialog, the allies' and the route's marks, the eve.
+// chainHP and still are the fight lane's: a cut chain keeps its hp, and standing still near the Regent is timed.
+function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.state!==sim.state){r=sim.earthHomecomingRuntime={state:sim.state,t0:null,walk:{phase:0,i:0,pause:0},announced:[],arrived:[],ranNoted:false,eveShown:false,alliesBeat:false,marksShown:[],beats:[],lastOpen:false,rise:null,credits:false,creditsDone:false,chainHP:{},still:{x:null,z:null,t:0}};}return r;}
+
+// the story beats: a script step each, queued in the order they happen, shown once. a choice beat is answered through its command.
+function queueBeat(sim,step,choice=false,owner='finale'){const r=runtime(sim);if(!r.beats.some(b=>b.step===step&&b.owner===owner))r.beats.push({owner,step,choice});}
+function dropBeat(sim,step){const r=runtime(sim);r.beats=r.beats.filter(b=>b.step!==step);}
+function nextBeat(sim){return runtime(sim).beats[0]||null;}
+function takeBeat(sim){return runtime(sim).beats.shift()||null;}
+// the headless listener (the bot and the tests): every waiting beat is heard at once and the queue is cleared.
+function listen(sim){const r=runtime(sim),out=r.beats;r.beats=[];return out;}
+// a strike being wound up or recovered from: no dialog opens, so no line lands mid-strike.
+function windingUp(sim){return !!sim&&G.RealmAdventure.runtime(sim).enemies.some(e=>e.finaleRole==='regent'&&(e.mode==='windup'||e.mode==='recover'));}
 
 // the Regent's bodies and the chains as the adventure fights them. a body is the boss table's phase, not a shared hp pool.
 // a chain's hp lives in the owner's runtime, so a rebuilt enemy list (a new chain appearing) never heals one already cut.
@@ -110,7 +129,7 @@ function lock(sim,e){
  if(!Number.isFinite(e.baseDamage))e.baseDamage=e.damage;e.damage=Math.round(e.baseDamage*(p.share??1));
  e.yaw=yaw;e.windup=p.windup;e.recovery=p.recovery;e.followUp=p.id==='closing-ring';if(p.id!=='ash-follow'&&p.id!=='ash-stamp')e.homecomingCycle=(Number.isSafeInteger(e.homecomingCycle)?e.homecomingCycle:0)+1;e.strike=Object.freeze(frame);locks.set(e,{sim,state:sim.state,frame:e.strike});return e.strike;
 }
-// an answered offer of invulnerability is a gift: the Regent still strikes, and nothing lands.
+// a signed offer lands nothing: the Regent's strikes end with the kept ending, so no locked shape touches the player.
 function strikeContains(e,p){
  const entry=locks.get(e),s=e?.strike;if(!entry||entry.frame!==s||entry.state!==entry.sim.state||!canStrike(entry.sim,e)||![p?.x,p?.z].every(finite))return false;
  if(offerOf(entry.sim.state)==='taken')return false;
@@ -128,37 +147,45 @@ function breakChain(sim,io,id,text,ctx){
  const rest=planFor(sim).chains.every(c=>c.id===id||broken(st).includes(c.id));
  return persist(sim,io,ctx,text,rest?()=>SG().finalePhase(sim,2):null,rec=>{rec.finale.broken=[...rec.finale.broken,id];});
 }
-// the offer: refuse goes on to the last body; take ends the valley now, as the kept ending, with no third fight.
+// the offer: refuse goes on to the last body; take ends the valley now, as the kept ending, with no third fight. the signed
+// offer is written before the saga reads it, and the saga is moved to phase three first, as its rule asks.
 function chooseOffer(sim,io,ctx,choice){
  if(phaseOf(sim.state)!==3||offerOf(sim.state)!==null)return fail(FIN().text('noOffer',sim.state)||'He has no offer waiting.');
  if(choice==='take'){
-  // a signed offer ends the valley now. the saga wants phase three and the signed offer on the record before it writes the kept ending.
   const st=sim.state;
-  return persist(sim,io,ctx,()=>FIN().text('taken',st),()=>{st.earthHomecoming.finale.offer='taken';const ph=SG().finalePhase(sim,3);if(!ph.ok)return ph;return SG().finaleWon(sim,'kept');},rec=>{rec.finale.offer='taken';});
+  const result=persist(sim,io,ctx,()=>FIN().text('taken',st),()=>{st.earthHomecoming.finale.offer='taken';const ph=SG().finalePhase(sim,3);if(!ph.ok)return ph;return SG().finaleWon(sim,'kept');},rec=>{rec.finale.offer='taken';});
+  if(result.ok){dropBeat(sim,'offer');queueBeat(sim,'taken');queueBeat(sim,'won');runtime(sim).rise={t:0};}
+  return result;
  }
- return persist(sim,io,ctx,()=>FIN().text('refused',sim.state),null,rec=>{rec.finale.offer='refused';});
-}
-// the last answer: after the last body falls, the owner asks; the ending is saved with the win, then the rise begins.
-function finish(sim,io,ending){
- const result=persist(sim,io,null,()=>FIN().text('won',sim.state),()=>SG().finaleWon(sim,ending),()=>{});
- if(result.ok)runtime(sim).rise={t:0};
+ const result=persist(sim,io,ctx,()=>FIN().text('refused',sim.state),null,rec=>{rec.finale.offer='refused';});
+ if(result.ok){dropBeat(sim,'offer');queueBeat(sim,'refused');}
  return result;
 }
-// the answers the last prompt offers, as the script words them; "answered" needs all three sightings heard.
+// the last answer: the owner asks only when more than one answer is open; the ending is saved with the win, then the rise.
+function finish(sim,io,ending){
+ const result=persist(sim,io,null,()=>FIN().text('won',sim.state),()=>SG().finaleWon(sim,ending),()=>{});
+ if(result.ok){runtime(sim).rise={t:0};dropBeat(sim,'last');queueBeat(sim,'won');}
+ return result;
+}
 function lastChoices(sim){return FIN().choices('last',sim.state);}
 
 function defeat(sim,e){
  if(!encounter(e)||!owned(sim,e,false))return false;
- const io={save:sim.earthHomecomingSave};
+ const io={save:sim.earthHomecomingSave},r=runtime(sim);
  if(e.finaleRole==='chain')return breakChain(sim,io,e.chainId,FIN().text('playerBreak',sim.state),null).ok;
  const ph=phaseOf(sim.state);
  if(ph===2){
   // the second body falls: the player is healed to full, and the offer opens with the fight frozen.
   const result=persist(sim,io,null,()=>FIN().text('down',sim.state),()=>SG().finalePhase(sim,3),(rec,cand)=>{rec.finale.offer=null;cand.adventure.hp=G.RealmAdventure.stats(cand.adventure).maxHP;});
-  if(result.ok)runtime(sim).walk={phase:3,i:0,pause:0};
+  if(result.ok){r.walk={phase:3,i:0,pause:0};queueBeat(sim,'offer',true);}
   return result.ok;
  }
- if(ph===3){runtime(sim).lastOpen=true;return true;}
+ if(ph===3){
+  // a single last answer is taken without asking; two or more are put to the player in the dialog.
+  const choices=lastChoices(sim);
+  if(choices.length<=1)return finish(sim,io,choices[0]?.id||'open').ok;
+  r.lastOpen=true;queueBeat(sim,'last',true);return true;
+ }
  return false;
 }
 
@@ -167,7 +194,11 @@ function scheduleChains(sim,r,io){
  const st=sim.state,A=G.RealmAdventure,p=planFor(sim),now=st.adventure.elapsed;
  if(r.t0===null)r.t0=now;const el=now-r.t0;
  for(const c of p.chains)if(!r.announced.includes(c.id)&&el>=c.appearAt){r.announced.push(c.id);if(!broken(st).includes(c.id)){const line=say('finale.chain.'+(c.echo||'spring'),st);if(line)A.notify(sim,line);}}
- for(const a of p.allies)if(!r.arrived.includes(a.id)&&el>=a.arriveAt){r.arrived.push(a.id);const line=say('finale.ally.'+a.echo,st);if(line)A.notify(sim,line);}
+ for(const a of p.allies)if(!r.arrived.includes(a.id)&&el>=a.arriveAt){
+  r.arrived.push(a.id);
+  if(!r.alliesBeat){r.alliesBeat=true;queueBeat(sim,'allies');}
+  const line=say('finale.ally.'+a.echo,st);if(line)A.notify(sim,line);
+ }
 }
 // an arrived ally works at their chain: allyDps a second off its hp. the chain breaks in their name only if it falls to them.
 function allyWork(sim,r,io,dt){
@@ -189,10 +220,32 @@ function walkRegent(sim,r,dt){
  if(ph===3)return;
  if(w.pause>0){w.pause-=dt;return;}
  const k=w.i%route.length,goal=route[k],dx=goal.x-e.x,dz=goal.z-e.z,d=Math.hypot(dx,dz);
- if(d<.25){w.i++;w.pause=t.pause;const key=k===mk.stair?'merged.stair':k===mk.road?'merged.road':k===mk.briar?'merged.briar':null;if(key){const line=say('finale.'+key,sim.state);if(line)A.notify(sim,line);}return;}
+ if(d<.25){w.i++;w.pause=t.pause;const key=k===mk.stair?'stair':k===mk.road?'road':k===mk.briar?'briar':null;if(key&&!r.marksShown.includes(key)){r.marksShown.push(key);queueBeat(sim,key);}return;}
  const step=Math.min(d,t.speed*dt),nx=e.x+dx/d*step,nz=e.z+dz/d*step;
  if(!G.RealmCore.walkable(nx,nz,sim.navRoom,REGENT_R)){w.i++;return;}
  e.x=nx;e.z=nz;
+}
+
+// the valley's changes, shown as the player reaches them: each scene once, its first line kept in the journal.
+function epiRows(){return EPID()?.CHANGES||[];}
+function rowSpots(row,st){
+ if(row.at)return[row.at];
+ const R=EPID().ROADS,roads=row.kind==='grey-road'?(st.saga.finale.ending==='kept'?[...R.counterfeitRoads,...R.trueRoads]:R.counterfeitRoads):R.trueRoads;
+ return roads.map(q=>({x:(q.a.x+q.b.x)/2,z:(q.a.z+q.b.z)/2}));
+}
+function stepFor(scene){if(!G.RealmStoryScript&&typeof require==='function'){try{require('./story-script.js');}catch{}}const map=G.RealmStoryScript?.STEPS?.epilogue||{};return Object.keys(map).find(k=>map[k]===scene)||null;}
+function epilogueTick(sim,io){
+ const E=EPI(),st=sim.state;if(!E||!EPID())return;
+ const ids=new Set(E.changes(st).map(c=>c.id)),seen=new Set(finaleOf(st).seen||[]),p=st.player;
+ for(const row of epiRows()){
+  if(!ids.has(row.id)||seen.has(row.scene))continue;
+  if(!rowSpots(row,st).some(q=>Math.hypot(q.x-p.x,q.z-p.z)<=7))continue;
+  const step=stepFor(row.scene);if(!step)continue;
+  const first=FIN().scene(row.scene,st)?.lines?.[0]?.text||'';
+  const result=persist(sim,io,null,first,null,rec=>{rec.finale.seen=[...(rec.finale.seen||[]),row.scene];});
+  if(result.ok)queueBeat(sim,step,false,'epilogue');
+  return;
+ }
 }
 
 function tick(sim,dt){
@@ -200,15 +253,16 @@ function tick(sim,dt){
  const st=sim.state,r=runtime(sim),ph=phaseOf(st),io={save:sim.earthHomecomingSave},A=G.RealmAdventure,t=FIN().timing();
  if(ph===0){
   // the eve: the first night at the shared house after the nearshore, said once.
-  if(!r.eveShown&&SG().done(st,'nearshore')&&Math.hypot(st.player.x-HOME.x,st.player.z-HOME.z)<=8){r.eveShown=true;const line=say('finale.eve',st);if(line)A.notify(sim,line);}
-  if(!st.saga.credits&&st.adventure.hp>0&&near(sim,t.startRange)&&SG().allowed(st,'finale')&&begin(sim,io).ok){const line=say('finale.rise',st);if(line)A.notify(sim,line);}
+  if(!r.eveShown&&SG().done(st,'nearshore')&&Math.hypot(st.player.x-HOME.x,st.player.z-HOME.z)<=8){r.eveShown=true;queueBeat(sim,'eve');}
+  if(!st.saga.credits&&st.adventure.hp>0&&near(sim,t.startRange)&&SG().allowed(st,'finale')&&begin(sim,io).ok)queueBeat(sim,'begin');
   return;
  }
  if(r.walk.phase!==ph)r.walk={phase:ph,i:0,pause:0};
  const p=st.player,s=r.still;if(s.x===null||Math.hypot(p.x-s.x,p.z-s.z)>.5){s.x=p.x;s.z=p.z;s.t=0;}else s.t+=dt;
  if(ph===1){scheduleChains(sim,r,io);if(phaseOf(st)===1)allyWork(sim,r,io,dt);}
- if(phaseOf(st)===2&&!r.ranNoted){r.ranNoted=true;const line=say('finale.runs',st);if(line)A.notify(sim,line);}
+ if(phaseOf(st)===2&&!r.ranNoted){r.ranNoted=true;queueBeat(sim,'runs');}
  if(ph>=2)walkRegent(sim,r,dt);
+ if(st.saga.finale.won)epilogueTick(sim,io);
  if(st.saga.finale.won&&!st.saga.credits){if(!r.rise)r.rise={t:0};r.rise.t+=dt;if(r.rise.t>=t.riseSeconds&&!r.credits&&persist(sim,io,null,()=>FIN().text('credits',sim.state),()=>SG().rollCredits(sim),()=>{}).ok)r.credits=true;}
 }
 
@@ -239,6 +293,7 @@ const api={definition:D,patterns:P,bands:B,fresh,validate,validateWorld,snapshot
  eligible:state=>!!state?.earthHomecoming?.accepted||SG().allowed(state,'finale'),
  missing:state=>SG().BEATS.filter(b=>b.act<5&&!SG().done(state,b.id)).map(b=>b.id),
  ready:state=>SG().done(state,'nearshore'),
- encounter,enemies,signature,pattern,lock,strikeContains,canStrike,canDamage,owned,defeat,command,tick,runtime,view,plan:planFor,begin,lastChoices,marks};
+ encounter,enemies,signature,pattern,lock,strikeContains,canStrike,canDamage,owned,defeat,command,tick,runtime,view,plan:planFor,begin,lastChoices,marks,
+ nextBeat,takeBeat,listen,windingUp,lineText:say};
 G.RealmEarthHomecoming=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
