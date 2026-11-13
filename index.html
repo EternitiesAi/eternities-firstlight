@@ -4054,25 +4054,25 @@ const definition=freeze({
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
  completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
-  step('witness-record','Hear Neris’s full record','interact',-12,27,[],false,
+  step('witness-record','Hear Neris out at the Refuge','interact',-12,27,[],false,
    'Neris is at the Kiln Refuge. Her record names the foundry. The pattern behind the night at Bellweather was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
-  step('tovan-account','Check Tovan’s rivets','interact',-15,16,['witness-record'],false,
+  step('tovan-account','Ask Tovan to check the rivets','interact',-15,16,['witness-record'],false,
    'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
-  step('read-service-writ','Read the foundry’s outer gate','interact',-12,-95,['tovan-account'],false,
+  step('read-service-writ','Read the writ on the foundry gate','interact',-12,-95,['tovan-account'],false,
    'The pattern’s route runs out of the works through this gate and into the yard. The inner doors stay shut. Two preparations stand nearby, and neither is required. Read the warden’s terms before you knock.'),
-  step('west-shunt','Set the west counterweight','interact',-18,-90,['read-service-writ'],true,
+  step('west-shunt','Brace the west approach','interact',-18,-90,['read-service-writ'],true,
    'Set the counterweight beside the west approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor his damage, and it does not touch the line recovery. No ordinary material is used.'),
-  step('east-brace','Seat the east brace','interact',17,-90,['read-service-writ'],true,
+  step('east-brace','Brace the east approach','interact',17,-90,['read-service-writ'],true,
    'Seat the brace beside the east approach. It adds exactly 0.6 seconds to Veyr’s recovery after a line strike. It changes neither his health nor his damage, and it does not touch the sweep recovery. No ordinary material is used.'),
-  step('challenge-veyr','Challenge Veyr at the gate','interact',0,-91,['read-service-writ'],false,
+  step('challenge-veyr','Face Veyr in the yard','interact',0,-91,['read-service-writ'],false,
    'Veyr keeps the open apron, and the fight begins there. Read the broad sweep and the narrow line as two different shapes, and find cover before you commit. The road south stays open.'),
-  step('warden-resolved','Defeat Veyr, the foundry’s warden','defeat',0,-99,['challenge-veyr'],false,
+  step('warden-resolved','Put Veyr down at the gate','defeat',0,-99,['challenge-veyr'],false,
    'Veyr falls at the gate, and the gate’s clamps let go. You beat him with ordinary strikes, and nothing else counted. The pattern can be reached now.'),
   step('stabilize-service-engine','Take the pattern back','interact',0,-105,['warden-resolved'],false,
    'Fit the stabilizer into the gate engine and draw the pattern out of it. It was never theirs, and it is yours to bring home. Behind the works, the smiling stranger from the beacon turns toward you. He was in the foundry, and he knows your name.'),
   step('disposition','Decide what happens to the people held here','choice',0,-105,['stabilize-service-engine'],false,
    'The people the writ holds are still inside the works. Decide what becomes of them. Unbind opens the gate, Divert takes a few out under a hood, and License hands their road to another overseer. Read each one before you confirm.'),
-  step('verify-route','Check the gate and the road it leaves','interact',-12,-95,['disposition'],false,
+  step('verify-route','Check the gate, then close the road with Istra','interact',-12,-95,['disposition'],false,
    'The gate’s fitting shows what you chose: an open handle, a hooded marker or paired seals. Check it at the plate, then return to Istra to close the road.')
  ],
  choices:[
@@ -4208,6 +4208,7 @@ const record=sim=>sim.state.hellCampaign;
 // a story script, when it lands, owns the spoken lines; until then the data table answers.
 // the story script speaks every line; a scene that is absent for this state simply has no lines.
 const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const optionLabel=(scene,id,fallback)=>scene?.choice?.options?.find(o=>o.id===id)?.label||fallback;
 const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
 function reward(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
@@ -4275,17 +4276,17 @@ class HellCampaignUI{
      if(!here)controls='<p>Go back to Hell to reach this step.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
      else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects Veyr. Use your blade or bow, move or Brace through the marked shape, and strike while he recovers.</p>';
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this choice','review',c.id)).join('');
-     else if(s.id==='stabilize-service-engine'){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,'Let him talk')+answer(false,'I am not here to listen');}
+     else if(s.kind==='choice')controls=d.choices.map(c=>act(optionLabel(sceneOf('hell','disposition',sim.state),c.id,c.name),'review',c.id)).join('');
+     else if(s.id==='stabilize-service-engine'){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,optionLabel(sceneOf('hell',s.id,sim.state),'hear','Let him talk'))+answer(false,optionLabel(sceneOf('hell',s.id,sim.state),'cut','I am not here to listen'));}
      else controls=act(s.id==='challenge-veyr'?'Challenge Veyr':s.name,'step',s.id);
     }
-    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('hell',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+(s.id!=='verify-route'&&(done||next)?speech(linesOf(sceneOf('hell',s.id,sim.state))):'')+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
    if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete</h3><p>Return to Istra to close the road. A full pouch never stops it; anything that does not fit stays in the works.</p>'+(here&&H().at(sim,d.giver)?act('Return to Istra and close the road','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+=H().sighted(sim.state)?sceneSection('hell-campaign-regent','The regent',sceneOf('hell','sighting',sim.state)):'';html+='<section class="hell-campaign-dispositions"><h3>Three choices for the people held here</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,d,sim.state);
-  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(c?.name)+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
+  html+=H().sighted(sim.state)?sceneSection('hell-campaign-regent','The regent',sceneOf('hell','sighting',sim.state)):'';const dScene=sceneOf('hell','disposition',sim.state);html+=(r.steps.includes('disposition')||ids.has('disposition'))?'<section class="hell-campaign-dispositions"><h3>'+esc(dScene?.choice?.prompt||'Three choices for the people held here')+'</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(optionLabel(dScene,c.id,c.name))+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>':'';html+=recognition(r,d,sim.state);
+  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(optionLabel(sceneOf('hell','disposition',sim.state),c?.id,c?.name))+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="hell-campaign-footer">Reading and walking record nothing. Both camera styles stay available. Your steps, your choice and a finished road survive a reload.</p></article>';
   return{title:d.title,html};
  }
@@ -4293,7 +4294,7 @@ class HellCampaignUI{
   if(this.pending&&!this.same(this.pending,true))this.pending=null;
   if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='hell-campaign';}
   if(this.rpg.quest!=='hell-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
-  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE STOLEN PATTERN','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Return to Istra · the road is done':next?.name||'Read the road'):'Go back to the Refuge · your progress is saved','#tracked-progress':r.steps.length+' steps · '+(ready?'ready to close':'J road · M routes')};
+  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE STOLEN PATTERN','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Close the road with Istra':next?.name||'Read the road'):'Go back to the Refuge. Your road is saved.','#tracked-progress':r.steps.length+' done · '+(ready?'ready to close':'J road · M routes')};
   for(const[selector,value]of Object.entries(text)){const e=document.querySelector(selector);if(e)e.textContent=value;}
  }
 }
@@ -4941,31 +4942,31 @@ const definition=freeze({
  danger:'The Glasswing approach construct has 110 health and a locked directed beam: 9 units of reach, a 0.65 half-width, a 1.2-second warning and a 1.7-second recovery. The supplied warning mirror adds 0.4 seconds to that warning only. The relay seraph has a radial pulse with a 5.5-unit reach, a 3.4-unit radius, a 1.4-second warning and a 2-second recovery, and it hits harder than anything else in the garden. Real opaque cover blocks the beam. Both can be hurt during every live phase. Use your blade or bow, move, Brace or retreat. Shape and text carry every warning with sound off. The road home stays open. The courier is a traveller to welcome, not an enemy. No class, technique or companion is required. The upper terrace stays closed.',
  completionText:'Calen keeps the corrected route beside the courier’s full account. The bell courier walked the marked road and reached the garden. The envoy’s reading is kept, and the counterfeit relay is silent. Rielle gives you 16 sunmarks, 3 ore, 4 timber and 3 fibre, and XP up to 40 within the stored cap. Those materials go toward a project you choose. No gear was fitted or granted. The Far Gates, the upper city and the Heaven trial stay separate.',
  steps:[
-  step('witness-account','Hear the bell courier’s account','interact',-29,-69,[],false,
+  step('witness-account','Hear the bell courier out','interact',-29,-69,[],false,
    'The bell courier followed a rescue signal that promised an open road up. It stopped when the directions contradicted the closed gate. Keep the whole account. Arriving is not an invasion, and tired hands are not a failure. Compare the makers’ marks on the ground. Nobody needs an oath or a perfect pitch to be believed.'),
-  step('compare-arrival-marks','Compare the Arcade arrival marks','interact',-35,-31,['witness-account'],false,
+  step('compare-arrival-marks','Compare the marks at the Arcade plate','interact',-35,-31,['witness-account'],false,
    'The Ruby Arcade response plate has a true repair notch. The courier’s record has a repeated false mark beside it. Calen can explain what he saw, and the marks can be checked without a guide. Write down the difference. The old survey and the Broken Choir stay as they were.'),
-  step('inspect-false-relay','Read the borrowed rescue signal','interact',0,-79,['compare-arrival-marks'],false,
+  step('inspect-false-relay','Find where the false signal points','interact',0,-79,['compare-arrival-marks'],false,
    'At the Mirror Causeway plate, the promised rescue direction meets the closed upper road, and the two do not agree. The fault belongs to a borrowed signal, not to every traveller or to Heaven’s own source. An approach construct guards the signal, and the relay beyond it repeats the wrong route. Read both warnings before you begin the watch. The optional mirror can be grounded first.'),
   step('ground-mirror','Ground the warning mirror','interact',28,-17,['inspect-false-relay'],true,
    'Seat the mirror beside the lower service approach. It detunes the Glasswing’s beam charge and adds exactly 0.4 seconds to its warning. The seated fitting and its longer tell show the change. It changes neither health nor damage, and it touches no recovery and no relay pulse. No ordinary material is used.'),
   step('begin-watch','Face the Glasswing at the causeway','interact',0,-53,['inspect-false-relay'],false,
    'Begin the watch on the supported causeway. The construct locks its direction before it fires, and its beam stops at real opaque cover. Unlike the garden’s fittings, it can be hurt during any live phase. Break it with your blade or bow. Walking north, opening the map or reading this page never starts the fight by itself.'),
-  step('beam-disabled','Break the Glasswing construct','defeat',0,-61,['begin-watch'],false,
+  step('beam-disabled','Break the Glasswing before it fires','defeat',0,-61,['begin-watch'],false,
    'Break the construct through the fight itself. It folds at zero stability. It is not a slain angel or a civilian. Its defeat grants no loot or XP, and it lets the relay wake. The way back to the garden stays open.'),
-  step('relay-disabled','Break the relay seraph','defeat',7,-99,['beam-disabled'],false,
+  step('relay-disabled','Break the relay seraph on the north apron','defeat',7,-99,['beam-disabled'],false,
    'The relay seraph is the heart of the counterfeit route, and it now turns the rescue corridors hostile. Read its radial warning. Step beyond the marked circle, or use cover and Brace. Its defeat stops the repeating false signal and makes the waymarks trustworthy. No payout or passage comes from a button. Only the fight counts.'),
-  step('secure-service-route','Mark the service walk','interact',-24,-76,['relay-disabled'],false,
+  step('secure-service-route','Mark the Arcade walk for the courier','interact',-24,-76,['relay-disabled'],false,
    'Fit the route markers along the Arcade service walk now that both apparatuses are down. The markers name the supported western loop and the way back to the garden. They make no new floor or doorway. The courier can be invited from its waiting place. No ordinary material is spent.'),
-  step('invite-wayfarer','Invite the bell courier onto the marked road','interact',-29,-69,['secure-service-route'],false,
+  step('invite-wayfarer','Invite the bell courier to walk home','interact',-29,-69,['secure-service-route'],false,
    'Invite the courier to walk. Stay within 9 route units while it follows the whole loop; it waits if you wander off. Leaving or reloading resets an unfinished walk, and the invitation stays. You can invite it again from the same place to start over.'),
-  step('wayfarer-arrived','Walk the courier home','escort',7,17,['invite-wayfarer'],false,
+  step('wayfarer-arrived','Walk the courier home to Calen','escort',7,17,['invite-wayfarer'],false,
    'The courier must reach the garden by its own steps, beside Calen and you. Your arrival alone does not count, and an unfinished walk resets. There is no timer, and no button stands in for the walk. Keep the full account and the corrected signs.'),
-  step('fit-arrival-assist','Fit the arrival assembly at the garden plate','interact',0,-1,['wayfarer-arrived'],false,
+  step('fit-arrival-assist','Set up a welcome for tired hands','interact',0,-1,['wayfarer-arrived'],false,
    'At the garden’s response plate, fit the supplied arrival assembly beside the return arm the Broken Choir gave back. It adds a public use; it does not repeat the old repair or its reward. The supplied parts cost nothing from your pack. Read both arrangements before you confirm one.'),
   step('arrangement','Choose how the garden welcomes visitors','choice',0,-1,['fit-arrival-assist'],false,
    'Read the two arrangements and confirm one. Preview and cancel keep the choice open. Both keep the garden open to everyone, the courier’s arrival and the true account. Neither assigns a class, changes your standing or grants an exclusive right. Both carry the same reward.'),
-  step('verify-welcome','Check the welcome with Calen','interact',7,20,['arrangement'],false,
+  step('verify-welcome','Check the welcome with Calen, then close the work','interact',7,20,['arrangement'],false,
    'Return to Calen. Check the corrected signs, the courier’s arrival and the arrangement you chose. Calen names what he saw without pretending to know the whole counterfeit network. Rielle closes the work after that.')
  ],
  choices:[
@@ -5167,6 +5168,9 @@ const record=sim=>sim.state.heavenCampaign,step=id=>def().steps.find(s=>s.id===i
 // the story script speaks every line; a scene absent for this state has none.
 const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
 const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
+const optionLabel=(scene,id,fallback)=>scene?.choice?.options?.find(o=>o.id===id)?.label||fallback;
+// the escort's status in the player's words, never the engine's.
+const escortWords={following:'walking with you',lagging:'waiting for you to catch up','awaiting-save':'the arrival is not saved yet, so stay by Calen'};
 const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 function reward(d=def()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function escortStatus(sim){const raw=H().escortStatus(sim),status=typeof raw==='string'?raw:raw?.status||raw?.phase||'inactive';return{status,help:typeof raw==='object'?raw.help||raw.text||'':''};}
@@ -5237,7 +5241,7 @@ class HeavenCampaignUI{
  }
  escortSection(act){if(!escortPending(this.sim))return'';const sim=this.sim,d=def(),status=escortStatus(sim),active=['following','lagging'].includes(status.status),awaiting=status.status==='awaiting-save',near=H().at(sim,staging());
   const fallback=awaiting?'The courier reached Calen, but the arrival would not save. Stay beside Calen and close this page so the arrival can retry. It is not recorded until the save works.':active?'Close this page and walk the marked loop with the courier. Stay within '+d.escort.followRange+' units; it waits when you wander off.':'An unfinished walk resets after you leave or reload. The invitation stays. Come back to the waiting place and invite the courier again.';
-  return'<section class="heaven-campaign-escort" data-status="'+esc(status.status)+'"><h3>'+esc(d.escort.name)+' · '+esc(status.status)+'</h3><p>'+esc(status.help||fallback)+'</p><p>Your own arrival does not count. Reading the map and this page earn no progress. The upper terrace stays closed.</p>'+(awaiting?'<p>Stay beside Calen and close this page. The arrival retries by itself; no button can replace it.</p>':active?'<p>Pause here to read. Close the page to walk on.</p>':near?act('Invite the courier · or start its walk again','invite',d.escort.startStep):button('Walk to the courier’s waiting place','walk','escort-staging'))+'</section>';
+  return'<section class="heaven-campaign-escort" data-status="'+esc(status.status)+'"><h3>'+esc(d.escort.name)+' · '+esc(escortWords[status.status]||status.status)+'</h3><p>'+esc(status.help||fallback)+'</p><p>Your own arrival does not count. Reading the map and this page earn no progress. The upper terrace stays closed.</p>'+(awaiting?'<p>Stay beside Calen and close this page. The arrival retries by itself; no button can replace it.</p>':active?'<p>Pause here to read. Close the page to walk on.</p>':near?act('Invite the courier · or start its walk again','invite',d.escort.startStep):button('Walk to the courier’s waiting place','walk','escort-staging'))+'</section>';
  }
  page(tab){if(tab!=='heaven-campaign')return null;const d=def(),sim=this.sim,r=record(sim),here=sim.room===d.room,available=H().available(sim.state),ids=new Set(available.map(s=>s.id));
   this.binding={...this.owner(),id:++this.serial};const act=(label,type,id='')=>button(label,type,id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'"');
@@ -5254,18 +5258,18 @@ class HeavenCampaignUI{
      else if(s.kind==='escort')controls='<p>Close this page and walk with the courier along the marked loop. Its arrival records this step; there is no button for it.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
      else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects the apparatus. Use your blade or bow, move, Brace or retreat. Both take ordinary damage in every live phase.</p>';
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this arrangement','review',c.id)).join('');
+     else if(s.kind==='choice')controls=d.choices.map(c=>act(optionLabel(sceneOf('heaven','arrangement',sim.state),c.id,c.name),'review',c.id)).join('');
      else if(s.id===d.escort.startStep)controls=act('Invite the courier','invite',s.id);
      else controls=act(s.name,'step',s.id);
     }
-    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('heaven',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+(s.id!=='verify-welcome'&&(done||next)?speech(linesOf(sceneOf('heaven',s.id,sim.state))):'')+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>'+this.escortSection(act);
    if(!r.claimed&&H().ready(sim.state))html+='<section class="heaven-campaign-ready"><h3>Complete</h3><p>Return to Rielle to close the work. A full pouch never stops it; anything that does not fit stays in the garden.</p>'+(here&&H().at(sim,d.giver)?act('Return to Rielle and close the work','claim'):here?button('Walk back to Rielle','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+='<section><h3>Two welcome arrangements</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,sim.state);
+  const aScene=sceneOf('heaven','arrangement',sim.state);html+=(r.steps.includes('arrangement')||ids.has('arrangement'))?'<section><h3>'+esc(aScene?.choice?.prompt||'Two welcome arrangements')+'</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(optionLabel(aScene,c.id,c.name))+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>':'';html+=recognition(r,sim.state);
   if(r?.choice)html+='<section><h3>Try your welcome</h3><p>Trying it changes nothing you have recorded. It only shows the arrangement you kept.</p>'+(here&&H().at(sim,step('fit-arrival-assist'))?act('Try the welcome','activate'):here?button('Walk near the welcome instrument','walk','instrument'):'<p>Go back to the garden to try it.</p>')+'</section>';
-  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="heaven-campaign-confirm" aria-label="Confirm welcome arrangement"><h3>'+esc(c.name)+' · confirm this welcome</h3><p>'+esc(c.consequence)+'</p><p>This is kept for good. Both arrangements keep the garden open and carry the same reward.</p>'+(this.same(this.pending,true)?act('Confirm this welcome','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the terms again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
+  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="heaven-campaign-confirm" aria-label="Confirm welcome arrangement"><h3>'+esc(optionLabel(sceneOf('heaven','arrangement',sim.state),c.id,c.name))+' · confirm this welcome</h3><p>'+esc(c.consequence)+'</p><p>This is kept for good. Both arrangements keep the garden open and carry the same reward.</p>'+(this.same(this.pending,true)?act('Confirm this welcome','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the terms again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="heaven-campaign-footer">Reading and walking record nothing. Arrival belongs to the courier. Both camera styles stay available. Your steps, your welcome and a finished road survive a reload.</p></article>';
   return{title:d.title,html};
  }
@@ -5274,8 +5278,8 @@ class HeavenCampaignUI{
   if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='heaven-campaign';}
   if(this.rpg.quest!=='heaven-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
   const d=def(),ready=H().ready(sim.state),escort=escortPending(sim)?escortStatus(sim):null,next=H().available(sim.state)[0];
-  const detail=sim.room!==d.room?'Go back to the garden · an unfinished walk resets':escort&&['following','lagging','awaiting-save'].includes(escort.status)?d.escort.name+' · '+escort.status:!H().heard(sim.state)?'The envoy’s reading · walk to the envoy':ready?'Return to Rielle · the work is done':next?.name||'Read the road';
-  const text={'#tracked-chapter':'HEAVEN · THE GATE THAT REMAINED OPEN','#tracked-title':d.title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' steps · '+(ready?'ready to close':'J road · M routes')};for(const[selector,value]of Object.entries(text)){const el=document.querySelector(selector);if(el)el.textContent=value;}
+  const detail=sim.room!==d.room?'Go back to the garden. An unfinished walk starts over.':escort&&['following','lagging','awaiting-save'].includes(escort.status)?d.escort.name+' · '+(escortWords[escort.status]||escort.status):!H().heard(sim.state)?'Walk to the envoy and hear the reading':ready?'Close the work with Rielle':next?.name||'Read the road';
+  const text={'#tracked-chapter':'HEAVEN · THE GATE THAT REMAINED OPEN','#tracked-title':d.title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' done · '+(ready?'ready to close':'J road · M routes')};for(const[selector,value]of Object.entries(text)){const el=document.querySelector(selector);if(el)el.textContent=value;}
  }
 }
 const api={HeavenCampaignUI,routePoints,legend,reward,escortStatus};G.RealmHeavenCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
@@ -10828,7 +10832,9 @@ const ALREADY=freeze({
  nearshore:(w,s)=>s.briar.state==='nearshore'||s.briar.state==='returned',
  finale:(w,s)=>s.finale.phase>0||s.finale.won
 });
-function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])||ALREADY[gate](world,s);}
+// the hell gate holds until the quiet engine is placed (BRANCHES 3.3; the audit's edge). a save that already accepted the road keeps it.
+const HOLDS=freeze({hell:(w,s)=>s.choices.device!==null});
+function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])&&(!own(HOLDS,gate)||HOLDS[gate](world,s))||ALREADY[gate](world,s);}
 // What a sighting or a reading needs from the world when it happens. Once witnessed it stays part of the story.
 const REGENT_NEEDS=freeze({beacon:w=>w?.adventure?.beacon?.introduced===true,foundry:w=>w?.hellCampaign?.accepted===true,confluence:w=>w?.cosmosCampaign?.accepted===true});
 const PROPHECY_NEEDS=freeze({spring:w=>w?.adventure?.angelSeen===true,heaven:w=>w?.heavenCampaign?.accepted===true});
