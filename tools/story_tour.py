@@ -23,6 +23,9 @@ from browser_support import launch_kwargs  # noqa: E402
 # the frame distribution is measured without the display cap; the page's own loop runs as fast as the GPU lets it.
 UNCAPPED = ["--disable-gpu-vsync", "--disable-frame-rate-limit"]
 
+# scenes whose beat is a held key in the page (the feather's sight is true roads gold, counterfeit roads ash red).
+HOLD = {"feather": "f"}
+
 SAMPLE_JS = """({n}) => new Promise((resolve, reject) => {
   const samples = []; let last; let raf; let done = false;
   const finish = (error) => { if (done) return; done = true; cancelAnimationFrame(raf); clearTimeout(timer); if (error) reject(error); else resolve(samples); };
@@ -111,6 +114,15 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         third = out / (row["scene"] + "-third.png")
         page.screenshot(path=str(third))
         record["third_person_frame"] = str(third.relative_to(out.parent))
+        if row["scene"] in HOLD:
+            # a held key is the page's own input; the feather's sight shows only while it is held.
+            page.keyboard.down(HOLD[row["scene"]])
+            page.wait_for_timeout(1800)
+            sight = out / (row["scene"] + "-sight.png")
+            page.screenshot(path=str(sight))
+            page.keyboard.up(HOLD[row["scene"]])
+            record["sight_frame"] = str(sight.relative_to(out.parent))
+            page.wait_for_timeout(800)
         camera(page, "follow")
         page.wait_for_timeout(2500)
         diorama = out / (row["scene"] + "-diorama.png")
