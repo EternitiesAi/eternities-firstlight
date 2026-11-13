@@ -61,7 +61,7 @@ class RuleWorkers(unittest.TestCase):
             self.assertEqual(record['verifierSha256'], hashlib.sha256(VERIFY.read_bytes()).hexdigest())
             self.assertEqual(record['root'], str(root))
             self.assertEqual(record['requestedWorkers'], workers)
-            self.assertEqual(record['rulesTimeoutSeconds'], 180)
+            self.assertEqual(record['rulesTimeoutSeconds'], 360)
             self.assertEqual(record['pythonTimeoutSeconds'], 600)
             self.assertEqual(record['ruleFileCount'], 142)
             paths = [str(root / f'tests/token-{i:03}.test.cjs') for i in range(142)]
@@ -70,7 +70,7 @@ class RuleWorkers(unittest.TestCase):
             rule_calls = [c for c in calls if c[0][:2] == ['node', '--test']]
             self.assertEqual(len(rule_calls), 1)
             self.assertEqual(rule_calls[0][0], expected)
-            self.assertEqual(rule_calls[0][1], 180)
+            self.assertEqual(rule_calls[0][1], 360)
             self.assertEqual(record['command'], expected)
             self.assertEqual(record['ruleFiles'], [f'tests/token-{i:03}.test.cjs' for i in range(142)])
             for _, _, child_env in calls:
@@ -104,7 +104,7 @@ class RuleWorkers(unittest.TestCase):
 
     def test_timeout_keeps_failure_and_stops_before_python(self):
         calls, stdout, stderr = self.dispatch(2, 'timeout')
-        self.assertIn('FAILED: rules exceeded 180s', stderr)
+        self.assertIn('FAILED: rules exceeded 360s', stderr)
         self.assertNotIn('PASS: rules', stdout)
         self.assertFalse(any('unittest' in c[0] for c in calls))
 
