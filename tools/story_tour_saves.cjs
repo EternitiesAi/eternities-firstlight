@@ -128,7 +128,9 @@ for (const j of JOURNEYS) {
   collect('nearshore', 'tools/firstlight_journey.cjs --save-at nearshore', dir, () => {
     const botOut = path.join(root, '_bot', 'nearshore');
     const bot = childProcess.spawnSync(process.execPath, [path.join(ROOT, 'tools/firstlight_journey.cjs'), '--save-at', 'nearshore', '--out', botOut], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
-    if (bot.status !== 0) throw Error('the bot did not reach its save point: ' + String(bot.stdout || bot.stderr || '').trim().split('\n').slice(-2).join(' | ').slice(0, 300));
+    // the bot's BLOCKED row names the beat and the reason; its last lines alone only show the boss table.
+    const blocked = String(bot.stdout || '').split('\n').find(l => l.startsWith('BLOCKED')) || '';
+    if (bot.status !== 0) throw Error('the bot did not reach its save point: ' + (blocked || String(bot.stdout || bot.stderr || '').trim().split('\n').slice(-2).join(' | ')).slice(0, 400));
     fs.copyFileSync(path.join(botOut, '11', 'NEARSHORE_CHOICE_OPEN.json'), path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'));
   });
 }
@@ -154,7 +156,9 @@ for (const j of JOURNEYS) {
     const save = name => { const p = path.join(dir, name + '.json'); fs.writeFileSync(p, JSON.stringify(sim.snapshot(), null, 2) + '\n'); };
     if (!(walkTo(0, 6) && (tick(.3), phase() === 1))) throw Error('the finale did not begin at the spring (phase ' + phase() + ')');
     save('phase1_rises');
-    let guard = 0; while (phase() < 2 && guard++ < 600) tick(.1);
+    // phase 2 comes when every chain is broken: each chain body is defeated the way a landed hit defeats it, as the finale journey does.
+    const chains = () => globalThis.RealmAdventure.runtime(sim).enemies.filter(e => e.finaleRole === 'chain' && e.hp > 0);
+    for (let guard = 0; phase() < 2 && guard < 20; guard++) { for (const c of chains()) { globalThis.RealmAdventure.damageEnemy(sim, c, 100000); tick(.2); } tick(.1); }
     if (phase() !== 2) throw Error('phase 2 was not reached');
     save('phase2_chains');
     tick(.3); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(2), 100000); tick(.2);
@@ -176,7 +180,7 @@ for (const j of JOURNEYS) {
 // the page walks the real way before each entry: to the spring waystone for the crossing, to the valley's Road of Light
 // marker for the campaign realms, to the observatory invitation for the cosmos. the walk is the page's own move command.
 const SPRING = { walk: [0, 3] }, ROAD_MARKER = { walk: [18, 6] }, OBSERVATORY = { walk: [14, -5] };
-const TRAVEL_BELL = [SPRING, { act: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
+const TRAVEL_BELL = [SPRING, { adventure: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
 const REALM = (id, gate) => [gate, { realm: id }];
 const SCENES = [
   { scene: 'envoy', file: 'chapter/ENVOY_BEFORE_CHOICE.json', why: 'at the spring before the envoy chooses; envoy and feather done' },

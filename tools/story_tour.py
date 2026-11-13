@@ -89,10 +89,10 @@ def camera(page, mode):
 
 
 def run_step(page, step):
-    # a scene step is one of the page's own commands: a sim act, a walk by the real move command, or a realm entry through
+    # a scene step is one of the page's own commands: an adventure command, a walk by the real move command, or a realm entry through
     # the page's own preview and enter. nothing here edits the world.
-    if "act" in step:
-        return page.evaluate("s => Realm.test.act(s.act.id, s.act.type, s.act.payload)", step)
+    if "adventure" in step:
+        return page.evaluate("s => Realm.test.adventure(s.adventure.id, s.adventure.type, s.adventure.payload)", step)
     if "walk" in step:
         target = step["walk"]
         moved = page.evaluate("p => Realm.test.move(p[0], p[1])", target)
