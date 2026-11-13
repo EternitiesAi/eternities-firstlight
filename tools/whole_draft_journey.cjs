@@ -12,7 +12,7 @@ const selected=['blade','blade-to-bow'];
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const files=[],walk=(dir,prefix)=>{for(const e of fs.readdirSync(dir,{withFileTypes:true})){const rel=prefix+'/'+e.name,p=path.join(dir,e.name);if(e.isDirectory())walk(p,rel);else files.push(rel);}};
 walk(path.join(ROOT,'src'),'src');walk(path.join(ROOT,'tools/earth-homecoming-journey'),'tools/earth-homecoming-journey');
-files.push('build.py','index.html','FIRSTLIGHT_VALLEY.html','tools/earth_homecoming_journey.cjs','tests/earth_homecoming_earned.test.cjs',
+files.push('build.py','index.html','FIRSTLIGHT_VALLEY.html','tools/earth_homecoming_journey.cjs','tests/archive/earth_homecoming_earned.test.cjs',
     'tools/whole_draft_readback.cjs','tests/whole_draft_earned.test.cjs',
     'tests/chapter_journey.cjs','tests/road_journey.cjs','tests/beacon_journey.cjs','tests/crossing_journey.cjs',
     'tests/realm_trails_journey.cjs','tests/realm_trails_cosmos_journey.cjs','tests/hell_campaign_journey.cjs',

@@ -55,6 +55,7 @@ function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
  }
  /* Legitimate prior work opens the two continuing north commissions. */
  // the hell trail first (the night opens it); the hell campaign it leads to opens the garden gate for heaven's.
+ const SGA=require('../src/saga.js');if(!SGA.allowed(h.sim.state,'hell')){h=createHarness(SR.advance(h.sim.snapshot(),{bow,through:'night'}));h.walk(W.GATE.x,W.GATE.z);}
  earnNorth('hell');if(!require('../src/saga.js').allowed(h.sim.state,'heaven')){h=createHarness(SR.advance(h.sim.snapshot(),{bow,through:'hell'}));h.walk(W.GATE.x,W.GATE.z);}earnNorth('heaven');
  const starting=h.sim.snapshot();assertFreshConsignment(starting);snapshot('00_EARNED_REGIONAL_HISTORY');
  if(seedOnly)return{status:'passed',variant,claims:[],routes:h.routes,saveCount:h.checkpoints.length,swims:[],sourceDrift:JSON.stringify(beforeHashes)!==JSON.stringify(hashes())};
