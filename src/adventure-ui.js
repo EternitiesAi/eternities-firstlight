@@ -59,7 +59,7 @@ class AdventureUI{
  }
  roadInteract(){
   const s=this.state,p=this.sim.state.player,near=q=>Math.hypot(p.x-q.x,p.z-q.z)<3;this.intent=null;
-  if(s.hp<=0){this.run('revive');return true;}if(near(R.ENTRY)){this.run('road-leave');return true;}if(near(R.MERCHANT)){if(s.road.cartRepaired)this.api.openPanel('adventure');else this.run('cart-repair');return true;}if(near(R.BEACON)){if(G.RealmBeacon.sightingReady(this.sim)){this.openStory(G.RealmBeacon.SIGHTING,{label:'Watch him go',run:()=>this.run('beacon-sighting')});return true;}this.run('beacon-light');return true;}
+  if(s.hp<=0){this.run('revive');return true;}if(near(R.ENTRY)){this.run('road-leave');return true;}if(near(R.MERCHANT)){if(s.road.cartRepaired)this.api.openPanel('adventure');else this.run('cart-repair');return true;}if(near(R.BEACON)){if(G.RealmBeacon.sightingReady(this.sim)){this.sighting();return true;}this.run('beacon-light');return true;}
   const cache=R.CACHES.find(c=>near(c)&&s.road.revealed.includes(c.id)&&!s.road.claimed.includes(c.id));if(cache){this.run('road-cache',{id:cache.id});return true;}const drop=R.ENEMIES.find(e=>near(e)&&s.drops.includes(e.id));if(drop){this.run('loot',{id:drop.id});return true;}this.run('seek');return true;
  }
  roadRoute(id){
@@ -90,6 +90,7 @@ class AdventureUI{
  }
  openStory(lines=A.STORY,end=null){this.intent=null;this.api.clearKeys();this.api.closePanel();this.storyLines=lines;this.storyEnd=end;this.storyIndex=0;this.storyWasPaused=this.sim.paused;this.sim.paused=true;this.paintStory();$('#story-dialog').showModal();}
  paintStory(){let lines=this.storyLines||A.STORY,q=lines[this.storyIndex];if(q.command){this.sim.paused=false;this.run(q.command,{},true);this.sim.paused=true;}$('#story-speaker').textContent=q.speaker.toUpperCase();$('#story-title').textContent=q.title;$('#story-body').textContent=q.body;let area=$('#story-buttons');area.replaceChildren();const btn=(text,fn)=>{let b=document.createElement('button');b.textContent=text;b.onclick=fn;area.append(b);};if(this.storyIndex<lines.length-1)btn('Listen',()=>{this.storyIndex++;this.paintStory();});else if(this.storyEnd)btn(this.storyEnd.label,()=>{this.sim.paused=false;const res=this.storyEnd.run();this.sim.paused=true;if(res.ok)this.closeStory();});else if(this.state.reward)btn('Return to the valley',()=>this.closeStory());else for(const id of['dawn_edge','warden_stone'])btn(A.GEAR[id].name+' · '+(id==='dawn_edge'?'Power':'Endurance'),()=>{this.sim.paused=false;const res=this.run('reward',{id});this.sim.paused=true;if(res.ok)this.closeStory();});}
+ sighting(){this.openStory(G.RealmBeacon.SIGHTING,{label:'Watch him go',run:()=>this.run('beacon-sighting')});}
  closeStory(){if($('#story-dialog').open)$('#story-dialog').close();this.sim.paused=this.storyWasPaused;this.api.clearKeys();}
  tick(){let sim=this.sim,s=this.state,r=A.runtime(sim),mine=A.combatScene(sim);A.syncScene(sim);
   if(this.intent&&!sim.paused&&!sim.playerPath.length&&s.hp>0){let i=this.intent;
