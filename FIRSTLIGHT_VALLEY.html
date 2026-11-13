@@ -490,8 +490,9 @@ body.in-earth .place-title #place-kicker{color:#d7bd83}
 .wild-signs-panel :focus-visible,.wild-signs-map :focus-visible,.wild-signs-journal :focus-visible{outline:2px solid var(--field-gold,#e8cc98);outline-offset:3px}
 @media(max-width:550px){.wild-signs-panel{max-width:100%;font-size:1rem}.wild-signs-panel h3{font-size:1.3rem}.wild-signs-panel button,.wild-signs-map button,.wild-signs-journal button{display:block;width:100%;box-sizing:border-box;margin:.35rem 0}.wild-signs-services{display:block}.wild-signs-panel fieldset{padding:.65rem}}
 /* title, pause, credits, first steps and the settings controls. The HUD steps aside while the title is up. */
-body.title-open #hud,body.title-open #labels{display:none}
-#title-screen{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:#efe6cf;display:flex;align-items:center;overflow:hidden}
+body.title-open #hud,body.title-open #labels{display:none!important}
+#title-screen{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:#efe6cf;overflow:hidden}
+#title-screen[open]{display:flex;align-items:center}
 #title-screen::backdrop{background:linear-gradient(90deg,rgba(7,16,20,.92) 0%,rgba(7,16,20,.6) 38%,rgba(7,16,20,.06) 72%),linear-gradient(0deg,rgba(7,16,20,.7),rgba(7,16,20,0) 42%)}
 .title-panel{padding:clamp(28px,6vw,96px);max-width:min(560px,100vw);animation:title-in .9s ease-out both}
 @keyframes title-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -529,7 +530,7 @@ body.title-open #hud,body.title-open #labels{display:none}
 #credits-screen.still .credits-track{position:relative;padding:72px 24px 120px}
 .credits-skip{position:absolute;right:20px;bottom:20px;min-height:44px;padding:10px 16px;background:rgba(14,30,35,.7);border:1px solid rgba(219,193,140,.4);color:#efe6cf;border-radius:10px}
 
-#first-run{position:absolute;top:118px;left:50%;transform:translateX(-50%);width:min(380px,calc(100vw - 32px));padding:14px 16px 12px;background:rgba(17,31,37,.94);border:1px solid #c6a572;border-radius:12px;color:#edeadd;box-shadow:0 10px 34px rgba(0,0,0,.35);z-index:4}
+#first-run{position:absolute;top:118px;left:50%;transform:translateX(-50%);width:min(380px,calc(100vw - 32px));padding:14px 16px 12px;background:rgba(17,31,37,.94);border:1px solid #c6a572;border-radius:12px;color:#edeadd;box-shadow:0 10px 34px rgba(0,0,0,.35);z-index:9}
 #first-run[hidden]{display:none}
 .first-run-kicker{margin:0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#d9c18b}
 .first-run-steps{margin:9px 0 11px;padding:0;list-style:none;display:grid;gap:8px}
@@ -17693,7 +17694,7 @@ window.addEventListener('keydown',e=>{
  if(k==='m')audio.toggle();
  if(k==='p')toggleSimulationPause();
  if(k==='h')togglePhoto();
- if(k==='escape'){if(document.body.classList.contains('photo-mode'))togglePhoto();else if(panel)closePanel();else if(!harnessMode)openPauseMenu();else if(RealmWorldFoundations.handles(sim.room)||sim.worldTrip)worldReturn();else if(sim.room===RealmEarth.ROOM)earthReturn();else if(sim.room===RealmCosmos.ROOM)cosmosReturn();else if(sim.room){sim.leave();switchScene();}}
+ if(k==='escape'){if(document.body.classList.contains('photo-mode'))togglePhoto();else if(panel)closePanel();else if(!harnessMode){e.preventDefault();openPauseMenu();}else if(RealmWorldFoundations.handles(sim.room)||sim.worldTrip)worldReturn();else if(sim.room===RealmEarth.ROOM)earthReturn();else if(sim.room===RealmCosmos.ROOM)cosmosReturn();else if(sim.room){sim.leave();switchScene();}}
 });
 window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
 document.addEventListener('visibilitychange',()=>{if(document.hidden){keys.clear();RealmCombat.stop(sim);adventure?.stopAuto();}});

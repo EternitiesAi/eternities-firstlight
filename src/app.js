@@ -717,7 +717,7 @@ window.addEventListener('keydown',e=>{
  if(k==='m')audio.toggle();
  if(k==='p')toggleSimulationPause();
  if(k==='h')togglePhoto();
- if(k==='escape'){if(document.body.classList.contains('photo-mode'))togglePhoto();else if(panel)closePanel();else if(!harnessMode)openPauseMenu();else if(RealmWorldFoundations.handles(sim.room)||sim.worldTrip)worldReturn();else if(sim.room===RealmEarth.ROOM)earthReturn();else if(sim.room===RealmCosmos.ROOM)cosmosReturn();else if(sim.room){sim.leave();switchScene();}}
+ if(k==='escape'){if(document.body.classList.contains('photo-mode'))togglePhoto();else if(panel)closePanel();else if(!harnessMode){e.preventDefault();openPauseMenu();}else if(RealmWorldFoundations.handles(sim.room)||sim.worldTrip)worldReturn();else if(sim.room===RealmEarth.ROOM)earthReturn();else if(sim.room===RealmCosmos.ROOM)cosmosReturn();else if(sim.room){sim.leave();switchScene();}}
 });
 window.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
 document.addEventListener('visibilitychange',()=>{if(document.hidden){keys.clear();RealmCombat.stop(sim);adventure?.stopAuto();}});
