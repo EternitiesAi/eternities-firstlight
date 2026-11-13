@@ -146,15 +146,22 @@ PAGE_BUDGET = 12_000_000
 
 
 def audio_assets(root):
-    """Every shipped cue and score file, keyed the way audio.js asks for it (fx/<name>, music/<name>)."""
+    """Every shipped cue and score file, keyed the way audio.js asks for it (fx/<name>, music/<name>).
+
+    The files come from assets/audio/manifest.json and must match its size and sha256: the build never
+    lists a directory, and a file that drifted from its provenance record fails here.
+    """
+    manifest = json.loads((root / 'assets/audio/audio-manifest.json').read_text(encoding='utf-8'))
     entries = {}
     total = 0
-    for path in sorted((root / 'assets/audio').glob('*/*.ogg')):
-        data = path.read_bytes()
+    for item in manifest['files']:
+        data = (root / item['file']).read_bytes()
+        if len(data) != item['bytes'] or hashlib.sha256(data).hexdigest() != item['sha256']:
+            raise ValueError('Audio differs from its manifest record: ' + item['file'])
         if data[:4] != b'OggS':
-            raise ValueError('Not an ogg file: ' + path.name)
+            raise ValueError('Not an ogg file: ' + item['file'])
         total += len(data)
-        entries[path.parent.name + '/' + path.stem] = base64.b64encode(data).decode('ascii')
+        entries[item['key']] = base64.b64encode(data).decode('ascii')
     if not any(key.startswith('music/') for key in entries) or not any(key.startswith('fx/') for key in entries):
         raise ValueError('assets/audio needs both fx and music files')
     if total > AUDIO_RAW_BUDGET:

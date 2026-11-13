@@ -144,6 +144,8 @@ Play these in the build, not in the box. Each cue and track is in `src/audio.js`
 - `reports/fx-measure.tsv`: one row per effect, with the source zip sha256 and the source file sha256.
 - `reports/music-measure.json`: one object per track, with the measurements above.
 - `reports/model-sha256.txt` (every model file, sha256) and `reports/ace-freeze.txt` (the venv).
+- `audio-manifest.json`: the exact files `build.py` embeds, with byte sizes and sha256. The build refuses a file that
+  differs from its record.
 
 | model file | sha256 |
 |---|---|
