@@ -5517,6 +5517,9 @@ class EarthHomecomingUI{
   const result=this.rpg.api.earthHomecomingCommand('offer',{quest:D().id,expectedActive:this.binding.active,expectedRevision:this.binding.revision,choice:id});
   this.binding=null;this.rpg.api.toast(result.text||result.error);this.rpg.paint();return true;
  }
+ // the journal's later-requests list shows the finale's state beside the other campaigns.
+ journal(){const s=this.sim,ph=phase(s),status=s.state.saga.finale.won?'Won · the roads stay open':ph>=1?'Under way · the spring junction':G.RealmSaga.allowed(s.state,'finale')?'Waiting at the spring junction':'Later · after the nearshore';return'<section class="earth-homecoming-invitation"><h3>'+esc(D().title)+'</h3><p>'+esc(status)+'</p>'+button('Read the finale','open')+'</section>';}
+ invitation(){return this.journal();}
  routePoints(){return[];}
  legend(){return'';}
  page(tab){return tab===TAB?this.panel():null;}
