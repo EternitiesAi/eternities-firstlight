@@ -3,9 +3,9 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),Module=require('node:module');
 const H=require('../src/world-heaven-hell.js'),E=require('../src/engine.js'),C=require('../src/core.js');
-const FLOOR=1.57,TAU=Math.PI*2,COLORS=[0x8eaa92,0xb5c1a7,0xd7cdbb];
-const OLD="   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5;at('round',s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0x8eaa92,0xb5c1a7,0xd7cdbb][j%3],{wind:2,foliage:true});}";
-const NEW="   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0x8eaa92,0xb5c1a7,0xd7cdbb][j%3],{wind:2,foliage:true});}";
+const FLOOR=1.57,TAU=Math.PI*2,COLORS=[0xf4b9c8,0xf7da86,0xfdf8ec];
+const OLD="   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5;at('round',s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0xf4b9c8,0xf7da86,0xfdf8ec][j%3],{wind:2,foliage:true});}";
+const NEW="   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0xf4b9c8,0xf7da86,0xfdf8ec][j%3],{wind:2,foliage:true});}";
 function previous(){
  const filename=require.resolve('../src/world-heaven-hell.js'),raw=fs.readFileSync(filename,'utf8');
  // Stage transport publishes exact current bytes without a second game copy.
