@@ -62,7 +62,7 @@ for(const [i,x,z]of[[0,12,18],[1,-25,4],[2,17,-15],[3,18,-63],[4,-28,-17],[5,-36
 for(let i=0;i<8;i++){const x=i%2?-54:54,z=15-Math.floor(i/2)*30;hellSolids.push(solid('hell-ash-tree-'+i,x,z,1.1,1.1,3));}
 // Shared box rendering accepts these material bases. Tiny surface inlays below
 // extend by at most .025 units; all consequential cover retains these boxes.
-for(const s of heavenSolids)s.color=s.id.includes('tree')?0x967d61:s.id.includes('bench')||s.id.includes('seat')||s.id.includes('table')?0xbd9d6a:s.id.includes('lamp')||s.id.includes('return-post')?0xbe914c:0xe8dfc9;
+for(const s of heavenSolids)s.color=s.id.includes('tree')?0xd8d4ca:s.id.includes('bench')||s.id.includes('seat')||s.id.includes('table')?0xe3e8ef:s.id.includes('lamp')||s.id.includes('return-post')?0xbe914c:0xf2f4f7;
 for(const s of hellSolids)s.color=s.id.includes('ash-tree')?0x49494a:s.id.includes('bench')||s.id.includes('chair')?0x796854:s.id.includes('refuge')?0x6d6860:s.id.includes('lamp')||s.id.includes('return-post')||s.id.includes('support')?0x5b6268:s.id.includes('spine')?0x303337:0x55565a;
 
 const realms=[{
@@ -87,7 +87,7 @@ const realms=[{
  quest:{id:'heaven-opening-v1',title:'Three ordinary answers',giverId:'heaven-rielle',
   objectives:[{id:'first',pointId:'heaven-garden-response',text:'Compare the Garden response plate',kind:'interact'},{id:'second',pointId:'heaven-arcade-response',text:'Compare the Ruby Arcade response plate',kind:'interact'},{id:'third',pointId:'heaven-causeway-response',text:'Compare the Mirror Causeway response plate',kind:'interact'}],
   reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She gives the survey reward once. The Broken Choir and the upper road are separate work.'},
- palette:{ground:0xfbf6ea,stone:0xf7f2e6,trim:0xd4a95c,sky:0x3d78d0},theme:'cosmos',water:false
+ palette:{ground:0xf3f5f8,stone:0xf2f4f7,trim:0xd4a95c,sky:0x3f7fd6},theme:'cosmos',water:false
 },{
  id:'hell',room:'world-hell',name:'Hell · Kiln Refuge',
  description:'A decommissioned kiln shelter holds an honest return light. Scout Tithe Mile and Moth Cut to Bell Yard; the salvage sentinel in the eastern side pocket is optional.',
@@ -135,7 +135,7 @@ function decorate(art,def,options={}){
  // most .025 cosmetic units; it supplies no additional invisible cover.
  for(const s of def.solids){const base=h(s.x,s.z),top=base+s.h;
   if(s.id.includes('tree')){
-   detail(s,s.x,base+s.h/2,s.z,s.w*.8,s.h,s.d*.8,isHeaven?0x967d61:0x49494a);
+   detail(s,s.x,base+s.h/2,s.z,s.w*.8,s.h,s.d*.8,isHeaven?0xd8d4ca:0x49494a);
    if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0xf4b9c8,0xf7da86,0xfdf8ec][j%3],{wind:2,foliage:true});}
    else for(let j=0;j<3;j++)at('box',s.x+(j-1)*.5,top-.25+j*.5,s.z,.17,1.9,.17,0x77716a,{r:[0,j*.7,(j-1)*.55],foliage:true});
   }else if(s.id.includes('lamp')||s.id.includes('return-post')){
@@ -145,20 +145,28 @@ function decorate(art,def,options={}){
   }else if(s.id.includes('column')||s.id.includes('pier')||s.id.includes('support')||s.id.includes('north-gate')){
    detail(s,s.x,base+.17,s.z,s.w+.02,.34,s.d+.02,isHeaven?gold:iron);
    detail(s,s.x,top-.16,s.z,s.w+.02,.34,s.d+.02,isHeaven?gold:iron);
-   for(const zsign of[-1,1])detail(s,s.x,base+s.h*.5,s.z+zsign*(s.d/2+.004),s.w*.25,s.h*.76,.035,isHeaven?0xc1ac7e:0x8b867b);
+   for(const zsign of[-1,1])detail(s,s.x,base+s.h*.5,s.z+zsign*(s.d/2+.004),s.w*.25,s.h*.76,.035,isHeaven?0xe3e8ef:0x8b867b);
   }else if(s.id.includes('planter')){
    detail(s,s.x,top+.012,s.z,s.w-.12,.025,s.d-.12,0x596951);
    for(let j=0;j<16;j++){const x=s.x-s.w/2+.6+(j%8)*(s.w-1.2)/7,z=s.z+(j<8?-.8:.8);at('leaf',x,top,z,.2,.55,.22,0x8eaa92,{wind:1,foliage:true});at('octa',x,top+.5,z,.27,.23,.27,j%3?0xf1e7d4:0xc84660,{foliage:true});}
   }else if(s.id.includes('bench')||s.id.includes('table')||s.id.includes('seat')||s.id.includes('chair')){
-   detail(s,s.x,top-.034,s.z,s.w,.09,s.d,isHeaven?0xbd9d6a:0x796854);
-   for(let j=0;j<4;j++)detail(s,s.x-s.w*.34+j*s.w*.22,top+.014,s.z,s.w*.015,.018,s.d*.9,isHeaven?0xf0cd80:0xaaa69a);
+   detail(s,s.x,top-.034,s.z,s.w,.09,s.d,isHeaven?0xe3e8ef:0x796854);
+   for(let j=0;j<4;j++)detail(s,s.x-s.w*.34+j*s.w*.22,top+.014,s.z,s.w*.015,.018,s.d*.9,isHeaven?0xd4a95c:0xaaa69a);
   }else{
    // Working buildings, rock/iron masses, cargo and cover gain real front/back
    // faces. Deliberately closed doors are not misleading usable interiors.
    const faceZ=s.z+s.d/2+.006;
-   detail(s,s.x,top-.08,s.z,s.w,.18,s.d,isHeaven?gold:iron);
+   detail(s,s.x,top-.08,s.z,s.w,.18,s.d,isHeaven?0xf2f4f7:iron);
    const count=Math.min(6,Math.max(1,Math.floor(s.w/2.5)));
-   for(let j=0;j<count;j++){const x=s.x-s.w/2+(j+.5)*s.w/count;detail(s,x,base+s.h*.5,faceZ,Math.min(.9,s.w/count*.65),Math.min(1.4,s.h*.5),.025,isHeaven?0x7e8494:0x151617);}
+   for(let j=0;j<count;j++){const x=s.x-s.w/2+(j+.5)*s.w/count;detail(s,x,base+s.h*.5,faceZ,Math.min(.9,s.w/count*.65),Math.min(1.4,s.h*.5),.025,isHeaven?ruby:0x151617,isHeaven?{em:.45}:{});}
+   if(isHeaven&&s.w>=8){
+    // a colonnade across the front and a stepped crown: a large block reads as a building, not a crate.
+    const cols=Math.max(3,Math.floor(s.w/2.6)),front=s.z+s.d/2+.5;
+    for(let j=0;j<cols;j++)box(s.x-s.w/2+(j+.5)*s.w/cols,base+s.h*.5,front,.42,s.h,.42,0xf2f4f7);
+    box(s.x,top-.2,front,s.w+.4,.4,1,gold);
+    box(s.x,top+.5,s.z,s.w*.84,1,s.d*.84,0xf2f4f7);
+    box(s.x,top+1.2,s.z,s.w*.6,.6,s.d*.6,0xe3e8ef);
+   }
    if(!isHeaven&&s.id.includes('spine'))for(let j=0;j<6;j++)detail(s,s.x-s.w*.35+j*s.w*.14,base+s.h*.7,s.z-s.d/2-.006,.06,s.h*.5,.03,0x9e251f,{em:.28});
   }
  }
@@ -170,7 +178,7 @@ function decorate(art,def,options={}){
    const t=distance/length,x=a[0]+(b[0]-a[0])*t,z=a[1]+(b[1]-a[1])*t;
    if(!clear(def,x,z,1.6))continue;
    const r=[0,Math.atan2(b[0]-a[0],b[1]-a[1]),0];
-   box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xd8ceb4:0x8b8a7c,{r,paving:true,rough:1});
+   box(x,h(x,z)+.014,z,2.4,.025,1.8,isHeaven?0xe8ecf2:0x8b8a7c,{r,paving:true,rough:1});
    // A narrow craft inlay rests on the paving top. Its color indicates the
    // existing lower route, without creating a waypoint or interaction.
    if(isHeaven&&lineIndex<2)box(x,h(x,z)+.0325,z,.28,.012,1.56,lineIndex===0?silver:ruby,{r,routeInlay:lineIndex===0?'mirror-causeway':'ruby-arcade',rough:.9});
