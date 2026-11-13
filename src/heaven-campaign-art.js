@@ -51,7 +51,7 @@ function envoy(out,sim,anchor){
  for(const s of[-1,1]){p.box(s*.42,1.22,-.1,.08,1.1,.08,gold,'envoy-wing-spar',{r:[0,0,s*.25]});for(let i=0;i<3;i++)p.box(s*(.62+i*.06),1.28-i*.22,-.12,.2,.46-i*.06,.03,0xf0cd80,'envoy-wing-feather',{em:.35,r:[0,0,s*(.3+i*.12)]});}
  p.emit('disc',[0,2.2,0],[.28,.05,.28],gold,'envoy-halo',{em:.4});
 }
-function draw(out,sim,time){const d=definition(),r=sim.state.heavenCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;envoy(out,sim,d.envoy);
+function draw(out,sim,time){G.RealmHeavenArtScenery?.draw?.(out,sim,time);const d=definition(),r=sim.state.heavenCampaign;if(!d||sim.room!==d.room||!r?.accepted)return;envoy(out,sim,d.envoy);
  const steps=new Set(r.steps),byId=id=>d.steps.find(s=>s.id===id);
  // the counterfeit relay turns the Mirror Causeway into a cold grey corridor until its beam is silenced.
  if(steps.has('inspect-false-relay')&&!steps.has('relay-disabled')){const p=painter(out,sim,{x:0,z:0},0);for(let z=-36;z>=-100;z-=4){p.box(0,.06,z,5.2,.12,3.4,0x7b8590,'relay-corridor',{});p.box(-2.9,1.5,z,.14,3,.14,0x4f5862,'relay-corridor',{});p.box(2.9,1.5,z,.14,3,.14,0x4f5862,'relay-corridor',{});}}

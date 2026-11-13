@@ -87,7 +87,7 @@ const realms=[{
  quest:{id:'heaven-opening-v1',title:'Three ordinary answers',giverId:'heaven-rielle',
   objectives:[{id:'first',pointId:'heaven-garden-response',text:'Compare the Garden response plate',kind:'interact'},{id:'second',pointId:'heaven-arcade-response',text:'Compare the Ruby Arcade response plate',kind:'interact'},{id:'third',pointId:'heaven-causeway-response',text:'Compare the Mirror Causeway response plate',kind:'interact'}],
   reward:{xp:18,coins:7,ore:0},completionText:'Rielle records the uneven return instead of polishing it away. She gives the survey reward once. The Broken Choir and the upper road are separate work.'},
- palette:{ground:0xd3cfae,stone:0xf1e9d6,trim:0xc9a055,sky:0xf3d9a4},theme:'cosmos',water:false
+ palette:{ground:0xf1ead8,stone:0xf7f2e6,trim:0xd4a95c,sky:0x4a85d2},theme:'cosmos',water:false
 },{
  id:'hell',room:'world-hell',name:'Hell · Kiln Refuge',
  description:'A decommissioned kiln shelter holds an honest return light. Scout Tithe Mile and Moth Cut to Bell Yard; the salvage sentinel in the eastern side pocket is optional.',
@@ -136,7 +136,7 @@ function decorate(art,def,options={}){
  for(const s of def.solids){const base=h(s.x,s.z),top=base+s.h;
   if(s.id.includes('tree')){
    detail(s,s.x,base+s.h/2,s.z,s.w*.8,s.h,s.d*.8,isHeaven?0x967d61:0x49494a);
-   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0x8eaa92,0xb5c1a7,0xd7cdbb][j%3],{wind:2,foliage:true});}
+   if(isHeaven)for(let j=0;j<5;j++){const a=j*TAU/5,kind=['balanced','high'].includes(options.sim?.state?.settings?.quality)?'woodland-canopy':'round';at(kind,s.x+Math.cos(a)*1.25,top+.65+(j%2)*.5,s.z+Math.sin(a)*1.25,3.6,2.8,3.6,[0xf4b9c8,0xf7da86,0xfdf8ec][j%3],{wind:2,foliage:true});}
    else for(let j=0;j<3;j++)at('box',s.x+(j-1)*.5,top-.25+j*.5,s.z,.17,1.9,.17,0x77716a,{r:[0,j*.7,(j-1)*.55],foliage:true});
   }else if(s.id.includes('lamp')||s.id.includes('return-post')){
    detail(s,s.x,base+s.h*.47,s.z,s.w*.56,s.h*.9,s.d*.56,isHeaven?gold:iron);

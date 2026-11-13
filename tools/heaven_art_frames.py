@@ -16,10 +16,10 @@ import story_tour as st  # the tour's own page helpers: camera buttons, the fram
 from browser_support import launch_kwargs
 
 ROAD_MARKER = (18, 6)
-SPOTS = {"envoy": (-14.5, 25.0), "garden": (0.0, -6.0), "relay": (0.0, -44.0)}
+SPOTS = {"envoy": (-14.5, 25.0), "garden": (0.0, -12.0), "edge": (-55.0, -5.0), "overlook": (0.0, -99.0), "relay": (0.0, -44.0)}
 # the arrival is the realm's own entry point. the relay spot needs the save where the counterfeit relay is still active.
 CASES = [
-    ("05_ACTUAL_COURIER_ARRIVAL.json", ["arrival", "envoy", "garden"]),
+    ("05_ACTUAL_COURIER_ARRIVAL.json", ["arrival", "envoy", "garden", "edge", "overlook"]),
     ("03_FALSE_SIGNAL_WATCH.json", ["relay"]),
 ]
 
