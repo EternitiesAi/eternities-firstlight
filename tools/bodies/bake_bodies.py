@@ -4,7 +4,7 @@ blender -b human_base_meshes_bundle.blend --python tools/bodies/bake_bodies.py -
     RIG_PARTS.json BODY_PARTS.json REPORT.json
 
 RIG_PARTS.json comes from tools/bodies/export_rig_parts.cjs (the rig's rest parts and limb joints).
-The stylized male body, head, hand and foot are decimated, the body is split along the rig's joints,
+The stylized male body, head and hand are decimated (the feet stay the rig's boot boxes), the body is split along the rig's joints,
 and every piece is fitted into its envelope in the rig's own axes (+X right, +Y up, +Z forward).
 Outfit shells (coat, robe, wings) are generated in the same unit space. BODY_PARTS.json is the
 committed source; tools/bake_bodies.cjs packs it into src/body-meshes.js without Blender.
@@ -27,9 +27,8 @@ SOURCE = {
     'body': 'GEO-body_male_stylized',
     'head': 'GEO-head_stylized',
     'hand': 'Hand - Stylized',
-    'foot': 'Foot - Realistic',
 }
-TARGET_TRIS = {'body': 1900, 'head': 600, 'hand': 90, 'foot': 260}
+TARGET_TRIS = {'body': 1900, 'head': 600, 'hand': 90}
 
 
 def find_object(name):
@@ -298,12 +297,6 @@ def main():
     out['kinds']['body-hand'] = mesh_out('body-hand', [tuple(fitted(p)) for p in np_], nt, source=SOURCE['hand'])
     report['objects']['hand'] = {'name': hand_obj.name, 'tris_before': nb, 'tris_after': na}
 
-    foot_obj = find_object(SOURCE['foot'])
-    fv, ft, fb, fa = decimated(foot_obj, TARGET_TRIS['foot'])
-    fp = [to_rig(v) for v in fv]
-    fitted = fit_box(fp)
-    out['kinds']['body-foot'] = mesh_out('body-foot', [tuple(fitted(p)) for p in fp], ft, source=SOURCE['foot'])
-    report['objects']['foot'] = {'name': foot_obj.name, 'tris_before': fb, 'tris_after': fa}
 
     for kind, (verts, tris, size) in {
         'body-coat': (*shell('body-coat', coat_profile), None),
@@ -318,7 +311,7 @@ def main():
 
     out['kinds'] = {k: out['kinds'][k] for k in sorted(out['kinds'])}
     body_tris = sum(out['kinds'][k]['triangles'] for k in ('body-head', 'body-neck', 'body-torso', 'body-upper-arm',
-                                                             'body-forearm', 'body-thigh', 'body-shin', 'body-hand', 'body-foot'))
+                                                             'body-forearm', 'body-thigh', 'body-shin', 'body-hand'))
     report['body_unique_triangles'] = body_tris
     text = json.dumps(out, sort_keys=True, separators=(',', ':'))
     with open(OUT_PATH, 'w', encoding='utf-8') as fh:

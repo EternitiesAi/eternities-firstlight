@@ -234,7 +234,7 @@ function draw(out,input={},posed=pose()){
   limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers,'body-thigh');
   limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers,'body-shin');
   add('round',name+'-knee',j[name+'Knee'],[.13,.12,.13],trousers);
-  add('body-foot',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
+  add('box',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
   add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
   add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
   upperAdd('round',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
