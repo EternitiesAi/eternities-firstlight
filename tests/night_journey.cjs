@@ -1,6 +1,9 @@
-/* The night the warning failed, as commands. Starts from the crossing journey's earned chapter-IV save: a visit to the
- * crossing starts the night, Briar runs to the device, the travellers are called out in three groups with a reload
- * between the first and second, Briar bites the device when the way is clear, and the envoy speaks at the spring.
+/* The night the warning failed, as commands. Starts from a chapter-IV save: the crossing journey's own (fixture mode), or
+ * the save the firstlight bot hands over (source mode, options.source: a path or a saved world). A visit to the crossing
+ * starts the night, Briar runs to the device, the travellers are called out in three groups with a reload between the
+ * first and second, Briar bites the device when the way is clear, the envoy speaks at the spring, and the quiet engine is
+ * placed at the device with night-device (the first of the script's options unless options.device or --device says
+ * otherwise). It ends with NIGHT_COMPLETE.json: the save the next stage of the bot starts from.
  * Accepted commands and timed walking only. Road claimants are fought with the ordinary attack commands. This is an
  * automated tactical check, not a pacing or fun study. */
 'use strict';
@@ -8,9 +11,8 @@ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),asse
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),X=require('../src/crossing.js'),N=require('../src/night.js'),SG=require('../src/saga.js');
 function journey(options={}){
  const out=options.out||fs.mkdtempSync(path.join(os.tmpdir(),'night-journey-'));
- // a live save (the bot's crossing world) starts the night; without one the crossing is replayed, as the fixture mode always did.
  let start;
- if(options.source)start=typeof options.source==='string'?JSON.parse(fs.readFileSync(options.source,'utf8')):options.source;
+ if(options.source){start=typeof options.source==='string'?JSON.parse(fs.readFileSync(options.source,'utf8')):JSON.parse(JSON.stringify(options.source));}
  else{const chapter=fs.mkdtempSync(path.join(os.tmpdir(),'night-chapter-'));require('./crossing_journey.cjs').journey({out:chapter});start=JSON.parse(fs.readFileSync(path.join(chapter,'CHAPTER_IV_COMPLETE_EARNED.json'),'utf8'));}
  let sim=new C.Simulation(C.validate(start));
  let seq=0,commands=0,reloads=0;const log=[];
@@ -36,7 +38,7 @@ function journey(options={}){
  function waitUntil(test,label,seconds=120){for(let i=0;i<seconds*10&&!test();i++)step(.1);assert.ok(test(),label);}
  const safe=()=>sim.state.night.safe;
 
- // The earned save is not yet a night. Walk to the commons waystone and travel to the crossing: that visit starts it.
+ // The save is not yet a night. Walk to the commons waystone and travel to the crossing: that visit starts it.
  assert.equal(sim.state.night.started,false);assert.equal(sim.state.saga.briar.state,'with');assert.equal(sim.state.adventure.companion.bonded,true);
  walk(0,3);cmd('waystone-travel',{id:'bellweather'});step(.5);
  assert.equal(N.stage(sim.state),'lit');assert.equal(living().length,N.CLAIMS.length);
@@ -72,7 +74,7 @@ function journey(options={}){
 
  // The device: the claimants that guard it are already down, so Briar bites when the player reaches it.
  assert.equal(living().length,0,'claimants around the device are cleared before the bite');
- sim.moveTo(16.4,18.0);
+ sim.moveTo(N.DEVICE.x,N.DEVICE.z);
  waitUntil(()=>sim.state.night.device==='broken','Briar bit through the severing device',20);
  assert.equal(sim.state.saga.briar.state,'taken');assert.equal(SG.done(sim.state,'night'),true);assert.equal(N.stage(sim.state),'quiet');
  refused('insight',{});
@@ -84,15 +86,33 @@ function journey(options={}){
  walk(1.5,6);step(3.4);assert.equal(N.envoyPos(sim).arrived,true);
  walk(-1.6,4.2);const talk=cmd('night-envoy',{});assert.ok(talk.lines.length>0);assert.deepEqual(talk.lines,N.sceneOf('envoy',sim.state).lines);assert.equal(N.stage(sim.state),'over');
 
- // The final record survives a round trip through the validators.
+ // The quiet engine: back to the crossing by the real waystone command, to the device, and placed with night-device.
+ walk(0,3);cmd('waystone-travel',{id:'bellweather'});step(.5);
+ assert.equal(sim.room,'crossing');
+ walk(N.DEVICE.x,N.DEVICE.z);
+ const offered=N.deviceOptions(sim);assert.ok(offered.length>0,'the script offers the quiet engine options');
+ const choice=options_pick(offered,options.device);
+ cmd('night-device',{value:choice});
+ assert.equal(sim.state.saga.choices.device,choice);
+ step(.2);
+
+ // The final record survives a round trip through the validators, and it is the save the next stage starts from.
  const final=JSON.parse(JSON.stringify(sim.snapshot()));C.validate(final);
- assert.equal(final.saga.briar.state,'taken');assert.ok(final.saga.beats.night);assert.equal(final.night.envoy,true);
- const report={status:'passed',edition:'10.0.0',automated:true,commands,reloads,briar:final.saga.briar.state,nightDay:final.saga.beats.night.day,
-  safe:final.night.safe,device:final.night.device,actions:log.length};
- fs.writeFileSync(path.join(out,'NIGHT_JOURNEY.json'),JSON.stringify(report,null,2));
- // the live save after the night, for the next stage to start from.
+ assert.equal(final.saga.briar.state,'taken');assert.ok(final.saga.beats.night);assert.equal(final.night.envoy,true);assert.equal(final.saga.choices.device,choice);
  fs.writeFileSync(path.join(out,'NIGHT_COMPLETE.json'),JSON.stringify(final,null,2));
+ const report={status:'passed',edition:'10.0.0',automated:true,commands,reloads,briar:final.saga.briar.state,nightDay:final.saga.beats.night.day,
+  safe:final.night.safe,device:final.night.device,choice,actions:log.length};
+ fs.writeFileSync(path.join(out,'NIGHT_JOURNEY.json'),JSON.stringify(report,null,2));
  return report;
 }
-if(require.main===module){const r=journey({});console.log(JSON.stringify(r,null,2));}
+// The first of the script's options unless one is asked for by name; an unknown name is refused.
+function options_pick(options,want){
+ if(want===undefined||want===null||want==='')return options[0].id;
+ assert.ok(options.some(o=>o.id===want),'device option '+want+' is one of the script’s options');
+ return want;
+}
+if(require.main===module){
+ const arg=name=>{const i=process.argv.indexOf(name);return i>0?process.argv[i+1]:undefined;};
+ const r=journey({out:arg('--out'),source:arg('--source'),device:arg('--device')});console.log(JSON.stringify(r,null,2));
+}
 module.exports={journey};
