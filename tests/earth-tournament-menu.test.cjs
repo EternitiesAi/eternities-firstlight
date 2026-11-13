@@ -22,11 +22,7 @@ function fixture({bow=false,enter=true}={}){
   quest:R.definition.id,expectedActive:'synthetic-menu',expectedRevision:sim.state.adventure.revision,
   family:AR.weapon(sim.state.adventure).style},{save:()=>({ok:true})});assert.ok(r.ok,r.error);A.syncScene(sim);}
  const noop=()=>{},classes={add:noop,remove:noop},focus={focus:noop};
-<<<<<<< HEAD
- const scope=vm.createContext({guide(){},firstRunCard:null,shellReturn:null,RealmTitle:{hide(){},show(){}},RealmPause:{reopen(){}},sim,RealmCombat:T,RealmEarthTournamentUI:UI,
-=======
  const scope=vm.createContext({sim,shellReturn:null,RealmCombat:T,RealmEarthTournamentUI:UI,
->>>>>>> build/whole-20261113
   rpg:{intercept:()=>false,dialog:{open:false}},adventure:{stopAuto:noop},sandbox:{endBuild:noop},
   keys:new Set(),experience:null,panel:null,lastFocus:null,renderPanel:noop,toast:noop,$:()=>focus,
   document:{activeElement:focus,body:{classList:classes},querySelectorAll:()=>[],contains:()=>true},
