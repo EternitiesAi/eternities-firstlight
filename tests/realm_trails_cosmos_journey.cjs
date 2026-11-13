@@ -8,7 +8,9 @@ const R=require('../src/realm-trails.js'),RC=require('../src/realm-craft.js'),A=
 const ROOT=path.resolve(__dirname,'..'),sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function journey({bow=false,veteran=false,output=null}={}){
  const variant=veteran?'veteran':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'evidence10/pursuit/veteran/07_PRACTICE_PERSISTED.json'):null;
- const raw=source?JSON.parse(fs.readFileSync(source,'utf8')):undefined,h=raw?createHarness(raw):witnessHarness(bow),sourceHash=source&&sha(source);
+ // the cosmos is act IV: the veteran's save is carried through the night, hell and heaven by the saga's own commands
+ // and the connected campaign helpers (saga_ready.cjs); the fresh variants keep the witness harness.
+ const raw=source?JSON.parse(fs.readFileSync(source,'utf8')):undefined,h=raw?createHarness(require('./saga_ready.cjs').advance(raw,{bow:false,through:'heaven'})):witnessHarness(bow),sourceHash=source&&sha(source);
  function practice(){h.walk(15,7);h.command('starter-enter');h.walk(-5,11.5);h.command('target-select',{id:'river-practice'});h.command('auto-toggle');h.tick(1.5);const damage=A.runtime(h.sim).training?.lastDamage;assert.ok(damage>0,'confirmed practice hit');h.command('target-clear');h.walk(0,12);h.command('starter-leave');return damage;}
  if(veteran){assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(h.sim.state.adventure.starter.reward.choice,'temper');assert.equal(h.sim.state.adventure.pursuit.fittings.dawn_edge,2);h.walk(18,6);}else earnedKit(h,bow);
  const measuredBefore=veteran?practice():null;if(veteran)h.walk(18,6);
