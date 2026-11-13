@@ -8,6 +8,7 @@ const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'
 const sourceEpoch=()=>Object.fromEntries([...fs.readdirSync(path.join(ROOT,'src')).filter(p=>fs.statSync(path.join(ROOT,'src',p)).isFile()).sort().map(p=>'src/'+p),'build.py','index.html','tests/atlantis_campaign_journey.cjs','tests/realm_trails_journey.cjs'].map(p=>[p,sha(path.join(ROOT,p))]));
 const loadedHashes=sourceEpoch();
 const {createHarness,earnedKit,witnessHarness}=require('./realm_trails_journey.cjs');
+const {storyWorld}=require('./saga_ready.cjs');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),AR=require('../src/arsenal.js');
 const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),H=require('../src/atlantis-campaign.js'),D=H.definition;
 const step=id=>D.steps.find(s=>s.id===id),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
@@ -54,7 +55,7 @@ function fight(h,veteran){
  const originalDamage=A.damageEnemy,originalCommand=sim.adventureCommand,weaponImpacts=[],impacts=[],phases=[],contacts=[];
  sim.adventureCommand=function(id,type,payload){const hp=e.hp,mode=e.mode,result=originalCommand.call(this,id,type,payload);if(this===sim&&['attack','pulse'].includes(type)&&style==='blade'&&result.ok&&e.hp<hp)weaponImpacts.push({caller:'production blade command',type,mode,before:hp,after:e.hp});return result;};
  A.damageEnemy=function(current,enemy,n,source){const hp=enemy?.hp,mode=enemy?.mode,result=originalDamage.apply(this,arguments);if(current===sim&&enemy===e&&source==='weapon'&&enemy.hp<hp)weaponImpacts.push({caller:'production projectile impact',mode,before:hp,after:enemy.hp});return result;};
- // The drowned witness guardian has 720 health; the scripted bot carries enough tonics to finish it by real damage.
+ // The drowned witness guardian has 2860 health; the scripted bot carries enough tonics to finish it by real damage.
 sim.state.adventure.tonics=Math.max(sim.state.adventure.tonics,12);
 let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.elapsed;
  try{
@@ -80,14 +81,14 @@ let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.
 function journey({bow=false,veteran=false,output=DEFAULT,seedOnly=false,approach=bow?'lower':'upper',choice=veteran?'license':bow?'limited':'publish'}={}){
  assert.ok(D.approaches.some(a=>a.id===approach)&&D.choices.some(c=>c.id===choice));
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',folder=folderFor(output,variant),fixture=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null,fixtureHash=fixture?sha(fixture):null;
- const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf-8')))):witnessHarness(bow),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
+ const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf-8')))):createHarness(storyWorld({bow,through:'heaven',out:path.join(folder,'story')})),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
  const write=(name,value)=>fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(value,null,2)+'\n',{flag:'wx'}),snap=name=>{write(name,h.sim.snapshot());checkpoints.push(name);checkpointHashes[name]=sha(path.join(folder,name+".json"));};
  const hook=()=>{h.sim.atlantisCampaignSave=h.save;};
  const act=(type,p={},io={save:h.save},expect=true)=>{const ctx=h.context();hook();const result=H.command(ctx,type,{quest:D.id,expectedActive:ctx.active,expectedRevision:h.sim.state.adventure.revision,...p},io);events.push({type,p,result});assert.equal(result.ok,expect,type+': '+(result.error||result.text));return result;};
  const reload=()=>{const before=copy(h.sim.state.atlantisCampaign);h.reload('atlantis');hook();assert.deepEqual(h.sim.state.atlantisCampaign,before);assert.equal(h.sim.worldDive,undefined);};
  const dive=()=>{const p=W.definition('atlantis').points.find(p=>p.id==='tide-steps');h.walk(p.x,p.z);assert.ok(W.diveEnter(h.sim).ok);};
  try{
-  if(veteran){assert.equal(A.level(h.sim.state.adventure),5);assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}else earnedKit(h,bow);
+  if(veteran){/* the returning traveller: past the fresh band, at whatever the fight lane's level table gives its xp */assert.ok(A.level(h.sim.state.adventure)>=5);assert.equal(A.level(h.sim.state.adventure),A.level({xp:h.sim.state.adventure.xp}));assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}else earnedKit(h,bow);
   stage='earned-bellglass';earnBellglass(h,swims);snap('00_EARNED_SEED');write('SEED_PROVENANCE',{variant,fixture,fixtureHash,seedSha256:sha(path.join(folder,'00_EARNED_SEED.json')),prerequisite:D.prerequisite,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,forcedModes:0,sourceHashes:loadedHashes});
   if(seedOnly){assert.deepEqual(sourceEpoch(),loadedHashes);return{status:'passed',variant,seed:path.join(folder,'00_EARNED_SEED.json')};}
   const baseline=h.sim.snapshot();h.enter('atlantis');hook();h.walk(D.giver.x,D.giver.z);stage='accept';act('accept');snap('01_ACCEPTED');reload();
@@ -116,7 +117,7 @@ function journey({bow=false,veteran=false,output=DEFAULT,seedOnly=false,approach
   for(const k of['hp','stamina','tonics'])assert.equal(paid.adventure[k],unpaid.adventure[k]);assert.equal(act('claim',{request:'changed-identity'}).duplicate,true);assert.deepEqual(h.sim.snapshot(),paid);snap('11_PAID_ONCE');reload();h.walk(D.giver.x,D.giver.z);const cold=h.sim.snapshot();assert.equal(act('claim',{request:'cold-retry'}).duplicate,true);assert.deepEqual(h.sim.snapshot(),cold);
   h.home();snap('FINAL_WORLD');stage='preserved-history';const final=h.sim.snapshot();
   for(const k of['journeys','realmTrails','earthExpedition','hellCampaign','heavenCampaign','bridgeCommunity','localLife','homeHistory','notes','score','scoreRevision','retreat','visitor','flowers','settings'])assert.deepEqual(final[k],baseline[k],k+' retained');
-  for(const k of['owned','equipment','arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],baseline.adventure[k],k+' retained');
+  for(const k of['arsenal','starter','pursuit','realmCraft','earthBinding','classPath','companion','beacon','crossing','road','earthStory','earthNotes','earthGathering','defeated','drops','reward','relic','angelSeen'])assert.deepEqual(final.adventure[k],baseline.adventure[k],k+' retained');{const base=baseline.adventure.owned;assert.deepEqual(final.adventure.owned.filter(id=>base.includes(id)),base,'owned keeps its items');assert.ok(final.adventure.owned.every(id=>base.includes(id)||['harbour_mail'].includes(id)),'owned gains only the boss gear');}{const eq=final.adventure.equipment;assert.ok(Object.values(eq).every(id=>id===null||final.adventure.owned.includes(id)),'equipped gear is owned');}
   assert.equal(final.adventure.xp-baseline.adventure.xp,Math.min(D.reward.xp,9999-baseline.adventure.xp));
   const finalHashes=sourceEpoch(),drift=JSON.stringify(finalHashes)!==JSON.stringify(loadedHashes);if(fixture)assert.equal(sha(fixture),fixtureHash);
   const report={status:drift?'source-drift':'passed',variant,approach,choice,fixture,fixtureHash,sourceHashes:loadedHashes,finalHashes,sourceDrift:drift,saveVersions:{world:C.VERSION,adventure:A.VERSION,atlantisCampaign:1},method:'command-earned kit/Bellglass, real swimming/current/depth/pressure, actual Adventure AI and weapon collisions, explicit disposition and fixed fee; accelerated ticks with in-memory holder',nativePersistence:false,humanPacing:false,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,forcedModes:0,checkpoints,checkpointHashes,events:[...h.events,...events],swims,combat,walks:h.routes,saveCount:h.checkpoints.length,baselineStats:A.stats(baseline.adventure),canonicalPreservation:true};write('ATLANTIS_CAMPAIGN_JOURNEY_REPORT',report);assert.equal(drift,false,'source changed during journey; retain evidence and rerun frozen in a new output');return report;

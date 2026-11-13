@@ -15,7 +15,7 @@ function atHart(){
  walk(11,9);adv('start');harvest('timber-1');harvest('timber-2');harvest('stone-1');harvest('stone-2');walk(11,9);sb('craft',{recipe:'pick'});sb('craft',{recipe:'plank'});sb('craft',{recipe:'plank'});walk(0,-21.3);sb('bridge');walk(0,-48);adv('enter');
  const s=sim.state.adventure;assert.equal(A.level(s),1);assert.equal(s.xp,0);
  sim.state.player={x:5,z:-12,yaw:0};
- const hart=A.runtime(sim).enemies.find(e=>e.id==='hart');assert.ok(hart&&hart.hp===240&&hart.maxHP===240);
+ const hart=A.runtime(sim).enemies.find(e=>e.id==='hart');assert.ok(hart&&hart.hp===780&&hart.maxHP===780);
  return{sim,s,hart,step};
 }
 // Planning oracle for the dodge: a walkable spot the telegraph will not hit, with a margin. The game still decides the hit.

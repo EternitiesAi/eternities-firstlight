@@ -11,6 +11,7 @@ const fs = require('node:fs'), os = require('node:os'), path = require('node:pat
 const ROOT = path.resolve(__dirname, '..');
 process.env.FIRSTLIGHT_ROOT = process.env.FIRSTLIGHT_ROOT || ROOT;
 const AD = require(path.join(ROOT, 'src/adventure.js'));
+const TACTICS = require('./journey_tactics.cjs');
 const BEATS = ['kit', 'hart', 'envoy', 'road', 'beacon', 'bellweather', 'night', 'hell', 'heaven', 'atlantis', 'cosmos', 'nearshore', 'finale', 'credits'];
 const NOT_YET = {
  atlantis: 'the atlantis helper runs after heaven; heaven is blocked',
@@ -47,6 +48,7 @@ function fmt(r) {
 }
 
 function run(options = {}) {
+ TACTICS.install(); TACTICS.reset();
  const out = outFolder(options.out);
  fs.mkdirSync(out, { recursive: true });
  const log = options.quiet ? null : r => console.log(fmt(r));
@@ -82,6 +84,7 @@ function run(options = {}) {
  stage('night', '05', 'NIGHT_COMPLETE.json', () => require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: sub('05'), source: world }), 'Briar bites the device; the travellers are called out; the envoy speaks');
 
  // the local realms (Earth side) and the hell campaign: the connected helper takes the live world
+ TACTICS.setDodge(false); // the realm helpers brace and stand: with the step on, the hell helper stops in its warden loop
  let hellRaw = null;
  if (world) {
   const before = readJson(world);
@@ -118,6 +121,7 @@ function run(options = {}) {
   } catch (e) { blocked(rows, beat, e.message, log); stoppedAt = stoppedAt || beat; world = null; }
  }
 
+ TACTICS.setDodge(true);
  // the nearshore: the live witness save walks out to the pier, and the real Briar at her habit place is chosen
  if (world) {
   const before = readJson(world);
@@ -128,11 +132,13 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
  }
 
+ // the finale is the hardest fight: the shared step dodges beside the finale journey's own (its numbers are tuned to this)
+ TACTICS.setDodge(true);
  // the finale, fresh: the live nearshore save walks to the spring, fights to the offer, refuses it, and rolls the credits
  if (world) {
   const before = readJson(world);
   try {
-   const fz = require(path.join(ROOT, 'tests/finale_journey.cjs')).journey({ out: sub('12'), source: world });
+   const fz = require(path.join(ROOT, 'tests/finale_journey.cjs')).journey({ out: sub('12'), source: world, ending: options.ending || 'open' });
    world = fz.final;
    const numbers = fz.fights.map(f => f.label + ' ' + f.seconds + 's, ' + f.hits + ' hits, ' + f.strikesLocked + ' strikes locked, ' + f.dodgeSteps + ' dodges, lost ' + f.hpLost + ' hp, ends ' + f.hpEnd).join('; ');
    ran(rows, 'finale', before, readJson(world), numbers, log);
@@ -147,12 +153,16 @@ function run(options = {}) {
  const ranRows = rows.filter(r => r.status === 'ran');
  const totals = { beatsRan: ranRows.length, beatsTotal: BEATS.length, simulatedSeconds: +ranRows.reduce((n, r) => n + (r.secs || 0), 0).toFixed(1), creditsRolled };
  if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped at ' + (stoppedAt || 'the end') + ')'));
- return { rows, creditsRolled, stoppedAt, totals, out };
+ const fights = TACTICS.table();
+ if (log && fights.length) { console.log('--- boss fights: time, player hits, hp lost, tonics used'); for (const f of fights) console.log('  ' + f.boss.padEnd(18) + ' ' + f.outcome.padEnd(7) + ' ' + (f.secs + 's').padStart(8) + '  hits ' + f.hits + '  hp lost ' + f.hpLost + '  tonics ' + f.tonics); }
+ if (log) console.log('--- shared fight step: ' + TACTICS.dodges() + ' step-outs from warned spots');
+ return { rows, creditsRolled, stoppedAt, totals, out, ending: options.ending || 'open', finalWorld: world, fights, dodges: TACTICS.dodges() };
 }
 
 module.exports = { run, BEATS };
 if (require.main === module) {
  const i = process.argv.indexOf('--out');
- const result = run({ out: i > 0 ? process.argv[i + 1] : null });
+ const e = process.argv.indexOf('--ending');
+ const result = run({ out: i > 0 ? process.argv[i + 1] : null, ending: e > 0 ? process.argv[e + 1] : 'open' });
  process.exitCode = result.creditsRolled ? 0 : 1;
 }

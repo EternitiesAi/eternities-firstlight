@@ -43,7 +43,7 @@ function journey({bow=false,veteran=false,earth=false}={}){
  walk(11,9);if(!veteran)cmd('start');if(earth&&(bow||veteran))cmd('class-choose',{id:bow?'magician':'hunter',confirm:true});cmd('pursuit-pin',{weapon:id});snap('01_KIT_PINNED');
  if(!veteran){const p=preview('Unowned longbow project','copper_bow');assert.equal(p.weapon,'trail_bow');assert.equal(p.after.attack,13);assert.equal(H.compare(sim.state.adventure,'copper_bow').selected.attack,21);}
  if(bow&&!veteran){for(const n of ['timber-1','timber-2','fibre-1','fibre-2','stone-1','stone-2'])gather(n);walk(11,9);snap('02_PREREQUISITE_READY');applyPreview(preview('Ashwood prerequisite','copper_bow'));cmd('equip',{id:'trail_bow'});sandbox('craft',{recipe:'plank'});}
- const beforeDamage=practice();assert.equal(beforeDamage,veteran?44:bow?13:16);snap('02_SOURCE_READY');
+ const beforeDamage=practice();/* the practice hit lands at your attack; the veteran's attack follows the fight lane's level table */assert.equal(beforeDamage,A.stats(sim.state.adventure).attack);if(!veteran)assert.equal(beforeDamage,bow?13:16);snap('02_SOURCE_READY');
  const runs=veteran?3:5;
  for(let run=1;run<=runs;run++){
   walk(0,3);cmd('rest');walk(11,9);const after=sim.state.adventure.pursuit.claimed;cmd('pursuit-start',{after});const runId=sim.state.adventure.pursuit.active.id;snap('run'+run+'_01_STARTED');
@@ -56,7 +56,7 @@ function journey({bow=false,veteran=false,earth=false}={}){
  }
  if(!veteran)applyPreview(preview('Base weapon craft',id));
  snap('03_BASE_CRAFTED');applyPreview(preview('Finite fitting I',id));snap('04_FITTING_1');reload();snap('05_READY_FINAL_FITTING');applyPreview(preview('Finite fitting II',id));assert.equal(H.nextStep(sim.state.adventure,id),null,'no invented third fitting');cmd('equip',{id});snap('06_EQUIPPED');reload();
- const afterDamage=practice();assert.equal(afterDamage,veteran?48:bow?25:27);snap('07_PRACTICE_PERSISTED');const final=sim.snapshot();
+ const afterDamage=practice();assert.equal(afterDamage,A.stats(sim.state.adventure).attack);assert.equal(afterDamage,veteran?beforeDamage+4:bow?25:27);snap('07_PRACTICE_PERSISTED');const final=sim.snapshot();
  assert.equal(final.adventure.xp,legacy.adventure.xp);assert.deepEqual(final.adventure.defeated,legacy.adventure.defeated);assert.deepEqual(final.adventure.starter,legacy.adventure.starter);
  for(const k of ['road','beacon','crossing','companion'])assert.deepEqual(final.adventure[k],legacy.adventure[k],k);
  for(const k of ['notes','score','scoreRevision','retreat','visitor','flowers'])assert.deepEqual(final[k],legacy[k],k);

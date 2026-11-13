@@ -53,10 +53,11 @@ function journey(options={}){
  // Actual source only. The helper's imported owners must be the identical
  // production modules; never mix a staged/synthetic owner into the simulation.
  const {createHarness,earnedKit,witnessHarness}=require(path.join(root,'tests/realm_trails_journey.cjs'));
+const {storyWorld}=require('./saga_ready.cjs');
  const C=load('core'),A=load('adventure'),T=load('combat'),AR=load('arsenal'),W=load('world-foundations'),R=load('realm-trails'),N=load('cosmos');
  assert.strictEqual(global.RealmCore,C);assert.strictEqual(global.RealmAdventure,A);
  const fixture=plan.veteran?path.join(root,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null,fixtureHash=fixture?sha(fixture):null;
- const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf8')))):witnessHarness(plan.bow),campaignEvents=[],fights=[],readings=[],checkpoints=[],checkpointHashes={};
+ const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf8')))):createHarness(storyWorld({bow:plan.bow,through:'heaven',out:path.join(folder,'story')})),campaignEvents=[],fights=[],readings=[],checkpoints=[],checkpointHashes={};
  const zero={positionEdits:0,actorPositionEdits:0,inventoryGrants:0,healthGrants:0,manualDamage:0,plantedDefeats:0,plantedQuestFacts:0,forcedModes:0,forcedCycles:0};
  let stage='initial-kit',H=null,D=null,beforeTick=null;
  const write=(name,value)=>{const file=path.join(folder,name+'.json');fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return file;};
@@ -130,7 +131,7 @@ function journey(options={}){
   }finally{beforeTick=null;sim.adventureCommand=originalCommand;A.damageEnemy=originalDamage;}
  }
  try{
-  if(plan.veteran){assert.equal(A.level(h.sim.state.adventure),5);assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(AR.weapon(h.sim.state.adventure).style,'blade');h.walk(W.GATE.x,W.GATE.z);}else earnedKit(h,plan.bow);
+  if(plan.veteran){/* the returning traveller: past the fresh band, at whatever the fight lane's level table gives its xp */assert.ok(A.level(h.sim.state.adventure)>=5);assert.equal(A.level(h.sim.state.adventure),A.level({xp:h.sim.state.adventure.xp}));assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(AR.weapon(h.sim.state.adventure).style,'blade');h.walk(W.GATE.x,W.GATE.z);}else earnedKit(h,plan.bow);
   stage='earned-comparator';const comparator=R.definition(PRIOR);assert.ok(comparator);h.enter('cosmos');
   if(!h.sim.state.realmTrails.records[PRIOR].claimed){
    h.walk(comparator.giver.x,comparator.giver.z);h.trail('accept',comparator);
@@ -154,7 +155,7 @@ function journey(options={}){
   stage='actual-optical-reclaimer';perform('challenge-reclaimer');fights.push(fight(D.enemies.find(e=>e.pattern==='reclaimer')));snap('03_ACTUAL_RECLAIMER_SETTLED');reload();assert.ok(!H.enemies(h.sim).some(e=>e.pattern==='reclaimer'));perform('isolate-service-feed');
   stage='actual-still-meridian';perform('challenge-guardian');snap('04_ACTUAL_GUARDIAN_READY');fights.push(fight(D.enemies.find(e=>e.pattern==='guardian'),{liveReleases:!plan.veteran}));snap('05_ACTUAL_GUARDIAN_SETTLED');reload();assert.equal(H.enemies(h.sim).length,0);
   for(const id of ['release-west-feed','release-east-feed'])if(!h.sim.state.cosmosCampaign.steps.includes(id)){perform(id);snap('CHECKPOINT_'+id);}
-  stage='physical-disable-accountability';perform('disable-central-link');snap('06_CENTRAL_LINK_DISABLED');reload();h.walk(step('accountability').x,step('accountability').z);act('choose',{choice:plan.choice});
+  stage='physical-disable-accountability';const prepared=['material-fit','assist-material','living-fit','assist-living','observation-fit','assist-observation'].map(id=>step(id)).filter(s=>h.sim.state.cosmosCampaign.steps.includes(s.id));const far=prepared.find(a=>prepared.every(b=>b===a||Math.hypot(a.x-b.x,a.z-b.z)>7))||prepared[0];h.walk(far.x,far.z);const hold=globalThis.RealmCosmosCampaign.holdStart(h.sim);assert.equal(hold.ok,true,'the hold starts at a prepared anchor: '+hold.error+' at '+JSON.stringify(h.sim.state.player));for(let t=0;t<6.2;t+=.05){h.sim.elapsed+=.05;globalThis.RealmCosmosCampaign.holdTick(h.sim);}assert.equal(globalThis.RealmCosmosCampaign.heldComplete(h.sim),true,'six seconds at the anchor');perform('disable-central-link');snap('06_CENTRAL_LINK_DISABLED');reload();h.walk(step('accountability').x,step('accountability').z);act('choose',{choice:plan.choice});
   const chosen=h.sim.snapshot();act('choose',{choice:CHOICES.find(c=>c!==plan.choice)},undefined,false);assert.deepEqual(h.sim.snapshot(),chosen,'saved accountability cannot be overwritten');snap('07_DELIBERATE_ACCOUNT');reload();
   stage='physical-independent-reconfiguration';for(const p of plan.supports)perform(H.supports.find(s=>s.id===p.id).configure);snap('08_INDEPENDENT_SUPPORT_SETTINGS');reload();perform('open-confluence');assert.equal(h.sim.state.cosmosCampaign.opened,true);snap('09_LOCAL_APPARATUS_OPEN');reload();perform('verify-open-bearings');assert.ok(H.ready(h.sim.state));snap('10_VERIFIED_UNPAID');reload();
   stage='whole-fixed-fee-once';h.walk(D.giver.x,D.giver.z);const unpaid=h.sim.snapshot();act('claim',{}, {save:()=>({ok:false,error:'labelled in-memory fee save refusal'})},false);assert.deepEqual(h.sim.snapshot(),unpaid);
