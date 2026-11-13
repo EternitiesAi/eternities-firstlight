@@ -60,7 +60,7 @@ class CpuStorage(unittest.TestCase):
             marker='owned source-controller transport stop'
             def fake_run(command,**kwargs):
                 calls.append((command,kwargs))
-                if command[1:2]==['tools/test_road_account_browser.py']:
+                if command==['node','tests/crossing_journey.cjs']:  # first step after the python suite (the road-account preflight is archived)
                     raise RuntimeError(marker)
                 return SimpleNamespace(returncode=0)
             with (patch.object(V,'ROOT',root),patch.object(V.sys,'argv',args),

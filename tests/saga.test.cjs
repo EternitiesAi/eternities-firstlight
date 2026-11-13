@@ -102,7 +102,8 @@ test('the late chain: night, briar taken and returned, finale, credits, postgame
  assert.ok(cmd(sim,'briar-nearshore').ok);round(sim);assert.ok(cmd(sim,'briar-returned').ok);assert.equal(SG.current(sim.state).id,'finale');assert.ok(SG.allowed(sim.state,'finale'));
  assert.equal(cmd(sim,'finale-phase',{phase:2}).ok,false,'phases run in order');assert.equal(cmd(sim,'finale-won').ok,false);
  for(const phase of[1,2,3]){assert.ok(cmd(sim,'finale-phase',{phase}).ok);round(sim);}
- assert.equal(cmd(sim,'finale-phase',{phase:3}).already,true);assert.ok(cmd(sim,'finale-won').ok);assert.equal(SG.current(sim.state).id,'epilogue');
+ assert.equal(cmd(sim,'finale-phase',{phase:3}).already,true);assert.equal(cmd(sim,'finale-won').ok,false,'the offer is answered before the end');
+ sim.state.earthHomecoming.finale={broken:[],offer:'refused'};const won=cmd(sim,'finale-won');assert.ok(won.ok,won.error);assert.equal(won.ending,'open');assert.equal(SG.ending(sim.state),'open');assert.equal(SG.current(sim.state).id,'epilogue');
  assert.ok(cmd(sim,'credits').ok);assert.equal(sim.state.saga.postgame,true);assert.equal(SG.current(sim.state),null);
  const snap=round(sim);assert.equal(snap.saga.credits,true);assert.deepEqual(new C.Simulation(snap).snapshot(),snap);
 });
@@ -132,4 +133,93 @@ test('the echo ledger quotes real dispositions and freezes when the finale opens
  const sim=new C.Simulation(coerced);for(const t of['briar-taken','briar-returned'])assert.ok(cmd(sim,t).ok);assert.ok(cmd(sim,'mark',{beat:'night'}).ok);assert.ok(cmd(sim,'finale-phase',{phase:1}).ok);
  assert.ok(sim.state.saga.echo.coercive.includes('hell-license'));const frozen=SG.echoLedger(sim.state);sim.state.hellCampaign.choice='unbind';assert.deepEqual(SG.echoLedger(sim.state),frozen);
  sim.state.hellCampaign.choice='license';assert.deepEqual(round(sim).saga.echo,sim.state.saga.echo);
+});
+
+// Synthetic in RAM: the Sunward Road's cart needs Briar's seek (road validate: companion prerequisite), so no valid save
+// reaches the night unbonded today. This guards the saga's unbonded branch in case that rule ever loosens; nothing is saved.
+test('a player who never bonded Briar finishes the nearshore at the pier, and only that way',()=>{
+ const NEAR=require(path.join(ROOT,'src/nearshore.js')),sim=new C.Simulation(load(LATE));sim.state.adventure.companion.bonded=false;sim.state.player={x:0,z:26,yaw:0};
+ assert.equal(cmd(sim,'briar-taken').ok,false,'there is no Briar to take');
+ assert.equal(NEAR.refusable(sim),false,'not before the night');assert.equal(cmd(sim,'refuse-companion').ok,false);
+ assert.ok(cmd(sim,'mark',{beat:'night'}).ok);assert.ok(SG.done(sim.state,'witness'));assert.equal(SG.current(sim.state).id,'nearshore');
+ assert.match(SG.current(sim.state).detail,/came all this way for a companion/);assert.equal(NEAR.refusable(sim),true);
+ const r=cmd(sim,'mark',{beat:'nearshore'});assert.ok(r.ok,r.error);assert.equal(sim.state.journal.at(-1).kind,'saga');
+ assert.ok(Object.hasOwn(sim.state.saga.beats,'nearshore'));assert.equal(sim.state.saga.briar.state,'with');assert.equal(SG.current(sim.state).id,'finale');assert.ok(SG.allowed(sim.state,'finale'));
+ assert.equal(cmd(sim,'refuse-companion').already,true);assert.equal(NEAR.refusable(sim),false);
+ assert.deepEqual(SG.validate(JSON.parse(JSON.stringify(sim.state.saga)),sim.state),sim.state.saga,'the saga record itself validates');
+ // bonding later cannot reopen her capture or undo the refusal
+ sim.state.adventure.companion.bonded=true;assert.equal(cmd(sim,'briar-taken').ok,false);assert.ok(SG.done(sim.state,'nearshore'));
+ // a bonded player cannot skip bringing her home this way
+ const bonded=new C.Simulation(load(LATE));assert.ok(cmd(bonded,'briar-taken').ok);assert.ok(cmd(bonded,'mark',{beat:'night'}).ok);
+ assert.equal(cmd(bonded,'refuse-companion').ok,false);assert.equal(cmd(bonded,'mark',{beat:'nearshore'}).ok,false,'a bonded player brings her home');assert.equal(NEAR.refusable(bonded),false);assert.equal(SG.done(bonded.state,'nearshore'),false);
+ const bad=JSON.parse(JSON.stringify(sim.state.saga));bad.briar={state:'taken',habit:{},takenDay:1,returnedDay:null,homeDay:null};
+ assert.throws(()=>SG.validate(bad,sim.state),/Invalid saga: beat order nearshore/);
+});
+
+// BRANCHES.md section 2: the lasting choices, the hearings, the false fox and the three endings.
+function lateNight(){const sim=new C.Simulation(load(LATE));assert.ok(cmd(sim,'briar-taken').ok);assert.ok(cmd(sim,'mark',{beat:'night'}).ok);return sim;}
+test('branches: old saves load with every new field at its default, and the record round-trips',()=>{
+ const f=SG.fresh();assert.deepEqual(f.choices,{tessa:null,device:null});assert.deepEqual(f.heard,{beacon:null,foundry:null,confluence:null});assert.equal(f.briar.falseTrusted,false);assert.equal(f.finale.ending,null);
+ const old=JSON.parse(JSON.stringify(f));delete old.choices;delete old.heard;delete old.briar.falseTrusted;delete old.finale.ending;
+ assert.deepEqual(SG.validate(old,C.fresh()),f);assert.deepEqual(C.validate(legacy(load(LATE))).saga.choices,f.choices);
+ const late=lateNight();assert.ok(cmd(late,'choose',{key:'tessa',value:'hers'}).ok);assert.ok(cmd(late,'regent-heard',{id:'foundry',heard:true}).ok);round(late);
+});
+test('branches: every malformed new field is refused by name',()=>{
+ const w=load(LATE),base=()=>{const s=JSON.parse(JSON.stringify(SG.infer(w)));return s;},bad=(edit,field,world=w)=>{const s=base();edit(s);assert.throws(()=>SG.validate(s,world),{message:'Invalid saga: '+field});};
+ bad(s=>{s.choices={tessa:'maybe',device:null};},'choices');bad(s=>{s.choices={tessa:null};},'choices');bad(s=>{s.choices={tessa:null,device:'open'};},'choices');
+ bad(s=>{s.regent=[];s.choices={tessa:'hers',device:null};},'choices');
+ bad(s=>{s.heard={beacon:'yes',foundry:null,confluence:null};},'heard');bad(s=>{s.heard={beacon:null,foundry:null};},'heard');bad(s=>{s.regent=['beacon'];s.heard={beacon:null,foundry:true,confluence:null};},'heard');
+ bad(s=>{s.briar.falseTrusted=true;},'briar false trust');bad(s=>{s.briar.falseTrusted='no';},'briar false trust');
+ bad(s=>{s.finale.ending='open';},'finale ending');bad(s=>{s.finale.ending='lost';},'finale ending');
+ bad(s=>{s.extra=1;},'shape');
+});
+test('branches: choose is asked once, needs its moment, and journals the option label',()=>{
+ const early=new C.Simulation(load(ACT1));assert.equal(cmd(early,'choose',{key:'tessa',value:'hers'}).ok,false,'Tessa has not been asked yet');
+ const sim=new C.Simulation(load(LATE));assert.equal(cmd(sim,'choose',{key:'device',value:'open'}).ok,false,'the night comes first');
+ assert.equal(cmd(sim,'choose',{key:'mood',value:'x'}).ok,false);assert.equal(cmd(sim,'choose',{key:'tessa',value:'later'}).ok,false);
+ const r=cmd(sim,'choose',{key:'tessa',value:'signed'});assert.ok(r.ok,r.error);assert.equal(sim.state.journal.at(-1).text,'I would sign. You have buried enough.');
+ assert.equal(cmd(sim,'choose',{key:'tessa',value:'signed'}).already,true);
+ const again=cmd(sim,'choose',{key:'tessa',value:'refused'});assert.equal(again.ok,false);assert.equal(again.error,'That is done, and it stays done.');
+ assert.ok(cmd(sim,'briar-taken').ok);assert.ok(cmd(sim,'mark',{beat:'night'}).ok);assert.ok(cmd(sim,'choose',{key:'device',value:'carried'}).ok);
+ assert.deepEqual(round(sim).saga.choices,{tessa:'signed',device:'carried'});
+});
+test('branches: regent-heard once per sighting, only where he was seen',()=>{
+ const sim=new C.Simulation(load(ACT1));assert.equal(cmd(sim,'regent-heard',{id:'beacon',heard:true}).ok,false,'not seen yet');
+ const late=new C.Simulation(load(LATE));assert.equal(cmd(late,'regent-heard',{id:'tower',heard:true}).ok,false);assert.equal(cmd(late,'regent-heard',{id:'beacon',heard:'yes'}).ok,false);
+ assert.ok(cmd(late,'regent-heard',{id:'beacon',heard:false}).ok);assert.equal(cmd(late,'regent-heard',{id:'beacon',heard:false}).already,true);
+ assert.equal(cmd(late,'regent-heard',{id:'beacon',heard:true}).error,'That is done, and it stays done.');assert.deepEqual(round(late).saga.heard,{beacon:false,foundry:null,confluence:null});
+});
+test('branches: briar-false only for the fox at the nearshore, and it is a chain',()=>{
+ const sim=lateNight();assert.equal(cmd(new C.Simulation(load(LATE)),'briar-false').ok,false,'Briar is with you');
+ assert.equal(cmd(sim,'briar-false').ok,false,'not before the pier');assert.ok(cmd(sim,'briar-nearshore').ok);
+ const r=cmd(sim,'briar-false');assert.ok(r.ok,r.error);assert.equal(cmd(sim,'briar-false').already,true);round(sim);
+ assert.ok(SG.echoLedger(sim.state).coercive.some(e=>e.id==='nearshore-false'));
+});
+test('branches: the three endings by their conditions, with their journal and credits lines',()=>{
+ const S=require(path.join(ROOT,'src/story-script.js'));
+ const ready=(offer,heardAll)=>{const sim=lateNight();if(heardAll)for(const id of SG.REGENT)assert.ok(cmd(sim,'regent-heard',{id,heard:true}).ok);
+  assert.ok(cmd(sim,'briar-returned').ok);for(const phase of[1,2,3])assert.ok(cmd(sim,'finale-phase',{phase}).ok);sim.state.earthHomecoming.finale={broken:[],offer};return sim;};
+ const kept=ready('taken',false);assert.equal(cmd(kept,'finale-won',{ending:'open'}).ok,false,'a signed page cannot end open');
+ assert.equal(cmd(kept,'finale-won',{}).ending,'kept');assert.equal(kept.state.journal.at(-1).text,S.scene('finale.ending',kept.state).lines[0].text);
+ assert.ok(cmd(kept,'credits').ok);assert.equal(kept.state.journal.at(-1).text,'Firstlight. Nothing is lost here.');round(kept);
+ const open=ready('refused',false);assert.equal(cmd(open,'finale-won',{ending:'answered'}).ok,false,'you never heard him out');assert.equal(cmd(open,'finale-won',{ending:'kept'}).ok,false);
+ assert.equal(cmd(open,'finale-won',{ending:'open'}).ending,'open');assert.ok(cmd(open,'credits').ok);assert.equal(open.state.journal.at(-1).text,'Firstlight. The roads stay open.');round(open);
+ const answered=ready('refused',true);assert.equal(cmd(answered,'finale-won',{ending:'answered'}).ending,'answered');assert.equal(SG.ending(answered.state),'answered');
+ assert.ok(cmd(answered,'credits').ok);assert.equal(answered.state.journal.at(-1).text,'Firstlight. The roads stay open, and somebody is counting.');round(answered);
+ assert.equal(cmd(ready('refused',true),'finale-won',{ending:'happy'}).ok,false);
+ // a save that won before the ending existed reads it from its offer and never fails
+ const snap=open.snapshot();delete snap.saga.finale.ending;assert.equal(C.validate(snap).saga.finale.ending,'open');
+ const ks=kept.snapshot();delete ks.saga.finale.ending;assert.equal(C.validate(ks).saga.finale.ending,'kept');
+ const none=open.snapshot();delete none.saga.finale.ending;none.earthHomecoming.finale={broken:[],offer:null};assert.equal(C.validate(none).saga.finale.ending,'open');
+ const wrong=kept.snapshot();wrong.saga.finale.ending='open';assert.throws(()=>C.validate(wrong),/Invalid saga: finale ending/);
+});
+test('branches: the ledger rows, their kinds and allies, and lines from the script',()=>{
+ const S=require(path.join(ROOT,'src/story-script.js')),row=id=>SG.ECHO.find(e=>e.id===id);
+ for(const[id,kind,ally]of[['beacon-sealed','freeing','Mara'],['beacon-renounced','freeing','Mara'],['cosmos-bounded','freeing','Avar'],['tessa-refused','freeing','Tessa'],['tessa-hers','freeing','Tessa'],['tessa-signed','coercive',undefined],['device-open','freeing','Rowan'],['device-sealed','freeing','Oren'],['device-carried','coercive',undefined],['nearshore-false','coercive',undefined]]){
+  assert.ok(row(id),id);assert.equal(row(id).kind,kind,id);assert.equal(row(id).ally,ally,id);
+ }
+ const sim=lateNight();assert.ok(cmd(sim,'choose',{key:'tessa',value:'signed'}).ok);assert.ok(cmd(sim,'choose',{key:'device',value:'open'}).ok);
+ const ledger=SG.echoLedger(sim.state),signed=ledger.coercive.find(e=>e.id==='tessa-signed'),open=ledger.freeing.find(e=>e.id==='device-open');
+ assert.equal(signed.line,S.scene('finale.chain.tessa-signed',sim.state).lines[0].text);assert.equal(open.line,S.scene('finale.ally.device-open',sim.state).lines[0].text);assert.equal(open.ally,'Rowan');
+ assert.ok(cmd(sim,'briar-returned').ok);assert.ok(cmd(sim,'finale-phase',{phase:1}).ok);assert.ok(sim.state.saga.echo.coercive.includes('tessa-signed'));assert.ok(sim.state.saga.echo.freeing.includes('device-open'));round(sim);
 });

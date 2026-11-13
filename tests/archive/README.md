@@ -23,3 +23,16 @@ finale's record; their fixtures stay in `tests/fixtures`.
 - earth_homecoming_installed.test.cjs
 - earth_homecoming_projection.test.cjs
 - earth_encounter_art_polish.test.cjs
+
+# archived homecoming verifier chain (integration, 2026-11-13)
+
+`tools/verify.py` no longer runs the retired homecoming's earned cohort (`tools/earth_homecoming_journey.cjs`), its
+native preflight, its recording-controller preflight or its native browser gate. These files existed only for that
+chain and drive the retired quest (the twelve-claim gate, the 168 hp repulse); they are moved, not deleted:
+
+- test_capture_earth_homecoming.py (with actual_manual_controller.cjs): the recording controller and its quiet-response
+  repair, which walks the old quest steps
+- test_earth_homecoming_native.py: the native preflight bound to the old earned cohort
+
+`tests/test_verify_earth_homecoming.py` stays in the gate: it unit-tests `earth_homecoming_browser_run_spec` and supplies
+the synthetic verifier fixture that `test_verify_onboarding.py` builds on.

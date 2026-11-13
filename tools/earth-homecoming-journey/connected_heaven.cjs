@@ -141,7 +141,10 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
  const hook=()=>{h.sim.heavenCampaignSave=h.save;};
  const act=(type,p={},io={save:h.save},expect=true)=>{
   const ctx=h.context();hook();const result=H.command(ctx,type,{quest:D.id,expectedRevision:h.sim.state.adventure.revision,expectedActive:ctx.active,...p},io);
-  campaignEvents.push({type,payload:p,result});assert.equal(result.ok,expect,type+': '+(result.error||result.text));return result;
+  campaignEvents.push({type,payload:p,result});
+  if(result.ok!==expect){const st=(H.definition?.steps||[]).find(s=>s.id===p.step),pl=h.sim.state.player,tr=st&&globalThis.RealmTrails?.at?globalThis.RealmTrails.at(h.sim,{medium:'dry',x:st.x,z:st.z}):'n/a';
+   console.error('[heaven act refused] '+type+' '+(p.step||'')+' room='+h.sim.room+' dive='+!!h.sim.worldDive+' player='+pl.x.toFixed(2)+','+pl.z.toFixed(2)+' step='+(st?st.x+','+st.z:'none')+' trailsAt='+tr+' error='+result.error);}
+  assert.equal(result.ok,expect,type+': '+(result.error||result.text));return result;
  };
  const reload=()=>{const record=copy(h.sim.state.heavenCampaign);h.reload('heaven');hook();assert.deepEqual(h.sim.state.heavenCampaign,record);assert.equal(H.runtime(h.sim).activation,null);};
  try{
@@ -160,7 +163,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
   const seedPath=path.join(folder,'00_EARNED_SEED.json');
   write('SEED_PROVENANCE',{variant,seed:seedPath,seedSha256:sha(seedPath),source,fixtureHash,method:'inherited connected original-four-chapter character; no kit or equipment replay; actual Broken Choir acceptance, relay operations, combat, repair and claim; ordinary rest at the home spring',priorClaimed:D.prerequisite,campaign:h.sim.state.heavenCampaign,sourceHashes:loadedHashes,positionEdits:0,inventoryGrants:0,manualDamage:0,forcedModes:0,plantedDefeats:0});
   if(seedOnly){const finalHashes=sourceEpoch();assert.deepEqual(finalHashes,loadedHashes,'source bytes frozen through earned seed');return{status:'passed',variant,seed:path.join(folder,'00_EARNED_SEED.json'),source,fixtureHash,sourceHashes:loadedHashes};}
-  const baseline=h.sim.snapshot();stage='accept';h.enter('heaven');hook();h.walk(D.giver.x,D.giver.z);act('accept');
+  const baseline=h.sim.snapshot();stage='accept';h.enter('heaven');hook();h.walk(D.giver.x,D.giver.z);act('accept');h.walk(D.envoy.x,D.envoy.z);act('envoy');
   const waiting=H.runtime(h.sim).escort;assert.equal(waiting.phase,'idle');assert.deepEqual([waiting.x,waiting.z],[D.escort.x,D.escort.z]);snap('01_ACCEPTED');reload();
   stage='investigation';for(const id of['witness-account','compare-arrival-marks','inspect-false-relay']){const s=step(id);h.walk(s.x,s.z);act('step',{step:id});}
   snap('02_PRESERVED_ACCOUNT');reload();

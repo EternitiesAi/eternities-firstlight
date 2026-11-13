@@ -42,11 +42,11 @@ const TRACKS=Object.freeze({
 // game event -> cue. a type not listed here is silent on purpose.
 const EVENTS=Object.freeze({'confirmed-hit':'hit',guard:'guard',dodge:'dodge',dig:'dig',heal:'heal',rescue:'rescue',
  loot:'loot',relic:'relic',insight:'insight',spirit:'spirit','beacon-answer':'beacon-answer','beacon-repair':'beacon-repair',
- observe:'bell',bell:'bell',bird:'bird','ui-click':'ui-click','ui-confirm':'ui-confirm','ui-open':'ui-open',
+ observe:'bell',bell:'bell',bird:'bird',shimmer:'spirit',stinger:'hit','briar-taken':'guard','ui-click':'ui-click','ui-confirm':'ui-confirm','ui-open':'ui-open',
  'ui-error':'ui-error','ui-toggle':'ui-toggle'});
 const clamp=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
 const buses={},volume={},decoded=new Map(),pending=new Map(),voices=new Set();
-let context=null,master=null,assets=EMBEDDED,random=Math.random,listener=null,enabled=false,ambient=null,track=null,want=null,clicks=false;
+let context=null,master=null,assets=EMBEDDED,random=Math.random,listener=null,enabled=false,ambient=null,track=null,want=null,wantLevel=1,clicks=false;
 for(const name of BUSES)volume[name]=DEFAULT_VOLUME;
 const live=()=>enabled&&!!context&&context.state!=='closed';
 
@@ -101,7 +101,7 @@ function enable(){
  master.gain.cancelScheduledValues(now);master.gain.setTargetAtTime(MASTER,now,.2);
  enabled=true;
  for(const def of Object.values(CUES))for(const key of def.files||[])request(key);
- if(want)music(want);
+ if(want)music(want,wantLevel);
  return true;
 }
 function disable(){
@@ -174,10 +174,10 @@ function fadeOut(t){
  }catch(_){}
 }
 // the score loops from its own buffer; the tail was already folded into the head by master_music.py.
-function music(id){
- want=id||null;
+function music(id,level=1){
+ want=id||null;wantLevel=clamp(Number.isFinite(level)?level:1,0,1);
  if(!live())return false;
- if(track&&track.id===want)return true;
+ if(track&&track.id===want){if(track.level!==wantLevel){track.level=wantLevel;track.gain.gain.setTargetAtTime(wantLevel,context.currentTime,.4);}return true;}
  if(track){fadeOut(track);track=null;}
  if(!want)return true;
  const def=TRACKS[want];
@@ -186,17 +186,24 @@ function music(id){
  if(!buffer){const target=want,p=pending.get(def.file);if(p)p.then(()=>{if(want===target)music(target);});return false;}
  const ctx=context,now=ctx.currentTime,src=ctx.createBufferSource(),gain=ctx.createGain();
  src.buffer=buffer;src.loop=true;src.loopStart=0;src.loopEnd=buffer.duration;
- gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(1,now+FADE);
+ gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(wantLevel,now+FADE);
  src.connect(gain);gain.connect(buses.music);src.start(now);
- track={id:want,src,gain};
+ track={id:want,src,gain,level:wantLevel};
  return true;
 }
 // the realm's place decides the score; a battle overrides it while an enemy is engaged.
-function scene(input={}){
- const room=input.room||'';
- const id=input.battle?'battle':room==='world-hell'?'hell':room==='world-heaven'?'heaven':room==='world-atlantis'?'sea':room==='cosmos-near-expanse'?'cosmos':room==='road'?'road':'valley';
- return music(id);
+// the score by story stage and by place, pure so every room and stage can be checked without a browser.
+// precedence: credits and the finale own the score; a battle beats the place; the night and nearshore beat the place.
+const STAGE_TRACK=Object.freeze({credits:['credits',1],finale:['finale',1],'night-claim':['battle',1],'night-quiet':['valley',.12],nearshore:['sea',.55]});
+const ROOM_TRACK=Object.freeze({'world-hell':'hell','world-heaven':'heaven','world-atlantis':'sea','cosmos-near-expanse':'cosmos',road:'road',crossing:'road'});
+function sceneTrack(input={}){
+ const stage=STAGE_TRACK[input.stage];
+ if(stage&&(stage[0]==='credits'||stage[0]==='finale'))return{track:stage[0],level:stage[1]};
+ if(input.battle)return{track:'battle',level:1};
+ if(stage)return{track:stage[0],level:stage[1]};
+ return{track:ROOM_TRACK[input.room]||'valley',level:1};
 }
+function scene(input={}){const s=sceneTrack(input);return music(s.track,s.level);}
 // real ambience loops would play here; none ship yet, so the code-made bed in soundscape.js covers every area.
 function ambience(area){ambient=area||null;return false;}
 function listen(p){listener=p&&Number.isFinite(p.x)&&Number.isFinite(p.z)?{x:p.x,z:p.z}:null;}
@@ -221,7 +228,7 @@ function snapshot(){
 
 // the public face never throws: a failing audio path reads as silence and game code keeps running.
 const quiet=fn=>(...args)=>{try{return fn(...args);}catch(_){return null;}};
-const api={BUSES,LABELS,CUES,TRACKS,EVENTS,open:quiet(open),enable:quiet(enable),disable:quiet(disable),setVolume:quiet(setVolume),
+const api={BUSES,LABELS,CUES,TRACKS,EVENTS,sceneTrack,open:quiet(open),enable:quiet(enable),disable:quiet(disable),setVolume:quiet(setVolume),
  getVolume:quiet(getVolume),cue:quiet(cue),event:quiet(event),music:quiet(music),scene:quiet(scene),ambience:quiet(ambience),
  listen:quiet(listen),stopAll:quiet(stopAll),close:quiet(close),snapshot:quiet(snapshot),context:()=>context,output:()=>master,
  bus:name=>buses[name]||null,get enabled(){return enabled;},set random(fn){random=fn;},set assets(map){assets=map;}};
