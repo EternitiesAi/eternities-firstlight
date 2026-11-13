@@ -28,6 +28,10 @@ function assertMigrationPreserved(migrated,raw){
  if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  if(!Object.hasOwn(raw,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
  if(!Object.hasOwn(raw,'saga'))expected.saga=load('saga').infer(migrated);
+ // the shell lane: a save from before the first steps skips them; settings gain text size and the four volumes.
+ if(!Object.hasOwn(raw,'firstRun'))expected.firstRun={move:true,camera:true,attack:true,interact:true,dismissed:true};
+ if(expected.settings&&!Object.hasOwn(expected.settings,'textScale'))expected.settings.textScale='standard';
+ if(expected.settings&&!Object.hasOwn(expected.settings,'volume'))expected.settings.volume={music:.8,effects:.8,ambience:.8,ui:.8};
  if(!Object.hasOwn(raw,'night'))expected.night=load('night').infer(migrated);
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
  let catalogueMigration=null;
