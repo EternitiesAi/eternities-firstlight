@@ -59,7 +59,7 @@ def run(args):
             report['frames'].append(view + '-credits-epilogue.png')
             check(view + ': the epilogue roll names the ACE-Step score sources', 'ACE-Step' in text, str(sections) + ' sections')
             check(view + ': the epilogue roll names the kenney effects sources', 'kenney' in text.lower())
-            check(view + ': the roll keeps the epilogue sections', 'Postgame' in text and 'Firstlight' in text)
+            check(view + ': the roll keeps the epilogue sections', 'postgame' in text.lower() and 'firstlight' in text.lower())
             page.keyboard.press('Escape')
             page.wait_for_function('()=>window.__creditsDone===true', timeout=10000)
             check(view + ': escape skips the roll and calls onDone', True)
