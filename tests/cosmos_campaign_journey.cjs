@@ -56,7 +56,7 @@ function journey(options={}){
  const C=load('core'),A=load('adventure'),T=load('combat'),AR=load('arsenal'),W=load('world-foundations'),R=load('realm-trails'),N=load('cosmos');
  assert.strictEqual(global.RealmCore,C);assert.strictEqual(global.RealmAdventure,A);
  const fixture=plan.veteran?path.join(root,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null,fixtureHash=fixture?sha(fixture):null;
- const h=fixture?createHarness(JSON.parse(fs.readFileSync(fixture,'utf8'))):witnessHarness(plan.bow),campaignEvents=[],fights=[],readings=[],checkpoints=[],checkpointHashes={};
+ const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf8')))):witnessHarness(plan.bow),campaignEvents=[],fights=[],readings=[],checkpoints=[],checkpointHashes={};
  const zero={positionEdits:0,actorPositionEdits:0,inventoryGrants:0,healthGrants:0,manualDamage:0,plantedDefeats:0,plantedQuestFacts:0,forcedModes:0,forcedCycles:0};
  let stage='initial-kit',H=null,D=null,beforeTick=null;
  const write=(name,value)=>{const file=path.join(folder,name+'.json');fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n',{flag:'wx'});return file;};

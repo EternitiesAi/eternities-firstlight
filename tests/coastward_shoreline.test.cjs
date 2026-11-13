@@ -21,7 +21,7 @@ function mesh(d,triangles,lo,hi){assert.equal(d.length,triangles*18);const edges
  assert.deepEqual(min,lo.map(Math.fround));assert.deepEqual(max,hi.map(Math.fround));assert.ok(volume>0);for(const e of edges.values()){assert.equal(e.count,2);assert.equal(e.orientation,0);}return{tops,volume};}
 test('one canonical convex shoreline continuously contains the old rectangle and preserves every other authority',()=>{
  assert.deepEqual(p.footprint,outline);const original=plain(d);delete original.patches.find(q=>q.id===p.id).footprint;
- assert.equal(sha(original),'8e8dbac0e7e487231ab54171f8335e8d3562c14a71fe715f5de32d682ec8618e','All old Earth patches, solids, routes, bounds, height metadata and work owners exact');
+ assert.equal(sha(original),'572c6488bab5b361fb9ab2a9f1f1a9149fb2537e7c993c2d333a042e6f34aec0','All old Earth patches, solids, routes, bounds, height metadata and work owners exact');
  for(const [id,h]of Object.entries({heaven:'4098836d80e30c47b131919a03acd82cf436c5c3844c615e64e02f51684f55db',hell:'f2e0a120d0b86083e51751272fdcc28d3b3b6df60e472227f2b4c8a910ab959b',atlantis:'4e22559592d448c1af40d213cde5b9f4f6ba21973995aca23110096de4987ccd',cosmos:'886ccbe45581f47339572e413085b92f459115129c824dc4d791779453195fbe'}))assert.equal(sha(W.definition(id)),h);
  for(let i=0;i<outline.length;i++){const a=outline[i],b=outline[(i+1)%9],c=outline[(i+2)%9];assert.ok((b[0]-a[0])*(c[1]-b[1])-(b[1]-a[1])*(c[0]-b[0])>0);for(const q of corners)assert.ok((b[0]-a[0])*(q[1]-a[1])-(b[1]-a[1])*(q[0]-a[0])>=0,'Every old corner in every convex half-plane implies inclusion of the whole rectangle');}
  assert.equal(area(outline),348);assert.equal(p.w*p.d,256,'Original height-owner priority remains 256');

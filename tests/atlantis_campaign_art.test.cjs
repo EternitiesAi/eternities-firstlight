@@ -21,7 +21,7 @@ const by=id=>D.steps.find(s=>s.id===id),epsilon=1e-5;
 function vertices(p,kind){const g=E.geometry(kind),m=p.m||E.M.compose(...p.p,...p.s,...(p.r||[0,0,0])),out=[];for(let i=0;i<g.length;i+=6)out.push(E.M.transform(m,Array.from(g.slice(i,i+3))));return out;}
 const projected=o=>Object.entries(o).flatMap(([kind,ps])=>ps.flatMap(p=>vertices(p,kind).map(v=>({p,v}))));
 const triangles=o=>Object.entries(o).reduce((n,[k,ps])=>n+ps.length*E.geometry(k).length/18,0);
-function specimen(steps=[],choice=null,approach='upper'){const sim=new C.Simulation();sim.room=D.room;sim.state.adventure.started=true;
+function specimen(steps=[],choice=null,approach='upper'){const raw=C.fresh();raw.adventure.started=true;const sim=new C.Simulation(require('./witness_prereq.cjs').heavenFinished(raw));sim.room=D.room;
  sim.state.atlantisCampaign={version:1,accepted:true,steps:steps.slice(),approach,choice,claimed:false};live.set(sim,{witnesses:[],current:{active:false,text:'Synthetic read-only current status: quiet.'}});A.runtime(sim);return sim;}
 function actor(sim){sim.state.atlantisCampaign.steps=[...new Set([...sim.state.atlantisCampaign.steps,...D.enemy.spawnAfter])];const e={...D.enemy,atlantisCampaign:D.id,maxHP:D.enemy.hp,mode:'idle',timer:0,yaw:0,flash:0};A.runtime(sim).enemies.push(e);return e;}
 function witness(sim,index){const w=D.witnesses[index];sim.state.atlantisCampaign.steps=[...new Set([...sim.state.atlantisCampaign.steps,...w.appearsAfter])];const e={...w,atlantisCampaign:D.id,yaw:0};H.runtime(sim).witnesses.push(e);return e;}
@@ -186,10 +186,10 @@ test('combined fixtures, owned witnesses and worst warning stay within the bound
 
 test('journal, map, route labels and terms are read-pure and explicit acceptance needs the old claimed chart',()=>{
  const sim=specimen(),h=harness(sim);sim.state.atlantisCampaign.accepted=false;sim.state.atlantisCampaign.approach=null;place(sim,D.giver);const before=JSON.stringify(sim.state),locked=h.ui.page('atlantis-campaign').html;
- assert.ok(locked.includes('explicitly claim '+Trails.definition(D.prerequisite).title+' first'));assert.equal(Trails.definition(D.prerequisite).title,'A Chart With Room for Depth');assert.ok(!locked.includes('data-rpg="atlantis-campaign-accept"'));h.ui.journal();UI.legend(sim);assert.deepEqual(UI.routePoints(sim),[]);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
+ assert.ok(locked.includes('Finish '+Trails.definition(D.prerequisite).title+' first'));assert.equal(Trails.definition(D.prerequisite).title,'A Chart With Room for Depth');assert.ok(!locked.includes('data-rpg="atlantis-campaign-accept"'));h.ui.journal();UI.legend(sim);assert.deepEqual(UI.routePoints(sim),[]);assert.equal(JSON.stringify(sim.state),before);assert.deepEqual(h.commands,[]);
  sim.state.realmTrails.records[D.prerequisite].claimed=true;const allowed=h.ui.page('atlantis-campaign').html,b=button(allowed,'accept');const acceptedBefore=JSON.stringify(sim.state);h.ui.action(b);
  assert.deepEqual(h.commands,[{type:'accept',payload:{quest:D.id,expectedRevision:sim.state.adventure.revision,expectedActive:'synthetic-harbour-traveller'}}]);assert.equal(JSON.stringify(sim.state),acceptedBefore,'refusing sink grants nothing');
- const fee=UI.fee();for(const phrase of['48 XP','18 sunmarks','4 ore','4 timber','3 meadow fibre','1 crystal'])assert.ok(fee.includes(phrase));assert.match(allowed,/Only XP clips/);assert.match(allowed,/full material pouch or refused save/);
+ const fee=UI.fee();for(const phrase of['48 XP','18 sunmarks','4 ore','4 timber','3 meadow fibre','1 crystal'])assert.ok(fee.includes(phrase));assert.match(allowed,/Only XP clips/);assert.match(allowed,/A full pouch or a refused save keeps the finished work safe/);
 });
 
 test('wet map labels are depth-reading controls; dry walk uses the existing supported approach without work',()=>{
@@ -234,10 +234,10 @@ test('retained approaches use explicit preview, cancel and owner-bound confirmat
 
 test('each disposition confirms once through the current physical owner, quotes recognition only after verification and pays separately',()=>{
  for(const choice of D.choices){const sim=specimen(required.filter(id=>!['disposition','verify-passage'].includes(id)).concat('upper-reading')),h=harness(sim);place(sim,by('disposition'));const before=JSON.stringify(sim.state);act(h,'review',choice.id);
-  assert.deepEqual(h.commands,[]);const preview=h.ui.page('atlantis-campaign').html;assert.match(preview,/one lasting local disposition/);assert.ok(!preview.includes('The verified local record'));h.ui.action(button(preview,'confirm',choice.id));
+  assert.deepEqual(h.commands,[]);const preview=h.ui.page('atlantis-campaign').html;assert.match(preview,/lasting choice for the harbour/);assert.ok(!preview.includes('The verified local record'));h.ui.action(button(preview,'confirm',choice.id));
   assert.deepEqual(h.commands.at(-1),{type:'choose',payload:{quest:D.id,expectedRevision:sim.state.adventure.revision,expectedActive:'synthetic-harbour-traveller',step:'disposition',choice:choice.id}});assert.equal(JSON.stringify(sim.state),before);
   sim.state.atlantisCampaign.choice=choice.id;sim.state.atlantisCampaign.steps.push('disposition');assert.ok(!h.ui.page('atlantis-campaign').html.includes('The verified local record'));
-  sim.state.atlantisCampaign.steps.push('verify-passage');place(sim,D.giver);const ready=h.ui.page('atlantis-campaign').html;assert.match(ready,/Complete · unpaid/);for(const line of choice.recognition)assert.ok(ready.includes(line.name+':</strong>'));
+  sim.state.atlantisCampaign.steps.push('verify-passage');place(sim,D.giver);const ready=h.ui.page('atlantis-campaign').html;assert.match(ready,/Ready for your reward/);for(const line of choice.recognition)assert.ok(ready.includes(line.name+':</strong>'));
   act(h,'claim');assert.equal(h.commands.at(-1).type,'claim');assert.equal(h.commands.length,2);sim.state.atlantisCampaign.claimed=true;assert.ok(!h.ui.page('atlantis-campaign').html.includes('data-rpg="atlantis-campaign-claim"'));assert.deepEqual(UI.routePoints(sim),[]);
  }
 });
