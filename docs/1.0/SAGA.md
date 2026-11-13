@@ -63,7 +63,7 @@ never blocked from what it already did (inference keeps it whole).
 
 1. a fresh character goes title -> credits through real commands in the bot journey; a human pace estimate of 2.5-4 h.
 2. the main path never requires a fee, a claim or optional side work.
-3. boss hp and damage rise along the main path; the regent is the hardest fight (about 1,200 hp over three phases).
+3. boss hp and damage rise along the main path; the regent is the hardest fight in the game, by rule.
 4. the regent appears three times before the finale; the prophecy is spoken at the spring and reread in heaven.
 5. the feather's sight is used in at least three main beats.
 6. briar is taken, returns through the nearshore test, and acts in the finale; old saves are not broken.

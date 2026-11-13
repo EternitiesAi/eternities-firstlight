@@ -98,7 +98,7 @@ function run(options = {}) {
  stage('night', '05', 'NIGHT_COMPLETE.json', () => require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: sub('05'), source: world }), 'Briar bites the device; the travellers are called out; the envoy speaks');
 
  // the local realms (Earth side) and the hell campaign: the connected helper takes the live world
- TACTICS.setDodge(false); // the connected realm helpers brace and stand; see journey_tactics.cjs
+ TACTICS.setDodge(false); // the realm helpers brace and stand: with the step on, the hell helper stops in its warden loop
  let hellRaw = null;
  if (world) {
   const before = readJson(world);
@@ -149,8 +149,8 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
  }
 
- // the finale runs its own dodges (the regent's pursuit and the walked route); the shared step would fight them
- TACTICS.setDodge(false);
+ // the finale is the hardest fight: the shared step dodges beside the finale journey's own (its numbers are tuned to this)
+ TACTICS.setDodge(true);
  // the finale, fresh: the live nearshore save walks to the spring, fights to the offer, refuses it, and rolls the credits
  if (world) {
   const before = readJson(world);

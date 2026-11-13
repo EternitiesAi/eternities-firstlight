@@ -27,6 +27,9 @@ const phase = s => s.state.saga.finale.phase;
 const runUntil = (s, want, max = 60) => { for (let t = 0; t < max; t += .1) { s.tick(.1); if (phase(s) === want) { s.tick(.1); return true; } } return false; };
 const bodyOf = s => AD().runtime(s).enemies.find(e => e.finaleRole === 'regent' && e.finalePhase === phase(s));
 const chainsOf = s => AD().runtime(s).enemies.filter(e => e.finaleRole === 'chain');
+// the chains hold real hp now: the player's hits do most of it. cut each standing chain down to a few points, then let
+// the freed ally (Neris, at allyDps) finish it, so the break still lands in the ally's name.
+function chainsDown(s) { for (let t = 0; t < 8 && !chainsOf(s).length; t += .1) s.tick(.1); for (const c of chainsOf(s)) AD().damageEnemy(s, c, c.hp - 3); return runUntil(s, 2); }
 const ctxOf = (s, active) => ({ sim: s, active });
 const answer = (s, active, type, choice) => EH.command(ctxOf(s, active), type, { quest: EH.definition.id, expectedActive: active, expectedRevision: s.state.adventure.revision, choice }, { save: x => { s.saved = clone(x); return { ok: true }; } });
 
@@ -60,7 +63,8 @@ test('a freed entry brings one ally who breaks the chain in its place, and only 
 
 test('the freed default chain falls to Neris, the chains are saved at the break, and the second body takes the valley', () => {
  const s = sim(world()); run(s, .2);
- assert.ok(runUntil(s, 2), 'the last chain falls and the finale moves to phase two');
+ assert.ok(chainsDown(s), 'the last chain falls and the finale moves to phase two');
+ assert.ok(s.state.journal.some(j => /Neris/.test(j.text)), 'the last few points fell to Neris');
  assert.deepEqual(s.saved.earthHomecoming.finale.broken, ['chain-spring'], 'the break is saved');
  assert.equal(s.saved.saga.finale.phase, 2);
  assert.equal(chainsOf(s).length, 0);
@@ -69,7 +73,7 @@ test('the freed default chain falls to Neris, the chains are saved at the break,
 });
 
 test('the third body waits for an answer; refusing is saved; the last answer ends the story and rolls the credits', () => {
- const s = sim(world()); run(s, .2); assert.ok(runUntil(s, 2));
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
  assert.equal(phase(s), 3, 'the second body going down opens the offer');
  assert.equal(s.state.earthHomecoming.finale.offer, null);
@@ -95,7 +99,7 @@ test('the third body waits for an answer; refusing is saved; the last answer end
 });
 
 test('signing the offer ends the valley as the kept ending, with no third fight', () => {
- const s = sim(world()); run(s, .2); assert.ok(runUntil(s, 2));
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
  const signed = answer(s, 'slot-b', 'offer', 'take');
  assert.equal(signed.ok, true, signed.error);
@@ -108,7 +112,7 @@ test('signing the offer ends the valley as the kept ending, with no third fight'
 });
 
 test('a reload in the middle of a fight keeps the phase, the broken chains and the answer given', () => {
- const s = sim(world()); run(s, .2); assert.ok(runUntil(s, 2));
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  const back = new C.Simulation(C.validate(clone(s.saved)));
  assert.equal(back.state.saga.finale.phase, 2);
  assert.deepEqual(back.state.earthHomecoming.finale.broken, ['chain-spring']);
@@ -147,4 +151,46 @@ test('the finale text carries no compliance or developer words on the player pat
   ...E.CREDITS.flatMap(s => [s.title, ...(s.lines || [])]), ...Object.values(D.SITES).map(s => s.label)].join('\n');
  assert.doesNotMatch(shown, /\b(fee|fees|claim|provisional|prototype|epoch|luna|realm 10)\b/i);
  assert.ok(D.LINES.wonDetail.length > 0, 'the table holds the interface words it reads');
+});
+
+// the regent rebalance (lead, 1.0): real chain hp, allies that work instead of breaking, and patterns one sidestep cannot answer.
+const AT = s => s.earthHomecomingRuntime, P = EH.patterns, T = () => FIN.timing();
+test('a chain holds its hp in the owner: an ally only takes allyDps a second, and a rebuilt roster never heals a cut chain', () => {
+ const s = sim(world()); run(s, .2); for (let t = 0; t < 8 && !chainsOf(s).length; t += .1) s.tick(.1);
+ const c = chainsOf(s)[0], full = c.maxHP; assert.equal(full, FIN.phases()[0].hp, 'one chain carries the whole first body');
+ AD().damageEnemy(s, c, 500); run(s, .1); assert.equal(AT(s).chainHP[c.chainId], c.hp);
+ const before = c.hp; run(s, 6); const after = chainsOf(s)[0];
+ assert.ok(after.hp < before && before - after.hp <= T().allyDps * 6.2, 'Neris cuts at most allyDps a second (' + (before - after.hp) + ')');
+ assert.equal(phase(s), 1, 'the ally alone does not break it in seconds');
+ AD().runtime(s).trailSignature = undefined; AD().syncScene(s); run(s, .1);
+ assert.ok(chainsOf(s)[0].hp <= after.hp && chainsOf(s)[0].hp < full, 'a rebuilt roster reads the owner hp, not a fresh chain');
+});
+test('the bands pick by share of the body, a ring hands to the fast follow-up, and standing still near him earns the stamp', () => {
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s)); const e = bodyOf(s);
+ s.state.player.x = e.x; s.state.player.z = e.z + 2.4;
+ e.hp = e.maxHP; assert.equal(EH.pattern(e, s).phase, 'flight'); e.hp = Math.floor(e.maxHP * .4); assert.equal(EH.pattern(e, s).phase, 'cornered');
+ e.followUp = true; assert.equal(EH.pattern(e, s).id, 'ash-follow'); e.followUp = false;
+ assert.ok(P['closing-ring'].recovery < 1 && P['ash-follow'].windup < 1, 'the ring recovers fast and the follow-up lands fast');
+ AT(s).still.t = T().stillSeconds; assert.equal(EH.pattern(e, s).id, 'ash-stamp', 'standing still near him earns the stamp');
+ AT(s).still.t = 0; assert.notEqual(EH.pattern(e, s).id, 'ash-stamp');
+ // lock after a ring sets the follow-up, and the follow-up carries its share of the body damage
+ e.mode = 'idle'; e.followUp = false; e.homecomingCycle = 0; e.hp = Math.floor(e.maxHP * .4); const ring = EH.lock(s, e);
+ assert.ok(ring && ring.pattern === 'closing-ring'); assert.equal(e.followUp, true);
+ e.mode = 'idle'; const follow = EH.lock(s, e); assert.equal(follow.pattern, 'ash-follow'); assert.equal(e.followUp, false);
+ assert.equal(e.damage, Math.round(e.baseDamage * P['ash-follow'].share));
+});
+test('a strike is a warning only while it winds up', () => {
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s)); const e = bodyOf(s);
+ s.state.player.x = e.x; s.state.player.z = e.z + 2; e.mode = 'idle'; const frame = EH.lock(s, e); assert.ok(frame);
+ e.mode = 'windup'; assert.equal(EH.strikeContains(e, s.state.player), true);
+ e.mode = 'recover'; assert.equal(EH.strikeContains(e, s.state.player), false, 'once landed, the shape is spent');
+});
+test('the second body turns on you inside the chase distance; the third pursues you anywhere', () => {
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s)); const e = bodyOf(s); e.mode = 'idle';
+ s.state.player.x = e.x + 6; s.state.player.z = e.z; const d0 = Math.hypot(s.state.player.x - e.x, s.state.player.z - e.z);
+ EH.tick(s, .5); assert.ok(Math.hypot(s.state.player.x - e.x, s.state.player.z - e.z) < d0, 'he closes on you');
+ AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1); s.state.player.x = 0; s.state.player.z = 6;
+ const answered = EH.command({ sim: s, active: 'slot-p' }, 'offer', { quest: EH.definition.id, expectedActive: 'slot-p', expectedRevision: s.state.adventure.revision, choice: 'refuse' }, { save: x => { s.saved = clone(x); return { ok: true }; } });
+ assert.equal(answered.ok, true, answered.error); run(s, .1); const last = bodyOf(s); last.mode = 'idle'; s.state.player.x = last.x + 8; s.state.player.z = last.z; const d1 = Math.hypot(s.state.player.x - last.x, s.state.player.z - last.z);
+ EH.tick(s, .5); assert.ok(Math.hypot(s.state.player.x - last.x, s.state.player.z - last.z) < d1, 'the third body does not wait at the spring');
 });

@@ -12,7 +12,7 @@ const D=require(DATA),d=D.definition,g=D.geometry;
 const inputs=['src/cosmos-campaign-data.js','src/cosmos.js','src/world-foundations.js','src/realm-trails-cosmos.js','src/local-life.js'].map(p=>path.join(ROOT,p));inputs.push(PREIMAGE);
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const epoch=Object.fromEntries(inputs.map(p=>[p,sha(p)]));
-assert.equal(sha(DATA),'b545981b532ebb6462d01a372de9fe50cdabc5bfcdbcccb61a1318b0600ed926');
+assert.equal(sha(DATA),'15ee56a468c0b4bb9cf380db10f053511726b3e446b1415b1476040140f51466');
 assert.equal(sha(PREIMAGE),'dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5');
 const N=require(path.join(ROOT,'src/cosmos.js')),W=require(path.join(ROOT,'src/world-foundations.js'));
 const baseline={module:{exports:{}}};vm.runInNewContext(fs.readFileSync(PREIMAGE,'utf8'),baseline,{filename:PREIMAGE});const O=baseline.module.exports;
@@ -139,7 +139,7 @@ test('finite version-one migration and open/account/claim facts have explicit bo
  assert.match(d.stateContract.choice,/One lasting/);assert.equal(d.choices.length,2);
 });
 test('honest whole-payload fee is fixed, with no equipment grant or existing-curve change',()=>{
- assert.deepEqual(d.reward,{xp:50,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}});
+ assert.deepEqual(d.reward,{xp:150,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}});
  assert.match(d.costs.fee,/full material\/currency payload/);assert.match(d.costs.fee,/only XP clips at 9999/);
  assert.match(d.completionText,/Use the materials for projects you choose; your equipment is unchanged/);assert.equal(d.reward.gear,undefined);
  assert.match(d.costs.fee,/No heal, refill, auto-equip, socket, level-curve or old-payment change/);

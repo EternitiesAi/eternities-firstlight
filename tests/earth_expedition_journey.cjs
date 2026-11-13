@@ -39,7 +39,7 @@ function journey({bow=false,veteran=false,output=null}={}){
   assert.deepEqual([enemy.hp,enemy.damage,enemy.windup,enemy.recovery],[terms.hp,terms.damage,1.35,2.3]);
   const unearned=unchangedCombat(),style=AR.weapon(h.sim.state.adventure).style,radius=style==='bow'?4:1.1;
   h.walk(enemy.home.x,enemy.home.z+10);h.walk(enemy.home.x,enemy.home.z+radius);h.command('target-select',{id:enemy.id});assert.strictEqual(T.selected(h.sim),enemy);
-  const impacts=[],phases=[],transitions=[],retreats=[];let frames=0,lastHP=enemy.hp,guards=0,arrowSeen=false;
+  const impacts=[],phases=[],transitions=[],retreats=[];let frames=0,lastHP=enemy.hp,guards=0,arrowSeen=false;const full=enemy.hp;
   // Each first story foe includes an actual supported withdrawal before autoattack.
   if(run===null){const from={...h.sim.state.player},away={x:enemy.home.x,z:enemy.home.z+6};h.walk(away.x,away.z);retreats.push({from,to:{...h.sim.state.player},segmentsValidated:true});h.walk(enemy.home.x,enemy.home.z+radius);}
   if(run===null&&step.id==='clear-crossing'){
@@ -58,7 +58,7 @@ function journey({bow=false,veteran=false,output=null}={}){
    if(enemy.mode!==priorMode){transitions.push({at:h.sim.state.adventure.elapsed-start,from:priorMode,to:enemy.mode,timer:enemy.timer});if(enemy.mode==='windup')assert.ok(Math.abs(enemy.timer-1.35)<1e-8,'actual AI starts declared 1.35s tell');if(enemy.mode==='recover')assert.ok(Math.abs(enemy.timer-2.3)<1e-8,'actual AI starts declared 2.3s recovery');}
    if(enemy.hp<lastHP){impacts.push({after:h.sim.state.adventure.elapsed-start,before:lastHP,hp:enemy.hp,mode:enemy.mode});lastHP=enemy.hp;}
   }
-  assert.ok(frames<4000&&enemy.hp===0,'real weapon impacts earn accepted defeat');assert.ok(impacts.length>=2,'multiple real impacts');if(style==='bow')assert.ok(arrowSeen,'actual projectile flight observed');if(!veteran){assert.ok(guards>0,'actual Brace used');assert.ok(phases.some(p=>p.phase==='windup')&&phases.some(p=>p.phase==='recover'),'actual tell and opening observed');}
+  assert.ok(frames<4000&&enemy.hp===0,'real weapon impacts earn accepted defeat');/* a veteran on the fight lane's level table may end it in one real blow, from full to nothing; a fresh traveller needs several */assert.ok(impacts.length>=2||(veteran&&impacts.length===1&&impacts[0].hp===0&&impacts[0].before===full),'multiple real impacts');if(style==='bow')assert.ok(arrowSeen,'actual projectile flight observed');if(!veteran){assert.ok(guards>0,'actual Brace used');assert.ok(phases.some(p=>p.phase==='windup')&&phases.some(p=>p.phase==='recover'),'actual tell and opening observed');}
   assert.deepEqual(unchangedCombat(),unearned,'accepted enemies never award legacy XP/currency/drop/dead-history');h.command('target-clear');
   combats.push({id:terms.id,run,style,hp:terms.hp,damage:terms.damage,seconds:h.sim.state.adventure.elapsed-start,frames,guards,arrowSeen,phases,transitions,impacts,retreats,healthAfter:h.sim.state.adventure.hp});
  }

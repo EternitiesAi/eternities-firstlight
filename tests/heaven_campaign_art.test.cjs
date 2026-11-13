@@ -234,7 +234,7 @@ test('successful deliberate activation closes the workspace; refusals and stale 
 
 test('verified choice recognition quotes the actual catalogue callers including the courier, without claiming an unpaid or clipped fee',()=>{
  for(const choice of D.choices){const sim=specimen(required,choice.id),h=harness(sim);sim.state.saga.prophecy=['heaven'];const before=JSON.stringify(sim.state),html=h.ui.page('heaven-campaign').html;
-  assert.ok(html.includes('heaven-campaign-local-recognition'));for(const line of globalThis.RealmStoryScript.forStep('heaven','verify-welcome',sim.state).lines)assert.ok(html.includes('<strong>'+line.speaker+':</strong>'));assert.ok(html.includes('<h3>Complete</h3>'));assert.ok(html.includes('Up to 40 XP within the stored cap'));assert.ok(html.includes('16 sunmarks · 3 ore · 4 timber · 3 fibre'));assert.equal(JSON.stringify(sim.state),before);
+  assert.ok(html.includes('heaven-campaign-local-recognition'));for(const line of globalThis.RealmStoryScript.forStep('heaven','verify-welcome',sim.state).lines)assert.ok(html.includes('<strong>'+line.speaker+':</strong>'));assert.ok(html.includes('<h3>Complete</h3>'));assert.ok(html.includes('Up to '+D.reward.xp+' XP within the stored cap'));assert.ok(html.includes('16 sunmarks · 3 ore · 4 timber · 3 fibre'));assert.equal(JSON.stringify(sim.state),before);
   sim.state.heavenCampaign.steps=required.filter(id=>id!=='verify-welcome');assert.ok(!h.ui.page('heaven-campaign').html.includes('heaven-campaign-local-recognition'));sim.state.heavenCampaign.steps=required.slice();sim.state.heavenCampaign.claimed=true;assert.ok(h.ui.page('heaven-campaign').html.includes(D.completionText));assert.ok(!h.ui.page('heaven-campaign').html.includes('data-rpg="heaven-campaign-claim"'));
  }
 });

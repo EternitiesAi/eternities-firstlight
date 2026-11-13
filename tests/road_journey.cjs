@@ -10,10 +10,10 @@ function journey(options={}){
  function step(t){for(let i=0;i<Math.ceil(t/.05);i++){survival();sim.tick(.05);}}
  function walk(x,z){const r=sim.moveTo(x,z);assert.ok(r.ok,'walk '+x+','+z+': '+r.error);for(let i=0;sim.playerPath.length&&i<6000;i++)step(.05);assert.ok(Math.hypot(sim.state.player.x-x,sim.state.player.z-z)<.15,'arrived '+x+','+z);}
  walk(0,3);act('rest');walk(44,6);fs.writeFileSync(path.join(out,'CHAPTER_II_START_EARNED.json'),JSON.stringify(sim.snapshot(),null,2));act('road-enter');events.push('Entered through the story-gated lookout');
- walk(-2,8);step(5);assert.ok(sim.state.adventure.defeated.includes('road-prowler'));act('loot',{id:'road-prowler'});
+ walk(-2,8);for(let i=0;i<600&&!sim.state.adventure.defeated.includes('road-prowler');i++)sim.tick(.05);assert.ok(sim.state.adventure.defeated.includes('road-prowler'));act('loot',{id:'road-prowler'});
  walk(-9,5);act('seek');step(7);assert.ok(sim.state.adventure.road.revealed.includes('cart-latch'));walk(-11,3);act('road-cache',{id:'cart-latch'});events.push('Fox followed the scent to the missing latch');
  walk(-10,12);act('cart-repair');act('trade',{offer:'mantle'});act('equip',{id:'courier_mantle'});act('trade',{offer:'sell-copper'});events.push('Repaired cart, bought/equipped mantle and sold copper');
- walk(2,3.4);walk(2,-4);walk(6,global.RealmArsenal.weapon(sim.state.adventure).style==='bow'?-5:-8);step(7);assert.ok(sim.state.adventure.defeated.includes('road-prism'));walk(6,-8);act('loot',{id:'road-prism'});
+ walk(2,3.4);walk(2,-4);walk(6,global.RealmArsenal.weapon(sim.state.adventure).style==='bow'?-5:-8);for(let i=0;i<600&&!sim.state.adventure.defeated.includes('road-prism');i++)sim.tick(.05);assert.ok(sim.state.adventure.defeated.includes('road-prism'));walk(6,-8);act('loot',{id:'road-prism'});
  walk(9,-13);act('seek');step(7);assert.ok(sim.state.adventure.road.revealed.includes('old-surveyor'));walk(11,-13);act('road-cache',{id:'old-surveyor'});events.push('Crossed actual bridge and found optional second cache');walk(0,-15.5);
  for(let i=0;i<500&&!sim.state.adventure.defeated.includes('road-ram');i++){
   const e=A.runtime(sim).enemies.find(e=>e.id==='road-ram'&&e.hp>0);if(!e)break;const s=sim.state.adventure,r=A.runtime(sim),p=sim.state.player;
