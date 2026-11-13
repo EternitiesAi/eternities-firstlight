@@ -790,7 +790,7 @@ function settingsHTML(){
 function mountShell(){
  RealmPause.mount({sim:()=>sim,canOpen:()=>!harnessMode&&!panel&&!document.querySelector('dialog[open]'),enter:()=>{experience?.stop();RealmCombat.stop(sim);adventure?.stopAuto();keys.clear();},resumed:()=>ui.canvas.focus({preventScroll:true}),save:()=>save(),quit:()=>RealmTitle.show(),settings:()=>{shellReturn=()=>RealmPause.reopen();openPanel('settings');}});
  RealmTitle.mount({hasSave:()=>characterStore.managed||loaded.status!=='new'||sim.state.visited.length>0||sim.state.adventure.started||sim.state.notes.length>0||Object.values(sim.state.firstRun).some(Boolean),resume:()=>ui.canvas.focus({preventScroll:true}),newGame:()=>rpg.open('characters'),characters:()=>rpg.open('characters'),settings:()=>{shellReturn=()=>RealmTitle.show();openPanel('settings');},drift});
- if(!harnessMode)firstRunCard=RealmFirstRun.mount(()=>{const r=sim.act('first-run-dismiss','first-run-dismiss',{});if(r.ok){save();RealmFirstRun.paint(firstRunCard,sim.state.firstRun);}});
+ if(!harnessMode)firstRunCard=RealmFirstRun.mount(()=>{const r=sim.act('first-run-dismiss','first-run-dismiss',{});if(r.ok){save();RealmFirstRun.paint(firstRunCard,sim.state.firstRun);ui.canvas.focus({preventScroll:true});}});
  applyTextSize();applyVolumes();
  if(!(harnessMode||location.hash==='#play'||location.search.includes('notitle')))RealmTitle.show();
 }
