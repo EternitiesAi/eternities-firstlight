@@ -26,6 +26,8 @@ function advance(raw,{bow=false,through='hell',out}={}){
  const dir=out||scratch(),want=STAGES.indexOf(through);fs.mkdirSync(dir,{recursive:true});
  let sim=new C.Simulation(C.validate(JSON.parse(JSON.stringify(raw))));
  if(!SG.done(sim.state,'night'))sagaCmd(sim,'mark',{beat:'night'});
+ // the hell gate holds until the quiet engine is placed (BRANCHES 3.3); this helper places it under the bell.
+ if(!sim.state.saga.choices.device)sagaCmd(sim,'choose',{key:'device',value:'open'});
  assert.equal(SG.allowed(sim.state,'hell'),true,'the night opens the way down');
  if(want>=1){
   if(sim.state.hellCampaign?.claimed!==true)sim=campaign('connected_hell.cjs',sim,dir,'hell',bow);
