@@ -104,7 +104,8 @@ def run_step(page, step):
             page.evaluate("Realm.test.step(5)")
         else:
             return {"ok": False, "step": "walk", "error": "the walk did not finish in 2000 simulated seconds"}
-        gap = page.evaluate("p => Math.hypot(Realm.state.player.x - p[0], Realm.state.player.z - p[1])", target)
+        # the snapshot (Realm.state) reports the home position inside a realm room; the live player is in diagnostics.
+        gap = page.evaluate("p => Math.hypot(Realm.diagnostics.adventure.player.x - p[0], Realm.diagnostics.adventure.player.z - p[1])", target)
         return {"ok": gap < 1.6, "step": "walk", "gap": gap}
     if "realm" in step:
         return page.evaluate("id => Realm.tour.enterRealm(id)", step["realm"])
@@ -134,6 +135,22 @@ def tour_gate(browser, origin):
     if seen != expected:
         raise SystemExit("tour hook gate: " + json.dumps(seen))
     return seen
+
+
+def title_frame(browser, origin, out):
+    # the title screen is the page's own, shown in normal play (no harness global). a failure is reported, not fatal.
+    page = browser.new_page(viewport={"width": 1920, "height": 1080}, device_scale_factor=1)
+    try:
+        page.goto(origin, wait_until="load")
+        page.wait_for_selector("#title-new", state="visible", timeout=60000)
+        page.wait_for_timeout(2500)
+        path = out / "title.png"
+        page.screenshot(path=str(path))
+        return {"status": "reached", "frame": str(path.relative_to(out.parent))}
+    except Exception as error:
+        return {"status": "failed", "error": str(error)[:400]}
+    finally:
+        page.close()
 
 
 def scene_run(browser, origin, saves, row, out, frames, report):
@@ -231,6 +248,7 @@ def main():
             browser = pw.chromium.launch(**launch)
             report["browser_version"] = browser.version
             report["tour_gate"] = tour_gate(browser, origin)
+            report["title_frame"] = title_frame(browser, origin, out)
             for row in index:
                 if not row["file"]:
                     report["scenes"].append({"scene": row["scene"], "status": "unreached", "why": row["why"]})

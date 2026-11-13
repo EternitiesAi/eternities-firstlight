@@ -120,6 +120,7 @@ for (const j of JOURNEYS) {
   }
 }
 
+let nearshoreWorld = null; // the bot's world after the nearshore choice; the finale starts from it.
 // the nearshore: the bot's own run, stopped at its save point. the bot walks one fresh character through the witness with
 // Briar taken, then writes the live world right before the real choice. a child process keeps the bot's state apart.
 {
@@ -133,6 +134,7 @@ for (const j of JOURNEYS) {
     const blocked = String(bot.stdout || '').split('\n').find(l => l.startsWith('BLOCKED')) || '';
     if (bot.status !== 0) throw Error('the bot did not reach its save point: ' + (blocked || String(bot.stdout || bot.stderr || '').trim().split('\n').slice(-2).join(' | ')).slice(0, 400));
     fs.copyFileSync(path.join(botOut, '11', 'NEARSHORE_CHOICE_OPEN.json'), path.join(dir, 'NEARSHORE_CHOICE_OPEN.json'));
+    nearshoreWorld = JSON.parse(fs.readFileSync(path.join(botOut, '11', 'NEARSHORE_COMPLETE.json'), 'utf8'));
   });
 }
 
@@ -141,13 +143,11 @@ for (const j of JOURNEYS) {
 {
   const dir = path.join(root, 'finale');
   fs.mkdirSync(dir, { recursive: true });
-  const LATE = 'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PREREQUISITES_EARNED.json';
-  collect('finale', LATE, dir, () => {
-    const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga;
-    const w = C.validate(raw);
-    w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 } };
-    const sim = new C.Simulation(C.validate(JSON.parse(JSON.stringify(w))));
-    const EH = globalThis.RealmEarthHomecoming;
+  collect('finale', 'the bot world after the nearshore choice', dir, () => {
+    // the finale starts from the bot's own world after the nearshore choice, as tools/firstlight_journey.cjs does.
+    if (!nearshoreWorld) throw Error('no nearshore world: the bot did not finish the nearshore');
+    const sim = new C.Simulation(C.validate(JSON.parse(JSON.stringify(nearshoreWorld))));
+    const EH = require(path.join(ROOT, 'src/earth-homecoming.js'));
     const io = { save: v => { sim.saved = JSON.parse(JSON.stringify(v)); return { ok: true }; } };
     sim.earthHomecomingSave = io.save;
     const phase = () => sim.state.saga.finale.phase;
@@ -155,19 +155,57 @@ for (const j of JOURNEYS) {
     const walkTo = (x, z, cap = 60) => { sim.moveTo(x, z); for (let t = 0; t < cap; t += .1) { sim.tick(.1); if (Math.hypot(sim.state.player.x - x, sim.state.player.z - z) < .6) return true; } return false; };
     const bodyOf = ph => globalThis.RealmAdventure.runtime(sim).enemies.find(e => e.finaleRole === 'regent' && e.finalePhase === ph);
     const save = name => { const p = path.join(dir, name + '.json'); fs.writeFileSync(p, JSON.stringify(sim.snapshot(), null, 2) + '\n'); };
-    if (!(walkTo(0, 6) && (tick(.3), phase() === 1))) throw Error('the finale did not begin at the spring (phase ' + phase() + ')');
+    if (!(walkTo(0, 8) && (tick(.3), phase() === 1))) throw Error('the finale did not begin at the spring (phase ' + phase() + ')');
     save('phase1_rises');
-    // phase 2 comes when every chain is broken: each chain body is defeated the way a landed hit defeats it, as the finale journey does.
-    const chains = () => globalThis.RealmAdventure.runtime(sim).enemies.filter(e => e.finaleRole === 'chain' && e.hp > 0);
-    for (let guard = 0; phase() < 2 && guard < 20; guard++) { for (const c of chains()) { globalThis.RealmAdventure.damageEnemy(sim, c, 100000); tick(.2); } tick(.1); }
+    // the finale's fights run as tests/finale_journey.cjs runs them: real commands, dodges and tactics; no body is damaged by hand.
+    const AD = require(path.join(ROOT, 'src/adventure.js')), AR = require(path.join(ROOT, 'src/arsenal.js'));
+    let seq = 0;
+    const cmd = (type, p = {}) => sim.adventureCommand('finale-tour-' + (++seq), type, p);
+    const step = t => { for (let i = 0; i < Math.round(t / .1); i++) sim.tick(.1); };
+    const dist = (p, q) => Math.hypot(p.x - q.x, p.z - q.z);
+    const rt = () => AD.runtime(sim);
+    const threatened = q => rt().enemies.some(e => e.finaleRole === 'regent' && e.strike && EH.strikeContains(e, q));
+    const foes = () => rt().enemies.filter(e => e.hp > 0 && e.finaleRole && (e.finaleRole === 'chain' ? phase() === 1 : e.finalePhase === phase()) && EH.canDamage(sim, e));
+    const safeSpot = () => { const p = sim.state.player; for (let k = 0; k < 16; k++) { const t = k / 16 * Math.PI * 2, q = { x: p.x + Math.cos(t) * 2.6, z: p.z + Math.sin(t) * 2.6 }; if (C.walkable(q.x, q.z, sim.navRoom, .31) && !threatened(q)) return q; } return null; };
+    function equipBest() {
+      const a = () => sim.state.adventure;
+      const style = id => AD.GEAR[id].slot === 'weapon' ? AR.weapon({ ...a(), equipment: { ...a().equipment, weapon: id } }).style : null, mine = AR.weapon(a()).style;
+      const owned = (a().owned || []).filter(id => AD.GEAR[id] && (AD.GEAR[id].slot !== 'weapon' || style(id) === mine));
+      for (const slot of [...new Set(owned.map(id => AD.GEAR[id].slot))]) {
+        const score = id => AD.GEAR[id].attack + AD.GEAR[id].defense + AD.GEAR[id].hp, best = owned.filter(id => AD.GEAR[id].slot === slot).sort((x, y) => score(y) - score(x))[0];
+        if (a().equipment[slot] !== best) { const r = cmd('equip', { id: best }); if (!r.ok) throw Error('equip ' + best + ': ' + r.error); }
+      }
+    }
+    function fight(until, limit = 3000) {
+      for (let i = 0; i < limit && !until(); i++) {
+        const s = sim.state.adventure, p = sim.state.player, stats = AD.stats(s);
+        EH.listen(sim);
+        if (s.hp < stats.maxHP * .35 && s.tonics > 0 && s.elapsed >= rt().cooldowns.heal) cmd('heal');
+        if (threatened(p)) { const q = safeSpot(); if (q) sim.moveTo(q.x, q.z); }
+        const list = foes().sort((x, y) => dist(x, p) - dist(y, p)), t = list[0];
+        if (t) {
+          if (dist(t, p) <= 2.4 && s.elapsed >= rt().cooldowns.attack && !threatened(p)) cmd('attack', { target: t.id });
+          if (dist(t, p) <= 2.6 && s.stamina >= 30 && s.elapsed >= rt().cooldowns.pulse) cmd('pulse');
+          if (dist(t, p) > 2.2 && !sim.playerPath.length) { const d = Math.max(.01, dist(t, p)), k = 1.8 / d; sim.moveTo(t.x + (p.x - t.x) * k, t.z + (p.z - t.z) * k); }
+        }
+        step(.1);
+      }
+    }
+    equipBest();
+    fight(() => phase() >= 2);
     if (phase() !== 2) throw Error('phase 2 was not reached');
     save('phase2_chains');
-    tick(.3); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(2), 100000); tick(.2);
+    fight(() => phase() >= 3);
     if (phase() !== 3) throw Error('phase 3 was not reached');
     save('phase3_merged');
+    if (!walkTo(0, 7)) throw Error('walked back to the spring for the offer');
     const r = EH.command({ sim, active: 'journey' }, 'offer', { quest: EH.definition.id, expectedActive: 'journey', expectedRevision: sim.state.adventure.revision, choice: 'refuse' }, io);
     if (r.ok !== true) throw Error('the refusal was refused: ' + r.error);
-    tick(.2); globalThis.RealmAdventure.damageEnemy(sim, bodyOf(3), 100000); tick(.2);
+    fight(() => EH.runtime(sim).lastOpen === true || sim.state.saga.finale.won === true);
+    if (sim.state.saga.finale.won !== true) {
+      const answer = EH.command({ sim, active: 'journey' }, 'last', { quest: EH.definition.id, expectedActive: 'journey', expectedRevision: sim.state.adventure.revision, choice: 'open' }, io);
+      if (answer.ok !== true) throw Error('the last answer was refused: ' + answer.error);
+    }
     if (sim.state.saga.finale.won !== true) throw Error('the last hit did not land');
     save('won');
     tick(8.5);
@@ -182,12 +220,14 @@ for (const j of JOURNEYS) {
 // marker for the campaign realms, to the observatory invitation for the cosmos. the walk is the page's own move command.
 const SPRING = { walk: [0, 3] }, ROAD_MARKER = { walk: [18, 6] }, OBSERVATORY = { walk: [14, -5] };
 const TRAVEL_BELL = [SPRING, { adventure: { id: 'tour-travel-bellweather', type: 'waystone-travel', payload: { id: 'bellweather' } } }];
+// the crossing is entered as its journey enters it: the sunward road, the north arch, then the bellweather waystone is attuned inside.
+const ENTER_CROSSING = [SPRING, { adventure: { id: 'tour-travel-sunward', type: 'waystone-travel', payload: { id: 'sunward' } } }, { walk: [0, -27] }, { adventure: { id: 'tour-enter-crossing', type: 'cross-enter', payload: {} } }, { walk: [0, 17] }, { adventure: { id: 'tour-attune-bellweather', type: 'cross-attune', payload: {} } }];
 const REALM = (id, gate) => [gate, { realm: id }];
 const SCENES = [
   { scene: 'envoy', file: 'chapter/ENVOY_BEFORE_CHOICE.json', why: 'at the spring before the envoy chooses; envoy and feather done' },
   { scene: 'feather', file: 'chapter/CHAPTER_COMPLETED.json', why: 'after the feather sight at the spring; feather done' },
   { scene: 'beacon', file: 'beacon/BEACON_READY_EARNED.json', why: 'at the beacon before it is lit; beacon is current' },
-  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', steps: TRAVEL_BELL, why: 'the Roads of Light travel to the crossing (waystone-travel)' },
+  { scene: 'bellweather', file: 'crossing/CROSSING_READY_EARNED.json', steps: ENTER_CROSSING, why: 'the sunward road, the north arch, then the crossing with the bellweather waystone attuned' },
   { scene: 'night-lit', file: 'night/NIGHT_LIT_AT_HOME.json', steps: TRAVEL_BELL, why: 'the night has begun; the crossing is reached by the real travel' },
   { scene: 'night-quiet', file: 'night/NIGHT_QUIET_AT_HOME.json', steps: TRAVEL_BELL, why: 'after the bite, Briar taken; the crossing is reached by the real travel' },
   { scene: 'hell', file: 'hell/fresh-blade/04_WARDEN_RESOLVED.json', steps: REALM('hell', ROAD_MARKER), why: 'the foundry warden is resolved; the realm is entered by the real Road of Light travel' },
