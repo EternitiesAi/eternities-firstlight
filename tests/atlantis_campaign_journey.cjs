@@ -8,6 +8,7 @@ const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex'
 const sourceEpoch=()=>Object.fromEntries([...fs.readdirSync(path.join(ROOT,'src')).filter(p=>fs.statSync(path.join(ROOT,'src',p)).isFile()).sort().map(p=>'src/'+p),'build.py','index.html','tests/atlantis_campaign_journey.cjs','tests/realm_trails_journey.cjs'].map(p=>[p,sha(path.join(ROOT,p))]));
 const loadedHashes=sourceEpoch();
 const {createHarness,earnedKit,witnessHarness}=require('./realm_trails_journey.cjs');
+const {storyWorld}=require('./saga_ready.cjs');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),AR=require('../src/arsenal.js');
 const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),H=require('../src/atlantis-campaign.js'),D=H.definition;
 const step=id=>D.steps.find(s=>s.id===id),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
@@ -80,7 +81,7 @@ let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.
 function journey({bow=false,veteran=false,output=DEFAULT,seedOnly=false,approach=bow?'lower':'upper',choice=veteran?'license':bow?'limited':'publish'}={}){
  assert.ok(D.approaches.some(a=>a.id===approach)&&D.choices.some(c=>c.id===choice));
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',folder=folderFor(output,variant),fixture=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null,fixtureHash=fixture?sha(fixture):null;
- const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf-8')))):witnessHarness(bow),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
+ const h=fixture?createHarness(require('./witness_prereq.cjs').heavenFinished(JSON.parse(fs.readFileSync(fixture,'utf-8')))):createHarness(storyWorld({bow,through:'heaven',out:path.join(folder,'story')})),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
  const write=(name,value)=>fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(value,null,2)+'\n',{flag:'wx'}),snap=name=>{write(name,h.sim.snapshot());checkpoints.push(name);checkpointHashes[name]=sha(path.join(folder,name+".json"));};
  const hook=()=>{h.sim.atlantisCampaignSave=h.save;};
  const act=(type,p={},io={save:h.save},expect=true)=>{const ctx=h.context();hook();const result=H.command(ctx,type,{quest:D.id,expectedActive:ctx.active,expectedRevision:h.sim.state.adventure.revision,...p},io);events.push({type,p,result});assert.equal(result.ok,expect,type+': '+(result.error||result.text));return result;};
