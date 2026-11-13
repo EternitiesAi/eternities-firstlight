@@ -35,7 +35,7 @@ function commit(sim,candidate,io,text){
  let checked,saved;try{checked=G.RealmCore.validate(candidate);saved=io?.save?.(checked);}catch(e){return fail('Campaign save refused: '+e.message);}
  if(!saved?.ok)return fail(saved?.error||'Campaign save refused. No history, costs or reward were changed.');
  sim.state.hellCampaign=checked.hellCampaign;sim.state.saga=checked.saga;
- for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
+ for(const k of['xp','coins','ore','revision','owned'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
  return{ok:true,text};
 }
@@ -70,7 +70,8 @@ function command(ctx,type,payload,io){
   const got={xp:Math.min(fee.xp,9999-a.xp),coins:room(a.coins,fee.coins,9999),ore:room(a.ore,fee.ore,9999),materials:{}};
   for(const[k,n]of Object.entries(fee.materials))got.materials[k]=Object.hasOwn(inv,k)?room(inv[k],n,max):0;
   a.xp+=got.xp;a.coins+=got.coins;a.ore+=got.ore;for(const[k,n]of Object.entries(got.materials))inv[k]+=n;
-  reward=got;q.claimed=true;
+  // the boss gear joins the owned list here, beside the reward, so the reward object keeps its shape.
+  reward=got;q.claimed=true;if(!a.owned.includes('foundry_edge'))a.owned.push('foundry_edge');
   const cut=got.coins<fee.coins||got.ore<fee.ore||Object.entries(fee.materials).some(([k,n])=>got.materials[k]<n);
   text=D.title+' is finished · '+D.choices.find(c=>c.id===q.choice).name+' · '+got.xp+' XP, '+got.coins+' sunmarks, '+got.ore+' ore, '+got.materials.wood+' timber and '+got.materials.fiber+' fibre.'+(cut?' Some of it did not fit in your pouch and stayed in the works.':'')+(got.xp<fee.xp?' Stored XP stays at its cap.':'');
  }else return fail('Unknown action on this road.');

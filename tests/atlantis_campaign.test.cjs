@@ -33,7 +33,7 @@ function finish(f,approach='upper',choice='publish',other=false,bypass=false){
  for(const id of['release-west','release-east','custodian-stable'])work(f,id);f.at(step('disposition'));assert.ok(f.act('choose',{choice}).ok);work(f,'verify-passage');return e;
 }
 function balances(s){return{xp:s.adventure.xp,coins:s.adventure.coins,ore:s.adventure.ore,materials:copy(s.sandbox.inventory)};}
-function retained(s){s=copy(s);delete s.atlantisCampaign;for(const k of['xp','coins','ore','revision'])delete s.adventure[k];for(const k of Object.keys(D.reward.materials))delete s.sandbox.inventory[k];delete s.journal;delete s.nextEvent;return s;}
+function retained(s){s=copy(s);delete s.atlantisCampaign;for(const k of['xp','coins','ore','revision','owned'])delete s.adventure[k];for(const k of Object.keys(D.reward.materials))delete s.sandbox.inventory[k];delete s.journal;delete s.nextEvent;return s;}
 
 test('old Core saves add only the empty optional owner; exact schema refuses future and impossible history',()=>{
  const old=seed();delete old.atlantisCampaign;old.adventure.xp=9999;const out=C.validate(old);assert.deepEqual(out.atlantisCampaign,AT.fresh());delete out.atlantisCampaign;assert.deepEqual(out,old);
@@ -75,7 +75,7 @@ test('first approach is deliberate and retained; wrong or premature pressure has
 test('all 24 authored branches use actual commands, actual damage, sequential releases and a separate one-time fee',()=>{
  for(const approach of['upper','lower'])for(const other of[false,true])for(const bypass of[false,true])for(const choice of['publish','limited','license']){
   const f=fixture(),prior=f.sim.snapshot();finish(f,approach,choice,other,bypass);assert.ok(AT.ready(f.sim.state));assert.equal(f.sim.state.atlantisCampaign.claimed,false);assert.deepEqual(balances(f.sim.state),balances(prior));
-  f.at(D.giver);const out=f.act('claim');assert.ok(out.ok,out.error);assert.deepEqual(out.reward,D.reward);assert.equal(f.sim.state.adventure.xp-prior.adventure.xp,48);assert.equal(f.sim.state.adventure.coins-prior.adventure.coins,18);assert.equal(f.sim.state.adventure.ore-prior.adventure.ore,4);for(const[k,n]of Object.entries(D.reward.materials))assert.equal(f.sim.state.sandbox.inventory[k]-prior.sandbox.inventory[k],n);
+  f.at(D.giver);const out=f.act('claim');assert.ok(out.ok,out.error);assert.deepEqual(out.reward,D.reward);assert.ok(f.sim.state.adventure.owned.includes('harbour_mail'),'the boss gear joins the owned list on claim');assert.equal(f.sim.state.adventure.xp-prior.adventure.xp,48);assert.equal(f.sim.state.adventure.coins-prior.adventure.coins,18);assert.equal(f.sim.state.adventure.ore-prior.adventure.ore,4);for(const[k,n]of Object.entries(D.reward.materials))assert.equal(f.sim.state.sandbox.inventory[k]-prior.sandbox.inventory[k],n);
   assert.deepEqual(retained(f.sim.snapshot()),retained(prior),'every other owner, camera, socket, kit, notebook and ordinary balance stays intact');
   const paid=f.sim.snapshot();assert.equal(f.act('claim',{request:'another'}).duplicate,true);assert.deepEqual(f.sim.snapshot(),paid);const reloaded=fixture(paid);reloaded.at(D.giver);assert.equal(reloaded.act('claim').duplicate,true);assert.deepEqual(reloaded.sim.snapshot(),paid);
  }
