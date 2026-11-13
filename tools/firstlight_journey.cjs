@@ -84,6 +84,7 @@ function run(options = {}) {
  stage('night', '05', 'NIGHT_COMPLETE.json', () => require(path.join(ROOT, 'tests/night_journey.cjs')).journey({ out: sub('05'), source: world }), 'Briar bites the device; the travellers are called out; the envoy speaks');
 
  // the local realms (Earth side) and the hell campaign: the connected helper takes the live world
+ TACTICS.setDodge(false); // the connected realm helpers brace and stand; see journey_tactics.cjs
  let hellRaw = null;
  if (world) {
   const before = readJson(world);
@@ -120,6 +121,7 @@ function run(options = {}) {
   } catch (e) { blocked(rows, beat, e.message, log); stoppedAt = stoppedAt || beat; world = null; }
  }
 
+ TACTICS.setDodge(true);
  // the nearshore: the live witness save walks out to the pier, and the real Briar at her habit place is chosen
  if (world) {
   const before = readJson(world);
@@ -130,6 +132,8 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
  }
 
+ // the finale runs its own dodges (the regent's pursuit and the walked route); the shared step would fight them
+ TACTICS.setDodge(false);
  // the finale, fresh: the live nearshore save walks to the spring, fights to the offer, refuses it, and rolls the credits
  if (world) {
   const before = readJson(world);
@@ -151,7 +155,8 @@ function run(options = {}) {
  if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped at ' + (stoppedAt || 'the end') + ')'));
  const fights = TACTICS.table();
  if (log && fights.length) { console.log('--- boss fights: time, player hits, hp lost, tonics used'); for (const f of fights) console.log('  ' + f.boss.padEnd(18) + ' ' + f.outcome.padEnd(7) + ' ' + (f.secs + 's').padStart(8) + '  hits ' + f.hits + '  hp lost ' + f.hpLost + '  tonics ' + f.tonics); }
- return { rows, creditsRolled, stoppedAt, totals, out, fights };
+ if (log) console.log('--- shared fight step: ' + TACTICS.dodges() + ' step-outs from warned spots');
+ return { rows, creditsRolled, stoppedAt, totals, out, fights, dodges: TACTICS.dodges() };
 }
 
 module.exports = { run, BEATS };

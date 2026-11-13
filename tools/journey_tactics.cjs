@@ -1,17 +1,24 @@
 'use strict';
-/* Bot tactics for the title-to-credits journey. install() wraps Simulation.tick once, so every producer step runs the same
- * play: step out of a telegraph whose warning is up, drink a tonic under 35% health, wear the best owned gear of each
- * style, and meter every boss (fight time, player hits, hp lost, tonics used). Every change is a real command or a real
- * movement; nothing here plants a defeat, a position or a stat. Errors are not swallowed: a broken tactic stops the bot. */
+/* Bot tactics for the title-to-credits journey. install() wraps Simulation.tick once, so every producer's step loop runs
+ * the same fight step: when a locked shape's warning covers the player, step out of it, then return to the spot the
+ * producer was standing on (the anchor) so its scripted attacks are still in reach. Also: drink a tonic under 35% health,
+ * wear the best owned gear of each style, and meter every boss (fight time, player hits, hp lost, tonics used).
+ * Every change is a real command or a real movement; nothing here plants a defeat, a position or a stat. Errors are not
+ * swallowed: a broken tactic stops the bot. */
 const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
 const C = require(path.join(ROOT, 'src/core.js'));
 const A = require(path.join(ROOT, 'src/adventure.js'));
 const T = require(path.join(ROOT, 'src/combat.js'));
-const HEAL_BELOW = .35, MARGIN = .3, DODGE = false;
+const HEAL_BELOW = .35, MARGIN = .3, DODGE = true;
 const G = globalThis;
 let installed = false, seq = 0;
 const meter = new Map(), finished = [];
+const fight = { anchor: null, target: null };
+let stepsOut = 0; // every time the shared step leaves a warned spot; the bot prints the total.
+// a producer's walk owns the player until it arrives and asserts it; a dodge inside that frame would undo the arrival.
+const WALKING = /\bat (walk|walkTo|goTo|go|travel)\b/;
+const dist = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 
 // the boss a row is metered under. campaign bosses are metered by their enemy id; the Regent by body; the chains as one fight.
 function bossKey(e) {
@@ -47,21 +54,55 @@ function zoneOf(e) {
  }
  return null;
 }
+const activeZones = sim => A.runtime(sim).enemies.filter(e => e.hp > 0 && !e.hidden).map(zoneOf).filter(Boolean);
 
-function dodge(sim) {
- // a producer's walk owns the player until it arrives; dodging is for the fight steps that stand still.
- if (sim.playerPath && sim.playerPath.length) return;
- const s = sim.state.adventure, p = sim.state.player;
- const zones = A.runtime(sim).enemies.filter(e => e.hp > 0 && !e.hidden).map(zoneOf).filter(Boolean);
- if (!zones.length || !zones.some(z => z(p))) return;
- let best = null;
+// the nearest walkable point outside every zone, with a little clearance from each zone's edge.
+function safeSpot(sim, zones) {
+ const p = sim.state.player; let best = null;
  for (let r = .6; r <= 3.2; r += .6) for (let k = 0; k < 16; k++) {
   const a = k / 16 * Math.PI * 2, q = { x: p.x + Math.sin(a) * r, z: p.z + Math.cos(a) * r };
   if (!A.ground(sim, q.x, q.z, .31)) continue;
   if (zones.some(z => z(q) || z({ x: q.x + .25, z: q.z }) || z({ x: q.x - .25, z: q.z }) || z({ x: q.x, z: q.z + .25 }) || z({ x: q.x, z: q.z - .25 }))) continue;
   if (!best || r < best.r) best = { ...q, r };
  }
- if (best && s.hp > 0) sim.moveTo(best.x, best.z);
+ return best;
+}
+
+// a safe spot that still reaches the selected foe, so the producer's next scripted attack lands from where we stand.
+function reachSpot(sim, zones, sel, reach) {
+ const p = sim.state.player; let best = null;
+ for (let r = .3; r <= 3.2; r += .4) for (let k = 0; k < 16; k++) {
+  const a = k / 16 * Math.PI * 2, q = { x: p.x + Math.sin(a) * r, z: p.z + Math.cos(a) * r };
+  if (!A.ground(sim, q.x, q.z, .31) || zones.some(z => z(q))) continue;
+  if (sel && dist(q, sel) > reach - .35) continue;
+  if (!best || r < best.r) best = { ...q, r };
+ }
+ return best;
+}
+
+// the shared fight step. the anchor is where the producer stood when the first warning reached it; the step leaves a
+// warned spot, and once every warning is clear it walks back to the anchor so the producer's next attack is in reach.
+function fightStep(sim) {
+ if (WALKING.test(new Error().stack)) { fight.anchor = null; fight.target = null; return; }
+ const p = sim.state.player, zones = activeZones(sim), danger = q => zones.some(z => z(q));
+ // no foe left near us: the fight is over, so no return walk (the producer's next loot or walk owns the player now).
+ if (!A.runtime(sim).enemies.some(e => e.hp > 0 && !e.hidden && e.kind !== 'practice' && dist(e, p) < 12)) { fight.anchor = null; fight.target = null; return; }
+ if (!fight.anchor) {
+  if (!zones.length || !danger(p)) return;
+  fight.anchor = { x: p.x, z: p.z }; fight.target = null;
+ }
+ const anchor = fight.anchor, sel = G.RealmCombat.selected(sim), reach = G.RealmArsenal.weapon(sim.state.adventure).reach;
+ if (danger(p)) {
+  const q = safeSpot(sim, zones);
+  if (!q) return;
+  if (fight.target && dist(fight.target, q) < .3 && sim.playerPath.length) return;
+  if (!(fight.target && sim.playerPath.length)) stepsOut++;
+  fight.target = q; sim.moveTo(q.x, q.z);
+  return;
+ }
+ if (danger(anchor)) return;                       // the anchor is still under a warning: wait out of it
+ if (dist(p, anchor) <= .3) { fight.anchor = null; fight.target = null; return; }
+ if (!sim.playerPath.length) { fight.target = anchor; sim.moveTo(anchor.x, anchor.z); }
 }
 
 function equipBest(sim) {
@@ -96,7 +137,7 @@ function meterStep(sim) {
   let m = meter.get(key);
   if (!m) {
    if (!(e.hp < e.maxHP || e.mode === 'windup' || e.mode === 'charge' || key === 'chains')) continue;
-   m = { boss: key, start: s.elapsed, hits: 0, hpLost: 0, tonics: 0, lastHp: s.hp, lastTonics: s.tonics, lastHitAt: e.hitAt, hpAtStart: s.hp };
+   m = { boss: key, start: s.elapsed, hits: 0, hpLost: 0, tonics: 0, lastHp: s.hp, lastTonics: s.tonics, lastHitAt: e.hitAt };
    meter.set(key, m);
   }
   if (m.done) continue;
@@ -106,6 +147,9 @@ function meterStep(sim) {
   m.lastEnemyHp = e.hp;
   if (key !== 'chains' && e.hp === 0) finish(m, 'killed', s.elapsed);
  }
+ // chains end when no chain is left standing; a fight the player falls in ends as lost.
+ const chainsLeft = live.some(e => e.finaleRole === 'chain' && e.hp > 0), m = meter.get('chains');
+ if (m && !m.done && !chainsLeft && live.some(e => e.finaleRole === 'regent')) finish(m, 'broken', s.elapsed);
  // a boss that leaves the live list closes its row: killed when its last seen hp was zero, otherwise left the scene.
  // a regent body that leaves when the saga moves past it was killed: the defeat advances the phase in the same tick.
  const phase = sim.state.saga?.finale?.phase ?? 0, won = !!sim.state.saga?.finale?.won;
@@ -114,25 +158,22 @@ function meterStep(sim) {
   const down = body && (won || phase > Number(body[1]));
   finish(m, m.lastEnemyHp === 0 || down ? 'killed' : 'left', s.elapsed);
  }
- // chains end when no chain is left standing; a fight the player falls in ends as lost.
- const chainsLeft = live.some(e => e.finaleRole === 'chain' && e.hp > 0), m = meter.get('chains');
- if (m && !m.done && !chainsLeft && live.some(e => e.finaleRole === 'regent')) finish(m, 'broken', s.elapsed);
  for (const m of meter.values()) if (!m.done && s.hp <= 0) finish(m, 'fell', s.elapsed);
 }
 function finish(m, outcome, now) { m.done = true; m.outcome = outcome; m.secs = +(now - m.start).toFixed(1); finished.push(m); }
 
-// producers walk with a named walk frame and assert arrival; a dodge inside that frame would undo the arrival they check.
-const WALKING = /\bat (walk|walkTo|goTo|go|travel)\b/;
 function act(sim) {
  const s = sim.state.adventure;
  if (!s || !s.started) return;
  meterStep(sim);
  equipBest(sim);
  heal(sim);
- // dodging is off: producers' fight loops stand inside attack reach, so a step out leaves the foe alive and the
- // scripted fight never finishes. the producers need stepping logic before this can return (see the report).
- if (DODGE && !WALKING.test(new Error().stack)) dodge(sim);
+ if (dodging) fightStep(sim);
 }
+// the bot turns the step off for stages whose scripted fight braces and stands (the connected realm helpers), where the
+// step stalls their auto-attack; everywhere else the step is on.
+let dodging = DODGE;
+function setDodge(on) { dodging = !!on; if (!on) { fight.anchor = null; fight.target = null; } }
 
 function install() {
  if (installed) return; installed = true;
@@ -140,6 +181,12 @@ function install() {
  C.Simulation.prototype.tick = function (dt) { const r = orig.call(this, dt); act(this); return r; };
 }
 // the table: one row per metered boss, in the order the journey met them.
-function table() { return finished.slice().map(m => ({ boss: m.boss, outcome: m.outcome, secs: m.secs, hits: m.hits, hpLost: m.hpLost, tonics: m.tonics })); }
-function reset() { meter.clear(); finished.length = 0; }
-module.exports = { install, table, reset, bossKey };
+// a fight still open when the journey stops is printed as open, with what it had cost so far.
+function table() {
+ const rows = finished.slice().map(m => ({ boss: m.boss, outcome: m.outcome, secs: m.secs, hits: m.hits, hpLost: m.hpLost, tonics: m.tonics }));
+ for (const m of meter.values()) if (!m.done) rows.push({ boss: m.boss, outcome: 'open', secs: null, hits: m.hits, hpLost: m.hpLost, tonics: m.tonics });
+ return rows;
+}
+function reset() { meter.clear(); finished.length = 0; fight.anchor = null; fight.target = null; stepsOut = 0; }
+function dodges() { return stepsOut; }
+module.exports = { install, table, reset, bossKey, fightStep, setDodge, dodges };
