@@ -47,7 +47,7 @@ test('reduced motion resolves immediately and camera-relative controls use only 
 });
 test('first real pointer drag begins at the visible corrected orbit and keeps subsequent deltas intentional',()=>{
  const camera={preset:'adventure',yaw:Math.PI,actualYaw:1.5,elevation:.28};
- const host={camera,pointers:new Map([[1,{x:0,y:0}]]),gesture:{x:0,y:0,moved:false,pinch:false},sandbox:null,engine:null,clearGrazerFocus(){}};
+ const host={guide(){},firstRunCard:null,shellReturn:null,RealmTitle:{hide(){},show(){}},RealmPause:{reopen(){}},camera,pointers:new Map([[1,{x:0,y:0}]]),gesture:{x:0,y:0,moved:false,pinch:false},sandbox:null,engine:null,clearGrazerFocus(){}};
  vm.createContext(host);
  for(const [name,next] of[['cameraHeading','rotateCamera'],['pointerMove','pointerUp']]){
   const at=source.indexOf('function '+name+'('),end=source.indexOf('function '+next+'(',at);vm.runInContext(source.slice(at,end),host);

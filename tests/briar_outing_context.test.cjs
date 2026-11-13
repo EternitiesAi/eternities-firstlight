@@ -10,7 +10,7 @@ const line=name=>source.split(/\r?\n/).find(s=>s.startsWith('function '+name+'('
 function fixture(){
  const world=C.fresh();world.adventure.started=true;world.adventure.companion.bonded=true;
  const h=appHost(world),legacy=[];
- const env={get sim(){return h.sim;},briarInteract:()=>h.app.interact(),
+ const env={guide(){},firstRunCard:null,shellReturn:null,RealmTitle:{hide(){},show(){}},RealmPause:{reopen(){}},get sim(){return h.sim;},briarInteract:()=>h.app.interact(),
   rpg:{interact(){legacy.push('rpg');return false;}},adventure:{interact(){legacy.push('adventure');return false;}},
   sandbox:{interact(){legacy.push('sandbox');return false;}},closest:()=>C.LANDMARKS.find(l=>l.id==='home'),
   action:id=>{legacy.push(id);assert.ok(h.sim.enter(id).ok);},switchScene(){},save(){},toast(){}};
