@@ -5,19 +5,62 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.cosmosCampaign,step=id=>D().steps.find(s=>s.id===id);
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
+// Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
+function cards(lines,done){
+ const d=document.getElementById('story-dialog');if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
+ paint();d.showModal();
+}
+// One choice card: its prompt and one button per option.
+function choiceCard(prompt,options,pick){
+ const d=document.getElementById('story-dialog');if(!d||!Array.isArray(options))return;
+ document.getElementById('story-speaker').textContent='';document.getElementById('story-title').textContent=prompt||'';document.getElementById('story-body').textContent='';
+ const area=document.getElementById('story-buttons');area.replaceChildren();
+ for(const o of options){const b=document.createElement('button');b.textContent=o.label;b.onclick=()=>{d.close();pick(o);};area.appendChild(b);}
+ d.showModal();
+}
 function fee(){const r=D().reward;return'Up to '+r.xp+' XP within the stored cap · '+r.coins+' sunmarks · '+r.ore+' ore'+Object.entries(r.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
 function routePoints(sim){const r=record(sim);if(sim.room!==D().room||!r?.accepted||r.claimed)return[];return(H().ready(sim.state)?[{...D().giver,id:'claim',kind:'giver',name:'Return to Anik for your reward'}]:H().available(sim.state)).map((p,i)=>({...p,cosmosCampaign:true,mark:'C'+(i+1)}));}
 function legend(sim){const p=routePoints(sim);return p.length?'<section class="cosmos-campaign-map"><h3>The Open Confluence</h3><p>Follow the C labels to the work you can do next. Set any two different anchors; a supplied alternative holds the same branch. The public service loop and road home stay open.</p><ol>'+p.map(s=>'<li><strong>'+s.mark+'</strong> · '+esc(s.name)+' '+button('Walk near this action','walk',s.id)+'</li>').join('')+'</ol>'+button('Read the operation','open')+'</section>':'';}
 class CosmosCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
- reset(){this.pending=null;this.binding=null;}
+ reset(){this.pending=null;this.binding=null;this.holdSent=false;}
+ // A command result's story cards, then the sighting prompt when the result carries one (open-confluence).
+ showResult(result){
+  if(!result||!result.ok||result.duplicate)return;
+  const cs=result.cards||(result.lines||[]).map(text=>({text}));
+  cards(cs,()=>{if(result.choice)this.askSighting(result.choice);});
+ }
+ askSighting(choice){
+  choiceCard(choice.prompt,choice.options,opt=>{
+   const c=this.rpg.api.worldContext();
+   const result=this.rpg.api.cosmosCampaignCommand('sighting',{quest:D().id,expectedRevision:this.sim.state.adventure.revision,expectedActive:c.active,heard:opt.id==='hear'});
+   this.rpg.api.toast(result.text||result.error);this.showResult(result);this.rpg.paint();
+  });
+ }
+ // The six-second hold (BRANCHES 5): holdTick each frame, a readout while it runs, and the central-link command once it completes.
+ holdFrame(){
+  const s=this.sim,H_=H();if(!s||!H_||!H_.holdTick)return;
+  H_.holdTick(s);const h=s.cosmosCampaignRuntime?.hold,readout=document.querySelector('#cosmos-hold-readout');
+  if(readout)readout.textContent=h&&!h.complete?'Holding: '+Math.min(6,Math.max(0,(s.elapsed||0)-h.startedAt)).toFixed(1)+' of 6 seconds':'';
+  if(!H_.heldComplete(s)){this.holdSent=false;return;}
+  if(this.holdSent)return;
+  this.holdSent=true;const c=this.rpg.api.worldContext();
+  const result=this.rpg.api.cosmosCampaignCommand('configure',{quest:D().id,expectedRevision:s.state.adventure.revision,expectedActive:c.active,step:'disable-central-link',setting:'disconnect-central-synchronization'});
+  this.rpg.api.toast(result.text||result.error);this.showResult(result);this.rpg.paint();
+ }
  owner(){const s=this.sim,c=this.rpg.api.worldContext();return{sim:s,contextSim:c.sim,active:c.active,rosterRevision:c.revision,revision:s.state.adventure.revision,room:s.room,position:{x:s.state.player.x,z:s.state.player.z}};}
  same(b){if(!b)return false;const c=this.owner();return c.contextSim===c.sim&&b.sim===c.sim&&b.contextSim===c.contextSim&&b.active===c.active&&b.rosterRevision===c.rosterRevision&&b.revision===c.revision&&b.room===c.room&&Math.hypot(b.position.x-c.position.x,b.position.z-c.position.z)<.01;}
  bound(el){return this.binding&&el.dataset.binding===String(this.binding.id)&&Number(el.dataset.revision)===this.binding.revision&&this.same(this.binding);}
  point(){const s=this.sim,r=record(s);if((this.rpg.quest!=='cosmos-campaign'&&this.rpg.tab!=='cosmos-campaign')||s.room!==D().room||!r?.accepted||r.claimed)return null;return routePoints(s).filter(p=>H().at(s,p)).sort((a,b)=>Math.hypot(a.x-s.state.player.x,a.z-s.state.player.z)-Math.hypot(b.x-s.state.player.x,b.z-s.state.player.z))[0]||null;}
  context(){const p=this.point();return p?'E · '+p.name:null;}
- interact(){if(!this.point())return false;this.rpg.open('cosmos-campaign');return true;}
+ interact(){
+  // E near one of your anchors starts the hold when the central link is the next step; otherwise E does what it did.
+  const s=this.sim,r=record(s);
+  if(s&&r?.accepted&&!r.claimed&&s.room===D().room&&H().available(s.state).some(p=>p.id==='disable-central-link')){const h=H().holdStart(s);if(h.ok){this.rpg.api.toast(h.text);return true;}}
+  if(!this.point())return false;this.rpg.open('cosmos-campaign');return true;
+ }
  open(){this.pending=null;this.rpg.open('cosmos-campaign');}
  action(el){const action=el.dataset.rpg;if(!action?.startsWith(PREFIX))return false;const type=action.slice(PREFIX.length),id=el.dataset.id,s=this.sim,d=D();
   if(type==='open'){this.open();return true;}
@@ -30,7 +73,7 @@ class CosmosCampaignUI{
   const payload={quest:d.id,expectedRevision:this.binding.revision,expectedActive:this.binding.active};let command=type;
   if(type==='step'||type==='configure'){const p=step(id);if(!p||!H().available(s.state).some(a=>a.id===id)||!H().at(s,p))return true;payload.step=id;if(type==='configure')payload.setting=p.setting;}
   if(type==='confirm'){if(!this.same(this.pending)||this.pending.choice!==id||!H().at(s,step('accountability'))){this.pending=null;this.rpg.api.toast('Your situation has changed since that preview. Read the terms again.');this.rpg.paint();return true;}payload.choice=id;command='choose';}
-  const result=this.rpg.api.cosmosCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest='cosmos-campaign';this.rpg.paint();return true;
+  const result=this.rpg.api.cosmosCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);this.showResult(result);if(result.ok&&!result.duplicate)this.rpg.quest='cosmos-campaign';this.rpg.paint();return true;
  }
  journal(){const r=record(this.sim),status=r?.claimed?'Complete':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Open and verified':'Accepted · '+B().completedSupports(r.steps).length+' prepared anchors';return'<section class="cosmos-campaign-invitation"><small>COSMOS · INDEPENDENT SERVICE REACH</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Set any two anchors. Release the guardian feeds, stop the imposed synchronization and record its cost.</p>'+button('Read Anik’s request and the risks','open')+(r?.accepted&&!r.claimed?button('Track this operation','track'):'')+'</section>';}
  invitation(){return this.journal();}
@@ -40,7 +83,7 @@ class CosmosCampaignUI{
   else if(r.claimed)html+='<section class="cosmos-campaign-recorded"><h3>Independent operation · complete</h3><p>'+esc(d.completionText)+'</p></section>';
   else{
    const available=new Set(H().available(s.state).map(p=>p.id)),prepared=B().completedSupports(r.steps),configured=B().configuredSupports(r.steps);
-   const row=p=>{const done=r.steps.includes(p.id),next=available.has(p.id),at=here&&H().at(s,p);let controls='';if(next){if(!here)controls='<p>Revisit the Near Expanse to continue.</p>';else if(!at)controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Select the machine with Tab or click. Use your blade or bow to disable it.</p>';else if(p.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name,'review',c.id)).join('');else controls=act(p.name,p.kind==='configure'?'configure':'step',p.id);}return'<li data-cosmos-step="'+esc(p.id)+'" class="'+(done?'cosmos-campaign-done':next?'cosmos-campaign-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional route':'')+'</h4><details><summary>Read what to do here</summary><p>'+esc(p.text)+'</p></details>'+controls+'</li>';};
+   const row=p=>{const done=r.steps.includes(p.id),next=available.has(p.id),at=here&&H().at(s,p);let controls='';if(next&&p.id==='disable-central-link'){controls=here?'<p>Stand at one of the anchors you set and press E. Hold for six seconds with the other anchor out of view.</p><p id="cosmos-hold-readout">'+(s.cosmosCampaignRuntime?.hold?'Holding':'')+'</p>':'<p>Revisit the Near Expanse to continue.</p>';}else if(next){if(!here)controls='<p>Revisit the Near Expanse to continue.</p>';else if(!at)controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Select the machine with Tab or click. Use your blade or bow to disable it.</p>';else if(p.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name,'review',c.id)).join('');else controls=act(p.name,p.kind==='configure'?'configure':'step',p.id);}return'<li data-cosmos-step="'+esc(p.id)+'" class="'+(done?'cosmos-campaign-done':next?'cosmos-campaign-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional route':'')+'</h4><details><summary>Read what to do here</summary><p>'+esc(p.text)+'</p></details>'+controls+'</li>';};
    html+='<section><h3>Any two anchors</h3><p>'+prepared.length+' prepared · '+configured.length+' set. Ordinary and supplied work are two ways to the same anchor. A third anchor is optional.</p><div class="cosmos-campaign-supports">'+B().supports.map(lead=>'<section><h4>'+esc(lead.name)+(prepared.includes(lead.id)?' · prepared':'')+'</h4><p>'+esc(lead.mode)+'</p><p>'+esc(lead.supplied)+'</p><ol>'+d.steps.filter(p=>p.lead===lead.id||p.id===lead.configure).map(row).join('')+'</ol></section>').join('')+'</div></section><section><h3>The service work</h3><ol>'+d.steps.filter(p=>!p.lead&&!B().supports.some(lead=>lead.configure===p.id)).map(row).join('')+'</ol></section>';
    if(H().ready(s.state))html+='<section><h3>Open and verified</h3><p>If your pack is full, make room and return to Anik. The apparatus stays open until you collect your reward.</p>'+(here&&H().at(s,d.giver)?act('Collect your reward','claim'):here?button('Walk back to Anik','walk','claim'):'')+'</section>';html+=button('Track this operation','track');
   }
@@ -50,7 +93,7 @@ class CosmosCampaignUI{
   return{title:d.title,html:html+'<p class="cosmos-campaign-footer">Follow the marked fittings, select the machines for combat, and return to Anik when the open apparatus is verified.</p></article>'};
  }
  page(tab){return tab==='cosmos-campaign'?this.panel():null;}
- tick(){const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik for your reward':next?.requiresSupports?'Set any two different anchors':next?.requiresConfiguredSupports?'Set any two prepared anchors':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' set · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
+ tick(){this.holdFrame();const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik for your reward':next?.requiresSupports?'Set any two different anchors':next?.requiresConfiguredSupports?'Set any two prepared anchors':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' set · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
 }
 const api={CosmosCampaignUI,routePoints,legend,fee};G.RealmCosmosCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

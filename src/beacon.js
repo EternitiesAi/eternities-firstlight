@@ -5,6 +5,7 @@
 const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const POINT={x:0,z:-24},dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 // Tessa and a stranger wait at the mouth of his spur until he has been heard: the regent's first sighting.
+let sightingSerial=0;
 const SCENE=Object.freeze({tessa:Object.freeze({x:-3.4,z:-15.6,yaw:Math.PI/2}),stranger:Object.freeze({x:4.2,z:-15.4,yaw:-Math.PI/2})});
 const SIGHTING=Object.freeze([
  {speaker:'Tessa',title:'You made it up the ridge',body:'Stand with us a moment. This gentleman came up the spur from the east and offered to help me with the road.'},
@@ -102,8 +103,17 @@ function handle(sim,type,p={}){
   b.relic=p.choice==='accept'?'accepted':'sealed';if(p.choice==='accept')b.soul.equipped='cinder';sim.event('choice',p.choice==='accept'?'You kept the herald’s cinder, knowing its health cost and the consequence of invoking it.':'You sealed the herald’s cinder rather than accepting its power.');return yes(p.choice==='accept'?'Cinder surge learned. Using it records corruption; accepting alone does not.':'The cinder is sealed. No power or corruption was imposed.');
  case 'soul-purify':
   if(!b.complete||b.relic!=='accepted')return no('There is no accepted cinder to renounce.');b.relic='renounced';b.soul.corruption=0;b.soul.radiance++;b.soul.scars.push('cinder-renounced');if(b.soul.equipped==='cinder')b.soul.equipped=b.soul.grace?'aegis':null;sim.event('choice','You relinquished the cinder. Its power and current corruption are gone. The history of your choice remains.');return yes('Cinder relinquished. History preserved; current corruption cleared.');
- case 'beacon-sighting':
-  if(!sightingReady(sim)&&!seenStranger(sim))return no('Nothing is waiting at the beacon for you yet.');{const res=G.RealmSaga.regentSeen(sim,'beacon');return res.ok?yes(res.text):no(res.error);}
+ case 'beacon-sighting':{
+  if(seenStranger(sim))return yes('He has been heard, and he is gone.');
+  if(!sightingReady(sim))return no('Nothing is waiting at the beacon for you yet.');
+  const heard=p.heard!==false,tessa=p.tessa??null;
+  if(tessa!==null&&!['refused','hers','signed'].includes(tessa))return no('Unknown answer.');
+  // BRANCHES.md 2.2: one save, in this order: the sighting, whether he was heard, then Tessa's waybill.
+  const k='sighting-'+(++sightingSerial);
+  const a=sim.sagaCommand(k+'-regent','regent',{id:'beacon'});if(!a.ok)return no(a.error);
+  const b=sim.sagaCommand(k+'-heard','regent-heard',{id:'beacon',heard});if(!b.ok)return no(b.error);
+  if(tessa!==null){const c=sim.sagaCommand(k+'-tessa','choose',{key:'tessa',value:tessa});if(!c.ok)return no(c.error);}
+  return yes(heard?'You let him finish.':'You cut him off.');}
  case 'beacon-route':
   if(!b.complete||!Object.hasOwn(ROUTES,p.route))return no('The lost-road projection is not ready.');b.route=p.route;return yes('Charted: '+ROUTES[p.route]+'. You can see the road on the map now; walking it comes later.');
  default:return no('Unknown beacon action.');

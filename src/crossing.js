@@ -8,7 +8,7 @@ const GATE=Object.freeze({x:0,z:-27}), ENTRY=Object.freeze({x:0,z:24,yaw:Math.PI
 const PLACES=Object.freeze([
  {id:'exit',name:'The Sunward arch',x:0,z:24,kind:'gate',detail:'Walk back to the Sunward Beacon.'},
  {id:'waystone',name:'Bellweather waystone',x:0,z:17,kind:'waystone',detail:'Attune here to reopen the journey home.'},
- {id:'keeper',name:'Rowan, the bell keeper',x:-2,z:9,kind:'person',detail:'The watch bell has not answered for a generation.'},
+ {id:'keeper',name:'Rowan, the bell keeper',x:-2,z:9,kind:'person',detail:'The watch bell has not answered in a hundred years.'},
  {id:'inn',name:'The Wayfarer’s Rest',x:9,z:14,kind:'rest',detail:'Nella keeps the porch. Rest here, and take as long as you like.'},
  {id:'shop',name:'Edda’s provisions',x:-9,z:15,kind:'shop',detail:'Coats, trail tonics and a fair bargain.'},
  {id:'board',name:'The common works board',x:7,z:7,kind:'project',detail:'Two village commissions. Bring the supplies and the village changes a little.'},

@@ -23,7 +23,8 @@ function chain(out,e){
 // drawEnemy is the adventure's hook for every body the finale owns.
 function drawEnemy(out,sim,e,t){
  if(!G.RealmEarthHomecoming?.encounter(e)||!finite(e.x,e.z))return false;
- if(e.finaleRole==='chain')chain(out,e);else regent(out,e,t);
+ // the Regent is drawn at his own position in each phase: the story art's figure when it is loaded, the primitive body otherwise.
+ if(e.finaleRole==='chain')chain(out,e);else if(G.RealmStoryArt?.regent&&G.RealmStoryArt?.draw)G.RealmStoryArt.draw(out,G.RealmStoryArt.regent(e.x,0,e.z,e.yaw||0,t));else regent(out,e,t);
  return true;
 }
 // draw is the valley's world hook: the merged valley's features, the freed allies, the offer's glow and the anchors.

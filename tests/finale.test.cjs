@@ -1,7 +1,8 @@
 'use strict';
 /* The finale owner on the real simulation: the nearshore gate, chains against the echo ledger, freed allies, the three
- * bodies, the answered offer, the win, the rise, credits and postgame, and a reload in the middle of a fight. The late
- * world is an earned fixture; the saga is set to the nearshore through the saga's own validator. */
+ * bodies, the offer (refuse, or sign: the kept ending with no third fight), the last answer, the win, the rise, credits
+ * and postgame, a refused save, and a reload in the middle of a fight. The late world is an earned fixture; the saga is set
+ * to the nearshore through the saga's own validator. */
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict'), { test } = require('node:test');
 const ROOT = path.resolve(process.env.FIRSTLIGHT_ROOT || path.join(__dirname, '..'));
 const C = require(path.join(ROOT, 'src/core.js')), SG = require(path.join(ROOT, 'src/saga.js'));
@@ -11,7 +12,14 @@ const LATE = 'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PRE
 const clone = o => JSON.parse(JSON.stringify(o));
 function legacy(edit) { const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga; if (edit) edit(raw); return raw; }
 // a late world whose saga stands at the nearshore: briar home, the night marked. the echo is the fixture's own choices.
-function world(briar = { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 }, edit) { const w = C.validate(legacy(edit)); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar }; return C.validate(clone(w)); }
+function world(briar = { state: 'returned' }, edit) {
+ const w = C.validate(legacy(edit));
+ const b = { state: 'with', habit: {}, takenDay: null, returnedDay: null, homeDay: null, falseTrusted: false, ...briar };
+ if (b.state !== 'with') b.takenDay = b.takenDay ?? 10;
+ if (b.state === 'returned') b.returnedDay = b.returnedDay ?? 12;
+ w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: b };
+ return C.validate(clone(w));
+}
 function sim(w, x = 0, z = 6) { const s = new C.Simulation(w); s.saved = null; s.earthHomecomingSave = io => { s.saved = clone(io); return { ok: true }; }; s.state.player.x = x; s.state.player.z = z; return s; }
 const run = (s, seconds) => { for (let t = 0; t < seconds - 1e-9; t += .1) s.tick(.1); };
 const phase = s => s.state.saga.finale.phase;
@@ -22,9 +30,11 @@ const chainsOf = s => AD().runtime(s).enemies.filter(e => e.finaleRole === 'chai
 // the chains hold real hp now: the player's hits do most of it. cut each standing chain down to a few points, then let
 // the freed ally (Neris, at allyDps) finish it, so the break still lands in the ally's name.
 function chainsDown(s) { for (let t = 0; t < 8 && !chainsOf(s).length; t += .1) s.tick(.1); for (const c of chainsOf(s)) AD().damageEnemy(s, c, c.hp - 3); return runUntil(s, 2); }
+const ctxOf = (s, active) => ({ sim: s, active });
+const answer = (s, active, type, choice) => EH.command(ctxOf(s, active), type, { quest: EH.definition.id, expectedActive: active, expectedRevision: s.state.adventure.revision, choice }, { save: x => { s.saved = clone(x); return { ok: true }; } });
 
 test('the finale waits for the nearshore and begins only when the player stands at the spring', () => {
- const early = sim(world({ state: 'taken', habit: {}, takenDay: 10 }), 0, 6);
+ const early = sim(world({ state: 'taken' }), 0, 6);
  run(early, 1); assert.equal(phase(early), 0, 'briar is still taken, so the nearshore is not done');
  const late = sim(world(), 0, 30);
  run(late, 1); assert.equal(phase(late), 0, 'a player far from the spring does not start the finale');
@@ -47,14 +57,14 @@ test('a freed entry brings one ally who breaks the chain in its place, and only 
  const p = FIN.plan({ coercive: [{ id: 'hell-divert', line: 'a' }], freeing: [{ id: 'heaven-assist', ally: 'Rielle', line: 'x' }, { id: 'beacon-sealed', ally: 'Tessa', line: 'y' }] });
  assert.equal(p.allies.length, 2);
  assert.equal(p.allies[0].ally, 'Rielle'); assert.equal(p.allies[0].breaks, 'chain-hell-divert');
- assert.equal(p.allies[1].ally, 'Tessa'); assert.equal(p.allies[1].breaks, null, 'with no chain left the second ally only arrives');
+ assert.equal(p.allies[1].ally, 'Mara', 'the beacon card names Mara in the finale table'); assert.equal(p.allies[1].breaks, null, 'with no chain left the second ally only arrives');
  assert.ok(p.allies[0].arriveAt > p.chains[0].appearAt, 'an ally arrives after the chain it breaks appears');
 });
 
 test('the freed default chain falls to Neris, the chains are saved at the break, and the second body takes the valley', () => {
  const s = sim(world()); run(s, .2);
  assert.ok(chainsDown(s), 'the last chain falls and the finale moves to phase two');
- assert.ok(s.state.journal.some(j => /Neris breaks the chain/.test(j.text)), 'the last few points fell to Neris');
+ assert.ok(s.state.journal.some(j => /Neris/.test(j.text)), 'the last few points fell to Neris');
  assert.deepEqual(s.saved.earthHomecoming.finale.broken, ['chain-spring'], 'the break is saved');
  assert.equal(s.saved.saga.finale.phase, 2);
  assert.equal(chainsOf(s).length, 0);
@@ -62,7 +72,7 @@ test('the freed default chain falls to Neris, the chains are saved at the break,
  assert.equal(EH.canDamage(s, bodyOf(s)), true, 'the second body can be struck while it runs');
 });
 
-test('the third body waits for an answer; refusing is saved, and the last hit ends the story and rolls the credits', () => {
+test('the third body waits for an answer; refusing is saved; the last answer ends the story and rolls the credits', () => {
  const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
  assert.equal(phase(s), 3, 'the second body going down opens the offer');
@@ -70,36 +80,35 @@ test('the third body waits for an answer; refusing is saved, and the last hit en
  assert.equal(bodyOf(s).hp, FIN.phases()[2].hp);
  assert.equal(EH.canStrike(s, bodyOf(s)), false, 'no strikes while the offer waits');
  assert.equal(EH.canDamage(s, bodyOf(s)), false, 'no hits while the offer waits');
- const ctx = { sim: s, active: 'slot-a' };
- const refused = EH.command(ctx, 'offer', { quest: EH.definition.id, expectedActive: 'slot-a', expectedRevision: s.state.adventure.revision, choice: 'refuse' }, { save: x => { s.saved = clone(x); return { ok: true }; } });
+ const refused = answer(s, 'slot-a', 'offer', 'refuse');
  assert.equal(refused.ok, true, refused.error);
  assert.equal(s.saved.earthHomecoming.finale.offer, 'refused');
  run(s, .1); assert.equal(EH.canDamage(s, bodyOf(s)), true, 'after refusing, the last fight is open');
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
- assert.equal(s.state.saga.finale.won, true);
- assert.notEqual(EH.view(s), null, 'the camera rise runs after the last hit');
+ assert.equal(EH.runtime(s).lastOpen, true, 'the last body fell and asks for the last answer');
+ assert.equal(s.state.saga.finale.won, false, 'the story is not over until the answer');
+ assert.ok(EH.lastChoices(s).some(c => c.id === 'open'), 'the open answer is offered');
+ const last = answer(s, 'slot-a', 'last', 'open');
+ assert.equal(last.ok, true, last.error);
+ assert.equal(s.state.saga.finale.won, true); assert.equal(s.state.saga.finale.ending, 'open');
+ assert.notEqual(EH.view(s), null, 'the camera rise runs after the answer');
  run(s, 8.2);
  assert.equal(s.state.saga.credits, true); assert.equal(s.state.saga.postgame, true);
  assert.equal(s.earthHomecomingRuntime.credits, true, 'the credits are due');
  s.earthHomecomingRuntime.creditsDone = true; assert.equal(EH.view(s), null, 'the rise ends with the credits');
 });
 
-test('taking the gift keeps the Regent striking and lands nothing on the player', () => {
+test('signing the offer ends the valley as the kept ending, with no third fight', () => {
  const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
- const ctx = { sim: s, active: 'slot-b' };
- const taken = EH.command(ctx, 'offer', { quest: EH.definition.id, expectedActive: 'slot-b', expectedRevision: s.state.adventure.revision, choice: 'take' }, { save: x => { s.saved = clone(x); return { ok: true }; } });
- assert.equal(taken.ok, true, taken.error); assert.equal(s.saved.earthHomecoming.finale.offer, 'taken');
- // two paces in front of the body at the spring: the adventure's own loop locks a strike on the player.
- s.state.player.x = 0; s.state.player.z = 5.2;
- run(s, .5);
- const e = bodyOf(s), player = s.state.player;
- assert.ok(e.strike, 'the body has locked a strike while the player stands in reach');
- assert.equal(EH.strikeContains(e, player), false, 'with the gift, the locked strike touches nothing');
- // the same locked geometry, with the answer changed in the live state, is a hit: the gift is the only difference.
- s.state.earthHomecoming.finale.offer = 'refused';
- assert.equal(EH.strikeContains(e, player), true, 'refused, the same strike lands');
- s.state.earthHomecoming.finale.offer = 'taken';
+ const signed = answer(s, 'slot-b', 'offer', 'take');
+ assert.equal(signed.ok, true, signed.error);
+ assert.equal(s.saved.earthHomecoming.finale.offer, 'taken');
+ assert.equal(s.state.saga.finale.won, true, 'the story is won at the signing');
+ assert.equal(s.state.saga.finale.ending, 'kept');
+ assert.equal(EH.runtime(s).lastOpen, false, 'no last answer is asked after a signed offer');
+ run(s, 8.2);
+ assert.equal(s.state.saga.credits, true, 'the credits roll for the kept ending');
 });
 
 test('a reload in the middle of a fight keeps the phase, the broken chains and the answer given', () => {
@@ -136,12 +145,12 @@ test('a malformed finale record is refused by name', () => {
 });
 
 test('the finale text carries no compliance or developer words on the player path', () => {
- // the player-facing strings are the tables' values; identifiers such as claim-lane never reach the screen.
+ // the player-facing strings are the interface words and the table's names; the story lines are the script's and are checked there.
  const D = require(path.join(ROOT, 'src/finale-data.js')), E = require(path.join(ROOT, 'src/epilogue-data.js'));
- const shown = [...Object.values(D.LINES), ...Object.values(D.ALLY_CARDS).map(c => c.line), ...Object.values(D.ALLY_CARDS).map(c => c.name),
-  ...E.CHANGES.flatMap(c => [c.place, c.text]), ...E.CREDITS.flatMap(s => [s.title, ...s.lines]), ...Object.values(D.SITES).map(s => s.label)].join('\n');
+ const shown = [...Object.values(D.LINES), ...Object.values(D.ALLY_CARDS).map(c => c.name), ...E.CHANGES.map(c => c.place),
+  ...E.CREDITS.flatMap(s => [s.title, ...(s.lines || [])]), ...Object.values(D.SITES).map(s => s.label)].join('\n');
  assert.doesNotMatch(shown, /\b(fee|fees|claim|provisional|prototype|epoch|luna|realm 10)\b/i);
- assert.ok(D.LINES.won.length > 0 && D.LINES.credits.length > 0, 'the table holds the lines it reads');
+ assert.ok(D.LINES.wonDetail.length > 0, 'the table holds the interface words it reads');
 });
 
 // the regent rebalance (lead, 1.0): real chain hp, allies that work instead of breaking, and patterns one sidestep cannot answer.

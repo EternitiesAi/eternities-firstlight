@@ -275,6 +275,12 @@ function command(sim,id,type,payload={}){
   if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-prophecy-'+id,'prophecy',{id:'spring'});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'envoy');result=yes(r.text);}break;
  case'envoy-feather':
   if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-feather-'+id,'feather-unlock',{});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'feather');result=yes(r.text);}break;
+ case'home':
+  if(sim.room||!s.relic||dist(p,{x:11,z:9})>3.5)return fail('Bring the feather back to Oren’s workshop.');
+  result={ok:true,text:r.homeShown?'Oren has heard the feather’s story.':'Oren puts the kettle on and asks for the whole story.',scene:r.homeShown?null:'home'};r.homeShown=true;break;
+ case'tessa':
+  if(sim.room!=='road'||dist(p,ROAD.MERCHANT)>3)return fail('Walk over to Tessa’s cart.');
+  result={ok:true,text:r.tessaShown?'Tessa has heard you already.':'Tessa looks up from the cart and reaches for the waybill.',scene:r.tessaShown?null:'tessa'};r.tessaShown=true;break;
  case'road-enter':
   if(!s.reward||!surfaceNear(sim,ROAD.GATE))return fail('Accept the envoy’s gift and approach the far-water lookout.');
   sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Ask Briar to find the cart’s missing latch.');break;
@@ -313,6 +319,9 @@ function command(sim,id,type,payload={}){
  }
  s.revision++;s.receipts.push({id,fp,ok:true});if(s.receipts.length>100)s.receipts.shift();return result;
 }
+// The first time any of Briar's favourite places reaches three, the valley says so once. Counts persist in the saga, so a
+// save already past three stays quiet; the first tick of a session only reads the state.
+function habitNotice(sim,r){const top=Math.max(0,...Object.values(sim.state.saga?.briar?.habit||{}));if(r.habitNoticed===undefined){r.habitNoticed=top>=3;return;}if(!r.habitNoticed&&top>=3){r.habitNoticed=true;notify(sim,sceneText('adventure','habit',sim.state)||'Briar has a favourite place now.');}}
 function tick(sim,dt){
  const s=sim.state.adventure,r=runtime(sim);syncScene(sim);
  if(!Number.isFinite(dt)||dt<0||sim.paused)return;
@@ -324,7 +333,7 @@ function tick(sim,dt){
  TR.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
- CROSS.tick(sim,dt);
+ CROSS.tick(sim,dt);habitNotice(sim,r);
  const p=sim.state.player;
  if(combatScene(sim)&&s.hp>0)for(const e of r.enemies){
   if(e.hp<=0||e.kind==='practice'||e.eventEnemy||e.custom==='bell')continue;
@@ -401,6 +410,14 @@ const STORY=[
  {speaker:'The envoy',title:'Hold the feather up.',body:'Hold Z, or the feather button on a phone, and the roads show what they are. True roads burn gold; counterfeit roads burn ash red. The valley is all true, so try it now.',command:'envoy-feather'},
  {speaker:'The envoy',title:'A life worth returning to.',body:'Do not abandon what you have made here. It is why the journey matters. Others will bear this light as well. Choose a gift, and when the road is ready, we will walk it together.'}
 ];
+// A scripted scene's lines as one line of text (the habit toast). The table above is the fallback when the script lacks it.
+function sceneText(owner,step,world){const sc=G.RealmStoryScript?.forStep(owner,step,world);return sc?sc.lines.map(x=>x.text).join(' '):null;}
+// The envoy at the spring has something to say only while a beat waits on him: the warning and the gift (the feather in
+// hand, no gift taken yet), or the road's report once the beacon is lit and the cart mended. The prompt, the spring
+// interaction and the tracker card all read this, so they agree.
+function envoyTopic(s){if(s.relic&&!s.reward)return'hear';if(s.reward&&s.road.beaconLit&&s.road.cartRepaired&&!s.road.reported)return'report';return null;}
+// The tracker card's next objective: the same rule the adventure card has always shown.
+function trackerNext(s){return(s.reward?ROAD.objectives(s):objectives(s)).find(q=>!q.done)||null;}
 function objectives(s){return[
  {title:'Take the road’s tools',detail:'Collect expedition supplies at Oren’s workshop.',done:s.started},
  {title:'A passage through stone',detail:'Enter the northern mine with a pickaxe. Chip an exposed wall.',done:s.dug.length>0},
@@ -409,5 +426,5 @@ function objectives(s){return[
  {title:'A feather beneath Wildwood',detail:'Recover the feather at the guardian’s dais.',done:s.relic},
  {title:'The envoy at the spring',detail:'Return to the Commons. Hear the warning and choose one gift.',done:!!s.reward}
 ];}
-const api={ROAD,FORGE,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
+const api={ROAD,FORGE,envoyTopic,trackerNext,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

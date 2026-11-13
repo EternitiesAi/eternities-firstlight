@@ -108,7 +108,7 @@ function command(ctx,type,payload,io){
   q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Atlantis campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
- if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.choice=scene.choice;}G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.cards=scene.lines.map(l=>({speaker:l.speaker,text:l.text}));result.choice=scene.choice;}G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
 }
 function enemies(sim){const r=sim?.state?.atlantisCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&D.enemy.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(D.enemy.defeatStep)?[{...D.enemy,originX:D.enemy.x,originZ:D.enemy.z,atlantisCampaign:D.id,xp:0,coins:0,ore:0,windup:P.sweep.windup,recovery:P.sweep.recovery,telegraphRadius:0}]:[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');
