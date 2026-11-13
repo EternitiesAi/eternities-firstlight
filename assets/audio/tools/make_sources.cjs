@@ -11,6 +11,12 @@ const effects=lines.map(line=>Object.fromEntries(line.split('\t').map((value,i)=
 for(const e of effects)if(sha(path.join(AUDIO,'fx',e.file))!==e.out_sha256)throw new Error('effect hash mismatch: '+e.file);
 const score=JSON.parse(read('reports/music-measure.json'));
 for(const t of score)if(sha(path.join(AUDIO,'music',t.id+'.ogg'))!==t.ogg_sha256)throw new Error('score hash mismatch: '+t.id);
+// the build embeds exactly these files; sizes come from disk and the hashes were just checked against it.
+const manifest={schema:1,files:[
+ ...effects.map(e=>({key:'fx/'+e.file.replace(/\.ogg$/,''),file:'assets/audio/fx/'+e.file,bytes:fs.statSync(path.join(AUDIO,'fx',e.file)).size,sha256:e.out_sha256})),
+ ...score.map(t=>({key:'music/'+t.id,file:'assets/audio/music/'+t.id+'.ogg',bytes:fs.statSync(path.join(AUDIO,'music',t.id+'.ogg')).size,sha256:t.ogg_sha256}))]};
+// not manifest.json: the repo ignores MANIFEST.json, and windows matches that case-insensitively.
+fs.writeFileSync(path.join(AUDIO,'audio-manifest.json'),JSON.stringify(manifest,null,1)+'\n','utf8');
 const pins=Object.fromEntries(read('tools/pins.env').split('\n').filter(l=>l&&!l.startsWith('#')).map(l=>l.split('=')));
 const tracks=JSON.parse(read('tools/tracks.json'));
 const meta=Object.fromEntries(score.map(t=>[t.id,JSON.parse(read('music/'+t.id+'.json'))]));
@@ -114,6 +120,8 @@ Play these in the build, not in the box. Each cue and track is in \`src/audio.js
 - \`reports/fx-measure.tsv\`: one row per effect, with the source zip sha256 and the source file sha256.
 - \`reports/music-measure.json\`: one object per track, with the measurements above.
 - \`reports/model-sha256.txt\` (every model file, sha256) and \`reports/ace-freeze.txt\` (the venv).
+- \`audio-manifest.json\`: the exact files \`build.py\` embeds, with byte sizes and sha256. The build refuses a file that
+  differs from its record.
 
 | model file | sha256 |
 |---|---|
