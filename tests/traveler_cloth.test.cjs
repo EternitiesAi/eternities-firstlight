@@ -93,7 +93,7 @@ test('every canonical weapon and finite marker remains byte-identical with the s
   const sa=Gear.draw(oa,sim,old.frame),sb=Gear.draw(ob,sim,now.frame);assert.deepEqual(plain(sa),plain(sb));assert.deepEqual(plain(oa),plain(ob));assert.equal(JSON.stringify(sim.snapshot()),before);
   assert.ok(all(ob).length<=40);max=Math.max(max,all(ob).length);variants++;
  }
- assert.equal(variants,14);assert.ok(max>0);
+ assert.equal(variants,16);assert.ok(max>0);
 });
 test('envelope, normal, topology and unsupported-mesh counterexamples fail the meaningful mesh guards',()=>{
  const d=E.geometry('traveler-cloth'),escape=d.slice();escape[0]=.51;assert.throws(()=>meshContract(escape));
