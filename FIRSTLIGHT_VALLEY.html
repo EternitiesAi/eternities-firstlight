@@ -13145,10 +13145,10 @@ class RPGUI{
   document.body.classList.add('rpg-edition');
   const hud=document.createElement('div');hud.id='rpg-hud';hud.innerHTML=`
    <nav class="rpg-nav" aria-label="Main game menus">
-    ${button(icon('charm')+'<span class="nav-long">Character</span><span class="nav-short">Gear</span><kbd>C</kbd>','open','equipment',false,'aria-label="Character, C"')}
-    ${button(icon('book')+'<span class="nav-long">Journal</span><span class="nav-short">Journal</span><kbd>J</kbd>','open','journal',false,'aria-label="Journal, J"')}
-    ${button(icon('hammer')+'<span class="nav-long">Crafting</span><span class="nav-short">Craft</span><kbd>K</kbd>','open','craft',false,'aria-label="Crafting, K"')}
-    ${button(icon('grid')+'<span class="nav-long">More</span><span class="nav-short">More</span>','open','more',false,'aria-label="More menus"')}
+    ${button(icon('charm')+'<span class="nav-long">Character</span><span class="nav-short">Gear</span><kbd>C</kbd>','open','equipment')}
+    ${button(icon('book')+'<span class="nav-long">Journal</span><span class="nav-short">Journal</span><kbd>J</kbd>','open','journal')}
+    ${button(icon('hammer')+'<span class="nav-long">Crafting</span><span class="nav-short">Craft</span><kbd>K</kbd>','open','craft')}
+    ${button(icon('grid')+'<span class="nav-long">More</span><span class="nav-short">More</span>','open','more')}
    </nav>
    <section id="quest-tracker" aria-label="Tracked quest"><div class="tracker-switch">${button('Story','track','story')}${button('Gate captain','track','earth-gate',false,'hidden')}${button('Masterwork','track','earth-masterwork',false,'hidden')}${button('Exhibition','track','earth-tournament',false,'hidden')}${button('Homestead','track','homestead')}${button('Living road','track','expedition',false,'hidden')}${button('Field account','track','wild-signs',false,'hidden')}${button('Local life','track','local-life',false,'hidden')}${button('Community','track','community',false,'hidden')}${button('Hell campaign','track','hell-campaign',false,'hidden')}${button('Heaven campaign','track','heaven-campaign',false,'hidden')}${button('Atlantis campaign','track','atlantis-campaign',false,'hidden')}${button('Cosmos campaign','track','cosmos-campaign',false,'hidden')}${button('Road home','track','earth-homecoming',false,'hidden')}</div><button id="tracked-open"><small id="tracked-chapter"></small><strong id="tracked-title"></strong><span id="tracked-detail"></span><i id="tracked-progress"></i></button></section>
    <section id="target-frame" hidden aria-label="Selected enemy"><div id="target-icon">${icon('shield')}</div><div><small id="target-rank"></small><strong id="target-name"></strong><div class="target-health"><i id="target-health-fill"></i></div><span id="target-state"></span><div id="target-cue" hidden aria-label="Selected foe action"><b id="target-cue-title"></b><span id="target-cue-detail"></span></div><button id="target-framing" title="Third person: face a selected foe within 12 metres. Drag still orbits freely.">Frame foe</button></div><button id="target-clear" aria-label="Clear target">×</button></section>
@@ -16923,23 +16923,29 @@ G.RealmPause=api;if(typeof module!=='undefined')module.exports=api;
 // touch players get the taps for the same intent; a key cap they cannot press would be a dead instruction.
 const KEYS=[['move','Walk with W A S D, or click the ground.'],['camera','Turn the view: drag it, scroll, or press V.'],['attack','Strike a foe with F, or press 1 to keep striking.'],['interact','Use what is in front of you with E.']];
 const TOUCH=[['move','Tap the ground to walk.'],['camera','Drag to turn the view. Pinch to zoom.'],['attack','Tap Strike when a foe is near.'],['interact','Tap the prompt at the bottom to use what is in front of you.']];
+const DONE=['Walking','Turning the view','Striking','Interacting'];
 const visible=f=>!!f&&!f.dismissed;
 const rows=(f,touch)=>(touch?TOUCH:KEYS).map(([id,text])=>({id,text,done:!!f[id]}));
 function mount(onSkip){
  const el=document.createElement('aside');el.id='first-run';el.setAttribute('aria-label','First steps');el.hidden=true;
  el.dataset.touch=typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches?'1':'0';
- el.innerHTML='<p class="first-run-kicker">First steps</p><ol class="first-run-steps"></ol><button id="first-run-skip" type="button">Skip these steps</button>';
+ el.innerHTML='<p class="first-run-kicker">First steps</p><ol class="first-run-steps"></ol><p id="first-run-status" class="sr-only" aria-live="polite"></p><button id="first-run-skip" type="button">Skip these steps</button>';
  el.querySelector('#first-run-skip').addEventListener('click',onSkip);
  document.querySelector('#hud').append(el);
  return el;
 }
 // repaint only when a flag changed; refreshUI calls this several times a second.
+// a step that just turned done is announced once, so the change is not only visual.
 function paint(el,f){
  if(!el||!f)return;
- const touch=el.dataset.touch==='1',show=visible(f),sig=show?rows(f,touch).map(r=>r.done?1:0).join(''):'hidden';
- if(el.dataset.sig===sig)return;
+ const touch=el.dataset.touch==='1',show=visible(f),sig=show?rows(f,touch).map(r=>r.done?1:0).join(''):'hidden',prev=el.dataset.sig||'';
+ if(prev===sig)return;
  el.dataset.sig=sig;el.hidden=!show;
  if(!show)return;
+ if(prev.length===sig.length&&prev!=='hidden'){
+  const i=[...sig].findIndex((c,j)=>c==='1'&&prev[j]==='0');
+  if(i>=0)el.querySelector('#first-run-status').textContent='Done: '+DONE[i]+'.';
+ }
  el.querySelector('ol').innerHTML=rows(f,touch).map(r=>'<li class="'+(r.done?'done':'')+'"><span class="first-run-mark" aria-hidden="true">'+(r.done?'✓':'')+'</span><span>'+r.text+'</span><span class="sr-only">'+(r.done?'Done':'To do')+'</span></li>').join('');
 }
 const api={KEYS,TOUCH,visible,rows,mount,paint};

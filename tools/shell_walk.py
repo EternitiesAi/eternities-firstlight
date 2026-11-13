@@ -3,7 +3,8 @@
 Run on the box from the build folder: python3 tools/shell_walk.py --root . --out shell-walk
 The page is served on loopback and opened as a player would open it: no test mode, no #play hash,
 so the title is the first thing on screen. One pass per viewport (1280x800 desktop, 390x844 phone),
-a PNG per screen, shell-walk.json with every check, and exit 1 if any check or any page error fails.
+a PNG per screen, shell-walk.json with every check and the renderer that drew the frames, and
+exit 1 if any check or any page error fails.
 """
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -15,6 +16,8 @@ import sys
 import threading
 
 sys.dont_write_bytecode = True
+from browser_support import launch_kwargs  # tools/browser_support.py: hardware means the real GPU on Linux hosts
+
 VIEWPORTS = {'desktop': {'width': 1280, 'height': 800}, 'phone': {'width': 390, 'height': 844}}
 
 
@@ -67,12 +70,16 @@ def walk(page, view, out, check, report):
     page.wait_for_timeout(600)
     done = page.evaluate("()=>document.querySelectorAll('#first-run li.done').length")
     check(view + ': walking, turning the view and interacting tick their steps', done >= 3, 'done=' + str(done))
+    announced = page.evaluate("()=>document.querySelector('#first-run-status').textContent")
+    check(view + ': a ticked step is announced in words', announced.startswith('Done: '), repr(announced))
     shot('03-first-steps-ticked')
 
     page.keyboard.press('Escape')
     page.wait_for_selector('#pause-menu[open]', timeout=10000)
     paused = page.evaluate("()=>Realm.diagnostics.adventure.paused")
     check(view + ': escape opens the pause menu and freezes the world', paused is True, 'paused=' + str(paused))
+    focus = page.evaluate("()=>document.activeElement&&document.activeElement.id")
+    check(view + ': the pause menu takes focus on resume', focus == 'pause-resume', 'focus=' + str(focus))
     shot('04-pause')
 
     page.click('#pause-settings')
@@ -129,10 +136,11 @@ def run(args):
     def check(label, ok, detail=''):
         report['checks'].append({'label': label, 'ok': bool(ok), 'detail': detail})
 
-    args_gl = ['--no-sandbox', '--disable-dev-shm-usage', '--enable-webgl', '--ignore-gpu-blocklist']
-    args_gl += ['--use-gl=angle', '--use-angle=' + args.angle] if args.angle else ['--use-angle=swiftshader']
+    launch = launch_kwargs(args.renderer)
+    report['renderer_requested'] = args.renderer
+    report['launch_args'] = launch['args']
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True, args=args_gl)
+        browser = p.chromium.launch(**launch)
         report['browser_version'] = browser.version
         for view, size in VIEWPORTS.items():
             phone = view == 'phone'
@@ -163,7 +171,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     parser.add_argument('--root', default=str(Path(__file__).resolve().parent.parent), help='folder holding index.html')
     parser.add_argument('--out', required=True, help='folder for PNGs and shell-walk.json')
-    parser.add_argument('--angle', default='gl-egl', help='angle backend for the hardware renderer; empty for swiftshader')
+    parser.add_argument('--renderer', choices=('software', 'hardware'), default='hardware', help='hardware reaches the GPU on Linux hosts; software is SwiftShader')
     return run(parser.parse_args())
 
 
