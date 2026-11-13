@@ -18,7 +18,7 @@ const ROOT=path.resolve(__dirname,'..'),copy=structuredClone,sha=p=>crypto.creat
 function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
  const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],claims=[],swims=[];
- if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51);h.walk(W.GATE.x,W.GATE.z);}
+ if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51+2*(A.level(h.sim.state.adventure)-5));h.walk(W.GATE.x,W.GATE.z);}
  const loaded=Object.keys(require.cache).filter(p=>p.startsWith(ROOT+path.sep)).sort(),hashes=()=>Object.fromEntries(loaded.map(p=>[path.relative(ROOT,p).split(path.sep).join('/'),sha(p)])),beforeHashes=hashes();
  const snapshot=name=>{if(output){const folder=path.join(output,variant);fs.mkdirSync(folder,{recursive:true});fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
  function local(type,d,payload={}){const result=L.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);events.push({type,quest:d.id,payload,result});return result;}

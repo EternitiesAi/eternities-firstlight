@@ -32,6 +32,9 @@ ENV_BROWSER_OUTPUTS = {
 }
 
 
+# The rules step's bounded deadline. 1.0 grew the suite and the box is shared by many lanes, so 180 s became 360 s.
+RULES_TIMEOUT = 360
+
 def legacy_browser_outputs():
     """Read only the portable output helper, never either browser runtime."""
     path = Path(__file__).resolve().parents[1] / 'tests/browser_support.py'
@@ -359,7 +362,7 @@ def main():
     parser.add_argument('--browser-output-mode', choices=('guarded', 'supported'), default='supported', help='The complete browser gate requires supported routing so every suite has fresh evidence; guarded remains a historical run-spec mode.')
     parser.add_argument('--browser-temp', type=Path, help='Existing bounded temporary directory, D: on Windows; defaults to the inherited TEMP/TMPDIR. Set before driver startup.')
     parser.add_argument('--cpu-temp', type=Path, help='Existing absolute directory for lightweight Python unit-test temporary files only. Browser profiles and earned evidence keep their original storage.')
-    parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the original 180-second deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
+    parser.add_argument('--rule-workers', type=int, choices=(1, 2, 4), help='Optional Node test-file worker cap for the complete rules suite. Keeps every test and the rules deadline; omission keeps Node scheduling. Does not bound all child processes or memory.')
     args = parser.parse_args()
     try:
         cpu_env = cpu_test_environment(args.cpu_temp)
@@ -425,13 +428,13 @@ def main():
                     'requestedWorkers': args.rule_workers, 'command': rules_command,
                     'ruleFileCount': len(rules),
                     'ruleFiles': [p.relative_to(ROOT).as_posix() for p in rules],
-                    'rulesTimeoutSeconds': 180, 'pythonTimeoutSeconds': 600}
+                    'rulesTimeoutSeconds': RULES_TIMEOUT, 'pythonTimeoutSeconds': 600}
     rules_record_bytes = (json.dumps(rules_record, indent=2) + '\n').encode('utf-8')
     rules_record_path = output / 'rules-command.json'
     rules_record_path.write_bytes(rules_record_bytes)
     mode = 'Node default' if args.rule_workers is None else str(args.rule_workers)
     print(f'Rule workers: {mode}; command: {rules_record_path}; SHA-256 {hashlib.sha256(rules_record_bytes).hexdigest()}', flush=True)
-    run('rules', rules_command)
+    run('rules', rules_command, timeout=RULES_TIMEOUT)
     print('\n'.join((output / 'rules.log').read_text(encoding='utf-8').splitlines()[-9:]), flush=True)
     # The wrapper cases execute complete command-earned journeys. Allow for
     # their measured disk work on Windows while retaining a bounded failure.
@@ -537,26 +540,9 @@ def main():
     run('cosmos-campaign-blade', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output)])
     run('cosmos-campaign-bow', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--bow'])
     run('cosmos-campaign-veteran', ['node', 'tests/cosmos_campaign_journey.cjs', '--output', str(cosmos_output), '--veteran'])
-    # One portable cohort earns all three Earth continuations and then checks
-    # its exact checkpoints. Historical prerequisite worlds are labelled;
-    # this does not claim a new beginning-to-ending or native-browser run.
-    homecoming_output = output / 'earth-homecoming-earned'
-    if os.name == 'nt' and homecoming_output.drive.upper() != 'D:':
-        homecoming_output = ROOT / 'evidence10/earth-homecoming-earned'
-    run('earth-homecoming-earned', ['node', 'tools/earth_homecoming_journey.cjs', '--output', str(homecoming_output)], timeout=600)
-    cohort_path = homecoming_output / 'CONNECTED_EARTH_HOMECOMING_REPORT.json'
-    homecoming_cohort_sha = hashlib.sha256(cohort_path.read_bytes()).hexdigest()
-    run('earth-homecoming-native-preflight', [sys.executable, 'tests/test_earth_homecoming_native.py', '-v'], timeout=180,
-        extra_env={'FIRSTLIGHT_ROOT': str(ROOT), 'EARTH_EARNED_SOURCES': str(homecoming_output),
-                   'EARTH_EARNED_COHORT_SHA': homecoming_cohort_sha,
-                   'EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
-    # CPU controller/provenance checks need this invocation's real cohort too.
-    # This does not launch a recording or register footage as a gameplay gate.
-    run('earth-recording-controller-preflight', [sys.executable, 'tests/test_capture_earth_homecoming.py', '-v'], timeout=180,
-        extra_env={'FIRSTLIGHT_ROOT': str(ROOT),
-                   'FIRSTLIGHT_EARTH_CAPTURE_SOURCE': str(homecoming_output / 'blade/earth/02_RELAYS.json'),
-                   'FIRSTLIGHT_EARTH_CAPTURE_COHORT_SHA': homecoming_cohort_sha,
-                   'FIRSTLIGHT_EARTH_EARNED_CALLER_ROOT': str(ROOT / 'tools/earth-homecoming-journey')})
+    # The retired Earth homecoming (the twelve-claim gate and the 168 hp repulse) and its earned cohort, native and
+    # capture preflights are out of the 1.0 gate: the finale replaced it (tests/archive/README.md). The finale's own
+    # tests run in the rules step.
     whole_draft_output = output / 'whole-draft-earned'
     if os.name == 'nt' and whole_draft_output.drive.upper() != 'D:':
         whole_draft_output = ROOT / 'evidence10/whole-draft-earned'
@@ -567,6 +553,9 @@ def main():
     run('briar-outing-earned', ['node', 'tests/briar_outing_journey.cjs',
         '--whole-draft-report', str(whole_draft_output / 'WHOLE_DRAFT_JOURNEY_REPORT.json'),
         '--output', str(whole_draft_output.parent / 'briar-earned')], extra_env={'FIRSTLIGHT_ROOT': str(ROOT)})
+    # Title to credits: one fresh character through every beat on real commands. The bot exits nonzero unless it
+    # printed "credits rolled" (tools/firstlight_journey.cjs sets its exit code from creditsRolled).
+    run('firstlight-journey', ['node', 'tools/firstlight_journey.cjs', '--out', str(output / 'firstlight-journey')], timeout=900)
     if args.browser:
         run('gate_captain_browser', [sys.executable, 'tools/gate_captain_browser.py', '--both',
             '--output', str(args.browser_output / 'gate_captain_browser')], timeout=600, native=True)
@@ -574,13 +563,6 @@ def main():
             '--output', str(args.browser_output / 'tournament_browser')], timeout=600, native=True)
         run('masterwork_browser', [sys.executable, 'tools/masterwork_browser.py', '--both',
             '--output', str(args.browser_output / 'masterwork_browser')], timeout=600, native=True)
-        # Separate native gate, bound to the exact cohort earned above. Only
-        # this new command receives its own bounded 30-minute allowance.
-        earth_browser_output = ((args.browser_output / 'earth_homecoming_browser')
-                                if args.browser_output is not None else output / 'earth-homecoming-browser')
-        command, extra_env = earth_homecoming_browser_run_spec(
-            ROOT, homecoming_output, cohort_path, homecoming_cohort_sha, earth_browser_output)
-        run('earth_homecoming_browser', command, timeout=1800, extra_env=extra_env, native=True)
         # Twelve onboarding stages, two fresh characters and one cold restart.
         # Ten minutes is a provisional controller allowance, not measured pacing.
         onboarding_output = ((args.browser_output / 'onboarding_browser')

@@ -1,6 +1,7 @@
 /* Labelled synthetic projection/ownership boundaries, not earned play proof. */
 'use strict';
 require('./hellheaven_night_gate.cjs');
+require('../src/story-script.js');
 const test=require('node:test'),assert=require('node:assert/strict');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),W=require('../src/world-foundations.js'),E=require('../src/engine.js'),H=require('../src/hell-campaign.js');
 const Art=require('../src/hell-campaign-art.js'),UI=require('../src/hell-campaign-ui.js'),D=H.definition;
@@ -91,7 +92,7 @@ test('journal, map and page are pure; route points never accept work or turn a c
 test('the verified saved choice has visible distinct Istra, Tovan and Neris recognition without a premature claim',()=>{
  for(const choice of D.choices.map(c=>c.id)){
   const sim=specimen(D.steps.filter(s=>!s.optional).map(s=>s.id),choice),h=uiHarness(sim);sim.state.saga.regent=['foundry'];const before=JSON.stringify(sim.state),page=h.ui.page('hell-campaign').html;
-  assert.ok(page.includes('hell-campaign-local-recognition'));for(const name of['Istra','Tovan','Neris'])assert.ok(page.includes('<strong>'+name+':</strong>'));assert.ok(page.includes('<h3>Complete</h3>'));assert.equal(JSON.stringify(sim.state),before);
+  assert.ok(page.includes('hell-campaign-local-recognition'));for(const line of globalThis.RealmStoryScript.forStep('hell','verify-route',sim.state).lines)assert.ok(page.includes('<strong>'+line.speaker+':</strong>'));assert.ok(page.includes('<h3>Complete</h3>'));assert.equal(JSON.stringify(sim.state),before);
   sim.state.hellCampaign.steps=sim.state.hellCampaign.steps.filter(id=>id!=='verify-route');assert.ok(!h.ui.page('hell-campaign').html.includes('hell-campaign-local-recognition'));
  }
 });

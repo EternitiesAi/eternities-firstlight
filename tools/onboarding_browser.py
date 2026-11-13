@@ -157,6 +157,50 @@ def living_signature(world):
 
 
 
+# The 1.0 story owners. A save made before them gains each one, inferred from facts it already holds; the
+# literals below restate saga.js infer() and night.js infer() independently instead of calling Core's builders.
+# A capture recorded by an older Core lacks them, so a recorded snapshot is compared without the owners it predates.
+STORY_OWNERS = ('saga', 'night', 'firstRun')
+SHELL_SETTINGS = {'textScale': 'standard', 'volume': {'music': .8, 'effects': .8, 'ambience': .8, 'ui': .8}}
+
+
+def story_defaults(before):
+    a = before.get('adventure') or {}
+    claimed = lambda k: (before.get(k) or {}).get('claimed') is True
+    saga = {'version': 1, 'beats': {}, 'regent': [], 'prophecy': [], 'feather': {'unlocked': False, 'uses': 0},
+            'briar': {'state': 'with', 'habit': {}, 'takenDay': None, 'returnedDay': None, 'homeDay': None, 'falseTrusted': False},
+            'choices': {'tessa': None, 'device': None}, 'heard': {'beacon': None, 'foundry': None, 'confluence': None},
+            'echo': {'coercive': [], 'freeing': []}, 'finale': {'phase': 0, 'won': False, 'ending': None}, 'credits': False, 'postgame': False}
+    if a.get('angelSeen') is True:
+        saga['prophecy'].append('spring'); saga['feather']['unlocked'] = True
+    if claimed('heavenCampaign'):
+        saga['prophecy'].append('heaven')
+    if (a.get('beacon') or {}).get('complete') is True:
+        saga['regent'].append('beacon')
+    if claimed('hellCampaign'):
+        saga['regent'].append('foundry')
+    if claimed('atlantisCampaign') and claimed('cosmosCampaign'):
+        saga['regent'].append('confluence')
+    night = {'version': 1, 'started': False, 'safe': [], 'device': 'hidden', 'envoy': False}
+    # the shell lane: a save made before the first steps skips them (all done, dismissed)
+    first_run = {'move': True, 'camera': True, 'attack': True, 'interact': True, 'dismissed': True}
+    return {'saga': saga, 'night': night, 'firstRun': first_run}
+
+
+def predating(world, recorded):
+    out = copy.deepcopy(world)
+    if isinstance(recorded, dict):
+        for key in STORY_OWNERS:
+            if key not in recorded:
+                out.pop(key, None)
+        old, new = recorded.get('settings'), out.get('settings')
+        if isinstance(old, dict) and isinstance(new, dict):
+            for key in SHELL_SETTINGS:
+                if key not in old:
+                    new.pop(key, None)
+    return out
+
+
 RESUME_PREDICTOR = """const fs=require('node:fs'),C=require('./src/core.js');
 require('./src/combat.js');
 const q=JSON.parse(fs.readFileSync(0,'utf8'));
@@ -234,6 +278,13 @@ def require_initial_resume(root, before, after, capture, owner):
     # acquire this independent literal empty default; never ignore the field.
     if 'briarMoments' not in before:
         expected['briarMoments'] = {'version': 1, 'revision': 0, 'moments': []}
+    for key, value in story_defaults(before).items():
+        if key not in before:
+            expected[key] = value
+    if isinstance(expected.get('settings'), dict):
+        for key, value in SHELL_SETTINGS.items():
+            if key not in expected['settings']:
+                expected['settings'][key] = copy.deepcopy(value)
     # Core now conditionally expands this exact legacy catalogue on load. Keep
     # the four raw histories and every other owner protected; do not derive the
     # allowance from Core's output or use its fresh-record builder as an oracle.
@@ -248,8 +299,8 @@ def require_initial_resume(root, before, after, capture, owner):
             'accepted': False, 'choice': None, 'steps': [], 'claimed': False}
         catalogue_migration = 'exact-old-four-to-fresh-first-load'
     assert expected == living_signature(predicted), 'Actual Core changed another protected owner; this contract does not allow it.'
-    assert expected == living_signature(after), 'Resume changed an owner/history or forged a hydrated snapshot.'
-    assert projection_signature(predicted) == projection_signature(after), 'Initial world disagrees with exact actual captured Core ticks; only existing cameraViews may differ.'
+    assert predating(expected, after) == living_signature(after), 'Resume changed an owner/history or forged a hydrated snapshot.'
+    assert predating(projection_signature(predicted), after) == projection_signature(after), 'Initial world disagrees with exact actual captured Core ticks; only existing cameraViews may differ.'
     return {'preserved': True, 'method': 'Read-only installed Core.Simulation(before,{hydrated:true}) replay of actual captured first-tick prefix',
             'tickSeconds': seconds, 'capturedFirstIndex': first_index,
              'oldPrefixLength': len(old), 'events': predicted['journal'][len(old):],
@@ -378,8 +429,8 @@ def require_resume_sequence(root, before, after, capture, owner):
         capture_output=True, text=True, timeout=20)
     assert result.returncode == 0, 'Actual Core resume-sequence replay failed: ' + result.stderr.strip()
     predicted = json.loads(result.stdout)
-    assert projection_signature(predicted['first']) == projection_signature(capture['first']), 'First captured world disagrees with actual recorded Core tick.'
-    assert projection_signature(predicted['final']) == projection_signature(after), 'Final world disagrees with exact actual Core tick replay.'
+    assert predating(projection_signature(predicted['first']), capture['first']) == projection_signature(capture['first']), 'First captured world disagrees with actual recorded Core tick.'
+    assert predating(projection_signature(predicted['final']), after) == projection_signature(after), 'Final world disagrees with exact actual Core tick replay.'
     return {'preserved': True, 'method': 'Strict first-tick oracle plus exact read-only installed Core replay of actual captured dt/paused sequence',
             'initial': initial, 'ticks': len(ticks), 'activeSeconds': active_seconds,
             'coreSha256': sha(resolve_root(root) / 'src/core.js'),

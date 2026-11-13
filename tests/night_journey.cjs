@@ -8,9 +8,11 @@ const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),asse
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),X=require('../src/crossing.js'),N=require('../src/night.js'),SG=require('../src/saga.js');
 function journey(options={}){
  const out=options.out||fs.mkdtempSync(path.join(os.tmpdir(),'night-journey-'));
- const chapter=fs.mkdtempSync(path.join(os.tmpdir(),'night-chapter-'));
- require('./crossing_journey.cjs').journey({out:chapter});
- let sim=new C.Simulation(C.validate(JSON.parse(fs.readFileSync(path.join(chapter,'CHAPTER_IV_COMPLETE_EARNED.json'),'utf8'))));
+ // a live save (the bot's crossing world) starts the night; without one the crossing is replayed, as the fixture mode always did.
+ let start;
+ if(options.source)start=typeof options.source==='string'?JSON.parse(fs.readFileSync(options.source,'utf8')):options.source;
+ else{const chapter=fs.mkdtempSync(path.join(os.tmpdir(),'night-chapter-'));require('./crossing_journey.cjs').journey({out:chapter});start=JSON.parse(fs.readFileSync(path.join(chapter,'CHAPTER_IV_COMPLETE_EARNED.json'),'utf8'));}
+ let sim=new C.Simulation(C.validate(start));
  let seq=0,commands=0,reloads=0;const log=[];
  const cmd=(type,p={})=>{const r=sim.adventureCommand('night-j-'+(++seq),type,p);assert.ok(r.ok,type+': '+r.error);commands++;log.push({type,p});return r;};
  const refused=(type,p={})=>{const r=sim.adventureCommand('night-j-'+(++seq),type,p);commands++;assert.equal(r.ok,false,type+' should be refused');log.push({type,p,refused:r.error});return r.error;};
@@ -80,7 +82,7 @@ function journey(options={}){
  step(3);walk(4,18);assert.equal(N.objective(sim).title,'Go home.');
  walk(0,17);cmd('waystone-travel',{id:'commons'});
  walk(1.5,6);step(3.4);assert.equal(N.envoyPos(sim).arrived,true);
- walk(-1.6,4.2);const talk=cmd('night-envoy',{});assert.equal(talk.lines.length,4);assert.equal(N.stage(sim.state),'over');
+ walk(-1.6,4.2);const talk=cmd('night-envoy',{});assert.ok(talk.lines.length>0);assert.deepEqual(talk.lines,N.sceneOf('envoy',sim.state).lines);assert.equal(N.stage(sim.state),'over');
 
  // The final record survives a round trip through the validators.
  const final=JSON.parse(JSON.stringify(sim.snapshot()));C.validate(final);
@@ -88,6 +90,8 @@ function journey(options={}){
  const report={status:'passed',edition:'10.0.0',automated:true,commands,reloads,briar:final.saga.briar.state,nightDay:final.saga.beats.night.day,
   safe:final.night.safe,device:final.night.device,actions:log.length};
  fs.writeFileSync(path.join(out,'NIGHT_JOURNEY.json'),JSON.stringify(report,null,2));
+ // the live save after the night, for the next stage to start from.
+ fs.writeFileSync(path.join(out,'NIGHT_COMPLETE.json'),JSON.stringify(final,null,2));
  return report;
 }
 if(require.main===module){const r=journey({});console.log(JSON.stringify(r,null,2));}
