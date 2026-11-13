@@ -1073,7 +1073,7 @@ class GateUI{
  }
  journal(){const q=this.state;return'<section class="earth-invitation"><small>HEARTHWATER · PEOPLE ON THE ROAD</small><h3>'+esc(D().title)+'</h3><p>'+esc(q.claimed?'Three travellers have a recorded place. The captain’s fee is paid.':q.outcome?'All three arrived. Return to the captain for the fee.':q.accepted?'Investigate, prepare a safe destination, then lead the three travellers.':D().summary)+'</p>'+btn('Read the captain’s request','open')+'</section>';}
  page(tab){if(tab!==TAB)return null;const d=D(),q=this.state,inv=this.sim.state.sandbox.inventory,s=this.status(),v=s.view;
-  let html='<article class="earth-reading gate-reading"><small>HEARTHWATER · THE GATE CAPTAIN</small><h2>'+esc(d.title)+'</h2><p class="earth-quote">“I cannot ignore the duplicate seal. I cannot leave people in the weather while I check it, either.”</p><p>'+esc(d.summary)+'</p><p>'+esc(d.uncertainty)+'</p><section class="gate-offer"><h3>Know the terms before accepting</h3><p>Read the register, the cart’s waybill and the old shelter screen. Both destinations use the same nearby orchard route. No combat or main-story progress is required.</p><p><strong>Either outcome: 8 sunmarks and up to 15 XP, once.</strong> XP stops at the existing 9,999 cap. The fee waits if your coin pouch cannot hold all eight.</p><p><strong>Inspection lane:</strong> no material cost. <strong>Temporary shelter:</strong> exactly 4 timber + 2 fibre, spent only when you explicitly repair the screen. You have '+inv.wood+' timber and '+inv.fiber+' fibre.</p></section>';
+  let html='<article class="earth-reading gate-reading"><small>HEARTHWATER · THE GATE CAPTAIN</small><h2>'+esc(d.title)+'</h2><p class="earth-side-label">Optional side work. The main story never needs it.</p><p class="earth-quote">“I cannot ignore the duplicate seal. I cannot leave people in the weather while I check it, either.”</p><p>'+esc(d.summary)+'</p><p>'+esc(d.uncertainty)+'</p><section class="gate-offer"><h3>Know the terms before accepting</h3><p>Read the register, the cart’s waybill and the old shelter screen. Both destinations use the same nearby orchard route. No combat or main-story progress is required.</p><p><strong>Either outcome: 8 sunmarks and up to 15 XP, once.</strong> XP stops at the existing 9,999 cap. The fee waits if your coin pouch cannot hold all eight.</p><p><strong>Inspection lane:</strong> no material cost. <strong>Temporary shelter:</strong> exactly 4 timber + 2 fibre, spent only when you explicitly repair the screen. You have '+inv.wood+' timber and '+inv.fiber+' fibre.</p></section>';
   if(!this.sim.state.adventure.started)html+='<p>Collect the initial expedition kit from Oren first.</p>';
   else if(!q.accepted)html+=R().at(this.sim,d.giver)?this.act('Accept the captain’s request · no cost','accept'):this.travel('giver');
   else{
@@ -1410,7 +1410,7 @@ class TournamentUI{
  }
  journal(){const q=this.record;return'<section class="earth-invitation"><small>EARTH · A LOCAL SKILL EVENT</small><h3>'+D().name+'</h3><p>The rain has passed. A chalk ring and an old practice post wait on Hearthwater’s north common. Three exchanges; a personal distinction earned by timing.</p><p>Best blade '+(q.best.blade??'—')+'/6 · best bow '+(q.best.bow??'—')+'/6. No entry fee; no item or currency payout.</p>'+button('Read the rules and results','open')+'</section>';}
  page(tab){if(tab!==TAB)return null;const a=this.sim.state.adventure,q=this.record,v=R().view(this.sim),w=G.RealmArsenal.weapon(a),d=D(),near=R().at(this.sim),pending=q.issued>q.closed;
-  let html='<article class="rain-reading earth-reading"><small>HEARTHWATER · NORTH COMMON</small><h2>'+d.name+'</h2><p class="earth-quote">“A good reply begins with listening. Let the ribbon fall, then show us your answer.”</p><p>A judged exhibition against the mechanical practice post. Take Oren’s initial expedition kit to compete. No campaign chapter, profession or class is required. You may observe without entering. These are personal records; no online rivals are simulated.</p>';
+  let html='<article class="rain-reading earth-reading"><small>HEARTHWATER · NORTH COMMON</small><h2>'+d.name+'</h2><p class="earth-side-label">Optional side work. The main story never needs it.</p><p class="earth-quote">“A good reply begins with listening. Let the ribbon fall, then show us your answer.”</p><p>A judged exhibition against the mechanical practice post. Take Oren’s initial expedition kit to compete. No campaign chapter, profession or class is required. You may observe without entering. These are personal records; no online rivals are simulated.</p>';
   const rules='<details class="rain-rules"'+(!pending&&q.finished.blade+q.finished.bow===0?' open':'')+'><summary>Rules, controls and equipment</summary><section class="rain-terms"><h3>Before you enter</h3><ul>'+d.terms.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul><p><strong>Controls:</strong> Tab selects; F strikes once; 3 braces; movement or Space avoids the ribbon. 1 toggles stationary autoattack. Click selection also starts autoattack; switch it off before waiting for the reply. E speaks to the steward. V switches either camera. Menus and P pause the event.</p><p>Blade: 2.65m reach, 0.52s recovery, no primary stamina cost. Bow: 11m reach, 0.75s recovery, 6 stamina per arrow. Within this small ring, move within reach before the opening. Brace costs 20 stamina, lasts 3s and recovers in 8s.</p><p><strong>Equipped:</strong> '+esc(G.RealmAdventure.GEAR[a.equipment.weapon]?.name||'No weapon')+' · '+w.style+' · '+w.reach+'m · '+w.cooldown+'s · '+w.stamina+' stamina. Your item stays yours, including its socket and fittings; weapon damage never buys points.</p></section>';
   const timing='<table class="guide-comparison"><caption>Three exchanges · six possible points</caption><thead><tr><th>Exchange</th><th>Ready</th><th>Amber warning</th><th>White opening</th><th>Rest</th></tr></thead><tbody>'+d.rounds.map(r=>'<tr><th>'+esc(r.name)+'</th><td>'+r.ready+'s</td><td>'+r.tell+'s</td><td>'+r.opening+'s</td><td>'+r.rest+'s</td></tr>').join('')+'</tbody></table><p>Bronze at 2, silver at 4, gold at 6. Each is recorded once per weapon family. Replay for practice or a better result; no repeat payout.</p>';
   const fullRules=rules+timing+'</details>';
@@ -1604,7 +1604,7 @@ class MasterworkUI{
  }
  travel(p){if(p.room===this.sim.room)return btn('Walk to '+p.name,'walk',p===D().giver||p.id==='workshop-apprentice'?'giver':p.id);return p.room===null?'<p>Take the free Hearthwater return to Firstlight, then visit the workshop.</p><button data-rpg="open" data-id="atlas">Read current map</button>':'<p>From Firstlight’s lake, enter Hearthwater. Cross the long footbridge, follow the eastern mill-road fork, and continue along the ridge to Darric’s quarry order.</p><button data-rpg="open" data-id="earth">Read the Hearthwater trail</button>';}
  page(tab){if(tab!==TAB)return null;const q=this.state,a=this.sim.state.adventure,d=D(),near=M().at(this.sim,d.giver);
-  let html='<article class="earth-reading masterwork-reading"><small>HEARTHWATER COMMISSION</small><h2>'+d.title+'</h2><p class="earth-quote">“My marks are in the stone. My name isn’t in the account. I want the work corrected—but I need a say in how.”</p><p>'+esc(d.summary)+'</p><p>'+esc(d.route)+'</p><section class="masterwork-offer"><h3>The same offer, for either correction</h3><p>'+esc(d.reward)+'</p>'+comparison(a,a.equipment.weapon||'trail_blade')+'</section>';
+  let html='<article class="earth-reading masterwork-reading"><small>HEARTHWATER COMMISSION</small><h2>'+d.title+'</h2><p class="earth-side-label">Optional side work. The main story never needs it.</p><p class="earth-quote">“My marks are in the stone. My name isn’t in the account. I want the work corrected—but I need a say in how.”</p><p>'+esc(d.summary)+'</p><p>'+esc(d.route)+'</p><section class="masterwork-offer"><h3>The same offer, for either correction</h3><p>'+esc(d.reward)+'</p>'+comparison(a,a.equipment.weapon||'trail_blade')+'</section>';
   if(!a.started)html+='<p>Collect your expedition kit from Oren first.</p>';
   else if(!q.accepted)html+=near?this.act('Accept the commission · no cost','accept'):this.travel(d.giver);
   else{
@@ -5255,339 +5255,514 @@ function drawEscort(out,sim,actor,time){const d=definition(),r=sim.state.heavenC
 }
 const api={draw,drawEnemy,drawEscort,ACTIVATION_DURATION};G.RealmHeavenCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Authored local homecoming catalogue. Mechanics/canon limits are in DESIGN_AND_INTEGRATION.md. Import creates no state, actors or rewards. */
+</script><script>/* Firstlight's finale tables: the clock, the three bodies, where each realm's chain stands, who comes to break
+ * the chains, the route the Regent runs, and every line the finale says. The rules read these tables (finale.js,
+ * earth-homecoming.js); the story script replaces them at integration. The dialogue here is a working draft. */
 (function(G){'use strict';
 function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
-const definition=freeze({"id":"earth-road-can-refuse-v1","title":"The Road That Can Refuse","status":"authored-proposal","realm":"earthlands","room":"world-earthlands","scope":"local-prototype-ending","giver":{"id":"oren","name":"Oren · workshop","room":null,"x":11,"z":9},"claim":{"id":"oren","name":"Oren · workshop","room":null,"x":11,"z":9},"prerequisites":[{"id":"oren-kit","path":["adventure","started"],"value":true},{"id":"first-envoy-gift","path":["adventure","reward"],"oneOf":["dawn_edge","warden_stone"]},{"id":"sunward-return","path":["adventure","road","reported"],"value":true},{"id":"bellweather-thanks","path":["adventure","crossing","reward"],"value":true},{"id":"fenna-paid","path":["adventure","earthStory","claimed"],"value":true},{"id":"living-road-paid","path":["earthExpedition","story","claimed"],"value":true},{"id":"coastward-work-paid","path":["journeys","realms","earthlands","firstClaimed"],"value":true},{"id":"hell-local-paid","path":["hellCampaign","claimed"],"value":true},{"id":"heaven-local-paid","path":["heavenCampaign","claimed"],"value":true},{"id":"atlantis-local-paid","path":["atlantisCampaign","claimed"],"value":true},{"id":"cosmos-comparator-paid","path":["realmTrails","records","cosmos-split-bearing-v1","claimed"],"value":true},{"id":"cosmos-confluence-paid","path":["cosmosCampaign","claimed"],"value":true}],"summary":"Oren: You have come back with more than promises. Vessa keeps a bridge open, Merren can account for his road, and the people you met have made choices of their own. Bring their checked records to the Coastward junction. Two claim relays are reaching for this road. Disconnect them, face the Regent, and secure the passage before deciding what to keep. Then come home. The roads beyond this junction are still their own unfinished work.","danger":"Regent of Ash: 168 health, 12 damage. His broad lane reaches 4 paces; his narrow false-shelter line reaches up to 11 and warns for 1.85 seconds. At close range his small ring leaves a quiet center. Step beside the locked lane, find that center, Brace (3), or withdraw beyond his reach. The supplied warning screen gives the broad lane 0.4 seconds more warning. Both blade and bow can hit throughout the fight. The road home stays open; no materials, soul technique or companion command are required.","reward":{"xp":50,"coins":20,"ore":4,"materials":{"wood":4,"fiber":3,"crystal":1}},"rewardTerms":"After securing the junction, choosing its aftermath, checking the bridge and coming home, claim up to 50 XP within your stored cap, plus 20 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal once. Make room for the whole payment; finished work waits if you cannot take it. No equipment is replaced.","geography":{"status":"proposal-on-existing-support","newGround":false,"newSolids":false,"pocket":{"room":"world-earthlands","minX":-8,"maxX":10,"minZ":-41,"maxZ":-29,"y":1.57},"actor":{"x":1,"z":-35,"radius":0.65},"dangerExtent":"The narrow line can extend 11 paces from the anchor across existing field/woodland/worked ground. Each actual locked full-width frame is clipped to that real support and opaque cover; the quiet staging pocket is not its maximum threat envelope.","approach":[{"x":0,"z":104},{"x":0,"z":16},{"x":14,"z":15},{"x":14,"z":-34},{"x":1,"z":-35}],"registerRoute":[{"x":1,"z":-35},{"x":4,"z":-41},{"x":4,"z":-67},{"x":8,"z":-69}],"homeReturn":{"earthMarker":{"x":0,"z":104},"home":{"room":null,"x":11,"z":9},"mechanism":"Existing free journey return; an actual home arrival must be checked, never granted by journal reading."},"requirements":"Root must retain current support/opaque-cover checks, full transformed warning footprints and body clearance; these measurements are hypotheses, not a terrain/renderer grant. No staged prop may add a solid or obstruct the real routes."},"steps":[{"id":"bridge-record","name":"Compare the returned bridge record","kind":"interact","room":"world-earthlands","x":-7,"z":97,"medium":"dry","requires":[],"optional":false,"text":"Vessa: A bridge belongs to its crossings, not to whoever can hold a chain across it. Let me compare the records you brought with the road we have kept open."},{"id":"register-record","name":"Compare Merren’s local register","kind":"interact","room":"world-earthlands","x":8,"z":-69,"medium":"dry","requires":["bridge-record"],"optional":false,"text":"Merren: My evening load is accounted for. So are your other journeys. This new order calls every departure a debt. Lay the checked records beside it and see what it leaves out."},{"id":"inspect-claim","name":"Inspect the portable junction claim","kind":"interact","room":"world-earthlands","x":1,"z":-35,"medium":"dry","requires":["register-record"],"optional":false,"text":"The portable claim engine bears the same command on both relays: every road must answer to one keeper. Follow the two cables. Neither belongs to the bridge or the field register."},{"id":"supplied-screen","name":"Place the supplied warning screen","kind":"interact","room":"world-earthlands","x":10,"z":-35,"medium":"dry","requires":["inspect-claim"],"optional":true,"text":"Fit the supplied warning screen beside the claim engine. Its broad signal will hold a little longer before the strike. The screen is a signal, not a wall; it will not stop an impact."},{"id":"west-relay-isolated","name":"Isolate the west claim relay","kind":"interact","room":"world-earthlands","x":-6,"z":-35,"medium":"dry","requires":["inspect-claim"],"optional":false,"text":"Disconnect the west claim relay. The public road keeps its own support; no traveller needs the relay to pass."},{"id":"east-relay-isolated","name":"Isolate the east claim relay","kind":"interact","room":"world-earthlands","x":8,"z":-35,"medium":"dry","requires":["west-relay-isolated"],"optional":false,"text":"With the west relay quiet, disconnect the east. The two cables fall slack. The engine can still strike, but it cannot make this road its property."},{"id":"challenge-regent","name":"Challenge the Regent’s local seizure","kind":"interact","room":"world-earthlands","x":1,"z":-35,"medium":"dry","requires":["east-relay-isolated"],"optional":false,"text":"Regent of Ash: I can keep a road for you that never loses anything. Why settle for a bridge where someone may leave? Read his three signals, then deliberately challenge his claim here."},{"id":"regent-repelled","name":"Repel the Regent from this junction","kind":"defeat","room":"world-earthlands","x":1,"z":-35,"medium":"dry","requires":["challenge-regent"],"optional":false,"text":"The Regent withdraws from the junction. His wider network survives, but this seizure has failed. The passage is yours to make safe, not yours to own."},{"id":"passage-secured","name":"Secure the independent local passage","kind":"interact","room":"world-earthlands","x":1,"z":-35,"medium":"dry","requires":["regent-repelled"],"optional":false,"text":"Fit the independent restraint and disconnect the claim engine from the road. Travellers can pass safely before you decide what becomes of its evidence."},{"id":"aftermath","name":"Choose the local aftermath","kind":"choice","room":"world-earthlands","x":1,"z":-35,"medium":"dry","requires":["passage-secured"],"optional":false,"text":"Choose what this junction will remember: an open checked record and public watch, or a detached core held for review. Both keep the passage free. Preview the terms and confirm your choice."},{"id":"return-verified","name":"Verify Vessa’s free return road","kind":"interact","room":"world-earthlands","x":-7,"z":97,"medium":"dry","requires":["aftermath"],"optional":false,"text":"Vessa: The bridge is still open. I have named the outcome you chose beside the checked return record. Take the free road home; you owe no departure fee."},{"id":"home-return","name":"Bring the local account home","kind":"interact","room":null,"x":11,"z":9,"medium":"dry","requires":["return-verified"],"optional":false,"text":"Oren: There you are. Set the local account on the workshop bench. You stopped one claim without making another. The payment is waiting when you choose to take it; the ordinary work here is still yours."}],"choices":[{"id":"public-watch","name":"Public watch · post the checked local record","text":"Keep the disabled claim fixture open to inspection with named local maintenance terms. The public watch marker and checked record show what was stopped here. This does not publish private histories or announce citywide revocation.","consequence":"The public watch marker and checked return record remain beside the quiet engine. Vessa names the public watch at the bridge."},{"id":"reviewed-custody","name":"Reviewed custody · retain the detached claim core","text":"Detach and seal the disabled claim core for reviewed local evidence custody while maintaining independent public passage. This preserves evidence without keeping the threat live or licensing departures to an office.","consequence":"The detached claim core rests under a sealed evidence cover beside the independent-passage marker. Vessa names its reviewed custody at the bridge."}],"enemy":{"id":"earth-regent-incursion-v1","name":"Regent of Ash · local incursion","kind":"sentinel","x":1,"z":-35,"hp":168,"damage":12,"radius":0.65,"anchored":true,"spawnAfter":["challenge-regent"],"defeatStep":"regent-repelled","damageWindow":"all-live-phases","rewards":null,"phases":[{"id":"claims","aboveHP":112,"order":["claim-lane"]},{"id":"false-shelter","aboveHP":56,"order":["claim-lane","false-shelter"]},{"id":"local-stand","aboveHP":0,"order":["closing-ring","false-shelter"]}],"reset":"Unrecorded combat and locked frames reset on leave/reload; prior accepted steps remain. Refused defeat save must retain a live owner, not adopt unpersisted exhaustion."},"completionText":"The Regent has been driven from this junction, the independent passage is secure, and your chosen watch or custody remains. You brought the account home and Oren paid the declared fee once. The wider network still needs an answer. For tonight, the road is open and there is a place for you at home. Keep exploring.","futureGate":{"id":"earth-first-answer-full-saga-gate-v1","status":"not-satisfied-by-current-claims","terminal":"regent-defeated-network-restored","requires":[{"id":"foundry-evacuation","status":"not-implemented","detail":"Actual main-foundry ownership mechanism disabled, prisoners evacuated and stolen routing pattern recovered; exterior Hell release is insufficient."},{"id":"independent-anchor-confluence","status":"not-implemented","detail":"Actual independently maintained anchors coordinate a route without a master key; the local Open Confluence provides a real claimed conjunction, but does not certify the full canonical independent-anchor coordination."},{"id":"chronology-reconciled","status":"unresolved","detail":"Founder-approved condensation or actual monastery/fallen-kingdom/forest contributions must reconcile B/C with the local arcs. Briar death, Nearshore and reunion are not presumed."}],"note":"Full defeat needs a separate authored/rules contract and actual earned prerequisite owners. Even a full First Answer would leave the ultimate Answering and larger war unresolved."},"integration":"Root owns optional new save owner/migration, active character/revision/physical-context confirmation, real contact/persistence, source/UI/art/journeys and qualification. Saved earthHomecoming v1 fields: version, accepted, steps, choice, claimed. Catalogue and read-only selectors grant nothing."});
-const patterns=freeze({"claim-lane":{"kind":"line","reach":4.24,"length":4,"halfWidth":1.1,"windup":1.45,"contact":0.18,"recovery":2.4},"false-shelter":{"kind":"line","reach":11.24,"length":11,"halfWidth":0.55,"windup":1.85,"contact":0.18,"recovery":2.6},"closing-ring":{"kind":"annulus","reach":3.44,"innerRadius":1.5,"outerRadius":3.2,"windup":1.6,"contact":0.18,"recovery":2.6}});
-const prerequisites=definition.prerequisites,read=(s,path)=>path.reduce((o,k)=>o?.[k],s);
-function missing(state){return prerequisites.filter(p=>p.oneOf?!p.oneOf.includes(read(state,p.path)):read(state,p.path)!==p.value).map(p=>p.id);}
-function eligible(state){return missing(state).length===0;}
-function evidence(state){const s=state||{},a=s.adventure||{},out=[];
- const add=(id,claimed,branch,text)=>{if(claimed===true)out.push({id,branch:branch??null,text});};
- add('fenna-route',a.earthStory?.claimed,a.earthStory?.dispatch,'Fenna’s paid mill, quarry or surveyed-detour delivery remains her own history.');
- add('living-road-allocation',s.earthExpedition?.story?.claimed,s.earthExpedition?.story?.branch,'The chosen allocation and fitted alternate brace remain; the living root is not a defeated enemy.');
- add('hell-release',s.hellCampaign?.claimed,s.hellCampaign?.choice,'Neris is safe and her complete record remains under the selected exterior release. The inner foundry is still closed.');
- add('heaven-welcome',s.heavenCampaign?.claimed,s.heavenCampaign?.choice,'The courier’s recorded local arrival and public instrument arrangement remain; the upper terrace is still closed.');
- add('atlantis-passage',s.atlantisCampaign?.claimed,s.atlantisCampaign?.choice,'Damar’s local bay and the checked passage disposition remain. No remote nursery voyage is inferred.');
- const atlantis=out.find(e=>e.id==='atlantis-passage');if(atlantis)atlantis.approach=s.atlantisCampaign?.approach??null;
- add('cosmos-comparator',s.realmTrails?.records?.['cosmos-split-bearing-v1']?.claimed,null,'The two named stations have a paid comparator fitting. This is observed local evidence, not coordinated cosmic anchors.');
- add('cosmos-confluence',s.cosmosCampaign?.claimed,s.cosmosCampaign?.choice,'The actual paid Open Confluence retains two independently prepared and reconfigured local supports and its selected bounded account. This is not the full canonical cosmic coordination.');
- return out;
-}
-
-const api=freeze({definition,patterns,prerequisites,missing,eligible,evidence});G.RealmEarthHomecomingData=api;if(typeof module!=='undefined')module.exports=api;
+// seconds of valley time; startRange and offerRange are metres from the spring.
+const TIMING=freeze({firstChain:1.5,chainGap:2.6,freedDelay:2.2,riseSeconds:7,speed:2.4,pause:1.4,startRange:9,offerRange:6});
+// used only when the boss table (G.RealmDifficulty) is missing or malformed.
+const BODIES=freeze([{id:'chains',hp:380,damage:44},{id:'merged',hp:400,damage:48},{id:'offer',hp:420,damage:52}]);
+// each realm's chain stands on the valley's own ground, near the spring junction. spring is the default chain.
+const SITES=freeze({
+ hell:{x:6,z:1,label:'the hell road'},
+ heaven:{x:-7,z:3,label:'the heaven stair'},
+ atlantis:{x:4,z:9,label:'the drowned harbour'},
+ earth:{x:-4,z:9,label:'the Coastward bridge'},
+ cosmos:{x:-4,z:-4,label:'the star field'},
+ beacon:{x:0,z:-7,label:'the Sunward Beacon'},
+ spring:{x:0,z:7,label:'the spring'}
+});
+// the people who break the chains, keyed by the freeing echo entry. an entry with no card gets the saga's name.
+const ALLY_CARDS=freeze({
+ 'hell-unbind':{name:'Neris',color:'#8f6a5a',line:'Nothing is owed here. Go on.'},
+ 'heaven-assist':{name:'Rielle',color:'#e8dcc0',line:'The gate stays open. Hold it with me.'},
+ 'heaven-broadened':{name:'Rielle',color:'#e8dcc0',line:'The gate stays open. Hold it with me.'},
+ 'atlantis-publish':{name:'Damar',color:'#4f7f8c',line:'The bearing is public now. It cannot lie to the harbour.'},
+ 'atlantis-limited':{name:'Damar',color:'#4f7f8c',line:'The bearing is public now. It cannot lie to the harbour.'},
+ 'cosmos-public':{name:'Anik',color:'#7d6fa0',line:'The stars heard it plainly, and so did I.'},
+ 'cosmos-bounded':{name:'Anik',color:'#7d6fa0',line:'The stars heard it plainly, and so did I.'},
+ 'earth-watch':{name:'Vessa',color:'#b9a072',line:'The bridge is open both ways. Look.'},
+ 'beacon-sealed':{name:'Tessa',color:'#c98f4f',line:'Keep the road honest, then.'},
+ 'beacon-renounced':{name:'Tessa',color:'#c98f4f',line:'Keep the road honest, then.'}
+});
+// the merged valley. the Regent runs this loop and stops at each turn to strike. waypoints that are not walkable are skipped.
+const ROUTE=freeze([{x:0,z:3},{x:-6,z:2},{x:-6,z:-4},{x:-4,z:-10},{x:-7,z:-17},{x:-1,z:-23},{x:12,z:-21},{x:18,z:-4},{x:16,z:7},{x:4,z:14},{x:-6,z:10}]);
+// every line the finale says. keys are read by name; a missing key reads as empty, never as a stand-in.
+const LINES=freeze({
+ begin:'The Regent of Ash rises at the spring junction.',
+ chainPrefix:'Regent of Ash · ',
+ defaultChain:'You never once handed me a chain, so I will hang my own on the spring.',
+ playerBreak:'You break the chain.',
+ allyBreakSuffix:' breaks the chain.',
+ allyArrivePrefix:' · ',
+ runs:'The last chain falls. He runs for the far side of the valley.',
+ down:'He falls back to the spring, and offers you a gift.',
+ offer:'He offers you a life that cannot be hurt.',
+ refuse:'Refuse him',
+ take:'Take the gift',
+ refused:'You refused him. He stands in the spring light.',
+ taken:'You took his gift. Nothing will reach you now.',
+ won:'The Regent of Ash came apart in the morning light.',
+ credits:'Firstlight. The roads stay open.',
+ noOffer:'He has no offer waiting.',
+ phaseTitle1:'Break the chains',
+ phaseTitle2:'Strike him as he runs',
+ phaseTitle3:'He offers you a gift',
+ phaseDetail1:'Each chain is tied to a place you chose. The people you freed will break some of them for you.',
+ phaseDetail2:'He stops at each turn of the valley to strike. Stand outside his lines and hit him while he runs.',
+ phaseDetail3:'Refuse him and fight on as you are, or take the gift and nothing he does can reach you.',
+ wonDetail:'The valley is yours again. Walk it and see what changed.'
+});
+// the three bodies, read from the boss table when present; the fallback keeps the brief's numbers.
+const api=freeze({TIMING,BODIES,SITES,ALLY_CARDS,ROUTE,LINES});
+G.RealmFinaleData=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Earth homecoming owner. Core validates its optional history after all prior
- * owners. Adventure owns its actual anchored roster and single locked contact.
- * This staged integration proposal is not installed/native qualification. */
+ /* The finale's rules, with no simulation and no save. The echo ledger becomes chains and freed allies; the tables in
+ * finale-data.js say who, where and how long. earth-homecoming.js owns the state and the fight. */
 (function(G){'use strict';
-const DATA=G.RealmEarthHomecomingData||(typeof require==='function'?require('./earth-homecoming-data.js'):null),D=DATA.definition,P=DATA.patterns;
-const copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,fail=error=>({ok:false,error});
-const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.earthHomecoming||s;
-const actorSims=new WeakMap(),actorStates=new WeakMap(),actorRuntimes=new WeakMap(),locks=new WeakMap(),runtimeOwners=new WeakMap();
-const fresh=()=>({version:1,accepted:false,steps:[],choice:null,claimed:false});
-const required=()=>D.steps.filter(s=>!s.optional).map(s=>s.id);
-const eligible=state=>DATA.eligible(state),missing=state=>DATA.missing(state),evidence=state=>DATA.evidence(state);
-function allowed(r,s){return !!s&&s.requires.every(id=>r.steps.includes(id))&&!(s.id==='supplied-screen'&&r.steps.includes('regent-repelled'));}
-function ready(state){const r=record(state);return !!r?.accepted&&D.choices.some(c=>c.id===r.choice)&&required().every(id=>r.steps.includes(id));}
-function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&allowed(r,s)):[];}
+const T=()=>G.RealmFinaleData||(typeof require==='function'?require('./finale-data.js'):null);
+const group=id=>String(id||'').split('-')[0];
+const site=realm=>T().SITES[realm]||T().SITES.spring;
+// the boss table is another lane's. a missing or malformed table keeps the data's three bodies.
+function phases(){
+ const fallback=T().BODIES,list=typeof G.RealmDifficulty?.boss==='function'?G.RealmDifficulty.boss('regent')?.phases:null;
+ const ok=Array.isArray(list)&&list.length===3&&list.every(p=>Number.isFinite(p?.hp)&&p.hp>0&&Number.isFinite(p?.damage)&&p.damage>0);
+ return Object.freeze((ok?list:fallback).map((p,i)=>Object.freeze({id:String(p.id||fallback[i].id),hp:p.hp,damage:p.damage})));
+}
+// chain i appears at its time, and the i-th freed person breaks chain i shortly after. with no chain left they just arrive.
+function plan(ledger){
+ const d=T(),t=d.TIMING,coercive=ledger?.coercive||[],freeing=ledger?.freeing||[],budget=phases()[0].hp,n=Math.max(1,coercive.length);
+ const chains=(coercive.length?coercive:[null]).map((e,i)=>({id:e?'chain-'+e.id:'chain-spring',echo:e?e.id:null,line:e?e.line:d.LINES.defaultChain,site:site(e?group(e.id):'spring'),hp:Math.floor(budget/n)+(i<budget%n?1:0),appearAt:t.firstChain+i*t.chainGap}));
+ const allies=freeing.map((e,i)=>{const c=chains[i]||null,card=d.ALLY_CARDS[e.id]||{name:e.ally,color:'#c9b79c',line:e.line};return{id:'ally-'+e.id,echo:e.id,ally:card.name,color:card.color,line:card.line,site:site(group(e.id)),breaks:c?c.id:null,arriveAt:(c?c.appearAt:t.firstChain+i*t.chainGap)+t.freedDelay};});
+ return{chains,allies};
+}
+// one anchor per realm the valley remembers; lit when that realm's choice was freed.
+function anchors(ledger){const freed=new Set((ledger?.freeing||[]).map(e=>group(e.id)));return Object.keys(T().SITES).filter(k=>k!=='spring').map(realm=>({realm,x:T().SITES[realm].x,z:T().SITES[realm].z,label:T().SITES[realm].label,lit:freed.has(realm)}));}
+const api=Object.freeze({phases,plan,anchors,timing:()=>T().TIMING,route:()=>T().ROUTE,text:key=>T().LINES[key]??'',group});
+G.RealmFinale=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+ /* Firstlight's finale fight numbers: the Regent's strike patterns, the bands that pick them by his hit points, and the
+ * vocabulary of the retired homecoming record that old saves still carry. The rules are in finale.js; the state and the
+ * fight are in earth-homecoming.js. Reading this grants nothing. */
+(function(G){'use strict';
+function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
+const definition=freeze({id:'firstlight-regent-finale-v1',title:'The Regent of Ash',room:null,spring:{x:0,z:3},
+ summary:'He is waiting at the spring junction, wearing your choices like chains. Bring the people you freed.',
+ completionText:'The valley is yours again. Walk it, and see what changed.'});
+const patterns=freeze({
+ 'claim-lane':{kind:'line',reach:4.24,length:4,halfWidth:1.1,windup:1.45,contact:.18,recovery:2.4},
+ 'false-shelter':{kind:'line',reach:11.24,length:11,halfWidth:.55,windup:1.85,contact:.18,recovery:2.6},
+ 'closing-ring':{kind:'annulus',reach:3.44,innerRadius:1.5,outerRadius:3.2,windup:1.6,contact:.18,recovery:2.6}
+});
+// per body: the first band whose aboveHP the Regent is still over picks the strike order; the last band is the floor.
+const bands=freeze({
+ 1:freeze([{id:'bound',aboveHP:0,order:['claim-lane']}]),
+ 2:freeze([{id:'flight',aboveHP:200,order:['claim-lane','false-shelter']},{id:'cornered',aboveHP:0,order:['closing-ring','false-shelter','claim-lane']}]),
+ 3:freeze([{id:'hold',aboveHP:280,order:['claim-lane','false-shelter']},{id:'last',aboveHP:0,order:['closing-ring','false-shelter','claim-lane']}])
+});
+// the retired homecoming's words. old saves keep them; nothing new is written with them.
+const legacySteps=freeze(['bridge-record','register-record','inspect-claim','supplied-screen','west-relay-isolated','east-relay-isolated','challenge-regent','regent-repelled','passage-secured','aftermath','return-verified','home-return']);
+const legacyChoices=freeze(['public-watch','reviewed-custody']);
+const api=freeze({definition,patterns,bands,legacySteps,legacyChoices});
+G.RealmEarthHomecomingData=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* The finale's owner: the Regent of Ash at the spring junction. The saga owns the phases and the ending. This owner holds
+ * what the saga does not: which chains are broken (saved at each break), the offer, the Regent's bodies, the freed
+ * allies' clock and the camera rise. Old homecoming records still load, and their aftermath choice still feeds the
+ * echo ledger. Combat progress is not saved: a reload restarts the body in its phase; broken chains stay broken. */
+(function(G){'use strict';
+const DATA=G.RealmEarthHomecomingData||(typeof require==='function'?require('./earth-homecoming-data.js'):null),D=DATA.definition,P=DATA.patterns,B=DATA.bands;
+const FIN=()=>G.RealmFinale||(typeof require==='function'?require('./finale.js'):null);
+const SG=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const finite=Number.isFinite,fail=error=>({ok:false,error}),yes=text=>({ok:true,text});
+const CHAIN_R=.6,REGENT_R=.65,CHAIN_ID=/^chain-[a-z-]{1,40}$/,MAX_BROKEN=16;
+const locks=new WeakMap();
+const isSim=sim=>!!G.RealmCore&&sim instanceof G.RealmCore.Simulation;
+const phaseOf=st=>st?.saga?.finale?.phase??0;
+const finaleOf=st=>st?.earthHomecoming?.finale||{broken:[],offer:null};
+const broken=st=>finaleOf(st).broken,offerOf=st=>finaleOf(st).offer;
+const live=sim=>!!sim&&sim.room===null&&!sim.worldDive&&!!sim.state&&phaseOf(sim.state)>=1&&phaseOf(sim.state)<=3&&!sim.state.saga.finale.won&&!sim.state.saga.credits;
+const contactReach=p=>Math.min(p.reach,(p.kind==='annulus'?p.outerRadius:p.length)+.24);
+const near=(sim,r)=>Math.hypot(sim.state.player.x-D.spring.x,sim.state.player.z-D.spring.z)<=r;
+const planFor=sim=>FIN().plan(SG().echoLedger(sim.state));
+
+function fresh(){return{version:1,accepted:false,steps:[],choice:null,claimed:false};}
+function finaleRecord(raw){
+ const no=()=>{throw Error('Invalid Earth homecoming: finale');};
+ if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).sort().join('|')!=='broken|offer')no();
+ if(!Array.isArray(raw.broken)||raw.broken.length>MAX_BROKEN||new Set(raw.broken).size!==raw.broken.length||raw.broken.some(id=>typeof id!=='string'||!CHAIN_ID.test(id)))no();
+ if(raw.offer!==null&&!['refused','taken'].includes(raw.offer))no();
+ return{broken:raw.broken.slice(),offer:raw.offer};
+}
+// the record keeps the retired homecoming's keys for old saves; the finale adds one optional key, present only once it runs.
 function validate(raw){
  if(raw===undefined)return fresh();const no=why=>{throw Error('Invalid Earth homecoming: '+why);};
- if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).sort().join('|')!=='accepted|choice|claimed|steps|version'||raw.version!==1||typeof raw.accepted!=='boolean'||typeof raw.claimed!=='boolean')no('version or record');
- if(!Array.isArray(raw.steps)||raw.steps.length>D.steps.length||new Set(raw.steps).size!==raw.steps.length||raw.steps.some(id=>typeof id!=='string'||!step(id)))no('steps');
- if(raw.choice!==null&&!D.choices.some(c=>c.id===raw.choice))no('aftermath');
- const prior={steps:[]};for(const id of raw.steps){if(!allowed(prior,step(id)))no('ordered prerequisites at '+id);prior.steps.push(id);}
+ const keys=raw&&typeof raw==='object'&&!Array.isArray(raw)?Object.keys(raw).sort().join('|'):'';
+ if(!['accepted|choice|claimed|steps|version','accepted|choice|claimed|finale|steps|version'].includes(keys)||raw.version!==1||typeof raw.accepted!=='boolean'||typeof raw.claimed!=='boolean')no('version or record');
+ if(!Array.isArray(raw.steps)||raw.steps.length>DATA.legacySteps.length||new Set(raw.steps).size!==raw.steps.length||raw.steps.some(id=>!DATA.legacySteps.includes(id)))no('steps');
+ if(raw.choice!==null&&!DATA.legacyChoices.includes(raw.choice))no('aftermath');
  if(raw.steps.includes('aftermath')!==(raw.choice!==null))no('choice history');
  if(!raw.accepted&&(raw.steps.length||raw.choice!==null||raw.claimed))no('unaccepted history');
- if(raw.claimed&&!ready(raw))no('unearned claim');
- return{version:1,accepted:raw.accepted,steps:raw.steps.slice(),choice:raw.choice,claimed:raw.claimed};
+ const out={version:1,accepted:raw.accepted,steps:raw.steps.slice(),choice:raw.choice,claimed:raw.claimed};
+ if(keys.includes('finale')){try{out.finale=finaleRecord(raw.finale);}catch{no('finale');}}
+ return out;
 }
-// Named boundaries delegate to the real Core owner. Core includes the new field;
-// neither helper can append an unchecked field after character-store validation.
 function validateWorld(raw){return G.RealmCore.validate(raw);}
-function snapshot(sim){if(!(sim instanceof G.RealmCore.Simulation))throw Error('Earth homecoming needs an actual simulation');return sim.snapshot();}
-function at(sim,p){
- const C=G.RealmCore,W=G.RealmWorldFoundations;if(!C||!(sim instanceof C.Simulation)||!p||![p.x,p.z,sim.state.player.x,sim.state.player.z].every(finite)||sim.worldDive)return false;
- const room=Object.hasOwn(p,'room')?p.room:D.room;if(sim.room!==room||Math.hypot(sim.state.player.x-p.x,sim.state.player.z-p.z)>2.8)return false;
- if(room===D.room)return W.walkable(room,p.x,p.z,.31)&&W.walkable(room,sim.state.player.x,sim.state.player.z,.31)&&W.segment(room,sim.state.player,p,.035);
- return room===null&&C.walkable(p.x,p.z,sim.navRoom,.31)&&C.walkable(sim.state.player.x,sim.state.player.z,sim.navRoom,.31)&&C.segment(sim.state.player,p,sim.navRoom,.035);
+function snapshot(sim){if(!isSim(sim))throw Error('Earth homecoming needs an actual simulation');return sim.snapshot();}
+
+// one transaction. the saga moves on the live state, the record moves on a checked candidate, and a refused save puts
+// the saga back, so the story and the record never disagree.
+function persist(sim,io,ctx,text,saga,change){
+ const st=sim.state,prior=JSON.stringify(st.saga);
+ if(saga){const moved=saga();if(!moved?.ok){st.saga=JSON.parse(prior);return fail(moved?.error||'The story did not move.');}}
+ let candidate;try{candidate=snapshot(sim);change(candidate.earthHomecoming);}catch(e){st.saga=JSON.parse(prior);return fail('Finale state refused: '+e.message);}
+ const result=commit(sim,candidate,io,text,ctx);if(!result.ok)st.saga=JSON.parse(prior);return result;
 }
 function commit(sim,candidate,io,text,ctx){
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
  const state=sim.state,room=sim.room,active=ctx?.active,before=JSON.stringify(state);
  candidate.adventure.revision++;candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'earth-homecoming',text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
- let checked,saved;try{checked=validateWorld(candidate);const encoded=JSON.stringify(checked);saved=io?.save?.(checked);if(JSON.stringify(checked)!==encoded)return fail('The writer changed the checked account; nothing was adopted.');}catch(e){return fail('Homecoming save refused: '+e.message);}
- if(!saved?.ok||typeof saved.then==='function')return fail(saved?.error||'The account could not be saved. Your work and fee remain unchanged.');
+ let checked,saved;try{checked=validateWorld(candidate);const encoded=JSON.stringify(checked);saved=io?.save?.(checked);if(JSON.stringify(checked)!==encoded)return fail('The writer changed the checked account; nothing was adopted.');}catch(e){return fail('Finale save refused: '+e.message);}
+ if(!saved?.ok||typeof saved.then==='function')return fail(saved?.error||'The character could not be saved. Your progress is unchanged.');
  if(sim.state!==state||sim.room!==room||JSON.stringify(state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. Reopen the current account before continuing.');
  state.earthHomecoming=checked.earthHomecoming;for(const k of['xp','coins','ore','revision'])state.adventure[k]=checked.adventure[k];
- Object.assign(state.sandbox.inventory,checked.sandbox.inventory);state.journal=checked.journal;state.nextEvent=checked.nextEvent;return{ok:true,text};
+ Object.assign(state.sandbox.inventory,checked.sandbox.inventory);state.journal=checked.journal;state.nextEvent=checked.nextEvent;return yes(text);
 }
-function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.room!==sim.room||runtimeOwners.get(r)!==sim.state){r=sim.earthHomecomingRuntime={room:sim.room};runtimeOwners.set(r,sim.state);}return r;}
-function command(ctx,type,payload,io){
- const sim=ctx?.sim,C=G.RealmCore;
- if(!C||!(sim instanceof C.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||![null,D.room].includes(sim.room)||sim.worldDive||sim.state.adventure.hp<=0)return fail('Reach Oren or the Earth road on dry ground while able to act.');
- if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or account changed. Read the current terms again.');
- let candidate;try{candidate=snapshot(sim);}catch(e){return fail('Homecoming state refused: '+e.message);}
- const q=candidate.earthHomecoming;if(!eligible(candidate))return fail('Bring home the independently completed and paid road, realm and Open Confluence accounts first.');
- if(type==='claim'&&q.claimed)return{ok:true,duplicate:true,text:'Oren has already paid this account once. Your chosen outcome remains.'};
- if(type==='accept'&&q.accepted)return{ok:true,duplicate:true,text:'This homecoming is already accepted; your saved work remains.'};
- let text,reward=null;
- if(type==='accept'){
-  if(!at(sim,D.giver))return fail('Speak to Oren at the workshop before taking this account.');q.accepted=true;text=D.title+' accepted. Bring the checked records to Vessa and Merren, then examine the new claim at the junction.';
- }else if(type==='step'){
-  const s=step(payload.step);if(!q.accepted||q.claimed||!s||s.kind!=='interact')return fail('Only available physical work can be recorded here. The actual encounter must settle the Regent’s local seizure.');
-  if(!at(sim,s))return fail('Reach '+s.name+' by its supported dry approach.');
-  if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This physical action is already recorded.'};
-  if(!allowed(q,s))return fail('Complete the stated earlier work before '+s.name+'.');q.steps.push(s.id);text=s.text;
- }else if(type==='choose'){
-  const s=step('aftermath'),choice=D.choices.find(c=>c.id===payload.choice);if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Return to the quiet claim engine to choose its aftermath.');
-  if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That aftermath is already retained.'}:fail('The recorded aftermath cannot be overwritten.');
-  if(!allowed(q,s))return fail('Repel the local seizure and make the passage safe before choosing.');q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
- }else if(type==='claim'){
-  if(!ready(candidate)||!at(sim,D.claim))return fail('Check the free return road and bring its account physically home to Oren before taking payment.');
-  const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
-  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee: 20 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal. Your completed account remains unpaid.');
-  reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;q.claimed=true;
-  text='Oren paid '+reward.xp+' XP, 20 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal once. '+D.choices.find(c=>c.id===q.choice).name+' remains; the road and ordinary exploration stay open.';
- }else return fail('Unknown homecoming action.');
- const result=commit(sim,candidate,io,text,ctx);if(result.ok&&reward)result.reward=reward;return result;
+function runtime(sim){let r=sim.earthHomecomingRuntime;if(!r||r.state!==sim.state){r=sim.earthHomecomingRuntime={state:sim.state,t0:null,walk:{phase:0,i:0,pause:0},announced:[],arrived:[],ranNoted:false,rise:null,credits:false,creditsDone:false};}return r;}
+
+// the Regent's bodies and the chains as the adventure fights them. a body is the boss table's phase, not a shared hp pool.
+function chainEntity(c){return{id:c.id,chainId:c.id,name:'Chain · '+c.site.label,kind:'sentinel',x:c.site.x,z:c.site.z,hp:c.hp,maxHP:c.hp,damage:0,radius:CHAIN_R,anchored:true,earthHomecoming:D.id,finaleRole:'chain',xp:0,coins:0,ore:0};}
+function regentEntity(ph){const body=FIN().phases()[ph-1];return{id:'regent-of-ash-'+ph,name:D.title,kind:'sentinel',x:D.spring.x,z:D.spring.z,hp:body.hp,maxHP:body.hp,damage:body.damage,radius:REGENT_R,anchored:true,earthHomecoming:D.id,finaleRole:'regent',finalePhase:ph,xp:0,coins:0,ore:0};}
+function enemies(sim){
+ if(!live(sim)||!isSim(sim))return[];
+ const st=sim.state,ph=phaseOf(st),r=runtime(sim),now=st.adventure.elapsed;
+ if(r.t0===null)r.t0=now;
+ const chains=ph===1?planFor(sim).chains.filter(c=>!broken(st).includes(c.id)&&now-r.t0>=c.appearAt).map(chainEntity):[];
+ return[...chains,regentEntity(ph)];
 }
-function enemies(sim){const r=sim?.state?.earthHomecoming,t=D.enemy;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&t.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(t.defeatStep)?[{...t,originX:t.x,originZ:t.z,earthHomecoming:D.id,xp:0,coins:0,ore:0,windup:P['claim-lane'].windup,recovery:P['claim-lane'].recovery,telegraphRadius:0}]:[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');
-function encounter(e){return e?.earthHomecoming===D.id&&e.id===D.enemy.id?D.enemy:null;}
-function owned(sim,e,alive=true){
- const t=encounter(e),r=sim?.state?.earthHomecoming,A=G.RealmAdventure;
- if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!t)return false;
- const actual=A.runtime(sim);
- const ok=(!actorStates.has(e)||actorStates.get(e)===sim.state)&&(!actorSims.has(e)||actorSims.get(e)===sim)&&(!actorRuntimes.has(e)||actorRuntimes.get(e)===actual)&&actual.room===D.room&&sim.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&t.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(t.defeatStep)&&e.originX===t.x&&e.originZ===t.z&&e.x===t.x&&e.z===t.z&&e.kind===t.kind&&e.radius===t.radius&&e.maxHP===t.hp&&e.damage===t.damage&&e.anchored===true&&finite(e.hp)&&(alive?e.hp>0&&e.hp<=t.hp:e.hp===0)&&actual.enemies.includes(e)&&actual.enemies.filter(a=>a.id===t.id).length===1&&G.RealmWorldFoundations.walkable(D.room,e.x,e.z,e.radius);
- if(ok){actorSims.set(e,sim);actorStates.set(e,sim.state);actorRuntimes.set(e,actual);}return !!ok;
+const encounter=e=>!!e&&e.earthHomecoming===D.id&&(e.finaleRole==='regent'||e.finaleRole==='chain');
+function member(sim,e){return isSim(sim)&&live(sim)&&G.RealmAdventure.runtime(sim).enemies.includes(e);}
+// the body that is up in its phase. phase 3 waits for the offer: no strikes and no hits until a choice is made.
+function bodyLive(sim,e){const st=sim.state,ph=phaseOf(st);return e.finaleRole==='regent'&&e.finalePhase===ph&&(ph!==3||offerOf(st)!==null);}
+function canStrike(sim,e){return encounter(e)&&e.finaleRole==='regent'&&!sim?.paused&&sim?.state?.adventure?.hp>0&&e.hp>0&&member(sim,e)&&bodyLive(sim,e);}
+function canDamage(sim,e){
+ if(!encounter(e)||sim?.paused||!(sim?.state?.adventure?.hp>0)||!(e.hp>0)||!member(sim,e))return false;
+ if(e.finaleRole==='chain')return phaseOf(sim.state)===1&&!broken(sim.state).includes(e.chainId);
+ return bodyLive(sim,e)&&phaseOf(sim.state)>=2;
 }
-function canDamage(sim,e){return !sim?.paused&&sim?.state?.adventure?.hp>0&&owned(sim,e);}
-const contactReach=p=>Math.min(p.reach,(p.kind==='annulus'?p.outerRadius:p.length)+.24);
-function pattern(e,sim=actorSims.get(e)){
- const t=encounter(e);if(!t)return null;const band=t.phases.find(p=>e.hp>p.aboveHP)||t.phases.at(-1),cycle=Number.isSafeInteger(e.homecomingCycle)&&e.homecomingCycle>=0?e.homecomingCycle:0;
+function owned(sim,e,alive=true){return alive?canDamage(sim,e):(encounter(e)&&e.hp===0&&member(sim,e)&&(e.finaleRole==='chain'||bodyLive(sim,e)));}
+
+// the strike is the same shape the adventure already reads: a line or a ring, locked while idle and fixed once locked.
+function pattern(e,sim){
+ if(e?.finaleRole!=='regent')return null;const bands=B[e.finalePhase],band=bands.find(b=>e.hp>b.aboveHP)||bands.at(-1),cycle=Number.isSafeInteger(e.homecomingCycle)&&e.homecomingCycle>=0?e.homecomingCycle:0;
  let id=band.order[cycle%band.order.length],p=P[id];const distance=sim?Math.hypot(sim.state.player.x-e.x,sim.state.player.z-e.z):0;
  if(distance>contactReach(p)&&distance<=contactReach(P['false-shelter'])){id='false-shelter';p=P[id];}
- return{...p,id,phase:band.id,windup:p.windup+(id==='claim-lane'&&sim?.state?.earthHomecoming?.steps.includes('supplied-screen') ? .4 : 0)};
+ return{...p,id,phase:band.id};
 }
-/* Full transformed-width support/cover algorithm shared in shape with the
- * installed Cosmos owner, but reads only the actual Earth definition. */
-function clipPoly(poly,key,bound,greater){const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ia=greater?a[key]>=bound:a[key]<=bound,ib=greater?b[key]>=bound:b[key]<=bound;if(ia)out.push(a);if(ia!==ib){const t=(bound-a[key])/(b[key]-a[key]);out.push({x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t});}}return out;}
-function area(poly){let n=0;for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length];n+=a.x*b.z-b.x*a.z;}return Math.abs(n)/2;}
-function cells(bounds,patches,uncovered){
- const relevant=patches.filter(p=>p.x+p.w/2>=bounds.minX&&p.x-p.w/2<=bounds.maxX&&p.z+p.d/2>=bounds.minZ&&p.z-p.d/2<=bounds.maxZ),xs=[bounds.minX,bounds.maxX],zs=[bounds.minZ,bounds.maxZ];
- for(const p of relevant){for(const x of[p.x-p.w/2,p.x+p.w/2])if(x>bounds.minX&&x<bounds.maxX)xs.push(x);for(const z of[p.z-p.d/2,p.z+p.d/2])if(z>bounds.minZ&&z<bounds.maxZ)zs.push(z);}xs.sort((a,b)=>a-b);zs.sort((a,b)=>a-b);
- for(let i=1;i<xs.length;i++)for(let j=1;j<zs.length;j++){if(xs[i]-xs[i-1]<1e-10||zs[j]-zs[j-1]<1e-10)continue;const x=(xs[i]+xs[i-1])/2,z=(zs[j]+zs[j-1])/2;if(relevant.some(p=>Math.abs(x-p.x)<=p.w/2&&Math.abs(z-p.z)<=p.d/2))continue;if(uncovered(xs[i-1],xs[i],zs[j-1],zs[j]))return false;}return true;
-}
-function covered(poly,patches){return cells({minX:Math.min(...poly.map(p=>p.x)),maxX:Math.max(...poly.map(p=>p.x)),minZ:Math.min(...poly.map(p=>p.z)),maxZ:Math.max(...poly.map(p=>p.z))},patches,(x0,x1,z0,z1)=>{let q=clipPoly(poly,'x',x0,true);q=clipPoly(q,'x',x1,false);q=clipPoly(q,'z',z0,true);q=clipPoly(q,'z',z1,false);return area(q)>1e-10;});}
-function clippedLine(sim,s){
- const world=G.RealmWorldFoundations.definition(D.room);if(!world?.patches||!world.solids)return 0;const sin=Math.sin(s.yaw),cos=Math.cos(s.yaw),margin=.24;let length=s.length;
- for(const p of world.solids){let poly=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>{const x=p.x+a*(p.w/2+margin)-s.x,z=p.z+b*(p.d/2+margin)-s.z;return{x:x*cos-z*sin,z:x*sin+z*cos};});poly=clipPoly(poly,'x',-s.halfWidth,true);poly=clipPoly(poly,'x',s.halfWidth,false);poly=clipPoly(poly,'z',0,true);if(poly.length)length=Math.min(length,Math.max(0,Math.min(...poly.map(p=>p.z))-.005));}
- const supported=n=>covered([[-s.halfWidth-margin,-margin],[s.halfWidth+margin,-margin],[s.halfWidth+margin,n+margin],[-s.halfWidth-margin,n+margin]].map(([side,forward])=>({x:s.x+cos*side+sin*forward,z:s.z-sin*side+cos*forward})),world.patches);
- if(length<=0||!supported(Math.min(length,1e-6)))return 0;if(!supported(length)){let lo=0,hi=length;for(let i=0;i<25;i++){const mid=(lo+hi)/2;if(supported(mid))lo=mid;else hi=mid;}length=Math.max(0,lo-.005);}return length;
-}
-function ringSupported(sim,s){const world=G.RealmWorldFoundations.definition(D.room),r=s.outerRadius+.24;if(!world?.patches)return false;return cells({minX:s.x-r,maxX:s.x+r,minZ:s.z-r,maxZ:s.z+r},world.patches,(x0,x1,z0,z1)=>Math.hypot(Math.max(x0-s.x,0,s.x-x1),Math.max(z0-s.z,0,s.z-z1))<r-1e-8);}
 function lock(sim,e){
- if(!canDamage(sim,e)||!['idle','alert'].includes(e.mode)||![sim.state.player.x,sim.state.player.z].every(finite))return false;
- const p=pattern(e,sim),distance=Math.hypot(sim.state.player.x-e.x,sim.state.player.z-e.z);if(distance>contactReach(p)||!G.RealmWorldFoundations.segment(D.room,e,sim.state.player,.04))return false;
+ if(!canStrike(sim,e)||!['idle','alert'].includes(e.mode)||![sim.state.player.x,sim.state.player.z].every(finite))return false;
+ const p=pattern(e,sim),distance=Math.hypot(sim.state.player.x-e.x,sim.state.player.z-e.z);
+ if(distance>contactReach(p)||!G.RealmCore.segment(e,sim.state.player,sim.navRoom))return false;
  const yaw=Math.atan2(sim.state.player.x-e.x,sim.state.player.z-e.z),frame={kind:p.kind,x:e.x,z:e.z,yaw,pattern:p.id,phase:p.phase};
- if(p.kind==='line'){frame.halfWidth=p.halfWidth;frame.length=clippedLine(sim,{...frame,length:p.length});if(frame.length<=0)return false;}
- else{frame.innerRadius=p.innerRadius;frame.outerRadius=p.outerRadius;if(!ringSupported(sim,frame))return false;}
+ if(p.kind==='line'){frame.halfWidth=p.halfWidth;frame.length=p.length;}else{frame.innerRadius=p.innerRadius;frame.outerRadius=p.outerRadius;}
  e.yaw=yaw;e.windup=p.windup;e.recovery=p.recovery;e.homecomingCycle=(Number.isSafeInteger(e.homecomingCycle)?e.homecomingCycle:0)+1;e.strike=Object.freeze(frame);locks.set(e,{sim,state:sim.state,frame:e.strike});return e.strike;
 }
+// an answered offer of invulnerability is a gift: the Regent still strikes, and nothing lands.
 function strikeContains(e,p){
- const entry=locks.get(e),s=e?.strike;if(!entry||entry.frame!==s||entry.state!==entry.sim.state||!owned(entry.sim,e)||![p?.x,p?.z].every(finite))return false;
- const W=G.RealmWorldFoundations;if(!W.walkable(D.room,p.x,p.z,.31)||!W.segment(D.room,s,p,.04))return false;
+ const entry=locks.get(e),s=e?.strike;if(!entry||entry.frame!==s||entry.state!==entry.sim.state||!canStrike(entry.sim,e)||![p?.x,p?.z].every(finite))return false;
+ if(offerOf(entry.sim.state)==='taken')return false;
  const dx=p.x-s.x,dz=p.z-s.z,margin=.24,distance=Math.hypot(dx,dz);
  if(s.kind==='annulus')return distance>=Math.max(0,s.innerRadius-margin)&&distance<=s.outerRadius+margin;
- if(s.kind==='line'){const forward=dx*Math.sin(s.yaw)+dz*Math.cos(s.yaw),side=dx*Math.cos(s.yaw)-dz*Math.sin(s.yaw);return s.length>0&&Math.hypot(Math.max(0,Math.abs(side)-s.halfWidth),Math.max(0,-forward,forward-s.length))<=margin;}return false;
+ if(s.kind==='line'){const forward=dx*Math.sin(s.yaw)+dz*Math.cos(s.yaw),side=dx*Math.cos(s.yaw)-dz*Math.sin(s.yaw);return s.length>0&&Math.hypot(Math.max(0,Math.abs(side)-s.halfWidth),Math.max(0,-forward,forward-s.length))<=margin;}
+ return false;
 }
+
+function begin(sim,io){return persist(sim,io,null,FIN().text('begin'),()=>SG().finalePhase(sim,1),rec=>{rec.finale={broken:[],offer:null};});}
+function breakChain(sim,io,id,text,ctx){
+ const st=sim.state;if(!live(sim)||phaseOf(st)!==1||broken(st).includes(id)||!planFor(sim).chains.some(c=>c.id===id))return fail('That chain is already broken.');
+ const rest=planFor(sim).chains.every(c=>c.id===id||broken(st).includes(c.id));
+ return persist(sim,io,ctx,text,rest?()=>SG().finalePhase(sim,2):null,rec=>{rec.finale.broken=[...rec.finale.broken,id];});
+}
+function chooseOffer(sim,io,ctx,choice){
+ if(phaseOf(sim.state)!==3||offerOf(sim.state)!==null)return fail(FIN().text('noOffer'));
+ return persist(sim,io,ctx,FIN().text(choice==='take'?'taken':'refused'),null,rec=>{rec.finale.offer=choice==='take'?'taken':'refused';});
+}
+function finish(sim,io){const result=persist(sim,io,null,FIN().text('won'),()=>SG().finaleWon(sim),()=>{});if(result.ok)runtime(sim).rise={t:0};return result;}
+
 function defeat(sim,e){
- if(sim?.paused||sim?.state?.adventure?.hp<=0||!owned(sim,e,false))return false;
- let candidate;try{candidate=snapshot(sim);candidate.earthHomecoming.steps.push(D.enemy.defeatStep);}catch(error){e.hp=1;G.RealmAdventure.notify(sim,'Homecoming account refused: '+error.message);return false;}
- const result=commit(sim,candidate,{save:sim.earthHomecomingSave},step(D.enemy.defeatStep).text);if(!result.ok){e.hp=1;G.RealmAdventure.notify(sim,result.error);return false;}locks.delete(e);return true;
+ if(!encounter(e)||!owned(sim,e,false))return false;
+ const io={save:sim.earthHomecomingSave};
+ if(e.finaleRole==='chain')return breakChain(sim,io,e.chainId,FIN().text('playerBreak'),null).ok;
+ const ph=phaseOf(sim.state);
+ if(ph===2){const result=persist(sim,io,null,FIN().text('down'),()=>SG().finalePhase(sim,3),rec=>{rec.finale.offer=null;});if(result.ok)runtime(sim).walk={phase:3,i:0,pause:0};return result.ok;}
+ if(ph===3)return finish(sim,io).ok;
+ return false;
 }
-const api={definition:D,patterns:P,fresh,validate,validateWorld,snapshot,missing,eligible,evidence,required,available,ready,at,command,runtime,enemies,signature,encounter,owned,canDamage,pattern,lock,strikeContains,defeat};
+
+// the allies' clock: chain announcements and arrivals happen once per run of the phase.
+function scheduleChains(sim,r,io){
+ const st=sim.state,A=G.RealmAdventure,p=planFor(sim),now=st.adventure.elapsed;
+ if(r.t0===null)r.t0=now;const el=now-r.t0;
+ for(const c of p.chains)if(!r.announced.includes(c.id)&&el>=c.appearAt){r.announced.push(c.id);if(!broken(st).includes(c.id))A.notify(sim,FIN().text('chainPrefix')+c.line);}
+ for(const a of p.allies)if(!r.arrived.includes(a.id)&&el>=a.arriveAt){r.arrived.push(a.id);A.notify(sim,a.ally+FIN().text('allyArrivePrefix')+a.line);if(a.breaks&&!broken(sim.state).includes(a.breaks))breakChain(sim,io,a.breaks,a.ally+FIN().text('allyBreakSuffix'),null);}
+ if(phaseOf(sim.state)===2&&!r.ranNoted){r.ranNoted=true;A.notify(sim,FIN().text('runs'));}
+}
+// the second body runs the merged valley on the route; it stops at each turn, and strikes when the adventure locks a line.
+function walkRegent(sim,r,dt){
+ const A=G.RealmAdventure,e=A.runtime(sim).enemies.find(x=>x.finaleRole==='regent'&&x.finalePhase===2);
+ if(!e||!(e.hp>0)||e.mode!=='idle')return;
+ const w=r.walk,t=FIN().timing(),route=FIN().route();if(w.pause>0){w.pause-=dt;return;}
+ const goal=route[w.i%route.length],dx=goal.x-e.x,dz=goal.z-e.z,d=Math.hypot(dx,dz);
+ if(d<.25){w.i++;w.pause=t.pause;return;}
+ const step=Math.min(d,t.speed*dt),nx=e.x+dx/d*step,nz=e.z+dz/d*step;
+ if(!G.RealmCore.walkable(nx,nz,sim.navRoom,REGENT_R)){w.i++;return;}
+ e.x=nx;e.z=nz;
+}
+
+function tick(sim,dt){
+ if(!isSim(sim)||!(dt>0)||!sim.state.adventure?.started||sim.paused||sim.room!==null||sim.worldDive)return;
+ const st=sim.state,r=runtime(sim),ph=phaseOf(st),io={save:sim.earthHomecomingSave},A=G.RealmAdventure,t=FIN().timing();
+ if(ph===0){if(!st.saga.credits&&st.adventure.hp>0&&near(sim,t.startRange)&&SG().allowed(st,'finale')&&begin(sim,io).ok)A.notify(sim,FIN().text('begin'));return;}
+ if(r.walk.phase!==ph)r.walk={phase:ph,i:0,pause:0};
+ if(ph===1)scheduleChains(sim,r,io);
+ if(ph===2)walkRegent(sim,r,dt);
+ if(st.saga.finale.won&&!st.saga.credits){if(!r.rise)r.rise={t:0};r.rise.t+=dt;if(r.rise.t>=t.riseSeconds&&!r.credits&&persist(sim,io,null,FIN().text('credits'),()=>SG().rollCredits(sim),()=>{}).ok)r.credits=true;}
+}
+
+// the one player command: the offer. it is only answered at the spring, and only once, and both answers are saved.
+function command(ctx,type,payload,io){
+ const sim=ctx?.sim;
+ if(!isSim(sim)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==null||sim.worldDive||!(sim.state.adventure.hp>0))return fail('Stand at the spring junction while able to act.');
+ if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or account changed. Read the current terms again.');
+ if(type!=='offer')return fail('Unknown finale action.');
+ if(!near(sim,FIN().timing().offerRange))return fail('Go to the spring junction first.');
+ if(!['refuse','take'].includes(payload.choice))return fail('Unknown answer.');
+ return chooseOffer(sim,io||{save:sim.earthHomecomingSave},ctx,payload.choice);
+}
+
+// the camera rise for the last hit: the presentation reads this and never writes to the story.
+const ease=k=>k*k*(3-2*k);
+function view(sim){const r=sim?.earthHomecomingRuntime;if(!r?.rise||r.creditsDone)return null;const t=FIN().timing(),k=ease(Math.min(1,r.rise.t/t.riseSeconds));return{elevation:.28+(1.05-.28)*k,distance:7.5+(46-7.5)*k,center:[0,1,0]};}
+
+const api={definition:D,patterns:P,bands:B,fresh,validate,validateWorld,snapshot,
+ eligible:state=>!!state?.earthHomecoming?.accepted||SG().allowed(state,'finale'),
+ missing:state=>SG().BEATS.filter(b=>b.act<5&&!SG().done(state,b.id)).map(b=>b.id),
+ ready:state=>SG().done(state,'nearshore'),
+ encounter,enemies,signature,pattern,lock,strikeContains,canStrike,canDamage,owned,defeat,command,tick,runtime,view,plan:planFor,begin};
 G.RealmEarthHomecoming=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Authored homecoming projection. Reading, routes and previews create no deeds. */
+</script><script>/* The finale's panel. Reading the page performs no work. The offer is the only button that changes the story; it goes
+ * through the same character command as every other action, bound to the revision the page was drawn for. */
 (function(G){'use strict';
-const H=()=>G.RealmEarthHomecoming,D=()=>H().definition,PREFIX='earth-homecoming-',TAB='earth-homecoming';
+const H=()=>G.RealmEarthHomecoming,D=()=>H().definition,FIN=()=>G.RealmFinale,TAB='earth-homecoming',PREFIX='earth-homecoming-';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
-const foreign=(label,type,id='')=>'<button data-rpg="'+type+'" data-id="'+esc(id)+'">'+esc(label)+'</button>';
-const record=s=>s.state.earthHomecoming||H().fresh(),step=id=>D().steps.find(p=>p.id===id),world=id=>G.RealmWorldFoundations.definition(id);
-function fee(){const r=D().reward;return'Up to '+r.xp+' XP within your stored cap, '+r.coins+' sunmarks, '+r.ore+' ore'+Object.entries(r.materials).map(([k,n])=>', '+n+' '+({wood:'timber',fiber:'fibre',crystal:'crystal'}[k]||k)).join('');}
-function signals(){const p=H().patterns,b=p['claim-lane'],n=p['false-shelter'],r=p['closing-ring'];return'<dl class="earth-homecoming-signals"><dt>Broad claim lane</dt><dd>'+b.length+' paces long, '+(b.halfWidth*2)+' wide · '+b.windup+' seconds of warning, then '+b.recovery+' seconds of recovery. The supplied screen adds 0.4 seconds to this warning.</dd><dt>Narrow false shelter</dt><dd>Up to '+n.length+' paces long, '+(n.halfWidth*2)+' wide · '+n.windup+' seconds of warning, then '+n.recovery+' seconds of recovery. A distant target receives this fixed long signal.</dd><dt>Closing ring</dt><dd>In the last part of the fight, the ring reaches '+r.outerRadius+' paces; its inner '+r.innerRadius+' paces stay quiet · '+r.windup+' seconds of warning, then '+r.recovery+' seconds of recovery.</dd></dl><p>The marked aim stays fixed. Step aside or into the quiet center, use Brace, or withdraw beyond his reach. Each strike lands once; the Regent remains damageable throughout his live phases.</p>';}
-function prerequisites(state){
- const campaign=(owner,realm)=>({title:owner.definition.title,place:owner.definition.giver.name+' · '+world(realm).name,realm});
- const rows={'oren-kit':{title:'Expedition supplies',place:'Oren · Firstlight workshop'},'first-envoy-gift':{title:'The envoy’s gift',place:'The envoy · Firstlight spring'},'sunward-return':{title:'Bring the light home',place:'Sunward Beacon, then the envoy at Firstlight spring'},'bellweather-thanks':{title:'Bring the sound home',place:'Rowan · Bellweather square'},'fenna-paid':{title:'Road After Rain',place:'Fenna · Hearthwater mill-road fork and west-road delivery'},'living-road-paid':campaign(G.RealmEarthExpedition,'earthlands'),'coastward-work-paid':{title:world('earthlands').quest.title,place:'Merren · Coastward field register',realm:'earthlands'},'hell-local-paid':campaign(G.RealmHellCampaign,'hell'),'heaven-local-paid':campaign(G.RealmHeavenCampaign,'heaven'),'atlantis-local-paid':campaign(G.RealmAtlantisCampaign,'atlantis'),'cosmos-comparator-paid':{title:G.RealmTrails.definition('cosmos-split-bearing-v1').title,place:'Teren · Three Lamps station',realm:'cosmos'},'cosmos-confluence-paid':campaign(G.RealmCosmosCampaign,'cosmos')};
- return H().missing(state).map(id=>({id,...rows[id]}));
+const phase=sim=>sim.state.saga?.finale?.phase??0;
+const activeFinale=sim=>phase(sim)>=1&&phase(sim)<=3&&!sim.state.saga.finale.won&&!sim.state.saga.credits;
+const offerPending=sim=>phase(sim)===3&&(sim.state.earthHomecoming?.finale?.offer??null)===null&&!sim.state.saga.finale.won;
+const nearSpring=sim=>Math.hypot(sim.state.player.x-D().spring.x,sim.state.player.z-D().spring.z)<=FIN().timing().offerRange;
+// the credits: the shell's own roll when it exists, otherwise a plain overlay that reads the same table.
+function showCredits(onDone){
+ const E=G.RealmEpilogueData;if(G.RealmCredits?.show){G.RealmCredits.show(E.CREDITS,{onDone});return;}
+ const doc=G.document;if(!doc){onDone?.();return;}
+ const box=doc.createElement('section');box.id='finale-credits';box.setAttribute('aria-label','Credits');
+ box.style.cssText='position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#111513f2;color:#f1e7cf;overflow:auto;padding:24px;text-align:center';
+ box.innerHTML=E.CREDITS.map(s=>'<h2>'+esc(s.title)+'</h2>'+s.lines.map(l=>'<p>'+esc(l)+'</p>').join('')).join('')+button('Keep exploring','credits-done','','id="finale-credits-done"');
+ doc.body.appendChild(box);
+ box.querySelector('#finale-credits-done').onclick=()=>{box.remove();onDone?.();};
 }
-function priorChoices(state){
- const a=state.adventure||{},out=[],add=(done,title,value)=>{if(done&&value)out.push({title,value});};
- add(a.earthStory?.claimed,'Fenna’s delivery',G.RealmEarthStory.ROUTES.find(c=>c.id===a.earthStory.dispatch)?.name);
- add(state.earthExpedition?.story?.claimed,G.RealmEarthExpedition.definition.title,G.RealmEarthExpedition.definition.steps.find(p=>p.id==='prepare-allocation').choices.find(c=>c.id===state.earthExpedition.story.branch)?.name);
- for(const[owner,field]of[[G.RealmHellCampaign,'hellCampaign'],[G.RealmHeavenCampaign,'heavenCampaign'],[G.RealmAtlantisCampaign,'atlantisCampaign'],[G.RealmCosmosCampaign,'cosmosCampaign']]){const r=state[field];add(r?.claimed,owner.definition.title,owner.definition.choices.find(c=>c.id===r.choice)?.name);}
- const at=state.atlantisCampaign;if(at?.claimed&&at.approach)add(true,'Bellglass approach',G.RealmAtlantisCampaign.definition.approaches.find(c=>c.id===at.approach)?.name);return out;
-}
-function currentGate(sim){if(sim.worldDive)return null;if(sim.room===null)return{id:'road-gate',name:'Firstlight’s five-light marker',room:null,...G.RealmWorldFoundations.GATE,kind:'travel'};const d=world(sim.room),p=d?.points.find(v=>v.kind==='return');return p?{...p,id:'road-gate',room:sim.room,kind:'travel',name:p.name+' · '+d.name}:null;}
-function goal(sim){const r=record(sim);return!r.accepted?D().giver:H().ready(sim.state)?{...D().claim,id:'claim',name:'Oren · complete account, unpaid'}:H().available(sim.state).find(p=>!p.optional)||H().available(sim.state)[0]||null;}
-function routePoints(sim){const r=record(sim);if(r.claimed||sim.worldDive)return[];const next=goal(sim);if(!next)return[];let points;
- if(sim.room!==next.room){const gate=currentGate(sim);points=gate?[{...gate,targetRoom:next.room}]:[];}
- else if(!r.accepted)points=[{...D().giver,id:'giver',name:'Oren · read the homecoming'}];
- else if(H().ready(sim.state))points=[{...D().claim,id:'claim',name:'Oren · claim the completed account'}];
- else points=H().available(sim.state).filter(p=>p.room===sim.room);
- return points.map((p,i)=>({...p,earthHomecoming:true,mark:'R'+(i+1)}));
-}
-function approach(sim,p){if(!p||p.room!==sim.room||sim.worldDive)return null;const C=G.RealmCore;
- for(const[dx,dz]of[[0,1.7],[1.7,0],[-1.7,0],[0,-1.7],[0,0]]){const q={x:p.x+dx,z:p.z+dz};if(C.walkable(q.x,q.z,sim.navRoom,.31)&&C.segment(q,p,sim.navRoom,.035))return q;}return null;
-}
-function legend(sim){const points=routePoints(sim);return points.length?'<section class="earth-homecoming-map"><h3>The road home</h3><p>R marks show available physical work or the real travel marker. Walking does not perform the action. The free return remains open.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> '+esc(p.name)+(p.optional?' · optional preparation':'')+' '+button('Walk near this place','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the homecoming','open')+'</section>':'';}
-function recognition(sim,id){const r=record(sim);if(!r.accepted)return[];const d=D(),at=id==='oren'?d.giver:{...world('earthlands').points.find(p=>p.id===id),room:d.room};if(!at||!H().at(sim,at))return[];
- if(id==='merren'&&r.steps.includes('register-record'))return[{name:'Merren',text:r.steps.includes('passage-secured')?'The passage is safe. Keep its account beside the evening load; each has its own work behind it.':'We have the checked records beside the new order now. Follow its cables before believing what it calls a debt.'}];
- if(id==='vessa'&&r.steps.includes('return-verified'))return[{name:'Vessa',text:r.choice==='public-watch'?'The bridge is free in both directions. I have named your public watch beside the checked return record.':'The bridge is free in both directions. I have named the core’s reviewed custody beside the checked return record.'}];
- if(id==='oren'&&r.steps.includes('home-return'))return[{name:'Oren',text:r.claimed?'I have paid the account once. Leave its small record by the bench; there is ordinary work waiting whenever you want it.':'There you are. The account is on the bench, and the declared payment is waiting when you choose to take it.'}];return[];
-}
-function travel(sim,next){if(!next||sim.room===next.room)return'';const gate=currentGate(sim);let html='<section class="earth-homecoming-travel"><h3>'+esc(next.room===null?'Take the free road home':'Reach the Coastward road')+'</h3><p>'+esc(next.room===null?'The next action is with Oren at Firstlight’s workshop. Returning alone does not record your home arrival.':'The next action is on Earth’s Coastward Road. Its arrival is at the supported bridge approach; continue to the named action after crossing.')+'</p>';
- if(gate)html+=button('Walk to '+gate.name,'walk','road-gate');else html+='<p>Leave this area by its ordinary exit to reach the Roads of Light.</p>';
-  if(next.room===D().room)html+=foreign('Read Earth crossing and arrival','world-select','earthlands');else if(world(sim.room))html+=foreign('Return to Firstlight now · free','world-return');return html+'</section>';}
 class EarthHomecomingUI{
- constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
+ constructor(rpg){this.rpg=rpg;this.binding=null;this.opened=false;this.creditsShown=false;}
  get sim(){return this.rpg.sim;}
- reset(){this.pending=null;this.binding=null;}
- owner(){const s=this.sim,c=this.rpg.api.worldContext();return{sim:s,state:s.state,contextSim:c.sim,active:c.active,rosterRevision:c.revision,revision:s.state.adventure.revision,room:s.room,x:s.state.player.x,z:s.state.player.z};}
- same(b){if(!b)return false;const c=this.owner();return c.contextSim===c.sim&&b.sim===c.sim&&b.state===c.state&&b.contextSim===c.contextSim&&b.active===c.active&&b.rosterRevision===c.rosterRevision&&b.revision===c.revision&&b.room===c.room&&Math.hypot(b.x-c.x,b.z-c.z)<.01;}
- bound(el){return this.binding&&el.dataset.binding===String(this.binding.id)&&Number(el.dataset.revision)===this.binding.revision&&this.same(this.binding);}
-  point(){if(this.rpg.quest!==TAB&&this.rpg.tab!==TAB)return null;const r=record(this.sim);if(!r.accepted&&!H().eligible(this.sim.state))return null;let ps=routePoints(this.sim).filter(p=>p.kind!=='travel');if(r.claimed)ps=[D().giver,{...world('earthlands').points.find(p=>p.id==='vessa'),room:D().room}];return ps.filter(p=>H().at(this.sim,p)).sort((a,b)=>Math.hypot(a.x-this.sim.state.player.x,a.z-this.sim.state.player.z)-Math.hypot(b.x-this.sim.state.player.x,b.z-this.sim.state.player.z))[0]||null;}
+ reset(){this.binding=null;}
+ owner(){const s=this.sim,c=this.rpg.api.worldContext();return{sim:s,state:s.state,active:c.active,revision:s.state.adventure.revision,room:s.room};}
+ same(b){if(!b)return false;const c=this.owner();return b.sim===c.sim&&b.state===c.state&&b.active===c.active&&b.revision===c.revision&&b.room===c.room;}
+ // a Regent in reach is the only interaction; the route and the walk are not part of the finale any more.
+ point(){return this.sim&&activeFinale(this.sim)&&nearSpring(this.sim)?{x:D().spring.x,z:D().spring.z,name:D().title}:null;}
  context(){const p=this.point();return p?'E · '+p.name:null;}
  interact(){if(!this.point())return false;this.open();return true;}
- open(){this.pending=null;this.rpg.open(TAB);}
- action(el){const action=el.dataset.rpg;if(!action?.startsWith(PREFIX))return false;const type=action.slice(PREFIX.length),id=el.dataset.id,s=this.sim;
-  if(type==='open'){this.open();return true;}if(type==='cancel'){this.pending=null;this.rpg.paint();return true;}
-  if(type==='track'){const r=record(s);if(r.accepted&&!r.claimed)this.rpg.quest=TAB;this.rpg.paint();return true;}
-  if(type==='walk'){const p=routePoints(s).find(v=>v.id===id),near=approach(s,p);if(!near){this.rpg.api.toast('Read the current route from your present place. A Walk link cannot cross realms.');return true;}this.pending=null;this.rpg.close();this.rpg.api.walkLocal(near.x,near.z);return true;}
-  if(!['accept','step','review','confirm','claim'].includes(type))return true;
-  if(!this.bound(el)){this.pending=null;this.rpg.api.toast('The traveller or physical checkpoint changed. Read the current action again.');this.rpg.paint();return true;}
-  const r=record(s);
-  if(type==='review'){const c=D().choices.find(v=>v.id===id);if(!c||!H().available(s.state).some(v=>v.id==='aftermath')||!H().at(s,step('aftermath')))return true;this.pending={...this.owner(),choice:id};this.rpg.paint();return true;}
-  const payload={quest:D().id,expectedActive:this.binding.active,expectedRevision:this.binding.revision};let command=type;
-  if(type==='accept'&&(!H().eligible(s.state)||r.accepted||!H().at(s,D().giver)))return true;
-  if(type==='step'){const p=step(id);if(!p||p.kind!=='interact'||!H().available(s.state).some(v=>v.id===id)||!H().at(s,p))return true;payload.step=id;}
-  if(type==='confirm'){if(!this.same(this.pending)||this.pending.choice!==id||!H().at(s,step('aftermath'))){this.pending=null;this.rpg.api.toast('That preview no longer belongs to this traveller and place. Read the terms again.');this.rpg.paint();return true;}command='choose';payload.choice=id;}
-  if(type==='claim'&&(!H().ready(s.state)||r.claimed||!H().at(s,D().claim)))return true;
-  const result=this.rpg.api.earthHomecomingCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest=TAB;
-  if(result.ok&&type==='step'&&id==='challenge-regent')this.rpg.close();else this.rpg.paint();return true;
+ open(){this.rpg.open(TAB);}
+ action(el){
+  const action=el.dataset.rpg;if(!action?.startsWith(PREFIX))return false;const type=action.slice(PREFIX.length),id=el.dataset.id,s=this.sim;
+  if(type==='open'){this.open();return true;}
+  if(type==='credits-done')return true;
+  if(type!=='offer')return true;
+  if(!this.same(this.binding)||!offerPending(s)||!nearSpring(s)){this.binding=null;this.rpg.api.toast('The Regent is not waiting on an answer here. Read the page again.');this.rpg.paint();return true;}
+  const result=this.rpg.api.earthHomecomingCommand('offer',{quest:D().id,expectedActive:this.binding.active,expectedRevision:this.binding.revision,choice:id});
+  this.binding=null;this.rpg.api.toast(result.text||result.error);this.rpg.paint();return true;
  }
- journal(){const r=record(this.sim),status=r.claimed?'Claimed once':!r.accepted?'Waiting with Oren':H().ready(this.sim.state)?'Account complete · unpaid':'Homecoming accepted';return'<section class="earth-homecoming-invitation"><h3>'+esc(D().title)+'</h3><p>'+esc(status)+'</p><p>Checked records, a junction that can refuse a claim, and the free road home. '+esc(fee())+'.</p>'+button('Read the road, danger and payment','open')+(r.accepted&&!r.claimed?button('Track the road home','track'):'')+'</section>';}
+ // the journal's later-requests list shows the finale's state beside the other campaigns.
+ journal(){const s=this.sim,ph=phase(s),status=s.state.saga.finale.won?'Won · the roads stay open':ph>=1?'Under way · the spring junction':G.RealmSaga.allowed(s.state,'finale')?'Waiting at the spring junction':'Later · after the nearshore';return'<section class="earth-homecoming-invitation"><h3>'+esc(D().title)+'</h3><p>'+esc(status)+'</p>'+button('Read the finale','open')+'</section>';}
  invitation(){return this.journal();}
- page(tab){if(tab!==TAB)return null;return this.panel();}
- panel(){const s=this.sim,r=record(s),d=D();this.binding={...this.owner(),id:++this.serial};const attrs='data-binding="'+this.binding.id+'" data-revision="'+this.binding.revision+'"',act=(label,type,id='')=>button(label,type,id,attrs);
-  let html='<article class="earth-homecoming"><header><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="earth-homecoming-terms"><h3>The local task and payment</h3><p>Disconnect the two portable relays, repel the Regent from this junction, and secure the independent passage before choosing its aftermath. His wider network survives this local failure.</p><p>'+esc(d.rewardTerms)+'</p><p><strong>Read his signals:</strong> '+esc(d.danger)+'</p>'+signals()+'</section><section><h3>The road out and back</h3><ol class="earth-homecoming-spine"><li>Oren’s workshop · accept the account.</li><li>Coastward bridge and Merren’s register · compare the returned records.</li><li>Field junction · isolate both relays, face the Regent and make the passage safe.</li><li>Vessa’s bridge · check the free road, then bring the account to Oren and claim separately.</li></ol></section>';
-  const missing=prerequisites(s.state);if(missing.length)html+='<section class="earth-homecoming-missing"><h3>Finish these accounts before accepting</h3><p>Completed work needs its separate claim. No particular past choice, soul technique, class, weapon or companion command is required.</p><ul>'+missing.map(p=>'<li><strong>'+esc(p.title)+'</strong><p>'+esc(p.place)+'</p>'+(p.realm?foreign('Read travel to '+world(p.realm).name,'world-select',p.realm):'')+'</li>').join('')+'</ul></section>';
-  if(!r.accepted){html+='<section><h3>Begin at the workshop</h3><p>The return account is offered by Oren. It needs your separate acceptance.</p>'+(!missing.length&&H().at(s,d.giver)?act('Accept the homecoming and declared payment','accept'):s.room===null?button('Walk to Oren','walk','giver'):'')+'</section>'+travel(s,d.giver);}
-  else if(r.claimed)html+='<section class="earth-homecoming-recorded"><h3>The account is home</h3><p>'+esc(d.completionText)+'</p></section>';
-  else{const ids=new Set(H().available(s.state).map(p=>p.id));html+='<section><h3>Your next physical work</h3><ol class="earth-homecoming-steps">'+d.steps.map(p=>{const done=r.steps.includes(p.id),next=ids.has(p.id);let controls='';if(next&&s.room===p.room){if(!H().at(s,p))controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Close this workspace, select the Regent with Tab or click, then use your owned blade or bow. Step aside, use the quiet center or Brace (3) through his locked signal.</p>';else if(p.kind==='choice')controls=d.choices.map(c=>act('Preview '+c.name,'review',c.id)).join('');else controls=act(p.name,'step',p.id);}return'<li data-earth-homecoming-step="'+esc(p.id)+'" class="'+(done?'earth-homecoming-done':next?'earth-homecoming-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional preparation':'')+'</h4><p>'+esc(p.text)+'</p>'+controls+'</li>';}).join('')+'</ol></section>'+travel(s,goal(s));
-   if(H().ready(s.state))html+='<section class="earth-homecoming-payment"><h3>Account complete · payment unclaimed</h3><p>'+esc(fee())+'. A full pouch or refused save leaves the completed account waiting.</p>'+(H().at(s,d.claim)?act('Claim Oren’s whole payment once','claim'):s.room===null?button('Walk to Oren’s bench','walk','claim'):'')+'</section>';html+=button('Track the road home','track');}
-  const prior=priorChoices(s.state);if(prior.length)html+='<section><h3>The choices you brought back</h3><p>These earlier accounts keep their own named arrangements.</p><dl class="earth-homecoming-prior">'+prior.map(p=>'<dt>'+esc(p.title)+'</dt><dd>'+esc(p.value)+'</dd>').join('')+'</dl></section>';
-  html+='<section><h3>Choose what this junction keeps</h3><p>Both aftermaths keep the passage free and offer the same payment. Choose only after it is safe.</p><div class="earth-homecoming-aftermaths">'+d.choices.map(c=>'<section'+(r.choice===c.id?' class="earth-homecoming-chosen"':'')+'><h4>'+esc(c.name)+(r.choice===c.id?' · retained':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></section>').join('')+'</div></section>';
-  const voices=['oren','vessa','merren'].flatMap(id=>recognition(s,id));if(voices.length)html+='<section class="earth-homecoming-recognition"><h3>Here, beside the returned account</h3>'+voices.map(v=>'<p><strong>'+esc(v.name)+':</strong> “'+esc(v.text)+'”</p>').join('')+'</section>';
-  if(this.pending){const c=d.choices.find(v=>v.id===this.pending.choice);html+='<section class="earth-homecoming-confirm" aria-label="Confirm the junction aftermath"><h3>'+esc(c.name)+'</h3><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p><p>This retains one aftermath for this junction. Your earlier choices, free return and declared payment remain.</p>'+(this.same(this.pending)?act('Confirm '+c.name,'confirm',c.id):'<p>The traveller or checkpoint changed. Cancel and read the terms again.</p>')+button('Cancel · leave the aftermath undecided','cancel')+'</section>';}
-  return{title:d.title,html:html+'<p class="earth-homecoming-footer">Reading, routes and walking perform no work. V switches views; R resets the current view. Accepted actions and the chosen local aftermath remain through reload.</p></article>'};
+ routePoints(){return[];}
+ legend(){return'';}
+ page(tab){return tab===TAB?this.panel():null;}
+ panel(){
+  const s=this.sim,d=D(),ph=phase(s),echo=G.RealmSaga.echoLedger(s.state),plan=H().plan(s),brokenIds=s.state.earthHomecoming?.finale?.broken||[];
+  this.binding={...this.owner()};const attrs='data-binding="1"';
+  const title=ph>=1&&ph<=3?FIN().text('phaseTitle'+ph):'';
+  let html='<article class="earth-homecoming"><header><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header>';
+  if(s.state.saga.finale.won)html+='<section class="earth-homecoming-recorded"><h3>The Regent is gone</h3><p>'+esc(d.completionText)+'</p></section>';
+  else if(ph===0)html+='<section><h3>Not yet</h3><p>He is not at the spring yet. Finish the road home first.</p></section>';
+  else{
+   html+='<section><h3>'+esc(title)+'</h3><p>'+esc(FIN().text('phaseDetail'+ph))+'</p>';
+   if(ph===1)html+='<p>'+esc(brokenIds.length)+' of '+esc(plan.chains.length)+' chains broken.</p>';
+   html+='</section>';
+   if(echo.coercive.length||echo.freeing.length){
+    html+='<section><h3>What he holds of you</h3><ul class="earth-homecoming-echo">'+[...echo.coercive,...echo.freeing].map(e=>'<li>'+esc(e.line)+'</li>').join('')+'</ul></section>';
+   }
+   if(offerPending(s))html+='<section class="earth-homecoming-offer"><h3>'+esc(FIN().text('offer'))+'</h3>'+button(FIN().text('refuse'),'offer','refuse',attrs)+' '+button(FIN().text('take'),'offer','take',attrs)+'</section>';
+  }
+  return{title:d.title,html:html+'<p class="earth-homecoming-footer">Reading this page does nothing. The Regent answers only at the spring junction.</p></article>'};
  }
- tick(){const s=this.sim,r=record(s),doc=G.document,toggle=doc?.querySelector('.tracker-switch [data-id="earth-homecoming"]');if(toggle)toggle.hidden=!r.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest=TAB;}if(this.rpg.quest!==TAB)return;if(!r.accepted||r.claimed){this.rpg.quest='story';return;}const next=goal(s),detail=next?.room!==s.room?next?.room===null?'Take the free road home to Oren':'Read Earth crossing · continue from the Coastward bridge':H().ready(s.state)?'Oren’s bench · completed account, unpaid':next?.name||'Read the current return account';for(const[sel,text]of Object.entries({'#tracked-chapter':'Earth · the road home','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.filter(id=>!step(id)?.optional).length+'/'+H().required().length+' required actions · J account · M routes'})){const el=doc?.querySelector(sel);if(el)el.textContent=text;}}
+ tick(){
+  const s=this.sim,r=H().runtime(s);
+  if(offerPending(s)&&!this.opened){this.opened=true;this.open();}
+  if(!offerPending(s))this.opened=false;
+  if(r.credits&&!this.creditsShown){this.creditsShown=true;showCredits(()=>{r.creditsDone=true;});}
+ }
 }
-const api={EarthHomecomingUI,routePoints,legend,fee,prerequisites,priorChoices,recognition,approach};G.RealmEarthHomecomingUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={EarthHomecomingUI,routePoints:()=>[],legend:()=>'',nearSpring};
+G.RealmEarthHomecomingUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* Original portable claim apparatus. Appearance owns no ground or progress. */
+</script><script>/* The finale's drawing: the Regent's body, its chains, the freed allies, the merged valley's features and the diorama
+ * anchors. Presentation only: it reads the owner and the tables and never writes to the story or the fight. Primitives
+ * stand in until the story art lands; a body that is not in its phase draws nothing. */
 (function(G){'use strict';
-const H=()=>G.RealmEarthHomecoming,D=()=>H().definition,C={ash:0x252f35,slate:0x314048,gold:0xd8b879,paper:0xd6dddc,checked:0xaec0b3,claim:0xb98474},TAU=Math.PI*2,finite=(...xs)=>xs.every(Number.isFinite);
-// Existing Firstlight worktable: world.js table centerY2.05, height.16.
-// The right table's tool stack ends at z8.305; its front edge is z8.8.
-// The record's full plate fits in that clear front portion; no new support.
-const HOME_ACCOUNT=Object.freeze({x:12.5,z:8.55,base:2.05+.16/2});
-const q=sim=>sim?.state?.earthHomecoming;
-function paint(out,sim,p,yaw=0,tags={},base=G.RealmWorldFoundations.height(sim.room,p.x,p.z)){const M=G.RealmEngine.M,root=M.compose(p.x,base,p.z,1,1,1,0,yaw,0);
- const emit=(kind,pos,size,c,part,opt={})=>out[kind].push({p:M.transform(root,pos),s:size.slice(),m:M.mul(root,M.compose(...pos,...size,...(opt.r||[0,0,0]))),c,rough:.82,appearanceOnly:true,cameraSolid:false,cutaway:false,earthHomecomingPart:part,...tags,...opt});
- return{root,base,emit,box:(x,y,z,w,h,d,c,part,opt)=>emit('box',[x,y,z],[w,h,d],c,part,opt)};
+const C={coat:0x5b6063,dark:0x1e1a18,seam:0xe0643a,skin:0xd9cfc1,cinder:0x3b3430,iron:0x4a4642,bone:0xf1e6c8,gold:0xf1d890,sea:0x2f6f86,chainIron:0x3a3431,lantern:0xf2c27a,post:0x6f5a40,face:0xd9b98e};
+const D=()=>G.RealmEarthHomecoming.definition,F=()=>G.RealmFinale,SG=()=>G.RealmSaga;
+const finite=(...xs)=>xs.every(Number.isFinite);
+function regent(out,e,t){
+ const hot=e.mode==='windup'||e.mode==='recover',glow=e.finalePhase===3?1.2:e.finalePhase===2?.8:.5,yaw=e.yaw||0,pulse=.5+.5*Math.sin(t*3);
+ out.box.push({p:[e.x,.9,e.z],s:[.9,1.8,.5],r:[0,yaw,0],c:C.coat});
+ out.box.push({p:[e.x,.12,e.z],s:[.8,.24,.56],r:[0,yaw,0],c:C.dark});
+ for(const x of[-.22,.22])out.box.push({p:[e.x+x*Math.cos(yaw),.95,e.z-x*Math.sin(yaw)],s:[.05,1.7,.06],r:[0,yaw,0],c:C.seam,em:(hot?1.6:glow)+pulse*.2});
+ out.octa.push({p:[e.x,2.35,e.z],s:[.42,.46,.42],c:C.skin});
+ out.box.push({p:[e.x,2.31,e.z+.2],s:[.22,.04,.04],c:C.dark});
+ for(let i=0;i<5;i++){const a=i/5*Math.PI*2+t*.4;out.octa.push({p:[e.x+Math.cos(a)*.34,2.66,e.z+Math.sin(a)*.34],s:[.12,.16,.12],c:C.cinder,em:(glow+.3)*(.7+.3*Math.sin(t*4+i))});}
 }
-// Civic claim press: an open gantry, captive seal head and grounded case.
-// Legacy part tags stay stable for existing causal controls; no royal anatomy.
-// All posture is bounded by actual AI mode/contact, never power or camera.
-const K={slate:0x253943,brass:0xc4a369,amber:0xffc15e,impact:0xf19159,rest:0xb16e56};
-function body(out,sim,e){
- const p=paint(out,sim,e,e.yaw||0,{earthHomecomingActor:e.id}),hot=e.mode==='windup',recover=e.mode==='recover',elapsed=sim.state.adventure.elapsed;
- const impact=recover&&!sim.state.settings.reducedMotion&&finite(elapsed,e.contactAt)&&elapsed>=e.contactAt&&elapsed-e.contactAt<.18;
- const light=impact?K.impact:hot?K.amber:recover?C.checked:K.rest,seal=impact?1.15:hot?1.43:1.26,cap=seal+.19;
- p.box(0,.055,0,.88,.11,.64,C.ash,'regent-grounded-sole');
- for(const x of[-.26,.26]){
-  p.box(x,.16,.015,.22,.21,.38,K.slate,'regent-grounded-boot');
-  p.box(x,.43,0,.12,.55,.24,K.brass,'regent-connected-leg',{r:[0,0,-Math.sign(x)*.18]});
+function chain(out,e){
+ const sp=D().spring,dx=sp.x-e.x,dz=sp.z-e.z,n=8,yaw=Math.atan2(dx,dz);
+ out.box.push({p:[e.x,.25,e.z],s:[.5,.5,.5],c:C.iron});
+ out.octa.push({p:[e.x,.66,e.z],s:[.9,.2,.9],c:C.iron,em:.25});
+ for(let i=1;i<=n;i++){const u=i/(n+1);out.box.push({p:[e.x+dx*u,.9+Math.sin(Math.PI*u)*.5,e.z+dz*u],s:[.1,.1,.34],r:[0,yaw,0],c:C.iron});}
+}
+// drawEnemy is the adventure's hook for every body the finale owns.
+function drawEnemy(out,sim,e,t){
+ if(!G.RealmEarthHomecoming?.encounter(e)||!finite(e.x,e.z))return false;
+ if(e.finaleRole==='chain')chain(out,e);else regent(out,e,t);
+ return true;
+}
+// draw is the valley's world hook: the merged valley's features, the freed allies, the offer's glow and the anchors.
+function draw(out,sim,t){
+ if(!sim?.state?.saga||sim.room!==null)return;
+ const st=sim.state,ph=st.saga.finale.phase,won=st.saga.finale.won||st.saga.credits,fin=st.earthHomecoming?.finale||{broken:[],offer:null},f=F(),route=f.route();
+ if(ph===2&&!won){
+  for(let i=0;i<route.length;i++){const a=route[i],b=route[(i+1)%route.length],mx=(a.x+b.x)/2,mz=(a.z+b.z)/2,yaw=Math.atan2(b.x-a.x,b.z-a.z),len=Math.hypot(b.x-a.x,b.z-a.z);
+   if(i%3===2)for(const s of[-.9,.9])out.box.push({p:[mx+Math.cos(yaw)*s,.7,mz-Math.sin(yaw)*s],s:[.16,1.4,.16],c:C.bone,em:.5});
+   if(i%3===2)out.box.push({p:[mx,1.4,mz],s:[1.9,.18,.22],r:[0,yaw,0],c:C.gold,em:.6});
+   if(i>=3&&i<=5)for(let k=0;k<len/1.2;k++){const u=(k+.5)/(len/1.2);out.box.push({p:[a.x+(b.x-a.x)*u,.22,a.z+(b.z-a.z)*u],s:[.14,.14,.3],r:[0,yaw,0],c:C.chainIron});}
+   if(i>=6&&i<=8)out.box.push({p:[mx,.03,mz],s:[2.4,.03,Math.max(1.2,len*.5)],r:[0,yaw,0],c:C.sea,em:.1});
+  }
  }
- p.emit('octa',[0,.66,-.04],[.72,.61,.46],K.slate,'regent-connected-torso');
- p.box(0,.90,0,.80,.10,.50,K.brass,'regent-hip-brace');
- for(const x of[-.355,.355]){
-  p.box(x,1.39,-.04,.105,.92,.19,K.slate,'regent-mantle-fold');
-  p.box(x,1.39,.072,.045,.86,.035,K.brass,'regent-shoulder-seam');
-  p.box(x*.82,1.30,-.04,.035,.65,.065,C.paper,'regent-connected-arm');
-  p.box(x,1.09,.103,.15,.30,.065,C.ash,'claim-signal-housing');
-  p.emit('octa',[x,1.09,.148],[.085,.20,.055],light,'claim-side-signal',{em:hot?.40:impact?.50:0});
+ if(won)for(const a of f.anchors(SG().echoLedger(st))){
+  out.box.push({p:[a.x,.8,a.z],s:[.14,1.6,.14],c:C.post});
+  out.octa.push({p:[a.x,1.7,a.z],s:[.32,.32,.32],c:a.lit?C.lantern:C.dark,em:a.lit?1.6:0});
  }
- p.box(0,1.86,-.04,.84,.115,.25,K.brass,'regent-mantle-yoke');
- p.box(0,(cap+1.84)/2,-.04,.12,1.84-cap,.14,K.slate,'regent-neck-link');
- p.emit('octa',[0,seal,-.02],[.42,.29,.25],C.ash,'regent-split-face');
- p.box(0,cap,-.02,.49,.08,.29,K.brass,'regent-crown-bridge');
- for(const x of[-.29,.29])p.box(x,2.01,-.04,.10,.32,.18,K.brass,'regent-split-crown');
- p.box(0,seal,.115,.26,.07,.035,light,'regent-seizure-window',{em:hot?.48:impact?.62:0});
- p.box(0,.9675,.12,.46,.035,.20,C.paper,'claim-feed-bed');
- p.emit('octa',[0,1.055,.13],[.22,.11,.085],K.brass,'regent-held-claim');
- p.box(0,.59,.13,.46,.13,.14,K.brass,'claim-registry-housing');
- p.box(0,.59,.195,.40,.075,.04,C.paper,'regent-claim-inscription');return p;
+ if(ph===3&&!won&&(fin.offer??null)===null)for(let i=0;i<8;i++){const a=i/8*Math.PI*2+t*.2;out.octa.push({p:[D().spring.x+Math.cos(a)*2.2,1.2,D().spring.z+Math.sin(a)*2.2],s:[.14,.14,.14],c:C.gold,em:1.2});}
+ if(ph>=1){
+  const r=sim.earthHomecomingRuntime||{arrived:[]},plan=f.plan(SG().echoLedger(st));
+  for(const a of plan.allies){if(!(r.arrived.includes(a.id)||(a.breaks&&fin.broken.includes(a.breaks))))continue;
+   out.box.push({p:[a.site.x+.9,.5,a.site.z+.4],s:[.42,1,.3],c:parseHex(a.color)});
+   out.octa.push({p:[a.site.x+.9,1.2,a.site.z+.4],s:[.24,.26,.24],c:C.face});}
+ }
 }
-function stroke(p,x,z,length,width,yaw,part,color=K.amber){if(!finite(x,z,length,width,yaw)||length<=0||width<=0)return;
- // Dark edge plus wider luminous inset; every vertex stays inside the lock.
- p.box(x,.145,z,width,.035,length,C.ash,part+'-border',{r:[0,yaw,0]});p.box(x,.169,z,width*.52,.014,length*.995,color,part+'-inlay',{r:[0,yaw,0],em:.58});
+function parseHex(s){const n=parseInt(String(s||'#c9b79c').replace('#',''),16);return Number.isFinite(n)?n:0xc9b79c;}
+const api={drawEnemy,draw};
+G.RealmEarthHomecomingArt=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+ /* Firstlight after the Regent: the valley changes, the road segments they read, and the credits. A change is drawn only
+ * when its condition holds: 'won' after the last hit, 'briar-home' when Briar came back. The kind picks the drawing in
+ * epilogue-art.js; a kind that art does not know is not drawn and not counted. The dialogue is a working draft. */
+(function(G){'use strict';
+function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;}
+const CHANGES=freeze([
+ {id:'amphitheatre',kind:'stage-play',at:{x:0,z:-11.6},when:'won',place:'the little amphitheatre',text:'Ilan plays on the little stage.'},
+ {id:'windbells',kind:'bells',at:{x:0,z:3},when:'won',place:'the spring',text:'The windbells ring over the spring.'},
+ {id:'spring-arch',kind:'arch',at:{x:0,z:0.4},when:'won',place:'the spring',text:'A new arch stands over the spring.'},
+ {id:'grey-roads',kind:'grey-road',when:'won',place:'the counterfeit roads',text:'The counterfeit roads have gone grey.'},
+ {id:'lanterns',kind:'lantern',when:'won',place:'the true roads',text:'Lanterns line the true roads.'},
+ {id:'briar-curled',kind:'curled-fox',at:{x:11.6,z:9.4},when:'briar-home',place:'the workshop',text:'Briar is curled up by the workshop.'}
+]);
+// road segments the feather's sight marks. keep these in step with the feather sight's lists at integration.
+const ROADS=freeze({
+ trueRoads:[{a:{x:-2,z:9},b:{x:-6,z:24}},{a:{x:2,z:8},b:{x:14,z:14}},{a:{x:-3,z:-2},b:{x:-16,z:-9}}],
+ counterfeitRoads:[{a:{x:5,z:-2},b:{x:13,z:-14}},{a:{x:-8,z:8},b:{x:-18,z:16}}]
+});
+const CREDITS=freeze([
+ {title:'Firstlight',lines:['made by Dom (Eternities) with Claude']},
+ {title:'Story and code',lines:['Dom (Eternities), with Claude']},
+ {title:'Postgame',lines:['The roads stay open. Walk them as long as you like.']}
+]);
+const api=freeze({CHANGES,ROADS,CREDITS});
+G.RealmEpilogueData=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+ /* Firstlight after the Regent: which valley changes are on, and the credits. Pure: it reads the saga and the table in
+ * epilogue-data.js, and the art draws what this lists. */
+(function(G){'use strict';
+const DATA=()=>G.RealmEpilogueData||(typeof require==='function'?require('./epilogue-data.js'):null);
+// a change is on after the last hit, and a Briar change also needs her home. unknown conditions never count.
+function changes(world){
+ const s=world?.saga;if(!s||!(s.finale?.won||s.credits))return[];
+ return DATA().CHANGES.filter(c=>c.when==='won'||(c.when==='briar-home'&&s.briar?.state==='returned')).map(({id,kind,at,place,text})=>({id,kind,at,place,text}));
 }
-function rectangle(p,s){if(!finite(s.length,s.halfWidth)||s.length<=0||s.halfWidth<=0)return;const edge=Math.min(.085,s.length*.25,s.halfWidth*.2),width=s.halfWidth*2;
- for(const x of[-s.halfWidth+edge/2,s.halfWidth-edge/2])stroke(p,x,s.length/2,s.length,edge,0,'locked-lane-side');
- for(const z of[edge/2,s.length-edge/2])stroke(p,0,z,width,edge,Math.PI/2,'locked-lane-cap');
+const api={changes,credits:()=>DATA().CREDITS,roads:()=>DATA().ROADS};
+G.RealmEpilogue=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+ /* The valley after the Regent, drawn from the change list. A change draws only when its kind is known here; draw returns
+ * the ids it drew, so a test can count what is visible. Presentation only. */
+(function(G){'use strict';
+const C={ilan:0xb67256,cloth:0x6f7d8a,lute:0x7a5a3a,note:0xf2d9a0,bell:0xd9c79a,rope:0x6f5a40,arch:0x7b6a52,gold:0xe3c57e,grey:0x6f6e6a,post:0x5d4d3a,lantern:0xf2c27a,fox:0xb8653a,fox2:0x8e4a2a};
+const E=()=>G.RealmEpilogue||(typeof require==='function'?require('./epilogue.js'):null),D=()=>G.RealmEpilogueData||(typeof require==='function'?require('./epilogue-data.js'):null);
+// a flat strip along a road segment, centred on the segment and sitting on the ground.
+function strip(a,b,w,h,c){const dx=b.x-a.x,dz=b.z-a.z;return{p:[(a.x+b.x)/2,h/2,(a.z+b.z)/2],s:[w,h,Math.hypot(dx,dz)],r:[0,Math.atan2(dx,dz),0],c};}
+const KIND={
+ 'stage-play'(out,c,t){const x=c.at.x,z=c.at.z;
+  out.box.push({p:[x,.6,z],s:[.5,1.2,.4],c:C.ilan});
+  out.octa.push({p:[x,1.4,z],s:[.3,.32,.3],c:C.ilan});
+  out.box.push({p:[x+.3,.9,z+.18],s:[.12,.9,.06],r:[0,0,.5],c:C.lute});
+  for(let i=0;i<3;i++)out.octa.push({p:[x+.8+i*.12,1.9+Math.sin(t*2+i)*.12,z],s:[.08,.1,.08],c:C.note,em:.8});
+  return true;},
+ bells(out,c,t){const x=c.at.x,z=c.at.z;
+  out.box.push({p:[x,3.15,z],s:[3,.05,.05],c:C.rope});
+  for(let i=0;i<4;i++){const bx=x-1.2+i*.8,sway=Math.sin(t*1.7+i*1.3)*.06;out.box.push({p:[bx,2.9,z],s:[.02,.5,.02],c:C.rope});out.octa.push({p:[bx+sway,2.5,z],s:[.14,.18,.14],c:C.bell,em:.3});}
+  return true;},
+ arch(out,c){const x=c.at.x,z=c.at.z;
+  for(const s of[-1.7,1.7])out.box.push({p:[x+s,1.6,z],s:[.24,3.2,.24],c:C.arch});
+  out.box.push({p:[x,3.25,z],s:[3.8,.26,.3],c:C.arch});
+  out.octa.push({p:[x,3.55,z],s:[.3,.3,.3],c:C.gold,em:.4});
+  return true;},
+ 'grey-road'(out){for(const r of D().ROADS.counterfeitRoads)out.box.push(strip(r.a,r.b,.9,.05,C.grey));return true;},
+ lantern(out){for(const r of D().ROADS.trueRoads){const dx=r.b.x-r.a.x,dz=r.b.z-r.a.z,len=Math.hypot(dx,dz);
+  for(let k=1;k*5<len;k++){const u=k*5/len,x=r.a.x+dx*u,z=r.a.z+dz*u;out.box.push({p:[x,.6,z],s:[.08,1.2,.08],c:C.post});out.octa.push({p:[x,1.3,z],s:[.22,.22,.22],c:C.lantern,em:1.2});}}
+  return true;},
+ 'curled-fox'(out,c){const x=c.at.x,z=c.at.z;
+  out.box.push({p:[x,.26,z],s:[.9,.32,.42],c:C.fox});
+  out.octa.push({p:[x+.5,.36,z],s:[.24,.22,.22],c:C.fox2});
+  out.octa.push({p:[x-.52,.2,z+.1],s:[.36,.12,.14],c:C.fox2});
+  return true;}
+};
+// draw adds the instances for every change that is on and known, and returns the ids drawn.
+function draw(out,sim,t){
+ if(!sim?.state||sim.room!==null)return[];
+ const drawn=[];for(const c of E().changes(sim.state)){const fn=KIND[c.kind];if(fn&&fn(out,c,t))drawn.push(c.id);}
+ return drawn;
 }
-function rim(p,radius,inner,part){if(!finite(radius)||radius<=0)return;const width=Math.min(.085,radius*.08),r=radius+(inner?width*1.1:-width*1.1),n=48;
- for(let i=0;i<n;i++){const a=i/n*TAU,b=(i+1)/n*TAU,x1=Math.sin(a)*r,z1=Math.cos(a)*r,x2=Math.sin(b)*r,z2=Math.cos(b)*r;stroke(p,(x1+x2)/2,(z1+z2)/2,Math.hypot(x2-x1,z2-z1),width,Math.atan2(x2-x1,z2-z1),part,inner?C.paper:K.amber);}
-}
-function warning(out,sim,e){const s=e.strike;if(!s||!finite(s.x,s.z,s.yaw))return;
- const p=paint(out,sim,s,s.yaw,{earthHomecomingActor:e.id,earthHomecomingTelegraph:true,earthHomecomingPattern:s.pattern,earthHomecomingStrike:JSON.parse(JSON.stringify(s))});
- if(s.kind==='line')rectangle(p,s);else if(s.kind==='annulus'&&finite(s.innerRadius,s.outerRadius)&&s.innerRadius>0&&s.outerRadius>s.innerRadius){rim(p,s.innerRadius,true,'quiet-inner-rim');rim(p,s.outerRadius,false,'danger-outer-rim');}
-}
-function drawEnemy(out,sim,e){const d=D(),r=q(sim);if(sim.room!==d.room||!r?.accepted||e?.earthHomecoming!==d.id||e.id!==d.enemy.id||!H().owned(sim,e)||!finite(e.x,e.z,e.hp)||e.hp<=0)return false;
- const p=body(out,sim,e);if(e.mode==='windup')warning(out,sim,e);return{actor:e.id,x:e.x,z:e.z,yaw:e.yaw||0,base:p.base,root:Array.from(p.root),mode:e.mode};
-}
-function relay(out,sim,s,done){const p=paint(out,sim,s,0,{earthHomecomingFixture:s.id,earthHomecomingRecorded:done});p.box(0,.035,0,.50,.07,.43,C.slate,'supplied-relay-plate');
- for(const x of[-.18,.18])p.box(x,.30,0,.065,.49,.07,C.gold,'open-relay-upright');p.box(0,.55,0,.42,.06,.08,C.gold,'open-relay-crosshead');p.box(0,.34,.045,.23,.19,.035,done?C.checked:C.claim,'isolated-relay-tab');p.box(done ? .27 : .12,.17,.02,.13,.06,.075,C.paper,'disconnected-relay-plug');
- const end=D().enemy,dx=end.x-s.x,dz=end.z-s.z,gap=done ? .45 : 0,length=Math.hypot(dx,dz)-gap,yaw=Math.atan2(dx,dz),mid={x:s.x+Math.sin(yaw)*(gap+length/2),z:s.z+Math.cos(yaw)*(gap+length/2)},cable=paint(out,sim,mid,yaw,{earthHomecomingFixture:s.id,earthHomecomingRecorded:done});cable.box(0,.028,0,.025,.025,length,done?C.ash:C.gold,'laid-claim-cable');
-}
-function screen(out,sim,fitted){const s=D().steps.find(p=>p.id==='supplied-screen'),p=paint(out,sim,s,0,{earthHomecomingFixture:s.id,earthHomecomingRecorded:fitted});p.box(0,.035,0,.45,.07,.35,C.slate,'supplied-signal-kit');
- if(fitted){for(const x of[-.17,.17])p.box(x,.40,0,.045,.73,.045,C.gold,'open-signal-support');p.box(0,.78,0,.39,.06,.055,C.gold,'fitted-warning-signal');for(const x of[-.11,0,.11])p.box(x,.51,0,.045,.34,.025,C.paper,'warning-signal-slat');}
- else p.box(0,.10,0,.34,.06,.25,C.paper,'folded-warning-signal');
-}
-function trace(out,sim,choice,home=false){const anchor=home?HOME_ACCOUNT:{x:D().enemy.x,z:D().enemy.z+1.2};
- // A record resting on the existing table is a prop, not an actor standing here.
- // Actual physical home-return is required by draw(); table support is fixed.
- const p=paint(out,sim,anchor,0,{earthHomecomingChoice:choice,earthHomecomingTrace:home?'home':'road'},home?HOME_ACCOUNT.base:undefined),k=home ? .62 : 1;
- p.box(0,.035,0,.63*k,.07,.49*k,C.slate,'independent-account-plate');
- if(choice==='public-watch'){p.box(0,.20*k,0,.045,.33*k,.055,C.gold,'public-watch-record-post');p.box(0,.33*k,.045,.48*k,.18*k,.025,C.paper,'public-checked-record');p.box(-.20*k,.075,.14*k,.09*k,.05,.09*k,C.checked,'open-watch-mark');}
- else if(choice==='reviewed-custody'){p.box(0,.16*k,0,.44*k,.23*k,.32*k,C.ash,'detached-core-cover');p.box(0,.285*k,0,.49*k,.035,.36*k,C.gold,'reviewed-custody-seal');p.box(0,.18*k,.17*k,.21*k,.09*k,.025,C.paper,'bounded-evidence-label');}
-}
-function draw(out,sim){const d=D(),r=q(sim);if(!r?.accepted)return;
- if(sim.room===null){if(r.steps.includes('home-return')&&r.steps.includes('aftermath')&&d.choices.some(c=>c.id===r.choice))trace(out,sim,r.choice,true);return;}
- if(sim.room!==d.room||sim.worldDive)return;
- for(const id of['west-relay-isolated','east-relay-isolated'])relay(out,sim,d.steps.find(p=>p.id===id),r.steps.includes(id));screen(out,sim,r.steps.includes('supplied-screen'));
- const p=paint(out,sim,d.enemy,0,{earthHomecomingFixture:'portable-claim',earthHomecomingRecorded:r.steps.includes('passage-secured')});p.box(0,.025,0,.78,.05,.54,C.slate,'portable-claim-footplate');p.box(0,.061,0,.50,.022,.30,r.steps.includes('passage-secured')?C.checked:C.claim,'portable-claim-record');
- if(r.steps.includes('passage-secured')){p.box(0,.09,-.27,.65,.055,.04,C.checked,'independent-restraint');}
- if(r.steps.includes('aftermath')&&d.choices.some(c=>c.id===r.choice))trace(out,sim,r.choice);
-}
-const api={draw,drawEnemy};G.RealmEarthHomecomingArt=api;if(typeof module!=='undefined')module.exports=api;
+const api={draw,KIND:Object.freeze(Object.keys(KIND))};
+G.RealmEpilogueArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* One finite community episode. Art and worker motion cannot grant its work. */
 (function(G){'use strict';
@@ -8610,8 +8785,8 @@ function retryWildSignsClearance(sim){
  }
  r.wildSignsClearanceResult=result;notify(sim,result.text||result.error||result.warning||'Read the saved field account.');return result;
 }
-function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?[...CROSS.ENEMIES,...(G.RealmNight?.enemies(sim)||[])]:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===null&&EH.enemies(sim).length)return !sim.worldDive;if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
+function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===null&&EH.enemies(sim).length)return EH.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?[...CROSS.ENEMIES,...(G.RealmNight?.enemies(sim)||[])]:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
@@ -8777,7 +8952,7 @@ function tick(sim,dt){
  if(!s.started)return;
  if(s.hp>0)s.stamina=Math.min(100,s.stamina+dt*15);
  AT.tick(sim,dt);
- HV.tick(sim,dt);
+ HV.tick(sim,dt);EH.tick(sim,dt);
  TR.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
@@ -8808,7 +8983,7 @@ function tick(sim,dt){
    if(e.timer<=0){
     if(e.omen&&e.omen.kind!=='bait'){if(!T.strike(sim,e)){e.mode='recover';e.timer=e.recovery??(e.kind==='boss'?(e.hp<e.maxHP/2?1:1.8):1.1);e.path=[];}}
     else if(e.kind==='charger'){const lane=e.omen;e.omen=null;e.mode='charge';e.chargeLeft=lane?.length??9;e.wallBait=lane?.stun??0;e.crashed=false;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
-    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canDamage(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
+    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canStrike(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else if(CC.encounter(e)){e.contactAt=s.elapsed;e.contactHit=CC.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xb9d5ca);e.mode='recover';e.timer=e.recovery;e.path=[];}
      else if(AT.encounter(e)){e.contactAt=s.elapsed;e.contactHit=false;e.path=[];if(e.strike.kind==='intake'){e.mode='intake';e.timer=AT.patterns.intake.active;}else{e.contactHit=AT.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0x90cec4);e.mode='recover';e.timer=e.recovery;}}
     else if(HV.encounter(e)){e.contactAt=s.elapsed;e.contactHit=HV.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xc5dce3);e.mode='recover';e.timer=e.recovery;e.path=[];}
@@ -12411,7 +12586,7 @@ class WorldArt{
  if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);if(G.RealmNearshoreArt)G.RealmNearshoreArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
- if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmEarthConsignmentArt)G.RealmEarthConsignmentArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmEarthMasterworkArt)G.RealmEarthMasterworkArt.draw(out,sim,t,this);if(G.RealmEarthTournamentArt)G.RealmEarthTournamentArt.draw(out,sim,t,this);if(G.RealmEarthGateArt)G.RealmEarthGateArt.draw(out,sim,t,this);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
+ if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmEpilogueArt)G.RealmEpilogueArt.draw(out,sim,t);if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmEarthConsignmentArt)G.RealmEarthConsignmentArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmEarthMasterworkArt)G.RealmEarthMasterworkArt.draw(out,sim,t,this);if(G.RealmEarthTournamentArt)G.RealmEarthTournamentArt.draw(out,sim,t,this);if(G.RealmEarthGateArt)G.RealmEarthGateArt.draw(out,sim,t,this);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
  if(G.RealmEarthArt)G.RealmEarthArt.draw(out,sim,t,this);if(G.RealmEarthNotesArt)G.RealmEarthNotesArt.draw(out,sim);
  if(G.RealmArsenalArt)G.RealmArsenalArt.draw(out,sim,t);
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
@@ -18506,9 +18681,10 @@ function rotateCamera(angle){clearGrazerFocus();camera.yaw=cameraHeading()+angle
 function updateCamera(dt){
  if(!engine)return;if(camera.preset!=='adventure'||camera.tour){updateOrthographicCamera(dt);return;}
  const person=follow?sim.state.residents.find(r=>r.id===follow):sim.state.player,base=sceneHeight(person.x,person.z);
- const desired=grazerFocus()||carrierFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z],still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
+ const rise=RealmEarthHomecoming?.view?.(sim),desired=rise?rise.center:(grazerFocus()||carrierFocus()||fieldcraftFocus()||[person.x,base+1.5,person.z]),still=sim.state.settings.reducedMotion,factor=still?1:1-Math.exp(-Math.max(dt,.001)*9);
  for(let i=0;i<3;i++)camera.center[i]+=(desired[i]-camera.center[i])*factor;
- const d=camera.distance,ce=Math.cos(camera.elevation),previous=camera.actualYaw??camera.yaw;
+ if(rise){if(!camera.riseSaved)camera.riseSaved={elevation:camera.elevation,distance:camera.distance};camera.elevation=rise.elevation;camera.distance=rise.distance;}else if(camera.riseSaved){camera.elevation=camera.riseSaved.elevation;camera.distance=camera.riseSaved.distance;camera.riseSaved=null;}
+const d=camera.distance,ce=Math.cos(camera.elevation),previous=camera.actualYaw??camera.yaw;
  const resolved=engine.resolveCameraOrbit(camera.center,camera.yaw,camera.elevation,d,previous);
  const turn=Math.atan2(Math.sin(resolved.yaw-previous),Math.cos(resolved.yaw-previous));
  const priorEye=camera.center.map((v,i)=>v+[Math.sin(previous)*ce,Math.sin(camera.elevation),Math.cos(previous)*ce][i]*d);

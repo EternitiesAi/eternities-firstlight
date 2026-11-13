@@ -1,89 +1,56 @@
-/* Original portable claim apparatus. Appearance owns no ground or progress. */
+/* The finale's drawing: the Regent's body, its chains, the freed allies, the merged valley's features and the diorama
+ * anchors. Presentation only: it reads the owner and the tables and never writes to the story or the fight. Primitives
+ * stand in until the story art lands; a body that is not in its phase draws nothing. */
 (function(G){'use strict';
-const H=()=>G.RealmEarthHomecoming,D=()=>H().definition,C={ash:0x252f35,slate:0x314048,gold:0xd8b879,paper:0xd6dddc,checked:0xaec0b3,claim:0xb98474},TAU=Math.PI*2,finite=(...xs)=>xs.every(Number.isFinite);
-// Existing Firstlight worktable: world.js table centerY2.05, height.16.
-// The right table's tool stack ends at z8.305; its front edge is z8.8.
-// The record's full plate fits in that clear front portion; no new support.
-const HOME_ACCOUNT=Object.freeze({x:12.5,z:8.55,base:2.05+.16/2});
-const q=sim=>sim?.state?.earthHomecoming;
-function paint(out,sim,p,yaw=0,tags={},base=G.RealmWorldFoundations.height(sim.room,p.x,p.z)){const M=G.RealmEngine.M,root=M.compose(p.x,base,p.z,1,1,1,0,yaw,0);
- const emit=(kind,pos,size,c,part,opt={})=>out[kind].push({p:M.transform(root,pos),s:size.slice(),m:M.mul(root,M.compose(...pos,...size,...(opt.r||[0,0,0]))),c,rough:.82,appearanceOnly:true,cameraSolid:false,cutaway:false,earthHomecomingPart:part,...tags,...opt});
- return{root,base,emit,box:(x,y,z,w,h,d,c,part,opt)=>emit('box',[x,y,z],[w,h,d],c,part,opt)};
+const C={coat:0x5b6063,dark:0x1e1a18,seam:0xe0643a,skin:0xd9cfc1,cinder:0x3b3430,iron:0x4a4642,bone:0xf1e6c8,gold:0xf1d890,sea:0x2f6f86,chainIron:0x3a3431,lantern:0xf2c27a,post:0x6f5a40,face:0xd9b98e};
+const D=()=>G.RealmEarthHomecoming.definition,F=()=>G.RealmFinale,SG=()=>G.RealmSaga;
+const finite=(...xs)=>xs.every(Number.isFinite);
+function regent(out,e,t){
+ const hot=e.mode==='windup'||e.mode==='recover',glow=e.finalePhase===3?1.2:e.finalePhase===2?.8:.5,yaw=e.yaw||0,pulse=.5+.5*Math.sin(t*3);
+ out.box.push({p:[e.x,.9,e.z],s:[.9,1.8,.5],r:[0,yaw,0],c:C.coat});
+ out.box.push({p:[e.x,.12,e.z],s:[.8,.24,.56],r:[0,yaw,0],c:C.dark});
+ for(const x of[-.22,.22])out.box.push({p:[e.x+x*Math.cos(yaw),.95,e.z-x*Math.sin(yaw)],s:[.05,1.7,.06],r:[0,yaw,0],c:C.seam,em:(hot?1.6:glow)+pulse*.2});
+ out.octa.push({p:[e.x,2.35,e.z],s:[.42,.46,.42],c:C.skin});
+ out.box.push({p:[e.x,2.31,e.z+.2],s:[.22,.04,.04],c:C.dark});
+ for(let i=0;i<5;i++){const a=i/5*Math.PI*2+t*.4;out.octa.push({p:[e.x+Math.cos(a)*.34,2.66,e.z+Math.sin(a)*.34],s:[.12,.16,.12],c:C.cinder,em:(glow+.3)*(.7+.3*Math.sin(t*4+i))});}
 }
-// Civic claim press: an open gantry, captive seal head and grounded case.
-// Legacy part tags stay stable for existing causal controls; no royal anatomy.
-// All posture is bounded by actual AI mode/contact, never power or camera.
-const K={slate:0x253943,brass:0xc4a369,amber:0xffc15e,impact:0xf19159,rest:0xb16e56};
-function body(out,sim,e){
- const p=paint(out,sim,e,e.yaw||0,{earthHomecomingActor:e.id}),hot=e.mode==='windup',recover=e.mode==='recover',elapsed=sim.state.adventure.elapsed;
- const impact=recover&&!sim.state.settings.reducedMotion&&finite(elapsed,e.contactAt)&&elapsed>=e.contactAt&&elapsed-e.contactAt<.18;
- const light=impact?K.impact:hot?K.amber:recover?C.checked:K.rest,seal=impact?1.15:hot?1.43:1.26,cap=seal+.19;
- p.box(0,.055,0,.88,.11,.64,C.ash,'regent-grounded-sole');
- for(const x of[-.26,.26]){
-  p.box(x,.16,.015,.22,.21,.38,K.slate,'regent-grounded-boot');
-  p.box(x,.43,0,.12,.55,.24,K.brass,'regent-connected-leg',{r:[0,0,-Math.sign(x)*.18]});
+function chain(out,e){
+ const sp=D().spring,dx=sp.x-e.x,dz=sp.z-e.z,n=8,yaw=Math.atan2(dx,dz);
+ out.box.push({p:[e.x,.25,e.z],s:[.5,.5,.5],c:C.iron});
+ out.octa.push({p:[e.x,.66,e.z],s:[.9,.2,.9],c:C.iron,em:.25});
+ for(let i=1;i<=n;i++){const u=i/(n+1);out.box.push({p:[e.x+dx*u,.9+Math.sin(Math.PI*u)*.5,e.z+dz*u],s:[.1,.1,.34],r:[0,yaw,0],c:C.iron});}
+}
+// drawEnemy is the adventure's hook for every body the finale owns.
+function drawEnemy(out,sim,e,t){
+ if(!G.RealmEarthHomecoming?.encounter(e)||!finite(e.x,e.z))return false;
+ if(e.finaleRole==='chain')chain(out,e);else regent(out,e,t);
+ return true;
+}
+// draw is the valley's world hook: the merged valley's features, the freed allies, the offer's glow and the anchors.
+function draw(out,sim,t){
+ if(!sim?.state?.saga||sim.room!==null)return;
+ const st=sim.state,ph=st.saga.finale.phase,won=st.saga.finale.won||st.saga.credits,fin=st.earthHomecoming?.finale||{broken:[],offer:null},f=F(),route=f.route();
+ if(ph===2&&!won){
+  for(let i=0;i<route.length;i++){const a=route[i],b=route[(i+1)%route.length],mx=(a.x+b.x)/2,mz=(a.z+b.z)/2,yaw=Math.atan2(b.x-a.x,b.z-a.z),len=Math.hypot(b.x-a.x,b.z-a.z);
+   if(i%3===2)for(const s of[-.9,.9])out.box.push({p:[mx+Math.cos(yaw)*s,.7,mz-Math.sin(yaw)*s],s:[.16,1.4,.16],c:C.bone,em:.5});
+   if(i%3===2)out.box.push({p:[mx,1.4,mz],s:[1.9,.18,.22],r:[0,yaw,0],c:C.gold,em:.6});
+   if(i>=3&&i<=5)for(let k=0;k<len/1.2;k++){const u=(k+.5)/(len/1.2);out.box.push({p:[a.x+(b.x-a.x)*u,.22,a.z+(b.z-a.z)*u],s:[.14,.14,.3],r:[0,yaw,0],c:C.chainIron});}
+   if(i>=6&&i<=8)out.box.push({p:[mx,.03,mz],s:[2.4,.03,Math.max(1.2,len*.5)],r:[0,yaw,0],c:C.sea,em:.1});
+  }
  }
- p.emit('octa',[0,.66,-.04],[.72,.61,.46],K.slate,'regent-connected-torso');
- p.box(0,.90,0,.80,.10,.50,K.brass,'regent-hip-brace');
- for(const x of[-.355,.355]){
-  p.box(x,1.39,-.04,.105,.92,.19,K.slate,'regent-mantle-fold');
-  p.box(x,1.39,.072,.045,.86,.035,K.brass,'regent-shoulder-seam');
-  p.box(x*.82,1.30,-.04,.035,.65,.065,C.paper,'regent-connected-arm');
-  p.box(x,1.09,.103,.15,.30,.065,C.ash,'claim-signal-housing');
-  p.emit('octa',[x,1.09,.148],[.085,.20,.055],light,'claim-side-signal',{em:hot?.40:impact?.50:0});
+ if(won)for(const a of f.anchors(SG().echoLedger(st))){
+  out.box.push({p:[a.x,.8,a.z],s:[.14,1.6,.14],c:C.post});
+  out.octa.push({p:[a.x,1.7,a.z],s:[.32,.32,.32],c:a.lit?C.lantern:C.dark,em:a.lit?1.6:0});
  }
- p.box(0,1.86,-.04,.84,.115,.25,K.brass,'regent-mantle-yoke');
- p.box(0,(cap+1.84)/2,-.04,.12,1.84-cap,.14,K.slate,'regent-neck-link');
- p.emit('octa',[0,seal,-.02],[.42,.29,.25],C.ash,'regent-split-face');
- p.box(0,cap,-.02,.49,.08,.29,K.brass,'regent-crown-bridge');
- for(const x of[-.29,.29])p.box(x,2.01,-.04,.10,.32,.18,K.brass,'regent-split-crown');
- p.box(0,seal,.115,.26,.07,.035,light,'regent-seizure-window',{em:hot?.48:impact?.62:0});
- p.box(0,.9675,.12,.46,.035,.20,C.paper,'claim-feed-bed');
- p.emit('octa',[0,1.055,.13],[.22,.11,.085],K.brass,'regent-held-claim');
- p.box(0,.59,.13,.46,.13,.14,K.brass,'claim-registry-housing');
- p.box(0,.59,.195,.40,.075,.04,C.paper,'regent-claim-inscription');return p;
+ if(ph===3&&!won&&(fin.offer??null)===null)for(let i=0;i<8;i++){const a=i/8*Math.PI*2+t*.2;out.octa.push({p:[D().spring.x+Math.cos(a)*2.2,1.2,D().spring.z+Math.sin(a)*2.2],s:[.14,.14,.14],c:C.gold,em:1.2});}
+ if(ph>=1){
+  const r=sim.earthHomecomingRuntime||{arrived:[]},plan=f.plan(SG().echoLedger(st));
+  for(const a of plan.allies){if(!(r.arrived.includes(a.id)||(a.breaks&&fin.broken.includes(a.breaks))))continue;
+   out.box.push({p:[a.site.x+.9,.5,a.site.z+.4],s:[.42,1,.3],c:parseHex(a.color)});
+   out.octa.push({p:[a.site.x+.9,1.2,a.site.z+.4],s:[.24,.26,.24],c:C.face});}
+ }
 }
-function stroke(p,x,z,length,width,yaw,part,color=K.amber){if(!finite(x,z,length,width,yaw)||length<=0||width<=0)return;
- // Dark edge plus wider luminous inset; every vertex stays inside the lock.
- p.box(x,.145,z,width,.035,length,C.ash,part+'-border',{r:[0,yaw,0]});p.box(x,.169,z,width*.52,.014,length*.995,color,part+'-inlay',{r:[0,yaw,0],em:.58});
-}
-function rectangle(p,s){if(!finite(s.length,s.halfWidth)||s.length<=0||s.halfWidth<=0)return;const edge=Math.min(.085,s.length*.25,s.halfWidth*.2),width=s.halfWidth*2;
- for(const x of[-s.halfWidth+edge/2,s.halfWidth-edge/2])stroke(p,x,s.length/2,s.length,edge,0,'locked-lane-side');
- for(const z of[edge/2,s.length-edge/2])stroke(p,0,z,width,edge,Math.PI/2,'locked-lane-cap');
-}
-function rim(p,radius,inner,part){if(!finite(radius)||radius<=0)return;const width=Math.min(.085,radius*.08),r=radius+(inner?width*1.1:-width*1.1),n=48;
- for(let i=0;i<n;i++){const a=i/n*TAU,b=(i+1)/n*TAU,x1=Math.sin(a)*r,z1=Math.cos(a)*r,x2=Math.sin(b)*r,z2=Math.cos(b)*r;stroke(p,(x1+x2)/2,(z1+z2)/2,Math.hypot(x2-x1,z2-z1),width,Math.atan2(x2-x1,z2-z1),part,inner?C.paper:K.amber);}
-}
-function warning(out,sim,e){const s=e.strike;if(!s||!finite(s.x,s.z,s.yaw))return;
- const p=paint(out,sim,s,s.yaw,{earthHomecomingActor:e.id,earthHomecomingTelegraph:true,earthHomecomingPattern:s.pattern,earthHomecomingStrike:JSON.parse(JSON.stringify(s))});
- if(s.kind==='line')rectangle(p,s);else if(s.kind==='annulus'&&finite(s.innerRadius,s.outerRadius)&&s.innerRadius>0&&s.outerRadius>s.innerRadius){rim(p,s.innerRadius,true,'quiet-inner-rim');rim(p,s.outerRadius,false,'danger-outer-rim');}
-}
-function drawEnemy(out,sim,e){const d=D(),r=q(sim);if(sim.room!==d.room||!r?.accepted||e?.earthHomecoming!==d.id||e.id!==d.enemy.id||!H().owned(sim,e)||!finite(e.x,e.z,e.hp)||e.hp<=0)return false;
- const p=body(out,sim,e);if(e.mode==='windup')warning(out,sim,e);return{actor:e.id,x:e.x,z:e.z,yaw:e.yaw||0,base:p.base,root:Array.from(p.root),mode:e.mode};
-}
-function relay(out,sim,s,done){const p=paint(out,sim,s,0,{earthHomecomingFixture:s.id,earthHomecomingRecorded:done});p.box(0,.035,0,.50,.07,.43,C.slate,'supplied-relay-plate');
- for(const x of[-.18,.18])p.box(x,.30,0,.065,.49,.07,C.gold,'open-relay-upright');p.box(0,.55,0,.42,.06,.08,C.gold,'open-relay-crosshead');p.box(0,.34,.045,.23,.19,.035,done?C.checked:C.claim,'isolated-relay-tab');p.box(done ? .27 : .12,.17,.02,.13,.06,.075,C.paper,'disconnected-relay-plug');
- const end=D().enemy,dx=end.x-s.x,dz=end.z-s.z,gap=done ? .45 : 0,length=Math.hypot(dx,dz)-gap,yaw=Math.atan2(dx,dz),mid={x:s.x+Math.sin(yaw)*(gap+length/2),z:s.z+Math.cos(yaw)*(gap+length/2)},cable=paint(out,sim,mid,yaw,{earthHomecomingFixture:s.id,earthHomecomingRecorded:done});cable.box(0,.028,0,.025,.025,length,done?C.ash:C.gold,'laid-claim-cable');
-}
-function screen(out,sim,fitted){const s=D().steps.find(p=>p.id==='supplied-screen'),p=paint(out,sim,s,0,{earthHomecomingFixture:s.id,earthHomecomingRecorded:fitted});p.box(0,.035,0,.45,.07,.35,C.slate,'supplied-signal-kit');
- if(fitted){for(const x of[-.17,.17])p.box(x,.40,0,.045,.73,.045,C.gold,'open-signal-support');p.box(0,.78,0,.39,.06,.055,C.gold,'fitted-warning-signal');for(const x of[-.11,0,.11])p.box(x,.51,0,.045,.34,.025,C.paper,'warning-signal-slat');}
- else p.box(0,.10,0,.34,.06,.25,C.paper,'folded-warning-signal');
-}
-function trace(out,sim,choice,home=false){const anchor=home?HOME_ACCOUNT:{x:D().enemy.x,z:D().enemy.z+1.2};
- // A record resting on the existing table is a prop, not an actor standing here.
- // Actual physical home-return is required by draw(); table support is fixed.
- const p=paint(out,sim,anchor,0,{earthHomecomingChoice:choice,earthHomecomingTrace:home?'home':'road'},home?HOME_ACCOUNT.base:undefined),k=home ? .62 : 1;
- p.box(0,.035,0,.63*k,.07,.49*k,C.slate,'independent-account-plate');
- if(choice==='public-watch'){p.box(0,.20*k,0,.045,.33*k,.055,C.gold,'public-watch-record-post');p.box(0,.33*k,.045,.48*k,.18*k,.025,C.paper,'public-checked-record');p.box(-.20*k,.075,.14*k,.09*k,.05,.09*k,C.checked,'open-watch-mark');}
- else if(choice==='reviewed-custody'){p.box(0,.16*k,0,.44*k,.23*k,.32*k,C.ash,'detached-core-cover');p.box(0,.285*k,0,.49*k,.035,.36*k,C.gold,'reviewed-custody-seal');p.box(0,.18*k,.17*k,.21*k,.09*k,.025,C.paper,'bounded-evidence-label');}
-}
-function draw(out,sim){const d=D(),r=q(sim);if(!r?.accepted)return;
- if(sim.room===null){if(r.steps.includes('home-return')&&r.steps.includes('aftermath')&&d.choices.some(c=>c.id===r.choice))trace(out,sim,r.choice,true);return;}
- if(sim.room!==d.room||sim.worldDive)return;
- for(const id of['west-relay-isolated','east-relay-isolated'])relay(out,sim,d.steps.find(p=>p.id===id),r.steps.includes(id));screen(out,sim,r.steps.includes('supplied-screen'));
- const p=paint(out,sim,d.enemy,0,{earthHomecomingFixture:'portable-claim',earthHomecomingRecorded:r.steps.includes('passage-secured')});p.box(0,.025,0,.78,.05,.54,C.slate,'portable-claim-footplate');p.box(0,.061,0,.50,.022,.30,r.steps.includes('passage-secured')?C.checked:C.claim,'portable-claim-record');
- if(r.steps.includes('passage-secured')){p.box(0,.09,-.27,.65,.055,.04,C.checked,'independent-restraint');}
- if(r.steps.includes('aftermath')&&d.choices.some(c=>c.id===r.choice))trace(out,sim,r.choice);
-}
-const api={draw,drawEnemy};G.RealmEarthHomecomingArt=api;if(typeof module!=='undefined')module.exports=api;
+function parseHex(s){const n=parseInt(String(s||'#c9b79c').replace('#',''),16);return Number.isFinite(n)?n:0xc9b79c;}
+const api={drawEnemy,draw};
+G.RealmEarthHomecomingArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
