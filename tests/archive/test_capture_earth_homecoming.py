@@ -315,7 +315,6 @@ def quiet_controller(bridge):
     c.close=lambda:None;c.budget=lambda:None;c.defend=lambda:None;c.diag=bridge.diagnostics;c.hold=bridge.hold;c.mark=lambda label:None
     return c
 
-@unittest.skip('retired homecoming: drives the old twelve-claim quest steps and repulse (see tests/archive/README.md, finale lane); port to the finale')
 class QuietControllerRepair(unittest.TestCase):
     def test_recorded_old_stop_is_inside_actual_danger_despite_default_destination_acceptance(self):
         b=CoreBridge()
