@@ -675,7 +675,7 @@ const audio={ctx:null,master:null,enabled:false,soundscape:null,footfalls:null,
  disable(){rpg?.gathering?.stop();experience?.stop();RealmAudio.disable();this.enabled=false;this.tick(elapsed);this.paint();},
  paint(){$('#sound').setAttribute('aria-pressed',String(this.enabled));$('#sound').setAttribute('aria-label',this.enabled?'Disable ambient sound':'Enable ambient sound');$('#sound').textContent=this.enabled?'♪':'♫';},
  toggle(){this.enabled?this.disable():this.enable();},
- tick(t){this.footfalls?.update({sim,active:characterStore.active,revision:characterStore.revision,enabled:this.enabled,hidden:document.hidden,blocked:!!panel||!!document.querySelector('dialog[open]')},sim.elapsed);RealmAudio.listen(sim.state.player);RealmAudio.scene({room:sim.room,battle:!!RealmCombat.selected(sim)});if(!this.soundscape||this.soundscape.disposed)return;const medium=sim.worldDive?RealmWorldFoundations.divingStatus(sim)?.body:null;
+ tick(t){this.footfalls?.update({sim,active:characterStore.active,revision:characterStore.revision,enabled:this.enabled,hidden:document.hidden,blocked:!!panel||!!document.querySelector('dialog[open]')},sim.elapsed);RealmAudio.listen(sim.state.player);RealmStoryAudio.tick(sim);if(!this.soundscape||this.soundscape.disposed)return;const medium=sim.worldDive?RealmWorldFoundations.divingStatus(sim)?.body:null;
   const result=this.soundscape.update({room:sim.room,hour:sim.state.hour,hp:sim.state.adventure.started?sim.state.adventure.hp:1,paused:sim.paused||!this.enabled,hidden:document.hidden,medium},t);
   if(result.bird&&this.enabled)RealmAudio.event('bird');
  }
