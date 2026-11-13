@@ -85,6 +85,7 @@ def walk(page, view, out, check, report):
     page.click('#pause-settings')
     page.wait_for_selector('#drawer.open', timeout=10000)
     page.wait_for_selector('#drawer .key-table', timeout=10000)
+    check(view + ': the first steps step aside while settings are open', page.is_hidden('#first-run'))
     keys = page.evaluate("()=>document.querySelectorAll('#drawer .key-table tbody tr').length")
     check(view + ': settings opens from the pause menu with the key table', keys >= 12, 'rows=' + str(keys))
     page.wait_for_timeout(300)
@@ -111,7 +112,7 @@ def walk(page, view, out, check, report):
 
     page.click('#title-credits')
     page.wait_for_selector('#credits-screen[open]', timeout=10000)
-    page.wait_for_timeout(2600)
+    page.wait_for_timeout(9000)
     shot('08-credits')
     page.keyboard.press('Escape')
     page.wait_for_function("()=>!document.querySelector('#credits-screen').open", timeout=10000)

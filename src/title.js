@@ -36,6 +36,7 @@ function show(){
  if(!dialog||!hooks)return;
  const cont=dialog.querySelector('#title-continue'),fresh=dialog.querySelector('#title-new');
  cont.hidden=!hooks.hasSave();
+ cont.classList.toggle('title-primary',!cont.hidden);fresh.classList.toggle('title-primary',cont.hidden);
  if(!dialog.open)dialog.showModal();
  document.body.classList.add('title-open');
  (cont.hidden?fresh:cont).focus({preventScroll:true});
