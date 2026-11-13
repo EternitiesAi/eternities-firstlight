@@ -46,21 +46,21 @@ test('heaven’s opening walk holds no hostile, and the approach watch waits on 
  assert.equal(V.available(sim.state).some(s=>s.id==='begin-watch'),true,'the reading opens the watch');
 });
 
-test('hell’s warden takes 520 health and 34 damage, and the difficulty table replaces them when it lands',()=>{
+test('hell’s warden takes 2080 health and 32 damage, and the difficulty table replaces them when it lands',()=>{
  const sim=world('world-hell');
  sim.state.hellCampaign=H.validate({version:1,accepted:true,steps:HELL_TO_VEYR,choice:null,claimed:false});
  const [veyr]=H.enemies(sim);
- assert.equal(veyr.hp,520);assert.equal(veyr.damage,34);
+ assert.equal(veyr.hp,2080);assert.equal(veyr.damage,32);
  globalThis.RealmDifficulty={boss:id=>id==='foundryWarden'?{hp:700,damage:41}:null};
  try{const [table]=H.enemies(sim);assert.equal(table.hp,700);assert.equal(table.damage,41);}finally{delete globalThis.RealmDifficulty;}
 });
 
-test('heaven’s relay seraph takes 620 health and 38 damage, and the difficulty table replaces them when it lands',()=>{
+test('heaven’s relay seraph takes 2470 health and 34 damage, and the difficulty table replaces them when it lands',()=>{
  const sim=world('world-heaven');
  sim.state.heavenCampaign=V.validate({version:1,accepted:true,steps:HEAVEN_TO_SERAPH,choice:null,claimed:false});
  const seraph=V.enemies(sim).find(e=>e.id==='heaven-relay-seraph-v1');
  assert.ok(seraph,'the seraph wakes once the glasswing is broken');
- assert.equal(seraph.hp,620);assert.equal(seraph.damage,38);
+ assert.equal(seraph.hp,2470);assert.equal(seraph.damage,34);
  globalThis.RealmDifficulty={boss:id=>id==='relaySeraph'?{hp:800,damage:44}:null};
  try{const table=V.enemies(sim).find(e=>e.id==='heaven-relay-seraph-v1');assert.equal(table.hp,800);assert.equal(table.damage,44);}finally{delete globalThis.RealmDifficulty;}
 });

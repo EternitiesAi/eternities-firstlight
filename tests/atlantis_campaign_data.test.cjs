@@ -156,7 +156,7 @@ test('Atlantis current: marked shallow region is entirely water; lower reading, 
 test('Atlantis encounter: grounded sweep fits; intake exposes the real south-edge clipping requirement',()=>{
  keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','anchored','damageWindow','spawnAfter','defeatStep']);
  assert.equal(d.enemy.anchored,true,'municipal service machine stays at its supported foundation');
- assert.equal(d.enemy.id,'atlantis-breakwater-custodian-v1');assert.equal(d.enemy.kind,'sentinel');assert.equal(d.enemy.hp,720);assert.equal(d.enemy.damage,42);assert.equal(d.enemy.radius,.75);assert.equal(d.enemy.damageWindow,'all-live-phases');
+ assert.equal(d.enemy.id,'atlantis-breakwater-custodian-v1');assert.equal(d.enemy.kind,'sentinel');assert.equal(d.enemy.hp,2860);assert.equal(d.enemy.damage,36);assert.equal(d.enemy.radius,.75);assert.equal(d.enemy.damageWindow,'all-live-phases');
  assert.deepEqual(d.enemy.spawnAfter,['challenge-custodian']);assert.equal(d.enemy.defeatStep,'bearing-exposed');assert.equal((world.enemies||[]).length,0);
  assert.ok(!old.definitions.some(v=>v.enemy?.id===d.enemy.id));assert.equal('xp' in d.enemy,false);assert.equal('gear' in d.enemy,false);
  keys(patterns,['sweep','intake']);assert.deepEqual(patterns.sweep,{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9});

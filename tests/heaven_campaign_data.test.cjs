@@ -150,7 +150,7 @@ test('Heaven encounters: directed beam and local pulse differ, admit ordinary da
  }
  const[beam,relay]=d.enemies;
  assert.deepEqual({hp:beam.hp,damage:beam.damage,radius:beam.radius},{hp:110,damage:12,radius:.55});
- assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:620,damage:38,radius:.6});
+ assert.deepEqual({hp:relay.hp,damage:relay.damage,radius:relay.radius},{hp:2470,damage:34,radius:.6});
  assert.deepEqual(beam.attack,{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}});
  assert.deepEqual(relay.attack,{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2});
  assert.ok(steps.get(beam.attack.support.step).optional);assert.equal('support' in relay.attack,false);

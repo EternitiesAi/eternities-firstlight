@@ -3,16 +3,18 @@
 (function(G){'use strict';
 const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freeze(patterns.slice())});
 // the hardest fight in the game: the chains are a long first body, the second runs and turns on you, the third does not stop.
-const REGENT=Object.freeze([phase(3000,34,['line','double']),phase(2500,54,['line','double','bait']),phase(3700,56,['double','bait','line'])]);
+// the second body sits above the witness guardian's 2860 hp, so every body outlasts every boss before him (the realm retune made the witness 2860).
+const REGENT=Object.freeze([phase(3000,34,['line','double']),phase(2900,54,['line','double','bait']),phase(3700,56,['double','bait','line'])]);
 const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
- hart:entry(240,24,1.05),
- ram:entry(320,28,1.2),
- herald:entry(350,29,1.35),
- keeper:entry(410,30,1.2),
- foundryWarden:entry(520,34,1.2),
- relaySeraph:entry(620,38,1.2),
- witnessGuardian:entry(720,42,1.35),
+ hart:entry(780,22,1.05),
+ ram:entry(1080,34,1.2),
+ herald:entry(1200,36,1.35),
+ keeper:entry(1440,38,1.2),
+ // realm hp is up about 30% so these fights run long. realm damage is held below the keeper's on purpose, so a realm loss stays under the 60% ceiling; the rising rule covers chapter damage only.
+ foundryWarden:entry(2080,32,1.2),
+ relaySeraph:entry(2470,34,1.2),
+ witnessGuardian:entry(2860,36,1.35),
  // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
  regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });
