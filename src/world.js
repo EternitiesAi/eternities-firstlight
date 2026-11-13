@@ -348,7 +348,7 @@ class WorldArt{
  }
  if(this.room==='retreat'&&sim.presentation?.selectedSlot){let slot=X.SLOTS.find(s=>s.id===sim.presentation.selectedSlot);if(slot){for(let i=0;i<4;i++){let a=i*Math.PI/2;out.box.push({p:[slot.x+Math.sin(a)*.95,1.6,slot.z+Math.cos(a)*.95],s:i%2?[.035,.035,1.95]:[1.95,.035,.035],c:0xe4c487,em:.5});}}}
  if(G.RealmRoadArt)G.RealmRoadArt.draw(out,sim,t,this);
- if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
+ if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);if(G.RealmNearshoreArt)G.RealmNearshoreArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
  if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmEarthConsignmentArt)G.RealmEarthConsignmentArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmEarthMasterworkArt)G.RealmEarthMasterworkArt.draw(out,sim,t,this);if(G.RealmEarthTournamentArt)G.RealmEarthTournamentArt.draw(out,sim,t,this);if(G.RealmEarthGateArt)G.RealmEarthGateArt.draw(out,sim,t,this);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}

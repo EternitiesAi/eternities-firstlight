@@ -22,7 +22,7 @@ function instrument(x,z){
 }
 const definitions=freeze([
  {
-  id:'cosmos-split-bearing-v1',realm:'cosmos',
+  id:'cosmos-split-bearing-v1',realm:'cosmos',gate:'cosmos',
   title:'Two Stations, One Honest Bearing',
   summary:'Teren needs a comparator scale that names the observer’s station. Adjust a real sight frame on each road, compare the fixed sky image with the observatory crown, then fit the two accepted readings at the service arm. Return to Three Lamps for one declared payment.',
   danger:'Both sight stations and the service arm stand on the existing dry roads. Walk around the central ridge and visible cover; the sky image supplies a view, not ground or a road. There is no timed alignment, telescope journey or requirement to leave the Near Expanse.',

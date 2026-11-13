@@ -107,7 +107,7 @@ function createHarness(raw){
  }
  return {get sim(){return sim;},get saved(){return saved;},events,routes,combats,claims,checkpoints,save,context,tick,command,walk,enter,trail,reload,home,fight,escortWalk};
 }
-function earnedKit(h,bow){
+function earnedKit(h,bow){if(h.sim.state.adventure.started)return;
  h.walk(11,9);h.command('start');
  if(bow){
   for(const id of['timber-1','timber-2','fibre-1','fibre-2','stone-1','stone-2']){
@@ -170,4 +170,6 @@ if(require.main===module){
  const report=journey({bow:process.argv.includes('--bow'),output});
  console.log(JSON.stringify({status:report.status,variant:report.variant,claims:report.claims.length,combats:report.combats.length,commands:report.events.filter(e=>e.type).length,walkedLegs:report.routes.length,saves:report.saveCount,sourceDrift:report.sourceDrift},null,2));
 }
-module.exports={journey,createHarness,earnedKit};
+// Heaven is finished before the Atlantis and Cosmos doors open: the witness journeys start from that save.
+function witnessHarness(bow){const pre=createHarness();earnedKit(pre,bow);return createHarness(require('./witness_prereq.cjs').heavenFinished(pre.sim.snapshot()));}
+module.exports={journey,createHarness,earnedKit,witnessHarness};

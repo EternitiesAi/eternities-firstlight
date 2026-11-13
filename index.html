@@ -1861,13 +1861,13 @@ const patterns=freeze({
   mobility:'Anchored municipal service bodies. Their stated footprint stays on actual support; retreat does not trigger a hidden chase or extra reach.'}
 });
 const supports=freeze([
- {id:'material',name:'Material independence',inspect:'material-inspect',complete:'material-fit',assistance:'assist-material',configure:'configure-material',
+ {id:'material',name:'Material anchor',inspect:'material-inspect',complete:'material-fit',assistance:'assist-material',configure:'configure-material',
   mode:'An independent supplied brace takes the local output without borrowing another reach’s support.',
   supplied:'Anik supplies tested struts and shoes, or a brace checked in advance. No ore, timber, equipment or extra regional work is needed.'},
- {id:'living',name:'Living adaptation',inspect:'living-inspect',complete:'living-fit',assistance:'assist-living',configure:'configure-living',
+ {id:'living',name:'Living anchor',inspect:'living-inspect',complete:'living-fit',assistance:'assist-living',configure:'configure-living',
   mode:'The garden return can adjust locally instead of being held to one copied setting.',
   supplied:'Use the supplied wick-loop or the tested adaptive return. Neither needs a rare seed, companion, growth timer or an earlier garden job.'},
- {id:'observation',name:'Observational accountability',inspect:'observation-inspect',complete:'observation-fit',assistance:'assist-observation',configure:'configure-observation',
+ {id:'observation',name:'Observation anchor',inspect:'observation-inspect',complete:'observation-fit',assistance:'assist-observation',configure:'configure-observation',
   mode:'Both named station records and their limits remain beside the independent interval setting.',
   supplied:'Anik supplies a checked record of both named stations. The earlier comparator stays intact; no private testimony, personal archive or new astronomical claim is required.'}
 ]);
@@ -1876,22 +1876,22 @@ const definition=freeze({
  prerequisite:'cosmos-split-bearing-v1',entry:{kit:'adventure.started',prior:'claimed realmTrails record'},
  giver:{id:'anik',name:'Anik · observer',x:3,z:-43,y:4.77},
  reward:{xp:50,coins:20,ore:5,materials:{wood:4,fiber:3,crystal:2}},
- summary:'Anik: Avar’s plan asks every branch to follow one setting. Read what that costs, then help Raven fit any two supports. Each has a tested, supplied alternative. Disable the Optical Reclaimer, isolate its feed, and face the Still Meridian Guardian. Release both feeds, disconnect the central link, and choose how to record Avar’s responsibility. Set your two branches independently, check the open apparatus, then return for payment.',
- danger:'Both anchored machines can be fought with blade or bow. Move beside the marked attacks, use cover, or Brace. The Optical Reclaimer has 84 health and 8 damage. The Still Meridian Guardian has 168 health and 12 damage; it marks rings with a clear center or crosses with clear quadrants. The east feed shrinks later rings; the west feed removes the transverse bar from later crosses. Health, damage and timing stay the same for every weapon. An attack already marked stays unchanged. You may release the feeds during the fight or afterward. No deadline or material loss applies, and the road home stays open. Public service facts do not require anyone’s private history.',
- completionText:'Avar’s harmful synchronization is stopped. At least two branches now have their own settings, and the instrument keeps the account you chose. The public service loop and road home remain open. Anik has paid 20 sunmarks, 5 ore, 4 timber, 3 fibre and 2 crystal once, plus up to 50 XP within your stored cap. Use the materials for projects you choose; your equipment is unchanged. The comparator, drawing shelf and earlier work retain their own records. Sidereth, Elaris and the Far Confluence remain ahead. This local repair does not settle the Regent’s war or the ultimate Answering.',
+ summary:'Anik: Avar’s plan asks every branch to follow one setting, and the Confluence has no owner but him. Read what that costs, then help Raven fit any two anchors. Each has a tested, supplied alternative. Disable the Optical Reclaimer, isolate its feed, and face the Still Meridian Guardian. Release both feeds, disconnect the central link, and record Avar’s responsibility. Set two anchors on their own, check the open apparatus, then return to Anik.',
+ danger:'Both anchored machines can be fought with blade or bow. Move beside the marked attacks, use cover, or Brace. The Optical Reclaimer has 84 health and 8 damage. The Still Meridian Guardian has 168 health and 12 damage; it marks rings with a clear center or crosses with clear quadrants. The east feed shrinks later rings; the west feed removes the transverse bar from later crosses. Health, damage and timing stay the same for every weapon. An attack already marked stays as it is. You may release the feeds during the fight or afterward. There is no deadline and no material loss, and the road home stays open.',
+ completionText:'Avar’s central synchronization is stopped. Two anchors now hold their own settings, and the instrument keeps the account you chose. The public service loop and the road home stay open. Anik gives you 20 sunmarks, 5 ore, 4 timber, 3 fibre and 2 crystal, plus up to 50 XP within your stored cap. Use the materials for projects you choose; your equipment is unchanged. The comparator and the drawing shelf keep their own records. Sidereth, Elaris and the Far Confluence are still ahead.',
  witnesses:[
   {id:'cosmos-raven-service-v1',name:'Raven · support planner',x:20,z:-38,appearsAfter:['read-local-cost']},
   {id:'cosmos-avar-senn-v1',name:'Avar Senn · created scholar',x:45,z:-35,appearsAfter:['disable-central-link']}
  ],
  steps:[
   step('read-local-cost','Read the omitted local support cost','interact',14,-40,[],
-   'Anik: Avar’s stabilization helped people, but his diagram leaves out what the garden and branch feeds must carry. Compare their marks. Raven and I have tested alternatives for all three supports.'),
+   'Anik: Avar’s plan helped people, but his diagram leaves out what each branch has to carry. Raven and I have tested an anchor for every branch. Compare the marks.'),
   step('material-inspect','Inspect the independent brace shoes','interact',22,-40,['read-local-cost'],
    'Check the brace shoes against the service load marks. Anik supplies the parts for this job; you do not spend your own materials.',{optional:true,lead:'material'}),
   step('material-fit','Seat the material support','configure',22,-46,['material-inspect'],
    'Fit the supplied struts into both independent shoes. The completed brace prepares one distinct material support.',{optional:true,lead:'material',setting:'seat-independent-shoes'}),
   step('assist-material','Fit the supplied pre-checked material support','configure',22,-46,['read-local-cost'],
-   'Seat the brace that Anik has checked in advance. It prepares the material support without an inspection or inventory charge. Choose this brace or fit the other one; either carries the same branch.',{optional:true,lead:'material',alternativeTo:'material-fit',setting:'seat-tested-brace'}),
+   'Seat the brace that Anik has checked in advance. It prepares the material support without an inspection or any cost to you. Choose this brace or fit the other one; either carries the same branch.',{optional:true,lead:'material',alternativeTo:'material-fit',setting:'seat-tested-brace'}),
   step('living-inspect','Inspect the garden’s adjustable return','interact',26,-27,['read-local-cost'],
    'Read the garden’s return marks. This fitting can be set locally instead of copying the central schedule.',{optional:true,lead:'living'}),
   step('living-fit','Fit the independent living return','configure',26,-33,['living-inspect'],
@@ -1899,17 +1899,17 @@ const definition=freeze({
   step('assist-living','Fit the supplied tested living return','configure',26,-33,['read-local-cost'],
    'Fit the tested adaptive return here. It prepares the living support without a rare seed, companion, growth timer or prior garden job.',{optional:true,lead:'living',alternativeTo:'living-fit',setting:'fit-tested-return'}),
   step('observation-inspect','Read both named local stations','interact',26,-48,['read-local-cost'],
-   'Read the supplied pair of service-station records and their limits. The previously claimed sky comparator stays true; this pair concerns only the local service interval.',{optional:true,lead:'observation'}),
+   'Read the supplied pair of service-station records and their limits. The sky comparator you set still stands; this pair concerns only the local service interval.',{optional:true,lead:'observation'}),
   step('observation-fit','Fit the named-station interval record','configure',30,-40,['observation-inspect'],
    'Keep both station names and their limits on the independent instrument. Neither a beautiful picture nor an unnamed average can erase the differing observations.',{optional:true,lead:'observation',setting:'retain-both-stations'}),
   step('assist-observation','Fit the supplied checked station record','configure',30,-40,['read-local-cost'],
    'Fit the checked public record of both stations. This prepares the observational support without private history or archive participation.',{optional:true,lead:'observation',alternativeTo:'observation-fit',setting:'fit-checked-stations'}),
   step('test-service-route','Test the independently supported service approach','interact',30,-40,['read-local-cost'],
-   'Check the clear service approach and any two different support fittings. The third is optional. A tested, supplied alternative carries its branch just as an inspected fitting does.',{requiresSupports:2}),
+   'Check the clear service approach and any two different anchors. The third is optional. A tested, supplied alternative holds its branch just as an inspected fitting does.',{requiresSupports:2}),
   step('challenge-reclaimer','Begin the local optical defense','interact',33,-40,['test-service-route'],
    'Start the Optical Reclaimer deliberately. It marks a narrow attack along the service road; cover can block it. Select the machine with Tab or click, then use your blade or bow.'),
   step('reclaimer-settled','Disable the Optical Reclaimer','defeat',36,-40,['challenge-reclaimer'],
-   'Disable the Optical Reclaimer with your blade or bow, then isolate its service feed. Payment comes from Anik after the whole operation is checked.'),
+   'Disable the Optical Reclaimer with your blade or bow, then isolate its service feed. Anik gives your reward after the whole operation is checked.'),
   step('isolate-service-feed','Physically isolate the imposed service feed','configure',40,-40,['reclaimer-settled'],
    'Turn this branch to its independent setting. The public approach stays open. Stopping the machine does not turn the feed for you.',{setting:'isolate-imposed-feed'}),
   step('challenge-guardian','Begin the Still Meridian Guardian operation','interact',47,-44,['isolate-service-feed'],
@@ -1919,25 +1919,25 @@ const definition=freeze({
   step('release-east-feed','Release the outer-ring feed','configure',59,-39,['challenge-guardian'],
    'Release the east feed. New rings reach 3.2 paces instead of 4.6. The 1.8-pace clear center, damage and timing stay the same. A ring already marked does not change.',{setting:'release-outer-feed'}),
   step('guardian-settled','Disable the Still Meridian Guardian','defeat',54,-44,['challenge-guardian'],
-   'Disable the Guardian with your blade or bow. Both feeds must also be released before you disconnect the central link. The account, independent settings and payment still wait.'),
+   'Disable the Guardian with your blade or bow. Both feeds must also be released before you disconnect the central link. The account and your anchors still wait.'),
   step('disable-central-link','Disable the coercive central synchronization','configure',54,-48,['release-west-feed','release-east-feed','guardian-settled'],
-   'With the Guardian stopped and both feeds released, disconnect the central synchronization. Avar can no longer impose this setting on the local branches. Next, record his responsibility and set your prepared branches independently.',{setting:'disconnect-central-synchronization'}),
+   'With the Guardian stopped and both feeds released, disconnect the central synchronization. Avar can no longer impose one setting on every branch. Next, record his responsibility and set your anchors on their own.',{setting:'disconnect-central-synchronization'}),
   step('accountability','Record the local accountability arrangement','choice',45,-35,['disable-central-link'],
-   'Choose the public mechanical account alone, or keep Avar’s short statement in Anik’s local custody as well. Both preserve the full service costs and Avar’s responsibility. No personal archive, cosmic verdict, class or soul choice is required.'),
+   'Choose the public mechanical account alone, or keep Avar’s short statement in Anik’s custody as well. Both keep the full service costs and Avar’s responsibility. No personal archive or cosmic verdict is needed.'),
   step('configure-material','Set the prepared material branch independently','configure',22,-46,['accountability'],
-   'Give the prepared material fitting its own rated setting. Any two distinct prepared branches must be physically reconfigured; a third remains optional.',{optional:true,requiresSupport:'material',setting:'independent-material-interval'}),
+   'Give the prepared material anchor its own rated setting. Any two anchors must be set by hand; a third is optional.',{optional:true,requiresSupport:'material',setting:'independent-material-interval'}),
   step('configure-living','Set the prepared garden return independently','configure',26,-33,['accountability'],
    'Give the prepared garden return its own setting, separate from the central schedule.',{optional:true,requiresSupport:'living',setting:'independent-living-interval'}),
   step('configure-observation','Publish the prepared named interval independently','configure',30,-40,['accountability'],
    'Set the prepared named-station instrument to its independent interval and preserve its limits.',{optional:true,requiresSupport:'observation',setting:'independent-observation-interval'}),
   step('open-confluence','Open the independent local service interval','configure',32.5,-29,['accountability'],
-   'Once at least two prepared branches have their own settings, open the independent interval at this public-loop instrument. The instrument will keep those settings and the account you chose. The public road remains open.',{requiresConfiguredSupports:2,setting:'open-independent-interval'}),
+   'Once at least two anchors hold their own settings, open the independent interval at this public-loop instrument. It keeps those settings and the account you chose. The public road stays open.',{requiresConfiguredSupports:2,setting:'open-independent-interval'}),
   step('verify-open-bearings','Verify the open apparatus and public account','interact',44,-29,['open-confluence'],
-   'Compare the open apparatus with the account and the supports you set. This is a local service repair; the wider work and the ultimate Answering remain ahead. Return to Anik to claim the fixed fee.')
+   'Compare the open apparatus with the account and the anchors you set. Each anchor keeps its own setting, and none of them owns the road. That is the Answering in small: many anchors, no master key. Return to Anik for your reward.')
  ],
  choices:[
   {id:'public-record',name:'Public mechanical account',text:'Publish the public mechanical account of the local feed marks, harmful synchronization, disabling and independent settings. Keep Avar’s responsibility visible without requiring his whole personal history.',
-   consequence:'The instrument displays the public mechanical account and Anik’s continuing check marks. Avar’s local project stays disabled. His wider fate and formal proceedings remain undecided.',
+   consequence:'The instrument displays the public mechanical account and Anik’s continuing check marks. Avar’s local project stays disabled. His wider fate is still his to answer for.',
    recognition:[{name:'Anik',text:'Both stations and the local cost remain named. The mechanism is open to inspection.'},{name:'Avar Senn',text:'The service marks show the cost I excluded. This installation is no longer mine to hold in that configuration.'}]},
   {id:'bounded-account',name:'Public facts with bounded testimony',text:'Keep the same public mechanical account, and accept Avar’s short statement in Anik’s local custody. His private history remains his own; limited testimony is not amnesty.',
    consequence:'The public mechanical facts remain beside a marked testimony folder. Anik records its limits. Avar remains responsible, and his local project stays disabled. No private account is searched and no global pardon is granted.',
@@ -2815,7 +2815,7 @@ const api=Object.freeze({parts});G.RealmElderwealdTrailArt=api;if(typeof module!
  const trees = [[-12,5],[-8,-18],[-12,-28],[12,5],[17,-15],[12,-26],[-24,-39],[25,-43],[-22,-63],[23,-65]];
  const earth = {
   id:'earthlands',room:'world-earthlands',name:'Earth · Coastward Road',
-  kicker:'Broader Earth foundation · provisional local geography',
+  kicker:'Broader Earth foundation · local geography',
   description:'A long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.',
   sourceNotes:'Original opening inspired by Earth E02 Crownfields, E05 Reedmere and E08 Rainward. Coastward Road, Merren and Vessa are new provisional names, not recovered manuscript canon.',
   entry:{x:0,z:104,yaw:Math.PI},bounds:{minX:-42,maxX:42,minZ:-92,maxZ:115},
@@ -3408,7 +3408,7 @@ function freeze(value){
 }
 const definitions=freeze([
  {
-  id:'atlantis-bellglass-chart-v1',realm:'atlantis',
+  id:'atlantis-bellglass-chart-v1',realm:'atlantis',gate:'atlantis',
   title:'A Chart With Room for Depth',
   summary:'Sahra needs one visitor chart that distinguishes the old lower road, the modern wet lane and Bellglass’s air court. Read both depth marks, correct the chart in the court, and add a modern marker beside the old masonry.',
   danger:'This job enters the existing bounded gallery. F ascends, G descends, and depth holds when released. The visitor envelope has no breath timer. Bellglass’s doorway and the east wet lane remain the way out; free passage home remains available.',
@@ -3478,7 +3478,7 @@ function instrument(x,z){
 }
 const definitions=freeze([
  {
-  id:'cosmos-split-bearing-v1',realm:'cosmos',
+  id:'cosmos-split-bearing-v1',realm:'cosmos',gate:'cosmos',
   title:'Two Stations, One Honest Bearing',
   summary:'Teren needs a comparator scale that names the observer’s station. Adjust a real sight frame on each road, compare the fixed sky image with the observatory crown, then fit the two accepted readings at the service arm. Return to Three Lamps for one declared payment.',
   danger:'Both sight stations and the service arm stand on the existing dry roads. Walk around the central ridge and visible cover; the sky image supplies a view, not ground or a road. There is no timed alignment, telescope journey or requirement to leave the Near Expanse.',
@@ -3503,7 +3503,7 @@ if(typeof module!=='undefined')module.exports=api;
 </script><script>/* Bounded once-only realm stories. Presentation never manufactures accepted facts. */
 (function(G){'use strict';
 const clone=o=>JSON.parse(JSON.stringify(o)),actors=new WeakMap(),dials=new WeakMap(),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
-const fail=error=>({ok:false,error});
+const fail=error=>({ok:false,error}),SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 function definitions(){const north=G.RealmTrailsNorth||(typeof require==='function'?require('./realm-trails-north.js'):null),south=G.RealmTrailsSouth||(typeof require==='function'?require('./realm-trails-south.js'):null),cosmos=G.RealmTrailsCosmos||(typeof require==='function'?require('./realm-trails-cosmos.js'):null);return[...north.definitions,...south.definitions,...cosmos.definitions];}
 const definition=id=>definitions().find(d=>d.id===id)||null;
 const record=()=>({accepted:false,steps:[],settings:{},checkpoint:0,escortMode:'follow',assisted:false,claimed:false});
@@ -3559,6 +3559,7 @@ function command(ctx,type,payload,io){
  if(type==='accept'){
   if(!at(sim,{...d.giver,medium:'dry'}))return fail('Speak to '+d.giver.name+' to accept this work.');
   if(r.accepted)return{ok:true,duplicate:true,text:'This trail is already accepted. Its progress is retained.'};
+  if(d.gate&&!SAGA().allowed(sim.state,d.gate))return fail('The way here is not open yet. Keep to the main story first.');
   r.accepted=true;text=d.title+' accepted. Read the route, danger and fixed reward.';
  }else if(type==='step'){
   const s=d.steps.find(s=>s.id===payload.step);if(!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded here.');
@@ -3629,6 +3630,9 @@ const api={definitions,definition,required,fresh,validate,at,commit,setting,adju
 (function(G){'use strict';
 const DATA=G.RealmCosmosCampaignData||(typeof require==='function'?require('./cosmos-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,SUPPORTS=DATA.supports;
+const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+// The saga writes into the candidate save, so a sighting lands in the same save as the acceptance.
+const candidateSim=c=>({state:c,event:(kind,text)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:text.slice(0,350)});if(c.journal.length>200)c.journal.shift();}});
 const copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,fail=error=>({ok:false,error});
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.cosmosCampaign||s,locks=new WeakMap(),runtimeOwners=new WeakMap(),actorSims=new WeakMap(),actorStates=new WeakMap();
 const fresh=()=>({version:1,accepted:false,steps:[],choice:null,opened:false,claimed:false});
@@ -3655,7 +3659,7 @@ function validate(raw){
  if(raw.claimed&&!ready(raw))no('unearned claim');
  return{version:1,accepted:raw.accepted,steps:raw.steps.slice(),choice:raw.choice,opened:raw.opened,claimed:raw.claimed};
 }
-function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true;}
+function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true&&SAGA().allowed(state,'cosmos')===true;}
 function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&allowed(r,s)):[];}
 function ready(state){const r=record(state);return !!r?.accepted&&D.choices.some(c=>c.id===r.choice)&&r.opened===true&&prepared(r).length>=2&&configured(r).length>=2&&required().every(id=>r.steps.includes(id));}
 function at(sim,p){
@@ -3674,7 +3678,7 @@ function commit(sim,candidate,io,text,ctx){
  }catch(e){return fail('Campaign save refused: '+e.message);}
  if(!saved?.ok)return fail(saved?.error||'Campaign save refused. No history, costs or reward were changed.');
  if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. The saved candidate was not adopted into the changed simulation.');
- sim.state.cosmosCampaign=checked.cosmosCampaign;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
+ sim.state.cosmosCampaign=checked.cosmosCampaign;sim.state.saga=checked.saga;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;return{ok:true,text};
 }
 function runtime(sim){
@@ -3687,14 +3691,15 @@ function command(ctx,type,payload,io){
  const sim=ctx?.sim;
  if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==D.room||sim.worldDive||sim.state.adventure.hp<=0)return fail('Reach the Cosmos service operation on dry ground while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or operation changed. Read the current terms again.');
- const r=sim.state.cosmosCampaign;if(!r||!eligible(sim.state))return fail('Earn the ordinary kit and explicitly claim the separate named-station comparator first.');
- if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This local Confluence was already paid once. Its apparatus and account remain.'};
+ const r=sim.state.cosmosCampaign;if(!r||!eligible(sim.state))return fail('Finish the split-bearing comparator first, then return to the Confluence.');
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This Confluence is already complete. Its apparatus and account remain.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This operation is already accepted; its saved work remains.'};
  let candidate;try{candidate=sim.snapshot();if(!candidate.cosmosCampaign)return fail('The Cosmos snapshot owner is not installed. No history or fee was changed.');candidate.cosmosCampaign=validate(candidate.cosmosCampaign);}catch(e){return fail('Campaign state refused: '+e.message);}
  const q=candidate.cosmosCampaign;let text,reward=null;
  if(type==='accept'){
-  if(!eligible(candidate)||!at(sim,D.giver))return fail('Claim the separate comparator, then speak to Anik at the actual observatory.');
-  q.accepted=true;text=D.title+' accepted. The comparator, drawing shelf, equipment and ordinary return retain their own history.';
+  if(!eligible(candidate)||!at(sim,D.giver))return fail('The Confluence is not open to you yet. Finish the story before it, then speak to Anik.');
+  q.accepted=true;const seen=SAGA().regentSeen(candidateSim(candidate),'confluence');if(!seen.ok)return fail(seen.error);
+  text=D.title+' accepted. The comparator, drawing shelf, equipment and ordinary return keep their own history.';
  }else if(type==='step'||type==='configure'){
   const s=step(payload.step);if(!q.accepted||q.claimed||!s||s.kind!==(type==='configure'?'configure':'interact'))return fail('Only accepted physical work of this kind can be recorded. Actual combat owns machine exhaustion.');
   if(type==='configure'&&payload.setting!==s.setting)return fail('Read and choose the exact named setting. Wrong settings have no material cost or penalty.');
@@ -3709,11 +3714,11 @@ function command(ctx,type,payload,io){
   if(!allowed(q,s))return fail('Settle both actual machines, release both feeds and physically disable the central link before choosing.');
   q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
  }else if(type==='claim'){
-  if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the independently open apparatus, then return to Anik for the whole declared fee.');
+  if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the open apparatus, then return to Anik for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
-  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee, including crystal. The apparatus remains open and unpaid; nothing was changed.');
+  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
-  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Claimed once.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Cosmos campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
  if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
@@ -3791,8 +3796,8 @@ const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" da
 const record=sim=>sim.state.cosmosCampaign,step=id=>D().steps.find(s=>s.id===id);
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
 function fee(){const r=D().reward;return'Up to '+r.xp+' XP within the stored cap · '+r.coins+' sunmarks · '+r.ore+' ore'+Object.entries(r.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
-function routePoints(sim){const r=record(sim);if(sim.room!==D().room||!r?.accepted||r.claimed)return[];return(H().ready(sim.state)?[{...D().giver,id:'claim',kind:'giver',name:'Return to Anik · complete, unpaid'}]:H().available(sim.state)).map((p,i)=>({...p,cosmosCampaign:true,mark:'C'+(i+1)}));}
-function legend(sim){const p=routePoints(sim);return p.length?'<section class="cosmos-campaign-map"><h3>The Open Confluence</h3><p>Follow the C labels to the work you can do next. Prepare any two different supports; a supplied alternative carries the same branch. The public service loop and road home stay open.</p><ol>'+p.map(s=>'<li><strong>'+s.mark+'</strong> · '+esc(s.name)+' '+button('Walk near this action','walk',s.id)+'</li>').join('')+'</ol>'+button('Read the operation','open')+'</section>':'';}
+function routePoints(sim){const r=record(sim);if(sim.room!==D().room||!r?.accepted||r.claimed)return[];return(H().ready(sim.state)?[{...D().giver,id:'claim',kind:'giver',name:'Return to Anik for your reward'}]:H().available(sim.state)).map((p,i)=>({...p,cosmosCampaign:true,mark:'C'+(i+1)}));}
+function legend(sim){const p=routePoints(sim);return p.length?'<section class="cosmos-campaign-map"><h3>The Open Confluence</h3><p>Follow the C labels to the work you can do next. Set any two different anchors; a supplied alternative holds the same branch. The public service loop and road home stay open.</p><ol>'+p.map(s=>'<li><strong>'+s.mark+'</strong> · '+esc(s.name)+' '+button('Walk near this action','walk',s.id)+'</li>').join('')+'</ol>'+button('Read the operation','open')+'</section>':'';}
 class CosmosCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -3817,25 +3822,25 @@ class CosmosCampaignUI{
   if(type==='confirm'){if(!this.same(this.pending)||this.pending.choice!==id||!H().at(s,step('accountability'))){this.pending=null;this.rpg.api.toast('Your situation has changed since that preview. Read the terms again.');this.rpg.paint();return true;}payload.choice=id;command='choose';}
   const result=this.rpg.api.cosmosCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest='cosmos-campaign';this.rpg.paint();return true;
  }
- journal(){const r=record(this.sim),status=r?.claimed?'Claimed once':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Open and verified · unpaid':'Accepted · '+B().completedSupports(r.steps).length+' prepared supports';return'<section class="cosmos-campaign-invitation"><small>COSMOS · INDEPENDENT SERVICE REACH</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Fit any two supports. Release the guardian feeds, stop the imposed synchronization and deliberately record its cost.</p>'+button('Read Anik’s request, risks and payment','open')+(r?.accepted&&!r.claimed?button('Track this operation','track'):'')+'</section>';}
+ journal(){const r=record(this.sim),status=r?.claimed?'Complete':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Open and verified':'Accepted · '+B().completedSupports(r.steps).length+' prepared anchors';return'<section class="cosmos-campaign-invitation"><small>COSMOS · INDEPENDENT SERVICE REACH</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Set any two anchors. Release the guardian feeds, stop the imposed synchronization and record its cost.</p>'+button('Read Anik’s request and the risks','open')+(r?.accepted&&!r.claimed?button('Track this operation','track'):'')+'</section>';}
  invitation(){return this.journal();}
  panel(){const s=this.sim,d=D(),r=record(s),here=s.room===d.room;this.binding={...this.owner(),id:++this.serial};const attrs='data-binding="'+this.binding.id+'" data-revision="'+this.binding.revision+'"',act=(label,type,id='')=>button(label,type,id,attrs);
-  let html='<article class="cosmos-campaign"><p class="cosmos-campaign-kicker">NEAR EXPANSE · THE OPEN CONFLUENCE</p><p>'+esc(d.summary)+'</p><section class="cosmos-campaign-terms"><h3>Work and payment</h3><p><strong>Fixed fee:</strong> '+esc(fee())+'. Materials support your chosen projects; no gear is changed automatically.</p><p><strong>Danger and responses:</strong> '+esc(d.danger)+'</p><p>Prepare any two different supports. For each branch, inspect and fit its parts or use the tested alternative Anik supplies. No rare seed, timer, private archive, outside profession or extra regional job is needed. The comparator and drawing shelf keep their own records.</p></section>';
-  if(!r?.accepted)html+='<section><h3>Begin with Anik</h3><p>'+(!H().eligible(s.state)?'Obtain the ordinary expedition kit and claim Anik’s existing '+esc(previousTitle())+' comparator first.':'You have checked the comparator. Anik has more work for you.')+'</p>'+(here&&H().eligible(s.state)?H().at(s,d.giver)?act('Accept Anik’s work','accept'):button('Walk to Anik','walk','giver'):'<p>Visit the Near Expanse through its ordinary invitation.</p>')+'</section>';
-  else if(r.claimed)html+='<section class="cosmos-campaign-recorded"><h3>Independent operation · fee claimed once</h3><p>'+esc(d.completionText)+'</p></section>';
+  let html='<article class="cosmos-campaign"><p class="cosmos-campaign-kicker">NEAR EXPANSE · THE OPEN CONFLUENCE</p><p>'+esc(d.summary)+'</p><section class="cosmos-campaign-terms"><h3>Work and reward</h3><p><strong>Reward:</strong> '+esc(fee())+'. Materials support your chosen projects; no gear is changed automatically.</p><p><strong>Danger and responses:</strong> '+esc(d.danger)+'</p><p>Set any two different anchors. For each one, inspect and fit its parts or use the tested alternative Anik supplies. No rare seed, timer, private archive or extra regional job is needed. The comparator and drawing shelf keep their own records.</p></section>';
+  if(!r?.accepted)html+='<section><h3>Begin with Anik</h3><p>'+(!H().eligible(s.state)?'Finish '+esc(previousTitle())+' first. The Confluence also opens only when the main story reaches it.':'You have checked the comparator. Anik has more work for you.')+'</p>'+(here&&H().eligible(s.state)?H().at(s,d.giver)?act('Accept Anik’s work','accept'):button('Walk to Anik','walk','giver'):'<p>Visit the Near Expanse through its ordinary invitation.</p>')+'</section>';
+  else if(r.claimed)html+='<section class="cosmos-campaign-recorded"><h3>Independent operation · complete</h3><p>'+esc(d.completionText)+'</p></section>';
   else{
    const available=new Set(H().available(s.state).map(p=>p.id)),prepared=B().completedSupports(r.steps),configured=B().configuredSupports(r.steps);
    const row=p=>{const done=r.steps.includes(p.id),next=available.has(p.id),at=here&&H().at(s,p);let controls='';if(next){if(!here)controls='<p>Revisit the Near Expanse to continue.</p>';else if(!at)controls=button('Walk near this action','walk',p.id);else if(p.kind==='defeat')controls='<p>Select the machine with Tab or click. Use your blade or bow to disable it.</p>';else if(p.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name,'review',c.id)).join('');else controls=act(p.name,p.kind==='configure'?'configure':'step',p.id);}return'<li data-cosmos-step="'+esc(p.id)+'" class="'+(done?'cosmos-campaign-done':next?'cosmos-campaign-next':'')+'"><h4>'+esc(p.name)+(done?' · recorded':p.optional?' · optional route':'')+'</h4><details><summary>Read what to do here</summary><p>'+esc(p.text)+'</p></details>'+controls+'</li>';};
-   html+='<section><h3>Any two distinct supports</h3><p>'+prepared.length+' prepared · '+configured.length+' reconfigured. Ordinary and supplied work are two alternatives for one support. Preparing a third grants no extra payout.</p><div class="cosmos-campaign-supports">'+B().supports.map(lead=>'<section><h4>'+esc(lead.name)+(prepared.includes(lead.id)?' · prepared':'')+'</h4><p>'+esc(lead.mode)+'</p><p>'+esc(lead.supplied)+'</p><ol>'+d.steps.filter(p=>p.lead===lead.id||p.id===lead.configure).map(row).join('')+'</ol></section>').join('')+'</div></section><section><h3>The service work</h3><ol>'+d.steps.filter(p=>!p.lead&&!B().supports.some(lead=>lead.configure===p.id)).map(row).join('')+'</ol></section>';
-   if(H().ready(s.state))html+='<section><h3>Open and verified · unpaid</h3><p>If you cannot carry the whole payment, make room and return to Anik. Your fee waits, and the apparatus stays open.</p>'+(here&&H().at(s,d.giver)?act('Collect the full payment','claim'):here?button('Walk back to Anik','walk','claim'):'')+'</section>';html+=button('Track this operation','track');
+   html+='<section><h3>Any two anchors</h3><p>'+prepared.length+' prepared · '+configured.length+' set. Ordinary and supplied work are two ways to the same anchor. A third anchor is optional.</p><div class="cosmos-campaign-supports">'+B().supports.map(lead=>'<section><h4>'+esc(lead.name)+(prepared.includes(lead.id)?' · prepared':'')+'</h4><p>'+esc(lead.mode)+'</p><p>'+esc(lead.supplied)+'</p><ol>'+d.steps.filter(p=>p.lead===lead.id||p.id===lead.configure).map(row).join('')+'</ol></section>').join('')+'</div></section><section><h3>The service work</h3><ol>'+d.steps.filter(p=>!p.lead&&!B().supports.some(lead=>lead.configure===p.id)).map(row).join('')+'</ol></section>';
+   if(H().ready(s.state))html+='<section><h3>Open and verified</h3><p>If your pack is full, make room and return to Anik. The apparatus stays open until you collect your reward.</p>'+(here&&H().at(s,d.giver)?act('Collect your reward','claim'):here?button('Walk back to Anik','walk','claim'):'')+'</section>';html+=button('Track this operation','track');
   }
-  html+='<section><h3>Two accountability arrangements</h3><div class="cosmos-campaign-choices">'+d.choices.map(c=>'<section><h4>'+esc(c.name)+(r?.choice===c.id?' · retained':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></section>').join('')+'</div></section>';
-  const choice=d.choices.find(c=>c.id===r?.choice);if(choice)html+='<section><h3>The local account remains</h3>'+choice.recognition.map(v=>'<p><strong>'+esc(v.name)+':</strong> “'+esc(v.text)+'”</p>').join('')+'</section>';
-  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="cosmos-campaign-confirm"><h3>'+esc(c.name)+' · confirm this choice</h3><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p><p>This choice keeps one local account. Both arrangements pay the same fee and leave the road home open. Your earlier choices remain.</p>'+(this.same(this.pending)?act('Confirm '+c.name,'confirm',c.id):'<p>Your traveller or situation has changed. Cancel and read the terms again.</p>')+button('Cancel · leave undecided','cancel')+'</section>';}
+  html+='<section><h3>Two ways to keep the account</h3><div class="cosmos-campaign-choices">'+d.choices.map(c=>'<section><h4>'+esc(c.name)+(r?.choice===c.id?' · retained':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></section>').join('')+'</div></section>';
+  const choice=d.choices.find(c=>c.id===r?.choice);if(choice)html+='<section><h3>The account you kept</h3>'+choice.recognition.map(v=>'<p><strong>'+esc(v.name)+':</strong> “'+esc(v.text)+'”</p>').join('')+'</section>';
+  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="cosmos-campaign-confirm"><h3>'+esc(c.name)+' · confirm this choice</h3><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p><p>This choice keeps one account. Both ways pay the same reward and leave the road home open.</p>'+(this.same(this.pending)?act('Confirm '+c.name,'confirm',c.id):'<p>Your traveller or situation has changed. Cancel and read the terms again.</p>')+button('Cancel · leave undecided','cancel')+'</section>';}
   return{title:d.title,html:html+'<p class="cosmos-campaign-footer">Follow the marked fittings, select the machines for combat, and return to Anik when the open apparatus is verified.</p></article>'};
  }
  page(tab){return tab==='cosmos-campaign'?this.panel():null;}
- tick(){const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik · verified, unpaid':next?.requiresSupports?'Prepare any two different support fittings':next?.requiresConfiguredSupports?'Reconfigure any two prepared supports':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' reconfigured · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
+ tick(){const s=this.sim,r=record(s),toggle=document.querySelector('.tracker-switch [data-id="cosmos-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(s)){this.seen.add(s);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='cosmos-campaign';}if(this.rpg.quest!=='cosmos-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}const next=H().available(s.state).find(p=>!p.optional)||H().available(s.state)[0],ready=H().ready(s.state),detail=s.room!==D().room?'Revisit the Near Expanse · saved work remains':ready?'Return to Anik for your reward':next?.requiresSupports?'Set any two different anchors':next?.requiresConfiguredSupports?'Set any two prepared anchors':next?.name||'Read the support alternatives';for(const[sel,text]of Object.entries({'#tracked-chapter':'COSMOS · THE OPEN CONFLUENCE','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':B().completedSupports(r.steps).length+' prepared · '+B().configuredSupports(r.steps).length+' set · J operation · M routes'})){const el=document.querySelector(sel);if(el)el.textContent=text;}}
 }
 const api={CosmosCampaignUI,routePoints,legend,fee};G.RealmCosmosCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
@@ -4202,16 +4207,14 @@ function drawEnemy(out,sim,e,time){const d=definition(),r=sim.state.hellCampaign
 }
 const api={draw,drawEnemy};G.RealmHellCampaignArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
-</script><script>/* The Harbour Beneath the Harbour: a bounded Farwake/Bellglass adaptation.
- * Recovered direction: Atlantis Draft A, AT05 and First Prototype sections
- * 2-3/7-12 (2026-09-14). They identify proposed fiction, not manuscript canon.
- * This service bay, coordinates, depth bands and finite tuning are new terms.
- * Import grants no actor, collision, consent, pressure state, damage or fee.
- * Root owns future rules, actual movement/contact, persistence and callers.
- */
+</script><script>/* The Harbour Beneath the Harbour: the drowned witness, part one of the witness act.
+ * Import grants no actor, collision, consent, pressure state, damage or reward. The root owns movement,
+ * contact, persistence and callers. Ids, steps and tuning are the save contract; text is the story. */
 (function(G){'use strict';
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 const step=(id,name,kind,x,z,requires,optional,text,medium='dry',y)=>({id,name,x,z,medium,...(y===undefined?{}:{y}),kind,requires,optional,text});
+// The witness guardian is the act's one boss. The difficulty table owns its numbers when it is loaded.
+const boss=(()=>{const b=G.RealmDifficulty?.boss?.('witnessGuardian');return b&&Number.isFinite(b.hp)&&Number.isFinite(b.damage)?b:{hp:720,damage:42};})();
 const patterns=freeze({
  sweep:{kind:'sweep',reach:3.6,radius:3.4,halfAngle:Math.PI/3,windup:1.3,contact:.18,recovery:1.9},
  intake:{kind:'intake',reach:6,length:5.5,halfWidth:1,windup:1.5,active:1.2,recovery:2.1,pullSpeed:1.2,stopRadius:1.2}
@@ -4233,82 +4236,82 @@ const definition=freeze({
  room:'world-atlantis',realm:'atlantis',prerequisite:'atlantis-bellglass-chart-v1',
  giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
  reward:{xp:48,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
- summary:'The Bellglass depth chart has been completed and claimed. Sahra’s calibrated lamp and Ilyra’s arrival receipts disagree: Damar is recorded as received at a destination he did not choose. Explicitly accept this separate finite repair, retain an Upper or Lower investigation approach, diagnose the depth-dependent flow, and set the inlet, equalizer and outlet in order. A supplied manual bypass offers a safe current-free alternative. Secure Damar’s local waiting bay, expose the counterfeit bearing through actual Custodian combat, stabilize two releases sequentially, then choose how this local passage and its evidence are kept. Verify the supervised handoff record before returning to Sahra for one fixed fee: up to 48 XP within the existing stored cap, 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal. The cast comes from recovered proposals; these coordinates, service-bay staging and exact effects are provisional authored adaptations.',
- danger:'The accepted repair can introduce a visible 0.7-unit-per-second current only in the marked shallow water band; existing swimming remains 2.6 units per second. Descend to the quiet lower band, use the supplied manual bypass, or retreat. There is no breath timer, hidden timing penalty or material loss. Bellglass’s air court has no current and no combat. Fight the floor-clamped Breakwater Custodian only on the dry exit quay: fixed 128 health, 10 damage and 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9; an intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1. Intake length is at most 5.5 with 1-unit half-width; actual support and opaque cover must clip the locked footprint. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. Use movement, Brace, cover or retreat. Warning shapes and text remain usable with sound off. The free home passage and public visitor protection do not depend on any disposition. No class, soul technique or companion is mandatory.',
- completionText:'Damar’s local waiting bay is safe, the Custodian is stabilized, and the selected passage record matches its local controls. Sahra’s supervised lens consignment and the nursery-custody receipt are accounted for; this does not claim a simulated voyage to an unbuilt nursery. Sahra has paid the fixed 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal once; XP credits up to 48 within the existing stored cap. These materials support a chosen ordinary crafting or already-unlocked home project, not a universal weapon upgrade. The old visitor survey, Bellglass chart and lamp, realm fitting, equipment and socket history retain their owners. The wider counterfeit-passage plot, full lower lockworks and Tideglass Fitting remain pending. Original Heaven01 and the protected sanctuary remain separate.',
+ summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept what he saw: a sealed record that shows the Regent of Ash taking the pattern from the carrier’s hold. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
+ danger:'The repair can bring a 0.7-unit-per-second current into the marked shallow water band; ordinary swimming stays at 2.6 units per second. Descend to the quiet lower band, use the manual bypass or retreat. There is no breath timer and no material loss. Bellglass’s air court has no current and no combat. The Drowned Witness Guardian waits on the dry exit quay with '+boss.hp+' health, '+boss.damage+' damage and a 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9. An intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1; it is at most 5.5 long with a 1-unit half-width, actual support and opaque cover must clip the locked footprint. Move, Brace, use cover or retreat. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. The warnings stay readable with sound off.',
+ completionText:'Damar is safe. The Guardian is stilled, both releases are settled, and the drowned witness’s record is in your keeping. It names the Regent of Ash as the one who took the pattern from Damar’s hold. Sahra gives you 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal, and up to 48 XP within your stored cap. The timber, fibre and crystal serve any ordinary crafting project you choose. The old Bellglass chart and lamp keep their own records.',
  witnesses:[
   {id:'atlantis-ilyra-v1',name:'Ilyra · records keeper',x:0,z:-18,appearsAfter:[]},
-  {id:'atlantis-damar-v1',name:'Damar · stranded carrier',x:15,z:-40.5,appearsAfter:['outlet-set']}
+  {id:'atlantis-damar-v1',name:'Damar · the drowned witness',x:15,z:-40.5,appearsAfter:['outlet-set']}
  ],
  approaches:[
   {id:'upper',name:'Upper · read the marked shallow flow',requiredObservation:'upper-reading',
-   text:'Retain the Upper approach and read the upper gauge from its actual water depth. The visible shallow current is weaker than ordinary swimming. Hold depth deliberately, or use the supplied manual bypass before operating the repair. A lower reading remains optional evidence with no second fee.'},
+   text:'Keep the Upper approach and read the shallow gauge from its real water depth. The visible current is weaker than ordinary swimming. Hold depth deliberately, or use the manual bypass before you operate the repair. A lower reading still counts as evidence.'},
   {id:'lower',name:'Lower · follow the quiet old-road band',requiredObservation:'lower-reading',
-   text:'Retain the Lower approach and read the lower masonry mark from its actual water depth. This band stays below the accepted shallow current. The public envelope covers it without a timer or a new class. An upper reading remains optional evidence with no second fee.'}
+   text:'Keep the Lower approach and read the old masonry mark from its real water depth. This band lies below the shallow current, so the public envelope covers it without a timer. An upper reading still counts as evidence.'}
  ],
  steps:[
-  step('receipt-conflict','Compare Ilyra’s two arrival receipts','interact',0,-18,[],false,
-   'Ilyra distinguishes Damar’s earlier shipping receipt from Lock Prefect Vaelor’s later destination instruction: the earlier-issued seal gives the redirected destination authority. His record says received, but his chosen arrival never happened. Preserve both records and his account. This is a concrete routing convention, not proof that every institution lies.'),
-  step('choose-approach','Retain an Upper or Lower investigation approach','approach',-5,-10,['receipt-conflict'],false,
-   'Read both depth approaches and the supplied manual bypass before confirming. The first confirmed Upper or Lower choice is retained. Its named observation is required for diagnosis; the other observation remains optional evidence. Preview and cancel grant no consent or progress. This choice does not assign a class or allegiance.'),
+  step('receipt-conflict','Compare Ilyra’s two receipts','interact',0,-18,[],false,
+   'Ilyra keeps two receipts for Damar’s load: the earlier shipping seal, and a later instruction that sent the load to a destination he never chose. Read them side by side. The record under the sea was written by the same hand, and it names the stranger who took the pattern.'),
+  step('choose-approach','Keep an Upper or Lower approach','approach',-5,-10,['receipt-conflict'],false,
+   'Read both approaches and the manual bypass before you confirm. The first approach you keep names the depth reading the repair needs. The other reading stays open as evidence. The choice does not assign a class or an allegiance.'),
   step('upper-reading','Read the shallow flow gauge','interact',8,-22,['choose-approach'],true,
-   'Read the upper gauge from this real water depth. It agrees with Sahra’s lamp but disagrees with the official destination setting. This is required only when Upper was retained; for Lower it is optional supporting evidence. No fee, material or earlier-chart progress is granted.', 'water',-1.05),
+   'Read the upper gauge from this real water depth. It agrees with Sahra’s lamp and disagrees with the official destination setting. It is required when you keep Upper, and supporting evidence when you keep Lower.', 'water',-1.05),
   step('lower-reading','Read the quiet lower-road mark','interact',8,-28,['choose-approach'],true,
-   'Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention identifies the same redirected outlet. This is required only when Lower was retained; for Upper it is optional supporting evidence. Keep the old mark and earlier chart intact.', 'water',-2.55),
-  step('diagnose-flow','Diagnose the redirected depth setting','interact',8,-35,['choose-approach'],false,
-   'At Bellglass’s dry visitor desk, use the retained approach’s actual reading to identify the depth setting copied into the wrong destination record. The other reading is welcome but unnecessary. The correct repair isolates the redirected inlet, matches the depth bands, then selects the carrier’s chosen outlet. No occult initiation or unseen timer is required.', 'court',-2.7),
-  step('manual-bypass','Open the supplied safe manual bypass','pressure',12,-29,['choose-approach'],true,
-   'Operate the supplied manual bypass from the wet east lane. It stops only this accepted repair’s shallow current; the public air court and downstream visitor supply remain maintained. The three required inlet, equalizer and outlet stages still need their own correct operations. There is no hidden timing penalty, material loss, enemy-stat change or extra fee.', 'water',-1.8),
-  step('inlet-set','Isolate the redirected service inlet','pressure',8,-22,['diagnose-flow'],false,
-   'Set isolate-redirect at the shallow inlet. Isolate the counterfeit destination branch while retaining public visitor supply. This is the first required pressure stage; an outlet action cannot substitute. The safe manual bypass remains available. Incorrect or premature settings spend no materials and leave accepted work intact.', 'water',-1.05),
-  step('equalizer-set','Match the two rated depth bands','pressure',8,-35,['inlet-set'],false,
-   'Set match-depth-bands at Bellglass’s dry control desk after inlet isolation. The chosen reading and maintained depth chart establish the bands. Keep the public air volume supplied. This is the second required pressure stage, with no timing penalty or forced simultaneous switches.', 'court',-2.7),
-  step('outlet-set','Select Damar’s chosen outlet','pressure',12,-38.4,['equalizer-set'],false,
-   'Set chosen-destination at the wet east outlet after equalization. The corrected local outlet stops the accepted shallow current and permits a safe supervised handoff. Neither this setting nor the earlier optional marker pays a reward. Leave through the existing gallery landing for the dry waiting bay.', 'water',-1.4),
-  step('secure-carrier','Secure Damar’s local waiting bay','interact',15,-40.5,['outlet-set'],false,
-   'Damar waits at this supported dry service bay with his load accounted for. Record his actual account and the isolated local hold. His boat and skill were never the fault. He can remain safely here through pause, reload or retreat; no traveling escort or real-time deadline is required. The unbuilt full lower hold is not opened by this adaptation.'),
-  step('challenge-custodian','Begin the dry-quay Custodian release','interact',8,-44,['secure-carrier'],false,
-   'Deliberately begin work on the quay-mounted Breakwater Custodian. It is a municipal service construct running a counterfeit schedule. It remains anchored at its service foundation on the supported dry quay; it does not chase a retreating traveller. Read the locked vane sector and intake lane; move, Brace or use actual cover. The machine carries no independent XP, loot or gear fee.'),
-  step('bearing-exposed','Expose the counterfeit Custodian bearing','defeat',8,-44,['challenge-custodian'],false,
-   'Only actual damage exhausting the owned Custodian’s fixed combat health establishes this fact. A manual completion button cannot substitute. The machine settles into a disabled service state; it is not killed or exploded. This exhaustion grants no independent loot or XP and does not stabilize the two releases or pay the campaign fee.'),
+   'Read the older masonry at this real lower depth, below the marked shallow current. Its depth convention names the same redirected outlet. It is required when you keep Lower, and supporting evidence when you keep Upper. Leave the old mark as it is.', 'water',-2.55),
+  step('diagnose-flow','Find the redirected depth setting','interact',8,-35,['choose-approach'],false,
+   'At Bellglass’s dry visitor desk, use your kept reading to find the depth setting that was copied into the wrong destination record. The repair isolates the redirected inlet, matches the depth bands, then selects Damar’s outlet. Nothing else is needed.', 'court',-2.7),
+  step('manual-bypass','Open the manual bypass','pressure',12,-29,['choose-approach'],true,
+   'Operate the supplied manual bypass from the wet east lane. It stops only this repair’s shallow current, and the air court and the visitor supply stay on. The three required inlet, equalizer and outlet stages still need their own correct settings.', 'water',-1.8),
+  step('inlet-set','Isolate the redirected inlet','pressure',8,-22,['diagnose-flow'],false,
+   'Set isolate-redirect at the shallow inlet. This cuts the counterfeit destination and keeps the public supply running. It has to come first; an outlet setting cannot stand in for it. Wrong or early settings cost nothing and leave your work intact.', 'water',-1.05),
+  step('equalizer-set','Match the two depth bands','pressure',8,-35,['inlet-set'],false,
+   'Set match-depth-bands at the dry control desk, once the inlet is isolated. The reading you kept and the depth chart set the bands. Keep the public air supplied while you work.', 'court',-2.7),
+  step('outlet-set','Select Damar’s outlet','pressure',12,-38.4,['equalizer-set'],false,
+   'Set chosen-destination at the wet east outlet, after the bands match. The load now goes where it was meant to go, and the shallow current stops. Leave through the gallery landing for the dry waiting bay.', 'water',-1.4),
+  step('secure-carrier','Sit with Damar in the waiting bay','interact',15,-40.5,['outlet-set'],false,
+   'Damar waits at this dry service bay with his load accounted for. Hear his account. His boat was never the fault. He can wait here safely through a pause, a reload or a retreat.'),
+  step('challenge-custodian','Face the Drowned Witness Guardian','interact',8,-44,['secure-carrier'],false,
+   'Begin the fight on the dry exit quay. The Guardian is a service machine that still holds the witness’s ledger, and it stays anchored at its service foundation; it does not chase you. Read the locked vane sector and intake lane, then move, Brace or use cover.'),
+  step('bearing-exposed','Still the Guardian','defeat',8,-44,['challenge-custodian'],false,
+   'Bring the Guardian’s fixed health to zero with real blade or bow damage. It settles into a disabled state; it is not killed or exploded. A button press cannot do this for you.'),
   step('release-west','Stabilize the west release first','pressure',2,-44,['bearing-exposed'],false,
-   'Stabilize the west release after the actual bearing exhaustion. This is the first of two sequential dry service operations. The settled machine and secured bay remain safe; no second player, timed appointment or simultaneous switch is required.'),
+   'Stabilize the west release now that the Guardian is still. This is the first of two dry service operations, and the settled machine keeps the bay safe.'),
   step('release-east','Stabilize the east release second','pressure',15,-44,['release-west'],false,
-   'Stabilize the east release after the west release is recorded. The two release facts belong to this campaign, independently of combat exhaustion. Retried, remote or refused-save operations cannot manufacture stabilization or another payment.'),
-  step('custodian-stable','Verify the settled municipal Custodian','interact',8,-44,['release-east'],false,
-   'Verify both sequential releases and the settled tools. The municipal Custodian remains part of this local service bay. Damar’s safety and your independent home passage already exist before a disposition. This is a bounded restoration; the full drydock, city circulation and distant lockworks remain unavailable.'),
-  step('disposition','Choose the local passage and evidence disposition','choice',0,-18,['custodian-stable'],false,
-   'Read Publish, Limited or License and their exact local consequences before confirming. Preview and cancel keep the disposition undecided. Each keeps Damar safe, preserves his account and pays the same fixed fee. License is a deliberate personal record for this local load; no choice changes Grace, Cinder, renunciation, class or global allegiance. Future patron privileges and wider political access remain pending.'),
-  step('verify-passage','Verify the selected record and supervised handoff','interact',12,-40.1,['disposition'],false,
-   'At the supported dry landing, verify the local controls and receipt fixture against the saved disposition. Record the supervised lens-consignment release to Sahra and feed-frame release into named nursery custody here. This is an authored local handoff, not a simulated voyage to a nursery or evidence that Pelan witnessed a delivery. Return to Sahra and explicitly claim the fixed fee; verified work can remain safely unpaid.')
+   'Stabilize the east release after the west release is recorded. Both releases count toward this repair, whatever happened in the fight. Repeated or refused attempts cannot change the result.'),
+  step('custodian-stable','Read the drowned witness’s record','interact',8,-44,['release-east'],false,
+   'Verify both releases and the settled tools. With the Guardian stilled, the sealed record can be read. It shows the Regent of Ash taking the pattern from Damar’s hold. The pattern was stolen, and the record says who stole it.'),
+  step('disposition','Choose what becomes of the record','choice',0,-18,['custodian-stable'],false,
+   'Read Publish, Limited and License and their exact consequences before you choose. Preview and cancel keep the choice open. Each one keeps Damar safe and keeps his account whole.'),
+  step('verify-passage','Verify the passage and hand the lens over','interact',12,-40.1,['disposition'],false,
+   'At the dry landing, check the controls and the receipts against your choice. Record the supervised release of the lens consignment to Sahra, then return to Sahra for your reward.')
  ],
  choices:[
-  {id:'publish',name:'Publish · keep a checked public passage record',
-   text:'Post the false bearing evidence, Damar’s full account and the checked local routing record for public inspection. Fit two checked outlet indicators. This bounded public record makes the office’s conflicting instruction visible; citywide removal from office and future closed-patron business are not implemented. Damar’s safety and the free home passage remain.',
-   consequence:'The registry and landing show the posted evidence and paired checked outlet indicators. Sahra, Ilyra and Damar recognize the permanent local public record. The stated fee remains unchanged. The wider political dispute and future services remain pending.',
+  {id:'publish',name:'Publish · show the record to the harbour',
+   text:'Post the record where everyone in the harbour can read it: Damar’s account, both receipts and the Regent’s hand in them. Nothing is hidden, and nothing is decided for anyone else. Damar’s safety and the free home passage remain.',
+   consequence:'The landing shows the posted record beside two checked outlet indicators. Sahra, Ilyra and Damar recognize it as a public record.',
    recognition:[
     {name:'Sahra',text:'The lamp and the posted passage record can now be checked against each other. The lens consignment has its supervised release record.'},
     {name:'Ilyra',text:'Both receipts remain visible beside the corrected outlet. Anyone can see which instruction redirected this load.'},
     {name:'Damar',text:'My chosen arrival and the false instruction are both on the public record. My account was not shortened to make the office look right.'}
    ]},
-  {id:'limited',name:'Limited · keep an independent manual passage',
-   text:'Keep the corrected independent manual passage and place the false bearing evidence in reviewed local custody. Fit a hooded custody record beside a manual-bypass indicator. This secures the resolved load while leaving the broad dispute open. Restricted deep districts are unbuilt; their access is not granted or revoked here. Damar’s safety and the free home passage remain.',
-   consequence:'The registry and landing show the hooded custody record and independent manual-passage indicator. Sahra, Ilyra and Damar recognize the permanent local custody arrangement. The stated fee remains unchanged. No hidden corridor, deep access or future business privilege is granted.',
+  {id:'limited',name:'Limited · keep the record in careful custody',
+   text:'Keep the corrected manual passage open, and put the record in reviewed local custody under a hooded seal. The record is safe and it is not thrown open. Damar keeps his full account. Damar’s safety and the free home passage remain.',
+   consequence:'The landing shows the hooded custody record beside an independent manual-passage indicator. Sahra, Ilyra and Damar recognize the arrangement.',
    recognition:[
-    {name:'Sahra',text:'The supervised lens release is recorded beside the manual passage. The broader claim is still there to be answered.'},
+    {name:'Sahra',text:'The supervised lens release is recorded beside the manual passage. The larger question is still there to be answered.'},
     {name:'Ilyra',text:'The conflicting receipts are in reviewed custody. Limited passage does not erase either record or decide the whole office dispute.'},
     {name:'Damar',text:'The manual passage secures this load and keeps my full account. I can wait safely without pretending every destination is now free.'}
    ]},
-  {id:'license',name:'License · retain a disclosed personal permit',
-   text:'Knowingly retain a personal permit for this resolved local load under the office’s disclosed claim terms. Fit a permit seal and retain the outer claim marker. The independently safe passage already exists, so refusal never holds emergency air, Damar or your exit hostage. This local record does not pledge a party, class, soul or real-world user. Future patron privileges are not implemented. Damar’s safety and the free home passage remain.',
-   consequence:'The registry and landing show the personal permit seal beside the retained outer claim marker. Sahra, Ilyra and Damar recognize the permanent local licence and its responsibility. The stated fee remains unchanged. Future patron services, renunciation or restitution routes need their own implemented contracts.',
+  {id:'license',name:'License · keep a disclosed personal permit',
+   text:'Keep a personal permit for this load under the office’s disclosed terms, sealed beside the Regent’s mark. Refusing would never hold Damar or your way out hostage. Future patron privileges are not implemented. Damar’s safety and the free home passage remain.',
+   consequence:'The landing shows the permit seal beside the office’s marker. Sahra, Ilyra and Damar recognize the permit you chose and what it means.',
    recognition:[
-    {name:'Sahra',text:'This lens release carries the personal permit you chose. The instrument records it without calling the remaining claims harmless.'},
+    {name:'Sahra',text:'This lens release carries the personal permit you chose. The instrument records it as you chose it.'},
     {name:'Ilyra',text:'Your permit and the false destination instruction remain distinct records. This signature covers the declared local load.'},
     {name:'Damar',text:'I am safe and my account remains complete. The permit was your deliberate choice after the independent passage existed.'}
    ]}
  ],
- enemy:{id:'atlantis-breakwater-custodian-v1',name:'Breakwater Custodian',kind:'sentinel',x:8,z:-44,hp:128,damage:10,radius:.75,anchored:true,damageWindow:'all-live-phases',spawnAfter:['challenge-custodian'],defeatStep:'bearing-exposed'}
+ enemy:{id:'atlantis-breakwater-custodian-v1',name:'Drowned Witness Guardian',kind:'sentinel',x:8,z:-44,hp:boss.hp,damage:boss.damage,radius:.75,anchored:true,damageWindow:'all-live-phases',spawnAfter:['challenge-custodian'],defeatStep:'bearing-exposed'}
 });
 const api=freeze({definition,patterns,current,pressure});
 G.RealmAtlantisCampaignData=api;
@@ -4323,6 +4326,7 @@ if(typeof module!=='undefined')module.exports=api;
 (function(G){'use strict';
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
+const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
 const fresh=()=>({version:1,accepted:false,steps:[],approach:null,choice:null,claimed:false});
@@ -4341,7 +4345,7 @@ function validate(raw){
  if(raw.claimed&&!required(raw).every(id=>raw.steps.includes(id)))no('unearned claim');
  return{version:1,accepted:raw.accepted,steps:D.steps.filter(s=>raw.steps.includes(s.id)).map(s=>s.id),approach:raw.approach,choice:raw.choice,claimed:raw.claimed};
 }
-function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true;}
+function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true&&SAGA().allowed(state,'atlantis')===true;}
 function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))&&(s.id!=='diagnose-flow'||r.steps.includes(D.approaches.find(a=>a.id===r.approach)?.requiredObservation))):[];}
 function ready(state){const r=record(state);return !!r?.accepted&&D.approaches.some(a=>a.id===r.approach)&&D.choices.some(c=>c.id===r.choice)&&required(r).every(id=>r.steps.includes(id));}
 function at(sim,p){
@@ -4362,7 +4366,7 @@ function commit(sim,candidate,io,text,ctx){
  // The synchronous writer owns the durable character envelope. Never adopt its
  // result into a replaced or re-entrant simulation, even if the writer said ok.
  if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. The saved candidate was not adopted into the changed simulation.');
- sim.state.atlantisCampaign=checked.atlantisCampaign;
+ sim.state.atlantisCampaign=checked.atlantisCampaign;sim.state.saga=checked.saga;
  for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
  return{ok:true,text};
@@ -4387,12 +4391,12 @@ function command(ctx,type,payload,io){
  if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==D.room||sim.state.adventure.hp<=0)return fail('Reach the Atlantis campaign while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or campaign changed. Read the current terms again.');
  const r=sim.state.atlantisCampaign;
- if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This local harbour campaign was already paid once. Its disposition remains in history.'};
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This harbour repair is already complete. Its choice remains on the record.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This campaign is already accepted; its saved approach and work remain.'};
  let candidate;try{candidate=sim.snapshot();}catch(e){return fail('Campaign state refused: '+e.message);}
  const q=candidate.atlantisCampaign;let text,reward=null;
  if(type==='accept'){
-  if(!eligible(candidate)||!at(sim,D.giver))return fail('Claim the separate Bellglass depth chart, then speak to Sahra to accept this continuation.');
+  if(!eligible(candidate)||!at(sim,D.giver))return fail('The harbour repair is not open to you yet. Finish the story before it, then speak to Sahra.');
   q.accepted=true;text=D.title+' accepted. The earlier chart, lamp, equipment and free home passage retain their own history.';
  }else if(type==='approach'){
   const s=step('choose-approach'),a=D.approaches.find(v=>v.id===payload.approach);
@@ -4415,11 +4419,11 @@ function command(ctx,type,payload,io){
   if(!available(candidate).some(v=>v.id===s.id))return fail('Secure the carrier, exhaust the actual bearing and stabilize both sequential releases before choosing.');
   q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
  }else if(type==='claim'){
-  if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the selected passage and supervised handoff, then return to Sahra for the whole declared fee.');
+  if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the passage and the handoff, then return to Sahra for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
-  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee, including crystal. Verified work remains unpaid; nothing was changed.');
+  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
-  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Claimed once.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Atlantis campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
  if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
@@ -4558,7 +4562,7 @@ class AtlantisCampaignUI{
   }
   const result=this.rpg.api.atlantisCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest='atlantis-campaign';this.rpg.paint();return true;
  }
- journal(){const r=record(this.sim),status=r?.claimed?'Claimed once':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Complete · unpaid':'Accepted · '+r.steps.length+' recorded actions';return'<section class="atlantis-campaign-invitation"><small>ATLANTIS · A BOUNDED HARBOUR REPAIR</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Conflicting receipts, actual depth readings, ordered pressure controls and a municipal Custodian. The old Bellglass chart and lamp remain separate.</p>'+button('Read the repair, physical route and fee','open')+(r?.accepted&&!r.claimed?button('Track this repair','track'):'')+'</section>';}
+ journal(){const r=record(this.sim),status=r?.claimed?'Complete':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Ready for your reward':'Accepted · '+r.steps.length+' recorded actions';return'<section class="atlantis-campaign-invitation"><small>ATLANTIS · A BOUNDED HARBOUR REPAIR</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Conflicting receipts, real depth readings, ordered pressure controls and a drowned witness’s guardian. The Bellglass chart and lamp stay separate.</p>'+button('Read the repair and its physical route','open')+(r?.accepted&&!r.claimed?button('Track this repair','track'):'')+'</section>';}
  invitation(){return this.journal();}
  gallery(){const sim=this.sim,d=D(),world=G.RealmWorldFoundations.definition(d.room);if(sim.room!==d.room)return'';
  const entry=world.points.find(p=>p.id===world.dive.entryId),status=this.rpg.api.worldDiveStatus?.();
@@ -4566,13 +4570,13 @@ class AtlantisCampaignUI{
  }
  page(tab){if(tab!=='atlantis-campaign')return null;const d=D(),sim=this.sim,r=record(sim),here=sim.room===d.room,available=H().available(sim.state),ids=new Set(available.map(s=>s.id));
   this.binding={...this.owner(),id:++this.serial};const act=(label,type,id='')=>button(label,type,id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.revision+'"');
-  let html='<article class="atlantis-campaign"><header><small>FARWAKE → BELLGLASS → THE DRY SERVICE QUAY</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="atlantis-campaign-terms"><h3>The whole declared fee</h3><p><strong>'+esc(fee(d))+'</strong>. Only XP clips at its stored cap. A full material pouch or refused save keeps all completed work unpaid and retryable.</p><p>'+esc(d.danger)+'</p><p>Safe public air, Damar’s waiting bay and the free home passage precede disposition. No timed appointment, second player, gear grant, automatic equipment change or global pledge is required.</p></section>';
+  let html='<article class="atlantis-campaign"><header><small>FARWAKE → BELLGLASS → THE DRY SERVICE QUAY</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="atlantis-campaign-terms"><h3>The reward</h3><p><strong>'+esc(fee(d))+'</strong>. Only XP clips at its stored cap. A full pouch or a refused save keeps the finished work safe until it can be paid.</p><p>'+esc(d.danger)+'</p><p>Safe public air, Damar’s waiting bay and the free home passage precede disposition. No timed appointment or second player is needed.</p></section>';
   if(!here)html+='<section><p>Reopening resumes the home checkpoint. Accepted actions, the retained approach, disposition and unpaid completion remain saved. Revisit Farwake for the actual physical route.</p><button data-rpg="world-select" data-id="atlantis">Read Atlantis travel</button></section>';
-  if(!r?.accepted)html+='<section><h3>An earlier chart remains true</h3><p>'+(!H().eligible(sim.state)?'Complete and explicitly claim '+esc(previousTitle())+' first. Its chart, lamp and payment remain separate.':'The Bellglass chart was claimed. Accept this new repair deliberately; reading grants no consent.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Accept the separate harbour repair','accept'):here?button('Walk to Sahra','walk','giver'):'')+'</section>';
+  if(!r?.accepted)html+='<section><h3>An earlier chart remains true</h3><p>'+(!H().eligible(sim.state)?(G.RealmSaga?.allowed(sim.state,'atlantis')===false?'The harbour repair opens later in the story. Keep to the main road first.':'Finish '+esc(previousTitle())+' first. Its chart and lamp stay yours.'):'The Bellglass chart is done. Accept the harbour repair when you are ready; reading it commits you to nothing.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Accept the separate harbour repair','accept'):here?button('Walk to Sahra','walk','giver'):'')+'</section>';
   else{
-   if(r.claimed)html+='<section><h3>The paid local passage remains</h3><p>'+esc(d.completionText)+'</p></section>';
+   if(r.claimed)html+='<section><h3>The harbour is repaired</h3><p>'+esc(d.completionText)+'</p></section>';
    const approach=d.approaches.find(a=>a.id===r.approach),current=H().currentStatus(sim);
-   html+='<section class="atlantis-campaign-pressure"><h3>Approach and ordered pressure</h3><p>'+(approach?'Retained '+esc(approach.name)+'. Required evidence: '+esc(step(approach.requiredObservation).name)+'. The other reading remains optional.':'First retain Upper or Lower deliberately at Sahra’s anchor. That approach names the reading needed for diagnosis.')+'</p><p>'+esc(current.text)+'</p><ol><li>Inlet · isolate-redirect, preserving public supply.</li><li>Equalizer · match-depth-bands at the dry desk.</li><li>Outlet · chosen-destination at the wet east control.</li></ol><p>The supplied manual bypass stops this current and replaces none of these stages. Wrong or premature settings spend no materials. West and east releases happen sequentially after actual combat exhaustion.</p></section>';
+   html+='<section class="atlantis-campaign-pressure"><h3>Approach and ordered pressure</h3><p>'+(approach?'Retained '+esc(approach.name)+'. Required evidence: '+esc(step(approach.requiredObservation).name)+'. The other reading stays optional evidence.':'First keep an Upper or Lower approach at Sahra’s desk. That approach names the reading needed for diagnosis.')+'</p><p>'+esc(current.text)+'</p><ol><li>Inlet · isolate-redirect, preserving public supply.</li><li>Equalizer · match-depth-bands at the dry desk.</li><li>Outlet · chosen-destination at the wet east control.</li></ol><p>The supplied manual bypass stops this current and replaces none of these stages. Wrong or premature settings spend no materials. West and east releases happen sequentially after actual combat exhaustion.</p></section>';
    html+='<section><h3>Your physical repair</h3><ol class="atlantis-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id),requiredReading=approach?.requiredObservation===s.id;let controls='';
     if(!r.claimed&&next){if(!here)controls='<p>Revisit Farwake to reach this action.</p>';
@@ -4585,18 +4589,18 @@ class AtlantisCampaignUI{
     }
     return'<li class="'+(done?'atlantis-campaign-done':next?'atlantis-campaign-next':'')+'" data-atlantis-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(done?' · recorded':'')+(requiredReading?' · required for your approach':s.optional?' · optional':'')+'</h4><details'+(this.reading===s.id?' open':'')+'><summary>Read this action and its physical route</summary><p>'+esc(s.text)+'</p></details><div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
-   if(!r.claimed&&H().ready(sim.state))html+='<section class="atlantis-campaign-ready"><h3>Complete · unpaid</h3><p>Return to Sahra and explicitly claim the whole fixed fee. Verification and the local handoff do not pay by themselves.</p>'+(here&&H().at(sim,d.giver)?act('Claim the whole declared fee once','claim'):here?button('Walk back to Sahra','walk','claim'):'')+'</section>';
+   if(!r.claimed&&H().ready(sim.state))html+='<section class="atlantis-campaign-ready"><h3>Ready for your reward</h3><p>Return to Sahra to collect it.</p>'+(here&&H().at(sim,d.giver)?act('Collect your reward','claim'):here?button('Walk back to Sahra','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this repair','track');
   }
-  html+=this.gallery()+'<section><h3>Two investigation approaches</h3><div class="atlantis-campaign-grid">'+d.approaches.map(a=>'<article><h4>'+esc(a.name)+(r?.approach===a.id?' · retained':'')+'</h4><p>'+esc(a.text)+'</p></article>').join('')+'</div></section><section><h3>Three local dispositions</h3><p>All preserve Damar’s safety, full account, public protection and the same fee. The wider plot, distant nursery voyage, Tideglass Fitting and patron services remain pending.</p><div class="atlantis-campaign-grid">'+d.choices.map(c=>'<article'+(r?.choice===c.id?' class="atlantis-campaign-chosen"':'')+'><h4>'+esc(c.name)+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
-  if(this.pending){const approach=this.pending.kind==='approach',terms=(approach?d.approaches:d.choices).find(t=>t.id===this.pending.value);html+='<section class="atlantis-campaign-confirm"><h3>'+esc(terms.name)+' · confirm this retained record</h3><p>'+esc(terms.text)+'</p>'+(approach?'<p>This approach permanently names the reading needed for diagnosis. The other reading remains optional; neither reading pays another fee.</p>':'<p>'+esc(terms.consequence)+'</p><p>This records one lasting local disposition. It does not change class, soul, global allegiance or the fixed fee.</p>')+(this.same(this.pending)?act('Confirm '+terms.name,approach?'confirm-approach':'confirm',terms.id):'<p>The traveller or physical checkpoint changed. Cancel and read the current terms.</p>')+button('Cancel · keep this record undecided','cancel')+'</section>';}
+  html+=this.gallery()+'<section><h3>Two investigation approaches</h3><div class="atlantis-campaign-grid">'+d.approaches.map(a=>'<article><h4>'+esc(a.name)+(r?.approach===a.id?' · retained':'')+'</h4><p>'+esc(a.text)+'</p></article>').join('')+'</div></section><section><h3>Three choices for the record</h3><p>All three keep Damar safe and keep his account whole.</p><div class="atlantis-campaign-grid">'+d.choices.map(c=>'<article'+(r?.choice===c.id?' class="atlantis-campaign-chosen"':'')+'><h4>'+esc(c.name)+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
+  if(this.pending){const approach=this.pending.kind==='approach',terms=(approach?d.approaches:d.choices).find(t=>t.id===this.pending.value);html+='<section class="atlantis-campaign-confirm"><h3>'+esc(terms.name)+' · confirm this retained record</h3><p>'+esc(terms.text)+'</p>'+(approach?'<p>This approach names the reading needed for diagnosis. The other reading stays optional evidence.</p>':'<p>'+esc(terms.consequence)+'</p><p>This is a lasting choice for the harbour’s record.</p>')+(this.same(this.pending)?act('Confirm '+terms.name,approach?'confirm-approach':'confirm',terms.id):'<p>The traveller or physical checkpoint changed. Cancel and read the current terms.</p>')+button('Cancel · keep this record undecided','cancel')+'</section>';}
   return{title:d.title,html:html+'<p class="atlantis-campaign-footer">Reading, walking and previews grant no work. Physical depth owns wet actions; actual damage owns bearing exhaustion. Your earlier chart, lamp and equipment remain yours.</p></article>'};
  }
  tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
   if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='atlantis-campaign';}
   if(this.rpg.quest!=='atlantis-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
-  const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra · complete, unpaid':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
-  for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'fee unclaimed':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
+  const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra for your reward':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
+  for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'reward waiting':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
  }
 }
 const api={AtlantisCampaignUI,routePoints,legend,fee,depth};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
@@ -9837,8 +9841,8 @@ const ECHO=freeze([
 const ECHO_IDS=ECHO.map(e=>e.id);
 const read=(o,path)=>path.reduce((v,k)=>v?.[k],o);
 const own=Object.hasOwn,isObj=v=>!!v&&typeof v==='object'&&!Array.isArray(v),day=v=>Number.isSafeInteger(v)&&v>=1&&v<=MAX_DAY;
-function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
-function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
+function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
+function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay,returnedDay:s.briar.returnedDay??null,homeDay:s.briar.homeDay??null},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
 // Live predicates over the rest of the world; `s` is the saga record being judged.
 const DERIVE=freeze({
  kit:w=>w?.adventure?.started===true,
@@ -9883,9 +9887,13 @@ function validate(raw,world){
  const list=(v,allowedIds,f)=>{if(!Array.isArray(v)||v.length>allowedIds.length||new Set(v).size!==v.length||v.some(id=>!allowedIds.includes(id)))no(f);return v;};
  list(raw.regent,REGENT,'regent');list(raw.prophecy,PROPHECY,'prophecy');
  const f=raw.feather;if(!exact(f,['unlocked','uses'])||typeof f.unlocked!=='boolean'||!Number.isSafeInteger(f.uses)||f.uses<0||f.uses>MAX_COUNT||f.uses>0&&!f.unlocked)no('feather');
- const b=raw.briar;if(!exact(b,['state','habit','takenDay'])||!BRIAR.includes(b.state))no('briar');
+ const b=raw.briar;if(!isObj(b)||!['state','habit','takenDay'].every(k=>own(b,k))||Object.keys(b).some(k=>!['state','habit','takenDay','returnedDay','homeDay'].includes(k))||!BRIAR.includes(b.state))no('briar');
  if(!isObj(b.habit)||Object.keys(b.habit).length>MAX_PLACES||Object.entries(b.habit).some(([k,v])=>!PLACE_ID.test(k)||!Number.isSafeInteger(v)||v<1||v>MAX_COUNT))no('briar habit');
  if(b.takenDay!==null&&!day(b.takenDay)||(b.state==='with')!==(b.takenDay===null))no('briar taken day');
+ // returned and home days are optional on old saves (absent = null); home needs a return first.
+ const rd=b.returnedDay??null,hd=b.homeDay??null;
+ if(rd!==null&&!day(rd)||(b.state==='returned')!==(rd!==null))no('briar returned day');
+ if(hd!==null&&(!day(hd)||rd===null||hd<rd||b.state!=='returned'))no('briar home day');
  const e=raw.echo;if(!exact(e,['coercive','freeing']))no('echo');
  list(e.coercive,ECHO_IDS,'echo coercive');list(e.freeing,ECHO_IDS,'echo freeing');
  if(e.coercive.some(id=>ECHO.find(x=>x.id===id).kind!=='coercive')||e.freeing.some(id=>ECHO.find(x=>x.id===id).kind!=='freeing'))no('echo kind');
@@ -9951,7 +9959,13 @@ function briarAtNearshore(sim){
 }
 function briarReturned(sim){
  const s=saga(sim);if(s.briar.state==='returned')return yes('Briar is home.',{already:true});if(!['taken','nearshore'].includes(s.briar.state))return fail('Briar was never taken.');
- if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='returned';sim.event('saga','Briar came home. She went straight to her old spot.');return yes('Briar is home.');
+ if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='returned';s.briar.returnedDay=sim.state.day;sim.event('saga','Briar came home beside you. Her habits are where she left them.');return yes('Briar is home.');
+}
+// Briar goes back to her old spot by the door on the first evening after she returns. Habits are untouched.
+function briarHome(sim){
+ const s=saga(sim),w=sim.state;if(s.briar.state!=='returned')return fail('Briar is not with you yet.');if(s.briar.homeDay!==null)return yes('Briar is in her old spot.',{already:true});
+ if(!(w.hour>=18&&w.hour<22)||w.day<s.briar.returnedDay)return fail('Briar waits for the evening.');
+ s.briar.homeDay=w.day;sim.event('saga','That evening Briar settled in her old spot by the door, beside her bowl.');return yes('Briar is in her old spot.');
 }
 function recordHabit(sim,placeId){
  const s=saga(sim);if(typeof placeId!=='string'||!PLACE_ID.test(placeId))return fail('Unknown place.');if(s.briar.state!=='with'||sim.state.adventure?.companion?.bonded!==true)return fail('Briar is not beside you.');
@@ -9982,7 +9996,7 @@ function rollCredits(sim){
  const s=saga(sim);if(s.credits)return yes('The story is told.',{already:true});if(!s.finale.won)return fail('The story is not over.');
  s.credits=true;s.postgame=true;sim.event('saga','Firstlight. The roads stay open.');return yes('The roads stay open.');
 }
-const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
+const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
 // Same command-identity rule as the adventure: a reused id with the same content replays its result; different content is refused.
 function command(sim,id,type,payload={}){
  if(typeof id!=='string'||!id||id.length>100||!isObj(payload))return fail('Invalid command envelope.');
@@ -10001,8 +10015,204 @@ function tick(sim,dt){
  if(r.place!==l.id){r.place=l.id;r.t=0;r.counted=false;}
  r.t+=dt;if(!r.counted&&r.t>=HABIT_SECONDS){r.counted=true;recordHabit(sim,l.id);}
 }
-const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
+const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
 G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* The nearshore: the regent's faultless briar and the real one, at the lantern pier. The saga owns the truth
+ * (briar.state, returnedDay, homeDay). This owner runs the two foxes, the real one's walk to her habit, the
+ * answer and the soft failure. Runtime is never saved; every saved change is a candidate save, adopted only
+ * after the writer says ok. The spoken lines live in SCENES, one small table per scene, for the story script. */
+(function(G){'use strict';
+const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const CORE=()=>G.RealmCore||(typeof require==='function'?require('./core.js'):null);
+const PLACE=Object.freeze({x:0,z:27}),REAL_START=Object.freeze({x:-.6,z:26.4});
+const WAIT=2,WALK=2.4,SIDE=.5,HEEL=1.1,COLD=1.8,RETRY=3,REACH=2.8,NEAR=9,GROUND=1.31;
+const fail=error=>({ok:false,error}),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+const SCENES=Object.freeze({
+ arrive:Object.freeze([
+  {speaker:'The Regent of Ash',text:'I kept her for you. She never strays now.'},
+  {speaker:'',text:'Two foxes stand on the boards. One of them is looking past you.'}]),
+ real:Object.freeze([
+  {speaker:'',text:'She leans into your leg, and the habit she had comes back with her.'},
+  {speaker:'',text:'Briar is home.'}]),
+ false:Object.freeze([
+  {speaker:'',text:'The fox at your heel goes cold and comes apart like ash on the water.'},
+  {speaker:'The Regent of Ash',text:'Ha. You knew her too late.'}]),
+ home:Object.freeze([
+  {speaker:'',text:'That evening Briar settles in her old spot by the door, beside her bowl.'}])
+});
+const text=lines=>lines.map(l=>l.text).join(' ');
+// Each saga write lands in a candidate's journal the way Simulation.event would.
+const journalOn=c=>(kind,t)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:t.slice(0,350)});if(c.journal.length>200)c.journal.shift();};
+const simOn=c=>({state:c,event:journalOn(c)});
+const runtimes=new WeakMap();
+// Live only outdoors, with Briar taken to the nearshore and the witness finished.
+function active(sim){const s=sim?.state;return !!s&&sim.room===null&&!sim.worldDive&&s.saga?.briar?.state==='nearshore'&&SAGA().done(s,'witness');}
+function runtime(sim){
+ let r=runtimes.get(sim);
+ if(!r||r.owner!==sim.state){r={owner:sim.state,last:sim.elapsed||0,real:{x:REAL_START.x,z:REAL_START.z,yaw:0,path:null,started:false,sit:false,t:0,motion:null},fake:{state:'heel',t:0,x:0,z:0,yaw:0,motion:null}};runtimes.set(sim,r);}
+ return r;
+}
+function heelAt(sim){
+ const p=sim.state.player,yaw=finite(p.yaw)?p.yaw:0,fx=Math.sin(yaw),fz=Math.cos(yaw);
+ // right of forward is (cos, -sin); behind is (-forward). Try the side first, then straight behind.
+ for(const[dx,dz]of[[fz*SIDE-fx*HEEL,-fx*SIDE-fz*HEEL],[-fz*SIDE-fx*HEEL,fx*SIDE-fz*HEEL],[-fx*HEEL,-fz*HEEL]]){
+  const x=p.x+dx,z=p.z+dz;if(CORE().walkable(x,z,sim.navRoom,.31))return{x,z};
+ }
+ return{x:p.x,z:p.z};
+}
+// The spot the real briar walks to: her habit landmark, or the nearest open ground beside it.
+function habitSpot(sim){
+ const id=SAGA().habitPlace(sim.state),L=(CORE().LANDMARKS||[]).find(l=>l.id===id)||(CORE().LANDMARKS||[])[0];
+ for(const[dx,dz]of[[0,0],[0,-1.6],[1.6,0],[-1.6,0],[0,1.6],[1.6,1.6],[-1.6,1.6],[1.6,-1.6],[-1.6,-1.6],[0,-2.6],[2.6,0],[-2.6,0],[0,2.6]]){
+  const x=L.x+dx,z=L.z+dz;if(CORE().walkable(x,z,sim.navRoom,.31))return{x,z,id:L.id};
+ }
+ return{x:L.x,z:L.z,id:L.id};
+}
+function stepReal(sim,f,dt){
+ if(f.sit)return;
+ if(!f.started&&f.t>=WAIT){
+  f.started=true;const spot=habitSpot(sim),path=CORE().pathfind({x:f.x,z:f.z},spot,sim.navRoom,false,.31);
+  f.path=path||[];f.spot=spot;if(!path)f.sit=true;
+ }
+ if(!f.started)return;
+ let left=WALK*dt;
+ while(f.path.length&&left>1e-9){
+  const q=f.path[0],dx=q.x-f.x,dz=q.z-f.z,l=Math.hypot(dx,dz);
+  if(l<=left+1e-9){f.x=q.x;f.z=q.z;left-=l;f.path.shift();}
+  else{f.x+=dx/l*left;f.z+=dz/l*left;f.yaw=Math.atan2(dx,dz);left=0;}
+ }
+ if(!f.path.length)f.sit=true;
+}
+// Time comes from the simulation clock, so a reload or a repaint never double-steps a fox.
+function step(sim){
+ const r=runtime(sim),now=finite(sim.elapsed)?sim.elapsed:0,dt=Math.min(.1,Math.max(0,now-r.last));r.last=now;
+ r.real.t+=dt;stepReal(sim,r.real,dt);
+ const f=r.fake;
+ if(f.state==='heel'){const h=heelAt(sim);f.x=h.x;f.z=h.z;f.yaw=sim.state.player.yaw||0;}
+ else{f.t+=dt;if(f.state==='cold'&&f.t>=COLD){f.state='gone';f.t=0;}else if(f.state==='gone'&&f.t>=RETRY){f.state='heel';f.t=0;}}
+ return r;
+}
+function view(sim){if(!active(sim)){runtimes.delete(sim);return null;}return step(sim);}
+function foxAt(sim){
+ const r=view(sim);if(!r)return null;const p=sim.state.player,cands=[];
+ if(dist(p,r.real)<=REACH)cands.push(['real',dist(p,r.real)]);
+ if(r.fake.state==='heel'&&dist(p,r.fake)<=REACH)cands.push(['false',dist(p,r.fake)]);
+ cands.sort((a,b)=>a[1]-b[1]);return cands[0]?cands[0][0]:null;
+}
+function commit(sim,candidate,io,line,lines){
+ const state=sim.state,room=sim.room,before=JSON.stringify(state);
+ if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
+ candidate.adventure.revision++;
+ candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind:'nearshore',text:line.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();
+ let checked,saved;try{checked=CORE().validate(candidate);saved=io?.save?.(checked);}catch(e){return fail('Nearshore save refused: '+e.message);}
+ if(!saved?.ok)return fail(saved?.error||'Nearshore save refused. Nothing was changed.');
+ if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before)return fail('The character changed during saving. The saved candidate was not adopted.');
+ sim.state.saga=checked.saga;sim.state.adventure.companion=checked.adventure.companion;sim.state.adventure.revision=checked.adventure.revision;
+ sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
+ return{ok:true,text:line,lines};
+}
+function arrive(sim,io){
+ const s=sim.state.saga;
+ if(s.briar.state==='nearshore'||s.briar.state==='returned')return{ok:true,duplicate:true,text:''};
+ if(sim.room!==null||sim.worldDive)return fail('Walk out onto the lantern pier first.');
+ if(s.briar.state!=='taken')return fail('Briar is not lost.');
+ if(!SAGA().done(sim.state,'witness'))return fail('The witness is not finished yet.');
+ if(dist(sim.state.player,PLACE)>NEAR)return fail('Walk out onto the lantern pier first.');
+ const c=sim.snapshot(),res=SAGA().briarAtNearshore(simOn(c));if(!res.ok)return fail(res.error);
+ return commit(sim,c,io,text(SCENES.arrive),SCENES.arrive);
+}
+function choose(sim,payload,io){
+ const fox=payload.fox;if(fox!=='real'&&fox!=='false')return fail('Choose one of the two foxes.');
+ const r=view(sim);if(!r)return fail('Nobody is waiting on the pier.');
+ if(foxAt(sim)!==fox)return fail('Walk up to the fox you mean, then answer it.');
+ if(fox==='false'){r.fake.state='cold';r.fake.t=0;return{ok:true,soft:true,text:text(SCENES.false),lines:SCENES.false};}
+ const c=sim.snapshot();if(c.adventure.companion?.bonded!==true)return fail('Briar is not yours to call.');
+ const res=SAGA().briarReturned(simOn(c));if(!res.ok)return fail(res.error);
+ c.adventure.companion.mode='follow';
+ const out=commit(sim,c,io,text(SCENES.real),SCENES.real);
+ if(out.ok){runtimes.delete(sim);G.RealmAdventure?.syncScene?.(sim);}
+ return out;
+}
+function home(sim,io){
+ const s=sim.state.saga;
+ if(s.briar.state!=='returned')return fail('Briar is not with you yet.');
+ if(s.briar.homeDay!==null)return{ok:true,duplicate:true,text:''};
+ const c=sim.snapshot(),res=SAGA().briarHome(simOn(c));if(!res.ok)return fail(res.error);
+ return commit(sim,c,io,text(SCENES.home),SCENES.home);
+}
+// ctx: { sim, active }. payload carries the revision and the active owner the caller read.
+function command(ctx,type,payload,io){
+ const sim=ctx?.sim;
+ if(!sim||!(sim instanceof CORE().Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload))return fail('Reach the nearshore while able to act.');
+ if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or place changed. Read the current place again.');
+ if(type==='arrive')return arrive(sim,io);
+ if(type==='choose')return choose(sim,payload,io);
+ if(type==='home')return home(sim,io);
+ return fail('Unknown nearshore action.');
+}
+const api=Object.freeze({PLACE,REAL_START,WAIT,WALK,HEEL,COLD,RETRY,REACH,NEAR,SCENES,active,view,foxAt,habitSpot,hidesBriar:active,command});
+G.RealmNearshore=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* Presents the nearshore. The arrival and the first-evening home are called from the frame when their
+ * conditions hold; answering a fox is a physical interaction with the nearest one. Reading grants nothing:
+ * every saved change is a command with the revision and owner the caller read. */
+(function(G){'use strict';
+const N=()=>G.RealmNearshore,S=()=>G.RealmSaga;
+class NearshoreUI{
+ constructor(rpg){this.rpg=rpg;this.nextTry=0;}
+ get sim(){return this.rpg.sim;}
+ reset(){this.nextTry=0;}
+ run(type,extra={}){
+  const sim=this.sim,c=this.rpg.api.worldContext();
+  const result=this.rpg.api.nearshoreCommand(type,{expectedRevision:sim.state.adventure.revision,expectedActive:c.active,...extra});
+  if(result.ok&&result.text)this.rpg.api.toast(result.text);
+  else if(!result.ok&&type==='choose')this.rpg.api.toast(result.error);
+  if(result.ok&&!result.duplicate)this.rpg.paint();
+  return result;
+ }
+ tick(){
+  const sim=this.sim;if(!sim||sim.worldDive||!N()||!S())return;
+  const now=sim.elapsed||0;if(now<this.nextTry)return;
+  const s=sim.state.saga,p=sim.state.player,hour=sim.state.hour;
+  const arrive=sim.room===null&&s.briar.state==='taken'&&S().done(sim.state,'witness')&&Math.hypot(p.x-N().PLACE.x,p.z-N().PLACE.z)<=N().NEAR;
+  const evening=s.briar.state==='returned'&&s.briar.homeDay===null&&hour>=18&&hour<22&&sim.state.day>=s.briar.returnedDay;
+  if(!arrive&&!evening)return;
+  this.nextTry=now+1;
+  this.run(arrive?'arrive':'home');
+ }
+ interact(){
+  const sim=this.sim;if(!sim||!N()||!N().active(sim))return false;
+  const fox=N().foxAt(sim);if(!fox)return false;
+  this.run('choose',{fox});
+  return true;
+ }
+ context(){const sim=this.sim;return sim&&N()&&N().active(sim)&&N().foxAt(sim)?'E · Answer the fox':null;}
+ page(){return null;}
+}
+const api={NearshoreUI};G.RealmNearshoreUI=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
+</script><script>/* The two foxes at the nearshore. Positions and answers come from G.RealmNearshore; the parts come from the
+ * Briar art so both foxes read as the same animal. A cold fox flickers out over its last seconds. */
+(function(G){'use strict';
+function draw(out,sim){
+ const N=G.RealmNearshore,A=G.RealmCompanionArt;if(!N||!A||!out||!sim)return;
+ const r=N.view(sim);if(!r)return;
+ const p=sim.state.player,reduced=!!sim.state.settings?.reducedMotion;
+ const one=(f,cold)=>{
+  const yaw=Number.isFinite(f.yaw)?f.yaw:Math.atan2(p.x-f.x,p.z-f.z);
+  const motion=A.motion(f.motion||null,{x:f.x,z:f.z,time:sim.elapsed,scene:null,paused:!!sim.paused,reducedMotion:reduced});
+  const pose=A.pose({...motion,bonded:true,carrying:false,resting:!!f.sit});
+  f.motion=motion;
+  for(const{kind,...item}of A.parts({x:f.x,z:f.z,base:1.31,yaw,bonded:true},pose)){
+   if(cold&&Math.floor(sim.elapsed*6)%2)continue;
+   out[kind].push(item);
+  }
+ };
+ one(r.real,false);
+ if(r.fake.state!=='gone')one(r.fake,r.fake.state==='cold');
+}
+const api={draw};G.RealmNearshoreArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
 </script><script>/* Local, synthetic village simulation. Not a resident mind, account server,
  * or secure authority. All long-lived data is explicit, bounded and exportable. */
@@ -11501,7 +11711,7 @@ class WorldArt{
  }
  if(this.room==='retreat'&&sim.presentation?.selectedSlot){let slot=X.SLOTS.find(s=>s.id===sim.presentation.selectedSlot);if(slot){for(let i=0;i<4;i++){let a=i*Math.PI/2;out.box.push({p:[slot.x+Math.sin(a)*.95,1.6,slot.z+Math.cos(a)*.95],s:i%2?[.035,.035,1.95]:[1.95,.035,.035],c:0xe4c487,em:.5});}}}
  if(G.RealmRoadArt)G.RealmRoadArt.draw(out,sim,t,this);
- if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);
+ if(G.RealmAdventureArt)G.RealmAdventureArt.draw(out,sim,t);if(G.RealmNearshoreArt)G.RealmNearshoreArt.draw(out,sim,t);
  if(G.RealmStarterArt)G.RealmStarterArt.draw(out,sim,t);
  if(G.RealmCosmosArt)G.RealmCosmosArt.draw(out,sim,t,this);
  if(G.RealmWorldFoundationsArt)G.RealmWorldFoundationsArt.draw(out,sim,t,this);if(G.RealmTrailsArt)G.RealmTrailsArt.draw(out,sim,t,this);if(G.RealmLocalLifeArt)G.RealmLocalLifeArt.draw(out,sim);if(G.RealmEarthConsignmentArt)G.RealmEarthConsignmentArt.draw(out,sim);if(G.RealmBridgeCommunityArt)G.RealmBridgeCommunityArt.draw(out,sim);if(G.RealmEarthHomecomingArt)G.RealmEarthHomecomingArt.draw(out,sim,t);if(G.RealmEarthMasterworkArt)G.RealmEarthMasterworkArt.draw(out,sim,t,this);if(G.RealmEarthTournamentArt)G.RealmEarthTournamentArt.draw(out,sim,t,this);if(G.RealmEarthGateArt)G.RealmEarthGateArt.draw(out,sim,t,this);if(G.RealmCosmosCampaignArt)G.RealmCosmosCampaignArt.draw(out,sim,t);if(G.RealmAtlantisCampaignArt)G.RealmAtlantisCampaignArt.draw(out,sim,t);if(G.RealmHellCampaignArt)G.RealmHellCampaignArt.draw(out,sim,t);if(G.RealmHeavenCampaignArt){G.RealmHeavenCampaignArt.draw(out,sim,t);G.RealmHeavenCampaignArt.drawEscort(out,sim,G.RealmHeavenCampaign.runtime(sim).escort,t);}
@@ -12167,7 +12377,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
   companionSamples.set(sim,{owner,bonded,motion});companionFrames.set(sim,{placement,motion,pose,parts});
   if(!bonded)add('octa',x,base+1.5,z,.17,.30,.17,0xf1d3a3,{em:.8});
  };
- if(s.companion.bonded){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
+ if(s.companion.bonded&&!G.RealmNearshore?.hidesBriar?.(sim)){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
  if(!sim.room&&s.companion.bonded&&G.RealmBriarOuting){
   const d=G.RealmBriarOuting.definition,record=G.RealmBriarMoments.fromWorld(sim.state),view=typeof sim.briarContext==='function'?G.RealmBriarOuting.current(sim.briarContext()):null;
   const home=record.moments.includes(G.RealmBriarMoments.CLOTH_HOME),q=home?d.home:d.cloth;
@@ -13092,7 +13302,7 @@ class RPGUI{
   d.addEventListener('input',e=>{if(this.expedition?.fieldcraft.input(e.target)||this.expedition?.carrier?.input(e.target))return;if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
   $('#tracked-open').onclick=()=>this.open(this.trackerSelection?.sim===this.sim&&['story','homestead'].includes(this.quest)?'journal':this.quest==='earth-gate'?'earth-gate':this.quest==='earth-tournament'?'earth-tournament':this.quest==='earth-masterwork'?'earth-masterwork':this.quest==='earth-homecoming'?'earth-homecoming':this.quest==='cosmos-campaign'?'cosmos-campaign':this.quest==='atlantis-campaign'?'atlantis-campaign':this.quest==='heaven-campaign'?'heaven-campaign':this.quest==='hell-campaign'?'hell-campaign':this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.quest==='wild-signs'?'wild-signs':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
-  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.cosmosCampaign=new G.RealmCosmosCampaignUI.CosmosCampaignUI(this);this.earthHomecoming=new G.RealmEarthHomecomingUI.EarthHomecomingUI(this);this.gate=new G.RealmEarthGateUI.GateUI(this);this.masterwork=new G.RealmEarthMasterworkUI.MasterworkUI(this);this.tournament=new G.RealmEarthTournamentUI.TournamentUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);this.wildSigns=new G.RealmEarthWildSignsUI.WildSignsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
+  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.cosmosCampaign=new G.RealmCosmosCampaignUI.CosmosCampaignUI(this);this.earthHomecoming=new G.RealmEarthHomecomingUI.EarthHomecomingUI(this);this.gate=new G.RealmEarthGateUI.GateUI(this);this.masterwork=new G.RealmEarthMasterworkUI.MasterworkUI(this);this.tournament=new G.RealmEarthTournamentUI.TournamentUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.nearshore=new G.RealmNearshoreUI.NearshoreUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);this.wildSigns=new G.RealmEarthWildSignsUI.WildSignsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
  }
  get sim(){return this.api.sim();} get state(){return this.sim.state.adventure;}
  // A manual tracker selection belongs only to this live character body. It is
@@ -13201,7 +13411,7 @@ class RPGUI{
   // A deliberately tracked expedition owns its nearby action before an
   // overlapping invitation. Other tracked work retains the existing order.
   if(this.quest==='expedition'&&this.expedition.interact())return true;
-  if(this.gate?.interact())return true;if(this.tournament?.interact())return true;if(this.masterwork?.interact())return true;if(this.earthHomecoming.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.wildSigns.interact())return true;if(this.worlds.interact())return true;
+  if(this.gate?.interact())return true;if(this.tournament?.interact())return true;if(this.masterwork?.interact())return true;if(this.earthHomecoming.interact())return true;if(this.nearshore.interact())return true;if(this.cosmosCampaign.interact())return true;if(this.atlantisCampaign.interact())return true;if(this.heavenCampaign.interact())return true;if(this.hellCampaign.interact())return true;if(this.civic.carrier.interact())return true;if(this.community.interact())return true;if(this.civic.interact())return true;if(this.expedition.interact())return true;if(this.trails.interact())return true;if(this.wildSigns.interact())return true;if(this.worlds.interact())return true;
   if(this.gathering.interact())return true;
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;
@@ -13389,7 +13599,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();this.atlantisCampaign.tick();this.cosmosCampaign.tick();this.earthHomecoming.tick();this.wildSigns.tick();this.masterwork?.tick();this.tournament?.tick();this.gate?.tick();this.completedTracker();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();this.atlantisCampaign.tick();this.nearshore.tick();this.cosmosCampaign.tick();this.earthHomecoming.tick();this.wildSigns.tick();this.masterwork?.tick();this.tournament?.tick();this.gate?.tick();this.completedTracker();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
@@ -17188,6 +17398,7 @@ function earthHomecomingCommand(type,payload){const ctx=worldContext();return Re
 function hellCampaignCommand(type,payload){return RealmHellCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function cosmosCampaignCommand(type,payload){return RealmCosmosCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function atlantisCampaignCommand(type,payload){return RealmAtlantisCampaign.command(worldContext(),type,payload,{save:worldSave});}
+function nearshoreCommand(type,payload){return RealmNearshore.command(worldContext(),type,payload,{save:worldSave});}
 function heavenCampaignCommand(type,payload){return RealmHeavenCampaign.command(worldContext(),type,payload,{save:worldSave});}
 function bridgeCommunityCommand(type,payload){return RealmBridgeCommunity.command(worldContext(),type,payload,{save:worldSave});}
 function localLifeCommand(type,payload){const load=payload?.quest===RealmEarthConsignmentData.ID,ctx=load?consignmentContext():worldContext(),result=RealmLocalLife.command(ctx,type,payload,{save:worldSave});if(load)consignmentPresentation();return result;}
@@ -17404,7 +17615,7 @@ adventure=new RealmAdventureUI.AdventureUI({workshopCommand,earthRiverReturn,sim
 
 arsenal=new RealmArsenalUI.ArsenalUI({sim:()=>sim,adventure:()=>adventure,openPanel,closePanel,renderPanel,panel:()=>panel,walk:walkAdventure,endBuild:()=>{sandbox?.endBuild();sandbox?.stopAuto();keys.clear();}});
 
-rpg=new RealmRPGUI.RPGUI({briarContext,briarCommand,wildSignsContext,wildSignsCommand,wildSignsObserve,wildSignsRetryClearance,consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,frameCarrier,frameGrazer,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,gateContext,gateStatus,gateCommand,gateControl,tournamentContext,tournamentCommand,masterworkContext,masterworkCommand,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:rotateCamera,direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
+rpg=new RealmRPGUI.RPGUI({briarContext,briarCommand,wildSignsContext,wildSignsCommand,wildSignsObserve,wildSignsRetryClearance,consignmentContext,consignmentControl,fieldcraftContext,frameFieldcraft,frameCarrier,frameGrazer,earthRoadTravel,frameFoe,canFrameFoe:()=>!!engine&&!sim.paused&&!sim.worldDive&&RealmCombatView.plan({preset:camera.preset,player:sim.state.player,enemy:RealmCombat.selected(sim),distance:camera.distance}).ok,gateContext,gateStatus,gateCommand,gateControl,tournamentContext,tournamentCommand,masterworkContext,masterworkCommand,earthHomecomingCommand,cosmosCampaignCommand,atlantisCampaignCommand,nearshoreCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,earthContext,earthTravel,earthReturn,bridgeView,cosmosContext,cosmosTravel,cosmosReturn,sim:()=>sim,adventure:()=>adventure,closePanel,openPanel,endBuild:()=>{sandbox.endBuild();sandbox.stopAuto();},clearKeys:()=>keys.clear(),focusWorld:()=>ui.canvas.focus({preventScroll:true}),toast,save,exportWorld,characters:()=>characterStore.describe(sim.snapshot()),characterAction,characterExport,characterImport,characterReload,characterRecovery,panel:()=>panel,camera:cameraPreset,resetCamera,rotate:rotateCamera,direction:()=>adventure.api.direction(),music:()=>experience.open(),gather:id=>sandbox.seek(id),walkLocal:walkAdventure,stopPersonalMusic:()=>experience?.stop(),audio:()=>audio,project:(x,y,z)=>engine?.project(x,y,z)});
 fishing=new RealmPierFishingUI.FishingUI({look:frameFishing,sim:()=>sim,active:()=>characterStore.active,blocked:()=>!!RealmBriarOuting.current(briarContext()),menuOpen:fishingControlsCovered,prepare:()=>{closePanel();if(rpg.dialog.open)rpg.close();adventure.stopAuto();sandbox.stopAuto();sandbox.endBuild();RealmCombat.stop(sim);keys.clear();sim.playerPath=[];},focus:()=>ui.canvas.focus(),toast,rest:()=>{sim.event('rest','You spent a quiet moment beside the water.');save();toast('The valley keeps its own small rhythm.');}});
 // Input distinguishes clicks from drags, with two-finger zoom on touch screens.
 let pointers=new Map(),gesture=null,keys=new Set();function zoom(k){clearGrazerFocus();clearCarrierFocus();camera.tour=false;if(camera.preset==='adventure'){camera.distance=Math.max(3.5,Math.min(20,camera.distance*k));return;}camera.half=C.clamp?C.clamp(camera.half*k,6,52):Math.max(6,Math.min(52,camera.half*k));camera.zoom=camera.half/camera.baseHalf;camera.overview=false;}
@@ -17455,7 +17666,7 @@ function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;last
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;
 window.Realm={get state(){return sim.snapshot();},get diagnostics(){let g=engine?.gl,dbg=g?.getExtension('WEBGL_debug_renderer_info');return{briar:RealmBriarOuting.availability(briarContext()),fishing:RealmPierFishing.current(fishing.context()),version:'10.0.0',mode:engine?'webgl2':'map',scene:sim.room||'valley',world:RealmWorldFoundations.definition(sim.room)?{id:RealmWorldFoundations.definition(sim.room).id,height:sceneHeight(),dive:worldDiveStatus(),journey:JSON.parse(JSON.stringify(sim.state.journeys.realms[RealmWorldFoundations.definition(sim.room).id]))}:null,wildSigns:wildSignsDiagnostics(),roadkeeper:roadkeeperDiagnostics(),consignment:sim.room===RealmEarthConsignmentData.ROOM?JSON.parse(JSON.stringify({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,atlantis:sim.room===RealmAtlantisCampaign.definition.room?JSON.parse(JSON.stringify({current:RealmAtlantisCampaign.currentStatus(sim),motion:{currentDistance:RealmAtlantisCampaign.runtime(sim).currentDistance,pullDistance:RealmAtlantisCampaign.runtime(sim).pullDistance},witnesses:RealmAtlantisCampaign.runtime(sim).witnesses})):null,heaven:sim.room===RealmHeavenCampaign.definition.room?JSON.parse(JSON.stringify({escort:RealmHeavenCampaign.runtime(sim).escort,activation:RealmHeavenCampaign.runtime(sim).activation,status:RealmHeavenCampaign.escortStatus(sim)})):null,earthGate:gates().status(),earthTournament:RealmEarthTournament.view(sim),earthHomecoming:JSON.parse(JSON.stringify({record:sim.state.earthHomecoming,runtime:[null,RealmEarthHomecoming.definition.room].includes(sim.room)?RealmEarthHomecoming.runtime(sim):null,missing:RealmEarthHomecoming.missing(sim.state),ready:RealmEarthHomecoming.ready(sim.state)})),earth:sim.room===RealmEarth.ROOM?{trip:sim.earthTrip,height:sceneHeight(),walkable:RealmEarth.walkable(sim.state.player.x,sim.state.player.z)}:null,cosmos:sim.room===RealmCosmos.ROOM?{trip:sim.cosmosTrip,height:sceneHeight(),walkable:RealmCosmos.walkable(sim.state.player.x,sim.state.player.z),campaign:JSON.parse(JSON.stringify(RealmCosmosCampaign.runtime(sim)))}:null,networkDependencies:0,liveAI:false,multiplayer:false,adventure:{tactics:JSON.parse(JSON.stringify(RealmCombat.runtime(sim))),beacon:JSON.parse(JSON.stringify(RealmBeacon.runtime(sim))),crossing:JSON.parse(JSON.stringify(RealmCrossing.runtime(sim))),player:{...sim.state.player},paused:sim.paused,intent:adventure?.intent||null,stats:RealmAdventure.stats(sim.state.adventure),weapon:RealmArsenal.weapon(sim.state.adventure),arrows:RealmArsenal.runtime(sim).arrows.map(a=>({...a})),range:{...RealmArsenal.runtime(sim).range},enemies:RealmAdventure.runtime(sim).enemies.map(e=>({id:e.id,x:e.x,z:e.z,hp:e.hp,maxHP:e.maxHP,hidden:!!e.hidden,eventEnemy:!!e.eventEnemy,kind:e.kind,earthHomecoming:e.earthHomecoming||null,ringMode:e.ringMode,custom:e.custom,mode:e.mode,timer:e.timer,aim:e.aim,yaw:e.yaw,strike:e.strike||null,contactAt:e.contactAt??null,contactHit:e.contactHit??null})),companion:{...RealmAdventure.runtime(sim).companion}},sandbox:{bridge:sim.state.sandbox.bridge,objects:sim.state.sandbox.placed.length,elapsed:sim.state.sandbox.elapsed,autoGather:sandbox?.auto||null,buildMode:sandbox?.build||null},saveState,characters:{mode:characterStore.blocked?'blocked':characterStore.managed?'managed':'legacy',active:characterStore.active,revision:characterStore.revision,count:characterStore.record?.slots.length||1,writer:characterStore.writer,error:characterStore.error},fps,errors:errors.slice(),camera:{...camera,heading:cameraHeading(),projection:engine?.camera.projection||'orthographic',eye:engine?.camera.eye,target:engine?.camera.target},metrics:engine?.metrics||null,reflection:engine?.reflectionInfo||null,cutaway:{enabled:!!engine?.cutaway,focus:engine?.cutawayFocus||null},renderer:dbg?g.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,music:{playing:experience?.playing||false,scoreRevision:sim.state.scoreRevision,playingRevision:experience?.playingRevision,step:experience?.step},gathering:sim.gathering?{...sim.gathering}:null,layoutRevision:sim.state.retreat.revision,roadsideGathering:{status:rpg?.gathering?.player.status||'idle',playing:!!rpg?.gathering?.player.source,pending:!!rpg?.gathering?.pending},audio:{enabled:audio.enabled,state:audio.ctx?.state||'not-created',soundscape:audio.soundscape?.snapshot()||null}};},navigate,export:()=>JSON.stringify(sim.snapshot(),null,2),project:(x,y,z)=>engine?.project(x,y,z)};
-if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,frameCarrier,carrier:()=>({view:RealmEarthPatrolCarrier.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.carrierPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,gateContext,gateStatus,gateCommand,gateControl,tournamentContext,tournamentCommand,masterworkContext,masterworkCommand,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){briarContext();bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);gates().tick(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,family:()=>art?.familySnapshot(sim)||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncBriarOwner();syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
+if(window.__ETERNITIES_TEST_MODE||location.search.includes('test'))window.Realm.test={consignmentContext,consignmentControl,consignment:()=>({view:RealmEarthConsignmentMotion.current(consignmentContext()),frame:RealmEarthConsignmentArt.snapshot(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.consignmentPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraftContext,frameFieldcraft,frameCarrier,carrier:()=>({view:RealmEarthPatrolCarrier.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.carrierPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),fieldcraft:()=>({view:RealmEarthFieldcraft.current(sim),parts:engine?.dynamic.flatMap(b=>b.items.filter(i=>i.fieldcraftPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoad:()=>({route:RealmEarthRoad.endpoint(sim.room),parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.earthRoadPart||i.worldSolidId==='hearthwater-fingerpost').map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]}),earthRoadTravel,gateContext,gateStatus,gateCommand,gateControl,tournamentContext,tournamentCommand,masterworkContext,masterworkCommand,earthHomecomingCommand,homeCommand,cosmosCampaignCommand,atlantisCampaignCommand,nearshoreCommand,heavenCampaignCommand,hellCampaignCommand,bridgeCommunityCommand,localLifeCommand,bridgeView,workshopCommand,worldContext,expeditionCommand,earthBinding,worldTravel,worldReturn,worldCommand,trailCommand,trailAdjust,realmFit,worldDiveEnter,worldDiveExit,worldDiveStatus,worldSwim:(...a)=>RealmWorldFoundations.swim(sim,...a),step(seconds){let p=sim.paused;sim.paused=false;for(let t=0;t<seconds;t+=.05){briarContext();bindWildSignsClearance();sim.tick(.05);tickRoadkeeper(.05);tickConsignment(.05);gates().tick(.05);tickGrazer(.05);adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();}sim.paused=p;elapsed+=seconds;switchScene();refreshUI();},setTime:h=>sim.setTime(h),enter:id=>{let r=sim.enter(id);switchScene();return r;},leave:()=>{let r=sim.leave();switchScene();return r;},act:(...args)=>sim.act(...args),save,replace:applyWorld,pause:v=>{sim.paused=v;},weather:v=>{sim.state.weather=v;},layout:()=>sim.state.retreat,openStudio:()=>experience.open(),openPanel,bridge:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({definition:RealmEarth.BRIDGE,waterHeight:RealmEngine.WATER_HEIGHT,railCutaway:{eligible:engine?.railCutawayActive===true,enabled:engine?.cutaway===true},parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.bridgePart||i.mountainPart||i.shorelinePart).map(i=>({kind:b.kind,railBatch:b.railCutaway===true,...i,m:i.m?Array.from(i.m):null})))||[]})):null,traveler:()=>art?.travelerSnapshot()||null,family:()=>art?.familySnapshot(sim)||null,companion:()=>RealmAdventureArt.companionSnapshot(sim),skitters:()=>RealmAdventureArt.skitterSnapshot(sim),drover:()=>sim.room===RealmEarth.ROOM&&art?.droverFrame?JSON.parse(JSON.stringify({frame:{...art.droverFrame,root:Array.from(art.droverFrame.root),coilRoot:Array.from(art.droverFrame.coilRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.droverPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,earthShoulder:()=>sim.room===RealmEarth.ROOM?JSON.parse(JSON.stringify({frame:art?.earthShoulderFrame,parts:engine?.batches.flatMap(b=>b.items.filter(i=>i.quarryShoulder||i.terrain).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))||[]})):null,quarry:()=>sim.room===RealmEarth.ROOM&&art?.quarryFrame?JSON.parse(JSON.stringify({frame:{actor:{...art.quarryFrame.actor,root:Array.from(art.quarryFrame.actor.root),toolRoot:Array.from(art.quarryFrame.actor.toolRoot)},works:art.quarryFrame.works},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.stoneworkerPart||i.quarryPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null})))})):null,millwright:()=>sim.room===RealmEarth.ROOM&&art?.millwrightFrame?JSON.parse(JSON.stringify({frame:{...art.millwrightFrame,root:Array.from(art.millwrightFrame.root),toolRoot:Array.from(art.millwrightFrame.toolRoot)},parts:engine.dynamic.flatMap(b=>b.items.filter(i=>i.millwrightPart).map(i=>({kind:b.kind,...i,m:Array.from(i.m)})))})):null,millGate:()=>sim.room===RealmEarth.ROOM&&art?.millGateFrame?JSON.parse(JSON.stringify({gate:art.millGateFrame,parts:[...engine.batches,...engine.dynamic].flatMap(b=>b.items.filter(i=>i.millPart).map(i=>({kind:b.kind,...i,m:i.m?Array.from(i.m):null}))),wheel:art.dynamicBox.items.filter(i=>i.p[0]===3.55&&i.p[1]===2.71)})):null,surfaceMaterials:v=>{if(engine){engine.surfaceMaterialsEnabled=!!v;return {...engine.surfaceMaterialInfo};}return null;},quality:v=>{sim.state.settings.quality=v;if(engine)engine.quality=v;resize();},render(){experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);updateCamera(1);syncBriarOwner();syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();art.update(sim,elapsed,target);engine.render(elapsed,sim.state.hour,sim.state.weather==='rain');updateLabels();}else mapDraw(ui.map,true);refreshUI();},captureFrame(t,yaw){elapsed=t;if(yaw!==undefined)camera.yaw=yaw;this.render();return ui.canvas.toDataURL('image/png');},view(v){Object.assign(camera,v);updateCamera(1);},sandbox:(id,type,payload)=>sim.sandboxCommand(id,type,payload),adventure:(id,type,payload)=>{let r=sim.adventureCommand(id,type,payload);switchScene();return r;},move:(x,z)=>sim.moveTo(x,z),sandboxPanel:()=>sandbox.paint(),presentation:()=>JSON.parse(JSON.stringify(sim.presentation||{})),get path(){return sim.playerPath;}};
 window.addEventListener('resize',resize);window.addEventListener('pagehide',()=>{save();characterStore.writer=false;characterLock.release();});window.addEventListener('pageshow',e=>{if(e.persisted&&characterStore.managed)acquireCharacterWriter().then(()=>save());});ui.canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();graphicsContextLost();});ui.canvas.addEventListener('webglcontextrestored',restoreGraphics);document.body.classList.toggle('reduced',sim.state.settings.reducedMotion);cameraPreset(sim.state.settings.cameraMode,false);if(camera.preset==='adventure'&&!sim.state.settings.cameraViews.profiles.adventure)camera.yaw=.22;labelsRebuild();resize();refreshUI();if(characterStore.managed){acquireCharacterWriter().then(ok=>{if(ok)save();else{saveState='unavailable';toast(characterLock.error);renderStatus();}});}else save();if(loaded.status==='migrated')toast('Your earlier world was copied into Realm 10. The original save was not changed.');setTimeout(()=>$('#loading').classList.add('hidden'),400);if(G_CAPTURE){if(window.Realm.test)window.Realm.test.render();}else requestAnimationFrame(frame);
 })();
 </script></body></html>

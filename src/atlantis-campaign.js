@@ -7,6 +7,7 @@
 (function(G){'use strict';
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
+const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
 const fresh=()=>({version:1,accepted:false,steps:[],approach:null,choice:null,claimed:false});
@@ -25,7 +26,7 @@ function validate(raw){
  if(raw.claimed&&!required(raw).every(id=>raw.steps.includes(id)))no('unearned claim');
  return{version:1,accepted:raw.accepted,steps:D.steps.filter(s=>raw.steps.includes(s.id)).map(s=>s.id),approach:raw.approach,choice:raw.choice,claimed:raw.claimed};
 }
-function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true;}
+function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true&&SAGA().allowed(state,'atlantis')===true;}
 function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&s.requires.every(id=>r.steps.includes(id))&&(s.id!=='diagnose-flow'||r.steps.includes(D.approaches.find(a=>a.id===r.approach)?.requiredObservation))):[];}
 function ready(state){const r=record(state);return !!r?.accepted&&D.approaches.some(a=>a.id===r.approach)&&D.choices.some(c=>c.id===r.choice)&&required(r).every(id=>r.steps.includes(id));}
 function at(sim,p){
@@ -46,7 +47,7 @@ function commit(sim,candidate,io,text,ctx){
  // The synchronous writer owns the durable character envelope. Never adopt its
  // result into a replaced or re-entrant simulation, even if the writer said ok.
  if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. The saved candidate was not adopted into the changed simulation.');
- sim.state.atlantisCampaign=checked.atlantisCampaign;
+ sim.state.atlantisCampaign=checked.atlantisCampaign;sim.state.saga=checked.saga;
  for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;
  return{ok:true,text};
@@ -71,12 +72,12 @@ function command(ctx,type,payload,io){
  if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==D.room||sim.state.adventure.hp<=0)return fail('Reach the Atlantis campaign while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or campaign changed. Read the current terms again.');
  const r=sim.state.atlantisCampaign;
- if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This local harbour campaign was already paid once. Its disposition remains in history.'};
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This harbour repair is already complete. Its choice remains on the record.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This campaign is already accepted; its saved approach and work remain.'};
  let candidate;try{candidate=sim.snapshot();}catch(e){return fail('Campaign state refused: '+e.message);}
  const q=candidate.atlantisCampaign;let text,reward=null;
  if(type==='accept'){
-  if(!eligible(candidate)||!at(sim,D.giver))return fail('Claim the separate Bellglass depth chart, then speak to Sahra to accept this continuation.');
+  if(!eligible(candidate)||!at(sim,D.giver))return fail('The harbour repair is not open to you yet. Finish the story before it, then speak to Sahra.');
   q.accepted=true;text=D.title+' accepted. The earlier chart, lamp, equipment and free home passage retain their own history.';
  }else if(type==='approach'){
   const s=step('choose-approach'),a=D.approaches.find(v=>v.id===payload.approach);
@@ -99,11 +100,11 @@ function command(ctx,type,payload,io){
   if(!available(candidate).some(v=>v.id===s.id))return fail('Secure the carrier, exhaust the actual bearing and stabilize both sequential releases before choosing.');
   q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
  }else if(type==='claim'){
-  if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the selected passage and supervised handoff, then return to Sahra for the whole declared fee.');
+  if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the passage and the handoff, then return to Sahra for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
-  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee, including crystal. Verified work remains unpaid; nothing was changed.');
+  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
-  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Claimed once.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Atlantis campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
  if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;

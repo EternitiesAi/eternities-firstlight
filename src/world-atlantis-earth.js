@@ -11,7 +11,7 @@
  const trees = [[-12,5],[-8,-18],[-12,-28],[12,5],[17,-15],[12,-26],[-24,-39],[25,-43],[-22,-63],[23,-65]];
  const earth = {
   id:'earthlands',room:'world-earthlands',name:'Earth · Coastward Road',
-  kicker:'Broader Earth foundation · provisional local geography',
+  kicker:'Broader Earth foundation · local geography',
   description:'A long channel bridge opens onto woodland lanes, working fields and a small roadside settlement. Coastward Road is a provisional extension; Hearthwater and its people retain their existing places and history.',
   sourceNotes:'Original opening inspired by Earth E02 Crownfields, E05 Reedmere and E08 Rainward. Coastward Road, Merren and Vessa are new provisional names, not recovered manuscript canon.',
   entry:{x:0,z:104,yaw:Math.PI},bounds:{minX:-42,maxX:42,minZ:-92,maxZ:115},

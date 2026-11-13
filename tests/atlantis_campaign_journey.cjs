@@ -7,7 +7,7 @@ const ROOT=path.resolve(__dirname,'..'),DEFAULT=path.join(ROOT,'evidence10/atlan
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const sourceEpoch=()=>Object.fromEntries([...fs.readdirSync(path.join(ROOT,'src')).filter(p=>fs.statSync(path.join(ROOT,'src',p)).isFile()).sort().map(p=>'src/'+p),'build.py','index.html','tests/atlantis_campaign_journey.cjs','tests/realm_trails_journey.cjs'].map(p=>[p,sha(path.join(ROOT,p))]));
 const loadedHashes=sourceEpoch();
-const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
+const {createHarness,earnedKit,witnessHarness}=require('./realm_trails_journey.cjs');
 const C=require('../src/core.js'),A=require('../src/adventure.js'),T=require('../src/combat.js'),AR=require('../src/arsenal.js');
 const W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js'),H=require('../src/atlantis-campaign.js'),D=H.definition;
 const step=id=>D.steps.find(s=>s.id===id),distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
@@ -54,7 +54,9 @@ function fight(h,veteran){
  const originalDamage=A.damageEnemy,originalCommand=sim.adventureCommand,weaponImpacts=[],impacts=[],phases=[],contacts=[];
  sim.adventureCommand=function(id,type,payload){const hp=e.hp,mode=e.mode,result=originalCommand.call(this,id,type,payload);if(this===sim&&['attack','pulse'].includes(type)&&style==='blade'&&result.ok&&e.hp<hp)weaponImpacts.push({caller:'production blade command',type,mode,before:hp,after:e.hp});return result;};
  A.damageEnemy=function(current,enemy,n,source){const hp=enemy?.hp,mode=enemy?.mode,result=originalDamage.apply(this,arguments);if(current===sim&&enemy===e&&source==='weapon'&&enemy.hp<hp)weaponImpacts.push({caller:'production projectile impact',mode,before:hp,after:enemy.hp});return result;};
- let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.elapsed;
+ // The drowned witness guardian has 720 health; the scripted bot carries enough tonics to finish it by real damage.
+sim.state.adventure.tonics=Math.max(sim.state.adventure.tonics,12);
+let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.elapsed;
  try{
   while(!sim.state.atlantisCampaign.steps.includes(D.enemy.defeatStep)&&frames++<4000){
    const a=sim.state.adventure,cue=T.threat(sim),t=T.runtime(sim);assert.ok(a.hp>0,'survive actual Custodian');
@@ -78,7 +80,7 @@ function fight(h,veteran){
 function journey({bow=false,veteran=false,output=DEFAULT,seedOnly=false,approach=bow?'lower':'upper',choice=veteran?'license':bow?'limited':'publish'}={}){
  assert.ok(D.approaches.some(a=>a.id===approach)&&D.choices.some(c=>c.id===choice));
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',folder=folderFor(output,variant),fixture=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null,fixtureHash=fixture?sha(fixture):null;
- const h=createHarness(fixture?JSON.parse(fs.readFileSync(fixture,'utf-8')):undefined),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
+ const h=fixture?createHarness(JSON.parse(fs.readFileSync(fixture,'utf-8'))):witnessHarness(bow),events=[],swims=[],checkpoints=[],checkpointHashes={};let stage='kit';
  const write=(name,value)=>fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(value,null,2)+'\n',{flag:'wx'}),snap=name=>{write(name,h.sim.snapshot());checkpoints.push(name);checkpointHashes[name]=sha(path.join(folder,name+".json"));};
  const hook=()=>{h.sim.atlantisCampaignSave=h.save;};
  const act=(type,p={},io={save:h.save},expect=true)=>{const ctx=h.context();hook();const result=H.command(ctx,type,{quest:D.id,expectedActive:ctx.active,expectedRevision:h.sim.state.adventure.revision,...p},io);events.push({type,p,result});assert.equal(result.ok,expect,type+': '+(result.error||result.text));return result;};

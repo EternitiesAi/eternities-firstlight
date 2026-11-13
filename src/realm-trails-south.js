@@ -11,7 +11,7 @@ function freeze(value){
 }
 const definitions=freeze([
  {
-  id:'atlantis-bellglass-chart-v1',realm:'atlantis',
+  id:'atlantis-bellglass-chart-v1',realm:'atlantis',gate:'atlantis',
   title:'A Chart With Room for Depth',
   summary:'Sahra needs one visitor chart that distinguishes the old lower road, the modern wet lane and Bellglass’s air court. Read both depth marks, correct the chart in the court, and add a modern marker beside the old masonry.',
   danger:'This job enters the existing bounded gallery. F ascends, G descends, and depth holds when released. The visitor envelope has no breath timer. Bellglass’s doorway and the east wet lane remain the way out; free passage home remains available.',

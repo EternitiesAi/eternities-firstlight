@@ -4,6 +4,9 @@
 (function(G){'use strict';
 const DATA=G.RealmCosmosCampaignData||(typeof require==='function'?require('./cosmos-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,SUPPORTS=DATA.supports;
+const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+// The saga writes into the candidate save, so a sighting lands in the same save as the acceptance.
+const candidateSim=c=>({state:c,event:(kind,text)=>{c.journal.push({seq:c.nextEvent++,day:c.day,hour:c.hour,kind,text:text.slice(0,350)});if(c.journal.length>200)c.journal.shift();}});
 const copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,fail=error=>({ok:false,error});
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.cosmosCampaign||s,locks=new WeakMap(),runtimeOwners=new WeakMap(),actorSims=new WeakMap(),actorStates=new WeakMap();
 const fresh=()=>({version:1,accepted:false,steps:[],choice:null,opened:false,claimed:false});
@@ -30,7 +33,7 @@ function validate(raw){
  if(raw.claimed&&!ready(raw))no('unearned claim');
  return{version:1,accepted:raw.accepted,steps:raw.steps.slice(),choice:raw.choice,opened:raw.opened,claimed:raw.claimed};
 }
-function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true;}
+function eligible(state){return state?.adventure?.started===true&&state?.realmTrails?.records?.[D.prerequisite]?.claimed===true&&SAGA().allowed(state,'cosmos')===true;}
 function available(state){const r=record(state);return r?.accepted&&!r.claimed?D.steps.filter(s=>!r.steps.includes(s.id)&&allowed(r,s)):[];}
 function ready(state){const r=record(state);return !!r?.accepted&&D.choices.some(c=>c.id===r.choice)&&r.opened===true&&prepared(r).length>=2&&configured(r).length>=2&&required().every(id=>r.steps.includes(id));}
 function at(sim,p){
@@ -49,7 +52,7 @@ function commit(sim,candidate,io,text,ctx){
  }catch(e){return fail('Campaign save refused: '+e.message);}
  if(!saved?.ok)return fail(saved?.error||'Campaign save refused. No history, costs or reward were changed.');
  if(sim.state!==state||sim.room!==room||JSON.stringify(sim.state)!==before||(ctx&&ctx.active!==active))return fail('The character changed during saving. The saved candidate was not adopted into the changed simulation.');
- sim.state.cosmosCampaign=checked.cosmosCampaign;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
+ sim.state.cosmosCampaign=checked.cosmosCampaign;sim.state.saga=checked.saga;for(const k of['xp','coins','ore','revision'])sim.state.adventure[k]=checked.adventure[k];
  Object.assign(sim.state.sandbox.inventory,checked.sandbox.inventory);sim.state.journal=checked.journal;sim.state.nextEvent=checked.nextEvent;return{ok:true,text};
 }
 function runtime(sim){
@@ -62,14 +65,15 @@ function command(ctx,type,payload,io){
  const sim=ctx?.sim;
  if(!G.RealmCore||!(sim instanceof G.RealmCore.Simulation)||!payload||typeof payload!=='object'||Array.isArray(payload)||payload.quest!==D.id||sim.room!==D.room||sim.worldDive||sim.state.adventure.hp<=0)return fail('Reach the Cosmos service operation on dry ground while able to act.');
  if(typeof ctx.active!=='string'||!ctx.active||payload.expectedActive!==ctx.active||!Number.isSafeInteger(payload.expectedRevision)||payload.expectedRevision!==sim.state.adventure.revision)return fail('The character or operation changed. Read the current terms again.');
- const r=sim.state.cosmosCampaign;if(!r||!eligible(sim.state))return fail('Earn the ordinary kit and explicitly claim the separate named-station comparator first.');
- if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This local Confluence was already paid once. Its apparatus and account remain.'};
+ const r=sim.state.cosmosCampaign;if(!r||!eligible(sim.state))return fail('Finish the split-bearing comparator first, then return to the Confluence.');
+ if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This Confluence is already complete. Its apparatus and account remain.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This operation is already accepted; its saved work remains.'};
  let candidate;try{candidate=sim.snapshot();if(!candidate.cosmosCampaign)return fail('The Cosmos snapshot owner is not installed. No history or fee was changed.');candidate.cosmosCampaign=validate(candidate.cosmosCampaign);}catch(e){return fail('Campaign state refused: '+e.message);}
  const q=candidate.cosmosCampaign;let text,reward=null;
  if(type==='accept'){
-  if(!eligible(candidate)||!at(sim,D.giver))return fail('Claim the separate comparator, then speak to Anik at the actual observatory.');
-  q.accepted=true;text=D.title+' accepted. The comparator, drawing shelf, equipment and ordinary return retain their own history.';
+  if(!eligible(candidate)||!at(sim,D.giver))return fail('The Confluence is not open to you yet. Finish the story before it, then speak to Anik.');
+  q.accepted=true;const seen=SAGA().regentSeen(candidateSim(candidate),'confluence');if(!seen.ok)return fail(seen.error);
+  text=D.title+' accepted. The comparator, drawing shelf, equipment and ordinary return keep their own history.';
  }else if(type==='step'||type==='configure'){
   const s=step(payload.step);if(!q.accepted||q.claimed||!s||s.kind!==(type==='configure'?'configure':'interact'))return fail('Only accepted physical work of this kind can be recorded. Actual combat owns machine exhaustion.');
   if(type==='configure'&&payload.setting!==s.setting)return fail('Read and choose the exact named setting. Wrong settings have no material cost or penalty.');
@@ -84,11 +88,11 @@ function command(ctx,type,payload,io){
   if(!allowed(q,s))return fail('Settle both actual machines, release both feeds and physically disable the central link before choosing.');
   q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
  }else if(type==='claim'){
-  if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the independently open apparatus, then return to Anik for the whole declared fee.');
+  if(!ready(candidate)||!at(sim,D.giver))return fail('Verify the open apparatus, then return to Anik for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
-  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the whole fee, including crystal. The apparatus remains open and unpaid; nothing was changed.');
+  if(a.coins+fee.coins>9999||a.ore+fee.ore>9999||Object.entries(fee.materials).some(([k,n])=>!Object.hasOwn(inv,k)||inv[k]+n>G.RealmSandbox.MAX))return fail('Make room for the reward, including crystal. Nothing was changed.');
   reward={...copy(fee),xp:Math.min(fee.xp,9999-a.xp)};a.xp+=reward.xp;a.coins+=fee.coins;a.ore+=fee.ore;for(const[k,n]of Object.entries(fee.materials))inv[k]+=n;
-  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Claimed once.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
+  q.claimed=true;text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Cosmos campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
  if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · independent local service remains.');}return result;
