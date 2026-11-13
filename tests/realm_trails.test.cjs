@@ -14,7 +14,9 @@ const copy=structuredClone,success={save:()=>({ok:true})};let serial=0;
 const ctx=sim=>({sim,active:'labelled-trail-unit-character',revision:0});
 const definition=realm=>R.definitions().find(d=>d.realm===realm);
 function kit(){const sim=new C.Simulation();sim.state.player={x:11,z:9,yaw:0};assert.ok(sim.adventureCommand('trail-unit-kit-'+(++serial),'start').ok);return sim;}
-function enter(realm,sim=kit()){
+// The Atlantis and Cosmos doors open only after heaven; their tests start from a kit with heaven finished.
+function heavenKit(){const k=kit();return new C.Simulation(require('./witness_prereq.cjs').heavenFinished(k.snapshot()));}
+function enter(realm,sim=(realm==='atlantis'||realm==='cosmos'?heavenKit():kit())){
  assert.equal(sim.room,null);sim.state.player={...W.GATE,yaw:0};const preview=W.preview(ctx(sim),realm);assert.ok(preview.ok,preview.error);
  const result=W.enter(preview.ticket,ctx(sim),{save:()=>({ok:true}),build:()=>{}});assert.ok(result.ok,result.error);return sim;
 }

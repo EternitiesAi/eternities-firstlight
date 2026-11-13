@@ -88,7 +88,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
   companionSamples.set(sim,{owner,bonded,motion});companionFrames.set(sim,{placement,motion,pose,parts});
   if(!bonded)add('octa',x,base+1.5,z,.17,.30,.17,0xf1d3a3,{em:.8});
  };
- if(s.companion.bonded){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
+ if(s.companion.bonded&&!G.RealmNearshore?.hidesBriar?.(sim)){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
  if(!sim.room&&s.companion.bonded&&G.RealmBriarOuting&&!G.RealmNight?.briarAway(sim)){
   const d=G.RealmBriarOuting.definition,record=G.RealmBriarMoments.fromWorld(sim.state),view=typeof sim.briarContext==='function'?G.RealmBriarOuting.current(sim.briarContext()):null;
   const home=record.moments.includes(G.RealmBriarMoments.CLOTH_HOME),q=home?d.home:d.cloth;

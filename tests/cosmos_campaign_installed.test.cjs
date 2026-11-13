@@ -43,7 +43,7 @@ if(missing.length){
   raw.notes=[{text:'Synthetic prior notebook remains owned by its original save.',day:1}];
   raw.journal=[{seq:1,day:1,hour:17.2,kind:'synthetic-prior',text:'Prior public comparator record remains separate.'}];raw.nextEvent=2;
   raw.settings.cameraMode='follow';raw.settings.cameraViews={version:1,lastDiorama:'follow',profiles:{adventure:{yaw:.22,elevation:.28,distance:7.5},follow:{yaw:.76,elevation:.88,zoom:1}}};
-  return C.validate(raw);
+  return C.validate(require('./witness_prereq.cjs').heavenFinished(raw));
  }
  function fixture(raw=seed()){
   const sim=new C.Simulation(raw);sim.returnPos={...raw.player};sim.room=D.room;
@@ -67,7 +67,7 @@ if(missing.length){
   work(f,'open-confluence');work(f,'verify-open-bearings');return e;
  }
  function balances(s){return{xp:s.adventure.xp,coins:s.adventure.coins,ore:s.adventure.ore,inventory:copy(s.sandbox.inventory)};}
- function retained(s){s=copy(s);delete s.cosmosCampaign;for(const k of['xp','coins','ore','revision'])delete s.adventure[k];for(const k of Object.keys(FEE.materials))delete s.sandbox.inventory[k];delete s.journal;delete s.nextEvent;return s;}
+ function retained(s){s=copy(s);delete s.cosmosCampaign;delete s.saga;for(const k of['xp','coins','ore','revision'])delete s.adventure[k];for(const k of Object.keys(FEE.materials))delete s.sandbox.inventory[k];delete s.journal;delete s.nextEvent;return s;}
  function tickUntil(f,predicate,seconds=8){let n=0;while(!predicate()&&n<Math.ceil(seconds/.05)){f.sim.tick(.05);n++;}assert.ok(predicate(),'actual Simulation.tick reaches required state within '+seconds+' seconds');return n*.05;}
  function startAI(f,e,p,kind){f.at(p);f.sim.tick(.05);assert.equal(e.mode,'windup','installed live AI begins its own warning');assert.equal(e.strike.kind,kind);assert.ok(Object.isFrozen(e.strike));return e.strike;}
  function waitContact(f,e,prior=e.contactAt){tickUntil(f,()=>Number.isFinite(e.contactAt)&&e.contactAt!==prior,4);return e.contactAt;}
@@ -75,7 +75,7 @@ if(missing.length){
  test('installed contracts and globals are the actual Core/Adventure/World/Cosmos owners',()=>{
   assert.strictEqual(globalThis.RealmCore,C);assert.strictEqual(globalThis.RealmAdventure,A);assert.strictEqual(globalThis.RealmWorldFoundations,W);assert.strictEqual(globalThis.RealmCosmos,N);assert.strictEqual(globalThis.RealmCosmosCampaign,H);
   assert.equal(D.id,'cosmos-open-confluence-v1');assert.equal(D.room,N.ROOM);assert.deepEqual(D.reward,FEE);assert.deepEqual(C.fresh().cosmosCampaign,H.fresh());assert.equal(C.fresh().cosmosCampaign.version,1);
-  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2');
+  assert.equal(initialHashes['src/cosmos-campaign-data.js'],'b545981b532ebb6462d01a372de9fe50cdabc5bfcdbcccb61a1318b0600ed926');
  });
  test('optional version-one Core migration adds only empty Cosmos state and preserves prior owners',()=>{
   for(const xp of[1,2,3,4,5,9999]){
@@ -231,7 +231,7 @@ if(missing.length){
  });
  test('bounded revision/journal refusal preserves unpaid history and whole-fee balances',()=>{
   for(const limit of['revision','event']){const f=fixture();finish(f);f.at(D.giver);if(limit==='revision')f.sim.state.adventure.revision=1e9;else f.sim.state.nextEvent=Number.MAX_SAFE_INTEGER-1;const before=f.sim.snapshot();assert.equal(f.act('claim').ok,false);assert.deepEqual(f.sim.snapshot(),before);}
-  const f=fixture();f.sim.state.journal=Array.from({length:200},(_,i)=>({seq:i+1,day:1,hour:17.2,kind:'synthetic-prior',text:'prior public event '+i}));f.sim.state.nextEvent=201;f.at(D.giver);assert.ok(f.act('accept').ok);assert.equal(f.sim.state.journal.length,200);assert.equal(f.sim.state.journal[0].seq,2);assert.equal(f.sim.state.journal.at(-1).seq,201);
+  const f=fixture();f.sim.state.journal=Array.from({length:200},(_,i)=>({seq:i+1,day:1,hour:17.2,kind:'synthetic-prior',text:'prior public event '+i}));f.sim.state.nextEvent=201;f.at(D.giver);assert.ok(f.act('accept').ok);assert.deepEqual(f.sim.state.saga.regent,['foundry','confluence'],'the regent is seen across the confluence with the acceptance');assert.equal(f.sim.state.journal.length,200);assert.equal(f.sim.state.journal[0].seq,3,'the regent sighting and the acceptance each add one entry');assert.equal(f.sim.state.journal.at(-1).seq,202);
  });
  test('all actual installed test inputs remain byte-frozen during this bounded run',()=>{
   for(const[p,expected]of Object.entries(initialHashes))assert.equal(sha(path.join(ROOT,p)),expected,p);

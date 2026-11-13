@@ -41,7 +41,7 @@ test('both terms are deeply frozen and browser/CommonJS exports agree without mu
 test('stable terms, finite step topology and choice references match the approved data contract',()=>{
  assert.deepEqual(T.definitions.map(d=>d.id),['atlantis-bellglass-chart-v1','earthlands-coastward-materials-v1']);
  for(const d of T.definitions){
-  assert.deepEqual(Object.keys(d).sort(),['id','realm','title','summary','danger','giver','reward','completionText','steps'].sort());
+  assert.deepEqual(Object.keys(d).sort(),['id','realm','title','summary','danger','giver','reward','completionText','steps',...(d.gate?['gate']:[])].sort());
   assert.ok(d.steps.length===4);const ids=new Set(d.steps.map(s=>s.id));assert.equal(ids.size,d.steps.length);
   const available=new Set(),remaining=d.steps.slice();
   while(remaining.length){const index=remaining.findIndex(s=>s.requires.every(id=>available.has(id)));assert.notEqual(index,-1,'dependencies must be reachable without a cycle');available.add(remaining.splice(index,1)[0].id);}

@@ -1,7 +1,7 @@
 /* Bounded once-only realm stories. Presentation never manufactures accepted facts. */
 (function(G){'use strict';
 const clone=o=>JSON.parse(JSON.stringify(o)),actors=new WeakMap(),dials=new WeakMap(),dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
-const fail=error=>({ok:false,error});
+const fail=error=>({ok:false,error}),SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 function definitions(){const north=G.RealmTrailsNorth||(typeof require==='function'?require('./realm-trails-north.js'):null),south=G.RealmTrailsSouth||(typeof require==='function'?require('./realm-trails-south.js'):null),cosmos=G.RealmTrailsCosmos||(typeof require==='function'?require('./realm-trails-cosmos.js'):null);return[...north.definitions,...south.definitions,...cosmos.definitions];}
 const definition=id=>definitions().find(d=>d.id===id)||null;
 const record=()=>({accepted:false,steps:[],settings:{},checkpoint:0,escortMode:'follow',assisted:false,claimed:false});

@@ -12,7 +12,7 @@ const D=require(DATA),d=D.definition,g=D.geometry;
 const inputs=['src/cosmos-campaign-data.js','src/cosmos.js','src/world-foundations.js','src/realm-trails-cosmos.js','src/local-life.js'].map(p=>path.join(ROOT,p));inputs.push(PREIMAGE);
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const epoch=Object.fromEntries(inputs.map(p=>[p,sha(p)]));
-assert.equal(sha(DATA),'9c7d4d30b863e25812df3651e785bff3f87495b37ede488804ee03178cab93d2');
+assert.equal(sha(DATA),'b545981b532ebb6462d01a372de9fe50cdabc5bfcdbcccb61a1318b0600ed926');
 assert.equal(sha(PREIMAGE),'dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5');
 const N=require(path.join(ROOT,'src/cosmos.js')),W=require(path.join(ROOT,'src/world-foundations.js'));
 const baseline={module:{exports:{}}};vm.runInNewContext(fs.readFileSync(PREIMAGE,'utf8'),baseline,{filename:PREIMAGE});const O=baseline.module.exports;
@@ -115,7 +115,7 @@ test('all-three variants enrich the same graph without a larger fee or third-sup
 test('supplied alternatives are explicit and require neither rare work nor payment',()=>{
  assert.equal(d.costs.normalInventoryCosts,false);assert.deepEqual(d.costs.accept,{});assert.deepEqual(d.costs.actions,{});assert.deepEqual(d.costs.claim,{});
  for(const s of D.supports){assert.deepEqual(def(s.assistance).requires,['read-local-cost']);assert.equal(def(s.assistance).alternativeTo,s.complete);assert.ok(s.supplied.length>30);}
- assert.match(d.summary,/Each has a tested, supplied alternative/);assert.match(d.danger,/No deadline or material loss applies/);
+ assert.match(d.summary,/Each has a tested, supplied alternative/);assert.match(d.danger,/There is no deadline and no material loss/);
 });
 test('actual exhaustion, both physical feeds and central disable remain independent facts',()=>{
  const id='disable-central-link';assert.deepEqual(def(id).requires,['release-west-feed','release-east-feed','guardian-settled']);

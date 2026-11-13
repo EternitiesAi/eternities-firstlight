@@ -3,14 +3,14 @@
  * explicit in-memory candidate holder, not human or native-browser evidence. */
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),crypto=require('node:crypto');
-const {createHarness,earnedKit}=require('./realm_trails_journey.cjs'),W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js');
+const {createHarness,earnedKit,witnessHarness}=require('./realm_trails_journey.cjs'),W=require('../src/world-foundations.js'),R=require('../src/realm-trails.js');
 const ROOT=path.resolve(__dirname,'..'),copy=structuredClone;
 const sha=file=>crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 function sourceEpoch(){const files=Object.keys(require.cache).filter(file=>file.startsWith(ROOT+path.sep)).sort();return{htmlSha256:sha(path.join(ROOT,'index.html')),sourceSha256:Object.fromEntries(files.map(file=>[path.relative(ROOT,file).split(path.sep).join('/'),sha(file)]))};}
 const earthRoute=[[-7,97],[0,97],[0,92],[0,16],[-10,15],[-10,-12],[-25,-12],[-25,-11],[-25,-12],[-10,-12],[-10,-34],[1,-35],[14,-34],[14,-19],[28,-19],[28,-16],[30,-25],[28,-19],[14,-19],[14,15],[0,16],[0,92],[0,97],[-3,97],[-7,97]];
 const galleryRoute=[[8,-.5,-19.5],[8,-1.05,-22],[8,-2.55,-28],[8,-2.7,-29.5],[8,-2.7,-32],[8,-2.7,-35],[8,-2.7,-32],[8,-2.7,-29.5],[8,-1.8,-29],[12,-1.8,-29],[12,-1.4,-38.4],[12,-1.4,-39.3]];
 function journey({bow=false,output=null}={}){
- const h=createHarness(),variant=bow?'fresh-bow':'fresh-blade',claims=[],swims=[];earnedKit(h,bow);const original=h.sim.snapshot();
+ const h=witnessHarness(bow),variant=bow?'fresh-bow':'fresh-blade',claims=[],swims=[];earnedKit(h,bow);const original=h.sim.snapshot();
  const snap=name=>{if(output){fs.mkdirSync(path.join(output,variant),{recursive:true});fs.writeFileSync(path.join(output,variant,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
  function accept(d){h.enter(d.realm);h.walk(d.giver.x,d.giver.z);h.trail('accept',d);snap(d.realm+'_01_ACCEPTED');h.reload(d.realm);}
  function claim(d){h.walk(d.giver.x,d.giver.z);snap(d.realm+'_04_READY_UNPAID');h.reload(d.realm);h.walk(d.giver.x,d.giver.z);const before=h.sim.snapshot();h.trail('claim',d);for(const k of ['xp','coins','ore'])assert.equal(h.sim.state.adventure[k]-before.adventure[k],d.reward[k]);for(const[k,n]of Object.entries(d.reward.materials||{}))assert.equal(h.sim.state.sandbox.inventory[k]-before.sandbox.inventory[k],n);const paid=h.sim.snapshot();assert.equal(h.trail('claim',d,{request:'other'}).duplicate,true);assert.deepEqual(h.sim.snapshot(),paid);claims.push({quest:d.id,reward:copy(d.reward)});snap(d.realm+'_05_PAID');h.home();h.walk(18,6);}
