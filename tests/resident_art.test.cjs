@@ -39,7 +39,8 @@ test('submitted body vertices stay finite and grounded; solved limb endpoints co
    if(p.residentJoints){near(E.M.transform(p.m,[0,-.5,0]),p.residentJoints[0]);near(E.M.transform(p.m,[0,.5,0]),p.residentJoints[1]);}
   }
   for(const side of ['left','right']){const h=r.frame.joints[side+'Hand'];near(r.parts.find(p=>p.residentPart===side+'-hand').p,E.M.transform(r.frame.root,[h[0],h[1]-.095,h[2]]));}
-  if(i===0)for(const side of ['left','right'])assert.ok(Math.abs(Math.min(...verts(r.parts.find(p=>p.residentPart===side+'-sole')).map(v=>v[1]))-1.2)<2e-6);
+  // the baked boot replaces the flat sole; its bottom stands within 6 mm of the ground.
+  if(i===0)for(const side of ['left','right'])assert.ok(Math.abs(Math.min(...verts(r.parts.find(p=>p.residentPart===side+'-boot')).map(v=>v[1]))-1.2)<6e-3);
  }
 });
 

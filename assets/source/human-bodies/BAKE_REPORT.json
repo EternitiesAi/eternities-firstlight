@@ -1,44 +1,48 @@
 {
- "body_unique_triangles": 1475,
+ "body_unique_triangles": 1756,
  "kind_triangles": {
-  "body-coat": 984,
-  "body-forearm": 177,
+  "body-coat": 522,
+  "body-feather": 16,
+  "body-foot": 128,
+  "body-forearm": 202,
   "body-hand": 90,
   "body-head": 600,
-  "body-neck": 126,
-  "body-robe": 984,
-  "body-shin": 95,
-  "body-thigh": 110,
-  "body-torso": 181,
-  "body-upper-arm": 96,
-  "body-wing-left": 56,
-  "body-wing-right": 56
+  "body-hidden": 0,
+  "body-neck": 147,
+  "body-robe": 636,
+  "body-shin": 101,
+  "body-thigh": 125,
+  "body-torso": 252,
+  "body-upper-arm": 111
  },
  "kinds": {
+  "foot": {
+   "faces": 134
+  },
   "forearm": {
-   "faces": 177
+   "faces": 202
   },
   "neck": {
-   "faces": 127
+   "faces": 170
   },
   "shin": {
-   "faces": 95
+   "faces": 101
   },
   "thigh": {
-   "faces": 110
+   "faces": 125
   },
   "torso": {
-   "faces": 240
+   "faces": 314
   },
   "upper_arm": {
-   "faces": 96
+   "faces": 111
   }
  },
  "objects": {
   "body": {
    "name": "GEO-body_male_stylized",
    "scale": 0.969854,
-   "tris_after": 1898,
+   "tris_after": 2000,
    "tris_before": 25000
   },
   "hand": {
@@ -52,5 +56,5 @@
    "tris_before": 8232
   }
  },
- "sha256": "a8c660c1a7b6a72de09d36b3cfc6df06bc360acec988664464fdd26fbacd4ad8"
+ "sha256": "4e4fa20d7cef999d358bcea0af605833a33b6eb1b44a294e36a6ab10b4d4cf6b"
 }

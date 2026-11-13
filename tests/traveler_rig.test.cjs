@@ -228,7 +228,7 @@ test('limbs ride the baked body kinds and the face is a separate path bound to t
  // the jacket sides stay capsules; the limbs now ride the baked human segment kinds, one per side.
  // no legacy capsule survives: the jacket sides move to the empty hidden kind, which keeps the count.
  assert.equal(out.capsule.filter(it=>!it.travelerFace).length,0,'no legacy capsules remain');
- assert.deepEqual(out['body-hidden'].map(it=>it.travelerPart).sort(),['collar-left','collar-right','jacket-front-seam','jacket-left-side','jacket-right-side','left-boot-cuff','left-elbow','left-ear','left-knee','left-shoulder','left-sole','right-boot-cuff','right-elbow','right-ear','right-knee','right-shoulder','right-sole']);
+ assert.deepEqual(out['body-hidden'].map(it=>it.travelerPart).sort(),['collar-left','collar-right','jacket-front-seam','jacket-left-side','jacket-right-side','left-boot-cuff','left-ear','left-elbow','left-knee','left-shoulder','left-sole','right-boot-cuff','right-ear','right-elbow','right-knee','right-shoulder','right-sole']);
  assert.deepEqual(['body-upper-arm','body-forearm','body-thigh','body-shin'].map(k=>out[k].map(it=>it.travelerPart).sort().join()),['left-upper-arm,right-upper-arm','left-forearm,right-forearm','left-thigh,right-thigh','left-shin,right-shin']);
  assert.ok(out.round.some(it=>it.travelerPart==='left-eye')&&out.round.some(it=>it.travelerPart==='right-eye'),'eye whites are body parts');
  const faces=all(out).filter(it=>it.travelerFace);

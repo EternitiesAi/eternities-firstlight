@@ -47,7 +47,7 @@ test('every story builder returns finite, named instances inside the budget',()=
   assert.ok(Array.isArray(parts)&&parts.length>=4&&parts.length<=BUDGET,name+' budget '+parts.length);
   for(const it of parts){
    assert.ok(KINDS.has(it.kind),name+' kind '+it.kind);
-   assert.ok(E.geometry(it.kind).length>0&&E.geometry(it.kind).length%6===0,name+' geometry '+it.kind);
+   assert.ok(it.kind==='body-hidden'||(E.geometry(it.kind).length>0&&E.geometry(it.kind).length%6===0),name+' geometry '+it.kind);
    assert.ok(it.p.length===3&&it.p.every(Number.isFinite),name+' p '+it.storyPart);
    assert.ok(it.s.length===3&&it.s.every(n=>Number.isFinite(n)&&n>0),name+' s '+it.storyPart);
    assert.equal(it.m.length,16);assert.ok(Array.from(it.m).every(Number.isFinite),name+' m '+it.storyPart);

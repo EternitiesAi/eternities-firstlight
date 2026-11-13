@@ -15,7 +15,7 @@ const HIDDEN=['body-hidden']; // empty on purpose: legacy rig parts a baked figu
 test('the packed body module reproduces byte for byte from the committed Blender source',()=>{
  assert.equal(bake(source),packed,'src/body-meshes.js is the deterministic pack of assets/source/human-bodies/BODY_PARTS.json');
  assert.ok(packed.includes('Source SHA256 '+sha(source)+'.'),'the header names the exact source bytes');
- assert.equal(sha(packed),'04da20bcea36dd70f3a086877eacfc523fd53ebf862a6417a7679de946737c36','the generated module hash is pinned');
+ assert.equal(sha(packed),'ab12bf4b15fb8b93d6d6887eed433dc24751a4f8e5f33a01f0bd2f326f3e744a','the generated module hash is pinned');
 });
 
 test('every body kind stays inside its triangle budget; the whole body is 2,500 triangles at most',()=>{
