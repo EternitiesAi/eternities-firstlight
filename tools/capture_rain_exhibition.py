@@ -90,7 +90,7 @@ def main():
                 context.route('**/*', local_only)
                 page = context.pages[0] if context.pages else context.new_page()
                 page.on('pageerror', lambda e: report['browser_errors'].append(str(e)))
-                response = page.goto(origin+'/', wait_until='load')
+                response = page.goto(origin+'/#play', wait_until='load')
                 page.wait_for_function('()=>!!window.Realm&&getComputedStyle(document.querySelector("#loading")).pointerEvents==="none"')
                 check('actual committed HTML and ordinary production entry', response.ok and
                       hashlib.sha256(response.body()).hexdigest() == report['source']['index.html'] and
