@@ -13,6 +13,14 @@ test('rows keep the teaching order and mirror the flags',()=>{
  assert.deepEqual(rows.map(r=>r.done),[true,false,true,false]);
  for(const r of rows)assert.doesNotMatch(r.text,/prototype|luna|realm 10/i);
 });
+test('touch players get tap instructions, never key caps they cannot press',()=>{
+ const flags={move:false,camera:false,attack:false,interact:false,dismissed:false};
+ const touch=F.rows(flags,true),keys=F.rows(flags,false);
+ assert.deepEqual(touch.map(r=>r.id),['move','camera','attack','interact']);
+ assert.match(touch[0].text,/tap/i);
+ assert.doesNotMatch(touch.map(r=>r.text).join(' '),/W A S D|press V|press 1|with E\b/);
+ assert.match(keys[0].text,/W A S D/);
+});
 test('each step ticks once through the world command and the card clears after the last one',()=>{
  const sim=fresh();
  const first=sim.act('first-run:camera','first-run',{step:'camera'});

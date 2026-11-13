@@ -756,7 +756,7 @@ function openPauseMenu(){if(harnessMode||panel||document.querySelector('dialog[o
 // the step is ticked through sim.act; the card asks once per step.
 function guide(step){const f=sim.state.firstRun;if(!firstRunCard||!f||f.dismissed||f[step])return;const r=sim.act('first-run:'+step,'first-run',{step});if(r.changed){save();RealmFirstRun.paint(firstRunCard,sim.state.firstRun);}}
 // the valley keeps drifting behind the title; the tour is released only when the title started it.
-function drift(on){titleDrift=on;if(!on){if(titleTourOn)camera.tour=false;titleTourOn=false;}}
+function drift(on){titleDrift=on;keys.clear();if(!on){if(titleTourOn)camera.tour=false;titleTourOn=false;}}
 function settingsHTML(){
  const s=sim.state,v=s.settings.volume,t=s.settings.textScale||'standard',pct=x=>Math.round(x*100),reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
  const bus=(k,label)=>'<div class="setting"><label for="volume-'+k+'">'+label+' <span id="volume-'+k+'-value">'+pct(v[k])+'%</span></label><input id="volume-'+k+'" data-volume="'+k+'" type="range" min="0" max="100" step="5" value="'+pct(v[k])+'"></div>';
