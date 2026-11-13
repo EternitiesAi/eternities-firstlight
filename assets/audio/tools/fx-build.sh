@@ -17,6 +17,8 @@ for pack in impact-sounds rpg-audio interface-sounds ui-audio digital-audio; do
     curl -sfL -A "$UA" --max-time 300 -o "$d/pack.zip" "$url"
   fi
   echo "$pack zip bytes $(stat -c %s "$d/pack.zip") sha256 $(sha256sum "$d/pack.zip" | cut -d' ' -f1)"
+  # the zip keeps read-only directory modes; open them before clearing the last extract.
+  chmod -R u+w "$d/x" 2>/dev/null || true
   rm -rf "$d/x"
   mkdir -p "$d/x"
   unzip -q "$d/pack.zip" -d "$d/x"
