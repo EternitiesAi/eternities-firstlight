@@ -49,8 +49,8 @@ const ECHO=freeze([
 const ECHO_IDS=ECHO.map(e=>e.id);
 const read=(o,path)=>path.reduce((v,k)=>v?.[k],o);
 const own=Object.hasOwn,isObj=v=>!!v&&typeof v==='object'&&!Array.isArray(v),day=v=>Number.isSafeInteger(v)&&v>=1&&v<=MAX_DAY;
-function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
-function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
+function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
+function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay,returnedDay:s.briar.returnedDay??null,homeDay:s.briar.homeDay??null},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
 // Live predicates over the rest of the world; `s` is the saga record being judged.
 const DERIVE=freeze({
  kit:w=>w?.adventure?.started===true,
@@ -95,9 +95,13 @@ function validate(raw,world){
  const list=(v,allowedIds,f)=>{if(!Array.isArray(v)||v.length>allowedIds.length||new Set(v).size!==v.length||v.some(id=>!allowedIds.includes(id)))no(f);return v;};
  list(raw.regent,REGENT,'regent');list(raw.prophecy,PROPHECY,'prophecy');
  const f=raw.feather;if(!exact(f,['unlocked','uses'])||typeof f.unlocked!=='boolean'||!Number.isSafeInteger(f.uses)||f.uses<0||f.uses>MAX_COUNT||f.uses>0&&!f.unlocked)no('feather');
- const b=raw.briar;if(!exact(b,['state','habit','takenDay'])||!BRIAR.includes(b.state))no('briar');
+ const b=raw.briar;if(!isObj(b)||!['state','habit','takenDay'].every(k=>own(b,k))||Object.keys(b).some(k=>!['state','habit','takenDay','returnedDay','homeDay'].includes(k))||!BRIAR.includes(b.state))no('briar');
  if(!isObj(b.habit)||Object.keys(b.habit).length>MAX_PLACES||Object.entries(b.habit).some(([k,v])=>!PLACE_ID.test(k)||!Number.isSafeInteger(v)||v<1||v>MAX_COUNT))no('briar habit');
  if(b.takenDay!==null&&!day(b.takenDay)||(b.state==='with')!==(b.takenDay===null))no('briar taken day');
+ // returned and home days are optional on old saves (absent = null); home needs a return first.
+ const rd=b.returnedDay??null,hd=b.homeDay??null;
+ if(rd!==null&&!day(rd)||(b.state==='returned')!==(rd!==null))no('briar returned day');
+ if(hd!==null&&(!day(hd)||rd===null||hd<rd||b.state!=='returned'))no('briar home day');
  const e=raw.echo;if(!exact(e,['coercive','freeing']))no('echo');
  list(e.coercive,ECHO_IDS,'echo coercive');list(e.freeing,ECHO_IDS,'echo freeing');
  if(e.coercive.some(id=>ECHO.find(x=>x.id===id).kind!=='coercive')||e.freeing.some(id=>ECHO.find(x=>x.id===id).kind!=='freeing'))no('echo kind');
@@ -163,7 +167,13 @@ function briarAtNearshore(sim){
 }
 function briarReturned(sim){
  const s=saga(sim);if(s.briar.state==='returned')return yes('Briar is home.',{already:true});if(!['taken','nearshore'].includes(s.briar.state))return fail('Briar was never taken.');
- if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='returned';sim.event('saga','Briar came home. She went straight to her old spot.');return yes('Briar is home.');
+ if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='returned';s.briar.returnedDay=sim.state.day;sim.event('saga','Briar came home beside you. Her habits are where she left them.');return yes('Briar is home.');
+}
+// Briar goes back to her old spot by the door on the first evening after she returns. Habits are untouched.
+function briarHome(sim){
+ const s=saga(sim),w=sim.state;if(s.briar.state!=='returned')return fail('Briar is not with you yet.');if(s.briar.homeDay!==null)return yes('Briar is in her old spot.',{already:true});
+ if(!(w.hour>=18&&w.hour<22)||w.day<s.briar.returnedDay)return fail('Briar waits for the evening.');
+ s.briar.homeDay=w.day;sim.event('saga','That evening Briar settled in her old spot by the door, beside her bowl.');return yes('Briar is in her old spot.');
 }
 function recordHabit(sim,placeId){
  const s=saga(sim);if(typeof placeId!=='string'||!PLACE_ID.test(placeId))return fail('Unknown place.');if(s.briar.state!=='with'||sim.state.adventure?.companion?.bonded!==true)return fail('Briar is not beside you.');
@@ -194,7 +204,7 @@ function rollCredits(sim){
  const s=saga(sim);if(s.credits)return yes('The story is told.',{already:true});if(!s.finale.won)return fail('The story is not over.');
  s.credits=true;s.postgame=true;sim.event('saga','Firstlight. The roads stay open.');return yes('The roads stay open.');
 }
-const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
+const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
 // Same command-identity rule as the adventure: a reused id with the same content replays its result; different content is refused.
 function command(sim,id,type,payload={}){
  if(typeof id!=='string'||!id||id.length>100||!isObj(payload))return fail('Invalid command envelope.');
@@ -213,6 +223,6 @@ function tick(sim,dt){
  if(r.place!==l.id){r.place=l.id;r.t=0;r.counted=false;}
  r.t+=dt;if(!r.counted&&r.t>=HABIT_SECONDS){r.counted=true;recordHabit(sim,l.id);}
 }
-const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
+const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
 G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

@@ -123,7 +123,7 @@ test('the herald runs its double ring and line slam through the beacon owner',()
  const cmd=(t,p={})=>s.adventureCommand('fight-herald-'+(++seq),t,p);
  s.state.player={x:44,z:6,yaw:0};assert.equal(cmd('road-enter').ok,true);
  s.state.player={x:0,z:-24,yaw:0};A.runtime(s).companion={...A.runtime(s).companion,room:'road',x:0,z:-24};
- assert.equal(cmd('beacon-answer').ok,true);step(s,18);assert.equal(B.runtime(s).phase,'ready');assert.equal(cmd('beacon-sighting').ok,true,'the stranger is heard before the defense');assert.equal(cmd('beacon-defend').ok,true);
+ assert.equal(cmd('beacon-answer').ok,true);step(s,18);assert.equal(B.runtime(s).phase,'ready');assert.equal(cmd('beacon-sighting').ok,true);assert.equal(cmd('beacon-defend').ok,true);
  for(let k=0;k<2;k++){for(const e of A.runtime(s).enemies.filter(e=>e.eventEnemy)){e.hidden=false;A.damageEnemy(s,e,10000);}step(s,7.2);}
  assert.equal(B.runtime(s).wave,3);
  const herald=A.runtime(s).enemies.find(e=>e.id==='siege-herald');assert.ok(herald);
