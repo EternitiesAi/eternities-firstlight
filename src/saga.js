@@ -17,7 +17,7 @@ const BEATS=freeze([
  {id:'beacon',act:2,title:'The beacon',detail:'Light the beacon on the north ridge and hold it. Watch who comes to stand beside Tessa.',place:{room:'road',x:0,z:-24,label:'The Sunward Beacon'}},
  {id:'bellweather',act:2,title:'Rowan’s bell',detail:'The bell at Bellweather has gone quiet, and the keeper with it. Find out what silenced them.',place:{room:'crossing',x:0,z:-18.5,label:'Bellweather crossing'}},
  {id:'night',act:3,title:'The night the warning failed',detail:'Night has come down wrong over the crossing. Get the travellers out, and keep Briar close.',place:{room:'crossing',x:0,z:24,label:'Bellweather, at night'}},
- {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever took Briar used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
+ {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever cut the road at Bellweather used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
  {id:'heaven',act:4,title:'The envoy’s home',detail:'Go up to Heaven in peace. The envoy’s people may read the prophecy better than we did.',place:{...GATE_PLACE,label:'The world gate · Heaven'}},
  {id:'witness',act:4,title:'The drowned witness',detail:'Under the sea there is someone who saw the pattern stolen, and past the stars a cure that needs no master key.',place:{...GATE_PLACE,label:'The world gate · the sea and the stars'}},
  {id:'nearshore',act:4,title:'The nearshore',detail:'The regent says he has Briar. He will offer you one that never strays. You know her better than that.',alone:'The regent waits on the lantern pier with a fox that never strays. He thinks you came all this way for a companion.',place:{room:null,x:0,z:27,label:'The nearshore'}},
@@ -97,7 +97,9 @@ const ALREADY=freeze({
  nearshore:(w,s)=>s.briar.state==='nearshore'||s.briar.state==='returned',
  finale:(w,s)=>s.finale.phase>0||s.finale.won
 });
-function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])||ALREADY[gate](world,s);}
+// the hell gate holds until the quiet engine is placed (BRANCHES 3.3; the audit's edge). a save that already accepted the road keeps it.
+const HOLDS=freeze({hell:(w,s)=>s.choices.device!==null});
+function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])&&(!own(HOLDS,gate)||HOLDS[gate](world,s))||ALREADY[gate](world,s);}
 // What a sighting or a reading needs from the world when it happens. Once witnessed it stays part of the story.
 const REGENT_NEEDS=freeze({beacon:w=>w?.adventure?.beacon?.introduced===true,foundry:w=>w?.hellCampaign?.accepted===true,confluence:w=>w?.cosmosCampaign?.accepted===true});
 const PROPHECY_NEEDS=freeze({spring:w=>w?.adventure?.angelSeen===true,heaven:w=>w?.heavenCampaign?.accepted===true});

@@ -8,6 +8,7 @@ const record=sim=>sim.state.hellCampaign;
 // a story script, when it lands, owns the spoken lines; until then the data table answers.
 // the story script speaks every line; a scene that is absent for this state simply has no lines.
 const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const optionLabel=(scene,id,fallback)=>scene?.choice?.options?.find(o=>o.id===id)?.label||fallback;
 const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
 function reward(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
@@ -75,17 +76,17 @@ class HellCampaignUI{
      if(!here)controls='<p>Go back to Hell to reach this step.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
      else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects Veyr. Use your blade or bow, move or Brace through the marked shape, and strike while he recovers.</p>';
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this choice','review',c.id)).join('');
-     else if(s.id==='stabilize-service-engine'){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,'Let him talk')+answer(false,'I am not here to listen');}
+     else if(s.kind==='choice')controls=d.choices.map(c=>act(optionLabel(sceneOf('hell','disposition',sim.state),c.id,c.name),'review',c.id)).join('');
+     else if(s.id==='stabilize-service-engine'){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,optionLabel(sceneOf('hell',s.id,sim.state),'hear','Let him talk'))+answer(false,optionLabel(sceneOf('hell',s.id,sim.state),'cut','I am not here to listen'));}
      else controls=act(s.id==='challenge-veyr'?'Challenge Veyr':s.name,'step',s.id);
     }
-    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('hell',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+(s.id!=='verify-route'&&(done||next)?speech(linesOf(sceneOf('hell',s.id,sim.state))):'')+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
    if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete</h3><p>Return to Istra to close the road. A full pouch never stops it; anything that does not fit stays in the works.</p>'+(here&&H().at(sim,d.giver)?act('Return to Istra and close the road','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+=H().sighted(sim.state)?sceneSection('hell-campaign-regent','The regent',sceneOf('hell','sighting',sim.state)):'';html+='<section class="hell-campaign-dispositions"><h3>Three choices for the people held here</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,d,sim.state);
-  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(c?.name)+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
+  html+=H().sighted(sim.state)?sceneSection('hell-campaign-regent','The regent',sceneOf('hell','sighting',sim.state)):'';const dScene=sceneOf('hell','disposition',sim.state);html+=(r.steps.includes('disposition')||ids.has('disposition'))?'<section class="hell-campaign-dispositions"><h3>'+esc(dScene?.choice?.prompt||'Three choices for the people held here')+'</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(optionLabel(dScene,c.id,c.name))+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>':'';html+=recognition(r,d,sim.state);
+  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(optionLabel(sceneOf('hell','disposition',sim.state),c?.id,c?.name))+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="hell-campaign-footer">Reading and walking record nothing. Both camera styles stay available. Your steps, your choice and a finished road survive a reload.</p></article>';
   return{title:d.title,html};
  }
@@ -93,7 +94,7 @@ class HellCampaignUI{
   if(this.pending&&!this.same(this.pending,true))this.pending=null;
   if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='hell-campaign';}
   if(this.rpg.quest!=='hell-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
-  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE STOLEN PATTERN','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Return to Istra · the road is done':next?.name||'Read the road'):'Go back to the Refuge · your progress is saved','#tracked-progress':r.steps.length+' steps · '+(ready?'ready to close':'J road · M routes')};
+  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE STOLEN PATTERN','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Close the road with Istra':next?.name||'Read the road'):'Go back to the Refuge. Your road is saved.','#tracked-progress':r.steps.length+' done · '+(ready?'ready to close':'J road · M routes')};
   for(const[selector,value]of Object.entries(text)){const e=document.querySelector(selector);if(e)e.textContent=value;}
  }
 }

@@ -1,4 +1,4 @@
-/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern that took Briar was cut in the
+/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern behind the night at Bellweather was cut in the
  * regent's foundry, and its outer gate is kept by Veyr. Step and choice ids are saved, so they stay put even
  * where the words change. Rules and the warden fight live in hell-campaign.js. */
 (function (G) {
@@ -22,29 +22,29 @@ const definition=freeze({
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
  reward:{xp:145,coins:20,ore:4,materials:{wood:3,fiber:2}},
  regent:{x:0,z:-106},
- summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
+ summary:'Neris’s record names the foundry. The pattern behind the night at Bellweather was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
  danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
  completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
-  step('witness-record','Hear Neris’s full record','interact',-12,27,[],false,
-   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern that took Briar was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
-  step('tovan-account','Check Tovan’s rivets','interact',-15,16,['witness-record'],false,
+  step('witness-record','Hear Neris out at the Refuge','interact',-12,27,[],false,
+   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern behind the night at Bellweather was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
+  step('tovan-account','Ask Tovan to check the rivets','interact',-15,16,['witness-record'],false,
    'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
-  step('read-service-writ','Read the foundry’s outer gate','interact',-12,-95,['tovan-account'],false,
+  step('read-service-writ','Read the writ on the foundry gate','interact',-12,-95,['tovan-account'],false,
    'The pattern’s route runs out of the works through this gate and into the yard. The inner doors stay shut. Two preparations stand nearby, and neither is required. Read the warden’s terms before you knock.'),
-  step('west-shunt','Set the west counterweight','interact',-18,-90,['read-service-writ'],true,
+  step('west-shunt','Brace the west approach','interact',-18,-90,['read-service-writ'],true,
    'Set the counterweight beside the west approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor his damage, and it does not touch the line recovery. No ordinary material is used.'),
-  step('east-brace','Seat the east brace','interact',17,-90,['read-service-writ'],true,
+  step('east-brace','Brace the east approach','interact',17,-90,['read-service-writ'],true,
    'Seat the brace beside the east approach. It adds exactly 0.6 seconds to Veyr’s recovery after a line strike. It changes neither his health nor his damage, and it does not touch the sweep recovery. No ordinary material is used.'),
-  step('challenge-veyr','Challenge Veyr at the gate','interact',0,-91,['read-service-writ'],false,
+  step('challenge-veyr','Face Veyr in the yard','interact',0,-91,['read-service-writ'],false,
    'Veyr keeps the open apron, and the fight begins there. Read the broad sweep and the narrow line as two different shapes, and find cover before you commit. The road south stays open.'),
-  step('warden-resolved','Defeat Veyr, the foundry’s warden','defeat',0,-99,['challenge-veyr'],false,
+  step('warden-resolved','Put Veyr down at the gate','defeat',0,-99,['challenge-veyr'],false,
    'Veyr falls at the gate, and the gate’s clamps let go. You beat him with ordinary strikes, and nothing else counted. The pattern can be reached now.'),
   step('stabilize-service-engine','Take the pattern back','interact',0,-105,['warden-resolved'],false,
    'Fit the stabilizer into the gate engine and draw the pattern out of it. It was never theirs, and it is yours to bring home. Behind the works, the smiling stranger from the beacon turns toward you. He was in the foundry, and he knows your name.'),
   step('disposition','Decide what happens to the people held here','choice',0,-105,['stabilize-service-engine'],false,
    'The people the writ holds are still inside the works. Decide what becomes of them. Unbind opens the gate, Divert takes a few out under a hood, and License hands their road to another overseer. Read each one before you confirm.'),
-  step('verify-route','Check the gate and the road it leaves','interact',-12,-95,['disposition'],false,
+  step('verify-route','Check the gate, then close the road with Istra','interact',-12,-95,['disposition'],false,
    'The gate’s fitting shows what you chose: an open handle, a hooded marker or paired seals. Check it at the plate, then return to Istra to close the road.')
  ],
  choices:[
