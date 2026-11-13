@@ -40,7 +40,7 @@ class RuleWorkers(unittest.TestCase):
                 if command[:2] == ['node', '--test']:
                     if outcome == 'timeout': raise subprocess.TimeoutExpired(command, kwargs['timeout'])
                     if outcome == 'failure': return SimpleNamespace(returncode=9)
-                if command[1:2] == ['tools/test_road_account_browser.py']:
+                if command == ['node', 'tests/crossing_journey.cjs']:  # first step after the python suite (the road-account preflight is archived)
                     raise RuntimeError(marker)
                 return SimpleNamespace(returncode=0)
 
