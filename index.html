@@ -5419,13 +5419,14 @@ const TIMING=freeze({firstChain:1.5,chainGap:2.6,freedDelay:2.2,riseSeconds:7,sp
 const BODIES=freeze([{id:'chains',hp:380,damage:46},{id:'merged',hp:400,damage:50},{id:'offer',hp:420,damage:54}]);
 // each realm's chain stands on the valley's own ground, near the spring junction. spring is the default chain.
 const SITES=freeze({
- hell:{x:6,z:1,label:'the hell road'},
+ // every site stands on open ground, where an arrow can reach its chain (finale.test pins it).
+ hell:{x:5,z:0,label:'the hell road'},
  heaven:{x:-7,z:3,label:'the heaven stair'},
  atlantis:{x:4,z:9,label:'the drowned harbour'},
  earth:{x:-4,z:9,label:'the Coastward bridge'},
  cosmos:{x:-4,z:-4,label:'the star field'},
  beacon:{x:0,z:-7,label:'the Sunward Beacon'},
- tessa:{x:9,z:4,label:'the lookout road'},
+ tessa:{x:6.5,z:4,label:'the lookout road'},
  device:{x:0,z:5,label:'your own pack'},
  nearshore:{x:0,z:12,label:'the pier road'},
  spring:{x:0,z:7,label:'the spring'}
@@ -8260,6 +8261,9 @@ function projectileGround(sim,x,z){
  if(sim.room==='crossing')return G.RealmCrossing.projectileGround(x,z,.035);
  if(sim.room==='mine')return A.walkable(sim.state.adventure,x,z,.035);
  if(sim.room==='range')return rangeWalkable(x,z,.035);
+ // the home valley is a combat scene only for the finale: arrows fly over its open ground (they had no valley case, so
+ // a bow could not loose a single arrow at the chains or the Regent).
+ if(sim.room===null)return G.RealmCore.walkable(x,z,sim.navRoom,.035);
  if(sim.room==='road')return R.land(x,z,.035)&&![...R.OBSTACLES,...R.TREES.map(t=>({x:t[0],z:t[1],r:.24*t[2]}))].some(o=>o.r!==undefined?Math.hypot(x-o.x,z-o.z)<o.r+.035:Math.abs(x-o.x)<o.w/2+.035&&Math.abs(z-o.z)<o.d/2+.035);
  return false;
 }
