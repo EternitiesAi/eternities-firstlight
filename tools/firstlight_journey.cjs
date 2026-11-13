@@ -132,8 +132,8 @@ function run(options = {}) {
   } catch (e) { blocked(rows, 'nearshore', e.message, log); stoppedAt = stoppedAt || 'nearshore'; world = null; }
  }
 
- // the finale runs its own dodges (the regent's pursuit and the walked route); the shared step would fight them
- TACTICS.setDodge(false);
+ // the finale is the hardest fight: the shared step dodges beside the finale journey's own (its numbers are tuned to this)
+ TACTICS.setDodge(true);
  // the finale, fresh: the live nearshore save walks to the spring, fights to the offer, refuses it, and rolls the credits
  if (world) {
   const before = readJson(world);

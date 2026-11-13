@@ -61,9 +61,9 @@ function journey(options = {}) {
  fights.push(fight('second body', () => ph() >= 3));
  assert.ok(ph() >= 3, 'the second body fell; the offer waits at the spring');
  assert.ok(walk(0, 7), 'walked back to the spring for the offer');
- const offer = EH.command({ sim, active: 'finale-journey' }, 'offer', { quest: EH.definition.id, expectedActive: 'finale-journey', expectedRevision: a().revision, choice: 'refuse' }, { save: io => { saved = JSON.parse(JSON.stringify(io)); return { ok: true }; } });
+ const offer = EH.command({ sim, active: 'finale-journey' }, 'offer', { quest: EH.definition.id, expectedActive: 'finale-journey', expectedRevision: a().revision, choice: options.choice === 'take' ? 'take' : 'refuse' }, { save: io => { saved = JSON.parse(JSON.stringify(io)); return { ok: true }; } });
  commands++;
- assert.ok(offer.ok, 'refused the gift: ' + offer.error);
+ assert.ok(offer.ok, 'answered the offer: ' + offer.error);
  fights.push(fight('last body', () => sim.state.saga.finale.won === true));
  assert.ok(sim.state.saga.finale.won === true, 'the last body fell');
  step(8.5);
@@ -71,7 +71,7 @@ function journey(options = {}) {
  const final = JSON.parse(JSON.stringify(sim.snapshot()));
  C.validate(final);
  fs.writeFileSync(path.join(out, 'FINALE_COMPLETE.json'), JSON.stringify(final, null, 2));
- return { status: credits ? 'passed' : 'failed', creditsRolled: credits, postgame: sim.state.saga.postgame === true, commands, fights, final: path.join(out, 'FINALE_COMPLETE.json') };
+ return { status: credits ? 'passed' : 'failed', creditsRolled: credits, ending: sim.state.saga.finale.ending, postgame: sim.state.saga.postgame === true, commands, fights, final: path.join(out, 'FINALE_COMPLETE.json') };
 }
 
 module.exports = { journey };

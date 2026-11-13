@@ -30,8 +30,10 @@ test('saves that already store xp validate under the new cap',()=>{
 test('the main-path boss table rises in hp and damage, and the chapter bosses read it',()=>{
  const order=['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian'].map(id=>D.boss(id));
  for(let i=1;i<order.length;i++){assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);assert.ok(order[i].damage>order[i-1].damage,'damage rises at '+i);}
- const reg=D.boss('regent');assert.deepEqual(reg.phases.map(p=>p.hp),[380,400,420]);assert.equal(reg.phases.reduce((n,p)=>n+p.hp,0),1200);
- assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage));assert.ok(reg.phases[0].damage>order.at(-1).damage);
+ // the regent is the hardest fight (lead, 1.0 rebalance): every body outlasts every boss before him, and his bodies that
+ // fight hit harder than any of them. the first body is the chained one (the chains carry phase one), so it hits softest.
+ const reg=D.boss('regent');assert.equal(reg.phases.length,3);assert.ok(reg.phases.every(p=>p.hp>order.at(-1).hp));
+ assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage));assert.ok(reg.phases[1].damage>order.at(-1).damage&&reg.phases[2].damage>order.at(-1).damage);
  const hart=A.ENEMIES.find(e=>e.id==='hart');assert.equal(hart.hp,240);assert.equal(hart.damage,24);
  assert.equal(R.ENEMIES.find(e=>e.id==='road-ram').hp,320);
  const herald=B.WAVES.flat().find(e=>e.id==='herald');assert.equal(herald.hp,350);assert.equal(herald.damage,29);
@@ -40,18 +42,18 @@ test('the main-path boss table rises in hp and damage, and the chapter bosses re
  // the contract shape: exact keys, each entry hp, damage and windup, and copies that never write back to the table.
  assert.deepEqual(Object.keys(D.BOSSES),['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian','regent']);
  for(const id of Object.keys(D.BOSSES))for(const f of['hp','damage','windup'])assert.ok(Number.isFinite(D.boss(id)[f]),id+'.'+f);
- assert.equal(reg.hp,1200);assert.equal(reg.damage,54);assert.ok(reg.phases.every(p=>Array.isArray(p.patterns)&&p.patterns.length>0));
+ assert.equal(reg.hp,reg.phases.reduce((n,p)=>n+p.hp,0));assert.equal(reg.damage,Math.max(...reg.phases.map(p=>p.damage)));assert.ok(reg.phases.every(p=>Array.isArray(p.patterns)&&p.patterns.length>0));
  assert.equal(D.boss('foundryWarden').hp,520);assert.equal(D.boss('relaySeraph').hp,620);assert.equal(D.boss('witnessGuardian').hp,720);
  const copy=D.boss('hart');copy.hp=1;assert.equal(D.boss('hart').hp,240);assert.equal(D.BOSSES.hart.hp,240);
  assert.equal(hart.windup,D.boss('hart').windup);assert.equal(D.BOSSES.hart.windup,1.05);
 });
 test('phases() maps damage dealt to a phase, runs the hook once per change, and refuses bad data',()=>{
- const seen=[];const p=D.phases({...D.boss('regent'),onPhase:(sim,e,next,prev)=>seen.push([next,prev])});
- assert.equal(p.count,3);assert.equal(p.total,1200);assert.deepEqual([...p.bounds],[380,780,1200]);
- const e={hp:1200};assert.equal(p.step({},e),0);assert.equal(p.damage(e),46);
- e.hp=820;assert.equal(p.step({},e),1);assert.equal(p.damage(e),50);
- e.hp=819;assert.equal(p.step({},e),1);
- e.hp=420;assert.equal(p.step({},e),2);assert.equal(p.damage(e),54);
+ const seen=[],reg=D.boss('regent'),[a,b,c]=reg.phases;const p=D.phases({...reg,onPhase:(sim,e,next,prev)=>seen.push([next,prev])});
+ assert.equal(p.count,3);assert.equal(p.total,a.hp+b.hp+c.hp);assert.deepEqual([...p.bounds],[a.hp,a.hp+b.hp,a.hp+b.hp+c.hp]);
+ const e={hp:p.total};assert.equal(p.step({},e),0);assert.equal(p.damage(e),a.damage);
+ e.hp=p.total-a.hp;assert.equal(p.step({},e),1);assert.equal(p.damage(e),b.damage);
+ e.hp=p.total-a.hp-1;assert.equal(p.step({},e),1);
+ e.hp=c.hp;assert.equal(p.step({},e),2);assert.equal(p.damage(e),c.damage);
  e.hp=0;assert.equal(p.step({},e),2);
  assert.deepEqual(seen,[[1,0],[2,1]]);
  assert.throws(()=>D.phases({phases:[]}),/one to four/);

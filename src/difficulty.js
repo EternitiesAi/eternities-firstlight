@@ -2,7 +2,8 @@
  * The regent's three phases carry their own move sets; phases(def) is the multi-phase helper the finale calls. */
 (function(G){'use strict';
 const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freeze(patterns.slice())});
-const REGENT=Object.freeze([phase(380,46,['line','double']),phase(400,50,['line','double','bait']),phase(420,54,['double','bait','line'])]);
+// the hardest fight in the game: the chains are a long first body, the second runs and turns on you, the third does not stop.
+const REGENT=Object.freeze([phase(3000,34,['line','double']),phase(2500,54,['line','double','bait']),phase(3700,56,['double','bait','line'])]);
 const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
  hart:entry(240,24,1.05),
