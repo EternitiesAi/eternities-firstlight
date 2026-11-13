@@ -7,7 +7,7 @@
 const TAU=Math.PI*2,FLOOR=1.57,ROOM='world-heaven';
 // bone is near white with a faint cool cast, so the shadows read blue-grey rather than tan. gold is for trims, arches,
 // rails, domes and inlay only; ruby is for glass and banners.
-const BONE=0xf1f3f6,BONE2=0xdfe5ed,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
+const BONE=0xeef1f5,BONE2=0xd9e0ea,GOLD=0xd4a95c,GOLD2=0xf7dc92,RUBY=0x8f1538,RUBY2=0xc6284f,
  CLOUD=0xffffff,CLOUD_UNDER=0xdde7f3,CLOUD2=0xe9eef6,SUN=0xfffaea,HALO=0xffe7a8,LIGHT=0xfffbf0,INLAY=0xe6bd66,
  BLOOM=[0xf4b9c8,0xf7da86,0xfdf8ec,0xe9869f,0xfbe9ad];
 const NONSOLID={cameraSolid:false,cutaway:false};
@@ -26,8 +26,11 @@ function decorate(art,def,opts={}){
  const h=typeof opts.height==='function'?opts.height:()=>FLOOR,rnd=typeof opts.rng==='function'?opts.rng:Math.random;
  // the grade is cool and clear: a deep blue overhead, a pale cool horizon, and a white sun with no yellow cast, so the
  // white stone reads white. the ambient stays low for contrast. the engine reads these fields for the realm.
- art.e.worldAtmosphere={top:0x3f7fd6,fog:0xcfe1f2,night:.02,power:1.2,sunColor:0xf7f9ff};
+ art.e.worldAtmosphere={top:0x3f7fd6,fog:0xcfe1f2,night:.02,power:1.0,sunColor:0xf7f9ff};
  art.e.ambientOverride=.3;
+ // the engine's default haze is measured from the world origin and starts about 24 units out, so it buries the far realm.
+ // a world-fog profile replaces it; with no centre it runs from the player, so the haze starts well clear of them.
+ art.e.worldFog={clear:70,span:230};
  const B=(x,y,z,w,hh,d,c,o={})=>art.add('box',x,y,z,w,hh,d,c,{...NONSOLID,...o});
  const C=(x,y,z,r,hh,c,o={})=>art.add('cylinder',x,y,z,r,hh,r,c,{...NONSOLID,...o});
  const O=(x,y,z,s,c,o={})=>art.add('octa',x,y,z,s,s,s,c,{...NONSOLID,...o});
@@ -175,7 +178,7 @@ function decorate(art,def,opts={}){
  C(ex,eb+.05,ez,5.4,.1,LIGHT,{em:.8});
  B(ex,eb+1.3,ez,3.8,2.6,3.4,BONE,{rough:.4});
  B(ex,eb+2.8,ez,4.2,.4,3.8,GOLD,{rough:.35});
- R(ex,eb+3.5,ez,1.9,GOLD2,{em:.25,rough:.3});
+ R(ex,eb+3.6,ez,2.4,GOLD2,{em:.3,rough:.3});
  C(ex,eb+5.2,ez,.5,2.2,BONE2,{rough:.4});
  O(ex,eb+6.6,ez,.36,GOLD2,{em:.9});
  O(ex,eb+7.4,ez,.18,RUBY2,{em:1});
