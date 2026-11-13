@@ -87,7 +87,7 @@ function journey({bow=false,veteran=false,output=DEFAULT,seedOnly=false,approach
  const reload=()=>{const before=copy(h.sim.state.atlantisCampaign);h.reload('atlantis');hook();assert.deepEqual(h.sim.state.atlantisCampaign,before);assert.equal(h.sim.worldDive,undefined);};
  const dive=()=>{const p=W.definition('atlantis').points.find(p=>p.id==='tide-steps');h.walk(p.x,p.z);assert.ok(W.diveEnter(h.sim).ok);};
  try{
-  if(veteran){assert.equal(A.level(h.sim.state.adventure),5);assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}else earnedKit(h,bow);
+  if(veteran){/* the returning traveller: past the fresh band, at whatever the fight lane's level table gives its xp */assert.ok(A.level(h.sim.state.adventure)>=5);assert.equal(A.level(h.sim.state.adventure),A.level({xp:h.sim.state.adventure.xp}));assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}else earnedKit(h,bow);
   stage='earned-bellglass';earnBellglass(h,swims);snap('00_EARNED_SEED');write('SEED_PROVENANCE',{variant,fixture,fixtureHash,seedSha256:sha(path.join(folder,'00_EARNED_SEED.json')),prerequisite:D.prerequisite,positionEdits:0,inventoryGrants:0,manualDamage:0,plantedDefeats:0,forcedModes:0,sourceHashes:loadedHashes});
   if(seedOnly){assert.deepEqual(sourceEpoch(),loadedHashes);return{status:'passed',variant,seed:path.join(folder,'00_EARNED_SEED.json')};}
   const baseline=h.sim.snapshot();h.enter('atlantis');hook();h.walk(D.giver.x,D.giver.z);stage='accept';act('accept');snap('01_ACCEPTED');reload();

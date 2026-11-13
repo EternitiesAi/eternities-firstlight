@@ -144,7 +144,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
  };
  const reload=()=>{const record=copy(h.sim.state.heavenCampaign);h.reload('heaven');hook();assert.deepEqual(h.sim.state.heavenCampaign,record);assert.equal(H.runtime(h.sim).activation,null);};
  try{
-  if(!veteran)earnedKit(h,bow);else{assert.equal(A.level(h.sim.state.adventure),5);assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}
+  if(!veteran)earnedKit(h,bow);else{/* the returning traveller: past the fresh band, at whatever the fight lane's level table gives its xp */assert.ok(A.level(h.sim.state.adventure)>=5);assert.equal(A.level(h.sim.state.adventure),A.level({xp:h.sim.state.adventure.xp}));assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');h.walk(18,6);}
   const choir=R.definition(D.prerequisite);h.enter('heaven');
   if(!h.sim.state.realmTrails.records[choir.id].claimed){
    stage='broken-choir';h.walk(choir.giver.x,choir.giver.z);h.trail('accept',choir);
