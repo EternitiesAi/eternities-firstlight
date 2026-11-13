@@ -27,7 +27,7 @@ function flood(def,ignoreEnemies=true){
 }
 for(const def of realms){
  test(def.id+': stable contract, finite geometry, pure bounded quest and readable anchors',()=>{
-  assert.equal(def.room,'world-'+def.id);assert.equal(def.theme,'cosmos');assert.equal(def.water,false);assert.ok(def.name&&def.description&&def.kicker.includes('provisional'));
+  assert.equal(def.room,'world-'+def.id);assert.equal(def.theme,'cosmos');assert.equal(def.water,false);assert.ok(def.name&&def.description&&!/provisional/.test(def.kicker));
   assert.ok(Object.isFrozen(def)&&Object.isFrozen(def.solids)&&Object.isFrozen(def.quest.objectives));
   const ids=[...def.patches,...def.solids,...def.points,...(def.enemies||[])].map(p=>p.id);assert.equal(new Set(ids).size,ids.length);
   for(const p of def.patches){assert.ok([p.x,p.z,p.w,p.d,p.y].every(Number.isFinite));assert.ok(p.w>0&&p.d>0);assert.equal(p.y,FLOOR);assert.ok(p.x-p.w/2>=def.bounds.minX&&p.x+p.w/2<=def.bounds.maxX&&p.z-p.d/2>=def.bounds.minZ&&p.z+p.d/2<=def.bounds.maxZ);}

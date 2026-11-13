@@ -1,11 +1,6 @@
-/* The Last Unclaimed Road: a finite exterior continuation of The Open Cage.
- * Attributed direction: the 2026-09-14 Hell design package, Story and Event
- * Atlas Q08 and Prototype Spec beats E-G. Those documents label the cast and
- * regional story as original proposals, not recovered manuscript canon.
- * These coordinates, fixed values and service-engine adaptation are original
- * implementation terms. Loading this catalogue grants no history or property.
- * Root's campaign/combat owners validate actions, damage, persistence and claim.
- */
+/* The stolen pattern: hell's campaign after the Open Cage rescue. The pattern that took Briar was cut in the
+ * regent's foundry, and its outer gate is kept by Veyr. Step and choice ids are saved, so they stay put even
+ * where the words change. Rules and the warden fight live in hell-campaign.js. */
 (function (G) {
 'use strict';
 function freeze(value) {
@@ -22,47 +17,61 @@ const patterns=freeze({
 });
 const definition=freeze({
  id:'hell-last-unclaimed-road-v1',
- title:'The Last Unclaimed Road',
+ title:'The Stolen Pattern',
  room:'world-hell',realm:'hell',prerequisite:'hell-open-cage-v1',
  giver:{id:'hell-istra',name:'Istra · return keeper',x:-10,z:24},
  reward:{xp:45,coins:20,ore:4,materials:{wood:3,fiber:2}},
- summary:'Neris is already safe. Her preserved measurements identify a compulsory claim still attached to the Bell Yard service fixture. Hear her full record, compare Tovan’s account with the grounded writ, then deliberately challenge Tithe-Warden Veyr. Stabilize the exterior engine and choose who may use this local release. Accept this separate finite campaign explicitly. Its once-only fee is 45 XP, 20 sunmarks, 4 ore, 3 timber and 2 fibre, claimed from Istra after verification. The cast labels, exterior engine and exact outcomes remain provisional authored adaptations.',
- danger:'Veyr has 120 health and deals 12 damage through two distinct locked attacks: a broad short sweep and a narrow longer writ-line. Each has a 1.35-second warning and 2.2-second recovery. Step beside the marked shape, use actual cover or Brace (3), then respond with your owned blade or bow. The optional west shunt adds 0.6 seconds to sweep recovery; the optional east brace adds 0.6 seconds to line recovery. Below half health the order varies without raising damage or speed. Sound is optional; shape and text carry the warning. Your free road home remains available before, during and after the fight. Neris’s earlier safety is retained, and the inner foundry remains closed.',
- completionText:'Istra keeps the verified local disposition beside Neris’s complete measurements. Veyr’s authority over this exterior fixture is resolved; this records a victory, not a claim that he was killed. The selected release fitting and Bell Yard plate retain their outcome. Istra has paid the fixed 20 sunmarks, 4 ore, 3 timber and 2 fibre once; XP credits up to 45 within the existing stored cap. These existing materials are a contribution to a chosen project, not a promised upgrade for every veteran. No equipment was fitted or equipped. The inner foundry, wider infernal country and future patron or restitution services remain ahead.',
+ regent:{x:0,z:-106},
+ summary:'Neris’s record names the foundry. The pattern that took Briar was cut in its works, and its trail runs down to the outer gate. Read the foundry’s own measurements, face Veyr, who keeps the gate for the regent, take the pattern back, and decide what becomes of the people the writ still holds. Istra closes the road when it is done.',
+ danger:'Veyr, the foundry’s warden, is the heaviest fight on this road so far. He has two locked attacks: a broad short sweep and a narrow line. Each has a 1.35-second warning and a 2.2-second recovery. Step beside the marked shape, use real cover or Brace (3), then strike while he recovers. The optional counterweight adds 0.6 seconds to sweep recovery, and the optional brace adds 0.6 seconds to line recovery. Below half health his order changes, and his strikes do not come faster. Sound is optional; shape and text carry the warning. The road home stays open before, during and after the fight. The inner foundry stays shut.',
+ completionText:'Istra keeps the record beside Neris’s full measurements. The pattern is back in the valley’s hands, and Veyr no longer keeps the gate. The people the writ held have the road you chose for them, and the works remember it. The regent has seen you at the gate and said your name. The inner foundry and the rest of Hell are still to come.',
  steps:[
-  step('witness-record','Hear Neris’s complete route record','interact',-12,27,[],false,
-   'Speak to Neris at her saved Kiln Refuge arrival. Neris: “Keep the measurements as they are, including the ones I once helped conceal.” Her safe return remains true whether it was walked or explicitly assisted. This account does not pronounce her innocent or ask her to repeat the rescue. Take the full record to Tovan.'),
-  step('tovan-account','Compare Tovan’s maintenance account','interact',-15,16,['witness-record'],false,
-   'Tovan identifies the Bell Yard service plate and acknowledges his earlier work on its compulsory claim. Compare his account with Neris’s measurements before operating the fixture. Tovan: “Knowing the rivets is useful. Leaving my own name out would make it a worse record.” The original Refuge water job retains its separate state.'),
-  step('read-service-writ','Read the Bell Yard service writ','interact',-12,-95,['tovan-account'],false,
-   'At the existing grounded Bell Yard plate, compare the named crew’s measured route with its imposed departure claim. The contradiction concerns this exterior service fixture; the inner foundry doors remain closed. Two optional preparations are nearby: the west shunt lengthens sweep recovery, and the east brace lengthens writ-line recovery. Neither is required. Read the warning before deliberately challenging Veyr.'),
-  step('west-shunt','Set the west recovery shunt','interact',-18,-90,['read-service-writ'],true,
-   'Set the supplied shunt beside the west Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor damage, and it does not extend the writ-line recovery. No ordinary material is consumed. This preparation belongs to the accepted campaign and does not repeat the old rescue cooling or clamps.'),
-  step('east-brace','Seat the east writ-line brace','interact',17,-90,['read-service-writ'],true,
-   'Seat the supplied brace beside the east Bell Yard approach. It adds exactly 0.6 seconds to Veyr’s recovery after a writ-line. It changes neither his health nor damage, and it does not extend sweep recovery. No ordinary material is consumed. The eastern salvage sentinel keeps its own identity and is unrelated to this preparation.'),
-  step('challenge-veyr','Challenge Veyr on the open apron','interact',0,-91,['read-service-writ'],false,
-   'Veyr: “An escape is a restraint I have not finished.” Explicitly begin the warned encounter on the supported Bell Yard exterior. You may inspect the site, prepare either support or retreat before choosing this action. Read the broad sweep and narrow writ-line as distinct locked shapes. The road south remains open; no combat door closes behind you.'),
-  step('warden-resolved','Resolve the Warden’s local authority','defeat',0,-99,['challenge-veyr'],false,
-   'Defeat the actual Tithe-Warden Veyr encounter through ordinary confirmed weapon impacts. A journal action cannot substitute for combat. His fixed health and damage do not scale with your equipment; below half health only the pattern order varies. The recorded fact is warden_resolved, not killed. This enemy grants no independent loot or payment. Stabilize the separate exterior service engine after the victory.'),
-  step('stabilize-service-engine','Stabilize the exterior service engine','interact',0,-105,['warden-resolved'],false,
-   'Fit the supplied stabilizer at the service fixture on the open side of the closed works. This is an exterior adaptation of the Writ Engine story, not entry into the sealed full foundry. The local release can now hold a chosen configuration. Your actual home passage was already free and remains independent of the disposition. No ordinary timber, fibre, ore or equipment is spent here.'),
-  step('disposition','Choose the local passage disposition','choice',0,-105,['stabilize-service-engine'],false,
-   'Deliberately choose Unbind, Divert or License after stabilization. Read the exact local consequence before confirming. Each retains Neris’s safety and truthful measurements, pays the same stated campaign fee and records a lasting local deed. This choice does not assign a class or change Grace, Cinder, renunciation or global allegiance. Future patron and restitution services remain pending.'),
-  step('verify-route','Verify the selected release at the plate','interact',-12,-95,['disposition'],false,
-   'Return to the Bell Yard plate and verify that its fitting matches the retained disposition: an open release handle for Unbind, a hooded service marker for Divert, or paired named-crew seals for License. This records the actual chosen local configuration; it does not certify the whole claim network. Return to Istra and explicitly claim the separate fixed fee. Completed verification can remain safely unpaid.')
+  step('witness-record','Hear Neris’s full record','interact',-12,27,[],false,
+   'Neris is at the Kiln Refuge. Her record names the foundry. The pattern that took Briar was cut there, and the mark in its margin is the regent’s. Take the record to Tovan.'),
+  step('tovan-account','Check Tovan’s rivets','interact',-15,16,['witness-record'],false,
+   'Tovan knows the foundry’s pattern plates by their rivets, because he set some of them. Compare his count with Neris’s, then go to the outer gate.'),
+  step('read-service-writ','Read the foundry’s outer gate','interact',-12,-95,['tovan-account'],false,
+   'The pattern’s route runs out of the works through this gate and into the yard. The inner doors stay shut. Two preparations stand nearby, and neither is required. Read the warden’s terms before you knock.'),
+  step('west-shunt','Set the west counterweight','interact',-18,-90,['read-service-writ'],true,
+   'Set the counterweight beside the west approach. It adds exactly 0.6 seconds to Veyr’s recovery after a sweep. It changes neither his health nor his damage, and it does not touch the line recovery. No ordinary material is used.'),
+  step('east-brace','Seat the east brace','interact',17,-90,['read-service-writ'],true,
+   'Seat the brace beside the east approach. It adds exactly 0.6 seconds to Veyr’s recovery after a line strike. It changes neither his health nor his damage, and it does not touch the sweep recovery. No ordinary material is used.'),
+  step('challenge-veyr','Challenge Veyr at the gate','interact',0,-91,['read-service-writ'],false,
+   'Veyr keeps the open apron, and the fight begins there. Read the broad sweep and the narrow line as two different shapes, and find cover before you commit. The road south stays open.'),
+  step('warden-resolved','Defeat Veyr, the foundry’s warden','defeat',0,-99,['challenge-veyr'],false,
+   'Veyr falls at the gate, and the gate’s clamps let go. You beat him with ordinary strikes, and nothing else counted. The pattern can be reached now.'),
+  step('stabilize-service-engine','Take the pattern back','interact',0,-105,['warden-resolved'],false,
+   'Fit the stabilizer into the gate engine and draw the pattern out of it. It was never theirs, and it is yours to bring home. Behind the works, the smiling stranger from the beacon turns toward you. He was in the foundry, and he knows your name.'),
+  step('disposition','Decide what happens to the people held here','choice',0,-105,['stabilize-service-engine'],false,
+   'The people the writ holds are still inside the works. Decide what becomes of them. Unbind opens the gate, Divert takes a few out under a hood, and License hands their road to another overseer. Read each one before you confirm.'),
+  step('verify-route','Check the gate and the road it leaves','interact',-12,-95,['disposition'],false,
+   'The gate’s fitting shows what you chose: an open handle, a hooded marker or paired seals. Check it at the plate, then return to Istra to close the road.')
  ],
  choices:[
-  {id:'unbind',name:'Unbind · open this local release',
-   text:'Remove this exterior fixture’s compulsory departure claim and fit an open release handle. The Refuge supports passage through this local release without a named patron docket. Neris’s full record remains. This is a bounded local unbinding; it does not dissolve Hell’s other claims or complete the larger saga.',
-   consequence:'The exterior engine and Bell Yard plate show the open release handle. Istra, Tovan and Neris recognize the local unbinding. The campaign records Unbind permanently; the stated fee remains unchanged. Any later patron advantage or restitution route needs its own implemented contract.'},
-  {id:'divert',name:'Divert · shelter a limited service release',
-   text:'Isolate a limited Refuge service release and fit a hooded marker. The named crew can use this service arrangement while the outer compulsory writ remains in place. Neris stays safe; her preserved record is neither shortened nor sold. This secures a local concession while retaining responsibility for what was left intact.',
-   consequence:'The exterior engine and Bell Yard plate show the hooded service marker and retained outer writ. Istra, Tovan and Neris recognize the limited arrangement. The campaign records Divert permanently; the stated fee remains unchanged. No hidden route, new corridor or salvage economy is granted by this choice.'},
-  {id:'license',name:'License · transfer the named-crew docket',
-   text:'Transfer this exterior fixture’s route docket to a rival office under a disclosed named-crew concession. Fit paired crew seals; other compulsory claims remain. Neris stays safe and her truthful record remains available. This knowingly preserves a coercive local institution for a limited concession; it is not an automatic global oath.',
-   consequence:'The exterior engine and Bell Yard plate show paired named-crew seals and the retained licensing writ. Istra, Tovan and Neris recognize the concession and its recorded responsibility. The campaign records License permanently; the stated fee remains unchanged. Future patron services or renunciation and restitution branches are pending.'}
+  {id:'unbind',name:'Unbind · open the gate for everyone held here',
+   text:'Cut the writ that holds them and open the gate. They walk out owing nothing. Neris’s record stays whole, and the works keep their name. This frees the people held here. It does not dismantle the regent’s other works.',
+   consequence:'The gate shows an open release handle. Istra, Tovan and Neris recognize what you did. The choice is kept for good, and the regent will remember it.'},
+  {id:'divert',name:'Divert · take a few out under a hood',
+   text:'Lead a few out under a hooded marker and leave the writ over the rest. The few walk free. The others stay where they are, and you will know exactly who they are. Neris stays safe and her record stays whole.',
+   consequence:'The gate shows a hooded marker and the writ still standing. Istra, Tovan and Neris recognize the choice. It is kept for good, and no hidden road opens behind it.'},
+  {id:'license',name:'License · hand their road to another overseer',
+   text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
+   consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- enemy:{id:'hell-tithe-warden-v1',name:'Tithe-Warden Veyr',kind:'sentinel',x:0,z:-99,hp:120,damage:12,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
+ // spoken lines live apart from the step narration so a script can replace them scene by scene.
+ lines:{
+  scenes:{
+   'witness-record':[{speaker:'Neris',text:'Keep the measurements as they are, including the ones I once helped conceal.'}],
+   'tovan-account':[{speaker:'Tovan',text:'Knowing the rivets is useful. Leaving my own name out would make it a worse record.'}],
+   'challenge-veyr':[{speaker:'Veyr',text:'Everyone who came for the pattern left it in my yard. Come and try.'}]
+  },
+  recognition:{
+   unbind:[{speaker:'Istra',text:'The gate is open. Nobody on this road owes the writ anything now.'},{speaker:'Tovan',text:'The writ is cut. My old rivets belong in the record, and they should stay there.'},{speaker:'Neris',text:'You opened it for everyone. Keep the measurements whole, and keep my name beside what I did.'}],
+   divert:[{speaker:'Istra',text:'The hooded marker shelters the few you took out. The writ still stands over the rest.'},{speaker:'Tovan',text:'A few walked free. Do not call the rest a repair.'},{speaker:'Neris',text:'I am safe. My record stays whole beside the choice you made.'}],
+   license:[{speaker:'Istra',text:'The paired seals name the crew this concession covers. I will record what it leaves in place.'},{speaker:'Tovan',text:'Another office holds their road now. The machinery and our part in it are still here.'},{speaker:'Neris',text:'The named crew has its concession. Keep the true measurements, and do not let them become absolution.'}]
+  }
+ },
+ enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:520,damage:34,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
 G.RealmHellCampaignData=api;

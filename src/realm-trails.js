@@ -57,6 +57,8 @@ function command(ctx,type,payload,io){
  if(type==='accept'){
   if(!at(sim,{...d.giver,medium:'dry'}))return fail('Speak to '+d.giver.name+' to accept this work.');
   if(r.accepted)return{ok:true,duplicate:true,text:'This trail is already accepted. Its progress is retained.'};
+  // the saga decides when a realm's door opens; a save that already accepted this trail never reaches this line.
+  if(d.gate&&!G.RealmSaga.allowed(sim.state,d.gate))return fail(d.gateText||'This way is not open yet.');
   r.accepted=true;text=d.title+' accepted. Read the route, danger and fixed reward.';
  }else if(type==='step'){
   const s=d.steps.find(s=>s.id===payload.step);if(!r.accepted||!s||s.kind!=='interact')return fail('Only an accepted physical interaction can be recorded here.');

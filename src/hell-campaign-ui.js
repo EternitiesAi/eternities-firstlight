@@ -1,19 +1,21 @@
-/* Hell's local campaign: reading and route previews own no saved progress. */
+/* The stolen pattern's page: reading and route previews own no saved progress. Spoken lines come from the data's
+ * lines table (or a story script when one lands), never from the step narration. */
 (function(G){'use strict';
 const H=()=>G.RealmHellCampaign,def=()=>typeof H().definition==='function'?H().definition():H().definition;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,type,id='',extra='')=>'<button data-rpg="hell-campaign-'+type+'" data-id="'+esc(id)+'" '+extra+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.hellCampaign;
-function fee(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre'}[k]||k)).join('');}
+// a story script, when it lands, owns the spoken lines; until then the data table answers.
+const spoken=(d,id,state)=>{const s=G.RealmStoryScript?.scene?.(id,state);return Array.isArray(s?.lines)?s.lines:(d.lines?.scenes?.[id]||[]);};
+const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
+function reward(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.accepted||r.claimed)return[];
  const points=H().ready(sim.state)?[{...d.giver,id:'claim',kind:'giver',medium:'dry',name:'Return to '+d.giver.name}]:H().available(sim.state);
  return points.map((p,i)=>({...p,hellCampaign:true,mark:'W'+(i+1)}));
 }
-function legend(sim){const points=routePoints(sim);return points.length?'<section class="hell-campaign-map"><h3>The last unclaimed road</h3><p>W labels show this accepted campaign. Tithe Mile and Moth Cut remain open; the inner works stay closed. Walking records no work.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+' '+button('Walk near this action','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the campaign and saved disposition','open')+'</section>':'';}
-function recognition(r){if(!r?.steps.includes('verify-route')||!r.choice)return'';
- const lines={unbind:[['Istra','Keep that handle open. This local release needs no named patron docket.'],['Tovan','The compulsory fitting is off. My old work still belongs in the record.'],['Neris','An open release, and the measurements kept whole. Keep my earlier signature with them.']],divert:[['Istra','The hooded marker shelters our limited service passage. The outer writ still stands.'],['Tovan','A working concession is useful. Do not call the claim we left intact a repair.'],['Neris','I am safe. My complete record stays beside this limited arrangement.']],license:[['Istra','The paired seals name the crew covered by this concession. I will record what it leaves in place.'],['Tovan','Another office holds the docket. The licensing machinery and our responsibility remain.'],['Neris','The named crew has its concession. Keep the truthful measurements; do not turn them into absolution.']]};
- return'<section class="hell-campaign-local-recognition"><h3>The verified disposition is remembered</h3>'+lines[r.choice].map(([name,line])=>'<p><strong>'+name+':</strong> “'+esc(line)+'”</p>').join('')+'</section>';
-}
+function legend(sim){const points=routePoints(sim);return points.length?'<section class="hell-campaign-map"><h3>The stolen pattern</h3><p>W labels show this road. The outer works are open from here; the inner foundry stays shut. Walking records nothing.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+' '+button('Walk near this action','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the road and your choice','open')+'</section>':'';}
+function recognition(r,d=def()){if(!r?.steps.includes('verify-route')||!r.choice)return'';
+ return'<section class="hell-campaign-local-recognition"><h3>The choice is remembered</h3>'+speech(d.lines.recognition[r.choice])+'</section>';}
 class HellCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -34,63 +36,63 @@ class HellCampaignUI{
   if(type==='cancel'){this.pending=null;this.rpg.paint();return true;}
   if(type==='walk'){
    const r=record(sim),p=id==='giver'||id==='claim'?d.giver:!r?.accepted&&id==='witness-record'?d.steps.find(s=>s.id===id):routePoints(sim).find(s=>s.id===id);
-   if(!p||sim.room!==d.room||sim.worldDive){this.rpg.api.toast('Return to Kiln Refuge and read the current physical route.');return true;}
+   if(!p||sim.room!==d.room||sim.worldDive){this.rpg.api.toast('Go back to Kiln Refuge and read the road again.');return true;}
    this.pending=null;const q=G.RealmTrailsUI.approach(sim,p);this.rpg.close();this.rpg.api.walkLocal(q.x,q.z);return true;
   }
   if(!['accept','step','claim','review','confirm'].includes(type))return true;
-  if(!this.commandBinding(el)){this.pending=null;this.rpg.api.toast('The traveller or saved work changed. Read the current campaign again.');this.rpg.paint();return true;}
+  if(!this.commandBinding(el)){this.pending=null;this.rpg.api.toast('Your saved road has changed. Read it again.');this.rpg.paint();return true;}
   if(type==='review'){
    const step=d.steps.find(s=>s.kind==='choice'),choice=d.choices.find(c=>c.id===id);
-   if(!choice||!step||!H().available(sim.state).some(s=>s.id===step.id)||!H().at(sim,step)){this.rpg.api.toast('Reach the stabilized service engine before choosing its disposition.');return true;}
+   if(!choice||!step||!H().available(sim.state).some(s=>s.id===step.id)||!H().at(sim,step)){this.rpg.api.toast('Take the pattern back before you choose.');return true;}
    this.pending={...this.owner(),choice:choice.id,step:step.id};this.rpg.paint();return true;
   }
   const payload={quest:d.id,expectedRevision:this.binding.adventureRevision,expectedActive:this.binding.active};let command=type;
   if(type==='step')payload.step=id;
   if(type==='confirm'){
-   if(!this.same(this.pending,true)||id!==this.pending.choice){this.pending=null;this.rpg.api.toast('This disposition preview belongs to an earlier traveller or checkpoint. Read its terms again.');this.rpg.paint();return true;}
+   if(!this.same(this.pending,true)||id!==this.pending.choice){this.pending=null;this.rpg.api.toast('This preview belongs to an earlier checkpoint. Read the choice again.');this.rpg.paint();return true;}
    Object.assign(payload,{step:this.pending.step,choice:this.pending.choice});command='choose';
   }
   const result=this.rpg.api.hellCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);
   if(result.ok&&!result.duplicate)this.rpg.quest='hell-campaign';this.rpg.paint();return true;
  }
- journal(){const d=def(),r=record(this.sim),status=r?.claimed?'Claimed once':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Complete · unpaid':'Accepted · '+r.steps.length+' recorded actions';
-  return'<section class="hell-campaign-invitation"><small>HELL · A LOCAL CAMPAIGN CONTINUATION</small><h3>'+esc(d.title)+'</h3><p>'+esc(status)+' · '+esc(fee(d))+'</p><p>The rescued witness, a former riveter and a machine that still claims the road. Neris stays safe in the Refuge while you investigate.</p>'+button('Read the campaign, route and exact payment','open')+(r?.accepted&&!r.claimed?button('Track this campaign','track'):'')+'</section>';
+ journal(){const d=def(),r=record(this.sim),status=r?.claimed?'Finished':!r?.accepted?'Not started':H().ready(this.sim.state)?'Complete':'Under way · '+r.steps.length+' steps done';
+  return'<section class="hell-campaign-invitation"><small>HELL · THE FOUNDRY ROAD</small><h3>'+esc(d.title)+'</h3><p>'+esc(status)+' · '+esc(reward(d))+'</p><p>A witness who is safe, a former riveter and a gate that still keeps the road. Neris stays in the Refuge while you go down.</p>'+button('Read the road','open')+(r?.accepted&&!r.claimed?button('Track this road','track'):'')+'</section>';
  }
  invitation(){return this.journal();}
  page(tab){if(tab!=='hell-campaign')return null;const d=def(),sim=this.sim,r=record(sim),here=sim.room===d.room,eligible=H().eligible(sim.state),available=H().available(sim.state),ids=new Set(available.map(s=>s.id));
   this.binding={...this.owner(),id:++this.serial};const act=(label,type,id='')=>button(label,type,id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'"');
-  let html='<article class="hell-campaign"><header><small>KILN REFUGE → BELL YARD → A ROAD THAT RETURNS</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="hell-campaign-terms"><h3>What this expedition offers</h3><p><strong>Exact once-only payment:</strong> '+esc(fee(d))+'. The same fee follows each disposition; XP credits up to the existing stored cap.</p><p>'+esc(d.danger)+'</p><p>The inner works stay closed. Istra’s free road home remains open throughout. Supplied service fittings cost no ordinary inventory; this expedition grants no gear, automatic equipment change or new class.</p></section>';
-  if(!here)html+='<section><p>Reopening resumes your home checkpoint. The accepted expedition and unpaid work remain saved. Revisit Hell to continue.</p><button data-rpg="world-select" data-id="hell">Read Kiln Refuge travel</button></section>';
+  let html='<article class="hell-campaign"><header><small>KILN REFUGE → THE OUTER GATE → THE FOUNDRY</small><h2>'+esc(d.title)+'</h2><p>'+esc(d.summary)+'</p></header><section class="hell-campaign-terms"><h3>What this road asks</h3><p><strong>Reward:</strong> '+esc(reward(d))+'. Stored XP stops at its cap.</p><p>'+esc(d.danger)+'</p><p>The inner foundry stays shut. Istra’s road home stays open throughout. The fittings you use here are supplied and cost nothing from your pack. The road grants no gear and no class.</p></section>';
+  if(!here)html+='<section><p>Reopening takes you back to your last checkpoint. Your progress stays saved. Go back to Hell to continue.</p><button data-rpg="world-select" data-id="hell">Read the way back to the Refuge</button></section>';
   if(!r?.accepted){
-   html+='<section><h3>Begin with a witness who is safe</h3><p>'+(!eligible?'First complete and explicitly claim The Open Cage. Neris’s real Refuge arrival remains the earlier rescue’s owner.':'The Open Cage was claimed. This new campaign still requires a separate deliberate acceptance.')+'</p>'+(here&&eligible&&H().at(sim,d.giver)?act('Accept the campaign and declared fee','accept'):here?button('Walk to Istra in the Refuge','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
+   html+='<section><h3>Begin with Neris</h3><p>'+(!eligible?(G.RealmSaga.allowed(sim.state,'hell')?'Finish the Open Cage rescue first. Neris’s way out of the cell is the way in.':'The road to the foundry is not open yet. The night at Bellweather has to come first.'):'Istra has the road. Take it up when you are ready.')+'</p>'+(here&&eligible&&H().at(sim,d.giver)?act('Begin the road','accept'):here?button('Walk to Istra in the Refuge','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
   }else{
-   if(r.claimed)html+='<section class="hell-campaign-recognition"><h3>Istra keeps the road honest</h3><p>'+esc(d.completionText)+'</p><p>The declared payment was claimed once. Saved work and the local service fixture remain.</p></section>';
-   html+='<section><h3>Your saved expedition</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
+   if(r.claimed)html+='<section class="hell-campaign-recognition"><h3>Istra keeps the road honest</h3><p>'+esc(d.completionText)+'</p></section>';
+   html+='<section><h3>Your road so far</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id);let controls='';
     if(!r.claimed&&next){
-     if(!here)controls='<p>Revisit Hell to reach this action.</p>';
+     if(!here)controls='<p>Go back to Hell to reach this step.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
-     else if(s.kind==='defeat')controls='<p>Close this workspace to resume combat. Tab selects Veyr; use your owned blade or bow, move or Brace through the locked tell, and strike the exposed recovery.</p>';
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name+' terms','review',c.id)).join('');
-     else controls=act(s.id==='challenge-veyr'?'Challenge the Tithe-Warden':s.name,'step',s.id);
+     else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects Veyr. Use your blade or bow, move or Brace through the marked shape, and strike while he recovers.</p>';
+     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this choice','review',c.id)).join('');
+     else controls=act(s.id==='challenge-veyr'?'Challenge Veyr':s.name,'step',s.id);
     }
-    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p><div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(spoken(d,s.id,sim.state))+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
-   if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete · unpaid</h3><p>Return to Istra for the whole declared fee. A full pouch or refused save keeps this completed work retryable.</p>'+(here&&H().at(sim,d.giver)?act('Claim the declared payment once','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
-   if(!r.claimed)html+=button('Track this expedition','track');
+   if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete</h3><p>Return to Istra to close the road. A full pouch never stops it; anything that does not fit stays in the works.</p>'+(here&&H().at(sim,d.giver)?act('Return to Istra and close the road','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
+   if(!r.claimed)html+=button('Track this road','track');
   }
-  html+='<section class="hell-campaign-dispositions"><h3>Three local dispositions</h3><p>Your choice changes this service fixture and its road plate. Patron services, wider restitution and the realm’s claim system remain unresolved.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · saved choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
-  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm local disposition"><h3>'+esc(c?.name)+' · confirm this local change</h3><p>'+esc(c?.consequence)+'</p><p>This records one permanent disposition for this campaign. Each choice offers the same declared payment when Istra pays the verified route. It does not assign a class or global allegiance.</p>'+(valid?act('Confirm '+c.name+' for this service fixture','confirm',c.id):'<p>The traveller or checkpoint changed. Cancel this preview and read the current terms.</p>')+button('Cancel · keep the disposition undecided','cancel')+'</section>';}
-  html+='<p class="hell-campaign-footer">Reading, walking and previews record no work. Both camera styles remain available during play. Accepted actions, the explicit choice and unpaid completion survive reload.</p></article>';
+  html+='<section class="hell-campaign-dispositions"><h3>Three choices for the people held here</h3><p>Your choice changes the gate and the road it leaves. The regent remembers what you choose.</p><div class="hell-campaign-choice-grid">'+d.choices.map(c=>'<article data-hell-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="hell-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your choice':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,d,sim.state);
+  if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice),valid=this.same(this.pending,true);html+='<section class="hell-campaign-confirm" aria-label="Confirm this choice"><h3>'+esc(c?.name)+' · confirm this choice</h3><p>'+esc(c?.consequence)+'</p><p>This choice is kept for good. The reward is the same whichever you pick. It assigns no class and no allegiance.</p>'+(valid?act('Confirm this choice','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the choice again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
+  html+='<p class="hell-campaign-footer">Reading and walking record nothing. Both camera styles stay available. Your steps, your choice and a finished road survive a reload.</p></article>';
   return{title:d.title,html};
  }
  tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="hell-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
   if(this.pending&&!this.same(this.pending,true))this.pending=null;
   if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='hell-campaign';}
   if(this.rpg.quest!=='hell-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
-  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE LAST UNCLAIMED ROAD','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Return to Istra · complete, unpaid':next?.name||'Read the current campaign'):'Revisit Kiln Refuge · saved work retained','#tracked-progress':r.steps.length+' actions · '+(ready?'payment unclaimed':'J expedition · M routes')};
+  const d=def(),ready=H().ready(sim.state),next=H().available(sim.state)[0],text={'#tracked-chapter':'HELL · THE STOLEN PATTERN','#tracked-title':d.title,'#tracked-detail':sim.room===d.room?(ready?'Return to Istra · the road is done':next?.name||'Read the road'):'Go back to the Refuge · your progress is saved','#tracked-progress':r.steps.length+' steps · '+(ready?'ready to close':'J road · M routes')};
   for(const[selector,value]of Object.entries(text)){const e=document.querySelector(selector);if(e)e.textContent=value;}
  }
 }
-const api={HellCampaignUI,routePoints,legend,fee};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={HellCampaignUI,routePoints,legend,reward,spoken};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

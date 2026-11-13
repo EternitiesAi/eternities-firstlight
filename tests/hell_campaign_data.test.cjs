@@ -26,7 +26,7 @@ function route(a,b,radius=.31){
 
 test('Hell campaign data: exact frozen catalogue, source boundary and import without gameplay mutation',()=>{
  keys(globalThis.RealmHellCampaignData,['definition','patterns']);frozen(globalThis.RealmHellCampaignData);
- keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy']);
+ keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy','regent','lines']);
  assert.equal(d.id,'hell-last-unclaimed-road-v1');assert.equal(d.room,'world-hell');assert.equal(d.realm,'hell');
  assert.equal(d.prerequisite,'hell-open-cage-v1');
  assert.equal(north.definitions.find(v=>v.id===d.prerequisite)?.realm,d.realm);
@@ -40,8 +40,8 @@ test('Hell campaign data: exact frozen catalogue, source boundary and import wit
  assert.strictEqual(sandbox.RealmTrailsNorth,sentinel);assert.strictEqual(sandbox.RealmWorldFoundations,sentinel);
  assert.deepEqual(Object.keys(sandbox).filter(k=>!before.has(k)),['RealmHellCampaignData']);
  assert.strictEqual(sandbox.module.exports,sandbox.RealmHellCampaignData);
- assert.match(d.summary,/provisional authored adaptations/);assert.match(d.danger,/inner foundry remains closed/);
- assert.match(d.completionText,/not a claim that he was killed/);
+ assert.doesNotMatch(d.summary+d.danger+d.completionText,/provisional|not a claim|\bfee\b|prototype|epoch|luna|realm 10/i);assert.match(d.danger,/inner foundry stays shut/);
+ assert.match(d.completionText,/no longer keeps the gate/);
 });
 
 test('Hell campaign graph: consent, real combat, stabilization, deliberate disposition and verification',()=>{
@@ -87,7 +87,7 @@ test('Hell campaign geography: all authored anchors use supported existing groun
 
 test('Hell campaign patterns: distinct fixed locked-shape terms and narrow optional recovery supports',()=>{
  keys(d.enemy,['id','name','kind','x','z','hp','damage','radius','spawnAfter','defeatStep']);
- assert.deepEqual(d.enemy,{id:'hell-tithe-warden-v1',name:'Tithe-Warden Veyr',kind:'sentinel',x:0,z:-99,hp:120,damage:12,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'});
+ assert.deepEqual(d.enemy,{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:520,damage:34,radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'});
  assert.deepEqual(patterns,{sweep:{reach:5.5,length:3.8,halfWidth:2,windup:1.35,recovery:2.2,support:'west-shunt'},line:{reach:7,length:6,halfWidth:.65,windup:1.35,recovery:2.2,support:'east-brace'}});
  assert.ok(patterns.sweep.halfWidth>patterns.line.halfWidth);assert.ok(patterns.line.length>patterns.sweep.length);
  for(const p of Object.values(patterns)){
@@ -95,8 +95,8 @@ test('Hell campaign patterns: distinct fixed locked-shape terms and narrow optio
   assert.ok(steps.get(p.support)?.optional);assert.match(steps.get(p.support).text,/exactly 0\.6 seconds/);
   for(const k of['reach','length','halfWidth','windup','recovery'])assert.ok(Number.isFinite(p[k])&&p[k]>0);
  }
- assert.match(d.danger,/Below half health the order varies without raising damage or speed/);
- assert.match(d.danger,/free road home remains available/);
+ assert.match(d.danger,/Below half health his order changes/);
+ assert.match(d.danger,/road home stays open before, during and after/);
 });
 
 test('Hell campaign body clearance: production paths respect Veyr radius around existing Bell Yard support',()=>{
@@ -120,17 +120,17 @@ test('Hell campaign outcomes: three lasting local choices retain safety, truth a
  assert.deepEqual(d.choices.map(c=>c.id),['unbind','divert','license']);
  for(const c of d.choices){
   keys(c,['id','name','text','consequence']);assert.ok(c.name&&c.text&&c.consequence);
-  assert.match(c.text,/Neris/);assert.match(c.consequence,/permanently/);assert.match(c.consequence,/fee remains unchanged/);
+  assert.match(c.text,/Neris/);assert.match(c.consequence,/kept for good/);assert.doesNotMatch(c.text+c.consequence,/\bfee\b|\bclaim/i);
   assert.doesNotMatch(c.text+c.consequence,/grants? (?:a|the) (?:class|recipe|global|online)|auto-equip|free gear/i);
  }
- assert.match(d.choices[0].text,/without a named patron docket/);
- assert.match(d.choices[1].text,/outer compulsory writ remains/);
- assert.match(d.choices[2].text,/other compulsory claims remain/);
- assert.match(d.choices[2].text,/not an automatic global oath/);
- assert.match(d.choices[2].consequence,/restitution branches are pending/);
- assert.match(steps.get('disposition').text,/does not assign a class or change Grace, Cinder, renunciation or global allegiance/);
- assert.match(d.completionText,/not a promised upgrade for every veteran/);
- assert.match(d.completionText,/No equipment was fitted or equipped/);
- assert.match(d.completionText,/paid the fixed 20 sunmarks, 4 ore, 3 timber and 2 fibre once; XP credits up to 45 within the existing stored cap/);
+ assert.match(d.choices[0].text,/owing nothing/);
+ assert.match(d.choices[1].text,/leave the writ over the rest/);
+ assert.match(d.choices[2].text,/other writs stay where they are/);
+ assert.match(d.choices[2].text,/mercy on paper/);
+ assert.match(d.choices[2].consequence,/other offices keep their hold/);
+ assert.match(steps.get('disposition').text,/Decide what becomes of them/);
+ assert.match(d.completionText,/the works remember it/);
+ assert.match(d.completionText,/still to come/);
+ assert.match(d.completionText,/The people the writ held/);
  assert.doesNotMatch(d.completionText,/has paid (?:the declared )?45 XP/,'completion never claims capped XP was received unconditionally');
 });
