@@ -6,7 +6,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..');
 const source=path.join(root,'assets/source/human-bodies/BODY_PARTS.json'),target=path.join(root,'src/body-meshes.js');
 // only the outfit shells that story figures place over capsule bodies; the full bodies stay off the build.
-const KEEP=['body-coat','body-robe','body-feather'];
+const KEEP=['body-coat','body-robe'];
 const scalar=v=>Object.is(v,-0)?'-0':String(v);
 function bake(bytes){
  const body=JSON.parse(bytes);

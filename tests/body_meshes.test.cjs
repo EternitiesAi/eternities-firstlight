@@ -8,12 +8,12 @@ const root=path.join(__dirname,'..');
 const source=fs.readFileSync(path.join(root,'assets/source/human-bodies/BODY_PARTS.json'),'utf8');
 const packed=fs.readFileSync(path.join(root,'src/body-meshes.js'),'utf8');
 const sha=text=>crypto.createHash('sha256').update(text).digest('hex');
-const OUTFIT=['body-coat','body-robe','body-feather']; // the only baked kinds the build packs; the full bodies stay on the lane
+const OUTFIT=['body-coat','body-robe']; // the only baked kinds the build packs; the full bodies stay on the lane
 
 test('the packed body module reproduces byte for byte from the committed Blender source',()=>{
  assert.equal(bake(source),packed,'src/body-meshes.js is the deterministic pack of assets/source/human-bodies/BODY_PARTS.json');
  assert.ok(packed.includes('Source SHA256 '+sha(source)+'.'),'the header names the exact source bytes');
- assert.equal(sha(packed),'1b30986113c0b6559bc03431f00734c109507109488288feab66ccc50398514b','the generated module hash is pinned');
+ assert.equal(sha(packed),'96d24871370cbde3cc20fe405d9962b13fc49765e11b8c7d352e73b2a2ba6913','the generated module hash is pinned');
 });
 
 test('every outfit kind stays inside its triangle budget, and the module registers only the outfit kinds',()=>{

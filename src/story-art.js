@@ -96,13 +96,13 @@ function envoy(x,y,z,yaw,t){
  // the baked robe: a flared shell from the shoulders to the ankle.
  place(parts,R,'body-robe','robe',BONE.robe,{rough:.7});
  ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
- // wings of light: six layered tapered feathers a side fan from the shoulder blades, bone-white at the top and gold at the tips.
+ // wings of light: six layered feather plumes a side, flattened ovals fanning from the shoulder blades, bone-white at the top and gold at the tips.
  // each feather's width lies across the wing (ref is world z), so its broad face turns to the viewer rather than edge-on.
  const breath=Math.sin(k*.8)*.03;
  for(const s of[-1,1])for(let i=0;i<6;i++){
   const u=i/5,a=1.05-1.25*u,len=.50-.10*u,base=[s*.07,1.44-.06*i,-.16];
   const tip=[base[0]+s*len*Math.cos(a)*(1+breath),base[1]+len*Math.sin(a)+breath*.5,base[2]-.14*u];
-  beam(parts,R,'body-feather','feather-'+(s<0?'left':'right')+'-'+i,base,tip,.14-.06*u,.035,mixHex(BONE.feather,BONE.gold,u),{em:.75,rough:.4,ref:[0,0,1]});
+  beam(parts,R,'round','feather-'+(s<0?'left':'right')+'-'+i,base,tip,.18-.08*u,.02,mixHex(BONE.feather,BONE.gold,u),{em:.75,rough:.4,ref:[0,0,1]});
  }
  // a halo above the head, a soft glow on the ground, and motes turning around her.
  ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});
