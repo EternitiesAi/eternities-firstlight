@@ -8083,7 +8083,7 @@ function handle(sim,type,p={}){
  if(type==='guard'){
   if(a.stamina<skills.guard.cost)return fail('Brace needs 20 stamina.');a.stamina-=20;t.guardUntil=now+3;t.cooldowns.guard=now+8;A.fx(sim,'guard',sim.state.player.x,sim.state.player.z,0xa8ced9);return yes('Braced · incoming damage halved for 3 seconds.');
  }
- if(type==='insight'){
+ if(type==='insight'){if(G.RealmNight?.briarAway(sim))return fail('Briar is gone.');
   if(!a.companion.bonded||a.companion.mode!=='follow'||r.companion.room!==sim.room)return fail('Briar must be following you.');
   const nearby=r.enemies.filter(e=>e.hp>0&&e.kind!=='practice'&&dist(sim.state.player,e)<13);
   if(!nearby.length)return fail('No foe nearby. Use Seek on the road to find buried scents.');
@@ -8534,7 +8534,7 @@ function retryWildSignsClearance(sim){
  r.wildSignsClearanceResult=result;notify(sim,result.text||result.error||result.warning||'Read the saved field account.');return result;
 }
 function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?[...CROSS.ENEMIES,...(G.RealmNight?.enemies(sim)||[])]:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
@@ -8593,10 +8593,10 @@ function advanceCompanionGuide(sim,c,dt,o){
 }
 function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[]};return sim.adventureRuntime;}
 function notify(sim,text){let r=runtime(sim);r.notices.push(text);if(r.notices.length>20)r.notices.shift();}
-function syncScene(sim){let r=runtime(sim);if(r.companion.guide&&r.companion.room!==sim.room)clearCompanionGuide(r.companion,'Following');const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const generic=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim)+'|'+CC.signature(sim)+'|'+EH.signature(sim)+'|'+TR.signature(sim),trail=generic+wildSignsSignature(sim),scope=wildSignsScope(sim),priorScope=wildSignsScopes.get(r),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.genericTrailSignature===generic){if(r.trailSignature!==trail||!sameWildScope(priorScope,scope)&&!!(priorScope||scope)){r.trailSignature=trail;reconcileWildSigns(sim,r,scope,generic);}for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.genericTrailSignature=generic;wildSignsScopes.set(r,scope);r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>wildSignsEntry(e)?bindWildSigns(sim,({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}}),generic):prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
+function syncScene(sim){let r=runtime(sim);if(r.companion.guide&&r.companion.room!==sim.room)clearCompanionGuide(r.companion,'Following');const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const generic=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim)+'|'+CC.signature(sim)+'|'+EH.signature(sim)+'|'+TR.signature(sim)+'|'+(G.RealmNight?.signature(sim)||''),trail=generic+wildSignsSignature(sim),scope=wildSignsScope(sim),priorScope=wildSignsScopes.get(r),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.genericTrailSignature===generic){if(r.trailSignature!==trail||!sameWildScope(priorScope,scope)&&!!(priorScope||scope)){r.trailSignature=trail;reconcileWildSigns(sim,r,scope,generic);}for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.genericTrailSignature=generic;wildSignsScopes.set(r,scope);r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>wildSignsEntry(e)?bindWildSigns(sim,({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}}),generic):prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
 function fx(sim,kind,x,z,color=0xf2c891){let r=runtime(sim);r.fx.push({kind,x,z,color,at:sim.state.adventure.elapsed});if(r.fx.length>48)r.fx.shift();}
 function awardXP(sim,n){let s=sim.state.adventure,l=level(s);s.xp=Math.min(9999,s.xp+n);if(level(s)>l){s.hp=Math.min(stats(s).maxHP,s.hp+10*(level(s)-l));notify(sim,'Level '+level(s)+' · Your journey is changing you.');sim.event('adventure','You reached level '+level(s)+'.');}}
-function damageEnemy(sim,e,n,source='other',contact=null,weight='light'){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n,e.boss?'boss':weight);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}return true;}
+function damageEnemy(sim,e,n,source='other',contact=null,weight='light'){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n,e.boss?'boss':weight);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&e.nightClaim){G.RealmNight.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}return true;}
 function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;const dealt=T.mitigate(sim,T.armour(n,stats(s).defense));s.hp=Math.max(0,s.hp-dealt);r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(dealt>0)T.hurt(sim,dealt,n>=20);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
 function diggableFrom(s,p,gx,gz){return validCell(gx,gz)&&!isFloor(s,gx,gz)&&dist(p,cellPoint(gx,gz))<=REACH&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dz])=>isFloor(s,gx+dx,gz+dz)&&dist(p,cellPoint(gx+dx,gz+dz))<2.2);}
 function nearbyWall(s,p){let best=null,c=cellAt(p.x,p.z);for(let x=c.gx-2;x<=c.gx+2;x++)for(let z=c.gz-2;z<=c.gz+2;z++)if(diggableFrom(s,p,x,z)){let q=cellPoint(x,z),d=dist(p,q);if(!best||d<best.d)best={gx:x,gz:z,d,...q};}return best;}
@@ -8689,7 +8689,7 @@ function command(sim,id,type,payload={}){
   if(sim.room!=='road'||dist(p,ROAD.BEACON)>3||s.road.beaconLit||!ROAD.ENEMIES.every(e=>s.defeated.includes(e.id)))return fail('Clear the three road encounters and approach the northern beacon.');s.road.beaconLit=true;awardXP(sim,20);sim.event('quest','The Sunward Beacon is alight. Return home after helping Tessa.');result=yes('The beacon answers. A light is visible through the trees.');break;
  case'road-report':
   if(!surfaceNear(sim,{x:0,z:3},4)||!s.road.beaconLit||!s.road.cartRepaired||s.road.reported)return fail('Repair the cart, light the beacon, then return to the envoy at the spring.');s.road.reported=true;if(!s.owned.includes('wayfarer_band'))s.owned.push('wayfarer_band');awardXP(sim,20);sim.event('quest','You brought the road’s light home. The envoy gave you the Band of the returning light.');result=yes('Chapter II complete · A wayfarer’s band and a light at the Commons.');break;
- default:result=EG.handle(sim,type,payload)||EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
+ default:result=EG.handle(sim,type,payload)||EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload)||G.RealmNight?.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
  }
  s.revision++;s.receipts.push({id,fp,ok:true});if(s.receipts.length>100)s.receipts.shift();return result;
 }
@@ -8741,7 +8741,7 @@ function tick(sim,dt){
    }continue;
   }
   if(e.mode==='recover'){if(e.timer<=0)e.mode='idle';continue;}
-  if((sim.room==='crossing'&&p.z> -1)||(sim.room===Q.ROOM&&p.z>7)){e.mode='return';if(dist(e,e.home)>.4)followPath(sim,e,e.home,dt,1.65);continue;}
+  if(!e.nightClaim&&((sim.room==='crossing'&&p.z> -1)||(sim.room===Q.ROOM&&p.z>7))){e.mode='return';if(dist(e,e.home)>.4)followPath(sim,e,e.home,dt,1.65);continue;}
   // Anchored Earth patterns own their declared reach, including the narrow
   // eleven-unit lane. Lock while idle, before generic awareness or pursuit.
   if(EH.encounter(e)){e.path=[];if(canSee&&EH.lock(sim,e)){e.mode='windup';e.timer=e.windup;e.aim={x:p.x,z:p.z};e.contactHit=false;}else e.mode='idle';continue;}
@@ -8759,7 +8759,7 @@ function tick(sim,dt){
   if(G.RealmBriarOuting?.tick(sim,dt))return;
   const guide=c.guide?currentCompanionGuide(sim,c):null;if(c.guide&&!guide)clearCompanionGuide(c,'Guide cancelled · follow or use the map');
   if(sim.worldDive){c.path=[];c.status='Waiting on the quay';return;}
- if(!s.companion.bonded||s.companion.mode!=='follow'||s.hp<=0||c.room!==sim.room)return;
+ if(!s.companion.bonded||s.companion.mode!=='follow'||s.hp<=0||c.room!==sim.room||G.RealmNight?.holdsBriar(sim))return;
  if(!ground(sim,c.x,c.z)){Object.assign(c,safeNear(sim,p),{path:[],nextPath:0,status:'Recalled from blocked ground'});notify(sim,s.companion.name+' was recalled from blocked ground.');}
  if(sim.room==='crossing'&&CROSS.runtime(sim).seek)return;
   if(guide){advanceCompanionGuide(sim,c,dt,guide);return;}
@@ -10366,6 +10366,258 @@ function tick(sim,dt){
 const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
 G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
+</script><script>/* Act III, the night the warning failed. state.night is this lane's optional owner: who is across the bridge, whether
+ * the severing device is found and broken, and whether the envoy has spoken at the spring. The story beats stay with
+ * the saga (mark 'night', briarTaken). Every spoken or journal line sits in SCENE_LINES, one table per scene. */
+(function(G){'use strict';
+const VERSION=1,REACH=2.6,CLAIM_NEAR=4.6,CALL_RANGE=7,DEVICE_CLEAR=6,FOLLOW_SPEED=2.8,DRIVE_SPEED=4.2,BITE_SECONDS=2.6,ARRIVE_SECONDS=3,
+ HOME_FAR=12,HOUR_MIN=22.4,HOUR_MAX=23.3,HOUR_RATE=.9,CLAIM_HP=64,CLAIM_DAMAGE=9,CLAIM_XP=14,SPRING_NEAR=10,ENVOY_TALK=4.5;
+const C=()=>G.RealmCore||(typeof require==='function'?require('./core.js'):null);
+const A=()=>G.RealmAdventure||(typeof require==='function'?require('./adventure.js'):null);
+const SG=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const own=Object.hasOwn,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z),fail=error=>({ok:false,error}),yes=(text,extra)=>({ok:true,text,...extra});
+const fill=(s,v)=>s.replace(/\{(\w+)\}/g,(_,k)=>v[k]??'');
+const DEVICE=Object.freeze({x:16.4,z:18}),SPRING=Object.freeze({x:0,z:3}),ENVOY=Object.freeze({x:-2.3,z:4.7}),ENVOY_FROM=Object.freeze({x:7.2,z:-3.4}),SAFE=Object.freeze({x:6.5,z:21.5,r:3.2});
+const TRAVELLERS=Object.freeze([
+ {id:'tessa',name:'Tessa',group:'a',spot:{x:19,z:21},color:'#c99a68'},
+ {id:'hob',name:'Hob',group:'a',spot:{x:19.6,z:22.9},color:'#86966a'},
+ {id:'marl',name:'Marl',group:'b',spot:{x:18.5,z:23.9},color:'#7f93a8'},
+ {id:'ennis',name:'Ennis',group:'b',spot:{x:19.5,z:25.2},color:'#b48a8a'},
+ {id:'pip',name:'Pip',group:'c',spot:{x:18.4,z:20.3},color:'#a7ad72'}
+]);
+const GROUPS=Object.freeze({a:Object.freeze(['tessa','hob']),b:Object.freeze(['marl','ennis']),c:Object.freeze(['pip'])});
+const GROUP_NAME=Object.freeze({a:'Tessa and Hob',b:'Marl and Ennis',c:'Pip'});
+// Road claimants: ordinary enemies made for the night. Two guard the device, one stands at the bridge's near end.
+const CLAIMS=Object.freeze([{id:'claim-1',x:19.8,z:12.6},{id:'claim-2',x:19.8,z:15.4},{id:'claim-3',x:15,z:18.6},{id:'claim-4',x:17.6,z:17.2},{id:'claim-5',x:11.2,z:17.2},{id:'claim-6',x:9.4,z:22.6}]);
+const IDS=Object.freeze(TRAVELLERS.map(t=>t.id));
+// Every spoken and journal line of the night. One table per scene; a story script can replace a scene by its key.
+const SCENE_LINES=Object.freeze({
+ begin:{journal:'Night has come down wrong over the crossing.',lines:[{speaker:'Tessa',text:'The sky went red all at once. Five of us are on this side, and the bridge is the only way over.'}]},
+ 'found-briar':{journal:'Briar found the severing device on the bridge.',lines:[{speaker:null,text:'Briar stops at the bridge rail and does not move.'}]},
+ 'found-tessa':{journal:'Tessa noticed the severing device on the bridge.',lines:[{speaker:'Tessa',text:'There is something on the bridge. It was not there before dark.'}]},
+ safe:{journal:'{name} is across the bridge.',lines:[]},
+ call:{journal:'{names} will follow you.',lines:[]},
+ 'broken-briar':{journal:'Briar bit through the severing device. The counterfeit road pulled her under.',lines:[{speaker:null,text:'The ash on the bridge closes over the place where she was. Nothing is left but the smell of iron.'}]},
+ 'broken-you':{journal:'The severing device broke in your hands. The bridge went quiet.',lines:[{speaker:'Tessa',text:'It is quiet now. I do not like how quiet it is.'}]},
+ tracker:{
+  lead:{title:'Lead the travellers out',detail:'Walk to a group and call them. The road claimants slow them down, so clear the way ahead.'},
+  briarRun:{title:'The severing device',detail:'Briar is running ahead to the bridge. Keep up.'},
+  briarHold:{title:'The severing device',detail:'Briar is holding the bridge. Clear the road claimants around the device and reach it.'},
+  tessa:{title:'The severing device',detail:'Tessa saw it first. Clear the road claimants around the device and reach it.'},
+  plain:{title:'The severing device',detail:'Clear the road claimants around the device and reach it.'},
+  quiet:{title:'The bridge is quiet.',briarDetail:'Briar is gone. The road let go of the bridge.',plainDetail:'The road let go of the bridge.'},
+  home:{title:'Go home.',briarDetail:'Her bowl is still beside the shared house door.',plainDetail:'The envoy is waiting at the spring.'}
+ },
+ envoy:{
+  journal:'The envoy spoke to you at the spring.',
+  briar:[
+   {speaker:'The envoy',text:'You brought them across. I watched it from the spring, and I could not step onto the road to help you.'},
+   {speaker:'The envoy',text:'I did not come here to make a bargain, and I will not make one tonight.'},
+   {speaker:'The envoy',text:'I will help you find her. Nothing the road takes is only gone. It is only somewhere we have not looked yet.'},
+   {speaker:'The envoy',text:'Go home. Her bowl is still beside the door, and the valley should see you walk in.'}
+  ],
+  plain:[
+   {speaker:'The envoy',text:'You brought them across. I watched it from the spring, and I could not step onto the road to help you.'},
+   {speaker:'The envoy',text:'I did not come here to make a bargain, and I will not make one tonight.'},
+   {speaker:'The envoy',text:'The road will try again. Keep the people you saved close, and I will help you watch it.'},
+   {speaker:'The envoy',text:'Go home. The valley should see you walk in.'}
+  ]
+ }
+});
+function fresh(){return{version:VERSION,started:false,safe:[],device:'hidden',envoy:false};}
+function validate(raw,world){
+ const no=f=>{throw Error('Invalid night: '+f);},isObj=o=>!!o&&typeof o==='object'&&!Array.isArray(o);
+ if(!isObj(raw)||Object.keys(raw).length!==5||!['version','started','safe','device','envoy'].every(k=>own(raw,k)))no('shape');
+ if(raw.version!==VERSION)no('version');
+ if(typeof raw.started!=='boolean'||typeof raw.envoy!=='boolean')no('flags');
+ if(!Array.isArray(raw.safe)||new Set(raw.safe).size!==raw.safe.length||raw.safe.some(id=>!IDS.includes(id)))no('safe');
+ if(!['hidden','found','broken'].includes(raw.device))no('device');
+ const s={version:VERSION,started:raw.started,safe:IDS.filter(id=>raw.safe.includes(id)),device:raw.device,envoy:raw.envoy};
+ if(!s.started&&(s.safe.length||s.device!=='hidden'||s.envoy))no('before the night');
+ if(s.device==='broken'&&s.safe.length!==IDS.length)no('device before the travellers');
+ if(s.envoy&&s.device!=='broken')no('envoy before the break');
+ if(world&&s.started&&world.adventure?.crossing?.complete!==true)no('night before bellweather');
+ return s;
+}
+// Old saves: a save already past the night (the saga marked it, or Briar is no longer with you) is whole, and nothing
+// earlier is invented. The envoy counts as spoken once the player has moved on to Hell or Heaven.
+function infer(world){
+ const s=fresh(),b=world?.saga;
+ if(b&&(own(b.beats||{},'night')||(b.briar?.state&&b.briar.state!=='with'))){
+  Object.assign(s,{started:true,safe:IDS.slice(),device:'broken',envoy:!!(world.hellCampaign?.accepted||world.heavenCampaign?.accepted)});
+ }
+ return s;
+}
+function stageOf(world){const n=world?.night;if(!n?.started)return'waiting';if(!own(world.saga?.beats||{},'night'))return'lit';return n.envoy?'over':'quiet';}
+function briarAway(sim){const s=sim?.state?.saga?.briar?.state;return s==='taken'||s==='nearshore';}
+function runtime(sim){if(!sim.nightRuntime)sim.nightRuntime={people:{},slain:[],drive:false,run:false,driveSet:false,bite:null,envoyT:0,envoyArrived:false};return sim.nightRuntime;}
+const travellerOf=id=>TRAVELLERS.find(t=>t.id===id);
+const safeSpot=i=>({x:SAFE.x+(i%2?.9:-.9),z:SAFE.z+(i<2?-.6:.8)});
+function ensurePeople(sim){const r=runtime(sim),n=sim.state.night;TRAVELLERS.forEach((t,i)=>{if(r.people[t.id])return;const at=n.safe.includes(t.id)?safeSpot(i):t.spot;r.people[t.id]={x:at.x,z:at.z,yaw:Math.PI,following:false,frozen:false,path:[],nextPath:0};});}
+function posOf(sim,id){const q=runtime(sim).people[id];return q?{x:q.x,z:q.z}:{x:travellerOf(id).spot.x,z:travellerOf(id).spot.z};}
+function claimants(sim){return(A()?.runtime(sim)?.enemies||[]).filter(v=>v.nightClaim&&v.hp>0);}
+function claimantsNear(sim,q,radius){return claimants(sim).some(v=>dist(v,q)<radius);}
+function breakBlock(sim){
+ const w=sim.state,n=w.night,p=w.player;
+ if(n.device==='broken')return'The device is already broken.';
+ if(n.device!=='found')return'The device is not found yet.';
+ if(n.safe.length<IDS.length)return'The last of them are still on the far bank.';
+ if(dist(p,DEVICE)>REACH)return'Reach the device first.';
+ if(claimantsNear(sim,DEVICE,DEVICE_CLEAR))return'Clear the road claimants around the device first.';
+ return null;
+}
+function groupAt(sim){
+ const w=sim.state,n=w.night;let best=null;
+ for(const g of Object.keys(GROUPS)){
+  const waiting=GROUPS[g].filter(id=>!n.safe.includes(id));
+  if(!waiting.length)continue;
+  const d=Math.min(...waiting.map(id=>dist(posOf(sim,id),w.player)));
+  if(d<=CALL_RANGE&&(!best||d<best.d))best={group:g,d};
+ }
+ return best?.group||null;
+}
+function found(sim,who){const key=who==='briar'?'found-briar':'found-tessa',text=SCENE_LINES[key].journal;sim.state.night.device='found';sim.event('night',text);A().notify(sim,text);}
+function begin(sim){
+ const w=sim.state,n=w.night,r=runtime(sim),bonded=w.adventure.companion.bonded===true;
+ n.started=true;r.people={};ensurePeople(sim);
+ r.driveSet=true;r.drive=bonded;r.run=bonded;
+ sim.event('night',SCENE_LINES.begin.journal);A().notify(sim,SCENE_LINES.begin.journal);
+ if(bonded)G.RealmBriarOuting?.cancel?.(sim,'The night has come down over the crossing.');
+}
+function breakDevice(sim,who){
+ const w=sim.state,n=w.night,r=runtime(sim),S=SG();
+ if(n.device==='broken')return fail('The device is already broken.');
+ const beat=S.mark(sim,'night');if(!beat.ok)return fail(beat.error);
+ n.device='broken';r.drive=false;r.run=false;r.bite={t:0,who};
+ if(who==='briar'){const taken=S.briarTaken(sim);if(!taken.ok)sim.event('night','Briar could not be taken: '+taken.error);}
+ const line=SCENE_LINES[who==='briar'?'broken-briar':'broken-you'];
+ sim.event('night',line.journal);A().notify(sim,line.journal);
+ return yes(line.journal,{lines:line.lines});
+}
+function call(sim,group){
+ const w=sim.state,n=w.night;
+ if(stageOf(w)!=='lit'||sim.room!=='crossing')return fail('Nothing needs calling from here.');
+ if(!own(GROUPS,group))return fail('Unknown group.');
+ ensurePeople(sim);
+ const waiting=GROUPS[group].filter(id=>!n.safe.includes(id));
+ if(!waiting.length)return fail('They are already across.');
+ if(Math.min(...waiting.map(id=>dist(posOf(sim,id),w.player)))>CALL_RANGE)return fail('Walk closer to them first.');
+ const r=runtime(sim);
+ for(const id of waiting){const q=r.people[id];q.following=true;q.path=[];q.nextPath=0;}
+ const text=fill(SCENE_LINES.call.journal,{names:waiting.map(id=>travellerOf(id).name).join(' and ')});
+ sim.event('night',text);return yes(text);
+}
+function breakByYou(sim){
+ const w=sim.state;
+ if(stageOf(w)!=='lit'||sim.room!=='crossing')return fail('Nothing needs breaking here tonight.');
+ if(w.adventure.companion.bonded===true)return fail('Briar is the one who breaks it.');
+ const why=breakBlock(sim);if(why)return fail(why);
+ return breakDevice(sim,'you');
+}
+function envoy(sim){
+ const w=sim.state,n=w.night,r=runtime(sim);
+ if(stageOf(w)!=='quiet'||sim.room!==null)return fail('There is nothing to say at the spring tonight.');
+ if(!r.envoyArrived)return fail('The envoy has not come to the spring yet.');
+ if(dist(w.player,ENVOY)>ENVOY_TALK)return fail('Walk to the envoy at the spring.');
+ n.envoy=true;
+ const set=w.adventure.companion.bonded===true?SCENE_LINES.envoy.briar:SCENE_LINES.envoy.plain;
+ sim.event('night',SCENE_LINES.envoy.journal);
+ return yes(set[0].text,{lines:set});
+}
+// Briar runs to the device when the night begins, holds the bridge, and is the one who bites when the way is clear.
+function driveBriar(sim,dt){
+ const r=runtime(sim),n=sim.state.night,c=A()?.runtime(sim)?.companion;
+ if(!c||!r.drive||!r.run)return;
+ if(dist(c,DEVICE)<1.4){r.run=false;c.path=[];c.status='Holding the bridge';if(n.device==='hidden')found(sim,'briar');return;}
+ A().followPath(sim,c,DEVICE,dt,DRIVE_SPEED);c.status='Running ahead';
+}
+function moveTravellers(sim,dt){
+ const w=sim.state,n=w.night,r=runtime(sim),p=w.player,now=w.adventure.elapsed,K=C();
+ for(const t of TRAVELLERS){
+  const q=r.people[t.id];if(!q||n.safe.includes(t.id)||!q.following)continue;
+  q.frozen=claimantsNear(sim,q,CLAIM_NEAR);if(q.frozen)continue;
+  if(dist(q,p)<=1.7){q.path=[];continue;}
+  if(!q.path?.length||now>=q.nextPath){q.path=K.pathfind(q,p,sim.navRoom,false,.31)||[];q.nextPath=now+.6;}
+  sim.advance(q,q.path,dt,FOLLOW_SPEED);
+ }
+ for(const t of TRAVELLERS){
+  const q=r.people[t.id];if(!q||n.safe.includes(t.id)||!q.following||dist(q,SAFE)>SAFE.r)continue;
+  n.safe=IDS.filter(id=>id===t.id||n.safe.includes(id));
+  q.following=false;q.path=[];Object.assign(q,safeSpot(IDS.indexOf(t.id)));
+  const text=fill(SCENE_LINES.safe.journal,{name:t.name});sim.event('night',text);A().notify(sim,text);
+ }
+}
+function enemies(sim){
+ const r=runtime(sim);
+ if(sim.room!=='crossing'||stageOf(sim.state)!=='lit')return[];
+ return CLAIMS.filter(c=>!r.slain.includes(c.id)).map(c=>({...c,name:'Road claimant',kind:'claim',nightClaim:true,maxHP:CLAIM_HP,hp:CLAIM_HP,damage:CLAIM_DAMAGE,xp:CLAIM_XP,ore:0,coins:0}));
+}
+function defeat(sim,e){const r=runtime(sim),xp=e.xp||CLAIM_XP;if(!r.slain.includes(e.id))r.slain.push(e.id);A().awardXP(sim,xp);A().notify(sim,'Road claimant broken · +'+xp+' experience');}
+function signature(sim){return stageOf(sim.state)+'|'+sim.state.night.device+'|'+runtime(sim).slain.length;}
+function objective(sim){
+ const w=sim.state,n=w.night,bonded=w.adventure.companion.bonded===true,T=SCENE_LINES.tracker,st=stageOf(w);
+ if(st==='lit'){
+  if(n.safe.length<IDS.length)return{title:T.lead.title,detail:T.lead.detail,progress:n.safe.length+' / '+IDS.length+' across · Journal J'};
+  const pick=!bonded?(n.device==='found'?T.tessa:T.plain):n.device==='found'?T.briarHold:T.briarRun;
+  return{title:pick.title,detail:pick.detail,progress:'Journal J'};
+ }
+ if(st==='quiet'){
+  const far=dist(w.player,DEVICE)>HOME_FAR;
+  if(far)return{title:T.home.title,detail:bonded?T.home.briarDetail:T.home.plainDetail,progress:'Journal J'};
+  return{title:T.quiet.title,detail:bonded?T.quiet.briarDetail:T.quiet.plainDetail,progress:'Journal J'};
+ }
+ return null;
+}
+function envoyPos(sim){
+ const r=runtime(sim);
+ if(stageOf(sim.state)!=='quiet'||sim.room!==null||!(r.envoyT>0))return null;
+ const f=Math.min(1,r.envoyT/ARRIVE_SECONDS),e=f*f*(3-2*f);
+ return{x:ENVOY_FROM.x+(ENVOY.x-ENVOY_FROM.x)*e,z:ENVOY_FROM.z+(ENVOY.z-ENVOY_FROM.z)*e,arrived:r.envoyArrived};
+}
+function travellerState(sim,id){ensurePeople(sim);return runtime(sim).people[id];}
+function handle(sim,type,p={}){
+ if(typeof type!=='string'||!type.startsWith('night-'))return null;
+ switch(type){
+  case'night-call':return call(sim,p.group);
+  case'night-break':return breakByYou(sim);
+  case'night-envoy':return envoy(sim);
+  default:return fail('Unknown night action.');
+ }
+}
+function tick(sim,dt){
+ const w=sim.state,n=w?.night,a=w?.adventure;
+ if(!n||!a||!Number.isFinite(dt)||dt<=0)return;
+ const r=runtime(sim),p=w.player,beat=own(w.saga?.beats||{},'night');
+ // the night begins on a new visit, not in the one that rang the bell: the reward and the inn stay as they were.
+ const entered=sim.room==='crossing'&&r.lastRoom!=='crossing';r.lastRoom=sim.room;
+ if(entered&&!n.started&&a.crossing?.complete===true&&!beat&&!sim.worldDive&&a.hp>0)begin(sim);
+ const st=stageOf(w),bonded=a.companion.bonded===true;
+ if(st==='lit'||st==='quiet'){const want=Math.min(HOUR_MAX,Math.max(HOUR_MIN,w.hour)),d=want-w.hour;w.hour+=Math.max(-dt*HOUR_RATE,Math.min(dt*HOUR_RATE,d));}
+ const c=A()?.runtime(sim)?.companion;
+ if(c){
+  if(briarAway(sim)){if(c.room!=='away')Object.assign(c,{room:'away',path:[],nextPath:0,seek:null,guide:null,status:'Gone'});}
+  else if(c.room==='away')Object.assign(c,{room:sim.room,path:[],nextPath:0,x:p.x,z:p.z,status:'Beside you'});
+ }
+ if(r.bite){r.bite.t+=dt;if(r.bite.t<BITE_SECONDS)sim.playerPath=[];}
+ if(st==='lit'&&sim.room==='crossing'&&a.hp>0){
+  ensurePeople(sim);
+  if(bonded&&!r.driveSet&&n.device!=='broken'){r.driveSet=true;r.drive=true;r.run=true;}
+  driveBriar(sim,dt);
+  moveTravellers(sim,dt);
+  if(!bonded&&n.device==='hidden'&&n.safe.includes('tessa'))found(sim,'tessa');
+  if(bonded&&n.device==='found'&&!breakBlock(sim))breakDevice(sim,'briar');
+ }
+ if(st==='quiet'&&sim.room===null&&a.hp>0&&!r.envoyArrived&&dist(p,SPRING)<SPRING_NEAR){
+  r.envoyT=Math.min(ARRIVE_SECONDS,r.envoyT+dt);
+  if(r.envoyT>=ARRIVE_SECONDS)r.envoyArrived=true;
+ }
+}
+const api=Object.freeze({VERSION,REACH,ENVOY_TALK,TRAVELLERS,GROUPS,GROUP_NAME,CLAIMS,DEVICE,SPRING,ENVOY,SAFE,SCENE_LINES,
+ fresh,validate,infer,stage:stageOf,briarAway,runtime,holdsBriar:sim=>runtime(sim).drive===true,
+ holdsPlayer:sim=>{const b=runtime(sim).bite;return!!b&&b.t<BITE_SECONDS;},
+ envoyHidden:sim=>stageOf(sim.state)==='quiet',envoyPos,travellerState,enemies,signature,defeat,breakBlock,groupAt,objective,handle,tick});
+G.RealmNight=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Local, synthetic village simulation. Not a resident mind, account server,
  * or secure authority. All long-lived data is explicit, bounded and exportable. */
 (function(G){'use strict';
@@ -10389,6 +10641,7 @@ const WS=G.RealmEarthWildSignsData||(typeof require==='function'?require('./eart
 if(!WS||typeof WS.fresh!=='function'||typeof WS.crossValidate!=='function')throw Error('Load canonical Earth wild-signs data before Core.');
 const BM=G.RealmBriarMoments||(typeof require==='function'?require('./briar-moments.js'):null);
 const SG=G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
+const NT=G.RealmNight||(typeof require==='function'?require('./night.js'):null);
 const VERSION=9,KEY='eternities.realm10.save.v9',LEGACY_KEY='eternities.realm09.save.v8',TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),finite=Number.isFinite,clone=o=>JSON.parse(JSON.stringify(o));
 const LANDMARKS=[
 {id:'commons',name:'The Firstlight Commons',short:'Commons',x:0,z:3,kind:'gather',action:'Sit by the spring',description:'A meeting place beneath the golden tree. There is room to linger without producing anything.'},
@@ -10499,8 +10752,8 @@ function validateCameraViews(raw){
  }
  return out;
 }
-function fresh(){return{saga:SG.fresh(),briarMoments:BM.fresh(),earthWildSigns:WS.fresh(),earthHomecoming:EH.fresh(),cosmosCampaign:CC.fresh(),atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
-function validate(raw){const briarSource=raw;if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.briarMoments=BM.fromWorld(briarSource,s);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife,s.earthExpedition);if('earthWildSigns' in raw&&!Object.hasOwn(raw,'earthWildSigns'))no('inherited wild-signs owner');if(Object.hasOwn(raw,'earthWildSigns')){if(raw.earthWildSigns===undefined)no('undefined wild-signs owner');s.earthWildSigns=WS.crossValidate(raw.earthWildSigns,s);}else s.earthWildSigns=WS.fresh();s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;if('saga' in raw&&!Object.hasOwn(raw,'saga'))no('inherited saga owner');if(Object.hasOwn(raw,'saga')){if(raw.saga===undefined)no('undefined saga owner');s.saga=SG.validate(raw.saga,s);}else s.saga=SG.infer(s);return s;}
+function fresh(){return{saga:SG.fresh(),night:NT.fresh(),briarMoments:BM.fresh(),earthWildSigns:WS.fresh(),earthHomecoming:EH.fresh(),cosmosCampaign:CC.fresh(),atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
+function validate(raw){const briarSource=raw;if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.briarMoments=BM.fromWorld(briarSource,s);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife,s.earthExpedition);if('earthWildSigns' in raw&&!Object.hasOwn(raw,'earthWildSigns'))no('inherited wild-signs owner');if(Object.hasOwn(raw,'earthWildSigns')){if(raw.earthWildSigns===undefined)no('undefined wild-signs owner');s.earthWildSigns=WS.crossValidate(raw.earthWildSigns,s);}else s.earthWildSigns=WS.fresh();s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;if('saga' in raw&&!Object.hasOwn(raw,'saga'))no('inherited saga owner');if(Object.hasOwn(raw,'saga')){if(raw.saga===undefined)no('undefined saga owner');s.saga=SG.validate(raw.saga,s);}else s.saga=SG.infer(s);if('night' in raw&&!Object.hasOwn(raw,'night'))no('inherited night owner');if(Object.hasOwn(raw,'night')){if(raw.night===undefined)no('undefined night owner');s.night=NT.validate(raw.night,s);}else s.night=NT.infer(s);return s;}
 function load(storage){try{let data=storage.getItem(KEY),legacy=false;if(!data){data=storage.getItem(LEGACY_KEY);legacy=!!data;}if(!data){data=storage.getItem('eternities.realm08.save.v7');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm07.save.v6');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm06.save.v5');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm05.save.v4');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm03.save.v3');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm02.save.v2');legacy=!!data;}if(!data)return{state:fresh(),status:'new'};return{state:validate(JSON.parse(data)),status:legacy?'migrated':'loaded'};}catch(e){return{state:fresh(),status:'unavailable-or-corrupt',preserveExisting:true,error:String(e.message)};}}
 class Simulation{
  constructor(state=fresh(),{hydrated=false}={}){
@@ -10515,10 +10768,10 @@ class Simulation{
  get navRoom(){if(W.handles(this.room))return{id:this.room};if(this.room===N.ROOM)return{id:N.ROOM};if(this.room===E.ROOM)return{id:E.ROOM};if(this.room==='riverbank')return{id:'riverbank'};if(this.room==='crossing')return{id:'crossing'};if(this.room==='range')return{id:'range'};if(this.room==='road')return{id:'road',adventure:this.state.adventure};if(this.room==='mine')return{id:'mine',adventure:this.state.adventure};return this.room==='retreat'?{id:'retreat',layout:this.state.retreat}:this.room||{id:'outdoors',sandbox:this.state.sandbox};}
  event(kind,text){let s=this.state;if(s.nextEvent>=Number.MAX_SAFE_INTEGER-1)return;s.journal.push({seq:s.nextEvent++,day:s.day,hour:s.hour,kind,text:text.slice(0,350)});if(s.journal.length>200)s.journal.shift();}
  snapshot(){let s=clone(this.state);if(this.room&&this.returnPos)s.player={...this.returnPos};return validate(s);}
- moveTo(x,z){if(this.worldDive)return{ok:false,error:'Use movement and depth controls inside the gallery.'};if(this.state.adventure.hp<=0)return{ok:false,error:'Return to the spring first.'};let p=pathfind(this.state.player,{x,z},this.navRoom);if(!p)return{ok:false,error:'There is no walkable path to that point.'};this.playerPath=p;return{ok:true,waypoints:p.length};}
- manual(dx,dz,dt){if(this.state.adventure.hp<=0)return;if(!finite(dx)||!finite(dz)||!finite(dt))return;this.playerPath=[];let p=this.state.player,l=Math.hypot(dx,dz);if(!l)return;let step=Math.min(dt,.1)*3.2;dx=dx/l*step;dz=dz/l*step;let nx=p.x+dx,nz=p.z+dz,can=(x,z)=>W.handles(this.room)?W.segment(this.room,p,{x,z}):this.room===N.ROOM?N.segment(p,{x,z}):this.room===E.ROOM?E.segment(p,{x,z}):walkable(x,z,this.navRoom);if(can(nx,nz)){p.x=nx;p.z=nz;}else if(can(nx,p.z))p.x=nx;else if(can(p.x,nz))p.z=nz;p.yaw=Math.atan2(dx,dz);}
+ moveTo(x,z){if(this.worldDive)return{ok:false,error:'Use movement and depth controls inside the gallery.'};if(NT.holdsPlayer(this))return{ok:false,error:'Hold still a moment.'};if(this.state.adventure.hp<=0)return{ok:false,error:'Return to the spring first.'};let p=pathfind(this.state.player,{x,z},this.navRoom);if(!p)return{ok:false,error:'There is no walkable path to that point.'};this.playerPath=p;return{ok:true,waypoints:p.length};}
+ manual(dx,dz,dt){if(this.state.adventure.hp<=0)return;if(NT.holdsPlayer(this))return;if(!finite(dx)||!finite(dz)||!finite(dt))return;this.playerPath=[];let p=this.state.player,l=Math.hypot(dx,dz);if(!l)return;let step=Math.min(dt,.1)*3.2;dx=dx/l*step;dz=dz/l*step;let nx=p.x+dx,nz=p.z+dz,can=(x,z)=>W.handles(this.room)?W.segment(this.room,p,{x,z}):this.room===N.ROOM?N.segment(p,{x,z}):this.room===E.ROOM?E.segment(p,{x,z}):walkable(x,z,this.navRoom);if(can(nx,nz)){p.x=nx;p.z=nz;}else if(can(nx,p.z))p.x=nx;else if(can(p.x,nz))p.z=nz;p.yaw=Math.atan2(dx,dz);}
  advance(p,path,dt,speed){if(!path.length)return false;let q=path[0],dx=q.x-p.x,dz=q.z-p.z,l=Math.hypot(dx,dz),step=Math.min(l,dt*speed);if(l>.001){p.x+=dx/l*step;p.z+=dz/l*step;p.yaw=Math.atan2(dx,dz);}if(l<=dt*speed+.001)path.shift();return l>.01;}
- tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);SG.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
+ tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);NT.tick(this,dt);A.tick(this,dt);SG.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
  setTime(h){if(!finite(h)||h<0||h>=24)return false;this.state.hour=h;return true;}
  enter(id){let l=LANDMARKS.find(l=>l.id===id);if(this.room||!l||l.kind!=='interior')return{ok:false,error:'That place has no accessible interior.'};if(Math.hypot(this.state.player.x-l.x,this.state.player.z-l.z)>3.4)return{ok:false,error:'Walk to the door first.'};this.returnPos={...this.state.player};this.room=id;this.state.player={x:0,z:3.5,yaw:Math.PI};this.playerPath=[];this.event('visit','You entered '+l.name+'.');return{ok:true};}
  leave(){if(!this.room)return{ok:false};if((this.room===CC.definition.room||this.room===EH.definition.room)&&this.adventureRuntime){this.adventureRuntime.room=undefined;this.adventureRuntime.enemies=[];this.adventureRuntime.trailSignature=undefined;this.adventureRuntime.arrows=[];}delete this.earthHomecomingRuntime;delete this.cosmosCampaignRuntime;delete this.atlantisCampaignRuntime;delete this.heavenCampaignRuntime;delete this.cosmosTrip;delete this.earthTrip;delete this.worldTrip;delete this.worldDive;this.state.player={...this.returnPos};this.room=null;this.returnPos=null;this.playerPath=[];return{ok:true};}
@@ -11881,7 +12134,7 @@ class WorldArt{
  if(this.room==='mine')this.e.torch=[p.x,2.6,p.z];
  if(G.RealmSandboxArt)G.RealmSandboxArt.draw(out,sim,t);
  if(G.RealmBeaconArt)G.RealmBeaconArt.draw(out,sim,t,this);
- if(G.RealmCrossingArt)G.RealmCrossingArt.draw(out,sim,t,this);if(G.RealmFeatherSight)G.RealmFeatherSight.draw(out,sim,t,this);
+ if(G.RealmCrossingArt)G.RealmCrossingArt.draw(out,sim,t,this);if(G.RealmFeatherSight)G.RealmFeatherSight.draw(out,sim,t,this);if(G.RealmNightArt)G.RealmNightArt.draw(out,sim,t,this);
  if(this.dynamicTimber)this.dynamicTimber.items=out['timber-panel'];this.dynamicRound.items=out.round;
  sim.grazerSubmission=null;
  if(G.RealmEarthGrazerArt&&sim.grazerPresentation&&sim.grazerPresentationContext){
@@ -12706,7 +12959,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
   if(!bonded)add('octa',x,base+1.5,z,.17,.30,.17,0xf1d3a3,{em:.8});
  };
  if(s.companion.bonded){if(r.companion.room===sim.room)fox(r.companion.x,r.companion.z,r.companion.yaw,true);}else if(sim.room==='mine')fox(A.FOX.x,A.FOX.z,Math.PI*.4,false);
- if(!sim.room&&s.companion.bonded&&G.RealmBriarOuting){
+ if(!sim.room&&s.companion.bonded&&G.RealmBriarOuting&&!G.RealmNight?.briarAway(sim)){
   const d=G.RealmBriarOuting.definition,record=G.RealmBriarMoments.fromWorld(sim.state),view=typeof sim.briarContext==='function'?G.RealmBriarOuting.current(sim.briarContext()):null;
   const home=record.moments.includes(G.RealmBriarMoments.CLOTH_HOME),q=home?d.home:d.cloth;
   const extra=id=>({briarOutingPart:id,appearanceOnly:true,cameraSolid:false,cutaway:false});
@@ -12714,7 +12967,7 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
   if(home){const y=support(sim,d.rest.x,d.rest.z),x=d.rest.x+.7,z=d.rest.z;box(x,y+.0305,z,.34,.055,.34,0xa7aa94,extra('bowl'));add('disc',x,y+.0586,z,.235,.001,.235,0x546c68,extra('bowl-inner'));for(const sign of [-1,1]){box(x+sign*.1475,y+.063,z,.045,.035,.34,0xbec0a7,extra('bowl-rim-x'+sign));box(x,y+.063,z+sign*.1475,.25,.035,.045,0xbec0a7,extra('bowl-rim-z'+sign));}}
  }
  if(!sim.room&&s.road.reported){box(2.2,1.8,3,.55,1,.55,0x959a85);add('octa',2.2,2.65,3,.42,.85,.42,0xffd59e,{em:1.4});}
- if(!sim.room&&s.angelSeen){let x=-2.3,z=4.7;add('round',x,2.6,z,.57,1.8,.51,0xebe3c8);box(x,3.55,z,.35,.40,.34,0xe4c7a4);box(x,3.77,z-.02,.40,.16,.37,0xe9cf94);for(const sign of[-1,1])for(let j=0;j<7;j++)box(x+sign*(.4+j*.15),3.22+j*.11,z-.18-j*.025,.23,1.1-j*.065,.12,0xf4ecda,{r:[0,.1,-sign*(.4+j*.09)]});for(let i=0;i<22;i++){let a=i/22*TAU;box(x+Math.cos(a)*.39,4.15,z+Math.sin(a)*.39,.13,.045,.05,0xf3d8a2,{r:[0,-a,0],em:1});}for(let i=0;i<10;i++){let a=t*.45+i*2.4;add('octa',x+Math.cos(a)*1.15,1.7+(t*.25+i*.23)%2.6,z+Math.sin(a)*1.15,.065,.12,.065,i%2?0xf1dba8:0xe4c3d3,{em:1});}}
+ if(!sim.room&&s.angelSeen&&!G.RealmNight?.envoyHidden(sim)){let x=-2.3,z=4.7;add('round',x,2.6,z,.57,1.8,.51,0xebe3c8);box(x,3.55,z,.35,.40,.34,0xe4c7a4);box(x,3.77,z-.02,.40,.16,.37,0xe9cf94);for(const sign of[-1,1])for(let j=0;j<7;j++)box(x+sign*(.4+j*.15),3.22+j*.11,z-.18-j*.025,.23,1.1-j*.065,.12,0xf4ecda,{r:[0,.1,-sign*(.4+j*.09)]});for(let i=0;i<22;i++){let a=i/22*TAU;box(x+Math.cos(a)*.39,4.15,z+Math.sin(a)*.39,.13,.045,.05,0xf3d8a2,{r:[0,-a,0],em:1});}for(let i=0;i<10;i++){let a=t*.45+i*2.4;add('octa',x+Math.cos(a)*1.15,1.7+(t*.25+i*.23)%2.6,z+Math.sin(a)*1.15,.065,.12,.065,i%2?0xf1dba8:0xe4c3d3,{em:1});}}
  const mark=G.RealmClasses.runtime(sim).mark;if(mark){ring(mark.enemy.x,mark.enemy.z,.95,0xa8d68d,base+.08);add('octa',mark.enemy.x,base+2.8,mark.enemy.z,.18,.35,.18,0xa8d68d,{em:.6});}
  for(const f of r.fx){let u=(s.elapsed-f.at)/.65;if(u<0||u>1)continue;if(f.kind==='measured-cut'){const yaw=f.yaw||0,length=f.length||1,progress=sim.state.settings.reducedMotion?.65:Math.min(1,u*2.8),x=f.x+Math.sin(yaw)*length*.55,z=f.z+Math.cos(yaw)*length*.55;add('box',x,base+.82,z,.07,.10,length*Math.max(.2,progress),f.color,{r:[0,yaw,0],em:.45,masterworkPart:'measured-cut-stroke'});}else if(f.kind==='arcane-flare'){const q=sim.state.settings.reducedMotion?.8:.4+u*.8;ring(f.x,f.z,q,f.color,base+.09);for(let i=0;i<4;i++)add('octa',f.x+Math.sin(i*1.57)*q,base+.65,f.z+Math.cos(i*1.57)*q,.17,.8*(1-u),.17,f.color,{em:.8});}else if(['pulse','impact','dodge','heal','arcane-cast','quarry-mark'].includes(f.kind))ring(f.x,f.z,.3+u*(f.kind==='pulse'?3.6:1.6),f.color,base+.05);else for(let i=0;i<6;i++){let a=i*2.4;add('octa',f.x+Math.sin(a)*u*.85,base+.3+Math.sin(u*Math.PI)*.7,f.z+Math.cos(a)*u*.85,.12*(1-u),.18*(1-u),.11*(1-u),f.color,{em:.4});}}
 }
@@ -13716,7 +13969,7 @@ class RPGUI{
   d.addEventListener('input',e=>{if(this.expedition?.fieldcraft.input(e.target)||this.expedition?.carrier?.input(e.target))return;if(e.target.id==='bag-search'){this.search=e.target.value;this.paintBag();}});
   $('#tracked-open').onclick=()=>this.open(this.trackerSelection?.sim===this.sim&&['story','homestead'].includes(this.quest)?'journal':this.quest==='earth-gate'?'earth-gate':this.quest==='earth-tournament'?'earth-tournament':this.quest==='earth-masterwork'?'earth-masterwork':this.quest==='earth-homecoming'?'earth-homecoming':this.quest==='cosmos-campaign'?'cosmos-campaign':this.quest==='atlantis-campaign'?'atlantis-campaign':this.quest==='heaven-campaign'?'heaven-campaign':this.quest==='hell-campaign'?'hell-campaign':this.quest==='community'?'community':this.quest==='local-life'?'local-life':this.quest==='expedition'?'expedition':this.quest==='wild-signs'?'wild-signs':this.worlds.local()?'worlds':this.earth.notes.active()&&[null,G.RealmEarth.ROOM,'observatory'].includes(this.sim.room)?'earth-notes':this.sim.room===G.RealmEarth.ROOM&&this.state.earthStory.accepted?'earth-story':this.quest==='project'?'pursuit':'journal');$('#beacon-menu').onclick=()=>{if(B.runtime(this.sim).phase==='assault')this.run('beacon-repair');else this.open('beacon');};$('#target-framing').onclick=()=>{const r=this.api.frameFoe();if(!r.ok)this.api.toast(r.error);};$('#target-clear').onclick=()=>this.run('target-clear');$('#health-orb').onclick=()=>this.open('equipment');
   for(const el of hud.querySelectorAll('[data-skill]'))el.onclick=()=>this.skill(el.dataset.skill);
-  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.cosmosCampaign=new G.RealmCosmosCampaignUI.CosmosCampaignUI(this);this.earthHomecoming=new G.RealmEarthHomecomingUI.EarthHomecomingUI(this);this.gate=new G.RealmEarthGateUI.GateUI(this);this.masterwork=new G.RealmEarthMasterworkUI.MasterworkUI(this);this.tournament=new G.RealmEarthTournamentUI.TournamentUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);this.wildSigns=new G.RealmEarthWildSignsUI.WildSignsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
+  this.crossing=new G.RealmCrossingUI.CrossingUI(this);this.night=new G.RealmNightUI.NightUI(this);this.starter=new G.RealmStarterUI.StarterUI(this);this.pursuit=new G.RealmPursuitUI.PursuitUI(this);this.characters=new G.RealmCharactersUI.CharactersUI(this);this.classes=new G.RealmClassesUI.ClassesUI(this);this.cosmos=new G.RealmCosmosUI.CosmosUI(this);this.realmAtlas=new G.RealmVisualAtlas(this);this.gathering=new G.RealmGatheringUI.GatheringUI(this);this.earth=new G.RealmEarthUI.EarthUI(this);this.worlds=new G.RealmWorldFoundationsUI.WorldUI(this);this.trails=new G.RealmTrailsUI.TrailsUI(this);this.hellCampaign=new G.RealmHellCampaignUI.HellCampaignUI(this);this.heavenCampaign=new G.RealmHeavenCampaignUI.HeavenCampaignUI(this);this.cosmosCampaign=new G.RealmCosmosCampaignUI.CosmosCampaignUI(this);this.earthHomecoming=new G.RealmEarthHomecomingUI.EarthHomecomingUI(this);this.gate=new G.RealmEarthGateUI.GateUI(this);this.masterwork=new G.RealmEarthMasterworkUI.MasterworkUI(this);this.tournament=new G.RealmEarthTournamentUI.TournamentUI(this);this.atlantisCampaign=new G.RealmAtlantisCampaignUI.AtlantisCampaignUI(this);this.community=new G.RealmBridgeCommunityUI.BridgeCommunityUI(this);this.civic=new G.RealmLocalLifeUI.LocalLifeUI(this);this.expedition=new G.RealmEarthExpeditionUI.ExpeditionUI(this);this.wildSigns=new G.RealmEarthWildSignsUI.WildSignsUI(this);if(this.state.starter.accepted&&!this.state.starter.reward)this.quest='starter';if(this.sim.state.earthExpedition.story.accepted&&!this.sim.state.earthExpedition.story.claimed||this.sim.state.earthExpedition.patrol.active)this.quest='expedition';
  }
  get sim(){return this.api.sim();} get state(){return this.sim.state.adventure;}
  // A manual tracker selection belongs only to this live character body. It is
@@ -13830,7 +14083,7 @@ class RPGUI{
   if(this.earth.interact())return true;
   if(this.cosmos.interact())return true;
   if(this.starter.interact())return true;
-  if(this.crossing.interact())return true;
+  if(this.night.interact())return true;if(this.crossing.interact())return true;
   if(this.sim.room==='road'&&this.state.road.cartRepaired&&Math.hypot(this.sim.state.player.x+10,this.sim.state.player.z-12)<3){this.open('merchant');return true;}
   if(!B.near(this.sim)||!this.state.road.beaconLit||!this.state.road.cartRepaired)return false;
   const r=B.runtime(this.sim);
@@ -13840,7 +14093,7 @@ class RPGUI{
  }
  paint(){
   const realmPage=this.realmAtlas.page(this.tab);
-  const extra=this.gate.page(this.tab)||this.tournament.page(this.tab)||this.masterwork.page(this.tab)||this.earthHomecoming.page(this.tab)||this.cosmosCampaign.page(this.tab)||this.atlantisCampaign.page(this.tab)||this.heavenCampaign.page(this.tab)||this.hellCampaign.page(this.tab)||this.community.page(this.tab)||this.civic.page(this.tab)||this.expedition.page(this.tab)||this.wildSigns.page(this.tab)||this.worlds.page(this.tab)||(realmPage?{title:'Realms',html:realmPage}:null)||(this.tab==='gathering'?{title:'A Table After the Rain',html:this.gathering.page()}:null)||this.earth.page(this.tab)||this.cosmos.page(this.tab)||this.classes.page(this.tab)||this.characters.page(this.tab)||this.pursuit.page(this.tab)||this.starter.page(this.tab)||this.crossing.page(this.tab);
+  const extra=this.night.page(this.tab)||this.gate.page(this.tab)||this.tournament.page(this.tab)||this.masterwork.page(this.tab)||this.earthHomecoming.page(this.tab)||this.cosmosCampaign.page(this.tab)||this.atlantisCampaign.page(this.tab)||this.heavenCampaign.page(this.tab)||this.hellCampaign.page(this.tab)||this.community.page(this.tab)||this.civic.page(this.tab)||this.expedition.page(this.tab)||this.wildSigns.page(this.tab)||this.worlds.page(this.tab)||(realmPage?{title:'Realms',html:realmPage}:null)||(this.tab==='gathering'?{title:'A Table After the Rain',html:this.gathering.page()}:null)||this.earth.page(this.tab)||this.cosmos.page(this.tab)||this.classes.page(this.tab)||this.characters.page(this.tab)||this.pursuit.page(this.tab)||this.starter.page(this.tab)||this.crossing.page(this.tab);
   const titles={equipment:'Your character',bag:'Your belongings',companion:'Your companion',soul:'The paths within',craft:'The workbench',journal:'Your journal',beacon:'The Beacon Answers',more:'Life in Firstlight',merchant:'Tessa’s road shop',pursuit:'Field guide'};
   $('#rpg-heading').textContent=extra?.title||titles[this.tab]||'Firstlight';
   $('#rpg-tabs').innerHTML=[['equipment','Equipment'],['bag','Inventory'],['companion','Companion'],['soul','Soul'],['craft','Crafting'],['pursuit','Field guide'],['journal','Journal'],['atlas','Map'],['characters','Characters'],['classes','Path'],['realms','Realms'],['worlds','Roads'],['expedition','Living road'],['wild-signs','Field account']].map(([id,n])=>button(n,'open',id,false,'aria-current="'+(this.tab===id?'page':'false')+'"'+(id==='realms'?' data-tab="realms"':'')+(id==='wild-signs'&&!G.RealmEarthWildSignsData.eligible(this.sim.state)?' hidden':'' ))).join('');
@@ -14014,7 +14267,7 @@ class RPGUI{
   const bm=$('#beacon-menu');bm.textContent=b.phase==='assault'?'Repair ward · E · 20 stamina':'Speak with the envoy · E';bm.disabled=b.phase==='assault'&&(!B.near(sim)||b.ward>=100||b.time<b.playerRepairAt||a.stamina<20);
   sim.presentation=sim.presentation||{};sim.presentation.attackTarget=t.target||(this.api.adventure().intent?.kind==='attack'?this.api.adventure().intent.id:null);
   const lastHit=t.hits.at(-1);if(lastHit&&this.soundedHit!==lastHit){this.soundedHit=lastHit;if(a.elapsed-lastHit.at<.25)this.api.adventure().sound('confirmed-hit');}
-  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();this.atlantisCampaign.tick();this.cosmosCampaign.tick();this.earthHomecoming.tick();this.wildSigns.tick();this.masterwork?.tick();this.tournament?.tick();this.gate?.tick();this.completedTracker();
+  this.targetCue();this.numbers();this.worldHealth();this.crossing.tick();this.night.tick();this.starter.tick();this.pursuit.tick();this.cosmos.tick();this.earth.tick();this.gathering.tick();this.worlds.tick();this.trails.tick();this.expedition.tick();this.civic.tick();this.community.tick();this.hellCampaign.tick();this.heavenCampaign.tick();this.atlantisCampaign.tick();this.cosmosCampaign.tick();this.earthHomecoming.tick();this.wildSigns.tick();this.masterwork?.tick();this.tournament?.tick();this.gate?.tick();this.completedTracker();
  }
  worldHealth(){
   const root=$('#enemy-health');root.replaceChildren();if(!this.sim.presentation?.perspective||!A.combatScene(this.sim))return;
@@ -14190,6 +14443,107 @@ class CrossingUI{
  }
 }
 G.RealmCrossingUI={CrossingUI,mapCanvas,mapSVG,points,projection};})(globalThis);
+</script><script>/* Act III art: the ash-red crossing, the travellers, the severing device, the road claimants, Briar's empty bowl and the
+ * envoy. Story art from the story-art lane is used when it is loaded; otherwise these simple shapes are drawn. */
+(function(G){'use strict';const TAU=Math.PI*2;
+const SKY={top:0x3c1f25,fog:0x7d4a40,night:.86,power:.3,sunColor:0xd98a6c};
+function device(box,octa,x,y,z,yaw,t){
+ box(x,y+.05,z,.9,.1,.9,0x4b4f53);
+ box(x,y+.85,z,.2,1.55,.2,0x3c4044);
+ box(x,y+1.25,z,.8,.1,.1,0x4b4f53,{r:[0,yaw,0]});
+ box(x,y+1.25,z,.1,.1,.8,0x4b4f53,{r:[0,yaw,0]});
+ octa(x,y+1.7+Math.sin(t*3)*.05,z,.26,.26,.26,0xff7a3d,{em:1.6});
+ for(let i=0;i<4;i++){const a=yaw+i*Math.PI/2;octa(x+Math.sin(a)*.55,y+1.25,z+Math.cos(a)*.55,.12,.12,.12,0xd9602c,{em:1.1});}
+}
+function remnants(box,octa,x,y,z,t){
+ box(x,y+.03,z,1.1,.05,1.1,0x3a3331);
+ box(x+.3,y+.12,z-.2,.5,.2,.14,0x4b4f53,{r:[0,.6,.2]});
+ box(x-.35,y+.1,z+.25,.42,.16,.12,0x4b4f53,{r:[0,-.4,-.15]});
+ octa(x,y+.2+Math.sin(t*2)*.03,z,.12,.12,.12,0xff7a3d,{em:.8});
+}
+function bite(octa,x,y,z,b,t){
+ const k=Math.min(1,b.t/2.6);
+ for(let i=0;i<12;i++){const a=i*TAU/12+t*3,r=1.2*(1-k)+.3;octa(x+Math.sin(a)*r,y+.4+(i%3)*.5*k,z+Math.cos(a)*r,.1,.1,.1,i%2?0x5a4a48:0xff7a3d,{em:.7});}
+}
+function claimant(box,octa,e,t){
+ octa(e.x-.22,3.7,e.z+.9,.12,.12,.12,0xff8a4a,{em:1.4});
+ octa(e.x+.22,3.7,e.z+.9,.12,.12,.12,0xff8a4a,{em:1.4});
+ for(let i=0;i<6;i++){const a=i*TAU/6+t*.5;octa(e.x+Math.cos(a)*1.2,.6+Math.sin(t+i)*.2,e.z+Math.sin(a)*1.2,.25,.2,.25,0x6e5f5b,{rough:1});}
+}
+function emptyBowl(box,add,sim){
+ const d=G.RealmBriarOuting?.definition;if(!d)return;
+ const y=G.RealmAdventureArt?.supportHeight?G.RealmAdventureArt.supportHeight(sim,d.rest.x,d.rest.z):1.5,x=d.rest.x+.7,z=d.rest.z;
+ const o={briarOutingPart:'bowl-empty',appearanceOnly:true,cameraSolid:false,cutaway:false};
+ box(x,y+.0305,z,.34,.055,.34,0xa7aa94,o);
+ add('disc',x,y+.0586,z,.235,.001,.235,0x5d5a4c,{...o,briarOutingPart:'bowl-empty-inner'});
+ for(const s of[-1,1]){box(x+s*.1475,y+.063,z,.045,.035,.34,0xbec0a7,{...o,briarOutingPart:'bowl-empty-rim'});box(x,y+.063,z+s*.1475,.25,.035,.045,0xbec0a7,{...o,briarOutingPart:'bowl-empty-rim'});}
+}
+function envoy(box,octa,round,x,z,t){
+ const y=1.5;
+ round(x,y+1,z,.55,1.7,.5,0xe9e0c8);
+ round(x,y+2.25,z,.36,.4,.36,0xf2e6cf);
+ for(const s of[-1,1])for(let j=0;j<5;j++)octa(x+s*(.35+j*.12),y+2.2+j*.12,z-.2-j*.03,.18,.9-j*.1,.12,0xf4ecda,{em:.9,r:[0,0,-s*(.35+j*.08)]});
+ octa(x,y+2.85+Math.sin(t*1.6)*.05,z,.5,.14,.5,0xf3d8a2,{em:1.3});
+}
+function draw(out,sim,t,art){
+ const N=G.RealmNight,w=sim.state,n=w?.night,A=G.RealmAdventure;if(!N||!n||!A)return;
+ const st=N.stage(w),add=(k,x,y,z,sx,sy,sz,c,o={})=>out[k].push({p:[x,y,z],s:[sx,sy,sz],c,...o});
+ const box=(...v)=>add('box',...v),octa=(...v)=>add('octa',...v),round=(...v)=>add('round',...v),rt=N.runtime(sim);
+ if(!sim.room){
+  if(N.briarAway(sim)&&w.adventure.companion.bonded===true)emptyBowl(box,add,sim);
+  const e=N.envoyPos(sim);if(e)envoy(box,octa,round,e.x,e.z,t);
+  return;
+ }
+ if(sim.room!=='crossing')return;
+ const lit=st==='lit'||st==='quiet';
+ if(lit)art.e.worldAtmosphere=SKY;else if(art.e.worldAtmosphere===SKY)art.e.worldAtmosphere=null;
+ if(!lit)return;
+ for(const tr of N.TRAVELLERS){const q=N.travellerState(sim,tr.id);if(!q)continue;art.person(out,q.x,q.z,q.yaw,tr.color,t,!!q.following,'visitor',false,1.57);}
+ if(n.device==='found')device(box,octa,N.DEVICE.x,1.52,N.DEVICE.z,Math.PI/2,t);
+ if(n.device==='broken')remnants(box,octa,N.DEVICE.x,1.52,N.DEVICE.z,t);
+ if(rt.bite)bite(octa,N.DEVICE.x,1.52,N.DEVICE.z,rt.bite,t);
+ if(st==='lit')for(const e of A.runtime(sim).enemies)if(e.nightClaim&&e.hp>0)claimant(box,octa,e,t);
+}
+G.RealmNightArt={draw,SKY};if(typeof module!=='undefined')module.exports=G.RealmNightArt;
+})(globalThis);
+</script><script>/* Act III interface: the tracker's line through the night, Briar's skill while she is gone, the calls and the device prompt,
+ * and the envoy at the spring. No interface grants anything; every change goes through the adventure command. */
+(function(G){'use strict';const N=G.RealmNight,$=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
+class NightUI{
+ constructor(rpg){this.rpg=rpg;this.lines=null;}
+ get sim(){return this.rpg.sim;}
+ run(type,p={}){return this.rpg.run(type,p);}
+ prompt(){
+  const sim=this.sim,w=sim.state,st=N.stage(w),p=w.player;
+  if(sim.room==='crossing'&&st==='lit'){
+   if(!w.adventure.companion.bonded&&w.night.device==='found'&&!N.breakBlock(sim)&&dist(p,N.DEVICE)<=N.REACH)return{text:'E · Break the severing device',type:'night-break',payload:{}};
+   const g=N.groupAt(sim);if(g)return{text:'E · Call '+N.GROUP_NAME[g],type:'night-call',payload:{group:g}};
+  }
+  if(sim.room===null&&st==='quiet'){const e=N.envoyPos(sim);if(e&&e.arrived&&dist(p,N.ENVOY)<=N.ENVOY_TALK)return{text:'E · Speak with the envoy',type:'night-envoy',payload:{}};}
+  return null;
+ }
+ interact(){
+  const q=this.prompt();if(!q)return false;
+  const r=this.run(q.type,q.payload);
+  if(r.ok&&q.type==='night-envoy'){this.lines=r.lines;this.rpg.open('night');return true;}
+  this.rpg.api.toast(r.ok?r.text:r.error);this.rpg.tick();return true;
+ }
+ context(){const q=this.prompt();return q?q.text:null;}
+ page(tab){
+  if(tab!=='night'||!this.lines)return null;
+  return{title:'The envoy at the spring',html:'<div class="cross-service"><div class="cross-portrait keeper">✦</div><div><small>ACT III · THE NIGHT THE WARNING FAILED</small>'+this.lines.map(l=>'<p>'+(l.speaker?'<b>'+esc(l.speaker)+'</b> ':'')+esc(l.text)+'</p>').join('')+'</div></div>'};
+ }
+ tick(){
+  const sim=this.sim,w=sim.state;
+  if(N.briarAway(sim)){const el=$('#skill-insight');if(el){el.disabled=true;el.title='Briar is gone.';el.setAttribute('aria-label','Briar · Briar is gone.');}}
+  const o=N.objective(sim);
+  if(o&&this.rpg.quest==='story'){$('#tracked-chapter').textContent='ACT III · THE NIGHT THE WARNING FAILED';$('#tracked-title').textContent=o.title;$('#tracked-detail').textContent=o.detail;$('#tracked-progress').textContent=o.progress;}
+ }
+}
+G.RealmNightUI={NightUI};if(typeof module!=='undefined')module.exports=G.RealmNightUI;
+})(globalThis);
 </script><script>/* Read-only riverbank scenery. Enemy outcomes and positions come from shared rules. */
 (function(G){'use strict';const Q=G.RealmStarter;
 function make(a){a.begin(Q.ROOM);a.e.theme='riverbank';a.e.isInterior=false;a.e.ambientOverride=.50;const rng=G.RealmCore.rng(1212);
@@ -18074,7 +18428,7 @@ function mapRoad(canvas,full){
 function mapMine(canvas,full){let g=canvas.getContext('2d');if(!g)return;let w=canvas.width,h=canvas.height,scale=(full?Math.min(w,h):w)/36,ox=w/2,oy=h/2;g.fillStyle='#162d37';g.fillRect(0,0,w,h);let a=sim.state.adventure;for(let x=-7;x<=7;x++)for(let z=-7;z<=7;z++){g.fillStyle=RealmAdventure.isFloor(a,x,z)?'#788b79':RealmAdventure.mineral(x,z)?'#9a8068':'#334e57';g.fillRect(ox+(x*2-1)*scale,oy+(z*2-1)*scale,2*scale-1,2*scale-1);}for(let e of RealmAdventure.runtime(sim).enemies){if(e.hp<=0)continue;g.fillStyle='#dba59e';g.beginPath();g.arc(ox+e.x*scale,oy+e.z*scale,full?5:3,0,Math.PI*2);g.fill();}g.fillStyle='#f4d9a3';g.beginPath();g.arc(ox+sim.state.player.x*scale,oy+sim.state.player.z*scale,full?6:4,0,Math.PI*2);g.fill();}
 function mapToWorld(x,y){if(RealmWorldFoundations.handles(sim.room)){const p=RealmWorldFoundationsUI.projection(RealmWorldFoundations.definition(sim.room),innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmEarth.ROOM){const p=RealmEarthUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room===RealmCosmos.ROOM){const p=RealmCosmosUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='riverbank'){const p=RealmStarterUI.projection(innerWidth,innerHeight);return{x:(x-p.x)/p.scale,z:(y-p.y)/p.scale};}if(sim.room==='crossing'){let sc=Math.min(innerWidth,innerHeight)/68;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-1};}if(sim.room==='range'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}if(sim.room==='road'){let sc=Math.min(innerWidth,innerHeight)/65;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc-3};}if(sim.room==='mine'){let sc=Math.min(innerWidth,innerHeight)/36;return{x:(x-innerWidth/2)/sc,z:(y-innerHeight/2)/sc};}let w=innerWidth,h=innerHeight,sc=Math.min(w,h)/(sim.room?17:108);return{x:(x-w/2)/sc+(sim.room?0:10),z:(y-h*.53)/sc-(sim.room?0:10)};}$('#minimap').onclick=()=>rpg.open('atlas');
 
-function refreshUI(){let s=sim.state;$('#tour').setAttribute('aria-pressed',String(!!camera.tour));$('#time-display').textContent=formatHour(s.hour);$('#day-display').textContent='DAY '+String(s.day).padStart(2,'0')+' · '+(sim.paused?'PAUSED':s.weather==='rain'?'RAIN':s.hour>20||s.hour<6?'NIGHT':s.hour>16?'GOLDEN HOUR':'DAYLIGHT');$('#fps').textContent=engine?Math.round(fps)+' FPS · '+s.settings.quality.toUpperCase():'MAP VIEW';$('#discovery').textContent=s.visited.length+' / '+C.LANDMARKS.length+' PLACES DISCOVERED';let l=RealmWorldFoundations.handles(sim.room)?{short:RealmWorldFoundations.definition(sim.room).name,description:RealmWorldFoundations.definition(sim.room).description}:sim.room===RealmEarth.ROOM?{short:'Hearthwater Vale',description:'A lake road. Orchard lanes. Bellweather on the horizon.'}:sim.room===RealmCosmos.ROOM?{short:'The Near Expanse',description:'Three lamps. Two roads. An inhabited horizon.'}:sim.room==='riverbank'?{short:'Oren’s riverbank worksite',description:'A nearby path. Useful supplies. A reason to come home.'}:sim.room==='crossing'?{short:'Bellweather Crossing',description:'A village to meet. A silence to break. A road home.'}:sim.room==='range'?{short:'The Archery Court',description:'Take a breath. Find your distance. Let the arrow travel.'}:sim.room==='road'?{short:'The Sunward Road',description:'A traveller to help. A trail to follow. A light to bring home.'}:sim.room==='mine'?{short:'The Rootbound Underways',description:'Copper in the walls. A heartbeat beneath the roots.'}:sim.room?C.LANDMARKS.find(l=>l.id===sim.room):closest(),briarHint=RealmBriarOuting.prompt(briarContext()),sbContext=briarHint?.text||rpg?.gate.context()||rpg?.tournament.context()||rpg?.masterwork.context()||rpg?.worlds.context()||rpg?.earth.context()||rpg?.cosmos.context()||rpg?.starter.context()||rpg?.crossing.context()||(RealmBeacon.near(sim)&&sim.state.adventure.road.beaconLit?(RealmBeacon.runtime(sim).phase==='assault'?'Repair ward · E · 20 stamina':'The envoy at the beacon · E'):null)||adventure?.context()||sandbox?.context();$('#place-name').textContent=sim.room?l.short:sim.state.player.z<-29?'Wildwood Reach':'Firstlight Valley';$('#place-kicker').textContent=RealmWorldFoundations.handles(sim.room)?RealmWorldFoundations.definition(sim.room).kicker:sim.room===RealmEarth.ROOM?'EARTH · HEARTHWATER VALE · CONNECTED APPROACH':sim.room===RealmCosmos.ROOM?'COSMOS · THE MOON BENEATH THE ROAD':sim.room==='riverbank'?'CLOSE TO HOME · THE RIVERBANK':sim.room==='crossing'?'THE BELL ROAD · CHAPTER IV':sim.room==='range'?'THE PRACTICE COURT · A NEW DISCIPLINE':sim.room==='road'?(s.adventure.beacon.introduced?'THE BEACON ANSWERS · CHAPTER III':'BEYOND THE VALLEY · CHAPTER II'):sim.room==='mine'?'BENEATH WILDWOOD · CHAPTER I':sim.room?'A PRIVATE PLACE · LOCAL INTERIOR':'THE REALM · FIRST INHABITED DISTRICT';$('#place-description').textContent=sim.room?l.description:'Gather. Make. Grow. A new shore to call your own.';$('#context').style.display=(l||sbContext)&&!sandbox?.build?'flex':'none';let contextKey=sbContext?.match(/^([A-Z0-9]+) · /)?.[1]||'E';$('#context kbd').hidden=!!briarHint&&!briarHint.action;$('#context kbd').textContent=contextKey;$('#context-text').textContent=(sim.room===RealmEarth.ROOM||sim.room===RealmCosmos.ROOM)?sbContext?.replace(/^([A-Z0-9]+) · /,''):RealmAdventure.combatScene(sim)?sbContext?.replace(/^([A-Z0-9]+) · /,''):sim.room?(sbContext?.replace(/^([A-Z0-9]+) · /,'')||'Return to the valley'):sbContext|| (l?(l.id==='shore'?'Choose a pier activity':l.action):'');mapDraw($('#minimap'));renderStatus();}
+function refreshUI(){let s=sim.state;$('#tour').setAttribute('aria-pressed',String(!!camera.tour));$('#time-display').textContent=formatHour(s.hour);$('#day-display').textContent='DAY '+String(s.day).padStart(2,'0')+' · '+(sim.paused?'PAUSED':s.weather==='rain'?'RAIN':s.hour>20||s.hour<6?'NIGHT':s.hour>16?'GOLDEN HOUR':'DAYLIGHT');$('#fps').textContent=engine?Math.round(fps)+' FPS · '+s.settings.quality.toUpperCase():'MAP VIEW';$('#discovery').textContent=s.visited.length+' / '+C.LANDMARKS.length+' PLACES DISCOVERED';let l=RealmWorldFoundations.handles(sim.room)?{short:RealmWorldFoundations.definition(sim.room).name,description:RealmWorldFoundations.definition(sim.room).description}:sim.room===RealmEarth.ROOM?{short:'Hearthwater Vale',description:'A lake road. Orchard lanes. Bellweather on the horizon.'}:sim.room===RealmCosmos.ROOM?{short:'The Near Expanse',description:'Three lamps. Two roads. An inhabited horizon.'}:sim.room==='riverbank'?{short:'Oren’s riverbank worksite',description:'A nearby path. Useful supplies. A reason to come home.'}:sim.room==='crossing'?{short:'Bellweather Crossing',description:'A village to meet. A silence to break. A road home.'}:sim.room==='range'?{short:'The Archery Court',description:'Take a breath. Find your distance. Let the arrow travel.'}:sim.room==='road'?{short:'The Sunward Road',description:'A traveller to help. A trail to follow. A light to bring home.'}:sim.room==='mine'?{short:'The Rootbound Underways',description:'Copper in the walls. A heartbeat beneath the roots.'}:sim.room?C.LANDMARKS.find(l=>l.id===sim.room):closest(),briarHint=RealmBriarOuting.prompt(briarContext()),sbContext=briarHint?.text||rpg?.gate.context()||rpg?.tournament.context()||rpg?.masterwork.context()||rpg?.worlds.context()||rpg?.earth.context()||rpg?.cosmos.context()||rpg?.starter.context()||rpg?.night.context()||rpg?.crossing.context()||(RealmBeacon.near(sim)&&sim.state.adventure.road.beaconLit?(RealmBeacon.runtime(sim).phase==='assault'?'Repair ward · E · 20 stamina':'The envoy at the beacon · E'):null)||adventure?.context()||sandbox?.context();$('#place-name').textContent=sim.room?l.short:sim.state.player.z<-29?'Wildwood Reach':'Firstlight Valley';$('#place-kicker').textContent=RealmWorldFoundations.handles(sim.room)?RealmWorldFoundations.definition(sim.room).kicker:sim.room===RealmEarth.ROOM?'EARTH · HEARTHWATER VALE · CONNECTED APPROACH':sim.room===RealmCosmos.ROOM?'COSMOS · THE MOON BENEATH THE ROAD':sim.room==='riverbank'?'CLOSE TO HOME · THE RIVERBANK':sim.room==='crossing'?'THE BELL ROAD · CHAPTER IV':sim.room==='range'?'THE PRACTICE COURT · A NEW DISCIPLINE':sim.room==='road'?(s.adventure.beacon.introduced?'THE BEACON ANSWERS · CHAPTER III':'BEYOND THE VALLEY · CHAPTER II'):sim.room==='mine'?'BENEATH WILDWOOD · CHAPTER I':sim.room?'A PRIVATE PLACE · LOCAL INTERIOR':'THE REALM · FIRST INHABITED DISTRICT';$('#place-description').textContent=sim.room?l.description:'Gather. Make. Grow. A new shore to call your own.';$('#context').style.display=(l||sbContext)&&!sandbox?.build?'flex':'none';let contextKey=sbContext?.match(/^([A-Z0-9]+) · /)?.[1]||'E';$('#context kbd').hidden=!!briarHint&&!briarHint.action;$('#context kbd').textContent=contextKey;$('#context-text').textContent=(sim.room===RealmEarth.ROOM||sim.room===RealmCosmos.ROOM)?sbContext?.replace(/^([A-Z0-9]+) · /,''):RealmAdventure.combatScene(sim)?sbContext?.replace(/^([A-Z0-9]+) · /,''):sim.room?(sbContext?.replace(/^([A-Z0-9]+) · /,'')||'Return to the valley'):sbContext|| (l?(l.id==='shore'?'Choose a pier activity':l.action):'');mapDraw($('#minimap'));renderStatus();}
 function frame(now){let dt=lastFrame?Math.min((now-lastFrame)/1000,.1):.016;lastFrame=now;frames++;if(now-fpsStart>1500){fps=frames*1000/(now-fpsStart);frames=0;fpsStart=now;}if(!document.hidden){let dx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),dz=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);if(sim.worldDive&&!sim.paused){RealmWorldFoundations.swim(sim,dx*Math.cos(cameraHeading())+dz*Math.sin(cameraHeading()),-dx*Math.sin(cameraHeading())+dz*Math.cos(cameraHeading()),(keys.has('f')?1:0)-(keys.has('g')?1:0),dt);camera.overview=false;}else if((dx||dz)&&!sim.paused){sandbox?.stopAuto();adventure?.stopAuto();camera.tour=false;sim.manual(dx*Math.cos(cameraHeading())+dz*Math.sin(cameraHeading()),-dx*Math.sin(cameraHeading())+dz*Math.cos(cameraHeading()),dt);camera.overview=false;follow=null;target=null;sim.walking=true;}briarContext();bindWildSignsClearance();sim.tick(dt);tickRoadkeeper(dt);tickConsignment(dt);gates().tick(dt);tickGrazer(dt);if((dx||dz)&&!sim.paused)sim.walking=true;elapsed+=sim.paused?0:dt;if(!sim.playerPath.length)target=null;switchScene();updateCamera(dt);experience?.tick();sandbox?.tick();adventure?.tick();arsenal?.tick();rpg?.tick();fishing?.tick();if(engine){if(sim.room==='retreat'&&art.layoutRevision!==sim.state.retreat.revision)art.makeRetreat(sim.state.retreat);engine.reducedMotion=sim.state.settings.reducedMotion;syncBriarOwner();syncFieldcraftOwner();consignmentPresentation();grazerPresentation();prepareWildSignsDiagnostics();roadkeeperPresentation();prepareRoadkeeperDiagnostics();const rendering=engine;try{art.update(sim,elapsed,target);rendering.render(elapsed,sim.state.hour,sim.state.weather==='rain');}catch(e){if(!rendering.gl.isContextLost())throw e;graphicsContextLost();mapDraw(ui.map,true);}if(engine){acknowledgeOrdinaryGrazer(now);updateLabels();}}else mapDraw(ui.map,true);audio.tick(elapsed);if(now-lastUi>350){refreshUI();lastUi=now;}if(elapsed-lastSave>6){save();lastSave=elapsed;if(engine){roadkeeperPresentation();prepareRoadkeeperDiagnostics();}}}if(!G_CAPTURE)requestAnimationFrame(frame);}
 // Keep a read-only-ish diagnostics surface for inspection; this local prototype is not a security boundary.
 const G_CAPTURE=!!window.__ETERNITIES_CAPTURE_MODE;

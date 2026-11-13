@@ -82,7 +82,7 @@ function handle(sim,type,p={}){
  if(type==='guard'){
   if(a.stamina<skills.guard.cost)return fail('Brace needs 20 stamina.');a.stamina-=20;t.guardUntil=now+3;t.cooldowns.guard=now+8;A.fx(sim,'guard',sim.state.player.x,sim.state.player.z,0xa8ced9);return yes('Braced · incoming damage halved for 3 seconds.');
  }
- if(type==='insight'){
+ if(type==='insight'){if(G.RealmNight?.briarAway(sim))return fail('Briar is gone.');
   if(!a.companion.bonded||a.companion.mode!=='follow'||r.companion.room!==sim.room)return fail('Briar must be following you.');
   const nearby=r.enemies.filter(e=>e.hp>0&&e.kind!=='practice'&&dist(sim.state.player,e)<13);
   if(!nearby.length)return fail('No foe nearby. Use Seek on the road to find buried scents.');
