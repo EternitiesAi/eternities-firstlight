@@ -17,7 +17,7 @@ const IDENT=[[1,0,0],[0,1,0],[0,0,1]];
 // Rotations about Y, and a ring lying flat (its local XY plane turned to the ground).
 const axesY=a=>[[Math.cos(a),0,-Math.sin(a)],[0,1,0],[Math.sin(a),0,Math.cos(a)]];
 const flat=a=>[[Math.cos(a),0,-Math.sin(a)],[Math.sin(a),0,Math.cos(a)],[0,-1,0]];
-const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d,brow:0x7a6f66};
+const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatDark:0x4d4a48,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d,brow:0x7a6f66};
 const BONE={robe:0xefe6d2,robeShade:0xd9ceb6,gold:0xd6b25e,skin:0xf3e2cc,hair:0xe9d69a,light:0xfff3cf,feather:0xfff1c4,halo:0xffd77a,glow:0xffe7a6,pupil:0x8c6a2a,glint:0xfff4d6};
 // Figure space is the traveler rig's: +Z forward, feet on y=0. The root scales
 // the rig to a figure's height and yaws it, the way resident art does.
@@ -36,7 +36,7 @@ function place(list,R,kind,name,color,o={}){
 }
 // a capsule, box or round laid from a to b, cross-section width by depth.
 function beam(list,R,kind,name,a,b,width,depth,color,o){
- const d=vsub(b,a),len=Math.hypot(...d),up=d.map(v=>v/len),ref=Math.abs(up[1])<.9?[0,1,0]:[1,0,0];
+ const d=vsub(b,a),len=Math.hypot(...d),up=d.map(v=>v/len),ref=o?.ref||(Math.abs(up[1])<.9?[0,1,0]:[1,0,0]);
  const across=vnorm(vcross(up,ref)),fwd=vcross(across,up);
  put(list,R,kind,name,vmix(a,b,.5),[width,len,depth],[across,up,fwd],color,o);
 }
@@ -71,14 +71,14 @@ function regent(x,y,z,yaw,t){
  // a smaller swept mass over the crown, so the head reads as hair rather than a helmet.
  beam(parts,R,'capsule','hair-swept',[0,1.715,.02],[0,1.64,-.10],.22,.19,ASH.hair);
  // the baked long coat: a flared shell from the chest to below the knee, closed at the front.
- place(parts,R,'body-coat','coat',ASH.coat,{rough:.8});
+ place(parts,R,'body-coat','coat',ASH.coatDark,{rough:.8});
  // ember piping down the coat's front edge, lit from within; it follows the shell's front.
  for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.14],[s*.055+sway*.3,.36,.25],.006,.008,ASH.seam,{em:.34+.08*Math.sin(k*.9+s),rough:.5});
  // a thin dark circlet on the brow with small glowing ember points: one side still warm, the back gone grey.
- ring(parts,R,'circlet',[0,1.68,.008],.118,.006,flat(0),0x3e4247,{rough:.4});
+ ring(parts,R,'circlet',[0,1.68,.008],.118,.012,flat(0),0x3e4247,{rough:.4});
  for(let i=0;i<7;i++){
   const a=i/7*TAU+k*.08,heat=Math.max(0,1-i/5);
-  put(parts,R,'octa','ember-'+i,[Math.cos(a)*.118,1.68+.004*Math.sin(k*1.1+i),Math.sin(a)*.118+.008],[.014,.024,.014],axesY(a),mixHex(ASH.cinder,EMBER,heat),{em:.22+.68*heat*(.7+.3*Math.sin(k*1.3+i*.9)),rough:.4});
+  put(parts,R,'octa','ember-'+i,[Math.cos(a)*.118,1.68+.004*Math.sin(k*1.1+i),Math.sin(a)*.118+.008],[.03,.046,.03],axesY(a),mixHex(ASH.cinder,EMBER,heat),{em:.22+.68*heat*(.7+.3*Math.sin(k*1.3+i*.9)),rough:.4});
  }
  // a warm, closed smile; the corners lift unevenly, as if the joke is one he is deciding to share.
  smile(parts,R,1.558,.124,.024,[.42,.2],0x8a5a4e);
@@ -97,11 +97,12 @@ function envoy(x,y,z,yaw,t){
  place(parts,R,'body-robe','robe',BONE.robe,{rough:.7});
  ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
  // wings of light: six layered tapered feathers a side fan from the shoulder blades, bone-white at the top and gold at the tips.
+ // each feather's width lies across the wing (ref is world z), so its broad face turns to the viewer rather than edge-on.
  const breath=Math.sin(k*.8)*.03;
  for(const s of[-1,1])for(let i=0;i<6;i++){
   const u=i/5,a=1.05-1.25*u,len=.50-.10*u,base=[s*.07,1.44-.06*i,-.16];
   const tip=[base[0]+s*len*Math.cos(a)*(1+breath),base[1]+len*Math.sin(a)+breath*.5,base[2]-.14*u];
-  beam(parts,R,'body-feather','feather-'+(s<0?'left':'right')+'-'+i,base,tip,.14-.06*u,.035,mixHex(BONE.feather,BONE.gold,u),{em:.75,rough:.4});
+  beam(parts,R,'body-feather','feather-'+(s<0?'left':'right')+'-'+i,base,tip,.14-.06*u,.035,mixHex(BONE.feather,BONE.gold,u),{em:.75,rough:.4,ref:[0,0,1]});
  }
  // a halo above the head, a soft glow on the ground, and motes turning around her.
  ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});

@@ -41,6 +41,9 @@ FRAMES = [
     frame('traveler-play', 'traveler', [0, 1.0, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
     frame('regent-play', 'regent', [0, 1.25, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
     frame('envoy-play', 'envoy', [0, 1.05, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
+    # close checks for the coat's skirt and the feather planes, not the play-distance read.
+    frame('regent-coat', 'regent', [0, 0.9, 0], 3.4, 0.5, 34, off=-0.5),
+    frame('envoy-wings', 'envoy', [0, 1.45, -0.1], 2.4, 0.3, 40, off=-0.5),
     frame('traveler-third', 'traveler', [0, 1.0, 0], 7.26, 2.07, 40, off=-0.5),
     frame('traveler-diorama', 'traveler', [0, 1.3, 0], 8.2, 6.2, 32, base=0.4, off=-0.2, plinth=True),
     frame('ilan-close', 'ilan', [0, 1.55, 0], 1.15, 0.05, 24),
