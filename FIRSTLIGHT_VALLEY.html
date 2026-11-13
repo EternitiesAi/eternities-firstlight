@@ -9786,6 +9786,224 @@ class Engine{
  g.bindFramebuffer(g.FRAMEBUFFER,null);g.viewport(0,0,this.canvas.width,this.canvas.height);g.disable(g.DEPTH_TEST);g.useProgram(this.postP);g.activeTexture(g.TEXTURE2);g.bindTexture(g.TEXTURE_2D,this.mainF.tex);this.uni(this.postP,'uColor','i',2);this.uni(this.postP,'uResolution','2',[this.canvas.width,this.canvas.height]);this.uni(this.postP,'uBloom','f',this.quality==='low'?0:1);this.uni(this.postP,'uTime','f',time);g.bindVertexArray(this.emptyVAO);g.drawArrays(g.TRIANGLES,0,3);g.bindVertexArray(null);this.metrics={drawCalls:this.calls,texturedDrawCalls:this.texturedCalls,texturedInstances:this.texturedInstances,surfaceMaterials:{...this.surfaceMaterialInfo,enabled:this.surfaceMaterialsEnabled!==false},instances:[...this.batches,...this.dynamic].reduce((s,b)=>s+b.count,0),triangles:[...this.batches,...this.dynamic].reduce((s,b)=>s+b.count*b.geom.count/3,0)};return pal;}
 }
 G.RealmEngine={Engine,M,hex,blend,norm,sub,dot,cross,reflectionVP,WATER_HEIGHT,solidBounds,skyFrame,geometry,meshStride,fogFrame};if(typeof module!=='undefined')module.exports=G.RealmEngine;})(globalThis);
+</script><script>/* The main story's spine. One world-level owner, state.saga: the beats of the main path, the regent's sightings, the
+ * prophecy, the feather's sight, briar's absence and return, the echo ledger and the finale. Derived beats are read
+ * live from the chapter and campaign owners; only what the saga itself witnesses is stored here. */
+(function(G){'use strict';
+const VERSION=1,MAX_DAY=100000,MAX_COUNT=1e6,MAX_PLACES=32,HABIT_RADIUS=3,HABIT_SECONDS=4,PLACE_ID=/^[a-z0-9][a-z0-9-]{0,39}$/;
+const Core=()=>G.RealmCore||(typeof require==='function'?require('./core.js'):null);
+const freeze=o=>{if(o&&typeof o==='object'){Object.values(o).forEach(freeze);Object.freeze(o);}return o;};
+const ACTS=freeze({1:'the valley',2:'the road',3:'the night the warning failed',4:'the stolen pattern',5:'firstlight'});
+const ROMAN=freeze({1:'I',2:'II',3:'III',4:'IV',5:'V'});
+const GATE_PLACE={room:null,x:18,z:6,label:'The world gate'};
+const BEATS=freeze([
+ {id:'kit',act:1,title:'Oren’s kit',detail:'Oren has packed you a blade, a lantern and three tonics. Collect them at his workshop.',place:{room:null,x:11,z:9,label:'Oren’s workshop'}},
+ {id:'hart',act:1,title:'The Hollow Hart',detail:'Something old sleeps under the north wood. Go down into the rootbound underways and free the guardian.',place:{room:null,x:0,z:-48,label:'The rootbound underways'}},
+ {id:'envoy',act:1,title:'The envoy at the spring',detail:'Carry the feather to the spring. Someone has come a long way to meet you there.',place:{room:null,x:0,z:3,label:'The spring'}},
+ {id:'feather',act:1,title:'The feather’s sight',detail:'The envoy wants to show you what the feather sees. Stay by the spring and listen.',place:{room:null,x:0,z:3,label:'The spring'}},
+ {id:'road',act:2,title:'The sunward road',detail:'Take the road past the far-water lookout. Tessa’s caravan is stuck out there, and something with horns keeps the bridge.',place:{room:null,x:44,z:6,label:'The far-water lookout'}},
+ {id:'beacon',act:2,title:'The beacon',detail:'Light the beacon on the north ridge and hold it. Watch who comes to stand beside Tessa.',place:{room:'road',x:0,z:-24,label:'The Sunward Beacon'}},
+ {id:'bellweather',act:2,title:'Rowan’s bell',detail:'The bell at Bellweather has gone quiet, and the keeper with it. Find out what silenced them.',place:{room:'crossing',x:0,z:-18.5,label:'Bellweather crossing'}},
+ {id:'night',act:3,title:'The night the warning failed',detail:'Night has come down wrong over the crossing. Get the travellers out, and keep Briar close.',place:{room:'crossing',x:0,z:24,label:'Bellweather, at night'}},
+ {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever took Briar used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
+ {id:'heaven',act:4,title:'The envoy’s home',detail:'Go up to Heaven in peace. The envoy’s people may read the prophecy better than we did.',place:{...GATE_PLACE,label:'The world gate · Heaven'}},
+ {id:'witness',act:4,title:'The drowned witness',detail:'Under the sea there is someone who saw the pattern stolen, and past the stars a cure that needs no master key.',place:{...GATE_PLACE,label:'The world gate · the sea and the stars'}},
+ {id:'nearshore',act:4,title:'The nearshore',detail:'The regent says he has Briar. He will offer you one that never strays. You know her better than that.',place:{room:null,x:0,z:27,label:'The nearshore'}},
+ {id:'finale',act:5,title:'The Regent of Ash',detail:'He is waiting at the spring junction, wearing your choices like chains. Bring the people you freed.',place:{room:null,x:0,z:3,label:'The spring junction'}},
+ {id:'epilogue',act:5,title:'Firstlight',detail:'It is over. Walk the valley and see what changed. Ilan has something to play for you.',place:{room:null,x:0,z:-11.6,label:'The little amphitheatre'}}
+]);
+const IDS=BEATS.map(b=>b.id),REGENT=freeze(['beacon','foundry','confluence']),PROPHECY=freeze(['spring','heaven']),BRIAR=freeze(['with','taken','nearshore','returned']);
+const PROPHECY_LINES=freeze({spring:'The first light will not descend from heaven. It will rise from below.',heaven:'Rise from below: from the ones who were taken, not from the deep.'});
+const REGENT_LINES=freeze({beacon:'A smiling stranger offered Tessa a road that never breaks.',foundry:'The smiling stranger was in the foundry, and he knew your name.',confluence:'The Regent of Ash watched you from across the confluence.'});
+const GATES=freeze({night:'bellweather',hell:'night',heaven:'hell',atlantis:'heaven',cosmos:'heaven',nearshore:'witness',finale:'nearshore'});
+// Echo ledger: each disposition the player chose, as the regent will quote it. Owners that rename a choice id update this table.
+const ECHO=freeze([
+ {id:'hell-unbind',source:['hellCampaign','choice'],value:'unbind',kind:'freeing',ally:'Neris',line:'You broke the writ in Hell and let them walk out with nothing owed.'},
+ {id:'hell-divert',source:['hellCampaign','choice'],value:'divert',kind:'coercive',line:'You hid a few under a hood and left the writ standing over the rest.'},
+ {id:'hell-license',source:['hellCampaign','choice'],value:'license',kind:'coercive',line:'You handed their road to another office and called it mercy.'},
+ {id:'heaven-assist',source:['heavenCampaign','choice'],value:'accessible-assist',kind:'freeing',ally:'Rielle',line:'You gave tired hands a lever in Heaven, and the gate stayed open for them.'},
+ {id:'heaven-broadened',source:['heavenCampaign','choice'],value:'broadened-activation',kind:'freeing',ally:'Rielle',line:'You made the open gate ordinary, and the ceremony a choice.'},
+ {id:'atlantis-publish',source:['atlantisCampaign','choice'],value:'publish',kind:'freeing',ally:'Damar',line:'You put the false bearing where everyone in the harbour could read it.'},
+ {id:'atlantis-limited',source:['atlantisCampaign','choice'],value:'limited',kind:'freeing',ally:'Damar',line:'You kept a passage under the sea that no office can close.'},
+ {id:'atlantis-license',source:['atlantisCampaign','choice'],value:'license',kind:'coercive',line:'You kept a permit for yourself and left the office’s marker standing.'},
+ {id:'cosmos-public',source:['cosmosCampaign','choice'],value:'public-record',kind:'freeing',ally:'Anik',line:'You told the stars plainly how the feed was turned against them.'},
+ {id:'cosmos-bounded',source:['cosmosCampaign','choice'],value:'bounded-account',kind:'freeing',ally:'Anik',line:'You let Avar speak for himself and still told the truth about the feed.'},
+ {id:'earth-watch',source:['earthHomecoming','choice'],value:'public-watch',kind:'freeing',ally:'Vessa',line:'You left the quiet engine out in the open where the valley can watch it.'},
+ {id:'earth-custody',source:['earthHomecoming','choice'],value:'reviewed-custody',kind:'coercive',line:'You sealed my engine in a box at the bridge. Just in case, you said.'},
+ {id:'beacon-cinder',source:['adventure','beacon','relic'],value:'accepted',kind:'coercive',line:'You took the herald’s cinder when it was offered, and it felt good.'},
+ {id:'beacon-sealed',source:['adventure','beacon','relic'],value:'sealed',kind:'freeing',ally:'Tessa',line:'You sealed the herald’s cinder away and kept the road honest.'},
+ {id:'beacon-renounced',source:['adventure','beacon','relic'],value:'renounced',kind:'freeing',ally:'Tessa',line:'You held the cinder once, and then you let it go.'}
+]);
+const ECHO_IDS=ECHO.map(e=>e.id);
+const read=(o,path)=>path.reduce((v,k)=>v?.[k],o);
+const own=Object.hasOwn,isObj=v=>!!v&&typeof v==='object'&&!Array.isArray(v),day=v=>Number.isSafeInteger(v)&&v>=1&&v<=MAX_DAY;
+function fresh(){return{version:VERSION,beats:{},regent:[],prophecy:[],feather:{unlocked:false,uses:0},briar:{state:'with',habit:{},takenDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};}
+function clone(s){return{version:VERSION,beats:Object.fromEntries(IDS.filter(id=>own(s.beats,id)).map(id=>[id,{day:s.beats[id].day}])),regent:REGENT.filter(id=>s.regent.includes(id)),prophecy:PROPHECY.filter(id=>s.prophecy.includes(id)),feather:{unlocked:s.feather.unlocked,uses:s.feather.uses},briar:{state:s.briar.state,habit:{...s.briar.habit},takenDay:s.briar.takenDay},echo:{coercive:s.echo.coercive.slice(),freeing:s.echo.freeing.slice()},finale:{phase:s.finale.phase,won:s.finale.won},credits:s.credits,postgame:s.postgame};}
+// Live predicates over the rest of the world; `s` is the saga record being judged.
+const DERIVE=freeze({
+ kit:w=>w?.adventure?.started===true,
+ hart:w=>w?.adventure?.relic===true,
+ envoy:(w,s)=>w?.adventure?.angelSeen===true&&s.prophecy.includes('spring'),
+ feather:(w,s)=>s.feather.unlocked,
+ road:w=>w?.adventure?.road?.reported===true,
+ beacon:(w,s)=>w?.adventure?.beacon?.complete===true&&s.regent.includes('beacon'),
+ bellweather:w=>w?.adventure?.crossing?.complete===true,
+ night:(w,s)=>own(s.beats,'night'),
+ hell:(w,s)=>w?.hellCampaign?.claimed===true&&s.regent.includes('foundry'),
+ heaven:(w,s)=>w?.heavenCampaign?.claimed===true&&s.prophecy.includes('heaven'),
+ witness:(w,s)=>w?.atlantisCampaign?.claimed===true&&w?.cosmosCampaign?.claimed===true&&s.regent.includes('confluence'),
+ nearshore:(w,s)=>s.briar.state==='returned',
+ finale:(w,s)=>s.finale.won,
+ epilogue:(w,s)=>s.credits
+});
+function sagaOf(world){return world?.saga||fresh();}
+function doneWith(world,s,id){return own(DERIVE,id)&&(own(s.beats,id)||DERIVE[id](world,s));}
+function done(world,id){return doneWith(world,sagaOf(world),id);}
+function priorDone(world,s,id){const i=IDS.indexOf(id);return IDS.slice(0,i).every(b=>doneWith(world,s,b));}
+// What the world already holds: a save past a gate is never blocked from what it did.
+const ALREADY=freeze({
+ night:(w,s)=>own(s.beats,'night')||s.briar.state!=='with',
+ hell:w=>w?.hellCampaign?.accepted===true,
+ heaven:w=>w?.heavenCampaign?.accepted===true,
+ atlantis:w=>w?.atlantisCampaign?.accepted===true,
+ cosmos:w=>w?.cosmosCampaign?.accepted===true,
+ nearshore:(w,s)=>s.briar.state==='nearshore'||s.briar.state==='returned',
+ finale:(w,s)=>s.finale.phase>0||s.finale.won
+});
+function allowed(world,gate){if(!own(GATES,gate))return false;const s=sagaOf(world);return doneWith(world,s,GATES[gate])||ALREADY[gate](world,s);}
+// What a sighting or a reading needs from the world when it happens. Once witnessed it stays part of the story.
+const REGENT_NEEDS=freeze({beacon:w=>w?.adventure?.beacon?.introduced===true,foundry:w=>w?.hellCampaign?.accepted===true,confluence:w=>w?.cosmosCampaign?.accepted===true});
+const PROPHECY_NEEDS=freeze({spring:w=>w?.adventure?.angelSeen===true,heaven:w=>w?.heavenCampaign?.accepted===true});
+function validate(raw,world){
+ const no=f=>{throw Error('Invalid saga: '+f);},exact=(o,keys)=>isObj(o)&&Object.keys(o).length===keys.length&&keys.every(k=>own(o,k));
+ if(!exact(raw,['version','beats','regent','prophecy','feather','briar','echo','finale','credits','postgame']))no('shape');
+ if(raw.version!==VERSION)no('version');
+ if(!isObj(raw.beats)||Object.keys(raw.beats).some(id=>!IDS.includes(id)))no('beats');
+ for(const id of Object.keys(raw.beats)){const b=raw.beats[id];if(!exact(b,['day'])||!day(b.day))no('beat '+id);}
+ const list=(v,allowedIds,f)=>{if(!Array.isArray(v)||v.length>allowedIds.length||new Set(v).size!==v.length||v.some(id=>!allowedIds.includes(id)))no(f);return v;};
+ list(raw.regent,REGENT,'regent');list(raw.prophecy,PROPHECY,'prophecy');
+ const f=raw.feather;if(!exact(f,['unlocked','uses'])||typeof f.unlocked!=='boolean'||!Number.isSafeInteger(f.uses)||f.uses<0||f.uses>MAX_COUNT||f.uses>0&&!f.unlocked)no('feather');
+ const b=raw.briar;if(!exact(b,['state','habit','takenDay'])||!BRIAR.includes(b.state))no('briar');
+ if(!isObj(b.habit)||Object.keys(b.habit).length>MAX_PLACES||Object.entries(b.habit).some(([k,v])=>!PLACE_ID.test(k)||!Number.isSafeInteger(v)||v<1||v>MAX_COUNT))no('briar habit');
+ if(b.takenDay!==null&&!day(b.takenDay)||(b.state==='with')!==(b.takenDay===null))no('briar taken day');
+ const e=raw.echo;if(!exact(e,['coercive','freeing']))no('echo');
+ list(e.coercive,ECHO_IDS,'echo coercive');list(e.freeing,ECHO_IDS,'echo freeing');
+ if(e.coercive.some(id=>ECHO.find(x=>x.id===id).kind!=='coercive')||e.freeing.some(id=>ECHO.find(x=>x.id===id).kind!=='freeing'))no('echo kind');
+ const fin=raw.finale;if(!exact(fin,['phase','won'])||!Number.isInteger(fin.phase)||fin.phase<0||fin.phase>3||typeof fin.won!=='boolean'||fin.won&&fin.phase!==3)no('finale');
+ if((e.coercive.length||e.freeing.length)&&fin.phase<1)no('echo before finale');
+ if(typeof raw.credits!=='boolean'||raw.credits&&!fin.won)no('credits');
+ if(typeof raw.postgame!=='boolean'||raw.postgame!==raw.credits)no('postgame');
+ const s=clone(raw);
+ if(world){
+  if(s.feather.unlocked&&!s.prophecy.includes('spring'))no('feather before prophecy');
+  if(s.briar.state!=='with'&&(world.adventure?.companion?.bonded!==true||!doneWith(world,s,'bellweather')))no('briar taken before bellweather');
+  if(['nearshore','returned'].includes(s.briar.state)&&!doneWith(world,s,'witness'))no('briar nearshore before witness');
+  if(fin.phase>0&&!doneWith(world,s,'nearshore'))no('finale before nearshore');
+  for(const id of Object.keys(s.beats))if(!DERIVE[id](world,s)||!priorDone(world,s,id))no('beat order '+id);
+ }
+ return s;
+}
+// Old saves: read where the player already is from the chapter and campaign owners. Nothing is invented past the night.
+function infer(world){
+ const s=fresh(),a=world?.adventure||{};
+ if(a.angelSeen===true){s.prophecy.push('spring');s.feather.unlocked=true;}
+ if(world?.heavenCampaign?.claimed===true)s.prophecy.push('heaven');
+ if(a.beacon?.complete===true)s.regent.push('beacon');
+ if(world?.hellCampaign?.claimed===true)s.regent.push('foundry');
+ if(world?.atlantisCampaign?.claimed===true&&world?.cosmosCampaign?.claimed===true)s.regent.push('confluence');
+ return s;
+}
+function current(world){
+ const s=sagaOf(world),b=BEATS.find(x=>!doneWith(world,s,x.id));if(!b)return null;
+ return{id:b.id,act:b.act,actName:ACTS[b.act],actLabel:'Act '+ROMAN[b.act]+' · '+ACTS[b.act],title:b.title,detail:b.detail,place:{...b.place}};
+}
+function act(id){const b=BEATS.find(x=>x.id===id);return b?b.act:null;}
+const yes=(text,extra)=>({ok:true,text,...extra}),fail=error=>({ok:false,error});
+function saga(sim){if(!sim?.state?.saga)throw Error('A simulation with a saga is required.');return sim.state.saga;}
+function mark(sim,beatId){
+ const s=saga(sim),w=sim.state;if(!own(DERIVE,beatId))return fail('Unknown story beat.');
+ if(own(s.beats,beatId))return yes('Already part of your story.',{already:true});
+ if(!priorDone(w,s,beatId))return fail('That part of the story has not come yet.');
+ const candidate={...s,beats:{...s.beats,[beatId]:{day:w.day}}};if(!DERIVE[beatId](w,candidate))return fail('That part of the story is not finished yet.');
+ s.beats[beatId]={day:w.day};const b=BEATS.find(x=>x.id===beatId);sim.event('saga',b.title+'.');return yes(b.title+'.');
+}
+function regentSeen(sim,id){
+ const s=saga(sim);if(!REGENT.includes(id))return fail('Unknown sighting.');if(s.regent.includes(id))return yes('You have seen him there before.',{already:true});
+ if(!REGENT_NEEDS[id](sim.state))return fail('He is not there yet.');s.regent=REGENT.filter(x=>x===id||s.regent.includes(x));sim.event('saga',REGENT_LINES[id]);return yes(REGENT_LINES[id]);
+}
+function prophecyHeard(sim,id){
+ const s=saga(sim);if(!PROPHECY.includes(id))return fail('Unknown reading.');if(s.prophecy.includes(id))return yes(PROPHECY_LINES[id],{already:true});
+ if(!PROPHECY_NEEDS[id](sim.state))return fail('No one is here to read it to you.');s.prophecy=PROPHECY.filter(x=>x===id||s.prophecy.includes(x));sim.event('saga',PROPHECY_LINES[id]);return yes(PROPHECY_LINES[id]);
+}
+function unlockFeather(sim){
+ const s=saga(sim);if(s.feather.unlocked)return yes('The feather already sees for you.',{already:true});
+ if(!s.prophecy.includes('spring'))return fail('Hear the envoy out first.');s.feather.unlocked=true;sim.event('saga','The feather shows true roads in gold and false ones in ash red.');return yes('Hold the feather up to see the roads as they are.');
+}
+function featherUse(sim){const s=saga(sim);if(!s.feather.unlocked)return fail('The feather has not opened its sight to you yet.');if(s.feather.uses<MAX_COUNT)s.feather.uses++;return yes('The roads show themselves.',{uses:s.feather.uses});}
+function briarTaken(sim){
+ const s=saga(sim),w=sim.state;if(s.briar.state==='taken')return yes('Briar is gone.',{already:true});if(s.briar.state!=='with')return fail('Briar is not with you to be taken.');
+ if(w.adventure?.companion?.bonded!==true||!doneWith(w,s,'bellweather'))return fail('Not yet.');
+ s.briar.state='taken';s.briar.takenDay=w.day;if(sim.sagaRuntime)sim.sagaRuntime.place=null;sim.event('saga','Briar was pulled into the counterfeit road.');return yes('Briar is gone.');
+}
+function briarAtNearshore(sim){
+ const s=saga(sim);if(s.briar.state==='nearshore')return yes('Briar is close. You can feel it.',{already:true});if(s.briar.state!=='taken')return fail('Briar is not lost.');
+ if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='nearshore';sim.event('saga','The trail of the counterfeit road ends at the nearshore.');return yes('The trail ends at the nearshore.');
+}
+function briarReturned(sim){
+ const s=saga(sim);if(s.briar.state==='returned')return yes('Briar is home.',{already:true});if(!['taken','nearshore'].includes(s.briar.state))return fail('Briar was never taken.');
+ if(!doneWith(sim.state,s,'witness'))return fail('You do not know where to look yet.');s.briar.state='returned';sim.event('saga','Briar came home. She went straight to her old spot.');return yes('Briar is home.');
+}
+function recordHabit(sim,placeId){
+ const s=saga(sim);if(typeof placeId!=='string'||!PLACE_ID.test(placeId))return fail('Unknown place.');if(s.briar.state!=='with'||sim.state.adventure?.companion?.bonded!==true)return fail('Briar is not beside you.');
+ const h=s.briar.habit;if(!own(h,placeId)&&Object.keys(h).length>=MAX_PLACES)return fail('Briar already has favourite places enough.');h[placeId]=Math.min(MAX_COUNT,(h[placeId]||0)+1);return yes('Briar settles beside you.',{count:h[placeId]});
+}
+function habitPlace(world){
+ const h=sagaOf(world).briar.habit,order=(Core()?.LANDMARKS||[]).map(l=>l.id);let best=null;
+ for(const[k,v]of Object.entries(h)){if(!best||v>h[best]||v===h[best]&&rank(order,k)<rank(order,best))best=k;}
+ return best||'commons';
+}
+function rank(order,id){const i=order.indexOf(id);return i<0?order.length+id.charCodeAt(0):i;}
+function echoLedger(world){
+ const s=sagaOf(world),frozen=s.finale.phase>0,out={coercive:[],freeing:[]};
+ for(const e of ECHO){const chosen=frozen?s.echo[e.kind].includes(e.id):read(world,e.source)===e.value;if(!chosen)continue;out[e.kind].push(e.kind==='freeing'?{id:e.id,ally:e.ally,line:e.line}:{id:e.id,line:e.line});}
+ return out;
+}
+function finalePhase(sim,phase){
+ const s=saga(sim),w=sim.state;if(!Number.isInteger(phase)||phase<1||phase>3)return fail('Unknown phase.');if(s.finale.phase>=phase)return yes('Already past that.',{already:true});
+ if(phase!==s.finale.phase+1)return fail('One thing at a time.');if(!doneWith(w,s,'nearshore'))return fail('Briar is not home yet.');
+ if(phase===1){const ledger=echoLedger(w);s.echo={coercive:ledger.coercive.map(e=>e.id),freeing:ledger.freeing.map(e=>e.id)};}
+ s.finale.phase=phase;sim.event('saga',['','The Regent of Ash rises at the spring junction.','The valley comes apart into every world at once.','He offers you a life that cannot be hurt.'][phase]);return yes('Phase '+phase+'.');
+}
+function finaleWon(sim){
+ const s=saga(sim);if(s.finale.won)return yes('He is gone.',{already:true});if(s.finale.phase!==3)return fail('He is not finished with you yet.');
+ s.finale.won=true;sim.event('saga','You refused him, and the Regent of Ash came apart in the morning light.');return yes('He is gone.');
+}
+function rollCredits(sim){
+ const s=saga(sim);if(s.credits)return yes('The story is told.',{already:true});if(!s.finale.won)return fail('The story is not over.');
+ s.credits=true;s.postgame=true;sim.event('saga','Firstlight. The roads stay open.');return yes('The roads stay open.');
+}
+const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
+// Same command-identity rule as the adventure: a reused id with the same content replays its result; different content is refused.
+function command(sim,id,type,payload={}){
+ if(typeof id!=='string'||!id||id.length>100||!isObj(payload))return fail('Invalid command envelope.');
+ let fp;try{fp=JSON.stringify([type,payload]);}catch{return fail('Invalid command content.');}if(fp.length>500)return fail('Command too large.');
+ const seen=sim.sagaCommands||(sim.sagaCommands=new Map()),prior=seen.get(id);if(prior)return prior.fp===fp?{...prior.result,duplicate:true}:fail('Command identity reused with different terms.');
+ if(!own(COMMANDS,type))return fail('Unsupported story action.');
+ const result=COMMANDS[type](sim,payload);seen.set(id,{fp,result});if(seen.size>300)seen.delete(seen.keys().next().value);return result;
+}
+// The habit recorder: a landmark counts once per visit when you stand within reach of it for a few seconds outdoors with Briar following.
+function tick(sim,dt){
+ const s=sim?.state?.saga;if(!s||!Number.isFinite(dt)||dt<=0)return;
+ const r=sim.sagaRuntime||(sim.sagaRuntime={place:null,t:0,counted:false}),a=sim.state.adventure,p=sim.state.player,c=sim.adventureRuntime?.companion;
+ const ready=!sim.room&&!sim.worldDive&&s.briar.state==='with'&&a?.started&&a.companion?.bonded&&a.companion.mode==='follow'&&a.hp>0&&(!c||(c.room??null)===(sim.room??null)&&Math.hypot(c.x-p.x,c.z-p.z)<6);
+ const l=ready?(Core()?.LANDMARKS||[]).find(x=>Math.hypot(p.x-x.x,p.z-x.z)<HABIT_RADIUS):null;
+ if(!l){r.place=null;r.t=0;r.counted=false;return;}
+ if(r.place!==l.id){r.place=l.id;r.t=0;r.counted=false;}
+ r.t+=dt;if(!r.counted&&r.t>=HABIT_SECONDS){r.counted=true;recordHabit(sim,l.id);}
+}
+const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
+G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
+})(globalThis);
 </script><script>/* Local, synthetic village simulation. Not a resident mind, account server,
  * or secure authority. All long-lived data is explicit, bounded and exportable. */
 (function(G){'use strict';
@@ -9808,6 +10026,7 @@ const EH=G.RealmEarthHomecoming||(typeof require==='function'?require('./earth-h
 const WS=G.RealmEarthWildSignsData||(typeof require==='function'?require('./earth-wild-signs-data.js'):null);
 if(!WS||typeof WS.fresh!=='function'||typeof WS.crossValidate!=='function')throw Error('Load canonical Earth wild-signs data before Core.');
 const BM=G.RealmBriarMoments||(typeof require==='function'?require('./briar-moments.js'):null);
+const SG=G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const VERSION=9,KEY='eternities.realm10.save.v9',LEGACY_KEY='eternities.realm09.save.v8',TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),finite=Number.isFinite,clone=o=>JSON.parse(JSON.stringify(o));
 const LANDMARKS=[
 {id:'commons',name:'The Firstlight Commons',short:'Commons',x:0,z:3,kind:'gather',action:'Sit by the spring',description:'A meeting place beneath the golden tree. There is room to linger without producing anything.'},
@@ -9918,8 +10137,8 @@ function validateCameraViews(raw){
  }
  return out;
 }
-function fresh(){return{briarMoments:BM.fresh(),earthWildSigns:WS.fresh(),earthHomecoming:EH.fresh(),cosmosCampaign:CC.fresh(),atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
-function validate(raw){const briarSource=raw;if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.briarMoments=BM.fromWorld(briarSource,s);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife,s.earthExpedition);if('earthWildSigns' in raw&&!Object.hasOwn(raw,'earthWildSigns'))no('inherited wild-signs owner');if(Object.hasOwn(raw,'earthWildSigns')){if(raw.earthWildSigns===undefined)no('undefined wild-signs owner');s.earthWildSigns=WS.crossValidate(raw.earthWildSigns,s);}else s.earthWildSigns=WS.fresh();s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;return s;}
+function fresh(){return{saga:SG.fresh(),briarMoments:BM.fresh(),earthWildSigns:WS.fresh(),earthHomecoming:EH.fresh(),cosmosCampaign:CC.fresh(),atlantisCampaign:AT.fresh(),heavenCampaign:HV.fresh(),hellCampaign:HC.fresh(),bridgeCommunity:BC.fresh(),homeHistory:HH.fresh(),localLife:LL.fresh(),earthExpedition:EE.fresh(),realmTrails:RT.fresh(),journeys:W.fresh(),adventure:A.fresh(),sandbox:S.fresh(),score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor(),version:VERSION,seed:2317,day:1,hour:17.2,weather:'clear',player:{x:2.5,z:6,yaw:0},visited:[],flowers:[],notes:[],journal:[],nextEvent:1,residents:PROFILES.map((p,i)=>{let l=LANDMARKS.find(x=>x.id===schedule(p.id,17.2));return{id:p.id,x:l.x+(i-1)*.5,z:l.z,yaw:0,progress:.05,conversations:0};}),settings:{quality:'balanced',cameraMode:'adventure',cameraFov:60,cameraViews:validateCameraViews(null),cameraCutaway:true,reducedMotion:false,labels:true,timeFlow:true,sound:false}};}
+function validate(raw){const briarSource=raw;if(raw&&raw.version===2)raw={...clone(raw),version:3,score:X.preset(),scoreRevision:0,retreat:X.freshHome(),visitor:X.freshVisitor()};if(raw&&raw.version===3)raw={...clone(raw),version:4,sandbox:S.fresh()};if(raw&&raw.version===4)raw={...clone(raw),version:5,adventure:A.fresh()};if(raw&&raw.version===5)raw={...clone(raw),version:6};if(raw&&raw.version===6)raw={...clone(raw),version:7};if(raw&&raw.version===7)raw={...clone(raw),version:8};if(raw&&raw.version===8)raw={...clone(raw),version:9};function no(s){throw new Error('Invalid save: '+s);}if(!raw||typeof raw!=='object'||raw.version!==VERSION)no('unsupported version');let s=fresh();s.adventure=A.validate(raw.adventure);s.briarMoments=BM.fromWorld(briarSource,s);s.journeys=W.validate(raw.journeys);s.realmTrails=RT.validate(raw.realmTrails);s.cosmosCampaign=CC.validate(raw.cosmosCampaign);if(s.cosmosCampaign.accepted&&!CC.eligible(s))no('Cosmos campaign without claimed comparator');s.atlantisCampaign=AT.validate(raw.atlantisCampaign);if(s.atlantisCampaign.accepted&&!AT.eligible(s))no('Atlantis campaign without claimed Bellglass chart');s.earthExpedition=EE.validate(raw.earthExpedition);s.localLife=LL.validate(raw.localLife,s.earthExpedition);if('earthWildSigns' in raw&&!Object.hasOwn(raw,'earthWildSigns'))no('inherited wild-signs owner');if(Object.hasOwn(raw,'earthWildSigns')){if(raw.earthWildSigns===undefined)no('undefined wild-signs owner');s.earthWildSigns=WS.crossValidate(raw.earthWildSigns,s);}else s.earthWildSigns=WS.fresh();s.homeHistory=HH.validate(raw.homeHistory);s.bridgeCommunity=BC.validate(raw.bridgeCommunity);s.heavenCampaign=HV.validate(raw.heavenCampaign);if(s.heavenCampaign.accepted&&!HV.eligible(s))no('Heaven campaign without claimed Broken Choir');s.hellCampaign=HC.validate(raw.hellCampaign);if(s.hellCampaign.accepted&&!HC.eligible(s))no('Hell campaign without claimed rescue');s.earthHomecoming=EH.validate(raw.earthHomecoming);if(s.earthHomecoming.accepted&&!EH.eligible(s))no('Earth homecoming without independently claimed road, realm and Open Confluence accounts');if(s.bridgeCommunity.accepted&&!s.adventure.started)no('community work without initial kit');if(LL.definitions.some(d=>s.localLife.records[d.id].accepted&&!LL.eligible(s,d)))no('local work without its entry state');if(!s.adventure.started&&s.earthExpedition.story.accepted)no('expedition without initial kit');if(s.adventure.earthBinding.weapon&&!s.earthExpedition.story.claimed)no('binding without earned living road');if(!s.adventure.started&&Object.values(s.realmTrails.records).some(r=>r.accepted))no('trail without initial kit');if(s.adventure.realmCraft.weapon&&!Object.values(s.realmTrails.records).some(r=>r.claimed))no('realm fitting without earned trail');s.sandbox=S.validate(raw.sandbox);const outdoors={id:'outdoors',sandbox:s.sandbox};if(!Number.isSafeInteger(raw.day)||raw.day<1||raw.day>100000||!finite(raw.hour)||raw.hour<0||raw.hour>=24)no('clock');s.day=raw.day;s.hour=raw.hour;if(!['clear','rain'].includes(raw.weather))no('weather');s.weather=raw.weather;if(!raw.player||!walkable(raw.player.x,raw.player.z,outdoors)||!finite(raw.player.yaw))no('player position');s.player={x:raw.player.x,z:raw.player.z,yaw:raw.player.yaw};for(let k of['visited','flowers','notes','journal','residents'])if(!Array.isArray(raw[k]))no(k);if(raw.visited.length>LANDMARKS.length||raw.visited.some(id=>!LANDMARKS.some(l=>l.id===id)))no('places');s.visited=[...new Set(raw.visited)];if(raw.flowers.length>12)no('garden');s.flowers=raw.flowers.map(f=>{if(!f||!finite(f.x)||!finite(f.z)||Math.hypot(f.x+6,f.z-13)>5||!Number.isInteger(f.color)||f.color<0||f.color>3)no('flower');return{x:f.x,z:f.z,color:f.color};});if(raw.notes.length>20)no('notes');s.notes=raw.notes.map(n=>{if(!n||typeof n.text!=='string'||n.text.length>1200||!Number.isInteger(n.day)||n.day<1)no('note');return{text:n.text,day:n.day};});if(raw.journal.length>200)no('journal');let last=0;s.journal=raw.journal.map(j=>{if(!j||!Number.isSafeInteger(j.seq)||j.seq<=last||!Number.isInteger(j.day)||j.day<1||j.day>100000||!finite(j.hour)||j.hour<0||j.hour>=24||typeof j.kind!=='string'||j.kind.length>40||typeof j.text!=='string'||j.text.length>350)no('event');last=j.seq;return{seq:j.seq,day:j.day,hour:j.hour,kind:j.kind,text:j.text};});if(!Number.isSafeInteger(raw.nextEvent)||raw.nextEvent<=last)no('event sequence');s.nextEvent=raw.nextEvent;if(raw.residents.length!==3||new Set(raw.residents.map(r=>r.id)).size!==3)no('roster');s.residents=PROFILES.map(p=>{let r=raw.residents.find(r=>r.id===p.id);if(!r||!walkable(r.x,r.z)||!finite(r.yaw)||!finite(r.progress)||r.progress<0||r.progress>1||!Number.isSafeInteger(r.conversations)||r.conversations<0)no('inhabitant');return{id:p.id,x:r.x,z:r.z,yaw:r.yaw,progress:r.progress,conversations:r.conversations};});if(raw.settings){s.settings.cameraViews=validateCameraViews(raw.settings.cameraViews);if(['adventure','follow','tactical','wide'].includes(raw.settings.cameraMode))s.settings.cameraMode=raw.settings.cameraMode;if(finite(raw.settings.cameraFov)&&raw.settings.cameraFov>=45&&raw.settings.cameraFov<=80)s.settings.cameraFov=raw.settings.cameraFov;for(let k of['reducedMotion','labels','timeFlow','cameraCutaway'])if(typeof raw.settings[k]==='boolean')s.settings[k]=raw.settings[k];if(['low','balanced','high'].includes(raw.settings.quality))s.settings.quality=raw.settings.quality;}s.settings.sound=false;s.score=X.validateScore(raw.score);s.retreat=X.validateHome(raw.retreat);HH.validateWorld(s);s.visitor=X.validateVisitor(raw.visitor);if(!Number.isSafeInteger(raw.scoreRevision)||raw.scoreRevision<0||raw.scoreRevision>1e8)no('score revision');s.scoreRevision=raw.scoreRevision;if('saga' in raw&&!Object.hasOwn(raw,'saga'))no('inherited saga owner');if(Object.hasOwn(raw,'saga')){if(raw.saga===undefined)no('undefined saga owner');s.saga=SG.validate(raw.saga,s);}else s.saga=SG.infer(s);return s;}
 function load(storage){try{let data=storage.getItem(KEY),legacy=false;if(!data){data=storage.getItem(LEGACY_KEY);legacy=!!data;}if(!data){data=storage.getItem('eternities.realm08.save.v7');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm07.save.v6');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm06.save.v5');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm05.save.v4');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm03.save.v3');legacy=!!data;}if(!data){data=storage.getItem('eternities.realm02.save.v2');legacy=!!data;}if(!data)return{state:fresh(),status:'new'};return{state:validate(JSON.parse(data)),status:legacy?'migrated':'loaded'};}catch(e){return{state:fresh(),status:'unavailable-or-corrupt',preserveExisting:true,error:String(e.message)};}}
 class Simulation{
  constructor(state=fresh(),{hydrated=false}={}){
@@ -9937,7 +10156,7 @@ class Simulation{
  moveTo(x,z){if(this.worldDive)return{ok:false,error:'Use movement and depth controls inside the gallery.'};if(this.state.adventure.hp<=0)return{ok:false,error:'Return to the spring first.'};let p=pathfind(this.state.player,{x,z},this.navRoom);if(!p)return{ok:false,error:'There is no walkable path to that point.'};this.playerPath=p;return{ok:true,waypoints:p.length};}
  manual(dx,dz,dt){if(this.state.adventure.hp<=0)return;if(!finite(dx)||!finite(dz)||!finite(dt))return;this.playerPath=[];let p=this.state.player,l=Math.hypot(dx,dz);if(!l)return;let step=Math.min(dt,.1)*3.2;dx=dx/l*step;dz=dz/l*step;let nx=p.x+dx,nz=p.z+dz,can=(x,z)=>W.handles(this.room)?W.segment(this.room,p,{x,z}):this.room===N.ROOM?N.segment(p,{x,z}):this.room===E.ROOM?E.segment(p,{x,z}):walkable(x,z,this.navRoom);if(can(nx,nz)){p.x=nx;p.z=nz;}else if(can(nx,p.z))p.x=nx;else if(can(p.x,nz))p.z=nz;p.yaw=Math.atan2(dx,dz);}
  advance(p,path,dt,speed){if(!path.length)return false;let q=path[0],dx=q.x-p.x,dz=q.z-p.z,l=Math.hypot(dx,dz),step=Math.min(l,dt*speed);if(l>.001){p.x+=dx/l*step;p.z+=dz/l*step;p.yaw=Math.atan2(dx,dz);}if(l<=dt*speed+.001)path.shift();return l>.01;}
- tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
+ tick(dt){if(!finite(dt)||dt<0||this.paused)return;dt=Math.min(dt,.1);if(W.handles(this.room))W.recover(this);if(this.room===N.ROOM)N.recover(this);if(this.room===E.ROOM)E.recover(this);this.elapsed+=dt;let s=this.state;S.tick(s.sandbox,dt);if(s.settings.timeFlow){s.hour+=dt*.0045;if(s.hour>=24){s.hour-=24;s.day=Math.min(100000,s.day+1);this.event('day','Another day begins in Firstlight Valley.');}}if(this.gathering){this.gathering.elapsed+=dt;if(this.gathering.elapsed>=180){this.event('gathering','The family’s visit to the stage ended. Ordinary routines resume.');this.gathering=null;}}if(s.adventure.hp<=0)this.playerPath=[];this.walking=this.worldDive?false:this.advance(s.player,this.playerPath,dt,3.2);A.tick(this,dt);SG.tick(this,dt);RT.tick(this,dt);G.RealmCombat.tick(this);for(let r of s.residents){let run=this.runs.get(r.id),goal=this.gathering?'stage':schedule(r.id,s.hour),cue=!!this.gathering;if(run.goal!==goal||run.cue!==cue){run.goal=goal;run.cue=cue;run.inside=false;let l=LANDMARKS.find(x=>x.id===goal);let spot=cue?{x:[-2.3,2.3,0][PROFILES.findIndex(p=>p.id===r.id)],z:[-10.3,-10.3,-8.7][PROFILES.findIndex(p=>p.id===r.id)]}:l;run.path=pathfind(r,spot)||[];this.event('routine',PROFILES.find(p=>p.id===r.id).name+' is heading to '+l.short.toLowerCase()+'.');}run.walking=this.advance(r,run.path,dt,1.1);if(!run.path.length){run.inside=goal==='home';r.progress=Math.min(1,r.progress+dt*.00018);}}if(!this.room)for(let l of LANDMARKS)if(!s.visited.includes(l.id)&&Math.hypot(s.player.x-l.x,s.player.z-l.z)<2.8){s.visited.push(l.id);this.event('discovery','You found '+l.name+'.');}}
  setTime(h){if(!finite(h)||h<0||h>=24)return false;this.state.hour=h;return true;}
  enter(id){let l=LANDMARKS.find(l=>l.id===id);if(this.room||!l||l.kind!=='interior')return{ok:false,error:'That place has no accessible interior.'};if(Math.hypot(this.state.player.x-l.x,this.state.player.z-l.z)>3.4)return{ok:false,error:'Walk to the door first.'};this.returnPos={...this.state.player};this.room=id;this.state.player={x:0,z:3.5,yaw:Math.PI};this.playerPath=[];this.event('visit','You entered '+l.name+'.');return{ok:true};}
  leave(){if(!this.room)return{ok:false};if((this.room===CC.definition.room||this.room===EH.definition.room)&&this.adventureRuntime){this.adventureRuntime.room=undefined;this.adventureRuntime.enemies=[];this.adventureRuntime.trailSignature=undefined;this.adventureRuntime.arrows=[];}delete this.earthHomecomingRuntime;delete this.cosmosCampaignRuntime;delete this.atlantisCampaignRuntime;delete this.heavenCampaignRuntime;delete this.cosmosTrip;delete this.earthTrip;delete this.worldTrip;delete this.worldDive;this.state.player={...this.returnPos};this.room=null;this.returnPos=null;this.playerPath=[];return{ok:true};}
@@ -9949,6 +10168,7 @@ case'gather':{if(this.room||Math.hypot(this.state.player.x,this.state.player.z+1
 case'end-gathering':{this.gathering=null;result={ok:true,text:'The family returns to its usual routines.'};break;}
 case'plant':{if(this.room||Math.hypot(this.state.player.x+6,this.state.player.z-13)>3.4)result={ok:false,error:'Walk to the garden first.'};else if(this.state.flowers.length>=12)result={ok:false,error:'This little garden is full. Your twelve flowers are safe.'};else{let i=this.state.flowers.length,f={x:-8.4+(i%4)*.68,z:14.5+Math.floor(i/4)*.7,color:i%4};this.state.flowers.push(f);this.event('garden','You planted flower '+(i+1)+' in the common garden.');result={ok:true,text:'A small thing, made to stay.'};}break;}case'note':{let text=typeof payload.text==='string'?payload.text.trim():'';if(!text||text.length>1200||this.state.notes.length>=20)result={ok:false,error:'Use 1–1,200 characters. The notebook holds 20 entries.'};else{this.state.notes.push({text,day:this.state.day});this.event('note','You left a note in your notebook.');result={ok:true,text:'Note kept locally.'};}break;}case'talk':{let p=PROFILES.find(p=>p.id===payload.id),r=this.state.residents.find(r=>r.id===payload.id);if(!p||!r)result={ok:false,error:'Unknown inhabitant.'};else{let text=p.dialogue[r.conversations++%p.dialogue.length];this.event('conversation','You exchanged a few words with '+p.name+'.');result={ok:true,text,name:p.name};}break;}default:result={ok:false,error:'Unsupported local action.'};}this.commands.set(id,{fp,result});if(this.commands.size>300)this.commands.delete(this.commands.keys().next().value);return result;}
  adventureCommand(id,type,payload={}){return A.command(this,id,type,payload);}
+ sagaCommand(id,type,payload={}){return SG.command(this,id,type,payload);}
  sandboxCommand(id,type,payload={}){let result=S.command(this.state.sandbox,this.state.player,this.room,id,type,payload);if(result.ok&&!result.duplicate){this.playerPath=[];this.event('sandbox',result.text);}return result;}
  save(storage){try{storage.setItem(KEY,JSON.stringify(this.snapshot()));return{ok:true};}catch(e){return{ok:false,error:e.message};}}
 }
@@ -13156,6 +13376,7 @@ class RPGUI{
   for(const el of document.querySelectorAll('.tracker-switch [data-rpg=track]'))el.setAttribute('aria-pressed',String(el.dataset.id===this.quest));
   $('#tracked-chapter').textContent=this.quest==='homestead'?'FIELD GUIDE · OPTIONAL':'CHAPTER '+stage;
   $('#tracked-title').textContent=next.title;$('#tracked-detail').textContent=next.detail;$('#tracked-progress').textContent=stage===3&&this.quest==='story'?'Journal · J':obj.filter(x=>x.done).length+' / '+obj.length+' complete · Journal J';
+  const main=this.quest==='story'&&G.RealmSaga?.current(sim.state);if(main){$('#tracked-chapter').textContent=main.actLabel;$('#tracked-title').textContent=main.title;$('#tracked-detail').textContent=({1:['kit','hart','envoy','feather'],2:['road'],3:['beacon']})[stage].includes(main.id)?next.detail:main.detail;}
   $('#target-framing').disabled=!this.api.canFrameFoe?.();$('#target-frame').hidden=!e;if(e){$('#target-name').textContent=e.name;$('#target-rank').textContent=(e.rainTournament?'EXHIBITION':e.kind==='practice'?'PRACTICE':e.kind==='boss'||e.kind==='charger'||e.kind==='siegeboss'?'ELITE':'HOSTILE')+' · '+Math.ceil(Math.hypot(e.x-sim.state.player.x,e.z-sim.state.player.z))+' PACES';$('#target-health-fill').style.width=e.hp/e.maxHP*100+'%';$('#target-state').textContent=(e.rainTournament?'Timing judges the reply':Math.ceil(e.hp)+' / '+e.maxHP)+' · '+T.readiness(sim);}
   $('#skillbar').hidden=!a.started;$('#rpg-health').textContent=Math.ceil(a.hp);$('#health-orb').style.setProperty('--hp',a.hp/st.maxHP*100+'%');$('#rpg-stamina').style.width=a.stamina+'%';$('#stamina-label').textContent=Math.floor(a.stamina)+' STAMINA';
   const classStatus=G.RealmClasses.status(sim),classDef=G.RealmClasses.definition(a),classButton=$('#skill-class');document.body.classList.toggle('has-class',!!classDef);classButton.hidden=!classDef;classButton.disabled=!classDef||!A.combatScene(sim)||sim.room==='range'||classStatus.remaining>0||a.stamina<classStatus.cost;classButton.querySelector('small').textContent=classDef?.id==='hunter'?'Mark':'Flare';classButton.querySelector('.skill-icon').textContent=classDef?.id==='hunter'?'⌁':'✦';classButton.querySelector('.skill-icon').style.color='#'+(classDef?.color||0xd4b175).toString(16).padStart(6,'0');classButton.querySelector('.skill-cooldown').textContent=classStatus.remaining>0?classStatus.remaining.toFixed(classStatus.remaining<1?1:0):'';classButton.title=classStatus.name+' · '+classStatus.cost+' stamina · '+classStatus.description;classButton.setAttribute('aria-label',classStatus.name+' · X'+(classStatus.remaining?' · '+classStatus.remaining.toFixed(1)+' seconds remaining':''));classButton.style.setProperty('--cool',Math.min(100,classStatus.remaining/classStatus.cooldown*100)+'%');
@@ -13335,7 +13556,7 @@ class CrossingUI{
  const q=X.PLACES.map(q=>({...q,d:distance(p,q)})).filter(q=>q.d<2.8).sort((a,b)=>a.d-b.d)[0];if(q){if(q.id==='exit')this.run('cross-leave');else if(q.id==='thicket')this.run('cross-seek');else this.rpg.open(({keeper:'keeper',inn:'inn',shop:'town-shop',board:'works',workbench:'craft',waystone:'waystone',inscription:'listening',court:'bells'})[q.id]||'atlas');}else this.rpg.api.toast('Explore on foot. M marks services and the northern trail.');return true;}
  tick(){const sim=this.sim,a=this.rpg.state,s=this.state,r=X.runtime(sim),sel=T.selected(sim);
  if(this.uiRoom!==sim.room){this.uiRoom=sim.room;this.destination=null;this.toneSerial=r.toneSerial;}
- if(a.beacon.complete&&this.rpg.quest==='story'){const tasks=X.objectives(a),next=tasks.find(q=>!q.done)||{title:'The bell is ringing again',detail:'Return home, help with the common works, or test a new build. M opens discovered roads.'};$('#tracked-chapter').textContent='CHAPTER IV · THE BELL ROAD';$('#tracked-title').textContent=next.title;$('#tracked-detail').textContent=next.detail;$('#tracked-progress').textContent=tasks.filter(q=>q.done).length+' / '+tasks.length+' · Journal J';}
+ if(a.beacon.complete&&this.rpg.quest==='story'&&!G.RealmSaga?.done(sim.state,'bellweather')){const tasks=X.objectives(a),next=tasks.find(q=>!q.done)||{title:'The bell is ringing again',detail:'Return home, help with the common works, or test a new build. M opens discovered roads.'};$('#tracked-chapter').textContent='CHAPTER IV · THE BELL ROAD';$('#tracked-title').textContent=next.title;$('#tracked-detail').textContent=next.detail;$('#tracked-progress').textContent=tasks.filter(q=>q.done).length+' / '+tasks.length+' · Journal J';}
  if(sel?.custom==='bell')$('#target-rank').textContent='ELITE · HUSHBOUND KEEPER';
  if(sim.room==='crossing'){$('#skill-insight').title='Briar exposes an enemy; away from combat, seeks the lost clapper. The map also has an explicit Seek action.';if(s.met&&!s.clapperRevealed&&r.seek)$('#combat-help').textContent='Briar has a scent. Follow your companion into the north-west thicket.';}
  if(r.toneSerial!==this.toneSerial){this.toneSerial=r.toneSerial;const au=this.rpg.api.audio(),b=X.BELLS.find(b=>b.id===r.tone);if(b&&au?.enabled&&au.ctx?.state==='running'){for(const[ratio,amp]of[[1,.12],[2.01,.045],[2.72,.018]])au.note(b.note*ratio,au.ctx.currentTime,1.6,amp);}}
