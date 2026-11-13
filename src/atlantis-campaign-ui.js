@@ -8,7 +8,7 @@ const record=sim=>sim.state.atlantisCampaign,step=id=>D().steps.find(s=>s.id===i
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
 // Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
 function cards(lines,done){
- const d=document.getElementById('story-dialog');if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ const d=typeof document!=='undefined'&&document.getElementById?document.getElementById('story-dialog'):null;if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
  let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
  paint();d.showModal();
 }
@@ -22,6 +22,15 @@ function routePoints(sim){const r=record(sim),d=D();if(sim.room!==d.room||!r?.ac
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="atlantis-campaign-map"><h3>The harbour repair · physical routes</h3><p>H labels show accepted harbour work. Dry labels use the supported quay; wet labels require the existing gallery and their real depth. No label creates floor, current, arrival or work.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.medium==='dry'?' '+button('Walk near this dry action','walk',p.id):' · '+esc(depth(p))+' '+button('Read depth and gallery route','depth',p.id))+'</li>').join('')+'</ol>'+button('Read the current campaign','open')+'</section>':'';}
 function recognition(r){if(!r?.steps.includes('verify-passage')||!r.choice)return'';const c=D().choices.find(c=>c.id===r.choice);return'<section class="atlantis-campaign-recognition"><h3>The verified local record</h3><p>'+esc(c.consequence)+'</p>'+c.recognition.map(l=>'<p><strong>'+esc(l.name)+':</strong> “'+esc(l.text)+'”</p>').join('')+'</section>';}
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
+// The script's prompt and option labels for a choice; each button keeps its id and falls back to the term's name.
+function choiceControls(step,choices,act,state){
+ const sc=SCRIPT()?.forStep?.('atlantis',step,state)||null,opts=sc?.choice?.options||[];
+ const label=c=>opts.find(o=>o.id===c.id)?.label||c.name;
+ return(sc?.choice?.prompt?'<p>'+esc(sc.choice.prompt)+'</p>':'')+choices.map(c=>act(label(c),'review',c.id)).join('');
+}
+// The first story-card button, for a bot or a test that has to move the dialog on.
+function advanceCards(){const b=document.getElementById('story-buttons')?.children?.[0];if(b&&b.onclick)b.onclick();}
 class AtlantisCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.reading=null;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -82,7 +91,7 @@ class AtlantisCampaignUI{
      else if(!H().at(sim,s))controls=s.medium==='dry'?button('Walk near this dry action','walk',s.id):'<p>'+esc(depth(s))+' · '+(s.medium==='court'?'enter the real Bellglass air-court doorway.':'hold this actual water depth.')+'</p>'+button('Read depth and gallery route','depth',s.id);
      else if(s.kind==='defeat')controls='<p>Close the workspace to resume the dry-quay fight. Select the actual Custodian with Tab; use your owned blade or bow, Brace, supported movement or actual cover. A journal button cannot expose the bearing.</p>';
      else if(s.kind==='approach')controls=d.approaches.map(a=>act('Read '+a.name+' terms','review-approach',a.id)).join('');
-     else if(s.kind==='choice')controls=d.choices.map(c=>act('Read '+c.name+' terms','review',c.id)).join('');
+     else if(s.kind==='choice')controls=choiceControls('disposition',d.choices,act,sim.state);
      else if(s.kind==='pressure')controls=act('Set '+setting(s)+' · '+s.name,'pressure',s.id);
      else controls=act(s.name,'step',s.id);
     }
@@ -95,12 +104,12 @@ class AtlantisCampaignUI{
   if(this.pending){const approach=this.pending.kind==='approach',terms=(approach?d.approaches:d.choices).find(t=>t.id===this.pending.value);html+='<section class="atlantis-campaign-confirm"><h3>'+esc(terms.name)+' · confirm this retained record</h3><p>'+esc(terms.text)+'</p>'+(approach?'<p>This approach names the reading needed for diagnosis. The other reading stays optional evidence.</p>':'<p>'+esc(terms.consequence)+'</p><p>This is a lasting choice for the harbour’s record.</p>')+(this.same(this.pending)?act('Confirm '+terms.name,approach?'confirm-approach':'confirm',terms.id):'<p>The traveller or physical checkpoint changed. Cancel and read the current terms.</p>')+button('Cancel · keep this record undecided','cancel')+'</section>';}
   return{title:d.title,html:html+'<p class="atlantis-campaign-footer">Reading, walking and previews grant no work. Physical depth owns wet actions; actual damage owns bearing exhaustion. Your earlier chart, lamp and equipment remain yours.</p></article>'};
  }
- tick(){const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
+ tick(){if(this.sim?.atlantisGuardianCards){const g=this.sim.atlantisGuardianCards;delete this.sim.atlantisGuardianCards;cards(g);}const sim=this.sim,r=record(sim),toggle=document.querySelector('.tracker-switch [data-id="atlantis-campaign"]');if(toggle)toggle.hidden=!r?.accepted||r.claimed;
   if(this.pending&&!this.same(this.pending))this.pending=null;if(!this.seen.has(sim)){this.seen.add(sim);if(r?.accepted&&!r.claimed&&this.rpg.quest==='story')this.rpg.quest='atlantis-campaign';}
   if(this.rpg.quest!=='atlantis-campaign')return;if(!r?.accepted||r.claimed){this.rpg.quest='story';return;}
   const available=H().available(sim.state),requiredReading=D().approaches.find(a=>a.id===r.approach)?.requiredObservation,next=available.find(s=>!s.optional||s.id===requiredReading)||available[0],ready=H().ready(sim.state),detail=sim.room!==D().room?'Revisit Farwake · retained work stays saved':ready?'Return to Sahra for your reward':next?.medium==='water'||next?.medium==='court'?next.name+' · '+depth(next):next?.name||'Read the current repair';
   for(const[selector,text]of Object.entries({'#tracked-chapter':'ATLANTIS · THE HARBOUR BENEATH THE HARBOUR','#tracked-title':D().title,'#tracked-detail':detail,'#tracked-progress':r.steps.length+' recorded actions · '+(ready?'reward waiting':'J campaign · M physical routes')})){const el=document.querySelector(selector);if(el)el.textContent=text;}
  }
 }
-const api={AtlantisCampaignUI,routePoints,legend,fee,depth};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={AtlantisCampaignUI,routePoints,legend,fee,depth,choiceControls,advanceCards};G.RealmAtlantisCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

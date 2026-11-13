@@ -184,6 +184,6 @@ test('Atlantis fee and dispositions: fixed complete payload contributes to actua
   assert.deepEqual(c.recognition.map(r=>r.name),['Sahra','Ilyra','Damar']);for(const line of c.recognition){keys(line,['name','text']);assert.ok(line.text.length>30&&line.text.length<220);}
  }
  assert.equal(new Set(d.choices.map(c=>c.recognition.at(-1).text)).size,3,'real carrier recognition differs with the disposition');
- assert.match(d.choices[2].text,/Future patron privileges are not implemented/);assert.match(steps.get('disposition').text,/Each one keeps Damar safe and keeps his account whole/);
+ assert.match(d.choices[2].text,/His roads open to you, including the one the fox is on/);assert.doesNotMatch(d.choices[2].text,/Future patron privileges/);assert.match(steps.get('disposition').text,/Each one keeps Damar safe and keeps his account whole/);
  assert.match(d.completionText,/up to 48 XP within your stored cap/);assert.match(d.completionText,/ordinary crafting project/);assert.match(d.completionText,/The old Bellglass chart and lamp keep their own records/);
 });

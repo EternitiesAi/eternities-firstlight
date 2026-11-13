@@ -27,7 +27,7 @@ const definition=freeze({
  room:'world-atlantis',realm:'atlantis',prerequisite:'atlantis-bellglass-chart-v1',
  giver:{id:'sahra',name:'Sahra · instrument-maker',x:-5,z:-10},
  reward:{xp:148,coins:18,ore:4,materials:{wood:4,fiber:3,crystal:1}},
- summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept what he saw: a sealed record that shows the Regent of Ash taking the pattern from the carrier’s hold. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
+ summary:'Damar, a stranded carrier, went under the harbour when a counterfeit route took his load. Down there the drowned witness kept a daybook: forty-one people, written down by the man who kept them. Read Ilyra’s two receipts, keep an Upper or Lower reading, set the inlet, equalizer and outlet in order, then break the Guardian that keeps the record. Choose how the record is kept, and return to Sahra for your reward.',
  danger:'The repair can bring a 0.7-unit-per-second current into the marked shallow water band; ordinary swimming stays at 2.6 units per second. Descend to the quiet lower band, use the manual bypass or retreat. There is no breath timer and no material loss. Bellglass’s air court has no current and no combat. The Drowned Witness Guardian waits on the dry exit quay with '+boss.hp+' health, '+boss.damage+' damage and a 0.75 body radius. A 3.4-radius forward vane sector warns for 1.3 seconds and recovers for 1.9. An intake lane warns for 1.5 seconds, pulls for at most 1.2 seconds at 1.2 units per second, and recovers for 2.1; it is at most 5.5 long with a 1-unit half-width, actual support and opaque cover must clip the locked footprint. Move, Brace, use cover or retreat. Ordinary blade and bow damage remain valid during all live combat phases, with no recovery-only armor or equipment scaling. The warnings stay readable with sound off.',
  completionText:'Damar is safe. The Guardian is stilled, both releases are settled, and the drowned witness’s record is in your keeping. It names the Regent of Ash as the one who took the pattern from Damar’s hold. Sahra gives you 18 sunmarks, 4 ore, 4 timber, 3 fibre and 1 crystal, and up to 48 XP within your stored cap. The timber, fibre and crystal serve any ordinary crafting project you choose. The old Bellglass chart and lamp keep their own records.',
  witnesses:[
@@ -70,7 +70,7 @@ const definition=freeze({
   step('release-east','Stabilize the east release second','pressure',15,-44,['release-west'],false,
    'Stabilize the east release after the west release is recorded. Both releases count toward this repair, whatever happened in the fight. Repeated or refused attempts cannot change the result.'),
   step('custodian-stable','Read the drowned witness’s record','interact',8,-44,['release-east'],false,
-   'Verify both releases and the settled tools. With the Guardian stilled, the sealed record can be read. It shows the Regent of Ash taking the pattern from Damar’s hold. The pattern was stolen, and the record says who stole it.'),
+   'Verify both releases and the settled tools. With the Guardian stilled, the sealed record can be read. It is a daybook: forty-one names in one hand, and the road the stolen pattern took beside them.'),
   step('disposition','Choose what becomes of the record','choice',0,-18,['custodian-stable'],false,
    'Read Publish, Limited and License and their exact consequences before you choose. Preview and cancel keep the choice open. Each one keeps Damar safe and keeps his account whole.'),
   step('verify-passage','Verify the passage and hand the lens over','interact',12,-40.1,['disposition'],false,
@@ -94,7 +94,7 @@ const definition=freeze({
     {name:'Damar',text:'The manual passage secures this load and keeps my full account. I can wait safely without pretending every destination is now free.'}
    ]},
   {id:'license',name:'License · keep a disclosed personal permit',
-   text:'Keep a personal permit for this load under the office’s disclosed terms, sealed beside the Regent’s mark. Refusing would never hold Damar or your way out hostage. Future patron privileges are not implemented. Damar’s safety and the free home passage remain.',
+   text:'Keep a personal permit for this load under the office’s disclosed terms, sealed beside the Regent’s mark. Refusing would never hold Damar or your way out hostage. His roads open to you, including the one the fox is on. Damar’s safety and the free home passage remain.',
    consequence:'The landing shows the permit seal beside the office’s marker. Sahra, Ilyra and Damar recognize the permit you chose and what it means.',
    recognition:[
     {name:'Sahra',text:'This lens release carries the personal permit you chose. The instrument records it as you chose it.'},
