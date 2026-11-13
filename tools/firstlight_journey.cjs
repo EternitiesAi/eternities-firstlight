@@ -138,7 +138,7 @@ function run(options = {}) {
  if (world) {
   const before = readJson(world);
   try {
-   const fz = require(path.join(ROOT, 'tests/finale_journey.cjs')).journey({ out: sub('12'), source: world });
+   const fz = require(path.join(ROOT, 'tests/finale_journey.cjs')).journey({ out: sub('12'), source: world, ending: options.ending || 'open' });
    world = fz.final;
    const numbers = fz.fights.map(f => f.label + ' ' + f.seconds + 's, ' + f.hits + ' hits, ' + f.strikesLocked + ' strikes locked, ' + f.dodgeSteps + ' dodges, lost ' + f.hpLost + ' hp, ends ' + f.hpEnd).join('; ');
    ran(rows, 'finale', before, readJson(world), numbers, log);
@@ -156,12 +156,13 @@ function run(options = {}) {
  const fights = TACTICS.table();
  if (log && fights.length) { console.log('--- boss fights: time, player hits, hp lost, tonics used'); for (const f of fights) console.log('  ' + f.boss.padEnd(18) + ' ' + f.outcome.padEnd(7) + ' ' + (f.secs + 's').padStart(8) + '  hits ' + f.hits + '  hp lost ' + f.hpLost + '  tonics ' + f.tonics); }
  if (log) console.log('--- shared fight step: ' + TACTICS.dodges() + ' step-outs from warned spots');
- return { rows, creditsRolled, stoppedAt, totals, out, fights, dodges: TACTICS.dodges() };
+ return { rows, creditsRolled, stoppedAt, totals, out, ending: options.ending || 'open', finalWorld: world, fights, dodges: TACTICS.dodges() };
 }
 
 module.exports = { run, BEATS };
 if (require.main === module) {
  const i = process.argv.indexOf('--out');
- const result = run({ out: i > 0 ? process.argv[i + 1] : null });
+ const e = process.argv.indexOf('--ending');
+ const result = run({ out: i > 0 ? process.argv[i + 1] : null, ending: e > 0 ? process.argv[e + 1] : 'open' });
  process.exitCode = result.creditsRolled ? 0 : 1;
 }
