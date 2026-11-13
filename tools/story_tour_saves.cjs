@@ -126,7 +126,8 @@ for (const j of JOURNEYS) {
   const dir = path.join(root, 'nearshore');
   fs.mkdirSync(dir, { recursive: true });
   collect('nearshore', 'tools/firstlight_journey.cjs --save-at nearshore', dir, () => {
-    const botOut = path.join(root, '_bot', 'nearshore');
+    // outside the checkout: the cosmos helper refuses explicit outputs inside it.
+    const botOut = fs.mkdtempSync(path.join(os.tmpdir(), 'tour-bot-nearshore-'));
     const bot = childProcess.spawnSync(process.execPath, [path.join(ROOT, 'tools/firstlight_journey.cjs'), '--save-at', 'nearshore', '--out', botOut], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
     // the bot's BLOCKED row names the beat and the reason; its last lines alone only show the boss table.
     const blocked = String(bot.stdout || '').split('\n').find(l => l.startsWith('BLOCKED')) || '';
