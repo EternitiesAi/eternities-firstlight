@@ -64,11 +64,19 @@ class EarthHomecomingUI{
   }
   return{title:d.title,html:html+'<p class="earth-homecoming-footer">Reading this page does nothing. The Regent answers only at the spring junction.</p></article>'};
  }
+ // the finale's story beats play through the story dialog, one at a time. no dialog opens while the Regent is winding up
+ // a strike, and a choice beat answers through its own command.
+ beatTick(s){
+  const d=G.RealmStoryDialog;if(!d||d.busy())return;const b=H().nextBeat(s);if(!b||H().windingUp(s))return;
+  H().takeBeat(s);const binding={...this.owner()};
+  d.open([{owner:b.owner,step:b.step}],{onChoice:option=>{if(!b.choice)return;const type=b.step==='last'?'last':'offer';const result=this.rpg.api.earthHomecomingCommand(type,{quest:D().id,expectedActive:binding.active,expectedRevision:binding.revision,choice:option.id});this.rpg.api.toast(result.text||result.error);this.rpg.paint();}});
+ }
  tick(){
   const s=this.sim,r=H().runtime(s);
-  if(offerPending(s)&&!this.opened){this.opened=true;this.open();}
+  // the offer opens in the story dialog as a beat; the panel stays for reading and for the same answer.
   if(!offerPending(s))this.opened=false;
   if(r.credits&&!this.creditsShown){this.creditsShown=true;showCredits(()=>{r.creditsDone=true;},s.state);}
+  this.beatTick(s);
  }
 }
 const api={EarthHomecomingUI,routePoints:()=>[],legend:()=>'',nearSpring};

@@ -72,7 +72,7 @@ test('the freed default chain falls to Neris, the chains are saved at the break,
  assert.equal(EH.canDamage(s, bodyOf(s)), true, 'the second body can be struck while it runs');
 });
 
-test('the third body waits for an answer; refusing is saved; the last answer ends the story and rolls the credits', () => {
+test('refusing is saved; the last body falls to the one open answer, taken without asking; the credits roll', () => {
  const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
  assert.equal(phase(s), 3, 'the second body going down opens the offer');
@@ -85,17 +85,38 @@ test('the third body waits for an answer; refusing is saved; the last answer end
  assert.equal(s.saved.earthHomecoming.finale.offer, 'refused');
  run(s, .1); assert.equal(EH.canDamage(s, bodyOf(s)), true, 'after refusing, the last fight is open');
  AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
- assert.equal(EH.runtime(s).lastOpen, true, 'the last body fell and asks for the last answer');
- assert.equal(s.state.saga.finale.won, false, 'the story is not over until the answer');
- assert.ok(EH.lastChoices(s).some(c => c.id === 'open'), 'the open answer is offered');
- const last = answer(s, 'slot-a', 'last', 'open');
- assert.equal(last.ok, true, last.error);
- assert.equal(s.state.saga.finale.won, true); assert.equal(s.state.saga.finale.ending, 'open');
+ // with no sighting heard only the open answer is left, so the last blow is taken without asking.
+ assert.deepEqual(EH.lastChoices(s).map(c => c.id), ['open'], 'one answer is open');
+ assert.equal(EH.runtime(s).lastOpen, false, 'the last body fell and nobody is asked');
+ assert.equal(s.state.saga.finale.won, true, 'the one open answer ends the story');
+ assert.equal(s.state.saga.finale.ending, 'open');
+ assert.equal(s.saved.saga.finale.ending, 'open', 'the ending is saved with the win');
  assert.notEqual(EH.view(s), null, 'the camera rise runs after the answer');
  run(s, 8.2);
  assert.equal(s.state.saga.credits, true); assert.equal(s.state.saga.postgame, true);
  assert.equal(s.earthHomecomingRuntime.credits, true, 'the credits are due');
  s.earthHomecomingRuntime.creditsDone = true; assert.equal(EH.view(s), null, 'the rise ends with the credits');
+});
+
+test('with every sighting heard, the last body asks, both answers are offered, and the one given is the ending', () => {
+ const s = sim(world()); run(s, .2); assert.ok(chainsDown(s));
+ AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
+ // the bot's own order: the sightings are heard while the offer waits, then the offer is refused.
+ for (const id of ['beacon', 'foundry', 'confluence']) {
+  const said = s.sagaCommand('heard-' + id, 'regent', { id });
+  const heard = s.sagaCommand('heard-' + id + '-answer', 'regent-heard', { id, heard: true });
+  assert.ok(heard.ok, 'heard the sighting ' + id + ': ' + (heard.error || said.error));
+ }
+ const refused = answer(s, 'slot-a', 'offer', 'refuse');
+ assert.equal(refused.ok, true, refused.error);
+ run(s, .1); AD().damageEnemy(s, bodyOf(s), 100000); run(s, .1);
+ assert.deepEqual(EH.lastChoices(s).map(c => c.id).sort(), ['answered', 'open'], 'both answers are open');
+ assert.equal(EH.runtime(s).lastOpen, true, 'the last body asks');
+ assert.equal(s.state.saga.finale.won, false, 'the story is not over until the answer');
+ const last = answer(s, 'slot-a', 'last', 'answered');
+ assert.equal(last.ok, true, last.error);
+ assert.equal(s.state.saga.finale.ending, 'answered');
+ assert.equal(s.saved.saga.finale.ending, 'answered', 'the answer is saved with the win');
 });
 
 test('signing the offer ends the valley as the kept ending, with no third fight', () => {

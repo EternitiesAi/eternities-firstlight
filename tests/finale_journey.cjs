@@ -40,6 +40,7 @@ function journey(options = {}) {
   const t0 = a().elapsed, hp0 = a().hp, hits = { n: 0 }, seen = new Set(), dodge = { n: 0, heals: 0 }; let lost = 0, last = a().hp;
   for (let i = 0; i < limit && !until(); i++) {
    const s = a(), p = sim.state.player, stats = AD.stats(s);
+   EH.listen(sim); // the bot hears each story beat as it comes, so no dialog waits on it
    for (const e of rt().enemies) if (e.finaleRole === 'regent' && e.strike && !seen.has(e.strike)) seen.add(e.strike);
    if (s.hp < stats.maxHP * .35 && s.tonics > 0 && s.elapsed >= rt().cooldowns.heal) { if (cmd('heal').ok) dodge.heals++; }
    if (threatened(p)) { dodge.n++; const q = safeSpot(); if (q) sim.moveTo(q.x, q.z); }
@@ -78,10 +79,14 @@ function journey(options = {}) {
  } else {
   const offer = EH.command(ectx, 'offer', eq('refuse'), eio); commands++;
   assert.ok(offer.ok, 'refused the gift: ' + offer.error);
-  fights.push(fight('last body', () => EH.runtime(sim).lastOpen === true));
-  assert.ok(EH.runtime(sim).lastOpen === true, 'the last body fell and the last answer is open');
-  const answer = EH.command(ectx, 'last', eq(ending), eio); commands++;
-  assert.ok(answer.ok, 'the last answer ' + ending + ': ' + answer.error);
+  fights.push(fight('last body', () => EH.runtime(sim).lastOpen === true || sim.state.saga.finale.won === true));
+  // one answer open is taken without asking (the owner's rule); two or more are put to the bot, which gives its own ending.
+  if (sim.state.saga.finale.won !== true) {
+   assert.ok(EH.runtime(sim).lastOpen === true, 'the last body fell and the last answer is open');
+   const answer = EH.command(ectx, 'last', eq(ending), eio); commands++;
+   assert.ok(answer.ok, 'the last answer ' + ending + ': ' + answer.error);
+  }
+  assert.equal(sim.state.saga.finale.ending, ending, 'the story ends as the bot chose');
  }
  assert.ok(sim.state.saga.finale.won === true, 'the story is won');
  step(8.5);
