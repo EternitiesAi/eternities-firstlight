@@ -12,7 +12,7 @@ const D=require(DATA),d=D.definition,g=D.geometry;
 const inputs=['src/cosmos-campaign-data.js','src/cosmos.js','src/world-foundations.js','src/realm-trails-cosmos.js','src/local-life.js'].map(p=>path.join(ROOT,p));inputs.push(PREIMAGE);
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const epoch=Object.fromEntries(inputs.map(p=>[p,sha(p)]));
-assert.equal(sha(DATA),'15ee56a468c0b4bb9cf380db10f053511726b3e446b1415b1476040140f51466');
+assert.equal(sha(DATA),'8a9220fc4055f1fc0d0814db7073a1db9ffb05a46087be12b51a7448dc29ddbb');
 assert.equal(sha(PREIMAGE),'dc646ba254ad4c482685c58d342e50c696832f479c8a13526faeed089fe4d3c5');
 const N=require(path.join(ROOT,'src/cosmos.js')),W=require(path.join(ROOT,'src/world-foundations.js'));
 const baseline={module:{exports:{}}};vm.runInNewContext(fs.readFileSync(PREIMAGE,'utf8'),baseline,{filename:PREIMAGE});const O=baseline.module.exports;
