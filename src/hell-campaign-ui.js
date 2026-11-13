@@ -6,7 +6,9 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const button=(label,type,id='',extra='')=>'<button data-rpg="hell-campaign-'+type+'" data-id="'+esc(id)+'" '+extra+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.hellCampaign;
 // a story script, when it lands, owns the spoken lines; until then the data table answers.
-const spoken=(d,id,state)=>{const s=G.RealmStoryScript?.scene?.(id,state);return Array.isArray(s?.lines)?s.lines:(d.lines?.scenes?.[id]||[]);};
+// the story script speaks every line; a scene that is absent for this state simply has no lines.
+const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
 function reward(d=def()){return d.reward.xp+' XP · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials||{}).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.accepted||r.claimed)return[];
@@ -14,8 +16,8 @@ function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.
  return points.map((p,i)=>({...p,hellCampaign:true,mark:'W'+(i+1)}));
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="hell-campaign-map"><h3>The stolen pattern</h3><p>W labels show this road. The outer works are open from here; the inner foundry stays shut. Walking records nothing.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+' '+button('Walk near this action','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the road and your choice','open')+'</section>':'';}
-function recognition(r,d=def()){if(!r?.steps.includes('verify-route')||!r.choice)return'';
- return'<section class="hell-campaign-local-recognition"><h3>The choice is remembered</h3>'+speech(d.lines.recognition[r.choice])+'</section>';}
+function recognition(r,d=def(),state){if(!r?.steps.includes('verify-route')||!r.choice)return'';
+ return'<section class="hell-campaign-local-recognition"><h3>The choice is remembered</h3>'+speech(linesOf(sceneOf('hell','verify-route',state)))+'</section>';}
 class HellCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -47,7 +49,7 @@ class HellCampaignUI{
    this.pending={...this.owner(),choice:choice.id,step:step.id};this.rpg.paint();return true;
   }
   const payload={quest:d.id,expectedRevision:this.binding.adventureRevision,expectedActive:this.binding.active};let command=type;
-  if(type==='step')payload.step=id;
+  if(type==='step'){payload.step=id;if(el.dataset.heard!==undefined)payload.heard=el.dataset.heard==='true';}
   if(type==='confirm'){
    if(!this.same(this.pending,true)||id!==this.pending.choice){this.pending=null;this.rpg.api.toast('This preview belongs to an earlier checkpoint. Read the choice again.');this.rpg.paint();return true;}
    Object.assign(payload,{step:this.pending.step,choice:this.pending.choice});command='choose';
@@ -67,16 +69,17 @@ class HellCampaignUI{
    html+='<section><h3>Begin with Neris</h3><p>'+(!eligible?(G.RealmSaga.allowed(sim.state,'hell')?'Finish the Open Cage rescue first. Neris’s way out of the cell is the way in.':'The road to the foundry is not open yet. The night at Bellweather has to come first.'):'Istra has the road. Take it up when you are ready.')+'</p>'+(here&&eligible&&H().at(sim,d.giver)?act('Begin the road','accept'):here?button('Walk to Istra in the Refuge','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
   }else{
    if(r.claimed)html+='<section class="hell-campaign-recognition"><h3>Istra keeps the road honest</h3><p>'+esc(d.completionText)+'</p></section>';
-   html+='<section><h3>Your road so far</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
+   html+=r.steps.length?'':sceneSection('hell-campaign-arrival','Arrival',sceneOf('hell','arrive',sim.state));html+='<section><h3>Your road so far</h3><ol class="hell-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id);let controls='';
     if(!r.claimed&&next){
      if(!here)controls='<p>Go back to Hell to reach this step.</p>';
      else if(!H().at(sim,s))controls=button('Walk near this action','walk',s.id);
      else if(s.kind==='defeat')controls='<p>Close this page to fight. Tab selects Veyr. Use your blade or bow, move or Brace through the marked shape, and strike while he recovers.</p>';
      else if(s.kind==='choice')controls=d.choices.map(c=>act('Read this choice','review',c.id)).join('');
+     else if(s.id==='stabilize-service-engine'&&G.RealmSaga?.regentHeard){const prompt=sceneOf('hell',s.id,sim.state)?.choice?.prompt||'';const answer=(heard,label)=>button(label,'step',s.id,'data-binding="'+this.binding.id+'" data-revision="'+this.binding.adventureRevision+'" data-heard="'+heard+'"');controls='<p>'+esc(prompt)+'</p>'+answer(true,'Let him talk')+answer(false,'I am not here to listen');}
      else controls=act(s.id==='challenge-veyr'?'Challenge Veyr':s.name,'step',s.id);
     }
-    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(spoken(d,s.id,sim.state))+'<div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'hell-campaign-done':next?'hell-campaign-next':'')+'" data-hell-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('hell',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>';
    if(!r.claimed&&H().ready(sim.state))html+='<section class="hell-campaign-ready"><h3>Complete</h3><p>Return to Istra to close the road. A full pouch never stops it; anything that does not fit stays in the works.</p>'+(here&&H().at(sim,d.giver)?act('Return to Istra and close the road','claim'):here?button('Walk back to Istra','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
@@ -94,5 +97,5 @@ class HellCampaignUI{
   for(const[selector,value]of Object.entries(text)){const e=document.querySelector(selector);if(e)e.textContent=value;}
  }
 }
-const api={HellCampaignUI,routePoints,legend,reward,spoken};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
+const api={HellCampaignUI,routePoints,legend,reward,sceneOf};G.RealmHellCampaignUI=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
