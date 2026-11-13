@@ -26,7 +26,7 @@ function route(a,b,radius=.31){
 
 test('Hell campaign data: exact frozen catalogue, source boundary and import without gameplay mutation',()=>{
  keys(globalThis.RealmHellCampaignData,['definition','patterns']);frozen(globalThis.RealmHellCampaignData);
- keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy','regent','lines']);
+ keys(d,['id','title','room','realm','prerequisite','giver','reward','summary','danger','completionText','steps','choices','enemy','regent']);
  assert.equal(d.id,'hell-last-unclaimed-road-v1');assert.equal(d.room,'world-hell');assert.equal(d.realm,'hell');
  assert.equal(d.prerequisite,'hell-open-cage-v1');
  assert.equal(north.definitions.find(v=>v.id===d.prerequisite)?.realm,d.realm);

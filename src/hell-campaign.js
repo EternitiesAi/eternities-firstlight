@@ -28,8 +28,7 @@ function at(sim,p){return sim.room===D.room&&!sim.worldDive&&G.RealmTrails.at(si
 function journal(candidate,kind,text){candidate.journal.push({seq:candidate.nextEvent++,day:candidate.day,hour:candidate.hour,kind,text:text.slice(0,350)});if(candidate.journal.length>200)candidate.journal.shift();}
 // the saga writes its sighting into the candidate, so the regent's line saves with the campaign's own record.
 function saw(candidate){return G.RealmSaga.regentSeen({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry');}
-// the hear or cut answer waits for the saga's regent-heard (BRANCHES.md 2.2); until it lands the sighting stands without it.
-const hears=()=>typeof G.RealmSaga?.regentHeard==='function';
+// the hear or cut answer is the saga's regent-heard (BRANCHES.md 2.2), written after the sighting in the same save.
 function heard(candidate,value){return G.RealmSaga.regentHeard({state:candidate,event:(kind,text)=>journal(candidate,kind,text)},'foundry',value);}
 function commit(sim,candidate,io,text){
  if(candidate.adventure.revision>=1e9||candidate.nextEvent>=Number.MAX_SAFE_INTEGER-1)return fail('Export this character before continuing: record limit reached.');
@@ -57,12 +56,12 @@ function command(ctx,type,payload,io){
   if(!q.accepted||q.claimed||!s||s.kind!=='interact')return fail('Only unfinished work on this road can be recorded.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This is already done.'};
   if(!available(candidate).some(p=>p.id===s.id)||!at(sim,s))return fail('Reach '+s.name+' and finish what it asks first.');
-  if(s.id==='stabilize-service-engine'&&hears()&&typeof payload.heard!=='boolean')return fail('He is waiting for your answer. Hear him out, or cut him off.');
+  if(s.id==='stabilize-service-engine'&&typeof payload.heard!=='boolean')return fail('He is waiting for your answer. Hear him out, or cut him off.');
   q.steps.push(s.id);text=s.text;
   // the regent is seen at the gate once the pattern is taken back; a save that passed the gate before the sighting existed sees him at the plate.
   // the answer is written after the sighting, in the same save, as the spec orders it.
   if(s.id==='stabilize-service-engine'||s.id==='verify-route'){const seen=saw(candidate);if(!seen.ok)return fail(seen.error);
-   if(s.id==='stabilize-service-engine'&&hears()){const h=heard(candidate,payload.heard);if(!h.ok)return fail(h.error);}}
+   if(s.id==='stabilize-service-engine'){const h=heard(candidate,payload.heard);if(!h.ok)return fail(h.error);}}
  }else if(type==='choose'){
   const s=D.steps.find(s=>s.id==='disposition'),choice=D.choices.find(c=>c.id===payload.choice);
   if(q.choice!==null)return q.choice===payload.choice?{ok:true,duplicate:true,text:'That choice is already kept.'}:fail('The choice is kept for good. It cannot be changed by opening this page again.');
