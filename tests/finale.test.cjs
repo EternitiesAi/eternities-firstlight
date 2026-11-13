@@ -194,3 +194,10 @@ test('the second body turns on you inside the chase distance; the third pursues 
  assert.equal(answered.ok, true, answered.error); run(s, .1); const last = bodyOf(s); last.mode = 'idle'; s.state.player.x = last.x + 8; s.state.player.z = last.z; const d1 = Math.hypot(s.state.player.x - last.x, s.state.player.z - last.z);
  EH.tick(s, .5); assert.ok(Math.hypot(s.state.player.x - last.x, s.state.player.z - last.z) < d1, 'the third body does not wait at the spring');
 });
+
+test('every chain site stands on open ground, where an arrow can reach it', () => {
+ const F = require(path.join(ROOT, 'src/finale-data.js'));
+ for (const [id, s] of Object.entries(F.SITES)) {
+  assert.equal(C.walkable(s.x, s.z, null, .9), true, id + ' stands on open ground');
+ }
+});
