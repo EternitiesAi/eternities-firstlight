@@ -62,11 +62,17 @@ function draw(out,sim,t){let s=sim.state.adventure;if(!s)return;companionFrames.
    for(const[k,items]of Object.entries(out))for(let j=starts[k];j<items.length;j++){const item=items[j],dx=item.p[0]-e.x,dz=item.p[2]-e.z;item.p[0]=e.x+dx*Math.cos(e.yaw)+dz*Math.sin(e.yaw);item.p[2]=e.z-dx*Math.sin(e.yaw)+dz*Math.cos(e.yaw);if(e.hitFrom){item.p[0]+=(e.x-e.hitFrom.x)/rd*recoil;item.p[2]+=(e.z-e.hitFrom.z)/rd*recoil;}item.r=[item.r?.[0]||0,(item.r?.[1]||0)+e.yaw,item.r?.[2]||0];}
    }
    if(sim.presentation?.attackTarget===e.id)ring(e.x,e.z,e.kind==='charger'?1.35:.8,0xf1d29a);
-   if(e.kind==='charger'&&e.mode==='windup'){for(let j=0;j<18;j++)for(const sign of[-1,1]){let u=j*.5,dx=e.chargeDir.x,dz=e.chargeDir.z;box(e.x+dx*u+dz*.9*sign,1.63,e.z+dz*u-dx*.9*sign,.10,.045,.25,0xe5a5b7,{r:[0,e.yaw,0],em:.7});}ring(e.x+e.chargeDir.x*9,e.z+e.chargeDir.z*9,.85,0xf0bfd1);}
+   if(e.kind==='charger'&&e.mode==='windup'&&!e.omen){for(let j=0;j<18;j++)for(const sign of[-1,1]){let u=j*.5,dx=e.chargeDir.x,dz=e.chargeDir.z;box(e.x+dx*u+dz*.9*sign,1.63,e.z+dz*u-dx*.9*sign,.10,.045,.25,0xe5a5b7,{r:[0,e.yaw,0],em:.7});}ring(e.x+e.chargeDir.x*9,e.z+e.chargeDir.z*9,.85,0xf0bfd1);}
    const sweep=G.RealmEarthExpedition?.encounter(e);
    if(sweep){for(const {kind,...part}of G.RealmEarthExpeditionBeastArt.warningParts({frame:e.strike,...sweep,base:support(sim,e.x,e.z),mode:e.mode,timer:e.timer,windup:e.windup,reducedMotion:sim.state.settings.reducedMotion}))out[kind].push(part);}
-   else if(!e.earthHomecoming&&!e.cosmosCampaign&&!e.hellCampaign&&!e.heavenCampaign&&e.kind!=='charger'&&e.mode==='windup'){let rad=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);ring(e.aim.x,e.aim.z,rad,0xd098c8);if(!sim.state.settings.reducedMotion)ring(e.aim.x,e.aim.z,rad*Math.min(1,Math.max(.15,e.timer/(e.windup??1))),0xe0bad4,1.6);}
+   else if(!e.earthHomecoming&&!e.cosmosCampaign&&!e.hellCampaign&&!e.heavenCampaign&&e.kind!=='charger'&&e.mode==='windup'&&e.aim){let rad=e.telegraphRadius??(e.kind==='boss'?2.4:e.kind==='sentinel'?1.2:1.05);ring(e.aim.x,e.aim.z,rad,0xd098c8);if(!sim.state.settings.reducedMotion)ring(e.aim.x,e.aim.z,rad*Math.max(.12,G.RealmCombat.fill(e)),0xe0bad4,1.6);}
    if(!sim.presentation?.perspective){let w=e.kind==='boss'?2.1:1.15,y=e.kind==='boss'?5.35:rootBank?support(sim,e.x,e.z)+1.18:3.9;box(e.x,y,e.z,w,.10,.09,0x273743);box(e.x-w/2+w*e.hp/e.maxHP/2,y+.008,e.z+.035,w*e.hp/e.maxHP,.072,.07,e.kind==='boss'?0xcf9ba4:0xd1ba8d,{em:.4});}
+  }
+    // Shaped telegraphs are drawn here for every owner, including the bell and event enemies the body loop skips.
+  for(const e of r.enemies){const t=e.omen;if(!t||e.hp<=0||e.mode!=='windup')continue;const f=Math.min(1,Math.max(.12,G.RealmCombat.fill(e)));
+   if(t.kind==='double'){const y=support(sim,t.x,t.z)+.1;ring(t.x,t.z,t.r2,0xb99ac2,y);if(t.stage===1)ring(t.x,t.z,t.r1*f,0xe6bddb,y+.1);else ring(t.x,t.z,t.r2*f,0xf0c8e8,y+.1);continue;}
+   const yaw=Math.atan2(t.dx,t.dz),y=support(sim,t.ox,t.oz)+.12,c=t.kind==='bait'?0xe5a5b7:0xf0a06a,n=Math.max(4,Math.round(t.length*2)),px=-t.dz*t.half,pz=t.dx*t.half;
+   for(let j=0;j<n;j++){const u=(j+.5)/n*t.length,x=t.ox+t.dx*u,z=t.oz+t.dz*u,lit=u<=t.length*f;box(x,y,z,.16,.03,.2,lit?c:0x6b5560,{r:[0,yaw,0],em:lit?.9:.2});if(t.half>0){box(x+px,y,z+pz,.10,.03,.16,0xe0b08a,{r:[0,yaw,0],em:.5});box(x-px,y,z-pz,.10,.03,.16,0xe0b08a,{r:[0,yaw,0],em:.5});}}
   }
   for(const id of s.drops){let e=A.roster(sim).find(e=>e.id===id);if(!e)continue;box(e.x,1.88,e.z,.60,.47,.5,0x947856);box(e.x,2.11,e.z,.68,.13,.58,0xc9b489);add('octa',e.x,2.56+Math.sin(t*2)*.1,e.z,.19,.38,.19,0xf2d299,{em:1.2});}
   if(sim.room==='mine'&&!s.relic){let glow=s.defeated.includes('hart');for(let i=0;i<7;i++)box(9+i*.055,2.47+i*.09,-10,.13,.28,.07,glow?0xffe8ba:0x99ac9f,{r:[0,0,-.35],em:glow?1.3:.1});}

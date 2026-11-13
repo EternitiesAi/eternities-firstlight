@@ -2,6 +2,7 @@
  * Long-lived achievements are explicit; fights, paths, and bell input are transient.
  * There is no network authority or inference about the person playing. */
 (function(G){'use strict';
+const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const VERSION=1, dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z), has=(o,k)=>typeof k==='string'&&Object.hasOwn(o,k);
 const GATE=Object.freeze({x:0,z:-27}), ENTRY=Object.freeze({x:0,z:24,yaw:Math.PI});
 const PLACES=Object.freeze([
@@ -39,9 +40,9 @@ const SOLIDS=Object.freeze([
  {x:0,z:-26,w:1.4,d:1.4}
 ]);
 const ENEMIES=Object.freeze([
- {id:'cross-thorn',name:'Briarback prowler',kind:'skitter',x:-10,z:-7,hp:110,damage:17,xp:25,ore:2,coins:6},
- {id:'cross-prism',name:'The fractured tuner',kind:'sentinel',x:8,z:-13,hp:145,damage:19,xp:30,ore:2,coins:8},
- {id:'cross-warden',name:'The Hushbound Keeper',kind:'bellwarden',custom:'bell',x:0,z:-23,hp:410,damage:30,xp:80,ore:3,coins:15}
+ {id:'cross-thorn',name:'Briarback prowler',kind:'skitter',x:-10,z:-7,hp:110,damage:17,xp:25,ore:2,coins:6,windup:.75,poise:true},
+ {id:'cross-prism',name:'The fractured tuner',kind:'sentinel',x:8,z:-13,hp:145,damage:19,xp:30,ore:2,coins:8,windup:1.05,poise:true},
+ {id:'cross-warden',name:'The Hushbound Keeper',kind:'bellwarden',custom:'bell',boss:true,x:0,z:-23,hp:D.boss('keeper').hp,damage:D.boss('keeper').damage,xp:D.boss('keeper').xp,ore:3,coins:15,windup:1.2,attackOrder:['outer','inner','line','double'],attackSpec:{outer:{windup:1.7},inner:{windup:1.2},line:{windup:1.4,length:7,half:1},double:{windup:1.2,r1:2.8,r2:4.6,gap:.8}}}
 ]);
 const GEAR=Object.freeze({
  keeper_coat:{name:'Bellweather keeper’s coat',slot:'armor',attack:0,defense:9,hp:30,tier:'Merchant',color:'#94ada4',desc:'A weatherproof coat from Edda. 24 sunmarks; +9 guard and +30 maximum health.'},
@@ -125,11 +126,12 @@ function tick(sim,dt){const A=G.RealmAdventure,a=sim.state.adventure,r=runtime(s
   else{c.status='Following the old charcoal scent';A.followPath(sim,c,CLAPPER,dt,3.6);}
  }
  for(const e of A.runtime(sim).enemies){if(e.hp<=0||e.custom!=='bell')continue;e.timer-=dt;
-  if(e.mode==='windup'){if(e.timer<=0){if(inImpact(e,p)&&A.visible(sim,e,p))A.takeDamage(sim,e.damage);A.fx(sim,'impact',e.aim.x,e.aim.z,0xd3a3cc);e.mode='recover';e.timer=2.2;}continue;}
+  if(e.mode==='windup'){if(e.timer<=0){if(e.omen){if(G.RealmCombat.strike(sim,e))continue;e.mode='recover';e.timer=2.2;continue;}if(inImpact(e,p)&&A.visible(sim,e,p))A.takeDamage(sim,e.damage);A.fx(sim,'impact',e.aim.x,e.aim.z,0xd3a3cc);e.mode='recover';e.timer=2.2;}continue;}
   if(e.mode==='recover'){if(e.timer<=0)e.mode='idle';continue;}
   if(dist(p,e.home)>15||p.z> -4){if(dist(e,e.home)>.5)A.followPath(sim,e,e.home,dt,1.8);else e.mode='idle';continue;}
   if(dist(p,e)<10&&A.visible(sim,p,e)){
-   if(dist(p,e)>6){e.mode='pursue';A.followPath(sim,e,p,dt,1.5);}else{e.mode='windup';e.ringMode=(e.strikes||0)%2===0?'outer':'inner';e.strikes=(e.strikes||0)+1;e.timer=e.ringMode==='outer'?1.7:1.2;e.aim={x:e.x,z:e.z};e.path=[];e.yaw=Math.atan2(p.x-e.x,p.z-e.z);}
+   if(dist(p,e)>6){e.mode='pursue';A.followPath(sim,e,p,dt,1.5);}else{const order=e.attackOrder||['outer','inner'],name=order[(e.strikes||0)%order.length];e.strikes=(e.strikes||0)+1;e.mode='windup';e.path=[];e.yaw=Math.atan2(p.x-e.x,p.z-e.z);const omen=G.RealmCombat.telegraph(e,name,p);e.omen=omen;
+    if(omen){e.ringMode=null;e.timer=omen.windup;e.aim=null;}else{e.ringMode=name;e.timer=e.attackSpec?.[name]?.windup??e.windup;e.aim={x:e.x,z:e.z};}}
   }else e.mode='idle';
  }
 }
