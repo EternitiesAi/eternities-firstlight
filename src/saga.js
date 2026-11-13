@@ -20,7 +20,7 @@ const BEATS=freeze([
  {id:'hell',act:4,title:'The stolen pattern',detail:'Whoever took Briar used a pattern that was never theirs. Follow its trail down to the regent’s foundry.',place:{...GATE_PLACE,label:'The world gate · Hell'}},
  {id:'heaven',act:4,title:'The envoy’s home',detail:'Go up to Heaven in peace. The envoy’s people may read the prophecy better than we did.',place:{...GATE_PLACE,label:'The world gate · Heaven'}},
  {id:'witness',act:4,title:'The drowned witness',detail:'Under the sea there is someone who saw the pattern stolen, and past the stars a cure that needs no master key.',place:{...GATE_PLACE,label:'The world gate · the sea and the stars'}},
- {id:'nearshore',act:4,title:'The nearshore',detail:'The regent says he has Briar. He will offer you one that never strays. You know her better than that.',place:{room:null,x:0,z:27,label:'The nearshore'}},
+ {id:'nearshore',act:4,title:'The nearshore',detail:'The regent says he has Briar. He will offer you one that never strays. You know her better than that.',alone:'The regent waits on the lantern pier with a fox that never strays. He thinks you came all this way for a companion.',place:{room:null,x:0,z:27,label:'The nearshore'}},
  {id:'finale',act:5,title:'The Regent of Ash',detail:'He is waiting at the spring junction, wearing your choices like chains. Bring the people you freed.',place:{room:null,x:0,z:3,label:'The spring junction'}},
  {id:'epilogue',act:5,title:'Firstlight',detail:'It is over. Walk the valley and see what changed. Ilan has something to play for you.',place:{room:null,x:0,z:-11.6,label:'The little amphitheatre'}}
 ]);
@@ -64,7 +64,8 @@ const DERIVE=freeze({
  hell:(w,s)=>w?.hellCampaign?.claimed===true&&s.regent.includes('foundry'),
  heaven:(w,s)=>w?.heavenCampaign?.claimed===true&&s.prophecy.includes('heaven'),
  witness:(w,s)=>w?.atlantisCampaign?.claimed===true&&w?.cosmosCampaign?.claimed===true&&s.regent.includes('confluence'),
- nearshore:(w,s)=>s.briar.state==='returned',
+ // a player who never took Briar home finishes it by refusing the regent's faultless fox (refuseCompanion).
+ nearshore:(w,s)=>s.briar.state==='returned'||own(s.beats,'nearshore')&&s.briar.state==='with',
  finale:(w,s)=>s.finale.won,
  epilogue:(w,s)=>s.credits
 });
@@ -131,13 +132,14 @@ function infer(world){
 }
 function current(world){
  const s=sagaOf(world),b=BEATS.find(x=>!doneWith(world,s,x.id));if(!b)return null;
- return{id:b.id,act:b.act,actName:ACTS[b.act],actLabel:'Act '+ROMAN[b.act]+' · '+ACTS[b.act],title:b.title,detail:b.detail,place:{...b.place}};
+ return{id:b.id,act:b.act,actName:ACTS[b.act],actLabel:'Act '+ROMAN[b.act]+' · '+ACTS[b.act],title:b.title,detail:b.alone&&world?.adventure?.companion?.bonded!==true&&s.briar.state==='with'?b.alone:b.detail,place:{...b.place}};
 }
 function act(id){const b=BEATS.find(x=>x.id===id);return b?b.act:null;}
 const yes=(text,extra)=>({ok:true,text,...extra}),fail=error=>({ok:false,error});
 function saga(sim){if(!sim?.state?.saga)throw Error('A simulation with a saga is required.');return sim.state.saga;}
 function mark(sim,beatId){
  const s=saga(sim),w=sim.state;if(!own(DERIVE,beatId))return fail('Unknown story beat.');
+ if(beatId==='nearshore'&&!own(s.beats,beatId))return fail('The nearshore ends with Briar home, or with the regent refused.');
  if(own(s.beats,beatId))return yes('Already part of your story.',{already:true});
  if(!priorDone(w,s,beatId))return fail('That part of the story has not come yet.');
  const candidate={...s,beats:{...s.beats,[beatId]:{day:w.day}}};if(!DERIVE[beatId](w,candidate))return fail('That part of the story is not finished yet.');
@@ -156,9 +158,16 @@ function unlockFeather(sim){
  if(!s.prophecy.includes('spring'))return fail('Hear the envoy out first.');s.feather.unlocked=true;sim.event('saga','The feather shows true roads in gold and false ones in ash red.');return yes('Hold the feather up to see the roads as they are.');
 }
 function featherUse(sim){const s=saga(sim);if(!s.feather.unlocked)return fail('The feather has not opened its sight to you yet.');if(s.feather.uses<MAX_COUNT)s.feather.uses++;return yes('The roads show themselves.',{uses:s.feather.uses});}
+// Never bonded: there is no Briar to bring home, so the nearshore is the regent's offer of a companion who never strays, refused.
+function refuseCompanion(sim){
+ const s=saga(sim),w=sim.state;if(own(s.beats,'nearshore'))return yes('You already told him no.',{already:true});
+ if(w.adventure?.companion?.bonded===true||s.briar.state!=='with')return fail('Briar is the one you came for.');
+ if(!priorDone(w,s,'nearshore'))return fail('That part of the story has not come yet.');
+ s.beats.nearshore={day:w.day};sim.event('saga','You refused the regent’s fox. Nothing that cannot stray is a companion.');return yes('You refused the regent’s fox.');
+}
 function briarTaken(sim){
  const s=saga(sim),w=sim.state;if(s.briar.state==='taken')return yes('Briar is gone.',{already:true});if(s.briar.state!=='with')return fail('Briar is not with you to be taken.');
- if(w.adventure?.companion?.bonded!==true||!doneWith(w,s,'bellweather'))return fail('Not yet.');
+ if(w.adventure?.companion?.bonded!==true||!doneWith(w,s,'bellweather'))return fail('Not yet.');if(own(s.beats,'nearshore'))return fail('The nearshore is behind you. Briar stays with you.');
  s.briar.state='taken';s.briar.takenDay=w.day;if(sim.sagaRuntime)sim.sagaRuntime.place=null;sim.event('saga','Briar was pulled into the counterfeit road.');return yes('Briar is gone.');
 }
 function briarAtNearshore(sim){
@@ -204,7 +213,7 @@ function rollCredits(sim){
  const s=saga(sim);if(s.credits)return yes('The story is told.',{already:true});if(!s.finale.won)return fail('The story is not over.');
  s.credits=true;s.postgame=true;sim.event('saga','Firstlight. The roads stay open.');return yes('The roads stay open.');
 }
-const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
+const COMMANDS=freeze({mark:(sim,p)=>mark(sim,p.beat),regent:(sim,p)=>regentSeen(sim,p.id),prophecy:(sim,p)=>prophecyHeard(sim,p.id),'feather-unlock':unlockFeather,'feather-use':featherUse,'briar-taken':briarTaken,'briar-nearshore':briarAtNearshore,'briar-returned':briarReturned,'briar-home':briarHome,'refuse-companion':refuseCompanion,habit:(sim,p)=>recordHabit(sim,p.place),'finale-phase':(sim,p)=>finalePhase(sim,p.phase),'finale-won':finaleWon,credits:rollCredits});
 // Same command-identity rule as the adventure: a reused id with the same content replays its result; different content is refused.
 function command(sim,id,type,payload={}){
  if(typeof id!=='string'||!id||id.length>100||!isObj(payload))return fail('Invalid command envelope.');
@@ -223,6 +232,6 @@ function tick(sim,dt){
  if(r.place!==l.id){r.place=l.id;r.t=0;r.counted=false;}
  r.t+=dt;if(!r.counted&&r.t>=HABIT_SECONDS){r.counted=true;recordHabit(sim,l.id);}
 }
-const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
+const api=freeze({VERSION,ACTS,BEATS,GATES,ECHO,REGENT,PROPHECY,PROPHECY_LINES,HABIT_RADIUS,HABIT_SECONDS,fresh,validate,infer,done,act,current,allowed,mark,regentSeen,prophecyHeard,unlockFeather,featherUse,briarTaken,briarAtNearshore,briarReturned,briarHome,refuseCompanion,recordHabit,habitPlace,echoLedger,finalePhase,finaleWon,rollCredits,command,tick});
 G.RealmSaga=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);
