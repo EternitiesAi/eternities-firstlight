@@ -85,7 +85,7 @@ test('actual blade and tip volumes clear the conservative head bounds through th
  for(const id of ['trail_blade','copper_blade','oren_sunblade','dawn_edge']){
   if(!sim.state.adventure.owned.includes(id))sim.state.adventure.owned.push(id);sim.state.adventure.equipment.weapon=id;
   for(const reducedMotion of [false,true])for(const releaseOrigin of ['ready','queued'])for(const combatPhase of ['anticipate','recover'])for(let i=0;i<=100;i++){
-   const p=sample('blade',combatPhase,i/100,{releaseOrigin,reducedMotion}),r=rendered(sim,p),head=r.out['body-head'].find(p=>p.travelerPart==='head');
+   const p=sample('blade',combatPhase,i/100,{releaseOrigin,reducedMotion}),r=rendered(sim,p),head=r.out.round.find(p=>p.travelerPart==='head');
    for(const part of r.parts.filter(p=>['blade','blade-tip'].includes(p.weaponPart)))assert.equal(overlaps(part,head),false,`${id} ${releaseOrigin} ${combatPhase} ${i/100} ${part.weaponPart} crosses the head`);
   }
  }
@@ -105,7 +105,7 @@ test('body balance is visible above fixed physical feet and quiet in reduced mot
  const shoulderLine=p=>p.joints.rightShoulder.map((v,i)=>v-p.joints.leftShoulder[i]);
  assert.ok(distance(shoulderLine(ready),shoulderLine(prepared))>.05,'shoulder line actually loads the strike');
  const a=empty(),b=empty();T.draw(a,{},ready);T.draw(b,{},prepared);
- assert.notDeepEqual(a['body-torso'].find(p=>p.travelerPart==='jacket-chest').m,b['body-torso'].find(p=>p.travelerPart==='jacket-chest').m,'rendered coat follows the joint body balance');
+ assert.notDeepEqual(a.round.find(p=>p.travelerPart==='jacket-chest').m,b.round.find(p=>p.travelerPart==='jacket-chest').m,'rendered coat follows the joint body balance');
 });
 
 test('reduced motion bounds the blade hand cue and suppresses secondary equipment/body sweep',()=>{
@@ -138,7 +138,7 @@ test('rendered palms, balanced torso and canonical gear share one frame through 
   const p=sample('blade',combatPhase,combatProgress,{releaseOrigin}),{out,frame,parts}=rendered(sim,p,yaw);
   near(frame.bladeAxis,p.bladeAxis,'copied equipment axis');assert.equal(frame.releaseOrigin,releaseOrigin);
   const grip=parts.find(p=>p.weaponPart==='grip');near(grip.p,E.M.transform(frame.root,p.joints.rightHand),'rendered grip at actual palm');
-  const head=out['body-head'].find(p=>p.travelerPart==='head');near(head.p,E.M.transform(frame.root,p.joints.head),'submitted head follows upper body');
+  const head=out.round.find(p=>p.travelerPart==='head');near(head.p,E.M.transform(frame.root,p.joints.head),'submitted head follows upper body');
   assert.equal(out.box.some(p=>p.travelerPart==='ground-marker'),false);near(out.disc.find(p=>p.travelerPart==='ground-marker').p,[2,1.583,8],'physical ground marker');
   assert.equal(parts.filter(p=>p.travelerPart!=='equipment'&&!p.travelerFace).length,49);assert.ok(parts.filter(p=>p.travelerPart==='equipment').length<40);
   for(const part of parts)assert.ok(Array.from(part.m).every(Number.isFinite));

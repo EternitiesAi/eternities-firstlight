@@ -176,8 +176,6 @@ function pose(options={}){
 function draw(out,input={},posed=pose()){
  const {M,hex,blend}=G.RealmEngine;
  out['traveler-cloth']||=([]);out.capsule||=([]);
- // baked human segments; the rig's joints and part count stay the same, only the geometry kind changes.
- for(const k of G.RealmBodyMeshes?.kinds||[])out[k]||=([]);
  const x=finite(input.x),z=finite(input.z),base=finite(input.base),yaw=finite(input.yaw);
  const root=M.compose(x,base,z,1,1,1,0,yaw,0),j=posed.joints;
  const body=posed.upperBody||{yaw:0,lean:0,shift:[0,0,0]},pivotY=.985+posed.bob;
@@ -190,7 +188,7 @@ function draw(out,input={},posed=pose()){
  const armored=input.armorColor!=null,coat=armored?hex(input.armorColor):blend(cloth,hex(0xe2d6b7),.12);
  const darkCoat=blend(coat,hex(0x263932),.20),seam=blend(coat,hex(0xe2d6b7),.32);
  const trousers=hex(0x414b45),leather=hex(0x4f4336),sole=hex(0x302f2b),metal=hex(0xc4af7b);
- const eyeWhite=hex(0xe8e0cb),pupil=hex(0x2a1d16),catchlight=hex(0xf7f2e6),mouthColor=hex(0x7b4a42);
+ const eyeWhite=hex(0xe8e0cb),pupil=hex(0x26302d),catchlight=hex(0xf7f2e6),mouthColor=hex(0x7b4a42);
  const add=(kind,name,position,size,color,rotation=[0,0,0],extra={},upper=false)=>{
   const local=M.compose(...position,...size,...rotation);
   const parent=upper?bodyRoot:root;
@@ -200,58 +198,56 @@ function draw(out,input={},posed=pose()){
  const upperAdd=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{},true);
  // Columns of this basis point along a 3D segment. Unlike the old Y/Z-only
  // rotation, it can connect a cross-body wrist to its elbow without a gap.
- const limb=(name,a,b,width,depth,color,kind='capsule')=>{
+ const limb=(name,a,b,width,depth,color)=>{
   const length=Math.hypot(...vec(b,a)),up=norm(vec(b,a));
   const reference=Math.abs(up[2])<.9?[0,0,1]:[1,0,0];
   const across=norm([up[1]*reference[2]-up[2]*reference[1],up[2]*reference[0]-up[0]*reference[2],up[0]*reference[1]-up[1]*reference[0]]);
   const forward=[across[1]*up[2]-across[2]*up[1],across[2]*up[0]-across[0]*up[2],across[0]*up[1]-across[1]*up[0]];
   const center=mix(a,b,.5),local=new Float32Array([...scale(across,width),0,...scale(up,length),0,...scale(forward,depth),0,...center,1]);
-  out[kind].push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
+  out.capsule.push({p:M.transform(root,center),s:[width,length,depth],m:M.mul(root,local),c:color,rough:.87,
    cameraSolid:false,cutaway:false,travelerPart:name,travelerJoints:[a.slice(),b.slice()]});
  };
  const y=posed.bob;
  // Narrow waist, broader shoulder line and a split hem make fitted clothing
  // with existing primitives, rather than a stack of rounded doll volumes.
  upperAdd('traveler-cloth','jacket-waist',[0,1.035+y,0],[.335,.27,.24],darkCoat);
- upperAdd('body-torso','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
- upperAdd('body-hidden','jacket-left-side',[-.155,1.13+y,0],[.155,.44,.245],coat);
- upperAdd('body-hidden','jacket-right-side',[.155,1.13+y,0],[.155,.44,.245],coat);
- upperAdd('body-hidden','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
+ upperAdd('round','jacket-chest',[0,1.255+y,0],[.465,.30,.29],coat);
+ upperAdd('capsule','jacket-left-side',[-.155,1.13+y,0],[.155,.44,.245],coat);
+ upperAdd('capsule','jacket-right-side',[.155,1.13+y,0],[.155,.44,.245],coat);
+ upperAdd('box','jacket-front-seam',[0,1.18+y,.132],[.025,.30,.022],seam);
  add('traveler-cloth','jacket-left-hem',[-.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,-.045]);
  add('traveler-cloth','jacket-right-hem',[.096,.89+y,.008],[.18,.20,.245],darkCoat,[0,0,.045]);
  add('box','belt',[0,.985+y,.008],[.355,.063,.267],leather);
  add('box','belt-buckle',[0,.985+y,.152],[.065,.060,.028],metal);
- upperAdd('body-hidden','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
- upperAdd('body-hidden','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
- upperAdd('body-neck','neck',[0,1.475+y,0],[.105,.15,.115],skin);
- upperAdd('body-head','head',[0,1.610+y,.008],[.245,.27,.235],skin);
+ upperAdd('box','collar-left',[-.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,-.18]);
+ upperAdd('box','collar-right',[.09,1.407+y,.042],[.09,.10,.18],seam,[0,0,.18]);
+ upperAdd('round','neck',[0,1.475+y,0],[.105,.15,.115],skin);
+ upperAdd('round','head',[0,1.610+y,.008],[.245,.27,.235],skin);
  upperAdd('round','hair-crown',[0,1.721+y,-.015],[.226,.062,.207],hair);
  upperAdd('round','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
-  upperAdd('body-hidden',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
-  upperAdd('round',name+'-eye',[side*.05,1.634+y,.112],[.024,.024,.024],eyeWhite);
-  upperAdd('box',name+'-brow',[side*.05,1.662+y,.122],[.036,.007,.011],hair,[0,0,side*.22]);
-  limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers,'body-thigh');
-  limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers,'body-shin');
-  add('body-hidden',name+'-knee',j[name+'Knee'],[.13,.12,.13],trousers);
-  add('body-foot',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
-  add('body-hidden',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
-  add('body-hidden',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
-  upperAdd('body-hidden',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
-  limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat,'body-upper-arm');
-  add('body-hidden',name+'-elbow',j[name+'Elbow'],[.11,.11,.11],darkCoat);
-  limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat,'body-forearm');
-  add('body-hand',name+'-hand',plus(j[name+'Hand'],[0,-.095,0]),[.10,.19,.085],skin);
+  upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
+  upperAdd('round',name+'-eye',[side*.052,1.630+y,.114],[.050,.034,.030],eyeWhite);
+  upperAdd('box',name+'-brow',[side*.051,1.654+y,.118],[.043,.012,.013],hair);
+  limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers);
+  limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers);
+  add('round',name+'-knee',j[name+'Knee'],[.151,.13,.155],trousers);
+  add('box',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
+  add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
+  add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
+  upperAdd('round',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
+  limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat);
+  add('round',name+'-elbow',j[name+'Elbow'],[.125,.125,.129],darkCoat);
+  limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat);
+  add('round',name+'-hand',j[name+'Hand'],[.104,.116,.102],skin);
  }
- upperAdd('round','nose',[0,1.606+y,.148],[.034,.038,.034],skin);
+ upperAdd('octa','nose',[0,1.614+y,.137],[.052,.066,.074],skin);
  // Expression parts ride the body's batches but sit outside its 49-part pin;
  // the flag lets callers and tests count body and face apart.
  const face=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{travelerFace:true},true);
  for(const [name,side] of [['left',-1],['right',1]]){
-  face('round',name+'-pupil',[side*.05,1.634+y,.1225],[.011,.011,.006],pupil);
-  face('round',name+'-catchlight',[side*.054,1.642+y,.1262],[.004,.004,.004],catchlight);
-  // an upper lid cap in skin colour softens the eye into the socket.
-  face('round',name+'-lid',[side*.05,1.647+y,.113],[.030,.015,.018],skin);
+  face('round',name+'-pupil',[side*.052,1.628+y,.1295],[.026,.026,.012],pupil);
+  face('round',name+'-catchlight',[side*.060,1.638+y,.1345],[.008,.008,.006],catchlight);
  }
  face('capsule','mouth',[0,1.567+y,.121],[.012,.056,.016],mouthColor,[0,0,Math.PI/2]);
  const sweep=posed.cloakSwing;
