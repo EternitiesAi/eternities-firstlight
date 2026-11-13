@@ -54,7 +54,7 @@ function fight(h,veteran){
  const originalDamage=A.damageEnemy,originalCommand=sim.adventureCommand,weaponImpacts=[],impacts=[],phases=[],contacts=[];
  sim.adventureCommand=function(id,type,payload){const hp=e.hp,mode=e.mode,result=originalCommand.call(this,id,type,payload);if(this===sim&&['attack','pulse'].includes(type)&&style==='blade'&&result.ok&&e.hp<hp)weaponImpacts.push({caller:'production blade command',type,mode,before:hp,after:e.hp});return result;};
  A.damageEnemy=function(current,enemy,n,source){const hp=enemy?.hp,mode=enemy?.mode,result=originalDamage.apply(this,arguments);if(current===sim&&enemy===e&&source==='weapon'&&enemy.hp<hp)weaponImpacts.push({caller:'production projectile impact',mode,before:hp,after:enemy.hp});return result;};
- // The drowned witness guardian has 720 health; the scripted bot carries enough tonics to finish it by real damage.
+ // The drowned witness guardian has 2860 health; the scripted bot carries enough tonics to finish it by real damage.
 sim.state.adventure.tonics=Math.max(sim.state.adventure.tonics,12);
 let frames=0,guarded=0,arrows=false,lastHP=e.hp;const start=sim.state.adventure.elapsed;
  try{

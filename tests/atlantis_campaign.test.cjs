@@ -29,7 +29,7 @@ function finish(f,approach='upper',choice='publish',other=false,bypass=false){
  f.at(D.giver);assert.ok(f.act('accept').ok);work(f,'receipt-conflict');f.at(step('choose-approach'));assert.ok(f.act('approach',{approach}).ok);
  work(f,approach+'-reading');if(other)work(f,(approach==='upper'?'lower':'upper')+'-reading');if(bypass)work(f,'manual-bypass');
  for(const id of['diagnose-flow','inlet-set','equalizer-set','outlet-set','secure-carrier','challenge-custodian'])work(f,id);
- const e=A.runtime(f.sim).enemies.find(e=>e.atlantisCampaign);assert.ok(e);A.damageEnemy(f.sim,e,999,'weapon');assert.ok(f.sim.state.atlantisCampaign.steps.includes('bearing-exposed'));
+ const e=A.runtime(f.sim).enemies.find(e=>e.atlantisCampaign);assert.ok(e);A.damageEnemy(f.sim,e,e.hp+999,'weapon');assert.ok(f.sim.state.atlantisCampaign.steps.includes('bearing-exposed'));
  for(const id of['release-west','release-east','custodian-stable'])work(f,id);f.at(step('disposition'));assert.ok(f.act('choose',{choice}).ok);work(f,'verify-passage');return e;
 }
 function balances(s){return{xp:s.adventure.xp,coins:s.adventure.coins,ore:s.adventure.ore,materials:copy(s.sandbox.inventory)};}
@@ -107,12 +107,12 @@ test('real owned moving Custodian can take ordinary damage in all live phases; c
  f.sim.paused=true;assert.equal(AT.canDamage(f.sim,e),false);f.sim.paused=false;f.sim.worldDive={y:-1.4};assert.equal(AT.canDamage(f.sim,e),false);delete f.sim.worldDive;e.x=30;assert.equal(AT.canDamage(f.sim,e),false);
 });
 test('real lethal damage saves bearing once, refuses to HP one, and never invokes legacy loot',()=>{
- const f=fixture(),e=enemy(f),before=f.sim.snapshot();f.sim.atlantisCampaignSave=()=>({ok:false,error:'synthetic exhaustion refusal'});A.damageEnemy(f.sim,e,999,'weapon');assert.equal(e.hp,1);assert.deepEqual(f.sim.snapshot(),before);assert.ok(T.runtime(f.sim).hits.length>0);
+ const f=fixture(),e=enemy(f),before=f.sim.snapshot();f.sim.atlantisCampaignSave=()=>({ok:false,error:'synthetic exhaustion refusal'});A.damageEnemy(f.sim,e,e.hp+999,'weapon');assert.equal(e.hp,1);assert.deepEqual(f.sim.snapshot(),before);assert.ok(T.runtime(f.sim).hits.length>0);
  f.sim.atlantisCampaignSave=f.save;A.damageEnemy(f.sim,e,999,'weapon');assert.equal(e.hp,0);assert.ok(f.sim.state.atlantisCampaign.steps.includes('bearing-exposed'));assert.equal(f.sim.state.atlantisCampaign.steps.includes('release-west'),false);for(const k of['xp','coins','ore','defeated','drops'])assert.deepEqual(f.sim.state.adventure[k],before.adventure[k]);assert.equal(AT.defeat(f.sim,e),false);A.syncScene(f.sim);assert.equal(A.runtime(f.sim).enemies.filter(e=>e.atlantisCampaign).length,0);
 });
 test('an invalid character envelope refuses real exhaustion without leaving an unstored zero-HP owner',()=>{
  const f=fixture(),e=enemy(f);f.sim.state.notes.push(...Array.from({length:20},()=>({text:'synthetic malformed envelope',day:1})));
- assert.doesNotThrow(()=>A.damageEnemy(f.sim,e,999,'weapon'));assert.equal(e.hp,1);assert.equal(f.sim.state.atlantisCampaign.steps.includes('bearing-exposed'),false);assert.equal(f.saves,0);
+ assert.doesNotThrow(()=>A.damageEnemy(f.sim,e,e.hp+999,'weapon'));assert.equal(e.hp,1);assert.equal(f.sim.state.atlantisCampaign.steps.includes('bearing-exposed'),false);assert.equal(f.saves,0);
 });
 test('actual bow projectile can hit an ordinary windup and resolve only the campaign bearing',()=>{
  const AR=require('../src/arsenal.js'),f=fixture(),e=enemy(f);f.sim.state.adventure.owned.push('trail_bow');f.sim.state.adventure.equipment.weapon='trail_bow';f.at({x:e.x,z:e.z+4});e.mode='windup';e.timer=10;e.hp=1;
@@ -122,7 +122,7 @@ test('real bow-distance AI selects its declared intake while the Custodian remai
  const f=fixture(),e=enemy(f);f.sim.state.adventure.owned.push('trail_bow');f.sim.state.adventure.equipment.weapon='trail_bow';f.at({x:e.x+4,z:e.z});
  assert.equal(e.anchored,true);assert.strictEqual(AT.pattern(e),AT.patterns.sweep,'query without Simulation retains cycle-only behavior');assert.strictEqual(AT.pattern(e,f.sim),AT.patterns.intake,'owned range four uses existing reach six');assert.strictEqual(AT.pattern({...e},f.sim),AT.patterns.sweep);assert.strictEqual(AT.pattern(e,{...f.sim}),AT.patterns.sweep);
  const origin={x:e.x,z:e.z};assert.ok(f.sim.adventureCommand('synthetic-atlantis-range-arrow','attack',{target:e.id}).ok);f.sim.tick(.05);assert.equal(e.mode,'windup');assert.equal(e.strike.kind,'intake');assert.equal(e.timer,1.5);assert.equal(e.recovery,2.1);assert.equal(e.atlantisCycle,0,'next cycle follows the chosen intake, not the overridden sweep');
- for(let i=0;i<31&&e.mode==='windup';i++)f.sim.tick(.05);assert.equal(e.mode,'intake');assert.ok(e.hp<D.enemy.hp,'the ordinary bow projectile actually hit');assert.deepEqual({x:e.x,z:e.z},origin);assert.equal(e.damage,42);
+ for(let i=0;i<31&&e.mode==='windup';i++)f.sim.tick(.05);assert.equal(e.mode,'intake');assert.ok(e.hp<D.enemy.hp,'the ordinary bow projectile actually hit');assert.deepEqual({x:e.x,z:e.z},origin);assert.equal(e.damage,36);
  const near=fixture(),n=enemy(near);near.at({x:n.x+3.6,z:n.z});assert.strictEqual(AT.pattern(n,near.sim),AT.patterns.sweep,'exact sweep boundary adds no extra reach');near.sim.tick(.05);assert.equal(n.strike.kind,'sweep');assert.equal(n.atlantisCycle,1);
  const far=fixture(),r=enemy(far);far.at({x:r.x+6.01,z:r.z});assert.strictEqual(AT.pattern(r,far.sim),AT.patterns.sweep);for(let i=0;i<50;i++)far.sim.tick(.05);assert.equal(r.mode,'idle');assert.ok(!r.strike,'outside declared intake reach no attack frame is created');assert.deepEqual({x:r.x,z:r.z},{x:D.enemy.x,z:D.enemy.z});
 });
@@ -157,7 +157,7 @@ test('pull requires exact real intake ownership/time/contact and preserves depth
 });
 test('ordinary simulation time applies the final intake fraction once, then recovery; locked escape avoids contact',()=>{
  const f=fixture(),e=enemy(f);f.at({x:8,z:-40.5});e.atlantisCycle=1;AT.lock(f.sim,e);e.mode='intake';e.timer=.03;e.contactAt=0;A.runtime(f.sim).invincible=0;const z=f.sim.state.player.z,hp=f.sim.state.adventure.hp,frame=e.strike;f.sim.tick(.05);
- assert.ok(Math.abs(f.sim.state.player.z-(z-.036))<1e-8,'last positive 0.03s is physically applied');assert.equal(e.mode,'recover');assert.equal(e.damage,42);assert.equal(A.stats(f.sim.state.adventure).defense,1);assert.ok(T.armour(42,1)<42);assert.equal(f.sim.state.adventure.hp,hp-T.armour(42,1),'ordinary travel coat retains its one point of defense through the armour curve');assert.strictEqual(e.strike,frame);const hitHP=f.sim.state.adventure.hp;f.sim.tick(.05);assert.equal(f.sim.state.adventure.hp,hitHP,'one contact cannot pay damage repeatedly');
+ assert.ok(Math.abs(f.sim.state.player.z-(z-.036))<1e-8,'last positive 0.03s is physically applied');assert.equal(e.mode,'recover');assert.equal(e.damage,36);assert.equal(A.stats(f.sim.state.adventure).defense,1);assert.ok(T.armour(36,1)<36);assert.equal(f.sim.state.adventure.hp,hp-T.armour(36,1),'ordinary travel coat retains its one point of defense through the armour curve');assert.strictEqual(e.strike,frame);const hitHP=f.sim.state.adventure.hp;f.sim.tick(.05);assert.equal(f.sim.state.adventure.hp,hitHP,'one contact cannot pay damage repeatedly');
  const escape=fixture(),unit=enemy(escape);escape.at({x:8,z:-40.5});unit.atlantisCycle=1;AT.lock(escape.sim,unit);unit.mode='intake';unit.timer=.03;unit.contactAt=0;A.runtime(escape.sim).invincible=0;escape.at({x:10,z:-40.5});const before=copy(escape.sim.state.player),health=escape.sim.state.adventure.hp;escape.sim.tick(.05);assert.deepEqual(escape.sim.state.player,before);assert.equal(escape.sim.state.adventure.hp,health);
 });
 test('real shallow current retains y and uses supported small motion; quiet depths, court, pause and refusal do not drift',()=>{

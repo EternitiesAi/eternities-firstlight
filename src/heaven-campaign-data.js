@@ -65,7 +65,7 @@ const definition=freeze({
   {id:'heaven-glasswing-sentinel-v1',name:'Glasswing approach construct',kind:'sentinel',x:0,z:-61,hp:110,damage:12,radius:.55,damageWindow:'all-live-phases',spawnAfter:['begin-watch'],defeatStep:'beam-disabled',
    objective:'Break the apparatus that guards the false signal. Its defeat lets the relay wake; it pays no reward.',
    attack:{kind:'beam',reach:9,length:9,halfWidth:.65,windup:1.2,recovery:1.7,support:{step:'ground-mirror',windupBonus:.4}}},
-  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:(G.RealmDifficulty?.boss?.('relaySeraph')?.hp??620),damage:(G.RealmDifficulty?.boss?.('relaySeraph')?.damage??38),radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
+  {id:'heaven-relay-seraph-v1',name:'Relay seraph',kind:'sentinel',x:7,z:-99,hp:(G.RealmDifficulty?.boss?.('relaySeraph')?.hp??2470),damage:(G.RealmDifficulty?.boss?.('relaySeraph')?.damage??34),radius:.6,damageWindow:'all-live-phases',spawnAfter:['beam-disabled'],defeatStep:'relay-disabled',boss:'relaySeraph',
    objective:'Break the relay that repeats the false route, so the marked walk and the courier’s passage can be trusted.',
    attack:{kind:'pulse',reach:5.5,radius:3.4,windup:1.4,recovery:2}}
  ],

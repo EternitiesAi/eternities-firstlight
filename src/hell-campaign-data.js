@@ -71,7 +71,7 @@ const definition=freeze({
    license:[{speaker:'Istra',text:'The paired seals name the crew this concession covers. I will record what it leaves in place.'},{speaker:'Tovan',text:'Another office holds their road now. The machinery and our part in it are still here.'},{speaker:'Neris',text:'The named crew has its concession. Keep the true measurements, and do not let them become absolution.'}]
   }
  },
- enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??520),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??34),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
+ enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??32),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});
 G.RealmHellCampaignData=api;

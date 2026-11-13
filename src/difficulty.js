@@ -9,9 +9,10 @@ const BOSSES=Object.freeze({
  ram:entry(1080,34,1.2),
  herald:entry(1200,36,1.35),
  keeper:entry(1440,38,1.2),
- foundryWarden:entry(1600,40,1.2),
- relaySeraph:entry(1900,44,1.2),
- witnessGuardian:entry(2200,48,1.35),
+ // realm hp is up about 30% so these fights run long. realm damage is held below the keeper's on purpose, so a realm loss stays under the 60% ceiling; the rising rule covers chapter damage only.
+ foundryWarden:entry(2080,32,1.2),
+ relaySeraph:entry(2470,34,1.2),
+ witnessGuardian:entry(2860,36,1.35),
  // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
  regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });

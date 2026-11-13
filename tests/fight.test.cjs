@@ -27,9 +27,13 @@ test('level climbs to twelve, and the first four thresholds never move',()=>{
 test('saves that already store xp validate under the new cap',()=>{
  for(const xp of[0,365,1680,9999]){const raw=JSON.parse(JSON.stringify({...A.fresh(),xp}));assert.equal(A.validate(raw).xp,xp);assert.equal(A.level(A.validate(raw)),A.level({xp}));}
 });
-test('the main-path boss table rises in hp and damage, and the chapter bosses read it',()=>{
+test('the main-path boss table rises in hp, chapter damage rises, and realm damage stays under the regent',()=>{
  const order=['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian'].map(id=>D.boss(id));
- for(let i=1;i<order.length;i++){assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);assert.ok(order[i].damage>order[i-1].damage,'damage rises at '+i);}
+ for(let i=1;i<order.length;i++)assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);
+ // realm damage is held below the keeper's on purpose (the realm hp keeps those fights long), so the damage rise is checked over the chapter bosses only.
+ for(let i=1;i<4;i++)assert.ok(order[i].damage>order[i-1].damage,'chapter damage rises at '+i);
+ assert.deepEqual(order.slice(4).map(b=>b.damage),[32,34,36]);
+ assert.ok(D.boss('regent').phases[0].damage>Math.max(...order.slice(4).map(b=>b.damage)),'the regent opens above every realm boss');
  const reg=D.boss('regent');assert.deepEqual(reg.phases.map(p=>p.hp),[380,400,420]);assert.equal(reg.phases.reduce((n,p)=>n+p.hp,0),1200);
  assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage)); // the regent's own numbers are the finale aide's: only its internal rise is checked here
  const hart=A.ENEMIES.find(e=>e.id==='hart');assert.equal(hart.hp,780);assert.equal(hart.damage,22);
@@ -41,7 +45,7 @@ test('the main-path boss table rises in hp and damage, and the chapter bosses re
  assert.deepEqual(Object.keys(D.BOSSES),['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian','regent']);
  for(const id of Object.keys(D.BOSSES))for(const f of['hp','damage','windup'])assert.ok(Number.isFinite(D.boss(id)[f]),id+'.'+f);
  assert.equal(reg.hp,1200);assert.equal(reg.damage,54);assert.ok(reg.phases.every(p=>Array.isArray(p.patterns)&&p.patterns.length>0));
- assert.equal(D.boss('foundryWarden').hp,1600);assert.equal(D.boss('relaySeraph').hp,1900);assert.equal(D.boss('witnessGuardian').hp,2200);
+ assert.equal(D.boss('foundryWarden').hp,2080);assert.equal(D.boss('relaySeraph').hp,2470);assert.equal(D.boss('witnessGuardian').hp,2860);
  const copy=D.boss('hart');copy.hp=1;assert.equal(D.boss('hart').hp,780);assert.equal(D.BOSSES.hart.hp,780);
  assert.equal(hart.windup,D.boss('hart').windup);assert.equal(D.BOSSES.hart.windup,1.05);
 });
