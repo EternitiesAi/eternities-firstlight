@@ -11898,8 +11898,8 @@ function placeDevice(sim,value){
  r.seq=(r.seq||0)+1;
  const res=sim.sagaCommand('night-place-'+r.seq,'choose',{key,value});
  if(!res.ok)return fail(res.error);
- queue(sim,'device-after');
- return yes(opt.label,{value});
+ if(!res.already)queue(sim,'device-after');
+ return yes(opt.label,{value,already:res.already===true});
 }
 // The bowl by the shared house door is read again whenever Briar is taken. It changes nothing.
 function bowlPoint(){const d=G.RealmBriarOuting?.definition;return d?{x:d.rest.x+.7,z:d.rest.z}:null;}

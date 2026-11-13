@@ -191,4 +191,21 @@ test('never-bonded saves hear the plain variants of the night',()=>{
  assert.ok(N.sceneOf('receipt',s.state).lines.some(l=>/Five travellers, not received/.test(l.text)));
  assert.equal(N.sceneOf('receipt',b.state).lines.some(l=>/Five travellers, not received/.test(l.text)),false);
 });
+test('the three device options go through the real saga: recorded once, replayed, and a second answer refused',()=>{
+ const texts={};
+ for(const value of ['open','sealed','carried']){
+  const s=lit();allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);queued(s);
+  s.state.night.envoy=true;
+  const r=N.handle(s,'night-device',{value});assert.equal(r.ok,true,r.error);
+  assert.equal(s.state.saga.choices.device,value);
+  assert.ok(s.state.journal.some(e=>e.kind==='saga'&&e.text.endsWith('.')&&e.text.length>3),'the saga journals the choice');
+  const q=queued(s);assert.deepEqual(q.map(x=>x.scene.id),['night.device.after']);texts[value]=q[0].scene.lines.map(l=>l.text).join(' | ');
+  const again=N.handle(s,'night-device',{value});assert.equal(again.ok,true);assert.equal(again.already,true);assert.equal(queued(s).length,0);
+  const other=value==='open'?'sealed':'open';
+  assert.equal(N.handle(s,'night-device',{value:other}).error,'That is done, and it stays done.');
+  assert.equal(s.state.saga.choices.device,value);
+  assert.equal(N.deviceReady(s),false);
+ }
+ assert.equal(new Set(Object.values(texts)).size,3);
+});
 function pick(r){return{ok:r.ok,error:r.error};}
