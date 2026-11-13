@@ -7,6 +7,7 @@
 (function(G){'use strict';
 const DATA=G.RealmAtlantisCampaignData||(typeof require==='function'?require('./atlantis-campaign-data.js'):null);
 const D=DATA.definition,P=DATA.patterns,F=DATA.current,Q=DATA.pressure;
+const SCRIPT=()=>G.RealmStoryScript||(typeof require==='function'?require('./story-script.js'):null);
 const SAGA=()=>G.RealmSaga||(typeof require==='function'?require('./saga.js'):null);
 const fail=error=>({ok:false,error}),copy=o=>JSON.parse(JSON.stringify(o)),finite=Number.isFinite,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const step=id=>D.steps.find(s=>s.id===id),record=s=>s?.atlantisCampaign||s,locks=new WeakMap(),owners=new WeakMap();
@@ -75,7 +76,7 @@ function command(ctx,type,payload,io){
  if(type==='claim'&&r.claimed)return{ok:true,duplicate:true,text:'This harbour repair is already complete. Its choice remains on the record.'};
  if(type==='accept'&&r.accepted)return{ok:true,duplicate:true,text:'This campaign is already accepted; its saved approach and work remain.'};
  let candidate;try{candidate=sim.snapshot();}catch(e){return fail('Campaign state refused: '+e.message);}
- const q=candidate.atlantisCampaign;let text,reward=null;
+ const q=candidate.atlantisCampaign;let text,reward=null,scene=null;
  if(type==='accept'){
   if(!eligible(candidate)||!at(sim,D.giver))return fail('The harbour repair is not open to you yet. Finish the story before it, then speak to Sahra.');
   q.accepted=true;text=D.title+' accepted. The earlier chart, lamp, equipment and free home passage retain their own history.';
@@ -92,13 +93,13 @@ function command(ctx,type,payload,io){
   if(!at(sim,s))return fail('Reach '+s.name+' at its actual supported medium and depth.');
   if(q.steps.includes(s.id))return{ok:true,duplicate:true,text:'This action is already recorded for this campaign.'};
   if(!available(candidate).some(v=>v.id===s.id))return fail('Complete '+s.name+' in its stated order, with the retained approach’s actual reading.');
-  q.steps.push(s.id);text=s.text;
+  q.steps.push(s.id);text=s.text;scene=SCRIPT()?.forStep?.('atlantis',s.id,candidate)||null;
  }else if(type==='choose'){
   const s=step('disposition'),choice=D.choices.find(c=>c.id===payload.choice);
   if(!q.accepted||q.claimed||!choice||!at(sim,s))return fail('Reach Ilyra’s registry after actual Custodian stabilization to choose the local disposition.');
   if(q.choice!==null)return q.choice===choice.id?{ok:true,duplicate:true,text:'That disposition is already recorded.'}:fail('The local disposition is a lasting deed and cannot be overwritten.');
   if(!available(candidate).some(v=>v.id===s.id))return fail('Secure the carrier, exhaust the actual bearing and stabilize both sequential releases before choosing.');
-  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;
+  q.choice=choice.id;q.steps.push(s.id);text=choice.name+' recorded. '+choice.consequence;scene=SCRIPT()?.forStep?.('atlantis','disposition',candidate)||null;
  }else if(type==='claim'){
   if(!q.accepted||!ready(candidate)||!at(sim,D.giver))return fail('Verify the passage and the handoff, then return to Sahra for your reward.');
   const a=candidate.adventure,inv=candidate.sandbox.inventory,fee=D.reward;
@@ -108,7 +109,7 @@ function command(ctx,type,payload,io){
   q.claimed=true;if(!a.owned.includes('harbour_mail'))a.owned.push('harbour_mail');text=D.title+' complete · '+D.choices.find(c=>c.id===q.choice).name+' · '+reward.xp+' XP, '+fee.coins+' sunmarks, '+fee.ore+' ore, '+fee.materials.wood+' timber, '+fee.materials.fiber+' fibre and '+fee.materials.crystal+' crystal. Complete.'+(reward.xp<fee.xp?' Existing stored XP cap retained.':'');
  }else return fail('Unknown Atlantis campaign action.');
  const before=G.RealmAdventure.level(sim.state.adventure),result=commit(sim,candidate,io,text,ctx);
- if(result.ok){runtime(sim);if(reward)result.reward=reward;G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
+ if(result.ok){runtime(sim);if(reward)result.reward=reward;if(scene){result.lines=scene.lines.map(l=>l.text);result.cards=scene.lines.map(l=>({speaker:l.speaker,text:l.text}));result.choice=scene.choice;}G.RealmAdventure.syncScene(sim);if(G.RealmAdventure.level(sim.state.adventure)>before)G.RealmAdventure.notify(sim,'Level '+G.RealmAdventure.level(sim.state.adventure)+' · a local passage remains.');}return result;
 }
 function enemies(sim){const r=sim?.state?.atlantisCampaign;return sim?.room===D.room&&!sim.worldDive&&eligible(sim.state)&&r?.accepted&&D.enemy.spawnAfter.every(id=>r.steps.includes(id))&&!r.steps.includes(D.enemy.defeatStep)?[{...D.enemy,originX:D.enemy.x,originZ:D.enemy.z,atlantisCampaign:D.id,xp:0,coins:0,ore:0,windup:P.sweep.windup,recovery:P.sweep.recovery,telegraphRadius:0}]:[];}
 const signature=sim=>enemies(sim).map(e=>e.id).join('|');

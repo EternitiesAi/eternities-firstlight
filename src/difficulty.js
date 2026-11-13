@@ -2,7 +2,9 @@
  * The regent's three phases carry their own move sets; phases(def) is the multi-phase helper the finale calls. */
 (function(G){'use strict';
 const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freeze(patterns.slice())});
-const REGENT=Object.freeze([phase(380,46,['line','double']),phase(400,50,['line','double','bait']),phase(420,54,['double','bait','line'])]);
+// the hardest fight in the game: the chains are a long first body, the second runs and turns on you, the third does not stop.
+// the second body sits above the witness guardian's 2860 hp, so every body outlasts every boss before him (the realm retune made the witness 2860).
+const REGENT=Object.freeze([phase(3000,34,['line','double']),phase(2900,54,['line','double','bait']),phase(3700,56,['double','bait','line'])]);
 const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
  hart:entry(780,22,1.05),

@@ -30,7 +30,7 @@ function appFixture(){
  for(let n=0;n<500&&O.current(context()).phase!=='walk';n++){sim.tick(.1);assert.ok(O.tick(context(),.1).ok);}
  assert.equal(O.current(context()).phase,'walk');
  let inspectCalls=0,renderCalls=0;const queued=[];
- const h={sim,characterStore:store,RealmEarthWildSignsData:D,RealmEarthGrazerMotion:O,RealmEarthRoadkeeperMotion:R,RealmEarthConsignmentData:CD,
+ const h={titleDrift:false,titleTourOn:false,sim,characterStore:store,RealmEarthWildSignsData:D,RealmEarthGrazerMotion:O,RealmEarthRoadkeeperMotion:R,RealmEarthConsignmentData:CD,
   RealmEarthGrazerVisibility:{inspect(){inspectCalls++;throw Error('Paused App must never inspect or issue a witness');}},
   grazerContext:context,grazerMenusOpen:()=>false,G_CAPTURE:false,document:{hidden:false,querySelector:()=>null},panel:null,
   engine:{_contextLost:false,render(){renderCalls++;}},camera:{preset:'adventure',yaw:0},

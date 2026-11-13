@@ -6,6 +6,10 @@ const def=()=>typeof H()?.definition==='function'?H().definition():H()?.definiti
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.heavenCampaign,step=id=>def().steps.find(s=>s.id===id);
+// the story script speaks every line; a scene absent for this state has none.
+const sceneOf=(owner,id,state)=>G.RealmStoryScript?.forStep?.(owner,id,state)||null,linesOf=s=>Array.isArray(s?.lines)?s.lines:[];
+const speech=lines=>lines.map(l=>'<p><strong>'+esc(l.speaker)+':</strong> “'+esc(l.text)+'”</p>').join('');
+const sceneSection=(cls,title,s)=>linesOf(s).length?'<section class="'+cls+'"><h3>'+esc(title)+'</h3>'+speech(linesOf(s))+'</section>':'';
 function reward(d=def()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'fibre'}[k]||k)).join('');}
 function escortStatus(sim){const raw=H().escortStatus(sim),status=typeof raw==='string'?raw:raw?.status||raw?.phase||'inactive';return{status,help:typeof raw==='object'?raw.help||raw.text||'':''};}
 function escortPending(sim){const r=record(sim);return r?.accepted&&r.steps.includes('secure-service-route')&&!r.steps.includes(def().escort.arrivalStep);}
@@ -21,7 +25,7 @@ function routePoints(sim){const d=def(),r=record(sim);if(sim.room!==d.room||!r?.
  return points.map((p,i)=>({...p,heavenCampaign:true,mark:'G'+(i+1)}));
 }
 function legend(sim){const points=routePoints(sim);return points.length?'<section class="heaven-campaign-map"><h3>The gate that remained open</h3><p>G labels show this road. The service walk and the road home stay open; the upper terrace stays closed. Walking to a label records nothing.</p><ol>'+points.map(p=>'<li><strong>'+p.mark+'</strong> · '+esc(p.name)+(p.optional?' · optional preparation':'')+(p.informative?' · live location':'')+' '+button('Walk near this point','walk',p.id)+'</li>').join('')+'</ol>'+button('Read the road and the courier','open')+'</section>':'';}
-function recognition(r){const d=def();if(!r?.steps.includes('verify-welcome')||!r.choice)return'';const c=d.choices.find(c=>c.id===r.choice);return'<section class="heaven-campaign-local-recognition"><h3>The welcome is remembered</h3><p>'+esc(c.consequence)+'</p>'+(c.recognition||[]).map(line=>'<p><strong>'+esc(line.name)+':</strong> “'+esc(line.text)+'”</p>').join('')+'</section>';}
+function recognition(r,state){const d=def();if(!r?.steps.includes('verify-welcome')||!r.choice)return'';const c=d.choices.find(c=>c.id===r.choice);return'<section class="heaven-campaign-local-recognition"><h3>The welcome is remembered</h3><p>'+esc(c.consequence)+'</p>'+speech(linesOf(sceneOf('heaven','verify-welcome',state)))+'</section>';}
 class HeavenCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
@@ -71,7 +75,7 @@ class HeavenCampaignUI{
  }
  invitation(){return this.journal();}
  envoySection(act){const d=def(),sim=this.sim,here=sim.room===d.room;
-  return'<section class="heaven-campaign-envoy"><h3>The envoy’s home</h3><p>The envoy keeps a house in this garden. The reading comes before the walk on the Arcade road: nothing is watching for you there until it is heard.</p>'+(here&&H().at(sim,d.envoy)?act('Hear the envoy’s reading','envoy'):here?button('Walk to the envoy','walk','envoy'):'<p>Go back to the garden to hear the reading.</p>')+'</section>';
+  return'<section class="heaven-campaign-envoy"><h3>The envoy’s home</h3><p>The envoy keeps a house in this garden. The reading comes before the walk on the Arcade road: nothing is watching for you there until it is heard.</p>'+speech(linesOf(sceneOf('heaven','envoy',sim.state)))+(here&&H().at(sim,d.envoy)?act('Hear the envoy’s reading','envoy'):here?button('Walk to the envoy','walk','envoy'):'<p>Go back to the garden to hear the reading.</p>')+'</section>';
  }
  escortSection(act){if(!escortPending(this.sim))return'';const sim=this.sim,d=def(),status=escortStatus(sim),active=['following','lagging'].includes(status.status),awaiting=status.status==='awaiting-save',near=H().at(sim,staging());
   const fallback=awaiting?'The courier reached Calen, but the arrival would not save. Stay beside Calen and close this page so the arrival can retry. It is not recorded until the save works.':active?'Close this page and walk the marked loop with the courier. Stay within '+d.escort.followRange+' units; it waits when you wander off.':'An unfinished walk resets after you leave or reload. The invitation stays. Come back to the waiting place and invite the courier again.';
@@ -84,7 +88,8 @@ class HeavenCampaignUI{
   if(!r?.accepted){html+='<section><h3>The Broken Choir is mended</h3><p>'+(!H().eligible(sim.state)?(G.RealmSaga.allowed(sim.state,'heaven')?'Finish the Broken Choir repair first. Its garden answer stays true.':'The garden gate opens after the foundry. Finish that road first.'):'Rielle has the road. Take it up when you are ready.')+'</p>'+(here&&H().eligible(sim.state)&&H().at(sim,d.giver)?act('Begin the road','accept'):here?button('Walk to Rielle','walk','giver'):'')+'<ol>'+d.steps.filter(s=>!s.optional).map(s=>'<li>'+esc(s.name)+'</li>').join('')+'</ol></section>';
   }else{
    if(r.claimed)html+='<section><h3>The welcome remains</h3><p>'+esc(d.completionText)+'</p></section>';
-   if(!H().heard(sim.state)&&!r.claimed)html+=this.envoySection(act);
+   if(!r.steps.length&&!r.claimed)html+=sceneSection('heaven-campaign-arrival','Arrival',sceneOf('heaven','arrive',sim.state));
+   if(!H().heard(sim.state)&&!r.claimed)html+=this.envoySection(act);else if(!r.claimed)html+=sceneSection('heaven-campaign-reading','The reading',sceneOf('heaven','reading',sim.state));
    html+='<section><h3>Your road so far</h3><ol class="heaven-campaign-steps">'+d.steps.map(s=>{
     const done=r.steps.includes(s.id),next=ids.has(s.id);let controls='';
     if(!r.claimed&&next){if(!here)controls='<p>Go back to the garden to reach this step.</p>';
@@ -95,12 +100,12 @@ class HeavenCampaignUI{
      else if(s.id===d.escort.startStep)controls=act('Invite the courier','invite',s.id);
      else controls=act(s.name,'step',s.id);
     }
-    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p><div class="world-actions">'+controls+'</div></li>';
+    return'<li class="'+(done?'heaven-campaign-done':next?'heaven-campaign-next':'')+'" data-heaven-step="'+esc(s.id)+'"><h4>'+esc(s.name)+(s.optional?' · optional':'')+(done?' · recorded':'')+'</h4><p>'+esc(s.text)+'</p>'+speech(linesOf(sceneOf('heaven',s.id,sim.state)))+'<div class="world-actions">'+controls+'</div></li>';
    }).join('')+'</ol></section>'+this.escortSection(act);
    if(!r.claimed&&H().ready(sim.state))html+='<section class="heaven-campaign-ready"><h3>Complete</h3><p>Return to Rielle to close the work. A full pouch never stops it; anything that does not fit stays in the garden.</p>'+(here&&H().at(sim,d.giver)?act('Return to Rielle and close the work','claim'):here?button('Walk back to Rielle','walk','claim'):'')+'</section>';
    if(!r.claimed)html+=button('Track this road','track');
   }
-  html+='<section><h3>Two welcome arrangements</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r);
+  html+='<section><h3>Two welcome arrangements</h3><p>Both keep the garden open, the true account and the old return stroke. Your choice changes this one fitting and is kept for good.</p><div class="heaven-campaign-choice-grid">'+d.choices.map(c=>'<article data-heaven-choice="'+esc(c.id)+'"'+(r?.choice===c.id?' class="heaven-campaign-chosen"':'')+'><h4>'+esc(c.name)+(r?.choice===c.id?' · your welcome':'')+'</h4><p>'+esc(c.text)+'</p><p>'+esc(c.consequence)+'</p></article>').join('')+'</div></section>'+recognition(r,sim.state);
   if(r?.choice)html+='<section><h3>Try your welcome</h3><p>Trying it changes nothing you have recorded. It only shows the arrangement you kept.</p>'+(here&&H().at(sim,step('fit-arrival-assist'))?act('Try the welcome','activate'):here?button('Walk near the welcome instrument','walk','instrument'):'<p>Go back to the garden to try it.</p>')+'</section>';
   if(this.pending){const c=d.choices.find(c=>c.id===this.pending.choice);html+='<section class="heaven-campaign-confirm" aria-label="Confirm welcome arrangement"><h3>'+esc(c.name)+' · confirm this welcome</h3><p>'+esc(c.consequence)+'</p><p>This is kept for good. Both arrangements keep the garden open and carry the same reward.</p>'+(this.same(this.pending,true)?act('Confirm this welcome','confirm',c.id):'<p>Your checkpoint changed. Cancel this preview and read the terms again.</p>')+button('Cancel · decide later','cancel')+'</section>';}
   html+='<p class="heaven-campaign-footer">Reading and walking record nothing. Arrival belongs to the courier. Both camera styles stay available. Your steps, your welcome and a finished road survive a reload.</p></article>';

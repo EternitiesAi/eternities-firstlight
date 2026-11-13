@@ -3,6 +3,7 @@
 (function(G){'use strict';
 // Node rules callers need the same baked asset that the offline shell loads.
 if(typeof module!=='undefined'&&module.exports&&!G.RealmEarthGrazerBodyShape)require('./earth-grazer-body-shape.js');
+if(typeof module!=='undefined'&&module.exports&&!G.RealmBodyMeshes)require('./body-meshes.js');
 const sub=(a,b)=>a.map((v,i)=>v-b[i]),dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=a=>{let l=Math.hypot(...a)||1;return a.map(v=>v/l);},hex=h=>{if(Array.isArray(h))return h;h=typeof h==='string'?parseInt(h.replace('#',''),16):h;return[(h>>16&255)/255,(h>>8&255)/255,(h&255)/255];},blend=(a,b,t)=>a.map((v,i)=>v+(b[i]-v)*t);
 const M={identity:()=>new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]),mul(a,b){let o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)o[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];return o;},ortho(l,r,b,t,n,f){let o=M.identity();o[0]=2/(r-l);o[5]=2/(t-b);o[10]=-2/(f-n);o[12]=-(r+l)/(r-l);o[13]=-(t+b)/(t-b);o[14]=-(f+n)/(f-n);return o;},look(eye,target,up=[0,1,0]){let z=norm(sub(eye,target)),x=norm(cross(up,z)),y=cross(z,x);return new Float32Array([x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]);},compose(x,y,z,sx,sy,sz,rx=0,ry=0,rz=0){let a=Math.cos(rx),b=Math.sin(rx),c=Math.cos(ry),d=Math.sin(ry),e=Math.cos(rz),f=Math.sin(rz);return new Float32Array([c*e*sx,(a*f+b*d*e)*sx,(b*f-a*d*e)*sx,0,-c*f*sy,(a*e-b*d*f)*sy,(b*e+a*d*f)*sy,0,d*sz,-b*c*sz,a*c*sz,0,x,y,z,1]);},transform(m,p){let w=m[3]*p[0]+m[7]*p[1]+m[11]*p[2]+m[15];return[(m[0]*p[0]+m[4]*p[1]+m[8]*p[2]+m[12])/w,(m[1]*p[0]+m[5]*p[1]+m[9]*p[2]+m[13])/w,(m[2]*p[0]+m[6]*p[1]+m[10]*p[2]+m[14])/w];}};
 // Reflection is a world-space involution. A mirrored lookAt rebuild changes
@@ -189,6 +190,7 @@ function geometry(kind){let v=[],timber=timberKind(kind);function tri(a,b,c){let
   const normals=normalSums.map(norm);
   for(const f of faces)for(const i of f)v.push(...points[i],...normals[i]);
  }
+ else if(G.RealmBodyMeshes&&G.RealmBodyMeshes.kinds.includes(kind)){return G.RealmBodyMeshes.geometry(kind);}
  else if(kind==='earth-grazer-body-v1'){
   const body=G.RealmEarthGrazerBodyShape;
   if(!body||body.kind!==kind||body.stride!==6||typeof body.geometry!=='function')throw Error('Load the original grazer body mesh before drawing it.');

@@ -16,7 +16,7 @@ function draw(out,sim){
   }
  };
  one(r.real,false);
- if(r.fake.state!=='gone')one(r.fake,r.fake.state==='cold');
+ if(r.fake)one(r.fake,false);
 }
 const api={draw};G.RealmNearshoreArt=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

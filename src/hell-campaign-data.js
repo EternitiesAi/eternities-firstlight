@@ -58,19 +58,6 @@ const definition=freeze({
    text:'Give the held people’s road to a rival office under a named concession. Paired seals go on the gate, and the other writs stay where they are. Neris stays safe and her record stays whole. It is mercy on paper, and everyone knows whose paper it is.',
    consequence:'The gate shows paired seals and the licensing writ. Istra, Tovan and Neris recognize the concession and what it leaves in place. It is kept for good. The other offices keep their hold.'}
  ],
- // spoken lines live apart from the step narration so a script can replace them scene by scene.
- lines:{
-  scenes:{
-   'witness-record':[{speaker:'Neris',text:'Keep the measurements as they are, including the ones I once helped conceal.'}],
-   'tovan-account':[{speaker:'Tovan',text:'Knowing the rivets is useful. Leaving my own name out would make it a worse record.'}],
-   'challenge-veyr':[{speaker:'Veyr',text:'Everyone who came for the pattern left it in my yard. Come and try.'}]
-  },
-  recognition:{
-   unbind:[{speaker:'Istra',text:'The gate is open. Nobody on this road owes the writ anything now.'},{speaker:'Tovan',text:'The writ is cut. My old rivets belong in the record, and they should stay there.'},{speaker:'Neris',text:'You opened it for everyone. Keep the measurements whole, and keep my name beside what I did.'}],
-   divert:[{speaker:'Istra',text:'The hooded marker shelters the few you took out. The writ still stands over the rest.'},{speaker:'Tovan',text:'A few walked free. Do not call the rest a repair.'},{speaker:'Neris',text:'I am safe. My record stays whole beside the choice you made.'}],
-   license:[{speaker:'Istra',text:'The paired seals name the crew this concession covers. I will record what it leaves in place.'},{speaker:'Tovan',text:'Another office holds their road now. The machinery and our part in it are still here.'},{speaker:'Neris',text:'The named crew has its concession. Keep the true measurements, and do not let them become absolution.'}]
-  }
- },
  enemy:{id:'hell-foundry-warden-v1',name:'Veyr, the foundry’s warden',kind:'sentinel',x:0,z:-99,hp:(G.RealmDifficulty?.boss?.('foundryWarden')?.hp??2080),damage:(G.RealmDifficulty?.boss?.('foundryWarden')?.damage??32),radius:.65,spawnAfter:['challenge-veyr'],defeatStep:'warden-resolved'}
 });
 const api=freeze({definition,patterns});

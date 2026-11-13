@@ -101,7 +101,7 @@ test('the envoy speaks only at the spring, after walking up to him, and never ba
  assert.equal(s.adventureCommand(id('early'),'night-envoy',{}).error,'The envoy has not come to the spring yet.');
  step(s,3.4);assert.equal(N.envoyPos(s).arrived,true);
  at(s,{x:-1.6,z:4.2});const r=s.adventureCommand(id('talk'),'night-envoy',{});assert.equal(r.ok,true,r.error);
- assert.equal(r.lines.length,4);assert.equal(N.stage(s.state),'over');
+ assert.ok(r.lines.length>0);assert.deepEqual(r.lines,N.sceneOf('envoy',s.state).lines);assert.equal(N.stage(s.state),'over');
  assert.doesNotMatch(r.lines.map(l=>l.text).join(' '),/\b(fee|fees|claim|provisional|prototype|epoch|luna|realm 10)\b/i);
 });
 
@@ -126,5 +126,86 @@ test('the absence reaches the skill button and the empty bowl, and nothing else 
   assert.ok(out.box.some(b=>b.briarOutingPart==='bowl-empty'),'empty bowl drawn');
   assert.equal(out.box.some(b=>b.briarOutingPart==='bowl'),false,'no filled bowl');
  }finally{delete global.document;}
+});
+// The story-script hooks: all-safe, the receipt, the bowl, the device choice with its aftermath, and the never-bonded lines.
+const SCRIPT=require(path.join(ROOT,'src/story-script.js'));
+function queued(s){const q=[];let p;while((p=N.takePending(s)))q.push(p);return q;}
+test('all-safe queues once, on the fifth traveller',()=>{
+ const s=lit();step(s,.2);queued(s);allSafeExcept(s,'pip');
+ const q=N.travellerState(s,'pip');q.x=6.5;q.z=21.5;q.following=true;
+ step(s,.1);
+ const first=queued(s);assert.deepEqual(first.map(x=>x.step),['all-safe']);assert.equal(first[0].scene.id,'night.across');
+ step(s,.5);assert.equal(queued(s).length,0);
+});
+test('breaking the device queues the bridge and then the receipt, once',()=>{
+ const s=lit();queued(s);allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);
+ assert.deepEqual(queued(s).map(x=>x.scene.id),['night.bridge','night.receipt']);
+ step(s,.3);assert.equal(queued(s).length,0);
+});
+test('the bowl is read only while Briar is taken, and reading it changes nothing',()=>{
+ const s=sim();assert.equal(N.bowlNear(s),false);
+ SG.briarTaken(s);at(s,{x:-11.55,z:-0.65});
+ assert.equal(N.bowlNear(s),true);
+ const scene=N.bowlScene(s);assert.equal(scene.id,'night.quiet');assert.ok(scene.lines.some(l=>/Her bowl is beside the door/.test(l.text)));
+ const before=JSON.stringify([s.state.night,s.state.saga]);N.bowlScene(s);assert.equal(JSON.stringify([s.state.night,s.state.saga]),before);
+ at(s,{x:4,z:-4});assert.equal(N.bowlNear(s),false);
+});
+test('the device prompt waits for the envoy and the crossing, and goes once the choice is kept',()=>{
+ const s=lit();allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);
+ assert.equal(N.deviceReady(s),false);
+ s.leave();at(s,{x:0,z:3});step(s,3.4);at(s,{x:-1.6,z:4.2});assert.equal(N.handle(s,'night-envoy',{}).ok,true);
+ s.state.player={x:0,z:3,yaw:0};assert.equal(s.adventureCommand(id('back'),'waystone-travel',{id:'bellweather'}).ok,true);step(s,.05);
+ at(s,{x:16.4,z:18});assert.equal(N.deviceReady(s),true);
+ s.state.saga.choices={tessa:null,device:'open'};assert.equal(N.deviceReady(s),false);
+});
+test('each device option is sent to the saga as a choice and queues its own aftermath',()=>{
+ const texts={};
+ for(const value of ['open','sealed','carried']){
+  const s=lit();allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);queued(s);
+  s.state.night.envoy=true;
+  const calls=[];s.sagaCommand=(cid,type,payload)=>{calls.push({cid,type,payload});s.state.saga.choices={tessa:null,device:payload.value};return{ok:true,text:'Placed.'};};
+  const cid=id('place-'+value);const r=s.adventureCommand(cid,'night-device',{value});assert.equal(r.ok,true,r.error);
+  assert.deepEqual(calls.map(c=>[c.type,c.payload]),[['choose',{key:'device',value}]]);
+  const again=s.adventureCommand(cid,'night-device',{value});assert.equal(again.duplicate,true);assert.equal(calls.length,1);
+  const q=queued(s);assert.deepEqual(q.map(x=>x.scene.id),['night.device.after']);assert.ok(q[0].scene.lines.length>0);
+  texts[value]=q[0].scene.lines.map(l=>l.text).join(' | ');
+ }
+ assert.equal(new Set(Object.values(texts)).size,3);
+ assert.match(texts.open,/Rowan|hangs under her/);assert.match(texts.sealed,/Two locks/);assert.match(texts.carried,/pack/);
+});
+test('a refused placement says why and queues nothing',()=>{
+ const s=lit();allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);queued(s);
+ assert.equal(N.handle(s,'night-device',{value:'open'}).error,'There is nothing to place yet.');
+ s.state.night.envoy=true;
+ s.sagaCommand=()=>({ok:false,error:'That is done, and it stays done.'});
+ const r=s.adventureCommand(id('again'),'night-device',{value:'sealed'});assert.equal(r.ok,false);assert.equal(r.error,'That is done, and it stays done.');
+ assert.equal(queued(s).length,0);
+ at(s,{x:4,z:-4});assert.equal(N.handle(s,'night-device',{value:'open'}).error,'Stand at the device to place it.');
+ at(s,{x:16.4,z:18});assert.equal(N.handle(s,'night-device',{value:'buried'}).error,'Unknown placement.');
+});
+test('never-bonded saves hear the plain variants of the night',()=>{
+ const s=sim();s.state.adventure.companion.bonded=false;visitCrossing(s);
+ assert.deepEqual(N.sceneOf('found-tessa',s.state).lines.map(l=>l.speaker),['Tessa']);
+ const b=sim();visitCrossing(b);assert.ok(N.sceneOf('found-briar',b.state).lines.length>=2);
+ assert.ok(N.sceneOf('broken-you',s.state).lines.some(l=>/comes apart in your hands/.test(l.text)));
+ assert.ok(N.sceneOf('receipt',s.state).lines.some(l=>/Five travellers, not received/.test(l.text)));
+ assert.equal(N.sceneOf('receipt',b.state).lines.some(l=>/Five travellers, not received/.test(l.text)),false);
+});
+test('the three device options go through the real saga: recorded once, replayed, and a second answer refused',()=>{
+ const texts={};
+ for(const value of ['open','sealed','carried']){
+  const s=lit();allSafe(s);slainAll(s);s.state.night.device='found';at(s,{x:16.4,z:18});step(s,.1);queued(s);
+  s.state.night.envoy=true;
+  const r=N.handle(s,'night-device',{value});assert.equal(r.ok,true,r.error);
+  assert.equal(s.state.saga.choices.device,value);
+  assert.ok(s.state.journal.some(e=>e.kind==='saga'&&e.text.endsWith('.')&&e.text.length>3),'the saga journals the choice');
+  const q=queued(s);assert.deepEqual(q.map(x=>x.scene.id),['night.device.after']);texts[value]=q[0].scene.lines.map(l=>l.text).join(' | ');
+  const again=N.handle(s,'night-device',{value});assert.equal(again.ok,true);assert.equal(again.already,true);assert.equal(queued(s).length,0);
+  const other=value==='open'?'sealed':'open';
+  assert.equal(N.handle(s,'night-device',{value:other}).error,'That is done, and it stays done.');
+  assert.equal(s.state.saga.choices.device,value);
+  assert.equal(N.deviceReady(s),false);
+ }
+ assert.equal(new Set(Object.values(texts)).size,3);
 });
 function pick(r){return{ok:r.ok,error:r.error};}

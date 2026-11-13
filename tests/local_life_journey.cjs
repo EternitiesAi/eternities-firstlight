@@ -17,8 +17,10 @@ const assertFreshConsignment=state=>assert.deepEqual(state.localLife.records[D.I
 const ROOT=path.resolve(__dirname,'..'),copy=structuredClone,sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
  const variant=veteran?'returning-strongest':bow?'fresh-bow':'fresh-blade',source=veteran?path.join(ROOT,'docs/evidence/world-production-2026-10-03/captures/returning-fit-final-01/FINAL_WORLD.json'):null;
- const h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):undefined),events=[],claims=[],swims=[];
- if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51+2*(A.level(h.sim.state.adventure)-5));h.walk(W.GATE.x,W.GATE.z);}
+ // fresh travellers start story-ready (saga_ready.cjs: chapter IV, the night marked); the north trails are act IV.
+ const SR=require('./saga_ready.cjs'),events=[],claims=[],swims=[];
+ let h=createHarness(source?JSON.parse(fs.readFileSync(source,'utf8')):SR.storyWorld({bow,through:'night'}));
+ if(!veteran)h.walk(W.GATE.x,W.GATE.z);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51+2*(A.level(h.sim.state.adventure)-5));h.walk(W.GATE.x,W.GATE.z);}
  const loaded=Object.keys(require.cache).filter(p=>p.startsWith(ROOT+path.sep)).sort(),hashes=()=>Object.fromEntries(loaded.map(p=>[path.relative(ROOT,p).split(path.sep).join('/'),sha(p)])),beforeHashes=hashes();
  const snapshot=name=>{if(output){const folder=path.join(output,variant);fs.mkdirSync(folder,{recursive:true});fs.writeFileSync(path.join(folder,name+'.json'),JSON.stringify(h.sim.snapshot(),null,2)+'\n');}};
  function local(type,d,payload={}){const result=L.command(h.context(),type,{quest:d.id,...payload},{save:h.save});assert.ok(result.ok,type+': '+result.error);events.push({type,quest:d.id,payload,result});return result;}
@@ -52,7 +54,8 @@ function journey({bow=false,veteran=false,output=null,seedOnly=false}={}){
   h.walk(d.giver.x,d.giver.z);h.trail('claim',d);h.home();h.walk(W.GATE.x,W.GATE.z);
  }
  /* Legitimate prior work opens the two continuing north commissions. */
- earnNorth('heaven');earnNorth('hell');
+ // the hell trail first (the night opens it); the hell campaign it leads to opens the garden gate for heaven's.
+ earnNorth('hell');if(!require('../src/saga.js').allowed(h.sim.state,'heaven')){h=createHarness(SR.advance(h.sim.snapshot(),{bow,through:'hell'}));h.walk(W.GATE.x,W.GATE.z);}earnNorth('heaven');
  const starting=h.sim.snapshot();assertFreshConsignment(starting);snapshot('00_EARNED_REGIONAL_HISTORY');
  if(seedOnly)return{status:'passed',variant,claims:[],routes:h.routes,saveCount:h.checkpoints.length,swims:[],sourceDrift:JSON.stringify(beforeHashes)!==JSON.stringify(hashes())};
  function swim(target){
