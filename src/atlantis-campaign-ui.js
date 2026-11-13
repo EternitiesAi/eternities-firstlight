@@ -6,6 +6,12 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const button=(label,type,id='',attrs='')=>'<button data-rpg="'+PREFIX+type+'" data-id="'+esc(id)+'" '+attrs+'>'+esc(label)+'</button>';
 const record=sim=>sim.state.atlantisCampaign,step=id=>D().steps.find(s=>s.id===id);
 const previousTitle=()=>G.RealmTrails.definition(D().prerequisite).title;
+// Story cards on the adventure's story dialog (the same ids and buttons): one card per line, then done().
+function cards(lines,done){
+ const d=document.getElementById('story-dialog');if(!d||!Array.isArray(lines)||!lines.length){if(done)done();return;}
+ let i=0;const paint=()=>{const q=lines[i];document.getElementById('story-speaker').textContent=q.speaker?String(q.speaker).toUpperCase():'';document.getElementById('story-title').textContent='';document.getElementById('story-body').textContent=q.text||'';const area=document.getElementById('story-buttons');area.replaceChildren();const b=document.createElement('button');b.textContent=i+1<lines.length?'Next':'Continue';b.onclick=()=>{if(i+1<lines.length){i++;paint();return;}d.close();if(done)done();};area.appendChild(b);};
+ paint();d.showModal();
+}
 const tokens={'manual-bypass':'open-bypass','release-west':'stabilize-west','release-east':'stabilize-east'};
 function setting(s){return G.RealmAtlantisCampaignData.pressure.correct.find(p=>p.step===s.id)?.setting||tokens[s.id];}
 function fee(d=D()){return'Up to '+d.reward.xp+' XP within the stored cap · '+d.reward.coins+' sunmarks · '+d.reward.ore+' ore'+Object.entries(d.reward.materials).map(([k,n])=>' · '+n+' '+({wood:'timber',fiber:'meadow fibre',crystal:'crystal'}[k]||k)).join('');}
@@ -20,6 +26,8 @@ class AtlantisCampaignUI{
  constructor(rpg){this.rpg=rpg;this.pending=null;this.binding=null;this.serial=0;this.reading=null;this.seen=new WeakSet();}
  get sim(){return this.rpg.sim;}
  reset(){this.pending=null;this.binding=null;this.reading=null;}
+ // A command result's script lines show as story cards.
+ showResult(result){if(!result||!result.ok||result.duplicate)return;cards(result.cards||(result.lines||[]).map(text=>({text})));}
  owner(){const sim=this.sim,c=this.rpg.api.worldContext();return{sim,contextSim:c.sim,active:c.active,rosterRevision:c.revision,revision:sim.state.adventure.revision,room:sim.room,dive:sim.worldDive||null,position:{x:sim.state.player.x,z:sim.state.player.z,y:G.RealmWorldFoundations.playerHeight(sim)}};}
  same(b){if(!b)return false;const c=this.owner();return c.contextSim===c.sim&&b.sim===c.sim&&b.contextSim===c.contextSim&&b.active===c.active&&b.rosterRevision===c.rosterRevision&&b.revision===c.revision&&b.room===c.room&&b.dive===c.dive&&Math.hypot(b.position.x-c.position.x,b.position.z-c.position.z)<.01&&Math.abs(b.position.y-c.position.y)<.01;}
  bound(el){return this.binding&&el.dataset.binding===String(this.binding.id)&&Number(el.dataset.revision)===this.binding.revision&&this.same(this.binding);}
@@ -51,7 +59,7 @@ class AtlantisCampaignUI{
    const kind=type==='confirm-approach'?'approach':'choice';if(!this.same(this.pending)||this.pending.kind!==kind||this.pending.value!==id||!H().at(sim,step(this.pending.step))){this.pending=null;this.rpg.api.toast('This preview belongs to an earlier traveller, depth or checkpoint. Read the terms again.');this.rpg.paint();return true;}
    payload.step=this.pending.step;payload[kind==='approach'?'approach':'choice']=id;command=kind==='approach'?'approach':'choose';
   }
-  const result=this.rpg.api.atlantisCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);if(result.ok&&!result.duplicate)this.rpg.quest='atlantis-campaign';this.rpg.paint();return true;
+  const result=this.rpg.api.atlantisCampaignCommand(command,payload);this.pending=null;this.rpg.api.toast(result.text||result.error);this.showResult(result);if(result.ok&&!result.duplicate)this.rpg.quest='atlantis-campaign';this.rpg.paint();return true;
  }
  journal(){const r=record(this.sim),status=r?.claimed?'Complete':!r?.accepted?'Not accepted':H().ready(this.sim.state)?'Ready for your reward':'Accepted · '+r.steps.length+' recorded actions';return'<section class="atlantis-campaign-invitation"><small>ATLANTIS · A BOUNDED HARBOUR REPAIR</small><h3>'+esc(D().title)+'</h3><p>'+esc(status)+' · '+esc(fee())+'</p><p>Conflicting receipts, real depth readings, ordered pressure controls and a drowned witness’s guardian. The Bellglass chart and lamp stay separate.</p>'+button('Read the repair and its physical route','open')+(r?.accepted&&!r.claimed?button('Track this repair','track'):'')+'</section>';}
  invitation(){return this.journal();}
