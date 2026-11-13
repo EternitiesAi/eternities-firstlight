@@ -30,7 +30,8 @@ test('historical command-earned blade bow and strongest fixtures preserve raw ow
   if(!Object.hasOwn(expected,'earthHomecoming'))expected.earthHomecoming={version:1,accepted:false,choice:null,steps:[],claimed:false};
   if(!Object.hasOwn(expected,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
   // the saga is inferred from what each historical world already finished (all twelve: every realm claimed)
-  if(!Object.hasOwn(expected,'saga'))expected.saga=name.startsWith('strongest')?{version:1,beats:{},regent:['beacon'],prophecy:['spring'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false}:{version:1,beats:{},regent:['beacon','foundry','confluence'],prophecy:['spring','heaven'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};
+  if(!Object.hasOwn(expected,'night'))expected.night={version:1,started:false,safe:[],device:'hidden',envoy:false};
+  if(!Object.hasOwn(expected,'saga'))expected.saga=name.startsWith('strongest')?{version:1,beats:{},regent:['beacon'],prophecy:['spring'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false}:{version:1,beats:{},regent:['beacon','foundry','confluence'],prophecy:['spring','heaven'],feather:{unlocked:true,uses:0},briar:{state:'with',habit:{},takenDay:null,returnedDay:null,homeDay:null},echo:{coercive:[],freeing:[]},finale:{phase:0,won:false},credits:false,postgame:false};
   const next=C.validate(world);assert.deepEqual(strip(next),expected);assert.deepEqual(next.earthWildSigns,D.fresh());assert.ok(fs.readFileSync(file).equals(raw));
  }
 });

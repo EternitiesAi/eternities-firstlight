@@ -133,3 +133,25 @@ test('the echo ledger quotes real dispositions and freezes when the finale opens
  assert.ok(sim.state.saga.echo.coercive.includes('hell-license'));const frozen=SG.echoLedger(sim.state);sim.state.hellCampaign.choice='unbind';assert.deepEqual(SG.echoLedger(sim.state),frozen);
  sim.state.hellCampaign.choice='license';assert.deepEqual(round(sim).saga.echo,sim.state.saga.echo);
 });
+
+// Synthetic in RAM: the Sunward Road's cart needs Briar's seek (road validate: companion prerequisite), so no valid save
+// reaches the night unbonded today. This guards the saga's unbonded branch in case that rule ever loosens; nothing is saved.
+test('a player who never bonded Briar finishes the nearshore by refusing the regent, and only that way',()=>{
+ const NEAR=require(path.join(ROOT,'src/nearshore.js')),sim=new C.Simulation(load(LATE));sim.state.adventure.companion.bonded=false;sim.state.player={x:0,z:26,yaw:0};
+ assert.equal(cmd(sim,'briar-taken').ok,false,'there is no Briar to take');
+ assert.equal(NEAR.refusable(sim),false,'not before the night');assert.equal(cmd(sim,'refuse-companion').ok,false);
+ assert.ok(cmd(sim,'mark',{beat:'night'}).ok);assert.ok(SG.done(sim.state,'witness'));assert.equal(SG.current(sim.state).id,'nearshore');
+ assert.match(SG.current(sim.state).detail,/came all this way for a companion/);assert.equal(NEAR.refusable(sim),true);
+ assert.equal(cmd(sim,'mark',{beat:'nearshore'}).ok,false,'a plain mark cannot end the nearshore');
+ const r=cmd(sim,'refuse-companion');assert.ok(r.ok,r.error);assert.equal(sim.state.journal.at(-1).kind,'saga');
+ assert.ok(Object.hasOwn(sim.state.saga.beats,'nearshore'));assert.equal(sim.state.saga.briar.state,'with');assert.equal(SG.current(sim.state).id,'finale');assert.ok(SG.allowed(sim.state,'finale'));
+ assert.equal(cmd(sim,'refuse-companion').already,true);assert.equal(NEAR.refusable(sim),false);
+ assert.deepEqual(SG.validate(JSON.parse(JSON.stringify(sim.state.saga)),sim.state),sim.state.saga,'the saga record itself validates');
+ // bonding later cannot reopen her capture or undo the refusal
+ sim.state.adventure.companion.bonded=true;assert.equal(cmd(sim,'briar-taken').ok,false);assert.ok(SG.done(sim.state,'nearshore'));
+ // a bonded player cannot skip bringing her home this way
+ const bonded=new C.Simulation(load(LATE));assert.ok(cmd(bonded,'briar-taken').ok);assert.ok(cmd(bonded,'mark',{beat:'night'}).ok);
+ assert.equal(cmd(bonded,'refuse-companion').ok,false);assert.equal(NEAR.refusable(bonded),false);assert.equal(SG.done(bonded.state,'nearshore'),false);
+ const bad=JSON.parse(JSON.stringify(sim.state.saga));bad.briar={state:'taken',habit:{},takenDay:1,returnedDay:null,homeDay:null};
+ assert.throws(()=>SG.validate(bad,sim.state),/Invalid saga: beat order nearshore/);
+});

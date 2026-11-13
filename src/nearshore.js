@@ -18,6 +18,10 @@ const SCENES=Object.freeze({
  false:Object.freeze([
   {speaker:'',text:'The fox at your heel goes cold and comes apart like ash on the water.'},
   {speaker:'The Regent of Ash',text:'Ha. You knew her too late.'}]),
+ refuse:Object.freeze([
+  {speaker:'The Regent of Ash',text:'You came all this way alone. Take this one. She will never stray from you.'},
+  {speaker:'',text:'The fox at his feet is perfect, and it is not looking at anything.'},
+  {speaker:'',text:'You walk past it. Nothing that cannot leave you is a companion.'}]),
  home:Object.freeze([
   {speaker:'',text:'That evening Briar settles in her old spot by the door, beside her bowl.'}])
 });
@@ -114,6 +118,15 @@ function choose(sim,payload,io){
  if(out.ok){runtimes.delete(sim);G.RealmAdventure?.syncScene?.(sim);}
  return out;
 }
+// A player who never took Briar home meets the same offer with nobody to compare it to, and says no.
+function refusable(sim){const s=sim?.state;return !!s&&sim.room===null&&!sim.worldDive&&s.adventure?.companion?.bonded!==true&&s.saga?.briar?.state==='with'&&!Object.hasOwn(s.saga.beats,'nearshore')&&Object.hasOwn(s.saga.beats,'night')&&SAGA().done(s,'witness');}
+function refuse(sim,io){
+ if(Object.hasOwn(sim.state.saga.beats,'nearshore'))return{ok:true,duplicate:true,text:''};
+ if(!refusable(sim))return fail('Nobody is waiting on the pier for you.');
+ if(dist(sim.state.player,PLACE)>REACH+1)return fail('Walk out onto the lantern pier first.');
+ const c=sim.snapshot(),res=SAGA().refuseCompanion(simOn(c));if(!res.ok)return fail(res.error);
+ return commit(sim,c,io,text(SCENES.refuse),SCENES.refuse);
+}
 function home(sim,io){
  const s=sim.state.saga;
  if(s.briar.state!=='returned')return fail('Briar is not with you yet.');
@@ -129,8 +142,9 @@ function command(ctx,type,payload,io){
  if(type==='arrive')return arrive(sim,io);
  if(type==='choose')return choose(sim,payload,io);
  if(type==='home')return home(sim,io);
+ if(type==='refuse')return refuse(sim,io);
  return fail('Unknown nearshore action.');
 }
-const api=Object.freeze({PLACE,REAL_START,WAIT,WALK,HEEL,COLD,RETRY,REACH,NEAR,SCENES,active,view,foxAt,habitSpot,hidesBriar:active,command});
+const api=Object.freeze({PLACE,REAL_START,WAIT,WALK,HEEL,COLD,RETRY,REACH,NEAR,SCENES,active,view,foxAt,habitSpot,refusable,hidesBriar:active,command});
 G.RealmNearshore=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

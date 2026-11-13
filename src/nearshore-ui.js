@@ -25,13 +25,15 @@ class NearshoreUI{
   this.nextTry=now+1;
   this.run(arrive?'arrive':'home');
  }
+ lone(){const sim=this.sim;return !!sim&&!!N()?.refusable?.(sim)&&Math.hypot(sim.state.player.x-N().PLACE.x,sim.state.player.z-N().PLACE.z)<=N().REACH+1;}
  interact(){
-  const sim=this.sim;if(!sim||!N()||!N().active(sim))return false;
+  const sim=this.sim;if(this.lone()){const r=this.run('refuse');if(!r.ok)this.rpg.api.toast(r.error);return true;}
+  if(!sim||!N()||!N().active(sim))return false;
   const fox=N().foxAt(sim);if(!fox)return false;
   this.run('choose',{fox});
   return true;
  }
- context(){const sim=this.sim;return sim&&N()&&N().active(sim)&&N().foxAt(sim)?'E · Answer the fox':null;}
+ context(){const sim=this.sim;if(this.lone())return 'E · Refuse the Regent';return sim&&N()&&N().active(sim)&&N().foxAt(sim)?'E · Answer the fox':null;}
  page(){return null;}
 }
 const api={NearshoreUI};G.RealmNearshoreUI=api;if(typeof module!=='undefined')module.exports=api;
