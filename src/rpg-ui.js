@@ -183,6 +183,7 @@ class RPGUI{
   const r=B.runtime(this.sim);
   if(['assault','intermission'].includes(r.phase)){if(r.phase==='assault')this.run('beacon-repair');else this.api.toast('Regroup. Another breach is approaching.');return true;}
   if(r.phase==='arrival'){this.api.toast('The envoy is descending. The family is on its way.');return true;}
+  if(B.sightingReady(this.sim)){this.api.adventure().sighting();return true;}
   this.open('beacon');return true;
  }
  paint(){

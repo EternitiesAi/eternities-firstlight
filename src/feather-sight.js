@@ -2,7 +2,7 @@
  * gold, counterfeit roads glow ash red, and the rest of the scene is quieted with a canvas filter. Presentation
  * only: each hold is a saga command (feather-use). Which roads are true is data here, never save state. */
 (function(G){'use strict';
-const KEY='z',GOLD=0xf2c24e,ASH_RED=0xa8473d,QUIET='saturate(0.42)',STEP=1.2,DASH=[.2,.03,.46];
+const KEY='z',GOLD=0xffc23a,ASH_RED=0x9c2f26,QUIET='saturate(0.42)',STEP=1.2,DASH=[.34,.035,.9];
 // The valley floor sits lower than the road and crossing paths, so the glow needs its own height per area.
 const GROUND=Object.freeze({valley:1.31,road:1.59,crossing:1.59});
 // Markers only go where the area's own ground is walkable, so no glow floats over water or into a wall.
@@ -65,8 +65,8 @@ function draw(out,sim,t,artist){
    for(let i=0;i<count;i++){
     const u=(i+.5)/count,x=ax+dx*u,z=az+dz*u;
     if(!walk(x,z))continue;
-    const em=reduced?1.2:1.05+.35*Math.sin(clock*2.4+n*.55);n++;
-    out.box.push({p:[x,base+.16,z],s:[DASH[0],DASH[1],DASH[2]],c:color,r:[0,yaw,0],em,rough:.5});
+    const em=reduced?1.8:1.6+.5*Math.sin(clock*2.4+n*.55);n++;
+    out.box.push({p:[x,base+.16,z],s:[DASH[0],DASH[1],DASH[2]],c:color,r:[0,yaw,0],em,rough:.5});out.box.push({p:[x,base+.13,z],s:[DASH[0]*1.7,.012,DASH[2]*1.25],c:color,r:[0,yaw,0],em:em*.35,rough:.9});
    }
   }
  }
