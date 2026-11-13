@@ -6,7 +6,7 @@ function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);O
 // seconds of valley time; startRange and offerRange are metres from the spring.
 const TIMING=freeze({firstChain:1.5,chainGap:2.6,freedDelay:2.2,riseSeconds:7,speed:2.4,pause:1.4,startRange:9,offerRange:6});
 // used only when the boss table (G.RealmDifficulty) is missing or malformed.
-const BODIES=freeze([{id:'chains',hp:380,damage:44},{id:'merged',hp:400,damage:48},{id:'offer',hp:420,damage:52}]);
+const BODIES=freeze([{id:'chains',hp:380,damage:46},{id:'merged',hp:400,damage:50},{id:'offer',hp:420,damage:54}]);
 // each realm's chain stands on the valley's own ground, near the spring junction. spring is the default chain.
 const SITES=freeze({
  hell:{x:6,z:1,label:'the hell road'},

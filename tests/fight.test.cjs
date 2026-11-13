@@ -31,18 +31,18 @@ test('the main-path boss table rises in hp and damage, and the chapter bosses re
  const order=['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian'].map(id=>D.boss(id));
  for(let i=1;i<order.length;i++){assert.ok(order[i].hp>order[i-1].hp,'hp rises at '+i);assert.ok(order[i].damage>order[i-1].damage,'damage rises at '+i);}
  const reg=D.boss('regent');assert.deepEqual(reg.phases.map(p=>p.hp),[380,400,420]);assert.equal(reg.phases.reduce((n,p)=>n+p.hp,0),1200);
- assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage));assert.ok(reg.phases[0].damage>order.at(-1).damage);
- const hart=A.ENEMIES.find(e=>e.id==='hart');assert.equal(hart.hp,240);assert.equal(hart.damage,24);
- assert.equal(R.ENEMIES.find(e=>e.id==='road-ram').hp,320);
- const herald=B.WAVES.flat().find(e=>e.id==='herald');assert.equal(herald.hp,350);assert.equal(herald.damage,29);
- const keeper=X.ENEMIES.find(e=>e.id==='cross-warden');assert.equal(keeper.hp,410);assert.equal(keeper.damage,30);
+ assert.ok(reg.phases.every((p,i)=>i===0||p.damage>reg.phases[i-1].damage)); // the regent's own numbers are the finale aide's: only its internal rise is checked here
+ const hart=A.ENEMIES.find(e=>e.id==='hart');assert.equal(hart.hp,780);assert.equal(hart.damage,22);
+ assert.equal(R.ENEMIES.find(e=>e.id==='road-ram').hp,1080);
+ const herald=B.WAVES.flat().find(e=>e.id==='herald');assert.equal(herald.hp,1200);assert.equal(herald.damage,36);
+ const keeper=X.ENEMIES.find(e=>e.id==='cross-warden');assert.equal(keeper.hp,1440);assert.equal(keeper.damage,38);
  assert.throws(()=>D.boss('nobody'),/Unknown boss/);
  // the contract shape: exact keys, each entry hp, damage and windup, and copies that never write back to the table.
  assert.deepEqual(Object.keys(D.BOSSES),['hart','ram','herald','keeper','foundryWarden','relaySeraph','witnessGuardian','regent']);
  for(const id of Object.keys(D.BOSSES))for(const f of['hp','damage','windup'])assert.ok(Number.isFinite(D.boss(id)[f]),id+'.'+f);
  assert.equal(reg.hp,1200);assert.equal(reg.damage,54);assert.ok(reg.phases.every(p=>Array.isArray(p.patterns)&&p.patterns.length>0));
- assert.equal(D.boss('foundryWarden').hp,520);assert.equal(D.boss('relaySeraph').hp,620);assert.equal(D.boss('witnessGuardian').hp,720);
- const copy=D.boss('hart');copy.hp=1;assert.equal(D.boss('hart').hp,240);assert.equal(D.BOSSES.hart.hp,240);
+ assert.equal(D.boss('foundryWarden').hp,1600);assert.equal(D.boss('relaySeraph').hp,1900);assert.equal(D.boss('witnessGuardian').hp,2200);
+ const copy=D.boss('hart');copy.hp=1;assert.equal(D.boss('hart').hp,780);assert.equal(D.BOSSES.hart.hp,780);
  assert.equal(hart.windup,D.boss('hart').windup);assert.equal(D.BOSSES.hart.windup,1.05);
 });
 test('phases() maps damage dealt to a phase, runs the hook once per change, and refuses bad data',()=>{
@@ -137,7 +137,7 @@ test('the herald runs its double ring and line slam through the beacon owner',()
 });
 test('the keeper runs its line slam and double ring through the crossing owner',()=>{
  const s=new C.Simulation();s.state.adventure.started=true;s.room='crossing';s.state.player={x:0,z:-18,yaw:0};A.syncScene(s);
- const k=A.runtime(s).enemies.find(e=>e.custom==='bell');assert.ok(k&&k.hp===410);
+ const k=A.runtime(s).enemies.find(e=>e.custom==='bell');assert.ok(k&&k.hp===1440);
  k.strikes=2;
  const seen=[];
  for(let i=0;i<800&&seen.length<4;i++){s.state.adventure.hp=100;s.state.player={x:0,z:-18,yaw:0};s.tick(.05);

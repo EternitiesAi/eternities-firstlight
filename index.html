@@ -5341,7 +5341,7 @@ function freeze(o){if(o&&typeof o==='object'){Object.values(o).forEach(freeze);O
 // seconds of valley time; startRange and offerRange are metres from the spring.
 const TIMING=freeze({firstChain:1.5,chainGap:2.6,freedDelay:2.2,riseSeconds:7,speed:2.4,pause:1.4,startRange:9,offerRange:6});
 // used only when the boss table (G.RealmDifficulty) is missing or malformed.
-const BODIES=freeze([{id:'chains',hp:380,damage:44},{id:'merged',hp:400,damage:48},{id:'offer',hp:420,damage:52}]);
+const BODIES=freeze([{id:'chains',hp:380,damage:46},{id:'merged',hp:400,damage:50},{id:'offer',hp:420,damage:54}]);
 // each realm's chain stands on the valley's own ground, near the spring junction. spring is the default chain.
 const SITES=freeze({
  hell:{x:6,z:1,label:'the hell road'},
@@ -7739,13 +7739,13 @@ const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freez
 const REGENT=Object.freeze([phase(380,46,['line','double']),phase(400,50,['line','double','bait']),phase(420,54,['double','bait','line'])]);
 const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
- hart:entry(240,24,1.05),
- ram:entry(320,28,1.2),
- herald:entry(350,29,1.35),
- keeper:entry(410,30,1.2),
- foundryWarden:entry(520,34,1.2),
- relaySeraph:entry(620,38,1.2),
- witnessGuardian:entry(720,42,1.35),
+ hart:entry(780,22,1.05),
+ ram:entry(1080,34,1.2),
+ herald:entry(1200,36,1.35),
+ keeper:entry(1440,38,1.2),
+ foundryWarden:entry(1600,40,1.2),
+ relaySeraph:entry(1900,44,1.2),
+ witnessGuardian:entry(2200,48,1.35),
  // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
  regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });

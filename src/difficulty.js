@@ -5,13 +5,13 @@ const phase=(hp,damage,patterns)=>Object.freeze({hp,damage,patterns:Object.freez
 const REGENT=Object.freeze([phase(380,46,['line','double']),phase(400,50,['line','double','bait']),phase(420,54,['double','bait','line'])]);
 const entry=(hp,damage,windup)=>Object.freeze({hp,damage,windup});
 const BOSSES=Object.freeze({
- hart:entry(240,24,1.05),
- ram:entry(320,28,1.2),
- herald:entry(350,29,1.35),
- keeper:entry(410,30,1.2),
- foundryWarden:entry(520,34,1.2),
- relaySeraph:entry(620,38,1.2),
- witnessGuardian:entry(720,42,1.35),
+ hart:entry(780,22,1.05),
+ ram:entry(1080,34,1.2),
+ herald:entry(1200,36,1.35),
+ keeper:entry(1440,38,1.2),
+ foundryWarden:entry(1600,40,1.2),
+ relaySeraph:entry(1900,44,1.2),
+ witnessGuardian:entry(2200,48,1.35),
  // the regent's hp is the sum of its phases and its damage the highest phase, so a top-level reader sees the whole fight.
  regent:Object.freeze({hp:REGENT.reduce((n,p)=>n+p.hp,0),damage:Math.max(...REGENT.map(p=>p.damage)),windup:1.2,phases:REGENT})
 });
