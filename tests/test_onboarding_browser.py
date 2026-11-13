@@ -663,6 +663,9 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         for key, value in self.m.story_defaults(result).items():
             self.assertNotIn(key, result)
             result[key] = value
+        for key, value in self.m.SHELL_SETTINGS.items():
+            self.assertNotIn(key, result['settings'])
+            result['settings'][key] = copy.deepcopy(value)
         return result
 
     def current_resume_capture(self):
