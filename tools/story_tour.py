@@ -69,12 +69,19 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
         pass
 
 
-def camera(page, name):
-    # the page's own camera buttons, found by their visible labels.
-    try:
-        page.get_by_role("button", name=name, exact=True).first.click(timeout=5000)
-    except Exception:
-        page.get_by_text(name, exact=True).first.click(timeout=5000)
+CAMERA_JS = '''(mode) => {
+  const el = document.querySelector('[data-rpg="camera"][data-id="' + mode + '"]');
+  if (!el) return false;
+  el.click();
+  return true;
+}'''
+
+
+def camera(page, mode):
+    # the page's own camera buttons, by their data-id (adventure = third person, follow = diorama). A DOM click runs the
+    # page's own handler without pointer checks, so an overlay cannot turn the frame into a failed click.
+    if not page.evaluate(CAMERA_JS, mode):
+        raise RuntimeError("camera button missing: " + mode)
 
 
 def scene_run(browser, origin, saves, row, out, frames, report):
@@ -104,12 +111,12 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         third = out / (row["scene"] + "-third.png")
         page.screenshot(path=str(third))
         record["third_person_frame"] = str(third.relative_to(out.parent))
-        camera(page, "Diorama")
+        camera(page, "follow")
         page.wait_for_timeout(2500)
         diorama = out / (row["scene"] + "-diorama.png")
         page.screenshot(path=str(diorama))
         record["diorama_frame"] = str(diorama.relative_to(out.parent))
-        camera(page, "3rd person")
+        camera(page, "adventure")
         page.wait_for_timeout(1500)
         intervals = page.evaluate(SAMPLE_JS, {"n": frames})
         record["fps_ms"] = summary(intervals)
@@ -120,7 +127,7 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         raise
     except Exception as error:
         record["status"] = "failed"
-        record["error"] = str(error)[:400]
+        record["error"] = str(error)[:1500]
     record["page_errors"] = errors
     report["scenes"].append(record)
     print(json.dumps({k: record.get(k) for k in ("scene", "status", "fps_ms", "error")}), flush=True)

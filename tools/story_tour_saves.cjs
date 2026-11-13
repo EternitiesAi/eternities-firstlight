@@ -6,7 +6,7 @@
  * nothing, is recorded with why. The finale is the same command sequence as tools/firstlight_journey.cjs, saved at each
  * phase. Usage: node tools/story_tour_saves.cjs <folder>
  */
-const fs = require('node:fs'), path = require('node:path'), childProcess = require('node:child_process');
+const fs = require('node:fs'), os = require('node:os'), path = require('node:path'), childProcess = require('node:child_process');
 const ROOT = path.resolve(__dirname, '..');
 const C = require(path.join(ROOT, 'src/core.js')), SG = require(path.join(ROOT, 'src/saga.js'));
 
@@ -25,7 +25,7 @@ const JOURNEYS = [
   { id: 'hell', module: 'tests/hell_campaign_journey.cjs', option: 'output' },
   { id: 'heaven', module: 'tests/heaven_campaign_journey.cjs', option: 'output' },
   { id: 'atlantis', module: 'tests/atlantis_campaign_journey.cjs', option: 'output' },
-  { id: 'cosmos', module: 'tests/cosmos_campaign_journey.cjs', option: 'output' },
+  { id: 'cosmos', module: 'tests/cosmos_campaign_journey.cjs', option: 'output', outside: true },
   { id: 'realm-south', module: 'tests/realm_trails_south_journey.cjs', option: 'output' },
   { id: 'realm-cosmos', module: 'tests/realm_trails_cosmos_journey.cjs', option: 'output' },
 ];
@@ -68,7 +68,17 @@ for (const j of JOURNEYS) {
   const dir = path.join(root, j.id);
   fs.mkdirSync(dir, { recursive: true });
   for (const sub of j.prepare || []) fs.mkdirSync(path.join(dir, sub), { recursive: true });
-  collect(j.id, j.module, dir, () => { require(path.join(ROOT, j.module)).journey({ [j.option]: dir }); });
+  // a journey that refuses output inside the checkout writes to a temp folder; its saves are copied under the journey's folder.
+  const target = j.outside ? fs.mkdtempSync(path.join(os.tmpdir(), 'story-tour-' + j.id + '-')) : dir;
+  collect(j.id, j.module, dir, () => {
+    require(path.join(ROOT, j.module)).journey({ [j.option]: target });
+    if (target === dir) return;
+    for (const file of walkJson(target)) {
+      const copy = path.join(dir, path.relative(target, file));
+      fs.mkdirSync(path.dirname(copy), { recursive: true });
+      fs.copyFileSync(file, copy);
+    }
+  });
 }
 
 // the night set piece: the lead's frame saves, from the crossing journey's earned chapter IV save.
@@ -139,10 +149,16 @@ const SCENES = [
   { scene: 'epilogue', file: 'finale/epilogue_credits.json', why: 'the valley after the last hit' },
   { scene: 'credits', file: 'finale/epilogue_credits.json', why: 'credits rolled (saga credits true)' },
 ];
+// a checkpoint is found by its file name under its journey's folder; campaign journeys keep their saves in variant subfolders.
+function findSave(source, name) {
+  const hit = walkJson(path.join(root, source)).find(p => path.basename(p) === name);
+  return hit ? path.relative(root, hit).split(path.sep).join('/') : null;
+}
 const index = SCENES.map(spec => {
   if (!spec.file) return { scene: spec.scene, file: null, why: spec.why };
-  const present = fs.existsSync(path.join(root, spec.file));
-  return present ? { scene: spec.scene, file: spec.file, why: spec.why } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
+  const parts = spec.file.split('/');
+  const found = findSave(parts[0], parts[parts.length - 1]);
+  return found ? { scene: spec.scene, file: found, why: spec.why } : { scene: spec.scene, file: null, why: 'the journey wrote no ' + spec.file };
 });
 fs.writeFileSync(path.join(root, 'MANIFEST.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(path.join(root, 'beats-index.json'), JSON.stringify(index, null, 2));
