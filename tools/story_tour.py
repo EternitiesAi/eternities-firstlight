@@ -136,6 +136,22 @@ def tour_gate(browser, origin):
     return seen
 
 
+def title_frame(browser, origin, out):
+    # the title screen is the page's own, shown in normal play (no harness global). a failure is reported, not fatal.
+    page = browser.new_page(viewport={"width": 1920, "height": 1080}, device_scale_factor=1)
+    try:
+        page.goto(origin, wait_until="load")
+        page.wait_for_selector("#title-new", state="visible", timeout=60000)
+        page.wait_for_timeout(2500)
+        path = out / "title.png"
+        page.screenshot(path=str(path))
+        return {"status": "reached", "frame": str(path.relative_to(out.parent))}
+    except Exception as error:
+        return {"status": "failed", "error": str(error)[:400]}
+    finally:
+        page.close()
+
+
 def scene_run(browser, origin, saves, row, out, frames, report):
     record = {"scene": row["scene"], "save": row["file"], "why": row["why"]}
     errors = []
@@ -231,6 +247,7 @@ def main():
             browser = pw.chromium.launch(**launch)
             report["browser_version"] = browser.version
             report["tour_gate"] = tour_gate(browser, origin)
+            report["title_frame"] = title_frame(browser, origin, out)
             for row in index:
                 if not row["file"]:
                     report["scenes"].append({"scene": row["scene"], "status": "unreached", "why": row["why"]})
