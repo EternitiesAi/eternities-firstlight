@@ -28,6 +28,7 @@ function assertMigrationPreserved(migrated,raw){
  if(!('earthWildSigns' in raw))expected.earthWildSigns={version:1,accepted:false,evidence:[],observed:false,resolution:null,cleared:false,claimed:false};
  if(!Object.hasOwn(raw,'briarMoments'))expected.briarMoments={version:1,revision:0,moments:[]};
  if(!Object.hasOwn(raw,'saga'))expected.saga=load('saga').infer(migrated);
+ if(!Object.hasOwn(raw,'night'))expected.night=load('night').infer(migrated);
  const ids=['heaven-propagation-bed-v1','hell-refuge-water-v1','atlantis-bellglass-lamp-v1','cosmos-drawing-shelf-v1'].sort();
  let catalogueMigration=null;
  if(catalogue&&catalogue.version===1&&Object.keys(catalogue).length===2&&Object.hasOwn(catalogue,'version')&&Object.hasOwn(catalogue,'records')&&catalogue.records&&Object.keys(catalogue.records).length===ids.length&&ids.every(id=>Object.hasOwn(catalogue.records,id))){

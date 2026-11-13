@@ -1,11 +1,12 @@
 /* Firstlight 07: authored surface expedition. Owns geometry and persisted
  * chapter facts. No network, financial service or model-generated character. */
 (function(G){'use strict';
+const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 const GATE=Object.freeze({x:44,z:6}),ENTRY=Object.freeze({x:0,z:17,yaw:Math.PI}),MERCHANT=Object.freeze({x:-10,z:12}),BEACON=Object.freeze({x:0,z:-24});
 const ENEMIES=Object.freeze([
-{id:'road-prowler',name:'Thicket prowler',kind:'skitter',x:-2,z:8,hp:65,damage:13,xp:20,ore:1,coins:5},
-{id:'road-prism',name:'Gloam prism',kind:'sentinel',x:6,z:-8,hp:95,damage:16,xp:25,ore:2,coins:7},
-{id:'road-ram',name:'The Sunscar Ram',kind:'charger',x:0,z:-19,hp:320,damage:28,xp:55,ore:3,coins:12}]);
+{id:'road-prowler',name:'Thicket prowler',kind:'skitter',x:-2,z:8,hp:65,damage:13,xp:20,ore:1,coins:5,windup:.75,poise:true},
+{id:'road-prism',name:'Gloam prism',kind:'sentinel',x:6,z:-8,hp:95,damage:16,xp:25,ore:2,coins:7,windup:1.05,poise:true},
+{id:'road-ram',name:'The Sunscar Ram',kind:'charger',boss:true,x:0,z:-19,hp:D.boss('ram').hp,damage:D.boss('ram').damage,xp:55,ore:3,coins:12,windup:D.boss('ram').windup,attackOrder:['charge','bait','line'],attackSpec:{bait:{windup:1.4,length:13,stun:2.8},line:{windup:1.1,length:5,half:.8}}}]);
 const CACHES=Object.freeze([{id:'cart-latch',name:'The missing brass latch',x:-11,z:3,ore:1,coins:2},{id:'old-surveyor',name:'A surveyor’s lost cache',x:11,z:-13,ore:2,coins:5}]);
 const OBSTACLES=Object.freeze([{x:-5,z:-10,r:2},{x:10,z:10,r:1.5},{x:-10,z:-17,r:1.3},{x:14,z:-3,r:1.2},{x:-13,z:-4,r:1.3},{x:7,z:-22,r:1.4},{x:-12.2,z:11,w:2.6,d:3},{x:-13,z:-22,w:3,d:3.5},{x:13,z:15,r:1.1},{x:15,z:-18,r:1.2}]);
 const TREES=[[-12,17,1.05,1],[-15,8,1.1,0],[-16,1,1,2],[-14,-9,1.2,0],[-13,-14,.9,1],[-8,-23,1,0],[-4,-26,.8,1],[5,-25,.65,1],[11,-20,1.1,0],[15,-13,1,1],[16,-7,.9,0],[15,3,1.1,2],[13,8,1.2,1],[10,16,1,1],[6,19,.8,2],[-6,19,.8,0]];
@@ -22,6 +23,6 @@ function objectives(a){const s=a.road;return[
 {title:'Help a stranded trader',detail:'Clear the prowler. Repair Tessa’s cart with its recovered latch and 2 copper.',done:s.cartRepaired},
 {title:'The charge before the dawn',detail:'Cross the stone bridge. Evade the Sunscar Ram’s marked charge lane.',done:a.defeated.includes('road-ram')},
 {title:'Light the Sunward Beacon',detail:'Clear the three route encounters, then kindle the lantern on the north ridge.',done:s.beaconLit},
-{title:'Bring the light home',detail:'Return to the spring and tell the envoy. Unlock the wayfarer’s band and a commemorative light.',done:s.reported}];}
+{title:'Bring the light home',detail:'Return to the spring and tell the envoy. The wayfarer’s band is yours for it.',done:s.reported}];}
 G.RealmRoad={TREES,GATE,ENTRY,MERCHANT,BEACON,ENEMIES,CACHES,OBSTACLES,land,riverZ,walkable,line,fresh,validate,objectives};if(typeof module!=='undefined')module.exports=G.RealmRoad;
 })(globalThis);

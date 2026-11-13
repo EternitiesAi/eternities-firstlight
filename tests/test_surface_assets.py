@@ -40,7 +40,8 @@ class SurfaceAssetTests(unittest.TestCase):
         scratch.mkdir(exist_ok=True)
         cls.temporary = tempfile.TemporaryDirectory(prefix='timber-source-tests-', dir=scratch)
         cls.root = Path(cls.temporary.name)
-        for folder in ('src', 'assets/concept-art', 'assets/materials/timber', 'docs/art/material-proof-2026-09-30'):
+        # assets/audio is a build input now (build.py embeds it from its manifest), so the scratch copy needs it.
+        for folder in ('src', 'assets/concept-art', 'assets/materials/timber', 'assets/audio', 'docs/art/material-proof-2026-09-30'):
             shutil.copytree(ROOT / folder, cls.root / folder)
         cls.folder = cls.root / 'assets/materials/timber'
         cls.receipt_path = cls.folder / 'provenance.json'

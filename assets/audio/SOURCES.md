@@ -1,0 +1,167 @@
+# audio sources and provenance
+
+Written by `tools/make_sources.cjs` from the box measurement records. Every hash below was checked against the file in
+this folder before this page was written. Shipped files: 37 effects in `fx/` and 9 score tracks in `music/`,
+embedded by `build.py` (`audio.js` reads them by key, e.g. `fx/hit-1`, `music/valley`).
+
+## rights
+
+| source | used for | licence and evidence |
+|---|---|---|
+| kenney.nl impact-sounds | hits, guard, dig, relic and bell, footsteps on grass, wood and concrete | CC0 1.0. The pack's License.txt reads "Creative Commons Zero, CC0". |
+| kenney.nl rpg-audio | dodge (cloth), loot (coins), beacon repair (latch) | CC0 1.0 (License.txt, same wording). |
+| kenney.nl interface-sounds | rescue, insight, spirit, interface confirm, open, error and toggle | CC0 1.0 (License.txt, same wording). |
+| kenney.nl ui-audio | interface clicks | CC0 1.0 (License.txt, same wording). |
+| kenney.nl digital-audio | heal and beacon answer | CC0 1.0 (License.txt, same wording). |
+| ACE-Step code (github ace-step/ACE-Step) | the generator, at commit `1bee4c9f5b43e30995f8d4d33b3919197ce1bd68` | Apache-2.0 (LICENSE copied to `reports/ace-license.txt`). |
+| ACE-Step/ACE-Step-v1-3.5B | the score weights, at revision `82cd0d7b6322bd28cd4e830fe675ddb6180ce36c` | Model card licence apache-2.0 (`reports/model-license.txt`). Training-data provenance is not audited here. |
+| code-made bird chirp (audio.js `synth`) | birds | no recording. checked: none of the kenney packs above has a bird sample, so game code stands in. |
+| code-made ambience beds (soundscape.js) | one filtered noise bed and sine drone per area | no recording. checked: none of the packs above has an ambience loop, so game code stands in. |
+
+Kenney's packs were fetched with kenney's own download flow: the asset page asks `/download-link/<id>` for a signed url,
+where the id is the hex of `assets/<pack>`. Kenney refuses the default curl agent with a 403, so the fetch sends a
+browser-style agent string. Only the public asset pages and the signed zips were requested.
+
+## effects
+
+Each row is one listed kenney file (`tools/fx-list.tsv`), set to its peak level, faded out at the tail only, encoded to
+mono opus at 48 kbps (`tools/fx_convert.py`). `f0 Hz` is an FFT estimate used only for the bell (its root in `audio.js`).
+Loudness is not reported for effects: each is shorter than the 400 ms window that BS.1770 gating needs, so ffmpeg reports
+-70 LUFS for them. The sample peak is the level measure.
+
+| file | cue | source (pack / file) | seconds | sample peak dBFS | f0 Hz | out sha256 |
+|---|---|---|---|---|---|---|
+| hit-1.ogg | hit | impact-sounds / impactMetal_medium_000 | 0.27 | -6.5 | 994.3 | 968b226f0ffc184ed85dc815113b92ebc45658396862ece4b42f86caebde863a |
+| hit-2.ogg | hit | impact-sounds / impactMetal_medium_002 | 0.12 | -7.4 | 1024.3 | 90c0ba1adc2ac6f07a3518d6ef87088a9552b4276549eab380bbf343cc2002e4 |
+| hit-3.ogg | hit | impact-sounds / impactMetal_medium_004 | 0.11 | -6.3 | 1008.2 | 363d708553ed8316d200e651f99b39d136bdcc1fbe525d256b45b91b07f1d708 |
+| guard-1.ogg | guard | impact-sounds / impactPlate_medium_000 | 0.61 | -7.6 | 284.4 | 1bc5276f447aaba578f994a1a5202e7a161f0e7c540f5a8d933a90232feb1310 |
+| guard-2.ogg | guard | impact-sounds / impactPlate_medium_002 | 0.52 | -6.3 | 217.0 | cad2d46a38a60168c748a71ea856d8e1647b7d75c54fee1a66d25699dc42e1f0 |
+| dodge-1.ogg | dodge | rpg-audio / cloth2 | 0.41 | -7.5 | 198.3 | 414e2daac07ded61cb95a86f49affd042d2934d5fea5a9697818d125db6b82d9 |
+| dodge-2.ogg | dodge | rpg-audio / cloth3 | 0.48 | -8.0 | 205.1 | 3d2568b7eda46f64e54234359f4edd93aad644164ff5b6fc7e8d79c6d5af1b84 |
+| dig-1.ogg | dig | impact-sounds / impactMining_000 | 0.94 | -6.5 | 200.1 | f9372082cb7f2fb715540e32f6b7b37b0f661335cafe8ba541af3c13deec92ed |
+| dig-2.ogg | dig | impact-sounds / impactMining_002 | 0.81 | -6.0 | 150.1 | b8d958f7e9a218a4e13184e874a93a3072ec4f88ac0231824b37211174f2096b |
+| dig-3.ogg | dig | impact-sounds / impactMining_004 | 0.83 | -6.2 | 524.2 | 62742528bddc1860e72d66d07176660a9e357207eda9a3b12e21b25113c41243 |
+| heal-1.ogg | heal | digital-audio / powerUp2 | 0.47 | -8.8 | 934.9 | f9d570ad9dc28a1d60089046f1000d009caceb2f4eee31595ad1fbc1d619ad04 |
+| heal-2.ogg | heal | digital-audio / powerUp5 | 0.47 | -8.4 | 1478.8 | 9b2260663d147fa3a63282660819fea06626594156d7e35cbf7a0e09ac39a3d7 |
+| rescue-1.ogg | rescue | interface-sounds / confirmation_002 | 0.54 | -7.8 | 1759.5 | 0de2d4fff6b0616014e42719b6382b7864617e0b8e889b002d926a37ba85d7ab |
+| loot-1.ogg | loot | rpg-audio / handleCoins | 0.85 | -6.8 | 1989.8 | 824f4d44a32fc503127a2f27c8e968be58af8de22e1adaceae3ba3eabdacb819 |
+| loot-2.ogg | loot | rpg-audio / handleCoins2 | 0.34 | -5.7 | 1909.4 | b98938a82858be0e1b69347f22ee7af8f474a35addab728ddccaf43792b32dbd |
+| relic-1.ogg | relic | impact-sounds / impactBell_heavy_002 | 0.70 | -6.2 | 226.1 | caff52f621c77b1b27746c439b786d4403b9debb391427002e82663391f22338 |
+| insight-1.ogg | insight | interface-sounds / pluck_001 | 0.10 | -9.8 | 1319.8 | e27bbdc4a40ba8c9a7183ef9b90c8d30f5e5bc121ba67d2daed042e36d87d217 |
+| spirit-1.ogg | spirit | interface-sounds / pluck_002 | 0.16 | -10.7 | 1251.0 | f9ff1751750625ff4573be3bd0e9ec48ffa7f2da0bc650859e0ed6909d62281b |
+| beacon-answer-1.ogg | beacon-answer | digital-audio / powerUp7 | 0.52 | -7.8 | 1483.9 | 319c9888178a92ea86aaffeaa5bc90f801d28b4d745eeadcda75a306f1584134 |
+| beacon-repair-1.ogg | beacon-repair | rpg-audio / metalLatch | 0.26 | -6.8 | 1906.7 | f09f4b641cf3eea2bd0cb38ae6524ed855da2f572505e25d37037566f149d04f |
+| step-soil-1.ogg | step-soil | impact-sounds / footstep_grass_000 | 0.78 | -10.1 | 191.3 | 232f32b42c3eb3595ccef346a0fa51901bae673f8839aaf89e1a324d935290d7 |
+| step-soil-2.ogg | step-soil | impact-sounds / footstep_grass_002 | 0.69 | -10.3 | 190.8 | cdf7fcd8c0cf2e53c8030920409c6403e39cbff4d5ed3260adabe2fccbbb73f9 |
+| step-soil-3.ogg | step-soil | impact-sounds / footstep_grass_004 | 0.59 | -10.2 | 176.7 | 26374cc8a1667d08d87e1e864503b1f565e3d57570e8c711a86e6d5bc097c7b0 |
+| step-timber-1.ogg | step-timber | impact-sounds / footstep_wood_000 | 0.27 | -10.0 | 150.1 | c0ba0d8aa6b9b97a6d91f6162da3835d66c522c2a49d6074206a9f0258b15dd1 |
+| step-timber-2.ogg | step-timber | impact-sounds / footstep_wood_002 | 0.25 | -10.4 | 150.1 | 08f279ba7b04e6bd8c1ee854026534a30492f2ad18ce6a453e96b22a793955d7 |
+| step-timber-3.ogg | step-timber | impact-sounds / footstep_wood_004 | 0.24 | -10.4 | 161.5 | 8dca7c25138f4e55b6603f7a009ff259e20bb923e2cee622b5dfe686b1eb8293 |
+| step-stone-1.ogg | step-stone | impact-sounds / footstep_concrete_000 | 0.10 | -10.3 | 339.3 | 60684926b34c5270647d72de26d178bdb16c4251d4727e1592c918b7f5aea9a3 |
+| step-stone-2.ogg | step-stone | impact-sounds / footstep_concrete_002 | 0.11 | -10.2 | 412.4 | c6c0633e0f12c192144d425d9d6deb9f292aa66bbea6d0a314482cf3dbae01e9 |
+| step-stone-3.ogg | step-stone | impact-sounds / footstep_concrete_004 | 0.11 | -10.3 | 356.0 | 024394acbf495ba83cc575cc71a0b9d40eb9d6b958878683a07a86fbe0691fda |
+| bell-1.ogg | bell | impact-sounds / impactBell_heavy_000 | 1.48 | -6.2 | 379.6 | 1aecf7ea0e159e28fb4d107652908cdb5c8762ac2a52cafa3e5d27c552998c59 |
+| ui-click-1.ogg | ui-click | ui-audio / click1 | 0.09 | -9.7 | 150.1 | e396b80f82cc3766fdca6d34a3c78d29f4e7b61f130b6c006d63572f492cce18 |
+| ui-click-2.ogg | ui-click | ui-audio / click2 | 0.05 | -9.1 | 227.2 | 9c1069805b822c9db799cf6f8efbfc03f9e0d5cce05c981881a79b45245dda34 |
+| ui-click-3.ogg | ui-click | ui-audio / click3 | 0.08 | -11.1 | 1503.7 | 2039f64e1e46727ca7dca98eb7c58824b0d5e8bf4382fef312c218a594fdbd17 |
+| ui-confirm-1.ogg | ui-confirm | interface-sounds / confirmation_001 | 0.29 | -9.2 | 587.6 | 22b07db660c90d2b199d836e970b68163e6a270e78ad31e1bb31eb6229b6adb5 |
+| ui-open-1.ogg | ui-open | interface-sounds / open_001 | 0.15 | -12.0 | 1195.9 | 4fd5a6d138e0f40f4d806895e07c5e99adbc734673568a441eda53cc5174d4d9 |
+| ui-error-1.ogg | ui-error | interface-sounds / error_001 | 0.16 | -11.1 | 1251.7 | 7f1d38caeaf31a17e8730a7b0d54c23a969dbf5a33e1a2e1680e24ce5a303a87 |
+| ui-toggle-1.ogg | ui-toggle | interface-sounds / toggle_001 | 0.14 | -7.8 | 1406.1 | 3bcdf337d0d71df20b7d5b8dd9122ca72cfac114acbe01fe5f7361f9d15480ea |
+
+## score
+
+Generated on the box with ACE-Step at the pins above, lyrics `[inst]` (ACE-Step's own instrumental tag), guidance 15,
+60 steps, euler scheduler, apg cfg (the pipeline's defaults). Each raw clip was generated `seconds + 3` long, and
+`tools/master_music.py` folded the last 3 s into the first with an equal-power blend, so each loop joins one ordinary sample
+step (seam ratio is the joint step over the median step; 1 is an ordinary step). Each track folds its own tail (3 s). The finale folds
+6 s and joins at the near-still sample within a second of the fold point that has the smallest step (joint: search), so its
+loop is 116.35 s. A longer fold alone raised the joint step, because it moved the joint onto a transient. Loudness target -20 LUFS integrated,
+true-peak ceiling -1.5 dBTP, encoded mono opus at 40 kbps and decoded back for the measurements below.
+
+| track | seconds | seed | generated s | LUFS | true peak dBTP | sample peak dBFS | seam ratio | ogg bytes | ogg sha256 |
+|---|---|---|---|---|---|---|---|---|---|
+| battle | 99.9 | 1103 | 20.2 | -20.0 | -2.6 | -2.6 | 1.03 | 545164 | 794e1703afe53b4c00d4c660f23a61fa7cfe89029530c3eb3067ba3ef325e701 |
+| cosmos | 109.9 | 1107 | 20.6 | -20.0 | -4.2 | -4.2 | 0.85 | 616755 | 57b33b85bce39381057ff3f4f5a6ddebef46549dae74572063c9e05bb63c98d1 |
+| credits | 99.9 | 1109 | 35.8 | -20.0 | -4.6 | -4.6 | 0.76 | 644167 | 59e0ca5fd38ecfff9d95340ec5d4df4b9c1eca6d81708fec41e0b89d6a49cfab |
+| finale | 116.4 | 1108 | 22 | -20.0 | -3.9 | -4.0 | 0.00 | 631096 | c7bd618ab7d11949d9e193b7cc7e6b2a3cc226f4b568f7a94eea1f945f578744 |
+| heaven | 115.0 | 1105 | 21.4 | -20.0 | -3.2 | -3.2 | 0.40 | 582892 | ccb4fcd15376f6f3291259930dfbd850e2e1085606d6e8419ed5ebccdccd6d6b |
+| hell | 95.0 | 1104 | 21.8 | -20.0 | -4.7 | -4.8 | 1.47 | 535894 | f85d81d8050b1f2c1b2fa36bc789530b2ae55ba0c44b5f7f33aad968730a0a31 |
+| road | 90.0 | 1102 | 19.6 | -20.0 | -3.2 | -3.2 | 0.04 | 476531 | fa2e9aeed8b300d46db4f339881d90d48218b7bfcb67dc4c0bb0b8087936b87c |
+| sea | 99.9 | 1106 | 19.1 | -20.0 | -2.6 | -2.6 | 0.06 | 545356 | 3ca18c16846db74cd83321ff6bf34182766edfd6ee651e5039bc8056900a50b3 |
+| valley | 120.0 | 1101 | 30.2 | -20.0 | -3.8 | -3.8 | 0.06 | 720061 | 34fbddcf4e6c462776e61b516ac72e3ff1260bbe733ae2499b9aaedd37c91e03 |
+
+Prompts (ACE-Step tags, as generated):
+
+- valley (seed 1101, 120 s): warm orchestral folk, storybook fantasy, acoustic guitar, wooden flute, soft strings, gentle pastoral, hopeful, earthy, instrumental, 84 bpm, major key
+- road (seed 1102, 90 s): storybook travel theme, pizzicato strings, light woodwinds, acoustic guitar, hand drum, walking tempo, hopeful, adventurous, instrumental, 100 bpm, major key
+- battle (seed 1103, 100 s): epic orchestral battle, driving war drums, taiko, low brass, low strings, urgent, heroic, tense, instrumental, 138 bpm, minor key
+- hell (seed 1104, 95 s): dark orchestral, iron percussion, anvil strikes, low drones, distorted cello, ember glow, ominous, instrumental, 66 bpm, minor key
+- heaven (seed 1105, 115 s): celestial orchestral, choir pads, bells and glockenspiel, soft harp, bone white and gold, serene, uplifting, instrumental, 72 bpm, major key
+- sea (seed 1106, 100 s): oceanic orchestral, harp arpeggios, slow swelling strings, distant horn, gentle waves, calm, wistful, instrumental, 66 bpm, modal
+- cosmos (seed 1107, 110 s): cosmic orchestral ambient, glassy synthesizer pads, distant wordless choir, shimmering, vast, mysterious, instrumental, 64 bpm
+- finale (seed 1108, 120 s): full orchestra building to triumph, strings, brass, timpani, choir, bells, climactic, hopeful, instrumental, 96 bpm, major key
+- credits (seed 1109, 100 s): gentle orchestral folk reprise, acoustic guitar, flute, soft strings, warm, bittersweet, instrumental, 80 bpm, major key
+
+## gain staging
+
+- effects: peak set per row to -6 to -10 dBFS (measured sample peaks in the table above), then cue gains of .6 to .9 with
+  ±12% level jitter and ±3% pitch jitter (footsteps ±5%).
+- score: -20 LUFS integrated, true peak under -1.5 dBTP before the bus mix.
+- buses: a player volume (default .8, 0..1) times a fixed mix (music .9, effects 1, ambience .55, interface .8), then a
+  master at .9 while audio is on, then a compressor at the destination (threshold -6 dB, knee 6 dB, ratio 12:1, attack 3 ms,
+  release 250 ms) so overlapping cues cannot reach the output above 0 dBFS.
+- worst case, one effect at its loudest with every gain at its top: -5.7 dBFS (loudest sample) + 20*log10(.9*1.12*.8*.9)
+  = about -8.5 dBFS at the output. The score at its ceiling reaches about -5.3 dBTP. The compressor only acts above -6 dB.
+
+## what is not verified
+
+- nobody has listened to the score or the effects. Each track was checked by duration, loudness, peak, the loop seam and a
+  spectrogram. The smoke clip's spectrogram shows a denser, louder second half. That is recorded, not judged.
+- a headless chromium decode of every shipped file is the only playback evidence (see the verifier and the decode check).
+  Safari and Firefox decoding of ogg/opus is not tested.
+- the bell root (f0 379.6 Hz) is a spectral estimate from one file, so the court's three notes are tuned to an estimate.
+- ACE-Step's training data is not audited, and output similarity to any recording is not checked. The licence is the
+  only rights statement for the score.
+
+## listening list for dom
+
+Play these in the build, not in the box. Each cue and track is in `src/audio.js`.
+
+- valley: the home valley, the first hour, the spring and the field walks (the default place).
+- road: the Sunward Road and the Bellweather road (`room` = road).
+- battle: while an enemy is targeted in the field, the underways and the road (the target overrides the place).
+- hell: the trail of the stolen pattern (world-hell).
+- heaven: the arrival in peace and the envoy's home (world-heaven).
+- sea: the drowned witness and the submerged water (world-atlantis).
+- cosmos: the cosmos expanse (cosmos-near-expanse).
+- finale and credits: not wired by this lane. The finale and credits lanes call `RealmAudio.music('finale')` and
+  `RealmAudio.music('credits')`.
+- hit (sword), guard (plate), dig (mining), heal and beacon-answer (power-up), loot (coins), relic and bell (court notes,
+  pitched to D4, F#4 and A4), rescue, insight and spirit (plucks), beacon-repair (latch), footsteps (grass, wood, stone).
+- ui-click on every button; ui-confirm, ui-open, ui-error and ui-toggle are wired in `EVENTS` for the screens that call them.
+
+## reports
+
+- `reports/fx-measure.tsv`: one row per effect, with the source zip sha256 and the source file sha256.
+- `reports/music-measure.json`: one object per track, with the measurements above.
+- `reports/model-sha256.txt` (every model file, sha256) and `reports/ace-freeze.txt` (the venv).
+- `audio-manifest.json`: the exact files `build.py` embeds, with byte sizes and sha256. The build refuses a file that
+  differs from its record.
+
+| model file | sha256 |
+|---|---|
+| .gitattributes | d770b16a6c2bd919c2266aba306f2dcbe4d4393ab9e56d2b4b70ab432eb35df3 |
+| README.md | b5674b0c01f5b8e6e38291f1d36baa749a60f5cd5c450b70d23e247a772d930f |
+| ace_step_transformer/config.json | 4d78beb6afb4c7f3705256b44faaf60f3e1e2d78f4015ca87740f3695d7f5447 |
+| ace_step_transformer/diffusion_pytorch_model.safetensors | e810f16728d8a2e0d1b9c3a907aac8c9a427ce38edbd890cb3dce5ff92da5aad |
+| config.json | 4d78beb6afb4c7f3705256b44faaf60f3e1e2d78f4015ca87740f3695d7f5447 |
+| music_dcae_f8c8/config.json | b14a49a8c52a52c2c8050098af1a946810a8a1a0b6e50abc75ba81371383cf04 |
+| music_dcae_f8c8/diffusion_pytorch_model.safetensors | 2b0cb469307ac50659d1880db2a99bae47d0df335cbb36853964662d4b80e8ee |
+| music_vocoder/config.json | 39ddc4c417e01dc3be1862fcf315887358dd61b7f91c3cc8227f65072984bb55 |
+| music_vocoder/diffusion_pytorch_model.safetensors | c92c9b46e28ab7b37b777780cf4308ad7ddac869636bb77aa61599358c4bc1c0 |
+| umt5-base/config.json | afae5da9a35e2b293cee66536f03fc2581cfc3f3d5707d3a262b552748de1572 |
+| umt5-base/model.safetensors | 779cec0d210b2123e21d0a9cd8128f02b4d412627355028965a8be0b241cc3b6 |
+| umt5-base/special_tokens_map.json | 456b58fd240a06c743a7c2cf8008bec501240d68ebd1fc4018ea569505fea270 |
+| umt5-base/tokenizer.json | 20a46ac256746594ed7e1e3ef733b83fbc5a6f0922aa7480eda961743de080ef |
+| umt5-base/tokenizer_config.json | ed9a3a8b0faa71a70a32847e0435fe036e6e112d4df4edb7bb48a921e344dc05 |

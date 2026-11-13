@@ -9,7 +9,7 @@ const snap=s=>JSON.stringify(s.snapshot());
 function reject(s,t,p={}){const old=snap(s);assert.equal(cmd(s,t,p).ok,false,t);assert.equal(snap(s),old,t+' unchanged');}
 function atBeacon(){const s=new C.Simulation(raw());s.state.player={x:44,z:6,yaw:0};assert.ok(cmd(s,'road-enter').ok);s.state.player={x:0,z:-24,yaw:0};A.runtime(s).companion={...A.runtime(s).companion,room:'road',x:0,z:-24};return s;}
 function ready(){const s=atBeacon();assert.ok(cmd(s,'beacon-answer').ok);step(s,18);assert.equal(B.runtime(s).phase,'ready');return s;}
-function assault(){const s=ready();assert.ok(cmd(s,'beacon-defend').ok);return s;}
+function assault(){const s=ready();assert.ok(cmd(s,'beacon-sighting').ok,'the stranger is heard before the defense');assert.ok(cmd(s,'beacon-defend').ok);return s;}
 function victory(){const s=assault();for(let k=0;k<3;k++){for(const e of A.runtime(s).enemies.filter(e=>e.eventEnemy)){e.hidden=false;A.damageEnemy(s,e,10000);}step(s,k===2?.1:7.2);}assert.equal(B.runtime(s).phase,'won');return s;}
 function hitFixture(){const s=atBeacon();s.state.adventure.companion.mode='stay';A.runtime(s).enemies=[{id:'test-foe',kind:'invader',eventEnemy:true,name:'Test foe',x:0,z:-22,hp:1000,maxHP:1000,damage:0,mode:'recover',timer:100,path:[],home:{x:0,z:-22}}];return s;}
 

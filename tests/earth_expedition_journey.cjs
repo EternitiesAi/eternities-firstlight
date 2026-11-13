@@ -25,7 +25,7 @@ function journey({bow=false,veteran=false,output=null}={}){
  h.context=()=>context();context('initial-harness-owner');
  for(const method of ['enter','home','reload']){const original=h[method];h[method]=(...args)=>{const result=original(...args);context('actual-harness-'+method);return result;};}
  const hook=()=>{h.sim.earthExpeditionSave=h.save;};hook();
- if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(h.sim.state.adventure.realmCraft.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51);h.walk(W.GATE.x,W.GATE.z);}
+ if(!veteran)earnedKit(h,bow);else{assert.equal(h.sim.state.adventure.equipment.weapon,'dawn_edge');assert.equal(h.sim.state.adventure.realmCraft.weapon,'dawn_edge');assert.equal(A.stats(h.sim.state.adventure).attack,51+2*(A.level(h.sim.state.adventure)-5));h.walk(W.GATE.x,W.GATE.z);}
  const before=h.sim.snapshot(),initialWeapon=before.adventure.equipment.weapon,branch=bow?'managed-coppice':'stormfall-recovery';
  const checkpoints={};
  const snap=name=>{if(output){const dir=path.join(output,variant),filename=name+'.json';fs.mkdirSync(dir,{recursive:true});const target=path.join(dir,filename);fs.writeFileSync(target,JSON.stringify(h.sim.snapshot(),null,2)+'\n');checkpoints[filename]={path:variant+'/'+filename,sha256:hash(target)};}};

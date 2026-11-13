@@ -12,8 +12,10 @@ const matrix=p=>p.m||E.M.compose(...p.p,...p.s,...(p.r||[0,0,0]));
 function vertices(p){const g=E.geometry(p.kind),m=matrix(p),vs=[];for(let i=0;i<g.length;i+=6)vs.push(E.M.transform(m,g.slice(i,i+3)));return vs;}
 function bounds(p){const vs=vertices(p);return{min:[0,1,2].map(i=>Math.min(...vs.map(v=>v[i]))),max:[0,1,2].map(i=>Math.max(...vs.map(v=>v[i])))};}
 function render(sim,time=0,api=A){const out={box:[],octa:[],disc:[],round:[]};api.draw(out,sim,time,{person(){}});return Object.entries(out).flatMap(([kind,pp])=>pp.map(p=>({kind,...p})));}
+// Atlantis and Cosmos doors open only after heaven: those snapshots start with heaven finished.
+function witnessStart(){const raw=C.fresh();raw.adventure.started=true;return require('./witness_prereq.cjs').heavenFinished(raw);}
 function snapshot(realm,accepted=false,steps=[],claimed=false){
- const sim=new C.Simulation(),d=dFor(realm);sim.room=W.definition(realm).room;
+ const sim=new C.Simulation(realm==='atlantis'||realm==='cosmos'?witnessStart():undefined),d=dFor(realm);sim.room=W.definition(realm).room;
  Object.assign(sim.state.realmTrails.records[d.id],{accepted,steps:[...steps],claimed});
  R.validate(sim.state.realmTrails);return sim;
 }
@@ -169,8 +171,8 @@ test('South work geometry is static across pause, time, reduced motion and both 
  }
 });
 test('real trail commands leave the chart unconnected after wrong choice or refused save, then project a committed correction',()=>{
- const sim=new C.Simulation(),d=dFor('atlantis'),ctx={sim,active:'labelled-art-unit-character',revision:0},io={save:()=>({ok:true})};
- sim.state.player={x:11,z:9,yaw:0};assert.ok(sim.adventureCommand('work-art-kit','start').ok);
+ const k=new C.Simulation();k.state.player={x:11,z:9,yaw:0};assert.ok(k.adventureCommand('work-art-kit','start').ok);const sim=new C.Simulation(require('./witness_prereq.cjs').heavenFinished(k.snapshot())),d=dFor('atlantis'),ctx={sim,active:'labelled-art-unit-character',revision:0},io={save:()=>({ok:true})};
+ sim.state.player={x:11,z:9,yaw:0};
  sim.state.player={...W.GATE,yaw:0};const preview=W.preview(ctx,'atlantis');assert.ok(preview.ok);assert.ok(W.enter(preview.ticket,ctx,{...io,build(){}}).ok);
  sim.state.player={...d.giver,yaw:0};assert.ok(R.command(ctx,'accept',{quest:d.id},io).ok);
  for(const s of d.steps.slice(0,2)){sim.state.player={x:s.x,z:s.z,yaw:0};sim.worldDive={y:s.y,hold:true,surface:{x:8,z:-16,yaw:0}};assert.ok(R.command(ctx,'step',{quest:d.id,step:s.id},io).ok);}

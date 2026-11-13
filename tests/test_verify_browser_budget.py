@@ -18,7 +18,7 @@ SPEC.loader.exec_module(V)
 # Independent expected membership: six direct native controllers, four campaign
 # callers and the complete forty-two-suite loop, plus masterwork, tournament and Gate Captain.
 # All three two-family gates are native controllers, not CPU preflights.
-NATIVE_SUITES = frozenset('''gate_captain_browser tournament_browser masterwork_browser earth_homecoming_browser onboarding_browser
+NATIVE_SUITES = frozenset('''gate_captain_browser tournament_browser masterwork_browser onboarding_browser
 earth_consignment_browser earth_wild_signs_browser earth_wild_signs_boundaries_browser
 road_account_browser cosmos_campaign_browser atlantis_campaign_browser
 heaven_campaign_browser hell_campaign_browser earth_road_browser
@@ -169,10 +169,10 @@ class BrowserBudgetVerifier(unittest.TestCase):
                 else: V.main()
             return calls, root, logs, temp
 
-    def test_actual_main_wraps_all_55_native_suites_and_no_cpu_or_preflight_calls(self):
+    def test_actual_main_wraps_all_54_native_suites_and_no_cpu_or_preflight_calls(self):
         calls, root, logs, temp = self.dispatch()
         wrapped = [(c, k) for c, k in calls if c[1:2] == [str(root / 'tools/browser_budget.py')]]
-        self.assertEqual(len(wrapped), 55)
+        self.assertEqual(len(wrapped), 54)  # the retired homecoming's native gate left 1.0
         suites = [Path(c[c.index('--') + 1]).stem for c, _ in wrapped]
         self.assertEqual(len(suites), len(set(suites))); self.assertEqual(set(suites), NATIVE_SUITES)
         for command, kwargs in wrapped:
@@ -182,7 +182,7 @@ class BrowserBudgetVerifier(unittest.TestCase):
             self.assertEqual(command[command.index('--temp-dir') + 1], str(temp))
             if suite in ('masterwork_browser', 'tournament_browser', 'gate_captain_browser'):
                 self.assertEqual(command[command.index('--') + 1:], ['tools/'+suite+'.py', '--both', '--output', str(logs / 'browser' / suite)])
-            expected = {'earth_homecoming_browser': 1800, 'earth_consignment_browser': 7200,
+            expected = {'earth_consignment_browser': 7200,
                 'earth_wild_signs_browser': 1800, 'earth_wild_signs_boundaries_browser': 1800,
                 'road_account_browser': 3700}
             expected.update({s: 1200 for s in ['cosmos_campaign_browser', 'atlantis_campaign_browser',
@@ -193,8 +193,10 @@ class BrowserBudgetVerifier(unittest.TestCase):
         self.assertTrue(any('unittest' in c for c, _ in python))
         for leaf in ['tools/test_road_account_browser.py', 'tools/prepare_road_account_native_inputs.py',
                 'tests/test_earth_consignment_browser.py', 'tests/test_earth_wild_signs_browser.py',
-                'tests/test_earth_homecoming_native.py', 'tests/test_capture_earth_homecoming.py']:
+                ]:
             self.assertTrue(any(c[1:2] == [leaf] for c, _ in python), leaf)
+        for leaf in ['tests/test_earth_homecoming_native.py', 'tests/test_capture_earth_homecoming.py']:
+            self.assertFalse(any(c[1:2] == [leaf] for c, _ in python), leaf)
         self.assertTrue(any(c[0] == 'node' for c, _ in cpu))
         self.assertFalse(any(Path(c[1]).stem in NATIVE_SUITES for c, _ in cpu if len(c) > 1))
 
