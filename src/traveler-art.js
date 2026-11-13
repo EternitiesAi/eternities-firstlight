@@ -229,17 +229,17 @@ function draw(out,input={},posed=pose()){
  upperAdd('round','hair-back',[0,1.620+y,-.105],[.220,.205,.072],hair);
  for(const [name,side]of [['left',-1],['right',1]]){
   upperAdd('round',name+'-ear',[side*.122,1.610+y,.003],[.046,.071,.05],skin);
-  upperAdd('round',name+'-eye',[side*.050,1.634+y,.116],[.040,.040,.040],eyeWhite);
+  upperAdd('round',name+'-eye',[side*.050,1.634+y,.118],[.032,.032,.032],eyeWhite);
   upperAdd('box',name+'-brow',[side*.05,1.66+y,.121],[.040,.008,.012],hair);
   limb(name+'-thigh',j[name+'Hip'],j[name+'Knee'],.165,.18,trousers,'body-thigh');
   limb(name+'-shin',j[name+'Knee'],j[name+'Ankle'],.125,.145,trousers,'body-shin');
-  add('round',name+'-knee',j[name+'Knee'],[.151,.13,.155],trousers);
+  add('round',name+'-knee',j[name+'Knee'],[.13,.12,.13],trousers);
   add('body-foot',name+'-boot',j[name+'Foot'],[.165,.126,.285],leather);
   add('box',name+'-sole',plus(j[name+'Foot'],[0,-.049,0]),[.177,.036,.299],sole);
   add('round',name+'-boot-cuff',plus(j[name+'Ankle'],[0,.045,-.007]),[.152,.15,.172],leather);
   upperAdd('round',name+'-shoulder',[side*.235,1.365+y,0],[.18,.15,.255],coat,[0,0,side*.10]);
   limb(name+'-upper-arm',j[name+'Shoulder'],j[name+'Elbow'],.132,.144,coat,'body-upper-arm');
-  add('round',name+'-elbow',j[name+'Elbow'],[.125,.125,.129],darkCoat);
+  add('round',name+'-elbow',j[name+'Elbow'],[.11,.11,.11],darkCoat);
   limb(name+'-forearm',j[name+'Elbow'],j[name+'Hand'],.107,.119,darkCoat,'body-forearm');
   add('body-hand',name+'-hand',plus(j[name+'Hand'],[0,-.095,0]),[.10,.19,.085],skin);
  }
@@ -248,8 +248,8 @@ function draw(out,input={},posed=pose()){
  // the flag lets callers and tests count body and face apart.
  const face=(kind,name,position,size,color,rotation=[0,0,0])=>add(kind,name,position,size,color,rotation,{travelerFace:true},true);
  for(const [name,side] of [['left',-1],['right',1]]){
-  face('round',name+'-pupil',[side*.05,1.634+y,.1355],[.02,.02,.01],pupil);
-  face('round',name+'-catchlight',[side*.056,1.640+y,.1378],[.007,.007,.006],catchlight);
+  face('round',name+'-pupil',[side*.05,1.634+y,.1345],[.016,.016,.008],pupil);
+  face('round',name+'-catchlight',[side*.054,1.642+y,.1362],[.005,.005,.005],catchlight);
  }
  face('capsule','mouth',[0,1.567+y,.121],[.012,.056,.016],mouthColor,[0,0,Math.PI/2]);
  const sweep=posed.cloakSwing;

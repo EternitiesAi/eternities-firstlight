@@ -29,7 +29,7 @@ SOURCE = {
     'hand': 'Hand - Stylized',
     'foot': 'Foot - Realistic',
 }
-TARGET_TRIS = {'body': 1900, 'head': 600, 'hand': 90, 'foot': 90}
+TARGET_TRIS = {'body': 1900, 'head': 600, 'hand': 90, 'foot': 260}
 
 
 def find_object(name):
@@ -253,6 +253,11 @@ def main():
         # the left limbs stand for both sides (the rig mirrors them); torso and neck keep both halves.
         if who is None or (who in ('upper_arm', 'forearm', 'thigh', 'shin') and c.x > 0.0):
             continue
+        # long slivers join the torso or neck to the shoulder or arm; they read as spikes, so drop them.
+        if who in ('torso', 'neck'):
+            longest = max((pts[i] - pts[(i + 1) % 3]).length for i in range(3))
+            if longest > 0.18 or (who == 'neck' and any(abs(p.x) > 0.10 for p in pts)):
+                continue
         faces_by.setdefault(who, []).append(tri)
 
     def pack(tris, source_pts):
@@ -265,7 +270,7 @@ def main():
         verts, ftris = pack(tris, body)
         report['kinds'][who] = {'faces': len(ftris)}
         if who == 'torso':
-            keep = [i for i, p in enumerate(verts) if abs(p.x) <= 0.26]
+            keep = [i for i, p in enumerate(verts) if abs(p.x) <= 0.20]
             ftris = [t for t in ftris if all(i in keep for i in t)]
             verts, ftris = pack(ftris, verts)
             fitted = fit_box(verts)

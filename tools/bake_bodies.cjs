@@ -31,13 +31,13 @@ function bake(bytes){
  }
  const hash=crypto.createHash('sha256').update(bytes).digest('hex');
  const lines=kinds.map(kind=>" '"+kind+"':{vertexCount:"+packed[kind].vertexCount+",triangles:"+packed[kind].triangles+
-  ",v:'"+packed[kind].v+"',i:'"+packed[kind].i+"'}");
+  ",size:"+JSON.stringify(body.kinds[kind].size||null)+",v:'"+packed[kind].v+"',i:'"+packed[kind].i+"'}");
  return "/* Original human bodies: CC0 Human Base Meshes bundle v1.4.1, baked by Blender 5.3.0 (tools/bodies). Source SHA256 "+hash+".\n"+
   " * Exact position/normal tuples, deduplicated; regenerate with tools/bake_bodies.cjs (no Blender needed). */\n"+
   "(function(G){'use strict';\nconst kinds=Object.freeze({\n"+lines.join(',\n')+"\n});\n"+
   "function bytes(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}\n"+
   "function geometry(kind){const k=kinds[kind];if(!k)throw Error('Unknown body kind '+kind);const v=new Float32Array(bytes(k.v).buffer),ix=new Uint16Array(bytes(k.i).buffer),out=new Float32Array(ix.length*6);let p=0;for(const index of ix)for(let c=0;c<6;c++)out[p++]=v[index*6+c];return out;}\n"+
-  "const api=Object.freeze({kind:'human-bodies-v1',stride:6,kinds:Object.freeze(Object.keys(kinds)),triangles:Object.freeze(Object.fromEntries(Object.keys(kinds).map(k=>[k,kinds[k].triangles]))),geometry});\n"+
+  "const api=Object.freeze({kind:'human-bodies-v1',stride:6,kinds:Object.freeze(Object.keys(kinds)),triangles:Object.freeze(Object.fromEntries(Object.keys(kinds).map(k=>[k,kinds[k].triangles]))),sizes:Object.freeze(Object.fromEntries(Object.keys(kinds).map(k=>[k,kinds[k].size]))),geometry});\n"+
   "G.RealmBodyMeshes=api;if(typeof module!=='undefined')module.exports=api;\n})(globalThis);\n";
 }
 if(require.main===module){

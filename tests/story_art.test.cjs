@@ -84,9 +84,9 @@ test('figures stand on their base, reach their height and face the way they yaw'
 
 test('the regent carries the coat, the cinder crown, the seams and the smile',()=>{
  const parts=builders.regent(0);
- assert.equal(parts.filter(it=>/^cinder-/.test(it.storyPart)).length,7);
+ assert.equal(parts.filter(it=>/^ember-/.test(it.storyPart)).length,7,'seven small ember points on the circlet');
  assert.equal(parts.filter(it=>/^seam-/.test(it.storyPart)&&it.em>.2).length,2,'two ember-lit placket seams');
- assert.equal(parts.filter(it=>/^coat-/.test(it.storyPart)).length,4,'back, two fronts and the inner front');
+ assert.equal(parts.filter(it=>it.storyPart==='coat').length,1,'one baked coat shell from the chest to below the knee');
  assert.ok(parts.some(it=>it.storyPart==='circlet'),'a circlet on the brow, not a spiked crown');
  assert.ok(parts.some(it=>/^smile-/.test(it.storyPart)),'a smile');
  assert.ok(!parts.some(it=>it.storyPart==='mouth'),'the rig mouth gives way to the smile');
@@ -94,10 +94,10 @@ test('the regent carries the coat, the cinder crown, the seams and the smile',()
 
 test('the envoy carries folded wings of light, a halo and motes',()=>{
  const parts=builders.envoy(0);
- assert.equal(parts.filter(it=>/^wing-/.test(it.storyPart)).length,10,'five layered feathers a side');
+ assert.equal(parts.filter(it=>/^wing-/.test(it.storyPart)).length,4,'two baked planes and their glows');
  assert.equal(parts.filter(it=>it.storyPart==='halo').length,1);
  assert.equal(parts.filter(it=>/^mote-/.test(it.storyPart)).length,6);
- assert.ok(parts.filter(it=>/^wing-/.test(it.storyPart)).every(it=>it.em>=.8),'the wings glow');
+ assert.ok(parts.filter(it=>/^wing-/.test(it.storyPart)&&!/glow$/.test(it.storyPart)).every(it=>it.em>=.8),'the wings glow');
 });
 
 test('briarFalse is the real Briar with a cleaner coat, a cold glow and no wear',()=>{
