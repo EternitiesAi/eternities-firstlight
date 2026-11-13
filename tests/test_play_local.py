@@ -39,7 +39,7 @@ class LocalPlayTests(unittest.TestCase):
     def test_serves_identical_game_bytes_on_loopback_only(self):
         server, url = self.host()
         self.assertEqual(server.server_address[0], '127.0.0.1')
-        for route in ['/', '/index.html', '/FIRSTLIGHT_VALLEY.html?test']:
+        for route in ['/', '/index.html', '/FIRSTLIGHT_VALLEY.html?test=1']:
             with urlopen(url + route) as response:
                 self.assertEqual(response.read(), self.html)
                 self.assertEqual(response.headers['Cache-Control'], 'no-store')

@@ -1,4 +1,5 @@
 'use strict';
+require('./hellheaven_night_gate.cjs');
 /* Command-earned continuation through real movement, AI, projectiles, physical
  * courier arrival and an explicit in-memory durable candidate holder. These
  * accelerated ticks do not establish native persistence or human pacing. */
@@ -163,7 +164,7 @@ function journey({bow=false,veteran=false,choice=bow?'broadened-activation':'acc
   stage='investigation';for(const id of['witness-account','compare-arrival-marks','inspect-false-relay']){const s=step(id);h.walk(s.x,s.z);act('step',{step:id});}
   snap('02_PRESERVED_ACCOUNT');reload();
   const prepared=bow||veteran;if(prepared){const s=step('ground-mirror');h.walk(s.x,s.z);act('step',{step:s.id});}
-  const watch=step('begin-watch');h.walk(watch.x,watch.z);act('step',{step:watch.id});snap('03_FALSE_SIGNAL_WATCH');
+  h.walk(D.envoy.x,D.envoy.z);act('envoy',{});const watch=step('begin-watch');h.walk(watch.x,watch.z);act('step',{step:watch.id});snap('03_FALSE_SIGNAL_WATCH');
   for(const terms of D.enemies){stage=terms.defeatStep;fights.push(fight(h,terms,{veteran}));snap('CHECKPOINT_'+terms.defeatStep);reload();assert.equal(H.enemies(h.sim).some(e=>e.id===terms.id),false);}
   const beam=fights.find(f=>f.enemy===D.enemies[0].id);if(!veteran)assert.ok(beam.weaponImpacts.some(p=>p.mode!=='recover'),'ordinary Heaven weapon damage is confirmed outside recovery');
   assert.equal(h.sim.state.heavenCampaign.steps.includes('ground-mirror'),prepared);

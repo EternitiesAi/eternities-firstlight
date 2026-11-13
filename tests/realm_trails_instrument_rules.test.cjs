@@ -2,11 +2,11 @@
  * malformed save probes and numeric boundaries are labelled synthetic cases. */
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const {createHarness,earnedKit}=require('./realm_trails_journey.cjs');
+const {createHarness,earnedKit,witnessHarness}=require('./realm_trails_journey.cjs');
 const C=require('../src/core.js'),R=require('../src/realm-trails.js');
 require('../src/world-foundations-ui.js');const UI=global.RealmWorldFoundationsUI;
 const definition=()=>R.definitions().find(d=>d.realm==='cosmos');
-function setup(){const h=createHarness();earnedKit(h,false);h.enter('cosmos');const d=definition();h.walk(d.giver.x,d.giver.z);h.trail('accept',d);return{h,d};}
+function setup(){const h=witnessHarness(false);h.enter('cosmos');const d=definition();h.walk(d.giver.x,d.giver.z);h.trail('accept',d);return{h,d};}
 const io=h=>({save:h.save});
 const action=(h,d,s,value)=>R.command(h.context(),'step',{quest:d.id,step:s.id,setting:value},io(h));
 function unchanged(h,fn){const before=h.sim.snapshot(),saves=h.checkpoints.length,result=fn();assert.equal(result.ok,false);assert.deepEqual(h.sim.snapshot(),before);assert.equal(h.checkpoints.length,saves);}

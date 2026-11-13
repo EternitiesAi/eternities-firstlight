@@ -659,6 +659,10 @@ console.log(JSON.stringify({trace,after:incoming.snapshot(),armed,runtimeSources
         result['adventure']['earthMasterwork'] = {'version': 1, 'accepted': False,
             'evidence': [], 'compared': False, 'participation': None,
             'resolution': None, 'weapon': None, 'enabled': False}
+        # The 1.0 saga and night owners are absent from this recording; add their literal inferred defaults.
+        for key, value in self.m.story_defaults(result).items():
+            self.assertNotIn(key, result)
+            result[key] = value
         return result
 
     def current_resume_capture(self):

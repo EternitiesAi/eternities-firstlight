@@ -32,7 +32,7 @@ function make(a,sim){
  if(G.RealmCrossingArt)G.RealmCrossingArt.gate(a,sim);
  a.commit();
 }
-function draw(out,sim,t,artist){if(sim.room!=='road')return;const s=sim.state.adventure,r=s.road,add=(k,p,sz,c,o={})=>out[k].push({p,s:sz,c,...o});artist.person(out,R.MERCHANT.x,R.MERCHANT.z,.5,'#699e9a',t,false,'trader',false,1.57);
+function draw(out,sim,t,artist){if(sim.room!=='road')return;const s=sim.state.adventure,r=s.road,add=(k,p,sz,c,o={})=>out[k].push({p,s:sz,c,...o});if(!G.RealmBeacon?.sightingPending(sim))artist.person(out,R.MERCHANT.x,R.MERCHANT.z,.5,'#699e9a',t,false,'trader',false,1.57);
  if(r.cartRepaired)add('box',[-10.86,2.15,11],[.2,.23,1.2],0xd9bd78,{em:.1});else{add('box',[-10.88,2.15,11],[.15,.15,.3],0x645244);add('octa',[-10,3.5,12],[.18,.4,.18],0xe2bb8b,{em:.4});}
  if(r.beaconLit){add('octa',[0,4.23,-24],[.62,1.1,.62],0xffd599,{em:2});for(let i=0;i<7;i++){let a=t*.4+i*2.4;add('octa',[Math.cos(a)*.65,4.6+(t*.3+i*.27)%2.4,-24+Math.sin(a)*.65],[.06,.15,.06],0xefd2a1,{em:1.3});}}
  for(const c of R.CACHES){if(!r.revealed.includes(c.id)||r.claimed.includes(c.id))continue;add('box',[c.x,1.85,c.z],[.55,.4,.45],0x88795d);add('box',[c.x,2.1,c.z],[.61,.1,.52],0xe1c699);add('octa',[c.x,2.7+Math.sin(t*2)*.1,c.z],[.2,.4,.2],0xdcd99f,{em:1});}

@@ -20,6 +20,7 @@ const EE=G.RealmEarthExpedition||(typeof require==='function'?require('./earth-e
 const MW=G.RealmEarthMasterwork||(typeof require==='function'?require('./earth-masterwork.js'):null);
 const TR=G.RealmEarthTournament||(typeof require==='function'?require('./earth-tournament.js'):null);
 const GT=G.RealmEarthGate||(typeof require==='function'?require('./earth-gate.js'):null);
+const D=G.RealmDifficulty||(typeof require==='function'?require('./difficulty.js'):null);
 if(!GT)throw Error('Load gate captain rules before adventure saves.');
 const VERSION=15,CELL=2,LIMIT=7,REACH=2.8,dist=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
 const MINE={id:'mine',name:'The Rootbound Underways',x:0,z:-48},ENTRANCE={x:0,z:11,yaw:Math.PI},FOX={x:-8,z:2},RELIC={x:9,z:-10};
@@ -35,10 +36,10 @@ const GEAR=Object.freeze({
  warden_stone:{name:'Warden’s heartstone',slot:'charm',attack:2,defense:3,hp:25,tier:'Rare',color:'#abc89c',desc:'One of the envoy’s gifts. Endurance rather than haste.'}
 });
 const ENEMIES=Object.freeze([
- {id:'briar-1',name:'Briar skitter',kind:'skitter',x:-4,z:2,hp:35,damage:9,xp:20,ore:1,coins:3},
- {id:'briar-2',name:'Root prowler',kind:'skitter',x:0,z:-3,hp:48,damage:11,xp:25,ore:1,coins:4},
- {id:'sentinel',name:'Prism sentinel',kind:'sentinel',x:8,z:-3,hp:70,damage:13,xp:35,ore:2,coins:6,gear:'guard_vest'},
- {id:'hart',name:'The Hollow Hart',kind:'boss',x:8,z:-10,hp:240,damage:24,xp:90,ore:4,coins:12}
+ {id:'briar-1',name:'Briar skitter',kind:'skitter',x:-4,z:2,hp:35,damage:9,xp:20,ore:1,coins:3,windup:.75,poise:true},
+ {id:'briar-2',name:'Root prowler',kind:'skitter',x:0,z:-3,hp:48,damage:11,xp:25,ore:1,coins:4,windup:.75,poise:true},
+ {id:'sentinel',name:'Prism sentinel',kind:'sentinel',x:8,z:-3,hp:70,damage:13,xp:35,ore:2,coins:6,gear:'guard_vest',windup:1.05,poise:true},
+ {id:'hart',name:'The Hollow Hart',kind:'boss',boss:true,x:8,z:-10,hp:D.boss('hart').hp,damage:D.boss('hart').damage,xp:90,ore:4,coins:12,windup:D.boss('hart').windup,attackOrder:['ring','line','double'],attackSpec:{line:{windup:1.2,length:6,half:.9},double:{windup:1.1,r1:2.4,r2:3.6,gap:.8}}}
 ]);
 const key=(x,z)=>x+','+z,cellAt=(x,z)=>({gx:Math.round(x/CELL),gz:Math.round(z/CELL)}),cellPoint=(gx,gz)=>({x:gx*CELL,z:gz*CELL});
 function validCell(x,z){return Number.isInteger(x)&&Number.isInteger(z)&&Math.abs(x)<LIMIT&&Math.abs(z)<LIMIT;}
@@ -49,7 +50,9 @@ function wallHP(x,z){return mineral(x,z)?3:2;}
 function walkable(s,x,z,r=.31){if(!s||!Number.isFinite(x)||!Number.isFinite(z))return false;for(const[dx,dz]of[[-r,-r],[-r,r],[r,-r],[r,r],[0,0]]){const c=cellAt(x+dx,z+dz);if(!isFloor(s,c.gx,c.gz))return false;}return true;}
 function line(s,a,b){const n=Math.ceil(dist(a,b)/.18);for(let i=0;i<=n;i++){const t=n?i/n:0;if(!walkable(s,a.x+(b.x-a.x)*t,a.z+(b.z-a.z)*t,.04))return false;}return true;}
 function fresh(){return{version:VERSION,earthGate:GT.fresh(),earthTournament:TR.fresh(),earthMasterwork:MW.fresh(),earthBinding:EE.freshBinding(),realmCraft:RC.fresh(),earthGathering:EG.fresh(),earthNotes:EN.fresh(),earthStory:ES.fresh(),classPath:K.fresh(),pursuit:H.fresh(),starter:Q.fresh(),crossing:CROSS.fresh(),beacon:B.fresh(),arsenal:AR.fresh(),road:ROAD.fresh(),elapsed:0,revision:0,started:false,dug:[],chips:[],defeated:[],drops:[],ore:0,coins:0,xp:0,hp:100,stamina:100,tonics:3,equipment:{weapon:null,armor:null,charm:null},owned:[],companion:{bonded:false,name:'Briar',mode:'follow'},relic:false,angelSeen:false,reward:null,deaths:0,receipts:[]};}
-function level(s){return 1+[30,80,150,260].filter(n=>s.xp>=n).length;}
+// The first four thresholds are saved progress and never move. Later ones are appended for chapters IV to finale.
+const LEVEL_XP=Object.freeze([30,80,150,260,400,560,740,940,1160,1400,1680]);
+function level(s){return 1+LEVEL_XP.filter(n=>s.xp>=n).length;}
 function stats(s){let l=level(s),o={level:l,attack:4+(l-1)*2,defense:0,maxHP:100+(l-1)*10};for(const id of Object.values(s.equipment)){const g=GEAR[id];if(g){o.attack+=g.attack+Q.bonus(s,id)+H.bonus(s,id)+RC.bonus(s,id);const binding=EE.bonus(s,id);o.attack+=binding.attack;o.defense+=g.defense+binding.defense;o.maxHP+=g.hp+binding.maxHP;}}const gem=AR.activeGem(s);if(gem){o.attack+=gem.attack;o.maxHP+=gem.hp;}return o;}
 function validate(raw){
  if(raw&&raw.version>VERSION)throw Error('Unsupported future adventure version. Keep a backup and use a newer build.');
@@ -150,8 +153,8 @@ function retryWildSignsClearance(sim){
  }
  r.wildSignsClearanceResult=result;notify(sim,result.text||result.error||result.warning||'Read the saved field account.');return result;
 }
-function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
-function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?CROSS.ENEMIES:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
+function combatScene(sim){if(sim.room===TR.definition.room)return TR.fighting(sim);if(sim.room===null&&EH.enemies(sim).length)return !sim.worldDive;if(sim.room===CC.definition.room)return !sim.worldDive&&!!CC.enemies(sim).length;if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&(!!G.RealmWorldFoundations.definition(sim.room)?.enemies?.length||!!G.RealmTrails?.enemies(sim).length||!!AT.enemies(sim).length||!!HC.enemies(sim).length||!!HV.enemies(sim).length||!!EH.enemies(sim).length);return sim.room===Q.ROOM||sim.room==='mine'||sim.room==='road'||sim.room==='range'||sim.room==='crossing';}
+function roster(sim){if(sim.room===TR.definition.room)return TR.enemies(sim);if(sim.room===null&&EH.enemies(sim).length)return EH.enemies(sim);if(sim.room===CC.definition.room)return CC.enemies(sim);if(G.RealmWorldFoundations?.handles(sim.room))return[...G.RealmWorldFoundations.enemies(sim),...(G.RealmTrails?.enemies(sim)||[]),...EE.enemies(sim),...AT.enemies(sim),...HC.enemies(sim),...HV.enemies(sim),...EH.enemies(sim),...wildSignsTerms(sim)];return sim.room===Q.ROOM?[Q.PRACTICE,...(sim.state.adventure.pursuit.active?H.enemies(sim.state.adventure):sim.state.adventure.starter.accepted?Q.ENEMIES:[])]:sim.room==='crossing'?[...CROSS.ENEMIES,...(G.RealmNight?.enemies(sim)||[])]:sim.room==='range'?AR.RANGE.targets.map(d=>({...d,hp:100,maxHP:100})):sim.room==='road'?ROAD.ENEMIES:sim.room==='mine'?ENEMIES:[];}
 function visible(sim,a,b){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.segment(sim.room,a,b,.04);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.line(a,b);return sim.room===Q.ROOM?Q.line(a,b):sim.room==='crossing'?CROSS.line(a,b):sim.room==='range'?AR.aimClear(sim,a,b):sim.room==='road'?ROAD.line(a,b):sim.room==='mine'?line(sim.state.adventure,a,b):G.RealmCore.segment(a,b,sim.navRoom);}
 function ground(sim,x,z,r=.31){if(G.RealmWorldFoundations?.handles(sim.room))return !sim.worldDive&&G.RealmWorldFoundations.walkable(sim.room,x,z,r);if(sim.room===G.RealmCosmos?.ROOM)return G.RealmCosmos.walkable(x,z,r);return sim.room===Q.ROOM?Q.walkable(x,z,r):sim.room==='crossing'?CROSS.walkable(x,z,r):sim.room==='range'?AR.rangeWalkable(x,z,r):sim.room==='road'?ROAD.walkable(x,z,r):sim.room==='mine'?walkable(sim.state.adventure,x,z,r):G.RealmCore.walkable(x,z,sim.navRoom,r);}
 function safeNear(sim,p,radius=.7){const options=[{x:p.x,z:p.z},...Array.from({length:12},(_,i)=>({x:p.x+Math.sin(i*Math.PI/6)*radius,z:p.z+Math.cos(i*Math.PI/6)*radius}))];return options.find(q=>ground(sim,q.x,q.z))||{x:p.x,z:p.z};}
@@ -210,11 +213,11 @@ function advanceCompanionGuide(sim,c,dt,o){
 }
 function runtime(sim){if(!sim.adventureRuntime)sim.adventureRuntime={room:undefined,enemies:[],fx:[],cooldowns:{attack:0,pulse:0,dodge:0,heal:0,dig:0},invincible:0,companion:newFox(sim),notices:[]};return sim.adventureRuntime;}
 function notify(sim,text){let r=runtime(sim);r.notices.push(text);if(r.notices.length>20)r.notices.shift();}
-function syncScene(sim){let r=runtime(sim);if(r.companion.guide&&r.companion.room!==sim.room)clearCompanionGuide(r.companion,'Following');const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const generic=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim)+'|'+CC.signature(sim)+'|'+EH.signature(sim)+'|'+TR.signature(sim),trail=generic+wildSignsSignature(sim),scope=wildSignsScope(sim),priorScope=wildSignsScopes.get(r),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.genericTrailSignature===generic){if(r.trailSignature!==trail||!sameWildScope(priorScope,scope)&&!!(priorScope||scope)){r.trailSignature=trail;reconcileWildSigns(sim,r,scope,generic);}for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.genericTrailSignature=generic;wildSignsScopes.set(r,scope);r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>wildSignsEntry(e)?bindWildSigns(sim,({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}}),generic):prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
+function syncScene(sim){let r=runtime(sim);if(r.companion.guide&&r.companion.room!==sim.room)clearCompanionGuide(r.companion,'Following');const survey=sim.room===Q.ROOM?sim.state.adventure.pursuit.active?.id:null;const generic=(G.RealmTrails?.signature(sim)||'')+'|'+EE.signature(sim)+'|'+AT.signature(sim)+'|'+HC.signature(sim)+'|'+HV.signature(sim)+'|'+CC.signature(sim)+'|'+EH.signature(sim)+'|'+TR.signature(sim)+'|'+(G.RealmNight?.signature(sim)||''),trail=generic+wildSignsSignature(sim),scope=wildSignsScope(sim),priorScope=wildSignsScopes.get(r),sameRoom=r.room===sim.room,sameRun=sameRoom&&r.pursuitRun===survey;if(sameRoom&&r.pursuitRun===survey&&r.genericTrailSignature===generic){if(r.trailSignature!==trail||!sameWildScope(priorScope,scope)&&!!(priorScope||scope)){r.trailSignature=trail;reconcileWildSigns(sim,r,scope,generic);}for(const e of r.enemies.filter(e=>e.trailQuest)){const terms=G.RealmTrails.enemies(sim).find(v=>v.id===e.id);if(terms)e.recovery=terms.recovery;}return;}const prior=sameRoom?r.enemies:[];r.room=sim.room;r.pursuitRun=survey;r.trailSignature=trail;r.genericTrailSignature=generic;wildSignsScopes.set(r,scope);r.enemies=combatScene(sim)?roster(sim).filter(e=>!sim.state.adventure.defeated.includes(e.id)).map(e=>wildSignsEntry(e)?bindWildSigns(sim,({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}}),generic):prior.find(p=>p.id===e.id&&p.hp>0)||({...e,maxHP:e.hp,mode:'idle',timer:0,yaw:0,aim:null,flash:0,path:[],nextPath:0,awareness:0,home:{x:e.x,z:e.z}})):[];if(sameRun)return;r.fx=[];r.arrows=[];r.range={active:false,start:0,hits:{},shots:0,message:'A calm place to learn a different rhythm.'};if(!sim.state.adventure.companion.bonded||sim.state.adventure.companion.mode==='follow')r.companion=newFox(sim);r.invincible=sim.state.adventure.elapsed+1;}
 function fx(sim,kind,x,z,color=0xf2c891){let r=runtime(sim);r.fx.push({kind,x,z,color,at:sim.state.adventure.elapsed});if(r.fx.length>48)r.fx.shift();}
 function awardXP(sim,n){let s=sim.state.adventure,l=level(s);s.xp=Math.min(9999,s.xp+n);if(level(s)>l){s.hp=Math.min(stats(s).maxHP,s.hp+10*(level(s)-l));notify(sim,'Level '+level(s)+' · Your journey is changing you.');sim.event('adventure','You reached level '+level(s)+'.');}}
-function damageEnemy(sim,e,n,source='other',contact=null){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}return true;}
-function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;s.hp=Math.max(0,s.hp-T.mitigate(sim,Math.max(1,n-stats(s).defense)));r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
+function damageEnemy(sim,e,n,source='other',contact=null,weight='light'){let s=sim.state.adventure;if(wildSignsEntry(e)&&!ownedWildSigns(sim,e))return false;if(!e||e.hp<=0||e.hidden||!Number.isFinite(n)||n<=0)return false;if(e.rainTournament)return source==='weapon'&&TR.contact(sim,e,contact);if(e.earthHomecoming&&!EH.canDamage(sim,e))return false;if(e.cosmosCampaign&&!CC.canDamage(sim,e))return false;if(e.atlantisCampaign&&!AT.canDamage(sim,e))return false;if(e.heavenCampaign&&!HV.canDamage(sim,e))return false;if(e.hellCampaign&&!HC.canDamage(sim,e))return false;if(e.trailQuest&&!G.RealmTrails.canDamage(sim,e))return false;n=K.weaponDamage(sim,e,n,source);if(e.kind==='practice'){if(sim.room===Q.ROOM)Q.practiceHit(sim,e,n);else AR.practiceHit(sim,e);return true;}if(e.exposedUntil>s.elapsed)n=Math.round(n*1.2);T.hit(sim,e,n,e.boss?'boss':weight);if(B.damage(sim,e,n))return true;e.hp=Math.max(0,e.hp-n);e.flash=s.elapsed+.16;fx(sim,'hit',e.x,e.z);if(e.poise&&e.hp>0&&e.mode==='windup'){e.mode='recover';e.timer=.5;e.omen=null;}if(e.hp===0&&wildSignsEntry(e)){retryWildSignsClearance(sim);return true;}if(e.hp===0&&e.earthHomecoming){EH.defeat(sim,e);return true;}if(e.hp===0&&e.cosmosCampaign){CC.defeat(sim,e);return true;}if(e.hp===0&&e.atlantisCampaign){AT.defeat(sim,e);return true;}if(e.hp===0&&e.heavenCampaign){HV.defeat(sim,e);return true;}if(e.hp===0&&e.hellCampaign){HC.defeat(sim,e);return true;}if(e.hp===0&&e.expeditionQuest){EE.defeat(sim,e);return true;}if(e.hp===0&&e.trailQuest){G.RealmTrails.defeat(sim,e);return true;}if(e.hp===0&&e.worldRealm){G.RealmWorldFoundations.defeat(sim,e);return true;}if(e.hp===0&&e.contractRun){H.defeat(sim,e);return true;}if(e.hp===0&&e.nightClaim){G.RealmNight.defeat(sim,e);return true;}if(e.hp===0&&!s.defeated.includes(e.id)){s.defeated.push(e.id);s.drops.push(e.id);s.revision++;awardXP(sim,e.xp);sim.event('adventure',e.name+' defeated. A cache remains at its original position.');notify(sim,e.kind==='boss'?'The Hollow Hart is free. The feather is waiting.':e.name+' defeated · +'+e.xp+' experience');}return true;}
+function takeDamage(sim,n){let s=sim.state.adventure,r=runtime(sim);if(s.hp<=0||s.elapsed<r.invincible)return false;const dealt=T.mitigate(sim,T.armour(n,stats(s).defense));s.hp=Math.max(0,s.hp-dealt);r.invincible=s.elapsed+.28;fx(sim,'hurt',sim.state.player.x,sim.state.player.z,0xd57f88);if(dealt>0)T.hurt(sim,dealt,n>=20);if(s.hp===0){sim.playerPath=[];s.deaths=Math.min(9999,s.deaths+1);sim.event('adventure','You fell on an expedition. Your home and belongings are safe.');notify(sim,'You have fallen. Return to the spring to try again.');}return true;}
 function diggableFrom(s,p,gx,gz){return validCell(gx,gz)&&!isFloor(s,gx,gz)&&dist(p,cellPoint(gx,gz))<=REACH&&[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dz])=>isFloor(s,gx+dx,gz+dz)&&dist(p,cellPoint(gx+dx,gz+dz))<2.2);}
 function nearbyWall(s,p){let best=null,c=cellAt(p.x,p.z);for(let x=c.gx-2;x<=c.gx+2;x++)for(let z=c.gz-2;z<=c.gz+2;z++)if(diggableFrom(s,p,x,z)){let q=cellPoint(x,z),d=dist(p,q);if(!best||d<best.d)best={gx:x,gz:z,d,...q};}return best;}
 const surfaceNear=(sim,q,r=3.5)=>!sim.room&&dist(sim.state.player,q)<r;
@@ -231,10 +234,10 @@ function command(sim,id,type,payload={}){
  switch(type){
  case'start':
   if(s.started)return fail('Your expedition supplies were already collected.');if(!surfaceNear(sim,{x:11,z:9}))return fail('Meet Oren at the workshop first.');
-  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';sim.event('quest','Oren supplied a trail blade, a lantern, three tonics and a salve for an injured animal. Find the northern mine.');result=yes('Expedition ready · Blade, lantern, tonics and a trail salve.');break;
+  s.started=true;s.owned=['trail_blade','travel_coat'];s.equipment.weapon='trail_blade';s.equipment.armor='travel_coat';sim.event('quest','Oren packed a trail blade, a lantern, three tonics and a salve for an injured fox. Find the northern mine.');result=yes('Ready to go: a blade, a lantern, three tonics and a salve.');break;
  case'enter':
   if(!s.started||!sim.state.sandbox.bridge||!surfaceNear(sim,MINE))return fail('Take Oren’s supplies, repair the crossing, and approach the mine entrance.');if(!sim.state.sandbox.inventory.pick)return fail('Craft a stone pickaxe before entering.');
-  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);sim.event('quest','You entered the Rootbound Underways. Excavation and completed encounters are remembered.');result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
+  sim.returnPos={...p};sim.room='mine';sim.state.player={...ENTRANCE};sim.playerPath=[];syncScene(sim);sim.event('quest','You went down into the Rootbound Underways. What you dig and defeat here stays dug and defeated.');result=yes('The underways · E to mine. F to strike. Space to dodge.');break;
  case'leave':if(sim.room!=='mine'||dist(p,ENTRANCE)>3)return fail('Return to the southern lantern exit.');sim.leave();syncScene(sim);result=yes('Back under the open sky.');break;
  case'dig':{
   if(sim.room!=='mine'||!sim.state.sandbox.inventory.pick)return fail('Use the pickaxe inside the mine.');const {gx,gz}=payload;
@@ -252,7 +255,7 @@ function command(sim,id,type,payload={}){
   const target=payload.target||(single?T.runtime(sim).target:null),selected=target?r.enemies.find(e=>e.id===target):single?null:enemies.sort((a,b)=>dist(p,a)-dist(p,b))[0];
   if((!pulse||single)&&(!selected||!enemies.includes(selected)))return fail(single?'Select a visible enemy within 2.65 paces for Measured cut.':'Approach a visible enemy to strike.');
   if(pulse)s.stamina-=form.cost;r.cooldowns[cool]=s.elapsed+(pulse?form.cooldown:.52);if(selected)p.yaw=Math.atan2(selected.x-p.x,selected.z-p.z);
-  fx(sim,single?'measured-cut':pulse?'pulse':'slash',p.x,p.z);if(single)Object.assign(r.fx.at(-1),{yaw:p.yaw,length:Math.min(form.reach,dist(p,selected))});const tournamentContact=!pulse?TR.stamp(sim,'primary'):null;for(const e of pulse&&!single?enemies:[selected])damageEnemy(sim,e,Math.round(stats(s).attack*(pulse?form.multiplier:1)),'weapon',tournamentContact);result=yes(pulse?form.name:'Sunstrike');break;}
+  fx(sim,single?'measured-cut':pulse?'pulse':'slash',p.x,p.z);if(single)Object.assign(r.fx.at(-1),{yaw:p.yaw,length:Math.min(form.reach,dist(p,selected))});const tournamentContact=!pulse?TR.stamp(sim,'primary'):null;for(const e of pulse&&!single?enemies:[selected])damageEnemy(sim,e,Math.round(stats(s).attack*(pulse?form.multiplier:1)),'weapon',tournamentContact,pulse?'skill':'light');result=yes(pulse?form.name:'Sunstrike');break;}
  case'dodge':{
   if(!combatScene(sim)||s.elapsed<r.cooldowns.dodge||s.stamina<22)return fail('Wingstep needs 22 stamina and a recovered dodge.');let {dx,dz}=payload;if(!Number.isFinite(dx)||!Number.isFinite(dz)){dx=Math.sin(p.yaw);dz=Math.cos(p.yaw);}const l=Math.hypot(dx,dz);if(l<.01)return fail('Choose a direction.');dx/=l;dz/=l;
   s.stamina-=22;r.cooldowns.dodge=s.elapsed+1.2;r.invincible=s.elapsed+.40;sim.playerPath=[];const before={...p};for(let i=0;i<14;i++){let x=p.x+dx*.16,z=p.z+dz*.16;if(!ground(sim,x,z))break;p.x=x;p.z=z;}p.yaw=Math.atan2(dx,dz);fx(sim,'dodge',before.x,before.z,0xb4d6cf);result=yes('Wingstep');break;}
@@ -265,12 +268,16 @@ function command(sim,id,type,payload={}){
  case'loot':{let e=roster(sim).find(e=>e.id===payload.id);if(!combatScene(sim)||!e||!s.drops.includes(e.id)||dist(p,e)>3||!visible(sim,p,e))return fail('Approach a visible, unclaimed cache.');if(s.ore+e.ore>9999||s.coins+e.coins>9999)return fail('Your material pouch is full.');s.drops=s.drops.filter(id=>id!==e.id);s.ore+=e.ore;s.coins+=e.coins;if(e.gear&&!s.owned.includes(e.gear))s.owned.push(e.gear);result=yes('Cache · '+e.ore+' copper, '+e.coins+' sunmarks'+(e.gear?' · '+GEAR[e.gear].name:''));break;}
  case'equip':{let g=Object.hasOwn(GEAR,payload.id)?GEAR[payload.id]:null;if(!g||!s.owned.includes(payload.id))return fail('You do not own that item.');s.equipment[g.slot]=payload.id;s.hp=Math.min(s.hp,stats(s).maxHP);result=yes(g.name+' equipped.');break;}
  case'forge':if(!s.started||!AR.atBench(sim)||s.owned.includes('copper_blade')||s.ore<FORGE.ore||s.coins<FORGE.coins)return fail('Use a workbench with 4 copper and 4 sunmarks. This blade is crafted once.');s.ore-=FORGE.ore;s.coins-=FORGE.coins;s.owned.push('copper_blade');result=yes('Copper-edged blade forged. Equip it in Adventure.');break;
- case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');s.relic=true;awardXP(sim,20);sim.event('quest','You recovered a white feather from the celestial anchor. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
- case'reveal':if(!s.relic||!surfaceNear(sim,{x:0,z:3},4))return fail('Bring the feather to the Firstlight spring.');if(!s.angelSeen){s.angelSeen=true;sim.event('story','A white-winged envoy appeared: Heaven is under attack, and broken passages endanger the mortal world.');}result=yes('A visitor from the light.');break;
- case'reward':if(!s.angelSeen||s.reward||!surfaceNear(sim,{x:0,z:3},4)||!['dawn_edge','warden_stone'].includes(payload.id))return fail('Meet the envoy at the spring and choose one gift.');s.reward=payload.id;s.owned.push(payload.id);awardXP(sim,25);sim.event('story','You accepted '+GEAR[payload.id].name+'. The first chapter is complete; the wider campaign is still to be built.');result=yes('Chapter complete · '+GEAR[payload.id].name);break;
+ case'relic':if(sim.room!=='mine'||!s.defeated.includes('hart')||s.relic||dist(p,RELIC)>3)return fail('Free the Hollow Hart and approach the feather’s dais.');s.relic=true;awardXP(sim,20);sim.event('quest','You lifted a white feather from the hart’s dais. Bring it to the Firstlight spring.');result=yes('The feather is warm. Return to the spring.');break;
+ case'reveal':if(!s.relic||!surfaceNear(sim,{x:0,z:3},4))return fail('Bring the feather to the Firstlight spring.');if(!s.angelSeen){s.angelSeen=true;sim.event('story','A white-winged envoy stepped out of the light. Heaven is under attack, and broken passages threaten the mortal world.');}result=yes('A visitor from the light.');break;
+ case'reward':if(!s.angelSeen||s.reward||!surfaceNear(sim,{x:0,z:3},4)||!['dawn_edge','warden_stone'].includes(payload.id))return fail('Meet the envoy at the spring and choose one gift.');s.reward=payload.id;s.owned.push(payload.id);awardXP(sim,25);sim.event('story','You took '+GEAR[payload.id].name+' from the envoy. The first chapter is done, and the road ahead is open.');result=yes('Chapter complete · '+GEAR[payload.id].name);break;
+ case'envoy-prophecy':
+  if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-prophecy-'+id,'prophecy',{id:'spring'});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'envoy');result=yes(r.text);}break;
+ case'envoy-feather':
+  if(!s.angelSeen||!surfaceNear(sim,{x:0,z:3},4))return fail('Meet the envoy at the spring first.');{const r=sim.sagaCommand('envoy-feather-'+id,'feather-unlock',{});if(!r.ok)return fail(r.error);G.RealmSaga.mark(sim,'feather');result=yes(r.text);}break;
  case'road-enter':
   if(!s.reward||!surfaceNear(sim,ROAD.GATE))return fail('Accept the envoy’s gift and approach the far-water lookout.');
-  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Seek the cart’s missing latch with Briar.');break;
+  sim.returnPos={...p};sim.room='road';sim.state.player={...ROAD.ENTRY};sim.playerPath=[];s.road.entered=true;syncScene(sim);sim.event('quest','You took the Sunward Road. Tessa’s stranded caravan waits beyond the gate.');result=yes('Chapter II · Ask Briar to find the cart’s missing latch.');break;
  case'road-leave':
   if(sim.room!=='road'||dist(p,ROAD.ENTRY)>3)return fail('Return to the southern waygate.');sim.leave();syncScene(sim);result=yes('Your valley waits beyond the road.');break;
   case'companion-guide':{
@@ -297,23 +304,23 @@ function command(sim,id,type,payload={}){
   else if(offer==='mantle'){if(s.coins<18||s.owned.includes('courier_mantle'))return fail('The mantle costs 18 sunmarks and can be bought once.');s.coins-=18;s.owned.push('courier_mantle');result=yes('Courier’s storm mantle purchased. Equip it in Adventure.');}
   else if(offer==='sell-copper'){if(s.ore<2||s.coins>9996)return fail('Sell 2 copper for 3 sunmarks. Check your pouch.');s.ore-=2;s.coins+=3;result=yes('Sold 2 copper for 3 sunmarks.');}
   else if(offer==='sell-berries'){const inv=sim.state.sandbox.inventory;if((inv.berry||0)<2||s.coins>=9999)return fail('Tessa buys 2 sunberries for 1 sunmark.');inv.berry-=2;s.coins++;result=yes('Sold 2 sunberries for 1 sunmark.');}
-  else return fail('Unknown shop offer.');break;}
+  else return fail('Tessa does not have that.');break;}
  case'beacon-light':
   if(sim.room!=='road'||dist(p,ROAD.BEACON)>3||s.road.beaconLit||!ROAD.ENEMIES.every(e=>s.defeated.includes(e.id)))return fail('Clear the three road encounters and approach the northern beacon.');s.road.beaconLit=true;awardXP(sim,20);sim.event('quest','The Sunward Beacon is alight. Return home after helping Tessa.');result=yes('The beacon answers. A light is visible through the trees.');break;
  case'road-report':
   if(!surfaceNear(sim,{x:0,z:3},4)||!s.road.beaconLit||!s.road.cartRepaired||s.road.reported)return fail('Repair the cart, light the beacon, then return to the envoy at the spring.');s.road.reported=true;if(!s.owned.includes('wayfarer_band'))s.owned.push('wayfarer_band');awardXP(sim,20);sim.event('quest','You brought the road’s light home. The envoy gave you the Band of the returning light.');result=yes('Chapter II complete · A wayfarer’s band and a light at the Commons.');break;
- default:result=EG.handle(sim,type,payload)||EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
+ default:result=EG.handle(sim,type,payload)||EN.handle(sim,type,payload)||ES.handle(sim,type,payload)||K.handle(sim,type,payload)||H.handle(sim,type,payload)||Q.handle(sim,type,payload)||CROSS.handle(sim,type,payload)||T.handle(sim,type,payload)||B.handle(sim,type,payload)||AR.handle(sim,type,payload)||G.RealmNight?.handle(sim,type,payload);if(!result)return fail('Unknown adventure command.');if(!result.ok)return result;
  }
  s.revision++;s.receipts.push({id,fp,ok:true});if(s.receipts.length>100)s.receipts.shift();return result;
 }
 function tick(sim,dt){
  const s=sim.state.adventure,r=runtime(sim);syncScene(sim);
  if(!Number.isFinite(dt)||dt<0||sim.paused)return;
- dt=Math.min(dt,.1);s.elapsed=Math.min(1e9,s.elapsed+dt);r.fx=r.fx.filter(f=>s.elapsed-f.at<.65);
+ dt=Math.min(dt,.1);dt=T.holdTime(sim,dt);s.elapsed=Math.min(1e9,s.elapsed+dt);r.fx=r.fx.filter(f=>s.elapsed-f.at<.65);
  if(!s.started)return;
  if(s.hp>0)s.stamina=Math.min(100,s.stamina+dt*15);
  AT.tick(sim,dt);
- HV.tick(sim,dt);
+ HV.tick(sim,dt);EH.tick(sim,dt);
  TR.tick(sim,dt);
  AR.update(sim,dt);
  B.tick(sim,dt);
@@ -327,11 +334,12 @@ function tick(sim,dt){
    let remaining=Math.min(e.chargeLeft,dt*12);
    while(remaining>1e-7){
     const move=Math.min(.12,remaining),nx=e.x+e.chargeDir.x*move,nz=e.z+e.chargeDir.z*move;
-    if(!ground(sim,nx,nz,.35)){e.chargeLeft=0;break;}
+    if(!ground(sim,nx,nz,.35)){e.chargeLeft=0;e.crashed=true;break;}
     e.x=nx;e.z=nz;e.chargeLeft-=move;remaining-=move;
     if(!e.chargeHit&&dist(p,e)<1.05&&visible(sim,e,p)){takeDamage(sim,e.damage);e.chargeHit=true;}
    }
-   if(e.chargeLeft<=.01){e.mode='recover';e.timer=1.8;e.path=[];fx(sim,'impact',e.x,e.z,0xd4b48b);}
+   // A bait charge that meets a wall is stunned and exposed; a charge that runs out of lane recovers as before.
+   if(e.chargeLeft<=.01){const stunned=e.crashed&&e.wallBait>0;e.crashed=false;e.mode='recover';e.timer=stunned?e.wallBait:1.8;if(stunned)e.exposedUntil=s.elapsed+e.timer;e.wallBait=0;e.path=[];fx(sim,'impact',e.x,e.z,0xd4b48b);}
    continue;
   }
   if(e.atlantisCampaign&&e.mode==='intake'){
@@ -341,8 +349,9 @@ function tick(sim,dt){
   }
   if(e.mode==='windup'){
    if(e.timer<=0){
-    if(e.kind==='charger'){e.mode='charge';e.chargeLeft=9;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
-    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canDamage(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
+    if(e.omen&&e.omen.kind!=='bait'){if(!T.strike(sim,e)){e.mode='recover';e.timer=e.recovery??(e.kind==='boss'?(e.hp<e.maxHP/2?1:1.8):1.1);e.path=[];}}
+    else if(e.kind==='charger'){const lane=e.omen;e.omen=null;e.mode='charge';e.chargeLeft=lane?.length??9;e.wallBait=lane?.stun??0;e.crashed=false;e.chargeHit=false;fx(sim,'dodge',e.x,e.z,0xd8ad87);}
+    else if(EH.encounter(e)){e.contactAt=s.elapsed;e.contactHit=EH.canStrike(sim,e)&&EH.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xcbb181);e.mode='recover';e.timer=e.recovery;e.path=[];}
     else if(CC.encounter(e)){e.contactAt=s.elapsed;e.contactHit=CC.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xb9d5ca);e.mode='recover';e.timer=e.recovery;e.path=[];}
      else if(AT.encounter(e)){e.contactAt=s.elapsed;e.contactHit=false;e.path=[];if(e.strike.kind==='intake'){e.mode='intake';e.timer=AT.patterns.intake.active;}else{e.contactHit=AT.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0x90cec4);e.mode='recover';e.timer=e.recovery;}}
     else if(HV.encounter(e)){e.contactAt=s.elapsed;e.contactHit=HV.strikeContains(e,p)&&visible(sim,e,p)&&takeDamage(sim,e.damage);fx(sim,'impact',e.strike.x,e.strike.z,0xc5dce3);e.mode='recover';e.timer=e.recovery;e.path=[];}
@@ -352,7 +361,7 @@ function tick(sim,dt){
    }continue;
   }
   if(e.mode==='recover'){if(e.timer<=0)e.mode='idle';continue;}
-  if((sim.room==='crossing'&&p.z> -1)||(sim.room===Q.ROOM&&p.z>7)){e.mode='return';if(dist(e,e.home)>.4)followPath(sim,e,e.home,dt,1.65);continue;}
+  if(!e.nightClaim&&((sim.room==='crossing'&&p.z> -1)||(sim.room===Q.ROOM&&p.z>7))){e.mode='return';if(dist(e,e.home)>.4)followPath(sim,e,e.home,dt,1.65);continue;}
   // Anchored Earth patterns own their declared reach, including the narrow
   // eleven-unit lane. Lock while idle, before generic awareness or pursuit.
   if(EH.encounter(e)){e.path=[];if(canSee&&EH.lock(sim,e)){e.mode='windup';e.timer=e.windup;e.aim={x:p.x,z:p.z};e.contactHit=false;}else e.mode='idle';continue;}
@@ -362,7 +371,7 @@ function tick(sim,dt){
   if((e.awareness||0)<s.elapsed){if(dist(e,home)>.6){e.mode='return';followPath(sim,e,home,dt,1.65);}else e.mode='idle';continue;}
   if(CC.encounter(e)){e.path=[];if(canSee&&CC.lock(sim,e)){e.mode='windup';e.timer=e.windup;e.aim={x:p.x,z:p.z};}else e.mode='idle';continue;}
    const reach=(AT.encounter(e)?AT.pattern(e,sim).reach:undefined)??HV.encounter(e)?.attack.reach??HC.pattern(e)?.reach??EE.encounter(e)?.reach??(e.kind==='charger'?9:e.kind==='sentinel'?6.5:e.kind==='boss'?4:1.9);
-  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];if(AT.encounter(e)){AT.lock(sim,e);e.timer=e.windup;}if(HV.encounter(e)){HV.lock(sim,e);e.timer=e.windup;}if(HC.encounter(e)){HC.lock(sim,e);e.timer=e.windup;}if(EE.encounter(e))e.strike=Object.freeze({x:e.x,z:e.z,yaw:e.yaw});if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
+  if(canSee&&d<=reach){e.mode='windup';e.timer=e.windup??(e.kind==='charger'?1.2:e.kind==='skitter'?.75:1.05);e.aim={x:p.x,z:p.z};e.yaw=Math.atan2(p.x-e.x,p.z-e.z);e.path=[];const omen=T.cycle(e,p);e.omen=omen;if(omen){e.timer=omen.windup;e.aim=null;}if(AT.encounter(e)){AT.lock(sim,e);e.timer=e.windup;}if(HV.encounter(e)){HV.lock(sim,e);e.timer=e.windup;}if(HC.encounter(e)){HC.lock(sim,e);e.timer=e.windup;}if(EE.encounter(e))e.strike=Object.freeze({x:e.x,z:e.z,yaw:e.yaw});if(e.kind==='charger')e.chargeDir={x:Math.sin(e.yaw),z:Math.cos(e.yaw)};continue;}
   if(AT.encounter(e)&&e.anchored){e.mode='idle';e.path=[];continue;}
   e.mode='pursue';const q=canSee?p:e.lastKnown;if(q)followPath(sim,e,q,dt,e.kind==='boss'?1.25:1.6);
  }
@@ -370,7 +379,7 @@ function tick(sim,dt){
   if(G.RealmBriarOuting?.tick(sim,dt))return;
   const guide=c.guide?currentCompanionGuide(sim,c):null;if(c.guide&&!guide)clearCompanionGuide(c,'Guide cancelled · follow or use the map');
   if(sim.worldDive){c.path=[];c.status='Waiting on the quay';return;}
- if(!s.companion.bonded||s.companion.mode!=='follow'||s.hp<=0||c.room!==sim.room)return;
+ if(!s.companion.bonded||s.companion.mode!=='follow'||s.hp<=0||c.room!==sim.room||G.RealmNight?.holdsBriar(sim))return;
  if(!ground(sim,c.x,c.z)){Object.assign(c,safeNear(sim,p),{path:[],nextPath:0,status:'Recalled from blocked ground'});notify(sim,s.companion.name+' was recalled from blocked ground.');}
  if(sim.room==='crossing'&&CROSS.runtime(sim).seek)return;
   if(guide){advanceCompanionGuide(sim,c,dt,guide);return;}
@@ -388,6 +397,8 @@ function tick(sim,dt){
 const STORY=[
  {speaker:'The envoy',title:'A feather, carried home.',body:'I was told I would find a fortress. An army. Someone prepared. Instead, I found someone who knows how to begin.'},
  {speaker:'The envoy',title:'The light beyond the valley.',body:'Heaven is under attack. Hell is breaking the passages between our worlds, and this land lies along their path. The anchor beneath your forest has answered you.'},
+ {speaker:'The envoy',title:'What the feather heard.',body:'The first light will not descend from heaven. It will rise from below.',command:'envoy-prophecy'},
+ {speaker:'The envoy',title:'Hold the feather up.',body:'Hold Z, or the feather button on a phone, and the roads show what they are. True roads burn gold; counterfeit roads burn ash red. The valley is all true, so try it now.',command:'envoy-feather'},
  {speaker:'The envoy',title:'A life worth returning to.',body:'Do not abandon what you have made here. It is why the journey matters. Others will bear this light as well. Choose a gift, and when the road is ready, we will walk it together.'}
 ];
 function objectives(s){return[
@@ -398,5 +409,5 @@ function objectives(s){return[
  {title:'A feather beneath Wildwood',detail:'Recover the feather at the guardian’s dais.',done:s.relic},
  {title:'The envoy at the spring',detail:'Return to the Commons. Hear the warning and choose one gift.',done:!!s.reward}
 ];}
-const api={ROAD,FORGE,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
+const api={ROAD,FORGE,awardXP,combatScene,roster,visible,ground,followPath,companionGuide,VERSION,CELL,LIMIT,REACH,MINE,ENTRANCE,FOX,RELIC,GEAR,ENEMIES,STORY,key,cellAt,cellPoint,validCell,initialFloor,isFloor,mineral,wallHP,walkable,line,fresh,validate,stats,level,runtime,syncScene,command,tick,nearbyWall,diggableFrom,objectives,damageEnemy,retryWildSignsClearance,takeDamage,notify,fx,shakeOffset:sim=>T.shakeOffset(sim)};G.RealmAdventure=api;if(typeof module!=='undefined')module.exports=api;
 })(globalThis);

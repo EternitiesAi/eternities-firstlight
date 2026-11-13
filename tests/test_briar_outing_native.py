@@ -51,7 +51,7 @@ class Admission(unittest.TestCase):
                 'Verification passed. Automated checks do not qualify human pacing or device performance.\n',encoding='utf8')
             rules=root/'rules-command.json'
             rules.write_text(json.dumps({'root':str(root),'ruleFiles':['tests/example.test.cjs'],'ruleFileCount':1,
-                'requestedWorkers':4,'verifierSha256':N.sha(verifier),'rulesTimeoutSeconds':180,'pythonTimeoutSeconds':600}),encoding='utf8')
+                'requestedWorkers':4,'verifierSha256':N.sha(verifier),'rulesTimeoutSeconds':360,'pythonTimeoutSeconds':600}),encoding='utf8')
             row=lambda p:{'path':str(p),'sha256':N.sha(p),'bytes':p.stat().st_size}
             receipt={'exitCode':0,'sourceHead':'a'*40,'headAfter':'a'*40,'statusAfter':[],
                 'command':['python','-B','tools/verify.py','--rule-workers','4','--output',str(root)],'requestedRuleWorkers':4,

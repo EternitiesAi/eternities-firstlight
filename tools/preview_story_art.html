@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Firstlight story art preview</title>
+<style>html,body{margin:0;background:#15110f;overflow:hidden}canvas{display:block;width:1280px;height:800px}</style>
+</head>
+<body>
+<canvas id="scene" width="1280" height="800"></canvas>
+<script src="../src/engine.js"></script>
+<script src="../src/home-history.js"></script>
+<script src="../src/creative.js"></script>
+<script src="../src/traveler-art.js"></script>
+<script src="../src/resident-art.js"></script>
+<script src="../src/companion-art.js"></script>
+<script src="../src/story-art.js"></script>
+<script>
+// Standalone preview of the story cast. It loads the real modules from src/ and
+// draws one frame per call on this page's own WebGL canvas. The capture script
+// chooses every camera; no save, game state or simulation is involved.
+(function(G){'use strict';
+const W=1280,H=800,canvas=document.getElementById('scene');
+let engine=null;
+function ensure(){
+ if(engine)return engine;
+ engine=new G.RealmEngine.Engine(canvas);
+ // balanced matches the game default; no water pass, the scene has none.
+ engine.quality='balanced';engine.isInterior=false;engine.noWater=true;
+ engine.viewShelters=[];engine.cutaway=false;engine.railCutawayActive=false;engine.galleryFocus=null;engine.worldRoofOpen=false;engine.cameraMedium=null;
+ engine.resize(W,H,1);
+ return engine;
+}
+function gpu(){
+ const gl=ensure().gl,ext=gl.getExtension('WEBGL_debug_renderer_info');
+ return{vendor:ext?gl.getParameter(ext.UNMASKED_VENDOR_WEBGL):gl.getParameter(gl.VENDOR),
+  renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),
+  version:gl.getParameter(gl.VERSION)};
+}
+// ground and a stone plinth for the diorama; the floor sits at y=0 and the plinth lifts the figure to base.
+function ground(spec){
+ const list=[{kind:'box',p:[0,-.1,0],s:[60,.2,60],c:0x6d8756,rough:.95,cameraSolid:false,cutaway:false,storyPart:'ground'}];
+ if(spec.plinth)list.push({kind:'box',p:[0,spec.base/2,0],s:[3.4,spec.base,3.4],c:0x8c7f6a,rough:.9,cameraSolid:false,cutaway:false,storyPart:'plinth'});
+ return list;
+}
+function figure(spec){
+ const T=G.RealmTravelerArt,R=G.RealmResidentArt,S=G.RealmStoryArt,X=G.RealmCreative,t=spec.t||0,base=spec.base||0,yaw=spec.yaw;
+ const list=[],flat=out=>{for(const [kind,items] of Object.entries(out))for(const it of items)if(it.travelerPart!=='ground-marker')list.push({...it,kind});};
+ switch(spec.figure){
+  case 'traveler':{const out={box:[],round:[],octa:[],disc:[]};T.draw(out,{x:0,z:0,base,yaw,profile:{skin:1,hair:2,cloak:3},color:X.CLOAKS[3]},T.pose({time:t}));flat(out);break;}
+  case 'ilan':{const out={box:[],round:[],octa:[],disc:[]};R.draw(out,{id:'ilan',x:0,z:0,base,yaw},R.pose('ilan',{time:t,phase:0,blend:0}));flat(out);break;}
+  case 'regent':list.push(...S.regent(0,base,0,yaw,t));break;
+  case 'envoy':list.push(...S.envoy(0,base,0,yaw,t));break;
+  case 'briarFalse':list.push(...S.briarFalse(0,base,0,yaw,t));break;
+  case 'severingDevice':list.push(...S.severingDevice(0,base,0,yaw,t));break;
+  case 'chain':{
+   // two posts hold the ends; the links hang between their anchors.
+   const A=[-1.6,1.4,0],B=[1.6,1.0,.6];
+   for(const p of [A,B])list.push({kind:'box',p:[p[0],p[1]/2,p[2]],s:[.22,p[1],.22],c:0x6c6257,rough:.92,cameraSolid:false,cutaway:false,storyPart:'post'});
+   list.push(...S.chain(A[0],A[1],A[2],0,t,B));break;
+  }
+  default:throw new Error('unknown figure '+spec.figure);
+ }
+ return list;
+}
+window.gpuInfo=function(){try{return gpu();}catch(err){return{error:String(err&&err.message||err)};}};
+window.renderFrame=function(spec){
+ try{
+  const e=ensure(),list=[...ground(spec),...figure(spec)],groups={};
+  for(const it of list)(groups[it.kind]||=[]).push(it);
+  e.clear();
+  for(const [kind,items] of Object.entries(groups))e.batch(kind,items,false);
+  e.setCamera({projection:'perspective',eye:spec.eye,target:spec.target,fov:spec.fov,aspect:W/H});
+  e.render(spec.t||0,spec.hour,false);
+  return{ok:true,items:list.length,kinds:Object.fromEntries(Object.entries(groups).map(([k,v])=>[k,v.length]))};
+ }catch(err){return{ok:false,error:String(err&&err.stack||err)};}
+};
+})(globalThis);
+</script>
+</body>
+</html>

@@ -214,21 +214,13 @@ class EarthNativeVerifier(unittest.TestCase):
         def edit(j):j['final']=unpaid;j['checkpoints'][-1]=unpaid
         self.f.change_journey('blade',edit)
         with self.assertRaisesRegex(ValueError,'paid Earth outcome'):self.f.spec()
-    def test_native_gate_is_in_browser_branch_only_and_cohort_hash_is_captured_once(self):
+    def test_retired_homecoming_chain_is_not_in_main(self):
+        # The finale replaced the homecoming (tests/archive/README.md); main() no longer earns its cohort or runs its gates.
         tree=ast.parse(VERIFY.read_text(encoding='utf8'))
         main=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='main')
-        branches=[n for n in main.body if isinstance(n,ast.If) and isinstance(n.test,ast.Attribute) and n.test.attr=='browser']
-        # Browser storage setup is also conditional; select the native execution
-        # branch while retaining the global exactly-one-native-call check below.
-        branches=[n for n in branches if any(isinstance(c,ast.Call) and isinstance(c.func,ast.Name) and c.func.id=='run' and c.args and isinstance(c.args[0],ast.Constant) and c.args[0].value=='earth_homecoming_browser' for c in ast.walk(n))]
-        self.assertEqual(len(branches),1)
-        calls=[n for n in ast.walk(branches[0]) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='run']
-        self.assertTrue(any(isinstance(c.args[0],ast.Constant) and c.args[0].value=='earth_homecoming_browser' for c in calls))
-        native_all=[n for n in ast.walk(main) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='run' and n.args and isinstance(n.args[0],ast.Constant) and n.args[0].value=='earth_homecoming_browser']
-        self.assertEqual(len(native_all),1)
-        captures=[n for n in main.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='homecoming_cohort_sha' for t in n.targets)]
-        self.assertEqual(len(captures),1)
-        self.assertIn('homecoming_cohort_sha',ast.unparse(branches[0]))
+        names=[c.args[0].value for c in ast.walk(main) if isinstance(c,ast.Call) and isinstance(c.func,ast.Name) and c.func.id=='run' and c.args and isinstance(c.args[0],ast.Constant)]
+        for name in ('earth-homecoming-earned','earth-homecoming-native-preflight','earth-recording-controller-preflight','earth_homecoming_browser'):self.assertNotIn(name,names)
+        self.assertNotIn('homecoming_cohort_sha',ast.unparse(main))
     def test_missing_source_epoch_member_refuses(self):
         self.f.cohort['sourceEpoch']=copy.deepcopy(self.f.epoch);self.f.cohort['sourceEpoch']['actual'].pop('src/core.js');self.f.refresh()
         with self.assertRaisesRegex(ValueError,'every current source'):self.f.spec()
@@ -259,7 +251,7 @@ class EarthNativeVerifier(unittest.TestCase):
             self.assertEqual(n.ROOT,self.f.root)
         with patch.dict(os.environ,{'FIRSTLIGHT_ROOT':str(Path(self.tmp.name)/'wrong-env')}):
             command,_=self.f.spec();self.assertEqual(command[command.index('--root')+1],str(self.f.root))
-    def test_main_dispatches_native_only_after_current_earned_preflight_in_same_invocation(self):
+    def test_main_dispatches_the_native_suites_without_the_retired_homecoming(self):
         calls=[]
         # Stage the tiny synthetic input bytes until the corresponding source
         # transport publishes them. The real browser CLI must claim fresh logs.
@@ -278,9 +270,8 @@ class EarthNativeVerifier(unittest.TestCase):
         # portable POSIX output routing on every platform, without browser work.
         with patch.object(V,'ROOT',self.f.root),patch.object(V,'os',SimpleNamespace(name='posix',environ=os.environ)),patch.object(V.sys,'argv',args),patch.object(V.shutil,'which',return_value='node'),patch.object(V.subprocess,'check_output',return_value='v24.18.0\n'),patch.object(V.subprocess,'run',side_effect=fake_run),patch.object(V,'prepare_browser_sources',return_value=None),patch.object(V,'consignment_browser_run_spec',side_effect=consignment_orchestration_spec),patch.object(V,'wild_signs_browser_run_spec',side_effect=wild_signs_orchestration_spec),patch.object(V,'wild_signs_boundaries_browser_run_spec',side_effect=wild_signs_boundaries_orchestration_spec),patch.object(V,'road_account_browser_run_specs',side_effect=road_account_orchestration_specs),contextlib.redirect_stdout(io.StringIO()):V.main()
         labels=[command[1] for command,_ in calls if len(command)>1]
-        native=[(c,k) for c,k in calls if len(c)>1 and c[1]=='tools/earth_homecoming_browser.py'];self.assertEqual(len(native),1)
-        c,k=native[0];self.assertEqual(k['timeout'],1800);self.assertEqual(c[c.index('--cohort-sha')+1],self.f.cohort_sha);self.assertEqual(c[c.index('--output')+1],str(browser/'earth_homecoming_browser'))
-        self.assertLess(labels.index('tools/earth_homecoming_journey.cjs'),labels.index('tests/test_earth_homecoming_native.py'));self.assertLess(labels.index('tests/test_earth_homecoming_native.py'),labels.index('tools/earth_homecoming_browser.py'))
+        # the retired homecoming's journey, preflight and native gate left 1.0 (tests/archive/README.md)
+        for leaf in ('tools/earth_homecoming_journey.cjs','tests/test_earth_homecoming_native.py','tools/earth_homecoming_browser.py'):self.assertNotIn(leaf,labels)
         # The new test_earth_consignment_browser.py command is CPU preflight,
         # separate from the exact 45 legacy native suites and road native suite.
         existing=[(c,k) for c,k in calls if len(c)>1 and c[1].startswith('tests/') and c[1].endswith('_browser.py') and c[1]not in ('tests/earth_road_browser.py','tests/test_earth_consignment_browser.py','tests/test_earth_wild_signs_browser.py')]
@@ -298,7 +289,7 @@ class EarthNativeVerifier(unittest.TestCase):
         pc,pk=preflight[0];self.assertEqual(pc,[sys.executable,'tests/test_earth_consignment_browser.py','-v']);self.assertEqual(pk['timeout'],180)
         self.assertEqual(pk['env']['FIRSTLIGHT_ROOT'],str(self.f.root));self.assertEqual(pk['env']['FIRSTLIGHT_CONSIGNMENT_COHORT'],str(self.f.logs/'earth-consignment-earned/FIRST_LOAD_COHORT.json'))
         self.assertLess(labels.index('tools/earth_consignment_cohort.py'),labels.index('tests/test_earth_consignment_browser.py'));self.assertLess(labels.index('tests/test_earth_consignment_browser.py'),labels.index('tools/earth_consignment_browser.py'))
-        self.assertEqual(len(existing)+len(roads)+len(native)+len(consignment)+1,49)
+        self.assertEqual(len(existing)+len(roads)+len(consignment)+1,48)
         self.assertFalse((browser/'earth_homecoming_browser').exists());self.assertFalse(any('isolated-profile' in str(p) for p in browser.rglob('*')))
     def test_legacy_guarded_supported_and_default_routing_remain_exact(self):
         guarded={'earth_road_browser','realm_givers_browser','realm_trails_north_browser','coastward_bridge_posts_browser','practice_visibility_browser','hell_campaign_browser','heaven_campaign_browser','atlantis_campaign_browser','cosmos_campaign_browser'}
