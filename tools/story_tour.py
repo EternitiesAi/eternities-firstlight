@@ -88,6 +88,54 @@ def camera(page, mode):
         raise RuntimeError("camera button missing: " + mode)
 
 
+def run_step(page, step):
+    # a scene step is one of the page's own commands: an adventure command, a walk by the real move command, or a realm entry through
+    # the page's own preview and enter. nothing here edits the world.
+    if "adventure" in step:
+        return page.evaluate("s => Realm.test.adventure(s.adventure.id, s.adventure.type, s.adventure.payload)", step)
+    if "walk" in step:
+        target = step["walk"]
+        moved = page.evaluate("p => Realm.test.move(p[0], p[1])", target)
+        if not (isinstance(moved, dict) and moved.get("ok")):
+            return {"ok": False, "step": "walk", "result": moved}
+        for _ in range(400):
+            if page.evaluate("Realm.test.path.length") == 0:
+                break
+            page.evaluate("Realm.test.step(5)")
+        else:
+            return {"ok": False, "step": "walk", "error": "the walk did not finish in 2000 simulated seconds"}
+        gap = page.evaluate("p => Math.hypot(Realm.state.player.x - p[0], Realm.state.player.z - p[1])", target)
+        return {"ok": gap < 1.6, "step": "walk", "gap": gap}
+    if "realm" in step:
+        return page.evaluate("id => Realm.tour.enterRealm(id)", step["realm"])
+    return {"ok": False, "error": "unknown scene step: " + json.dumps(step)}
+
+
+TOUR_GATE_CASES = [
+    ("normal", "", False),
+    ("flag-only", "?tour=1", False),
+    ("harness-only", "", True),
+    ("tour", "?tour=1", True),
+]
+
+
+def tour_gate(browser, origin):
+    # the hook is unmounted in normal play, with the flag alone and with the harness global alone; mounted only with both.
+    seen = {}
+    for name, query, harness in TOUR_GATE_CASES:
+        page = browser.new_page(viewport={"width": 640, "height": 360})
+        if harness:
+            page.add_init_script("window.__ETERNITIES_TEST_MODE=true;")
+        page.goto(origin + query, wait_until="load")
+        page.wait_for_function("window.Realm !== undefined")
+        seen[name] = page.evaluate("[typeof window.Realm.tour, typeof (window.Realm.tour && window.Realm.tour.enterRealm)]")
+        page.close()
+    expected = {"normal": ["undefined", "undefined"], "flag-only": ["undefined", "undefined"], "harness-only": ["undefined", "undefined"], "tour": ["object", "function"]}
+    if seen != expected:
+        raise SystemExit("tour hook gate: " + json.dumps(seen))
+    return seen
+
+
 def scene_run(browser, origin, saves, row, out, frames, report):
     record = {"scene": row["scene"], "save": row["file"], "why": row["why"]}
     errors = []
@@ -95,11 +143,17 @@ def scene_run(browser, origin, saves, row, out, frames, report):
     page.on("pageerror", lambda error: errors.append(str(error)))
     page.add_init_script("window.__ETERNITIES_TEST_MODE=true;")
     try:
-        page.goto(origin, wait_until="load")
+        # the tour flag mounts the realm hook; the init script above supplies the harness global the gate also needs.
+        page.goto(origin + "?tour=1", wait_until="load")
         page.wait_for_function("window.Realm && window.Realm.test")
         page.evaluate("Realm.test.quality('balanced')")
         state = json.loads((saves / row["file"]).read_text(encoding="utf-8"))
         record["replace"] = page.evaluate("state => Realm.test.replace(state)", state)
+        # the scene's steps run after the home checkpoint: the real walk, the page's own command, or the realm entry.
+        record["steps"] = [run_step(page, step) for step in row.get("steps", [])]
+        refused = [result for result in record["steps"] if not (isinstance(result, dict) and result.get("ok"))]
+        if refused:
+            raise RuntimeError("a scene step was refused: " + json.dumps(refused)[:400])
         page.evaluate("Realm.test.pause(false)")
         webgl = page.evaluate(WEBGL_JS)
         record["webgl"] = webgl
@@ -110,7 +164,7 @@ def scene_run(browser, origin, saves, row, out, frames, report):
         record["hp"] = page.evaluate("Realm.state.adventure.hp")
         if row["scene"] == "credits":
             # the page's own credits screen, fed by the page's own epilogue data.
-            page.evaluate("window.RealmCredits && window.RealmCredits.show(window.RealmEpilogue.credits())")
+            page.evaluate("window.RealmCredits.show(window.RealmEpilogueData.CREDITS, {onDone: () => {}})")
             page.wait_for_timeout(2500)
         third = out / (row["scene"] + "-third.png")
         page.screenshot(path=str(third))
@@ -176,6 +230,7 @@ def main():
             launch["args"] = launch["args"] + UNCAPPED
             browser = pw.chromium.launch(**launch)
             report["browser_version"] = browser.version
+            report["tour_gate"] = tour_gate(browser, origin)
             for row in index:
                 if not row["file"]:
                     report["scenes"].append({"scene": row["scene"], "status": "unreached", "why": row["why"]})
