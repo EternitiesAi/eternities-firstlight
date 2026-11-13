@@ -11,6 +11,7 @@ const fs = require('node:fs'), os = require('node:os'), path = require('node:pat
 const ROOT = path.resolve(__dirname, '..');
 process.env.FIRSTLIGHT_ROOT = process.env.FIRSTLIGHT_ROOT || ROOT;
 const AD = require(path.join(ROOT, 'src/adventure.js'));
+const TACTICS = require('./journey_tactics.cjs');
 const BEATS = ['kit', 'hart', 'envoy', 'road', 'beacon', 'bellweather', 'night', 'hell', 'heaven', 'atlantis', 'cosmos', 'nearshore', 'finale', 'credits'];
 const NOT_YET = {
  atlantis: 'the atlantis helper runs after heaven; heaven is blocked',
@@ -47,6 +48,7 @@ function fmt(r) {
 }
 
 function run(options = {}) {
+ TACTICS.install(); TACTICS.reset();
  const out = outFolder(options.out);
  fs.mkdirSync(out, { recursive: true });
  const log = options.quiet ? null : r => console.log(fmt(r));
@@ -147,7 +149,9 @@ function run(options = {}) {
  const ranRows = rows.filter(r => r.status === 'ran');
  const totals = { beatsRan: ranRows.length, beatsTotal: BEATS.length, simulatedSeconds: +ranRows.reduce((n, r) => n + (r.secs || 0), 0).toFixed(1), creditsRolled };
  if (log) console.log('--- ' + totals.beatsRan + ' of ' + totals.beatsTotal + ' beats ran; ' + totals.simulatedSeconds + 's simulated; credits ' + (creditsRolled ? 'rolled' : 'not reached (stopped at ' + (stoppedAt || 'the end') + ')'));
- return { rows, creditsRolled, stoppedAt, totals, out };
+ const fights = TACTICS.table();
+ if (log && fights.length) { console.log('--- boss fights: time, player hits, hp lost, tonics used'); for (const f of fights) console.log('  ' + f.boss.padEnd(18) + ' ' + f.outcome.padEnd(7) + ' ' + (f.secs + 's').padStart(8) + '  hits ' + f.hits + '  hp lost ' + f.hpLost + '  tonics ' + f.tonics); }
+ return { rows, creditsRolled, stoppedAt, totals, out, fights };
 }
 
 module.exports = { run, BEATS };
