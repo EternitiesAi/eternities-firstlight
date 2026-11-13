@@ -109,7 +109,7 @@ const realms=[{
   objectives:[{id:'first',pointId:'hell-tithe-mark',text:'Inspect the Tithe Mile support mark',kind:'interact'},{id:'second',pointId:'hell-moth-mark',text:'Inspect the Moth Cut service mark',kind:'interact'},{id:'third',pointId:'hell-bell-yard-plate',text:'Read the grounded Bell Yard route plate',kind:'interact'}],
   reward:{xp:22,coins:9,ore:2},completionText:'Tovan keeps the measured route marks in the refuge, and Istra gives the survey reward once. A useful record is made. The road to the foundry is still to come.'},
  enemies:[{id:'hell-salvage-sentinel',name:'Salvage sentinel',kind:'sentinel',x:44,z:-94,hp:90,damage:9,xp:0,ore:0,coins:0}],
- palette:{ground:0x1b1214,stone:0x141112,trim:0x7a2a14,sky:0x1a0605},atmosphere:{top:0x120303,fog:0x3a1009,night:.35,power:.6,sunColor:0xff6a2a},theme:'cosmos',water:false
+ palette:{ground:0x120c0d,stone:0x0e0a0b,trim:0x7a2a14,sky:0x1a0605},atmosphere:{top:0x120303,fog:0x3a1009,night:.35,power:.6,sunColor:0xff6a2a},theme:'cosmos',water:false
 }];
 function freeze(value){if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;}
 freeze(realms);
@@ -129,9 +129,9 @@ function hellSet(art,def,ctx){
  const open=(x,z,r=1)=>clear(def,x,z,r)&&routeDistance(def,x,z)>2.4&&!def.points.some(p=>Math.hypot(x-p.x,z-p.z)<3.4);
  const bx=()=>def.bounds.minX+4+rnd()*(def.bounds.maxX-def.bounds.minX-8),bz=()=>def.bounds.minZ+4+rnd()*(def.bounds.maxZ-def.bounds.minZ-8);
  // cracks branch like cooled glass: a red-orange seam with a darker core, walking off in irregular turns.
- for(let k=0;k<30;k++){let x=bx(),z=bz(),a=rnd()*Math.PI*2;for(let s=0;s<4;s++){a+=(rnd()-.5)*1.1;const len=1.6+rnd()*1.6,mx=x+Math.sin(a)*len/2,mz=z+Math.cos(a)*len/2;if(open(mx,mz,.5)){at('box',mx,h(mx,mz)+.02,mz,.22,.02,len,0xc62a0c,{em:.85,r:[0,a,0],rough:.6});at('box',mx,h(mx,mz)+.025,mz,.08,.02,len*.8,0x2a0604,{em:.12,r:[0,a,0],rough:.7});}x+=Math.sin(a)*len;z+=Math.cos(a)*len;if(!open(x,z,.5))break;}}
- for(const line of routes.hell)for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]),yaw=Math.atan2(b[0]-a[0],b[1]-a[1]);
-  for(let d=0;d<len;d+=3.4)for(const side of[-1,1]){const t=d/len,x=a[0]+(b[0]-a[0])*t-Math.cos(yaw)*2.7*side,z=a[1]+(b[1]-a[1])*t+Math.sin(yaw)*2.7*side;if(open(x,z,.4))at('box',x,h(x,z)+.02,z,.35,.02,2.2,glow,{em:.8,r:[0,yaw,0],rough:.7});}}
+ for(let k=0;k<44;k++){let x=bx(),z=bz(),a=rnd()*Math.PI*2;for(let s=0;s<4;s++){a+=(rnd()-.5)*1.1;const len=1.6+rnd()*1.6,mx=x+Math.sin(a)*len/2,mz=z+Math.cos(a)*len/2;if(open(mx,mz,.5)){at('box',mx,h(mx,mz)+.02,mz,.3,.02,len,0xc62a0c,{em:1,r:[0,a,0],rough:.6});at('box',mx,h(mx,mz)+.025,mz,.12,.02,len*.8,0x2a0604,{em:.12,r:[0,a,0],rough:.7});}x+=Math.sin(a)*len;z+=Math.cos(a)*len;if(!open(x,z,.5))break;}}
+ // a few round slag pools off the roads, in place of the even dashes that read as runway lights.
+ for(let i=0;i<12;i++){const x=bx(),z=bz(),s=3+rnd()*4;if(open(x,z,s))at('disc',x,h(x,z)+.03,z,s,.03,s*.6,ember,{em:.9});}
  const tower=(x,z)=>{const b=h(x,z);at('box',x,b+.2,z,1.8,.4,1.8,dark,{rough:.9});at('box',x,b+3.3,z,.55,6.2,.55,iron,{rough:.9});at('box',x,b+6.5,z,1.5,.35,1.5,rust,{rough:.9});at('cylinder',x,b+6.8,z,.6,.3,.6,iron,{rough:.9});at('octa',x,b+7.5,z,.38,.5,.38,ember,{em:1,rough:.7});at('disc',x,b+.04,z,4,.03,4,glow,{em:.25});};
  for(const[x,z]of[[-45,-90],[45,-90],[-45,-40],[45,-40],[-45,10],[45,10],[-38,-64],[38,-64]])if(open(x,z,1.2))tower(x,z);
  // a chain gantry over the Tithe Mile: its posts stand off the road and the beam clears a walker's head.
@@ -140,8 +140,8 @@ function hellSet(art,def,ctx){
  for(let x=18;x<=30;x+=3)for(let k=0;k<3;k++)at('ring',x,h(x,-50)+6.1-k*.42,-50,.3,.42,.12,iron,{ornament:true,r:[0,0,0]});
  for(const[x,z]of[[-4,-30],[12,-62],[-30,-62],[6,-20],[-20,24],[10,24],[-6,44],[16,-88]])if(open(x,z,.8)){const b=h(x,z);at('cylinder',x,b+.9,z,.14,1.8,.14,iron,{rough:.9});at('cylinder',x,b+1.9,z,.5,.25,.5,rust,{rough:.9});at('octa',x,b+2.25,z,.35,.5,.35,ember,{em:1,rough:.5});at('disc',x,b+.04,z,2.2,.03,2.2,glow,{em:.35});}
  // the foundry beyond the closed works: a dark mass with molten seams and a chimney, and the light it throws on the yard.
- at('box',0,60,-162,120,120,26,0x1c171a,{...far,rough:1});at('box',-58,40,-168,40,80,26,0x1a1518,{...far,rough:1});at('box',58,40,-168,40,80,26,0x1a1518,{...far,rough:1});
- for(const x of[14,-30]){at('cylinder',x,70,-158,5,140,5,0x221c1f,{...far,rough:1});at('octa',x,141,-158,4,2.4,4,ember,{...far,em:1});for(let k=0;k<4;k++)at('octa',x+k*1.5,150+k*11,-158,7+k*2.4,5+k*1.6,7+k*2.4,0x3b3536,{...far,rough:1});}at('box',0,10,-146.7,116,20,.5,ember,{...far,em:1});at('box',0,3,-190,300,6,4,0xff4a14,{...far,em:1});at('box',0,3.4,-190.8,300,1.2,4,0x2a0604,{...far,em:.2});
+ at('box',0,h(0,-138)+60,-138,120,120,26,0x1c171a,{rough:1});at('box',-58,40,-168,40,80,26,0x1a1518,{...far,rough:1});at('box',58,40,-168,40,80,26,0x1a1518,{...far,rough:1});
+ for(const x of[14,-30]){at('cylinder',x,70,-158,5,140,5,0x221c1f,{...far,rough:1});at('octa',x,141,-158,4,2.4,4,ember,{...far,em:1});for(let k=0;k<4;k++)at('octa',x+k*1.5,150+k*11,-158,7+k*2.4,5+k*1.6,7+k*2.4,0x3b3536,{...far,rough:1});}at('box',0,h(0,-124.7)+12,-124.7,116,20,.5,ember,{em:1});at('box',0,3,-190,300,6,4,0xff4a14,{...far,em:1});at('box',0,3.4,-190.8,300,1.2,4,0x2a0604,{...far,em:.2});
  for(let x=-24;x<=24;x+=6)at('box',x,12,-142.3,.5,16,.3,ember,{...far,em:1});
  at('disc',0,h(0,-104)+.04,-104,14,.03,6,ember,{em:.8});
  // vertical drama: iron and obsidian spires at the realm's edges, chains between them, and ember tips.
@@ -149,7 +149,7 @@ function hellSet(art,def,ctx){
  for(const[x,z,s]of[[-70,-70,1.4],[70,-70,1.4],[-70,-20,1.1],[70,-20,1.1],[-70,20,1.6],[70,20,1.6]])spire(x,z,s);
  for(const z of[-70,-20])for(let x=-68;x<=68;x+=3.2)at('ring',x,h(x,z)+13,z,.35,.45,.12,iron,{ornament:true,r:[0,0,0]});
  // the refuge's roof keeps its shape, but its edges carry the fire.
- for(const[x,z,w,d]of[[-10,28.6,24,.1],[-10,9.4,24,.1],[-22.1,19,.1,19],[2.1,19,.1,19]])at('box',x,h(-10,19)+4.46,z,w,.1,d,0xff5a1c,{em:1,rough:.5});
+ for(const[x,z,w,d]of[[-10,28.6,24,.1],[-10,9.4,24,.1],[-22.1,19,.1,19],[2.1,19,.1,19]])at('box',x,h(-10,19)+4.46,z,w,.16,d,0xff5a1c,{em:1,rough:.5});
  // the refuge is a lit shelter: warm windows in its front and a warm pool on the approach.
  for(const x of[-17,-11,-5])at('box',x,h(x,9)+1.9,10.75,.9,1.1,.06,0xffb050,{em:1,rough:.5});
  at('disc',-10,h(-10,22)+.035,22,6,.03,4,0xffa24a,{em:.45});
@@ -264,7 +264,7 @@ function decorate(art,def,options={}){
   // The retired kiln's patched open front faces the arrival and return road.
   // The shared renderer can reveal this complete roof in the main view.
   // The slab and patched ribs remain present for reflection and shadow art.
-  box(-10,h(-10,19)+4.38,19,24,.28,19,0x2a2226,{overhead:true,cutaway:true,worldRoof:'hell-refuge'});
+  box(-10,h(-10,19)+4.38,19,24,.28,19,0x17131a,{overhead:true,cutaway:true,worldRoof:'hell-refuge'});
   for(let i=0;i<6;i++)box(-20+i*4,h(-10,19)+4.56,19,.18,.12,19,0x3d2a26,{overhead:true,cutaway:true,worldRoof:'hell-refuge'});
   const s=def.solids.find(s=>s.id==='hell-refuge-ember-hearth');
   box(s.x,h(s.x,s.z)+s.h-.09,s.z,s.w*.8,.12,s.d*.8,0xb96e43,{worldSolidId:s.id,em:.5});
