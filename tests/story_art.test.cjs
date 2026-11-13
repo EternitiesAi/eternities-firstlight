@@ -85,7 +85,7 @@ test('figures stand on their base, reach their height and face the way they yaw'
 test('the regent carries the coat, the cinder crown, the seams and the smile',()=>{
  const parts=builders.regent(0);
  assert.equal(parts.filter(it=>/^cinder-/.test(it.storyPart)).length,7);
- assert.equal(parts.filter(it=>/^seam-/.test(it.storyPart)&&it.em>.3).length,2,'two ember-lit placket seams');
+ assert.equal(parts.filter(it=>/^seam-/.test(it.storyPart)&&it.em>.2).length,2,'two ember-lit placket seams');
  assert.equal(parts.filter(it=>/^coat-/.test(it.storyPart)).length,4,'back, two fronts and the inner front');
  assert.ok(parts.some(it=>it.storyPart==='circlet'),'a circlet on the brow, not a spiked crown');
  assert.ok(parts.some(it=>/^smile-/.test(it.storyPart)),'a smile');
@@ -94,7 +94,7 @@ test('the regent carries the coat, the cinder crown, the seams and the smile',()
 
 test('the envoy carries folded wings of light, a halo and motes',()=>{
  const parts=builders.envoy(0);
- assert.equal(parts.filter(it=>/^wing-/.test(it.storyPart)).length,12,'six feathers a side');
+ assert.equal(parts.filter(it=>/^wing-/.test(it.storyPart)).length,10,'five layered feathers a side');
  assert.equal(parts.filter(it=>it.storyPart==='halo').length,1);
  assert.equal(parts.filter(it=>/^mote-/.test(it.storyPart)).length,6);
  assert.ok(parts.filter(it=>/^wing-/.test(it.storyPart)).every(it=>it.em>=.8),'the wings glow');

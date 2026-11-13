@@ -17,7 +17,7 @@ const IDENT=[[1,0,0],[0,1,0],[0,0,1]];
 // Rotations about Y, and a ring lying flat (its local XY plane turned to the ground).
 const axesY=a=>[[Math.cos(a),0,-Math.sin(a)],[0,1,0],[Math.sin(a),0,Math.cos(a)]];
 const flat=a=>[[Math.cos(a),0,-Math.sin(a)],[Math.sin(a),0,Math.cos(a)],[0,-1,0]];
-const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d};
+const IRON=0x4b5056,EMBER=0xff7a2e,ASH={coat:0x8f8884,coatInner:0x6e6964,skin:0x9e8b7e,hair:0xd3cec6,white:0xd9d2c4,pupil:0x4a3026,glint:0xffd9a6,seam:0xe0683a,cinder:0x5a524d,brow:0x7a6f66};
 const BONE={robe:0xefe6d2,robeShade:0xd9ceb6,gold:0xd6b25e,skin:0xf3e2cc,hair:0xe9d69a,light:0xfff3cf,feather:0xfff1c4,halo:0xffd77a,glow:0xffe7a6,pupil:0x8c6a2a,glint:0xfff4d6};
 // Figure space is the traveler rig's: +Z forward, feet on y=0. The root scales
 // the rig to a figure's height and yaws it, the way resident art does.
@@ -50,26 +50,28 @@ const paint=(list,colours)=>{for(const it of list)if(colours[it.storyPart]!==und
 // a smile is a level centre and two corners; lift is one fraction of half-width, or [left, right].
 function smile(list,R,y,z,half,lift,color){
  const [l,r]=Array.isArray(lift)?lift:[lift,lift];
- beam(list,R,'capsule','smile-centre',[-half*.4,y,z],[half*.4,y,z],.008,.012,color);
- beam(list,R,'capsule','smile-left',[-half*.4,y,z],[-half,y+half*l,z-.002],.008,.012,color);
- beam(list,R,'capsule','smile-right',[half*.4,y,z],[half,y+half*r,z-.002],.008,.012,color);
+ beam(list,R,'capsule','smile-centre',[-half*.12,y,z],[half*.12,y,z],.006,.008,color);
+ beam(list,R,'capsule','smile-left',[-half*.1,y,z],[-half,y+half*l,z-.002],.006,.008,color);
+ beam(list,R,'capsule','smile-right',[half*.1,y,z],[half,y+half*r,z-.002],.006,.008,color);
 }
 function regent(x,y,z,yaw,t){
  // taller and broader than the traveler: presence comes from the shoulders and the coat, not from height alone.
  const k=finite(t),R=root(finite(x),finite(y),finite(z),1.06,1.28,1.06,finite(yaw)),sway=Math.sin(k*.6)*.006,L=[];
  // his left hand rests at the lapel; breath, coat and cinders move slowly and out of step.
  rig(L,R,{armorColor:ASH.coat,color:ASH.coatInner},T.pose({time:k,phase:0,blend:0,carry:{left:[-.12,1.24+.004*Math.sin(k*.5),.15]}}));
- const parts=L.filter(it=>!/^cloak-/.test(it.storyPart)&&it.storyPart!=='mouth');
- paint(parts,{head:ASH.skin,neck:ASH.skin,nose:ASH.skin,'left-ear':ASH.skin,'right-ear':ASH.skin,'left-hand':ASH.skin,'right-hand':ASH.skin,'hair-crown':ASH.hair,'hair-back':ASH.hair,'left-brow':ASH.hair,'right-brow':ASH.hair,'left-eye':ASH.white,'right-eye':ASH.white,'left-pupil':ASH.pupil,'right-pupil':ASH.pupil,'left-catchlight':ASH.glint,'right-catchlight':ASH.glint});
+ const parts=L.filter(it=>!/^(cloak-|hair-crown|hair-back)/.test(it.storyPart)&&it.storyPart!=='mouth');
+ paint(parts,{head:ASH.skin,neck:ASH.skin,nose:ASH.skin,'left-ear':ASH.skin,'right-ear':ASH.skin,'left-hand':ASH.skin,'right-hand':ASH.skin,'hair-crown':ASH.hair,'hair-back':ASH.hair,'left-brow':ASH.brow,'right-brow':ASH.brow,'left-eye':ASH.white,'right-eye':ASH.white,'left-pupil':ASH.pupil,'right-pupil':ASH.pupil,'left-catchlight':ASH.glint,'right-catchlight':ASH.glint,'collar-left':ASH.coatInner,'collar-right':ASH.coatInner});
  for(const it of parts)if(/pupil$/.test(it.storyPart))it.em=.12;
  for(const it of parts)if(/catchlight$/.test(it.storyPart))it.em=.6;
+ // swept-back silver hair as one soft mass, in place of the rig's flat cap.
+ beam(parts,R,'capsule','hair-swept',[0,1.70,.02],[0,1.60,-.13],.25,.22,ASH.hair);
  // a long tailored coat: a wide back panel, two flared fronts and a dark inner front, to mid-calf.
- beam(parts,R,'capsule','coat-back',[0,1.12,-.09],[sway,.34,-.15],.42,.18,ASH.coat);
- beam(parts,R,'capsule','coat-front-left',[-.10,1.10,.04],[-.17+sway,.34,.09],.24,.15,ASH.coat);
- beam(parts,R,'capsule','coat-front-right',[.10,1.10,.04],[.17+sway,.34,.09],.24,.15,ASH.coat);
- beam(parts,R,'capsule','coat-front',[0,1.08,.07],[0,.36,.10],.22,.12,ASH.coatInner);
+ beam(parts,R,'capsule','coat-back',[0,1.12,-.09],[sway,.22,-.15],.42,.18,ASH.coat);
+ beam(parts,R,'capsule','coat-front-left',[-.10,1.10,.04],[-.17+sway,.24,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front-right',[.10,1.10,.04],[.17+sway,.24,.09],.24,.15,ASH.coat);
+ beam(parts,R,'capsule','coat-front',[0,1.08,.07],[0,.26,.10],.22,.12,ASH.coatInner);
  // thin ember piping down the placket: lit from within, not a rod.
- for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.13],[s*.055+sway*.3,.40,.15],.008,.010,ASH.seam,{em:.42+.08*Math.sin(k*.9+s),rough:.5});
+ for(const s of[-1,1])beam(parts,R,'box','seam-'+(s<0?'left':'right'),[s*.05,1.12,.13],[s*.055+sway*.3,.30,.15],.006,.008,ASH.seam,{em:.34+.08*Math.sin(k*.9+s),rough:.5});
  // a low circlet of cooling embers on the brow, not a spiked crown: one side still warm, the back gone grey.
  ring(parts,R,'circlet',[0,1.68,.008],.118,.010,flat(0),0x4b4f55,{rough:.4});
  for(let i=0;i<7;i++){
@@ -93,11 +95,11 @@ function envoy(x,y,z,yaw,t){
  beam(parts,R,'capsule','robe-back',[0,1.00,-.07],[0,.10,-.12],.36,.18,BONE.robeShade);
  for(const s of[-1,1])beam(parts,R,'capsule','robe-'+(s<0?'left':'right'),[s*.12,.98,.02],[s*.14,.16,.04],.22,.16,BONE.robe);
  ring(parts,R,'hem-gold',[0,.12,0],.26,.022,flat(0),BONE.gold,{em:.35,rough:.4});
- // folded wings of light: six feathers a side fan out past the shoulders and breathe with the body.
+ // folded wings of light: five layered feathers a side rise and fan from the shoulder blades, breathing with the body.
  const breath=Math.sin(k*.8)*.03;
- for(const s of[-1,1])for(let i=0;i<6;i++){
-  const u=i/5,base=[s*.06,1.40-.05*i,-.16],tip=[s*(.44-.08*u+breath),1.52-.56*u+breath*.5,-.36-.04*u];
-  beam(parts,R,'capsule','wing-'+(s<0?'left':'right')+'-'+i,base,tip,.10-.05*u,.02,BONE.feather,{em:.8,rough:.4});
+ for(const s of[-1,1])for(let i=0;i<5;i++){
+  const u=i/4,base=[s*.07,1.42-.09*u,-.17],tip=[s*(.36+.10*(1-u)+breath),1.66-.62*u+breath*.5,-.30-.05*u];
+  beam(parts,R,'capsule','wing-'+(s<0?'left':'right')+'-'+i,base,tip,.16-.08*u,.035,BONE.feather,{em:.8,rough:.4});
  }
  // a halo above the head, a soft glow on the ground, and motes turning around her.
  ring(parts,R,'halo',[0,2.00+.01*Math.sin(k*.9),0],.22,.02,flat(0),BONE.halo,{em:.9,rough:.4});
@@ -117,7 +119,7 @@ function briarFalse(x,y,z,yaw,t){
  const list=real.map(it=>({kind:it.kind,p:it.p.slice(),s:it.s.slice(),m:new Float32Array(it.m),
   c:/eye/.test(it.companionPart)?0xaef2ff:typeof it.c==='number'?mixHex(it.c,0xd9eef7,.16):it.c,rough:.82,
   em:/eye/.test(it.companionPart)?.55:glow,cameraSolid:false,cutaway:false,storyPart:it.companionPart}));
- put(list,root(placement.x,placement.base,placement.z,1,1,1,placement.yaw),'disc','cold-glow',[0,.01,0],[1.3,1,1.3],IDENT,0x9fdcea,{em:.45+.1*Math.sin(k*1.7),rough:.6});
+ put(list,root(placement.x,placement.base,placement.z,1,1,1,placement.yaw),'disc','cold-glow',[0,.01,0],[1.3,1,1.3],IDENT,0x8cc6d6,{em:.3+.08*Math.sin(k*1.7),rough:.6});
  return list;
 }
 
