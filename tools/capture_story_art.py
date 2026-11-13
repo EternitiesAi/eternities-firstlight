@@ -30,8 +30,17 @@ def frame(name, figure, centre, dist, lift, fov, hour=DAY, base=0.0, off=0.0, ya
                 hour=hour, base=base, off=off, yaw=yaw, plinth=plinth)
 
 
+# the game's adventure camera (app.js): distance 7.5 at elevation .28 rad, fov 60 (core.js default).
+# the camera puts cos and sin of the elevation on reach and height, so the frame does the same.
+PLAY_DIST = 7.5 * math.cos(0.28)
+PLAY_LIFT = 7.5 * math.sin(0.28)
+PLAY_FOV = 60
+
 FRAMES = [
     frame('traveler-close', 'traveler', [0, 1.56, 0], 1.15, 0.05, 24),
+    frame('traveler-play', 'traveler', [0, 1.0, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
+    frame('regent-play', 'regent', [0, 1.25, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
+    frame('envoy-play', 'envoy', [0, 1.05, 0], PLAY_DIST, PLAY_LIFT, PLAY_FOV, off=-0.5),
     frame('traveler-third', 'traveler', [0, 1.0, 0], 7.26, 2.07, 40, off=-0.5),
     frame('traveler-diorama', 'traveler', [0, 1.3, 0], 8.2, 6.2, 32, base=0.4, off=-0.2, plinth=True),
     frame('ilan-close', 'ilan', [0, 1.55, 0], 1.15, 0.05, 24),
