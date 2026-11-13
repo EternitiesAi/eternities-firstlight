@@ -66,8 +66,9 @@ ${effectRows.join('\n')}
 Generated on the box with ACE-Step at the pins above, lyrics \`[inst]\` (ACE-Step's own instrumental tag), guidance 15,
 60 steps, euler scheduler, apg cfg (the pipeline's defaults). Each raw clip was generated \`seconds + 3\` long, and
 \`tools/master_music.py\` folded the last 3 s into the first with an equal-power blend, so each loop joins one ordinary sample
-step (seam ratio is the joint step over the median step; 1 is an ordinary step). Each track folds its own tail (3 s; the
-finale folds 6 s, so its loop is 117 s, not 120). Loudness target -20 LUFS integrated,
+step (seam ratio is the joint step over the median step; 1 is an ordinary step). Each track folds its own tail (3 s). The finale folds
+6 s and joins at the near-still sample within a second of the fold point that has the smallest step (joint: search), so its
+loop is 116.35 s. A longer fold alone raised the joint step, because it moved the joint onto a transient. Loudness target -20 LUFS integrated,
 true-peak ceiling -1.5 dBTP, encoded mono opus at 40 kbps and decoded back for the measurements below.
 
 | track | seconds | seed | generated s | LUFS | true peak dBTP | sample peak dBFS | seam ratio | ogg bytes | ogg sha256 |
