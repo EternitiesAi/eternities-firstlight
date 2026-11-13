@@ -27,7 +27,8 @@ function fixture(world=C.fresh()){
 }
 let steps=0,movements=0;function walk(f,p){const result=f.sim.moveTo(p.x,p.z);assert.ok(result.ok,result.error);let n=0;while(f.sim.playerPath.length&&n++<20000){f.sim.tick(.1);steps++;}assert.equal(f.sim.playerPath.length,0,'production path must arrive');movements++;}
 // Hell opens after the night (saga gate). The late fixture predates the night, so it is walked through the saga owner's own commands.
-function pastTheNight(f){for(const[type,payload]of[['briar-taken',{}],['mark',{beat:'night'}]]){const r=f.sim.sagaCommand('past-night-'+type,type,payload);assert.ok(r.ok,r.error);}}
+// past the night: Briar taken, the night marked, and the quiet engine placed (the hell gate holds for it)
+function pastTheNight(f){for(const[type,payload]of[['briar-taken',{}],['mark',{beat:'night'}],['choose',{key:'device',value:'open'}]]){const r=f.sim.sagaCommand('past-night-'+type,type,payload);assert.ok(r.ok,r.error);}}
 function save(candidate){C.validate(candidate);return{ok:true};}
 function enter(f,id){walk(f,W.GATE);const p=W.preview(f.ctx(),id);assert.ok(p.ok,p.error);const e=W.enter(p.ticket,f.ctx(),{save,build(){}});assert.ok(e.ok,e.error);}
 function kitAndTrail(f){walk(f,{x:11,z:9});const k=A.command(f.sim,'onboarding-kit','start',{});assert.ok(k.ok,k.error);enter(f,'earthlands');const d=R.definition('earthlands-coastward-materials-v1');walk(f,d.giver);const accept=R.command(f.ctx(),'accept',{quest:d.id},{save});assert.ok(accept.ok,accept.error);assert.equal(f.sim.state.realmTrails.records[d.id].accepted,true);return d;}
