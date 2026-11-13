@@ -37,7 +37,7 @@ function skip(b) { beat(b.id, false, 'owner ' + b.owner + ' is not in this build
 // the finale segment runs on an earned late world with the saga at the nearshore. the beats before it are the skipped list above.
 function lateWorld() {
  const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga;
- const w = C.validate(raw); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: { state: 'returned', habit: {}, takenDay: 10 } };
+ const w = C.validate(raw); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar: { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 } };
  return C.validate(JSON.parse(JSON.stringify(w)));
 }
 function walkTo(x, z, cap = 60) { sim.moveTo(x, z); for (let t = 0; t < cap; t += .1) { sim.tick(.1); if (Math.hypot(sim.state.player.x - x, sim.state.player.z - z) < .6) return true; } return false; }

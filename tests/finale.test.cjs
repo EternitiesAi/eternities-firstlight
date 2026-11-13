@@ -11,7 +11,7 @@ const LATE = 'tests/fixtures/earth-homecoming-prerequisites/blade/ALL_TWELVE_PRE
 const clone = o => JSON.parse(JSON.stringify(o));
 function legacy(edit) { const raw = JSON.parse(fs.readFileSync(path.join(ROOT, LATE), 'utf8')); delete raw.saga; if (edit) edit(raw); return raw; }
 // a late world whose saga stands at the nearshore: briar home, the night marked. the echo is the fixture's own choices.
-function world(briar = { state: 'returned', habit: {}, takenDay: 10 }, edit) { const w = C.validate(legacy(edit)); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar }; return C.validate(clone(w)); }
+function world(briar = { state: 'returned', habit: {}, takenDay: 10, returnedDay: 10 }, edit) { const w = C.validate(legacy(edit)); w.saga = { ...SG.infer(w), beats: { night: { day: 10 } }, briar }; return C.validate(clone(w)); }
 function sim(w, x = 0, z = 6) { const s = new C.Simulation(w); s.saved = null; s.earthHomecomingSave = io => { s.saved = clone(io); return { ok: true }; }; s.state.player.x = x; s.state.player.z = z; return s; }
 const run = (s, seconds) => { for (let t = 0; t < seconds - 1e-9; t += .1) s.tick(.1); };
 const phase = s => s.state.saga.finale.phase;
